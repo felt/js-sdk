@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title>Felt SDK Example</title>
+  </head>
+  <body>
+    <h1>Felt SDK Example</h1>
+    <div id="map" style="width: 100%; aspect-ratio: 16/7"></div>
+    <script type="module">
+      import { Felt } from "./index.js";
+
+      const felt = Felt.embed(
+        document.getElementById("map"),
+        "Untitled-Map-XEYzV9CVRTCaaOpTMpDjp6D",
+        {
+          origin: "http://localhost:4000",
+          showLegend: false,
+          fullScreenButton: false,
+          geolocation: true,
+          zoomControls: true,
+          scaleBar: true,
+          defaultViewport: {
+            latitude: 37.7749295,
+            longitude: -122.419416,
+            zoom: 12,
+          },
+        }
+      );
+
+      setInterval(() => {
+        felt.viewport.goto({
+          type: "center",
+          center: {
+            latitude: 37.7749295,
+            longitude: -122.419416,
+          },
+          zoom: Math.random() * 12 + 7,
+        });
+      }, 1000);
+
+      setInterval(() => {
+        felt.viewport.get().then((viewport) => {
+          console.log(viewport);
+        });
+      }, 500);
+    </script>
+  </body>
+</html>

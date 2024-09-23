@@ -1,0 +1,48 @@
+{
+  "name": "@felt/js-sdk",
+  "version": "0.0.1",
+  "description": "An SDK for Felt maps",
+  "keywords": [
+    "demo",
+    "typescript"
+  ],
+  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "homepage": "https://github.com/felt/js-sdk-test",
+  "bugs": {
+    "url": "https://github.com/felt/js-sdk-test/issues"
+  },
+  "author": "Felt <engineering@felt.com> (https://felt.com)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felt/js-sdk-test.git"
+  },
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.15.4",
+    "@changesets/cli": "^2.27.7",
+    "prettier": "^3.3.3",
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  },
+  "scripts": {
+    "build": "tsup",
+    "ci": "npm run build && npm run check-format && npm run check-exports && npm run lint && npm run test",
+    "lint": "tsc",
+    "test": "vitest run",
+    "format": "prettier --write .",
+    "check-format": "prettier --check .",
+    "check-exports": "attw --pack .",
+    "local-release": "npm run ci && changeset version && changeset publish"
+  }
+}

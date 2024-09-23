@@ -2,13 +2,15 @@
   <head>
     <title>Felt SDK Example</title>
   </head>
-  <body>
+  <body style="font-family: system-ui">
     <h1>Felt SDK Example</h1>
     <div id="map" style="width: 100%; aspect-ratio: 16/7"></div>
+    <button disabled id="listen">Start listening</button>
+    <p id="loc" style="font-variant: tabular-nums">?</p>
     <script type="module">
       import { Felt } from "./index.js";
 
-      const felt = Felt.embed(
+      const felt = await Felt.embed(
         document.getElementById("map"),
         "Untitled-Map-XEYzV9CVRTCaaOpTMpDjp6D",
         {
@@ -26,22 +28,27 @@
         }
       );
 
-      setInterval(() => {
-        felt.viewport.goto({
-          type: "center",
-          center: {
-            latitude: 37.7749295,
-            longitude: -122.419416,
-          },
-          zoom: Math.random() * 12 + 7,
-        });
-      }, 1000);
+      let unsubscribe;
+      const button = window.document.getElementById("listen");
+      button.disabled = false;
+      const paragraph = window.document.getElementById("loc");
 
-      setInterval(() => {
-        felt.viewport.get().then((viewport) => {
-          console.log(viewport);
-        });
-      }, 500);
+      felt.viewport.get().then((viewport) => {
+        paragraph.textContent = `${viewport.center.latitude.toFixed(5)}, ${viewport.center.longitude.toFixed(5)}, ${viewport.zoom.toFixed(2)}z`;
+      });
+
+      button.addEventListener("click", () => {
+        if (unsubscribe) {
+          unsubscribe();
+          unsubscribe = null;
+          button.textContent = "Start listening";
+        } else {
+          unsubscribe = felt.viewport.onMove((e) => {
+            paragraph.textContent = `${e.center.latitude.toFixed(5)}, ${e.center.longitude.toFixed(5)}, ${e.zoom.toFixed(2)}z`;
+          });
+          button.textContent = "Stop listening";
+        }
+      });
     </script>
   </body>
 </html>

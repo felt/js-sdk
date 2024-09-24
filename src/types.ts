@@ -1,3 +1,8 @@
+/**
+ * Options for embedding a Felt map, letting you enable and disable certain features.
+ *
+ * @public
+ */
 export interface FeltEmbedOptions {
   /**
    * @internal
@@ -7,7 +12,7 @@ export interface FeltEmbedOptions {
   /**
    * Enables the legend in the embedded map.
    *
-   * @default true
+   * @defaultValue true
    */
   showLegend?: boolean;
 
@@ -25,7 +30,7 @@ export interface FeltEmbedOptions {
    *
    * If your embedded map is fullscreen, you should set this to `false`.
    *
-   * @default true
+   * @defaultValue true
    */
   cooperativeGestures?: boolean;
 
@@ -33,7 +38,7 @@ export interface FeltEmbedOptions {
    * Enables full screen button in the embedded map, which will open the map in a
    * new tab when clicked.
    *
-   * @default true
+   * @defaultValue true
    */
   fullScreenButton?: boolean;
 
@@ -41,7 +46,7 @@ export interface FeltEmbedOptions {
    * Enables the geolocation feature in the embedded map. This adds a button to the UI
    * that allows the user's location to be tracked and displayed on the map.
    *
-   * @default false
+   * @defaultValue false
    */
   geolocation?: boolean;
 
@@ -49,14 +54,14 @@ export interface FeltEmbedOptions {
    * Enables the zoom controls in the embedded map. This only affects the visibility of
    * the buttons, not whether the map can be zoomed or not.
    *
-   * @default true
+   * @defaultValue true
    */
   zoomControls?: boolean;
 
   /**
    * Enables the scale bar in the embedded map.
    *
-   * @default true
+   * @defaultValue true
    */
   scaleBar?: boolean;
 
@@ -72,6 +77,8 @@ export interface FeltEmbedOptions {
 
 /**
  * A viewport with a zoom level and a center point that defines
+ *
+ * @public
  */
 export interface ZoomCenterViewport {
   /**
@@ -85,14 +92,22 @@ export interface ZoomCenterViewport {
   center: GeoPoint;
 }
 
+/**
+ * Describes the viewport of a map as returned by the API. This includes the
+ * center and zoom, but also the bounds which are derived, and depend on the
+ * size of the viewport.
+ *
+ * @public
+ */
 export interface ReadViewport extends ZoomCenterViewport {
   bounds: [west: number, south: number, east: number, north: number];
 }
 
 /**
  * Describes a position in world coordinates.
+ * @public
  */
-interface GeoPoint {
+export interface GeoPoint {
   latitude: number;
   longitude: number;
 }

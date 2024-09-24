@@ -1,12 +1,27 @@
 import type {
   FeltEmbedOptions,
+  GeoPoint,
   ReadViewport,
   ZoomCenterViewport,
 } from "./types.js";
 
+/**
+ * The Felt SDK is a library for embedding Felt maps into your website,
+ * allowing you to control and inspect the map programmatically.
+ *
+ * @public
+ */
 export const Felt = {
+  /**
+   * Embeds a Felt map into the provided container.
+   *
+   * @param container - The container element to embed the map into.
+   * @param mapId - The ID of the map to embed.
+   * @param options - The options to configure the map.
+   * @returns
+   */
   embed(
-    container: HTMLElement | HTMLIFrameElement,
+    container: Exclude<HTMLElement, HTMLIFrameElement>,
     mapId: string,
     options?: FeltEmbedOptions
   ): Promise<FeltControl> {
@@ -55,12 +70,12 @@ export const Felt = {
       }
     }
 
-    const isCreatingIframe = container instanceof HTMLIFrameElement;
-    const iframe = isCreatingIframe
+    const containerIsIframe = container instanceof HTMLIFrameElement;
+    const iframe = containerIsIframe
       ? container
       : document.createElement("iframe");
     iframe.src = url.toString();
-    if (isCreatingIframe) {
+    if (!containerIsIframe) {
       iframe.style.width = "100%";
       iframe.style.height = "100%";
       iframe.style.border = "none";
@@ -69,29 +84,85 @@ export const Felt = {
       container.appendChild(iframe);
     }
 
-    return Felt.bind(iframe);
+    return Felt.control(iframe);
   },
 
-  bind(iframe: HTMLIFrameElement): Promise<FeltControl> {
+  /**
+   * Binds to an existing Felt map iframe.
+   *
+   * @param iframe - The iframe element containing the Felt map.
+   * @returns
+   */
+  control(iframe: HTMLIFrameElement): Promise<FeltControl> {
     return makeFeltMap(iframe);
   },
 };
 
+/**
+ * The FeltControl object allows you to control and inspect the map. The various ways
+ * to interact with the map are namespaced within the object for clarity.
+ *
+ * @public
+ */
 type FeltControl = {
-  viewport: {
-    goto: (params: {
-      type: "center";
-      viewport: Partial<ZoomCenterViewport>;
-    }) => void;
+  /**
+   * The iframe element containing the Felt map.
+   */
+  iframe: HTMLIFrameElement;
 
-    get: () => Promise<ReadViewport>;
+  /**
+   * The viewport controller allows you to control the viewport of the map.
+   */
+  viewport: ViewportController;
+};
 
-    onMove: (callback: (params: ReadViewport) => void) => void;
-  };
+type ViewportController = {
+  /**
+   /**
+   * Moves the viewport to the specified location and zoom level.
+   *
+   * @param params - The parameters for the viewport move.
+   * @param params.type - The type of move, which is "center" in this case.
+   * @param params.viewport - The viewport settings including the center point and zoom level.
+   * @returns void
+   */
+  goto: (params: {
+    type: "center";
+    viewport: Partial<ZoomCenterViewport>;
+  }) => void;
+
+  /**
+   * Retrieves the current viewport of the map.
+   *
+   * @returns A promise that resolves to the current viewport settings.
+   */
+  get: () => Promise<ReadViewport>;
+
+  /**
+   * Registers a callback function to be called when the viewport moves.
+   *
+   * @example
+   * ```ts
+   * const unsub = felt.viewport.onMove((viewport) => {
+   *   console.log(viewport);
+   * });
+   *
+   * // later
+   * unsub();
+   * ```
+   *
+   * @param callback - The callback function to be called when the viewport moves.
+   * @returns A function to remove the event listener.
+   */
+  onMove: (callback: (params: ReadViewport) => void) => void;
 };
 
 async function makeFeltMap(iframe: HTMLIFrameElement): Promise<FeltControl> {
   const result: FeltControl = {
+    get iframe() {
+      return iframe;
+    },
+
     viewport: {
       goto: (params) => {
         iframe.contentWindow?.postMessage(
@@ -140,8 +211,13 @@ async function makeFeltMap(iframe: HTMLIFrameElement): Promise<FeltControl> {
     },
   };
 
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     iframe.onload = () => {
+      const failureTimeout = setTimeout(() => {
+        reject(new Error("Failed to load Felt map"));
+        clearInterval(interval);
+      }, 5_000);
+
       const messageChannel = new MessageChannel();
       const interval = setInterval(() => {
         iframe.contentWindow?.postMessage({ type: "ready?" }, "*", [
@@ -152,9 +228,18 @@ async function makeFeltMap(iframe: HTMLIFrameElement): Promise<FeltControl> {
       messageChannel.port1.onmessage = (event) => {
         if (event.data === true) {
           clearInterval(interval);
+          clearTimeout(failureTimeout);
           resolve(result);
         }
       };
     };
   });
 }
+
+export type {
+  FeltControl,
+  FeltEmbedOptions,
+  GeoPoint,
+  ReadViewport,
+  ZoomCenterViewport,
+};

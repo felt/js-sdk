@@ -8,44 +8,53 @@ var Felt = {
       geolocation: false,
       zoomControls: true,
       scaleBar: true,
-      defaultViewport: void 0,
-      origin: "https://felt.com",
+      initialViewport: void 0,
+      origin: "https://felt.com"
     };
     const propToUrlParam = {
-      origin: "origin",
+      origin: "",
       showLegend: "legend",
       cooperativeGestures: "cooperativeGestures",
       fullScreenButton: "link",
       geolocation: "geolocation",
       zoomControls: "zoomControls",
       scaleBar: "scaleBar",
-      defaultViewport: "loc",
+      initialViewport: "loc"
     };
-    const urlParams = new URLSearchParams();
     const finalOptions = { ...defaultOptions, ...options };
+    const url = new URL(`${finalOptions.origin}/embed/map/${mapId}`);
     for (const [key, value] of Object.entries(finalOptions)) {
-      if (value != null && key !== "origin") {
-        if (key === "defaultViewport") {
-          const viewport = value;
-          urlParams.set(
-            propToUrlParam[key],
-            `${viewport.latitude},${viewport.longitude},${viewport.zoom}z`
-          );
-        } else {
-          urlParams.set(propToUrlParam[key], value ? "1" : "0");
-        }
+      if (key === "origin") continue;
+      if (value == null) continue;
+      if (key === "defaultViewport") {
+        const viewport = value;
+        url.searchParams.set(
+          propToUrlParam[key],
+          `${viewport.center.latitude},${viewport.center.longitude},${viewport.zoom}z`
+        );
+      } else {
+        url.searchParams.set(
+          propToUrlParam[key],
+          value ? "1" : "0"
+        );
       }
     }
-    const iframe = document.createElement("iframe");
-    iframe.src = `${finalOptions.origin}/embed/map/${mapId}?${urlParams.toString()}`;
-    iframe.style.width = "100%";
-    iframe.style.height = "100%";
-    iframe.style.border = "none";
-    iframe.style.margin = "0";
-    iframe.referrerPolicy = "strict-origin-when-cross-origin";
-    container.appendChild(iframe);
-    return makeFeltMap(iframe);
+    const isCreatingIframe = container instanceof HTMLIFrameElement;
+    const iframe = isCreatingIframe ? container : document.createElement("iframe");
+    iframe.src = url.toString();
+    if (isCreatingIframe) {
+      iframe.style.width = "100%";
+      iframe.style.height = "100%";
+      iframe.style.border = "none";
+      iframe.style.margin = "0";
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+      container.appendChild(iframe);
+    }
+    return Felt.bind(iframe);
   },
+  bind(iframe) {
+    return makeFeltMap(iframe);
+  }
 };
 async function makeFeltMap(iframe) {
   const result = {
@@ -59,7 +68,7 @@ async function makeFeltMap(iframe) {
       get: () => {
         const messageChannel = new MessageChannel();
         iframe.contentWindow?.postMessage({ type: "viewport.get" }, "*", [
-          messageChannel.port2,
+          messageChannel.port2
         ]);
         return new Promise((resolve) => {
           messageChannel.port1.onmessage = (event) => {
@@ -87,15 +96,15 @@ async function makeFeltMap(iframe) {
             "*"
           );
         };
-      },
-    },
+      }
+    }
   };
   return new Promise((resolve) => {
     iframe.onload = () => {
       const messageChannel = new MessageChannel();
       const interval = setInterval(() => {
         iframe.contentWindow?.postMessage({ type: "ready?" }, "*", [
-          messageChannel.port2,
+          messageChannel.port2
         ]);
       }, 100);
       messageChannel.port1.onmessage = (event) => {
@@ -107,4 +116,6 @@ async function makeFeltMap(iframe) {
     };
   });
 }
-export { Felt };
+export {
+  Felt
+};

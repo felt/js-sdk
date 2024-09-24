@@ -9,7 +9,7 @@ var Felt = {
       zoomControls: true,
       scaleBar: true,
       defaultViewport: void 0,
-      origin: "https://felt.com"
+      origin: "https://felt.com",
     };
     const propToUrlParam = {
       origin: "origin",
@@ -19,7 +19,7 @@ var Felt = {
       geolocation: "geolocation",
       zoomControls: "zoomControls",
       scaleBar: "scaleBar",
-      defaultViewport: "loc"
+      defaultViewport: "loc",
     };
     const urlParams = new URLSearchParams();
     const finalOptions = { ...defaultOptions, ...options };
@@ -32,10 +32,7 @@ var Felt = {
             `${viewport.latitude},${viewport.longitude},${viewport.zoom}z`
           );
         } else {
-          urlParams.set(
-            propToUrlParam[key],
-            value ? "1" : "0"
-          );
+          urlParams.set(propToUrlParam[key], value ? "1" : "0");
         }
       }
     }
@@ -48,7 +45,7 @@ var Felt = {
     iframe.referrerPolicy = "strict-origin-when-cross-origin";
     container.appendChild(iframe);
     return makeFeltMap(iframe);
-  }
+  },
 };
 async function makeFeltMap(iframe) {
   const result = {
@@ -62,7 +59,7 @@ async function makeFeltMap(iframe) {
       get: () => {
         const messageChannel = new MessageChannel();
         iframe.contentWindow?.postMessage({ type: "viewport.get" }, "*", [
-          messageChannel.port2
+          messageChannel.port2,
         ]);
         return new Promise((resolve) => {
           messageChannel.port1.onmessage = (event) => {
@@ -90,15 +87,15 @@ async function makeFeltMap(iframe) {
             "*"
           );
         };
-      }
-    }
+      },
+    },
   };
   return new Promise((resolve) => {
     iframe.onload = () => {
       const messageChannel = new MessageChannel();
       const interval = setInterval(() => {
         iframe.contentWindow?.postMessage({ type: "ready?" }, "*", [
-          messageChannel.port2
+          messageChannel.port2,
         ]);
       }, 100);
       messageChannel.port1.onmessage = (event) => {
@@ -110,6 +107,4 @@ async function makeFeltMap(iframe) {
     };
   });
 }
-export {
-  Felt
-};
+export { Felt };

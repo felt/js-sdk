@@ -28,15 +28,14 @@
         }
       );
 
-      let unsubscribe;
-      const button = window.document.getElementById("listen");
-      button.disabled = false;
-      const paragraph = window.document.getElementById("loc");
-
       felt.viewport.get().then((viewport) => {
         paragraph.textContent = `${viewport.center.latitude.toFixed(5)}, ${viewport.center.longitude.toFixed(5)}, ${viewport.zoom.toFixed(2)}z`;
       });
 
+      let unsubscribe;
+      const button = window.document.getElementById("listen");
+      button.disabled = false;
+      const paragraph = window.document.getElementById("loc");
       button.addEventListener("click", () => {
         if (unsubscribe) {
           unsubscribe();

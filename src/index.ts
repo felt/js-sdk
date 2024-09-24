@@ -1,21 +1,12 @@
-type FeltEmbedOptions = {
-  origin?: string;
-  showLegend?: boolean;
-  cooperativeGestures?: boolean;
-  fullScreenButton?: boolean;
-  geolocation?: boolean;
-  zoomControls?: boolean;
-  scaleBar?: boolean;
-  defaultViewport?: {
-    zoom: number;
-    latitude: number;
-    longitude: number;
-  };
-};
+import type {
+  FeltEmbedOptions,
+  ReadViewport,
+  ZoomCenterViewport,
+} from "./types.js";
 
 export const Felt = {
   embed(
-    container: HTMLElement,
+    container: HTMLElement | HTMLIFrameElement,
     mapId: string,
     options?: FeltEmbedOptions
   ): Promise<FeltControl> {
@@ -26,52 +17,62 @@ export const Felt = {
       geolocation: false,
       zoomControls: true,
       scaleBar: true,
-      defaultViewport: undefined,
+      initialViewport: undefined,
       origin: "https://felt.com",
     };
 
     const propToUrlParam: Record<keyof FeltEmbedOptions, string> = {
-      origin: "origin",
+      origin: "",
       showLegend: "legend",
       cooperativeGestures: "cooperativeGestures",
       fullScreenButton: "link",
       geolocation: "geolocation",
       zoomControls: "zoomControls",
       scaleBar: "scaleBar",
-      defaultViewport: "loc",
+      initialViewport: "loc",
     };
 
-    const urlParams = new URLSearchParams();
-
     const finalOptions = { ...defaultOptions, ...options };
+    const url = new URL(`${finalOptions.origin}/embed/map/${mapId}`);
+
     for (const [key, value] of Object.entries(finalOptions)) {
-      if (value != null && key !== "origin") {
-        if (key === "defaultViewport") {
-          const viewport = value as NonNullable<
-            FeltEmbedOptions["defaultViewport"]
-          >;
-          urlParams.set(
-            propToUrlParam[key as keyof FeltEmbedOptions],
-            `${viewport.latitude},${viewport.longitude},${viewport.zoom}z`
-          );
-        } else {
-          urlParams.set(
-            propToUrlParam[key as keyof FeltEmbedOptions],
-            value ? "1" : "0"
-          );
-        }
+      if (key === "origin") continue;
+      if (value == null) continue;
+
+      if (key === "defaultViewport") {
+        const viewport = value as NonNullable<
+          FeltEmbedOptions["initialViewport"]
+        >;
+        url.searchParams.set(
+          propToUrlParam[key as keyof FeltEmbedOptions],
+          `${viewport.center.latitude},${viewport.center.longitude},${viewport.zoom}z`
+        );
+      } else {
+        url.searchParams.set(
+          propToUrlParam[key as keyof FeltEmbedOptions],
+          value ? "1" : "0"
+        );
       }
     }
 
-    const iframe = document.createElement("iframe");
-    iframe.src = `${finalOptions.origin}/embed/map/${mapId}?${urlParams.toString()}`;
-    iframe.style.width = "100%";
-    iframe.style.height = "100%";
-    iframe.style.border = "none";
-    iframe.style.margin = "0";
-    iframe.referrerPolicy = "strict-origin-when-cross-origin";
-    container.appendChild(iframe);
+    const isCreatingIframe = container instanceof HTMLIFrameElement;
+    const iframe = isCreatingIframe
+      ? container
+      : document.createElement("iframe");
+    iframe.src = url.toString();
+    if (isCreatingIframe) {
+      iframe.style.width = "100%";
+      iframe.style.height = "100%";
+      iframe.style.border = "none";
+      iframe.style.margin = "0";
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+      container.appendChild(iframe);
+    }
 
+    return Felt.bind(iframe);
+  },
+
+  bind(iframe: HTMLIFrameElement): Promise<FeltControl> {
     return makeFeltMap(iframe);
   },
 };
@@ -80,45 +81,19 @@ type FeltControl = {
   viewport: {
     goto: (params: {
       type: "center";
-      center?: {
-        latitude: number;
-        longitude: number;
-      };
-      zoom?: number;
+      viewport: Partial<ZoomCenterViewport>;
     }) => void;
 
-    get: () => Promise<{
-      center: {
-        latitude: number;
-        longitude: number;
-      };
-      zoom: number;
-      bounds: [number, number, number, number];
-    }>;
+    get: () => Promise<ReadViewport>;
 
-    onMove: (
-      callback: (params: {
-        center: {
-          latitude: number;
-          longitude: number;
-        };
-        zoom: number;
-      }) => void
-    ) => void;
+    onMove: (callback: (params: ReadViewport) => void) => void;
   };
 };
 
 async function makeFeltMap(iframe: HTMLIFrameElement): Promise<FeltControl> {
   const result: FeltControl = {
     viewport: {
-      goto: (params: {
-        type: "center";
-        center?: {
-          latitude: number;
-          longitude: number;
-        };
-        zoom?: number;
-      }) => {
+      goto: (params) => {
         iframe.contentWindow?.postMessage(
           { type: "viewport.goto", params },
           "*"
@@ -138,15 +113,7 @@ async function makeFeltMap(iframe: HTMLIFrameElement): Promise<FeltControl> {
         });
       },
 
-      onMove: (
-        callback: (params: {
-          center: {
-            latitude: number;
-            longitude: number;
-          };
-          zoom: number;
-        }) => void
-      ) => {
+      onMove: (callback) => {
         const messageChannel = new MessageChannel();
 
         const id = crypto.randomUUID();

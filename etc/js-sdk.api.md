@@ -6,15 +6,14 @@
 
 // @public
 export const Felt: {
-    embed(container: Exclude<HTMLElement, HTMLIFrameElement>, mapId: string, options?: FeltEmbedOptions): Promise<FeltControl>;
-    control(iframe: HTMLIFrameElement): Promise<FeltControl>;
+    embed(container: Exclude<HTMLElement, HTMLIFrameElement>, mapId: string, options?: FeltEmbedOptions): Promise<FeltIframeController>;
+    control(feltWindow: Window): Promise<FeltController>;
 };
 
 // @public
-export type FeltControl = {
-    iframe: HTMLIFrameElement;
+export interface FeltController {
     viewport: ViewportController;
-};
+}
 
 // @public
 export interface FeltEmbedOptions {
@@ -27,6 +26,11 @@ export interface FeltEmbedOptions {
     scaleBar?: boolean;
     showLegend?: boolean;
     zoomControls?: boolean;
+}
+
+// @public (undocumented)
+export interface FeltIframeController extends FeltController {
+    iframe: HTMLIFrameElement;
 }
 
 // @public
@@ -43,15 +47,21 @@ export interface ReadViewport extends ZoomCenterViewport {
     bounds: [west: number, south: number, east: number, north: number];
 }
 
+// @public (undocumented)
+export interface ViewportController {
+    get: () => Promise<ReadViewport>;
+    goto: (params: {
+        type: "center";
+        viewport: Partial<ZoomCenterViewport>;
+    }) => void;
+    onMove: (callback: (params: ReadViewport) => void) => void;
+}
+
 // @public
 export interface ZoomCenterViewport {
     center: GeoPoint;
     zoom: number;
 }
-
-// Warnings were encountered during analysis:
-//
-// dist/index.d.ts:142:5 - (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

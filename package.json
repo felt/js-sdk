@@ -30,10 +30,9 @@
   "license": "MIT",
   "files": [
     "dist",
-    "index.js",
     "handler.js",
     "handler.d.ts",
-    "types-XtGr9THR.d.ts"
+    "types-*.ts"
   ],
   "type": "module",
   "devDependencies": {

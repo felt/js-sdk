@@ -3,18 +3,17 @@
   "version": "0.0.1",
   "description": "An SDK for Felt maps",
   "keywords": [
-    "demo",
-    "typescript"
+    "felt",
+    "sdk"
   ],
-  "main": "dist/client.js",
+  "main": "./dist/index.js",
+  "types": "./dist/client.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/client.d.ts",
       "import": "./dist/client.js",
       "require": "./dist/client.cjs"
     },
-    "./dist/handler": {
-      "types": "./dist/handler.d.ts",
+    "./handler": {
       "import": "./dist/handler.js",
       "require": "./dist/handler.cjs"
     }
@@ -30,13 +29,18 @@
   },
   "license": "MIT",
   "files": [
-    "dist"
+    "dist",
+    "index.js",
+    "handler.js",
+    "handler.d.ts",
+    "types-XtGr9THR.d.ts"
   ],
   "type": "module",
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.15.4",
     "@changesets/cli": "^2.27.7",
     "@microsoft/api-extractor": "^7.47.9",
+    "happy-dom": "^15.7.4",
     "prettier": "^3.3.3",
     "tsup": "^8.2.4",
     "typedoc": "^0.26.7",

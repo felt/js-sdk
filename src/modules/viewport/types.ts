@@ -16,14 +16,14 @@ export const ViewportReadValue = z.intersection(
   ViewportCenterZoom,
   z.object({
     bounds: FeltBoundary,
-  })
+  }),
 );
 export type ViewportReadValue = z.infer<typeof ViewportReadValue>;
 
 // MESSAGES
 export const ViewportGetMessage = z.object({
   type: z.literal("viewport.get"),
-  params: z.union([z.undefined(), z.object({}), z.never()]),
+  params: z.undefined(),
 });
 export type ViewportGetMessage = z.infer<typeof ViewportGetMessage>;
 
@@ -45,7 +45,7 @@ export const ViewportSetCenterZoomMessage = z.intersection(
       center: ViewportCenterZoom.shape.center.optional(),
       zoom: ViewportCenterZoom.shape.zoom,
     }),
-  ])
+  ]),
 );
 export type ViewportSetCenterZoomMessage = z.infer<
   typeof ViewportSetCenterZoomMessage

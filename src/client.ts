@@ -54,14 +54,16 @@ export const Felt: FeltEmbedder = {
       const vp = options.initialViewport;
       url.searchParams.set(
         "loc",
-        `${vp.center.latitude},${vp.center.longitude},${vp.zoom}z`
+        `${vp.center.latitude},${vp.center.longitude},${vp.zoom}z`,
       );
     }
 
-    const containerIsIframe = container instanceof HTMLIFrameElement;
-    const iframe = containerIsIframe
-      ? container
-      : document.createElement("iframe");
+    const containerIsIframe = container.tagName === "IFRAME";
+    const iframe = (
+      containerIsIframe
+        ? container
+        : container.ownerDocument.createElement("iframe")
+    ) as HTMLIFrameElement;
     iframe.src = url.toString();
 
     if (!containerIsIframe) {
@@ -75,13 +77,17 @@ export const Felt: FeltEmbedder = {
     iframe.referrerPolicy = "strict-origin-when-cross-origin";
 
     return new Promise<Window>((resolve, reject) => {
-      iframe.onload = () => {
-        if (iframe.contentWindow == null) {
-          reject(new Error("Failed to load Felt map"));
-        } else {
-          resolve(iframe.contentWindow);
-        }
-      };
+      iframe.addEventListener(
+        "load",
+        () => {
+          if (iframe.contentWindow == null) {
+            reject(new Error("Failed to load Felt map"));
+          } else {
+            resolve(iframe.contentWindow);
+          }
+        },
+        { once: true },
+      );
     })
       .then(Felt.control)
       .then((controller) => {

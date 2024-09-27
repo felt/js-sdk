@@ -4,7 +4,7 @@ import type { FeltHandlers } from "./types/interface.js";
 
 export function createMessageHandler(
   feltWindow: Window,
-  handlers: FeltHandlers
+  handlers: FeltHandlers,
 ): VoidFunction {
   const addListener = z.object({
     type: z.literal("felt.addListener"),

@@ -43,7 +43,7 @@ type FeltCommandHandlers = CommandHandlers<ExtractParams<CommandSpec>>;
 
 type QueryHandlers<T> = {
   [K in keyof T as K & string]: (
-    request: T[K] extends { request: any } ? T[K]["request"] : never
+    request: T[K] extends { request: any } ? T[K]["request"] : never,
   ) => Promise<T[K] extends { response: any } ? T[K]["response"] : never>;
 };
 
@@ -51,7 +51,7 @@ type FeltQueryHandlers = QueryHandlers<ExtractParamsFromQueries<QuerySpec>>;
 
 type ListenerHandlers<T> = {
   [K in keyof T as K & string]: (
-    callback: (event: T[K]) => void
+    callback: (event: T[K]) => void,
   ) => VoidFunction;
 };
 
@@ -63,12 +63,12 @@ export type FeltHandlers = {
 };
 
 export type FeltEventListener<TKey extends keyof ListenerSpec> = (
-  callback: (event: ListenerSpec[TKey]) => void
+  callback: (event: ListenerSpec[TKey]) => void,
 ) => VoidFunction;
 
 export function listener<TEventName extends keyof ListenerSpec>(
   feltWindow: Window,
-  eventName: TEventName
+  eventName: TEventName,
 ): FeltEventListener<TEventName> {
   return (callback) => {
     const messageChannel = new MessageChannel();
@@ -77,7 +77,7 @@ export function listener<TEventName extends keyof ListenerSpec>(
     feltWindow.postMessage(
       { type: `felt.addListener`, event: { eventName, id } },
       "*",
-      [messageChannel.port2]
+      [messageChannel.port2],
     );
 
     messageChannel.port1.onmessage = (event) => {
@@ -93,26 +93,37 @@ export function listener<TEventName extends keyof ListenerSpec>(
   };
 }
 
+type OneCommand<K extends keyof CommandSpec> = {
+  [K1 in K]: CommandSpec[K1];
+}[K]["params"];
+
 export type FeltCommand<TKey extends keyof CommandSpec> = (
-  payload: Omit<CommandSpec[TKey], "type">
+  payload: OneCommand<TKey>,
 ) => void;
 
 export function command<TKey extends keyof CommandSpec>(
   feltWindow: Window,
-  type: TKey
+  type: TKey,
 ): FeltCommand<TKey> {
   return (params) => {
     feltWindow.postMessage({ type, params }, "*");
   };
 }
 
+type MaybeOneQuery<K extends keyof QuerySpec> = {
+  [K1 in K]: QuerySpec[K1]["request"];
+}[K]["params"];
+
+type OneQuery<K extends keyof QuerySpec> =
+  MaybeOneQuery<K> extends undefined ? void : MaybeOneQuery<K>;
+
 export type FeltQuery<TKey extends keyof QuerySpec> = (
-  payload: Omit<QuerySpec[TKey]["request"], "type">
+  payload: OneQuery<TKey>,
 ) => Promise<QuerySpec[TKey]["response"]>;
 
 export function query<TKey extends keyof QuerySpec>(
   feltWindow: Window,
-  type: TKey
+  type: TKey,
 ): FeltQuery<TKey> {
   return (params) => {
     const messageChannel = new MessageChannel();

@@ -24,7 +24,7 @@ export type FeltEmbedder = {
   embed(
     container: Exclude<HTMLElement, HTMLIFrameElement>,
     mapId: string,
-    options?: FeltEmbedOptions
+    options?: FeltEmbedOptions,
   ): Promise<FeltControllerWithIframe>;
 
   /**

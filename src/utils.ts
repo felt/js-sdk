@@ -3,5 +3,5 @@
  * type of the Object's keys instead of widening them to string.
  */
 export const entries = Object.entries as <T extends object>(
-  obj: T
+  obj: T,
 ) => Array<[Exclude<keyof T, number>, T[keyof T]]>;

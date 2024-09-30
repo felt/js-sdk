@@ -1,6 +1,5 @@
 {
   "name": "@feltmap/js-sdk",
-  "private": true,
   "version": "0.0.5",
   "description": "An SDK for Felt maps",
   "keywords": [

@@ -1,5 +1,11 @@
 # @felt/js-sdk
 
+## 0.0.6
+
+### Patch Changes
+
+- 6397476: Change namespace again
+
 ## 0.0.5
 
 ### Patch Changes

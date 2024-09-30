@@ -1,7 +1,7 @@
 {
   "name": "@feltjs/js-sdk",
   "private": true,
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "An SDK for Felt maps",
   "keywords": [
     "felt",

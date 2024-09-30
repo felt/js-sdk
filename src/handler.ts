@@ -1,6 +1,6 @@
 import * as z from "zod";
-import { viewportSchema } from "./modules/viewport/types.js";
-import type { FeltHandlers } from "./types/interface.js";
+import { viewportSchema } from "./modules/viewport/types";
+import type { FeltHandlers } from "./types/interface";
 
 export function createMessageHandler(
   feltWindow: Window,

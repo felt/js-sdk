@@ -15,7 +15,7 @@
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
     /* If transpiling with TypeScript: */
-    "module": "NodeNext",
+    "module": "Preserve",
     "lib": ["es2020", "DOM"],
     "noEmit": true,
     "sourceMap": true

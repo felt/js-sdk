@@ -1,6 +1,7 @@
 {
-  "name": "@felt/js-sdk",
-  "version": "0.0.1",
+  "name": "@feltjs/js-sdk",
+  "private": true,
+  "version": "0.0.2",
   "description": "An SDK for Felt maps",
   "keywords": [
     "felt",
@@ -18,15 +19,7 @@
       "require": "./dist/handler.cjs"
     }
   },
-  "homepage": "https://github.com/felt/js-sdk-test",
-  "bugs": {
-    "url": "https://github.com/felt/js-sdk-test/issues"
-  },
   "author": "Felt <engineering@felt.com> (https://felt.com)",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/felt/js-sdk-test.git"
-  },
   "license": "MIT",
   "files": [
     "dist",
@@ -58,6 +51,7 @@
     "format": "prettier --write .",
     "check-format": "prettier --check .",
     "check-exports": "attw --pack .",
-    "local-release": "npm run ci && changeset version && changeset publish"
+    "local-release": "npm run ci && changeset version && changeset publish",
+    "prepublishOnly": "npm run ci"
   }
 }

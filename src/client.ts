@@ -3,10 +3,10 @@ import type {
   FeltControllerWithIframe,
   FeltEmbedder,
   FeltEmbedOptions,
-} from "./modules/embed/types.js";
-import type { UiController, UiControlsOptions } from "./modules/ui/types.js";
-import { command, listener, query } from "./types/interface.js";
-import { entries } from "./utils.js";
+} from "./modules/embed/types";
+import type { UiController, UiControlsOptions } from "./modules/ui/types";
+import { command, listener, query } from "./types/interface";
+import { entries } from "./utils";
 
 /**
  * The Felt SDK is a library for embedding Felt maps into your website,

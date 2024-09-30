@@ -1,5 +1,5 @@
 import * as z from "zod";
-import type { FeltCommand } from "../../types/interface.js";
+import type { FeltCommand } from "../../types/interface";
 
 export const UiControlsOptions = z.object({
   showLegend: z.boolean().optional(),

@@ -1,9 +1,6 @@
 import * as z from "zod";
-import { UiControlsOptions, type UiController } from "../ui/types.js";
-import {
-  ViewportCenterZoom,
-  type ViewportController,
-} from "../viewport/types.js";
+import { UiControlsOptions, type UiController } from "../ui/types";
+import { ViewportCenterZoom, type ViewportController } from "../viewport/types";
 
 export const FeltEmbedOptions = z.object({
   origin: z.string().optional(),

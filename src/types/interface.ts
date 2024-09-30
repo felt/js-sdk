@@ -1,10 +1,10 @@
-import type { UiControlsMessage } from "../modules/ui/types.js";
+import type { UiControlsMessage } from "../modules/ui/types";
 import type {
   ViewportGetMessage,
   ViewportGetResponse,
   ViewportGotoMessage,
   ViewportOnMoveEvent,
-} from "../modules/viewport/types.js";
+} from "../modules/viewport/types";
 
 type CommandSpec = {
   ["viewport.goto"]: ViewportGotoMessage;

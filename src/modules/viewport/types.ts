@@ -1,10 +1,10 @@
 import * as z from "zod";
-import { FeltBoundary, FeltZoom, LatLng } from "../../types/geo.js";
+import { FeltBoundary, FeltZoom, LatLng } from "../../types/geo";
 import type {
   FeltCommand,
   FeltEventListener,
   FeltQuery,
-} from "../../types/interface.js";
+} from "../../types/interface";
 
 export const ViewportCenterZoom = z.object({
   center: LatLng,

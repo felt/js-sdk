@@ -1,5 +1,11 @@
 # @felt/js-sdk
 
+## 0.0.5
+
+### Patch Changes
+
+- 491f774: Move namespace
+
 ## 0.0.4
 
 ### Patch Changes

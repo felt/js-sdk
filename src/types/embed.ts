@@ -2,7 +2,7 @@ import * as z from "zod";
 import type {
   FeltController,
   FeltControllerWithIframe,
-} from "../lib/controller";
+} from "../modules/controller";
 import { UiControlsOptions } from "../modules/ui/types";
 import { ViewportCenterZoom } from "../modules/viewport/types";
 

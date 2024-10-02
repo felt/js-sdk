@@ -1,8 +1,8 @@
 import type {
   FeltController,
   FeltControllerWithIframe,
-} from "./lib/controller";
-import { makeController } from "./lib/controller";
+} from "./modules/controller";
+import { makeController } from "./modules/controller";
 import type { UiControlsOptions } from "./modules/ui/types";
 import type { FeltEmbedder, FeltEmbedOptions } from "./types/embed";
 

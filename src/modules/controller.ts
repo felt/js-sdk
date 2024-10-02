@@ -1,8 +1,8 @@
-import { type UiController, uiController } from "../modules/ui/controller";
+import { type UiController, uiController } from "./ui/controller";
 import {
   type ViewportController,
   viewportController,
-} from "../modules/viewport/controller";
+} from "./viewport/controller";
 
 /**
  * This pieces together the controller for the Felt SDK from the various namespaced

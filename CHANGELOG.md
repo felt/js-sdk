@@ -1,5 +1,11 @@
 # @felt/js-sdk
 
+## 0.0.9
+
+### Patch Changes
+
+- 6348cb2: Add knip and tidy up exports
+
 ## 0.0.8
 
 ### Patch Changes

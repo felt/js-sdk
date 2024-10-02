@@ -1,6 +1,6 @@
 import * as z from "zod";
-import type { FeltCommand } from "../../types/interface";
 
+// DATA TYPES
 export const UiControlsOptions = z.object({
   showLegend: z.boolean().optional(),
   cooperativeGestures: z.boolean().optional(),
@@ -11,14 +11,9 @@ export const UiControlsOptions = z.object({
 });
 export type UiControlsOptions = z.infer<typeof UiControlsOptions>;
 
+// MESSAGE TYPES
 export const UiControlsMessage = z.object({
   type: z.literal("ui_controls.update"),
   params: UiControlsOptions,
 });
 export type UiControlsMessage = z.infer<typeof UiControlsMessage>;
-
-export type UiController = {
-  update: FeltCommand<"ui_controls.update">;
-};
-
-export type UiMessages = UiControlsMessage;

@@ -1,11 +1,12 @@
 import * as z from "zod";
-import { UiControlsOptions, type UiController } from "../modules/ui/types";
-import {
-  ViewportCenterZoom,
-  type ViewportController,
-} from "../modules/viewport/types";
+import type {
+  FeltController,
+  FeltControllerWithIframe,
+} from "../lib/controller";
+import { UiControlsOptions } from "../modules/ui/types";
+import { ViewportCenterZoom } from "../modules/viewport/types";
 
-export const FeltEmbedOptions = z.strictObject({
+export const FeltEmbedOptions = z.object({
   origin: z.string().optional(),
   uiControls: UiControlsOptions,
   initialViewport: ViewportCenterZoom.optional(),
@@ -35,29 +36,3 @@ export type FeltEmbedder = {
    */
   control(feltWindow: Window): Promise<FeltController>;
 };
-
-/**
- * The FeltControl object allows you to control and inspect the map. The various ways
- * to interact with the map are namespaced within the object for clarity.
- *
- * @public
- */
-export interface FeltController {
-  /**
-   * The viewport controller allows you to control the viewport of the map.
-   */
-  viewport: ViewportController;
-
-  /**
-   * The UI controllers allows you to enable and disable UI controls on the
-   * embedded map.
-   */
-  ui: UiController;
-}
-
-export interface FeltControllerWithIframe extends FeltController {
-  /**
-   * The iframe element containing the Felt map.
-   */
-  iframe: HTMLIFrameElement;
-}

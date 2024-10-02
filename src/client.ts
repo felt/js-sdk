@@ -1,11 +1,10 @@
-import type { UiControlsOptions } from "./modules/ui/types";
 import type {
   FeltController,
   FeltControllerWithIframe,
-  FeltEmbedder,
-  FeltEmbedOptions,
-} from "./types/embed";
-import { command, listener, query } from "./types/interface";
+} from "./lib/controller";
+import { makeController } from "./lib/controller";
+import type { UiControlsOptions } from "./modules/ui/types";
+import type { FeltEmbedder, FeltEmbedOptions } from "./types/embed";
 
 /**
  * The Felt SDK is a library for embedding Felt maps into your website,
@@ -137,20 +136,6 @@ export const Felt: FeltEmbedder = {
     });
   },
 };
-
-function makeController(feltWindow: Window): FeltController {
-  return {
-    viewport: {
-      goto: command(feltWindow, "viewport.goto"),
-      get: query(feltWindow, "viewport.get"),
-      onMove: listener(feltWindow, "viewport.move"),
-    },
-
-    ui: {
-      update: command(feltWindow, "ui_controls.update"),
-    },
-  };
-}
 
 export type { FeltController, FeltControllerWithIframe, FeltEmbedOptions };
 

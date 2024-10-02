@@ -1,5 +1,5 @@
-import { uiModule, type UiModule } from "./ui";
-import { viewportModule, type ViewportModule } from "./viewport";
+import { uiModule, type UiModule } from "./ui/schema";
+import { viewportModule, type ViewportModule } from "./viewport/schema";
 
 export const allModules = [uiModule, viewportModule];
 

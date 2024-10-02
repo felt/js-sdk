@@ -1,6 +1,16 @@
-import { AllMessagesSchema, PreliminarySchema } from "./schema";
+import { AllMessagesSchema, PreliminarySchema } from "./lib/schema";
 import type { FeltHandlers } from "./types/interface";
 
+/**
+ * This function creates a message handler for the Felt SDK. Its job is to start listening
+ * for messages from the Felt SDKl, validate and parses the messages before calling the
+ * appropriate handler.
+ *
+ * @param feltWindow - The window to listen on, which is typically just `window`
+ * @param handlers - The handlers to call for each type of message.
+ * @param options - Optional callbacks for handling unknown and invalid messages.
+ * @returns A function to stop the message handler.
+ */
 export function createMessageHandler(
   feltWindow: Window,
   handlers: FeltHandlers,

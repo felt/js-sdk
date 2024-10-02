@@ -1,7 +1,7 @@
 import * as z from "zod";
 
-export const Longitude = z.number();
-export const Latitude = z.number();
+const Longitude = z.number();
+const Latitude = z.number();
 export const LatLng = z.object({
   latitude: Latitude,
   longitude: Longitude,

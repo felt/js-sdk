@@ -1,6 +1,6 @@
 import * as z from "zod";
 
-import { allModules } from "./modules";
+import { allModules } from "../modules";
 
 export type ModuleSchema = {
   commands: Array<z.ZodDiscriminatedUnionOption<"type">>;
@@ -20,12 +20,12 @@ const EventSchema = z.discriminatedUnion("eventName", [
   ...mergedSchemas.listeners,
 ]);
 
-const AddListenerSchema = z.strictObject({
+const AddListenerSchema = z.object({
   type: z.literal("felt.addListener"),
   event: EventSchema,
 });
 
-const RemoveListenerSchema = z.strictObject({
+const RemoveListenerSchema = z.object({
   type: z.literal("felt.removeListener"),
   id: z.string(),
 });

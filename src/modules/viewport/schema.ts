@@ -1,4 +1,4 @@
-import type { ModuleSchema } from "../../schema";
+import type { ModuleSchema } from "../../lib/schema";
 import {
   ViewportGetMessage,
   ViewportGetResponse,

@@ -1,12 +1,11 @@
+import type { UiControlsOptions } from "./modules/ui/types";
 import type {
   FeltController,
   FeltControllerWithIframe,
   FeltEmbedder,
   FeltEmbedOptions,
-} from "./modules/embed/types";
-import type { UiController, UiControlsOptions } from "./modules/ui/types";
+} from "./types/embed";
 import { command, listener, query } from "./types/interface";
-import { entries } from "./utils";
 
 /**
  * The Felt SDK is a library for embedding Felt maps into your website,
@@ -153,9 +152,12 @@ function makeController(feltWindow: Window): FeltController {
   };
 }
 
-export type {
-  FeltController,
-  FeltControllerWithIframe,
-  FeltEmbedOptions,
-  UiController,
-};
+export type { FeltController, FeltControllerWithIframe, FeltEmbedOptions };
+
+/**
+ * A stricter, more type-safe version of Object.entries that preserves the
+ * type of the Object's keys instead of widening them to string.
+ */
+const entries = Object.entries as <T extends object>(
+  obj: T,
+) => Array<[Exclude<keyof T, number>, T[keyof T]]>;

@@ -63,12 +63,6 @@ export const ViewportOnMoveMessage = z.object({
 });
 export type ViewportOnMoveMessage = z.infer<typeof ViewportOnMoveMessage>;
 
-export const viewportSchema = {
-  commands: [ViewportGotoMessage] as const,
-  queries: [ViewportGetMessage] as const,
-  listeners: [ViewportOnMoveMessage] as const,
-};
-
 export const ViewportOnMoveEvent = ViewportReadValue;
 export type ViewportOnMoveEvent = z.infer<typeof ViewportOnMoveEvent>;
 

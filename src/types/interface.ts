@@ -1,26 +1,9 @@
-import type { UiControlsMessage } from "../modules/ui/types";
-import type {
-  ViewportGetMessage,
-  ViewportGetResponse,
-  ViewportGotoMessage,
-  ViewportOnMoveEvent,
-} from "../modules/viewport/types";
+import type { AllModules } from "../modules";
+import type { UnionToIntersection } from "./utils";
 
-type CommandSpec = {
-  ["viewport.goto"]: ViewportGotoMessage;
-  ["ui_controls.update"]: UiControlsMessage;
-};
-
-type QuerySpec = {
-  ["viewport.get"]: {
-    request: ViewportGetMessage;
-    response: ViewportGetResponse;
-  };
-};
-
-type ListenerSpec = {
-  ["viewport.move"]: ViewportOnMoveEvent;
-};
+type CommandSpec = UnionToIntersection<AllModules["commands"]>;
+type QuerySpec = UnionToIntersection<AllModules["queries"]>;
+type ListenerSpec = UnionToIntersection<AllModules["listeners"]>;
 
 type CommandHandlers<T> = {
   [K in keyof T as K & string]: (payload: T[K]) => void;

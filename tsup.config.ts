@@ -10,6 +10,8 @@ export default defineConfig({
   dts: true,
   outDir: "dist",
 
+  minify: true,
+
   clean: true,
 });
 

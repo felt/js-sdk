@@ -6,7 +6,7 @@ import { createWindow } from "./window.js";
 type Methods = Parameters<typeof createMessageHandler>[1]["methods"];
 type Listeners = Parameters<typeof createMessageHandler>[1]["listeners"];
 
-describe("Felt SDK e2e", () => {
+describe("Felt SDK integration", () => {
   let window: Window;
   let tearDown: VoidFunction;
 
@@ -15,13 +15,17 @@ describe("Felt SDK e2e", () => {
   // We really want to test that the messaging protocol works - if we know that it
   // works for each type of message then we can trust that it will work for the
   // functionality that we build on top of it.
-  let methods: Partial<Methods>;
+  let methods: Methods;
   let listeners: Partial<Listeners>;
+
+  const onInvalidMessage = vi.fn();
+  const onUnknownMessage = vi.fn();
 
   beforeEach(() => {
     window = createWindow();
 
     methods = {
+      "ui_controls.update": () => {},
       "viewport.goto": () => {},
       "viewport.get": async () => {
         return {
@@ -56,13 +60,21 @@ describe("Felt SDK e2e", () => {
       },
     };
 
-    tearDown = createMessageHandler(window, {
-      methods: methods as Methods,
-      listeners: listeners as Listeners,
-    });
+    tearDown = createMessageHandler(
+      window,
+      {
+        methods: methods as Methods,
+        listeners: listeners as Listeners,
+      },
+      {
+        onInvalidMessage,
+        onUnknownMessage,
+      },
+    );
   });
 
   afterEach(() => {
+    vi.resetAllMocks();
     tearDown();
   });
 
@@ -135,5 +147,44 @@ describe("Felt SDK e2e", () => {
 
     // The listener should not be called again because we unsubscribed
     expect(spy).toHaveBeenCalledTimes(2);
+  });
+
+  // Because window.postMessage is "public", messages of all types are possible.
+  // We get messages from webpack, react-dev-tools, etc. which we don't want to
+  // report in the same way as messages that are Felt SDK messages that have
+  // invalid payloads.
+  test("Unknown messages are handled", async () => {
+    await Felt.control(window);
+    window.postMessage({ type: "foo" });
+
+    expect(onUnknownMessage).toHaveBeenCalledOnce();
+    expect(onInvalidMessage).not.toHaveBeenCalled();
+  });
+
+  test("Invalid messages are handled", async () => {
+    await Felt.control(window);
+
+    window.postMessage({
+      // the type field is correct but other fields are wrong
+      type: "viewport.goto",
+      params: {},
+    });
+
+    expect(onUnknownMessage).not.toHaveBeenCalled();
+    expect(onInvalidMessage).toHaveBeenCalledOnce();
+  });
+
+  test("All client messages are handled", async () => {
+    const client = await Felt.control(window);
+
+    // iterate through all the functions in the client, calling them
+    // and making sure that we don't get any unknown messages
+    Object.values(client).forEach((namespace) => {
+      Object.values(namespace).forEach((fn) => {
+        (fn as VoidFunction)();
+      });
+    });
+
+    expect(onUnknownMessage).not.toHaveBeenCalled();
   });
 });

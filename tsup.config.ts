@@ -22,10 +22,10 @@ process.on("exit", () => {
   for (const file of files) {
     if (
       file.endsWith("handler.d.ts") ||
-      file.endsWith("handler.js") ||
+      file.endsWith("handler.cjs") ||
       (file.endsWith(".d.ts") && file.includes("types-"))
     ) {
-      fs.copyFileSync(path.join("dist", file), file);
+      fs.copyFileSync(path.join("dist", file), file.replace(".cjs", ".js"));
     }
   }
   console.log("Type declaration files copied to root directory.");

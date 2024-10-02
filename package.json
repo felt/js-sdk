@@ -6,7 +6,7 @@
     "felt",
     "sdk"
   ],
-  "main": "./dist/index.js",
+  "main": "./dist/client.cjs",
   "types": "./dist/client.d.ts",
   "exports": {
     ".": {

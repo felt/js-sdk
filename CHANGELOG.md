@@ -1,5 +1,11 @@
 # @felt/js-sdk
 
+## 0.0.7
+
+### Patch Changes
+
+- 71f5f97: Improve tests and developer experience for extending SDK
+
 ## 0.0.6
 
 ### Patch Changes

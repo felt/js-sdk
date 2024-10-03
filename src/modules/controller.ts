@@ -16,13 +16,12 @@ export function makeController(feltWindow: Window): FeltController {
 }
 
 /**
- * The FeltControl object allows you to control and inspect the map. The various ways
- * to interact with the map are namespaced within the object for clarity.
+ * The FeltController allows you to control, inspect and observe a Felt map.
+ * The various ways to interact with the map are namespaced for clarity.
  *
- * @public
+ * @interface
  */
-
-export interface FeltController {
+export type FeltController = {
   /**
    * The viewport controller allows you to control the viewport of the map.
    */
@@ -33,7 +32,7 @@ export interface FeltController {
    * embedded map.
    */
   ui: UiController;
-}
+};
 
 export interface FeltControllerWithIframe extends FeltController {
   /**

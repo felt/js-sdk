@@ -1,0 +1,7 @@
+{
+  "disableSources": true,
+  "entryPoints": ["src/client.ts", "src/types.ts"],
+  "sort": ["kind", "source-order"],
+  "plugin": ["typedoc-plugin-zod"],
+  "cleanOutputDir": false
+}

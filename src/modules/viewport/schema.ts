@@ -1,10 +1,10 @@
 import type { ModuleSchema } from "../../lib/schema";
 import {
   ViewportGetMessage,
-  ViewportGetResponse,
   ViewportGotoMessage,
   ViewportOnMoveEvent,
   ViewportOnMoveMessage,
+  type ViewportState,
 } from "./types";
 
 export const viewportModule = {
@@ -20,7 +20,7 @@ export type ViewportModule = {
   queries: {
     ["viewport.get"]: {
       request: ViewportGetMessage;
-      response: ViewportGetResponse;
+      response: ViewportState;
     };
   };
   listeners: {

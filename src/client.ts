@@ -3,18 +3,26 @@ import type {
   FeltControllerWithIframe,
 } from "./modules/controller";
 import { makeController } from "./modules/controller";
-import type { UiControlsOptions } from "./modules/ui/types";
-import type { FeltEmbedder, FeltEmbedOptions } from "./types/embed";
+import type { UiControlsOptionsType } from "./modules/ui/types";
+import type { FeltEmbedOptionsType } from "./types/embed";
 
 /**
  * The Felt SDK is a library for embedding Felt maps into your website,
  * allowing you to control and inspect the map programmatically.
  *
- * @public
+ * @category Main
  */
-export const Felt: FeltEmbedder = {
-  embed(container, mapId, options) {
-    const defaultOptions: FeltEmbedOptions = {
+export const Felt = {
+  /**
+   * Embeds a Felt map into the provided container.
+   *
+   * @param container - The container element to embed the map into.
+   * @param mapId - The ID of the map to embed.
+   * @param options - The options to configure the map.
+   * @returns
+   */
+  embed(container: HTMLElement, mapId: string, options?: FeltEmbedOptionsType) {
+    const defaultOptions: FeltEmbedOptionsType = {
       uiControls: {
         showLegend: true,
         cooperativeGestures: true,
@@ -27,7 +35,7 @@ export const Felt: FeltEmbedder = {
       origin: "https://felt.com",
     };
 
-    const propToUrlParam: Record<keyof UiControlsOptions, string> = {
+    const propToUrlParam: Record<keyof UiControlsOptionsType, string> = {
       showLegend: "legend",
       cooperativeGestures: "cooperativeGestures",
       fullScreenButton: "link",
@@ -136,8 +144,6 @@ export const Felt: FeltEmbedder = {
     });
   },
 };
-
-export type { FeltController, FeltControllerWithIframe, FeltEmbedOptions };
 
 /**
  * A stricter, more type-safe version of Object.entries that preserves the

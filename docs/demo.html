@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <title>Felt SDK Example</title>
+  </head>
+  <body style="font-family: system-ui">
+    <h1>Felt SDK Example</h1>
+    <div id="map" style="width: 100%; aspect-ratio: 16/7"></div>
+    <div style="display: flex; gap: 1rem">
+      <button disabled id="listen">Start listening</button>
+      <button disabled id="goto-sf">Go to SF</button>
+    </div>
+    <p id="loc" style="font-variant: tabular-nums">?</p>
+    <script type="module">
+      import { Felt } from "./demo.js";
+
+      const felt = await Felt.embed(
+        document.getElementById("map"),
+        "Untitled-Map-XEYzV9CVRTCaaOpTMpDjp6D",
+        {
+          origin: "http://localhost:4000",
+          showLegend: false,
+          fullScreenButton: false,
+          geolocation: true,
+          zoomControls: true,
+          scaleBar: true,
+          defaultViewport: {
+            center: {
+              latitude: 37.7749295,
+              longitude: -122.419416,
+            },
+            zoom: 12,
+          },
+        }
+      );
+
+      felt.viewport.get().then((viewport) => {
+        paragraph.textContent = `${viewport.center.latitude.toFixed(5)}, ${viewport.center.longitude.toFixed(5)}, ${viewport.zoom.toFixed(2)}z`;
+      });
+
+      let unsubscribe;
+      const listenButton = window.document.getElementById("listen");
+      const gotoSFButton = window.document.getElementById("goto-sf");
+      listenButton.disabled = false;
+      gotoSFButton.disabled = false;
+
+      const paragraph = window.document.getElementById("loc");
+      listenButton.addEventListener("click", () => {
+        if (unsubscribe) {
+          unsubscribe();
+          unsubscribe = null;
+          listenButton.textContent = "Start listening";
+        } else {
+          unsubscribe = felt.viewport.onMove((e) => {
+            paragraph.textContent = `${e.center.latitude.toFixed(5)}, ${e.center.longitude.toFixed(5)}, ${e.zoom.toFixed(2)}z`;
+          });
+          listenButton.textContent = "Stop listening";
+        }
+      });
+
+      gotoSFButton.addEventListener("click", () => {
+        felt.viewport.goto({
+          type: "center",
+          center: {
+            latitude: 37.7749295,
+            longitude: -122.419416,
+          },
+          zoom: 12,
+        });
+      });
+    </script>
+  </body>
+</html>

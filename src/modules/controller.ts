@@ -7,6 +7,8 @@ import {
 /**
  * This pieces together the controller for the Felt SDK from the various namespaced
  * controllers.
+ *
+ * @ignore
  */
 export function makeController(feltWindow: Window): FeltController {
   return {
@@ -41,10 +43,11 @@ export type FeltController = {
 
 /**
  * @public
+ * @interface
  */
-export interface FeltControllerWithIframe extends FeltController {
+export type FeltControllerWithIframe = FeltController & {
   /**
    * The iframe element containing the Felt map.
    */
   iframe: HTMLIFrameElement;
-}
+};

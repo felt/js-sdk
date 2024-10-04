@@ -2,13 +2,11 @@
 
 ***
 
-# Interface: ViewportCenterZoom
+# Type Alias: ViewportCenterZoom
 
-## Extends
+> **ViewportCenterZoom**: `object`
 
-- `TypeOf`\<*typeof* `ViewportCenterZoom`\>
-
-## Properties
+## Type declaration
 
 ### center
 
@@ -16,26 +14,16 @@
 
 The center of the viewport in latitude and longitude.
 
-#### latitude
+### center.latitude
 
 > **latitude**: `number` = `Latitude`
 
-#### longitude
+### center.longitude
 
 > **longitude**: `number` = `Longitude`
-
-#### Inherited from
-
-`z.infer.center`
-
-***
 
 ### zoom
 
 > **zoom**: `number` = `FeltZoom`
 
 The zoom level of the viewport.
-
-#### Inherited from
-
-`z.infer.zoom`

@@ -2,48 +2,36 @@
 
 ***
 
-# Interface: ViewportSetCenterZoomMessage
+# Type Alias: ViewportSetCenterZoomMessage
 
-## Extends
+> **ViewportSetCenterZoomMessage**: `object`
 
-- `TypeOf`\<*typeof* `ViewportSetCenterZoomMessage`\>
-
-## Properties
+## Type declaration
 
 ### type
 
 > **type**: `"center"`
 
-#### Inherited from
-
-`z.infer.type`
-
-***
-
 ### location
 
 > **location**: `object`
 
-#### center?
+### location.center?
 
 > `optional` **center**: `object` = `LatLng`
 
 The center of the viewport in latitude and longitude.
 
-#### center.latitude
+### location.center.latitude
 
 > **latitude**: `number` = `Latitude`
 
-#### center.longitude
+### location.center.longitude
 
 > **longitude**: `number` = `Longitude`
 
-#### zoom?
+### location.zoom?
 
 > `optional` **zoom**: `number` = `FeltZoom`
 
 The zoom level of the viewport.
-
-#### Inherited from
-
-`z.infer.location`

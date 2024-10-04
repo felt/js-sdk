@@ -1,6 +1,9 @@
 import { command, listener, query } from "../../types/interface";
 import type { ViewportSetCenterZoomMessage, ViewportState } from "./types";
 
+/**
+ * @ignore
+ */
 export const viewportController = (feltWindow: Window): ViewportController => ({
   goto: command(feltWindow, "viewport.goto"),
   get: query(feltWindow, "viewport.get"),
@@ -13,6 +16,7 @@ export const viewportController = (feltWindow: Window): ViewportController => ({
  * You can get the current viewport, move the viewport, and be notified when
  * the viewport changes.
  *
+ * @category Viewport
  * @public
  * @interface
  */
@@ -29,8 +33,6 @@ export type ViewportController = {
 
   /**
    * Gets the current state of the viewport.
-   *
-   * @returns {@link ViewportState}
    */
   get(): Promise<ViewportState>;
 

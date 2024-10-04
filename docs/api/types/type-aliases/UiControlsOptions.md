@@ -2,40 +2,32 @@
 
 ***
 
-# Interface: FeltEmbedOptions
+# Type Alias: UiControlsOptions
 
-## Extends
+> **UiControlsOptions**: `object`
 
-- `TypeOf`\<*typeof* `FeltEmbedOptions`\>
+## Type declaration
 
-## Properties
-
-### uiControls
-
-> **uiControls**: `object` = `UiControlsOptionsSchema`
-
-[UiControlsOptions](../../types/interfaces/UiControlsOptions.md)
-
-#### showLegend?
+### showLegend?
 
 > `optional` **showLegend**: `boolean`
 
 Whether or not the legend is shown.
 
-##### Default Value
+#### Default Value
 
 ```ts
 true
 ```
 
-#### cooperativeGestures?
+### cooperativeGestures?
 
 > `optional` **cooperativeGestures**: `boolean`
 
 When co-operative gestures are enabled, the pan and zoom gestures are
 adjusted to work better when the map is embedded in another page.
 
-##### Remarks
+#### Remarks
 
 On mobile devices, enabling co-operative gestures will allow the user to
 pan past the embedded map with a single finger drag. To pan the map, they
@@ -46,106 +38,70 @@ scroll past the embedded map using their scroll wheel or trackpad. To
 zoom the map, they must hold the Ctrl (Windows) or Command key (Mac) while
 scrolling.
 
-##### Default Value
+#### Default Value
 
 ```ts
 true
 ```
 
-#### fullScreenButton?
+### fullScreenButton?
 
 > `optional` **fullScreenButton**: `boolean`
 
 Whether or not the full screen button is shown in an embedded map.
 
-##### Remarks
+#### Remarks
 
 When clicked, this will open the map in a new tab or window.
 
-##### Default Value
+#### Default Value
 
 ```ts
 true
 ```
 
-#### geolocation?
+### geolocation?
 
 > `optional` **geolocation**: `boolean`
 
 Whether or not the geolocation button is shown in an embedded map.
 
-##### Remarks
+#### Remarks
 
 The geolocation feature will plot your position on the map. If you
 click the button again, it will start tracking your position.
 
-##### Default Value
+#### Default Value
 
 ```ts
 false
 ```
 
-#### zoomControls?
+### zoomControls?
 
 > `optional` **zoomControls**: `boolean`
 
 Whether or not the zoom controls are shown in an embedded map.
 
-##### Remarks
+#### Remarks
 
 This does not affect whether or not the map can be zoomed, just
 the display of the zoom controls in the bottom right corner of the map.
 
-##### Default Value
+#### Default Value
 
 ```ts
 true
 ```
 
-#### scaleBar?
+### scaleBar?
 
 > `optional` **scaleBar**: `boolean`
 
 Whether or not the scale bar is shown in an embedded map.
 
-##### Default Value
+#### Default Value
 
 ```ts
 true
 ```
-
-#### Inherited from
-
-`z.infer.uiControls`
-
-***
-
-### initialViewport?
-
-> `optional` **initialViewport**: `object`
-
-[ViewportCenterZoom](../../types/interfaces/ViewportCenterZoom.md)
-
-#### center
-
-> **center**: `object` = `LatLng`
-
-The center of the viewport in latitude and longitude.
-
-#### center.latitude
-
-> **latitude**: `number` = `Latitude`
-
-#### center.longitude
-
-> **longitude**: `number` = `Longitude`
-
-#### zoom
-
-> **zoom**: `number` = `FeltZoom`
-
-The zoom level of the viewport.
-
-#### Inherited from
-
-`z.infer.initialViewport`

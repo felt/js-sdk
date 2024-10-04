@@ -3,7 +3,6 @@ import type {
   FeltControllerWithIframe,
 } from "./modules/controller";
 import { makeController } from "./modules/controller";
-import type { UiControlsOptionsType } from "./modules/ui/types";
 import type { FeltEmbedOptionsType } from "./types/embed";
 
 /**
@@ -11,7 +10,6 @@ import type { FeltEmbedOptionsType } from "./types/embed";
  * allowing you to control and inspect the map programmatically.
  *
  * @public
- * @category Main
  */
 export const Felt = {
   /**
@@ -36,7 +34,10 @@ export const Felt = {
       origin: "https://felt.com",
     };
 
-    const propToUrlParam: Record<keyof UiControlsOptionsType, string> = {
+    const propToUrlParam: Record<
+      keyof FeltEmbedOptionsType["uiControls"],
+      string
+    > = {
       showLegend: "legend",
       cooperativeGestures: "cooperativeGestures",
       fullScreenButton: "link",
@@ -145,8 +146,6 @@ export const Felt = {
     });
   },
 };
-
-export type { FeltEmbedOptionsType as FeltEmbedOptions };
 
 /**
  * A stricter, more type-safe version of Object.entries that preserves the

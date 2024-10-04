@@ -31,5 +31,4 @@ const FeltEmbedOptions = z.object({
 /**
  * @public
  */
-export interface FeltEmbedOptionsType
-  extends z.infer<typeof FeltEmbedOptions> {}
+export type FeltEmbedOptionsType = z.infer<typeof FeltEmbedOptions>;

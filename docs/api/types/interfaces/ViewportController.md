@@ -19,7 +19,23 @@ Moves the map to the specified location.
 
 #### Parameters
 
-• **viewport**: [`ViewportSetCenterZoomMessage`](ViewportSetCenterZoomMessage.md)
+• **viewport**
+
+• **viewport.type**: `"center"` = `...`
+
+• **viewport.location** = `...`
+
+• **viewport.location.center?** = `LatLng`
+
+The center of the viewport in latitude and longitude.
+
+• **viewport.location.center.latitude**: `number` = `Latitude`
+
+• **viewport.location.center.longitude**: `number` = `Longitude`
+
+• **viewport.location.zoom?**: `number` = `FeltZoom`
+
+The zoom level of the viewport.
 
 #### Returns
 
@@ -35,15 +51,33 @@ Felt.viewport.goto({ center: { lat: 0, lng: 0 }, zoom: 10 });
 
 ### get()
 
-> **get**(): `Promise`\<[`ViewportState`](ViewportState.md)\>
+> **get**(): `Promise`\<`object`\>
 
 Gets the current state of the viewport.
 
 #### Returns
 
-`Promise`\<[`ViewportState`](ViewportState.md)\>
+`Promise`\<`object`\>
 
-[ViewportState](ViewportState.md)
+##### center
+
+> **center**: `object` = `LatLng`
+
+##### center.latitude
+
+> **latitude**: `number` = `Latitude`
+
+##### center.longitude
+
+> **longitude**: `number` = `Longitude`
+
+##### zoom
+
+> **zoom**: `number` = `FeltZoom`
+
+##### bounds
+
+> **bounds**: [`number`, `number`, `number`, `number`] = `FeltBoundary`
 
 ***
 

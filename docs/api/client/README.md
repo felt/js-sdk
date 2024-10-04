@@ -6,10 +6,6 @@
 
 ## Index
 
-### Main
+### Variables
 
 - [Felt](variables/Felt.md)
-
-### Other
-
-- [FeltEmbedOptions](interfaces/FeltEmbedOptions.md)

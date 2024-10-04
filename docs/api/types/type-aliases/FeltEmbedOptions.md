@@ -2,15 +2,19 @@
 
 ***
 
-# Interface: UiControlsOptions
+# Type Alias: FeltEmbedOptions
 
-## Extends
+> **FeltEmbedOptions**: `object`
 
-- `TypeOf`\<*typeof* `UiControlsOptions`\>
+## Type declaration
 
-## Properties
+### uiControls
 
-### showLegend?
+> **uiControls**: `object` = `UiControlsOptionsSchema`
+
+[UiControlsOptions](UiControlsOptions.md)
+
+### uiControls.showLegend?
 
 > `optional` **showLegend**: `boolean`
 
@@ -22,13 +26,7 @@ Whether or not the legend is shown.
 true
 ```
 
-#### Inherited from
-
-`z.infer.showLegend`
-
-***
-
-### cooperativeGestures?
+### uiControls.cooperativeGestures?
 
 > `optional` **cooperativeGestures**: `boolean`
 
@@ -52,13 +50,7 @@ scrolling.
 true
 ```
 
-#### Inherited from
-
-`z.infer.cooperativeGestures`
-
-***
-
-### fullScreenButton?
+### uiControls.fullScreenButton?
 
 > `optional` **fullScreenButton**: `boolean`
 
@@ -74,13 +66,7 @@ When clicked, this will open the map in a new tab or window.
 true
 ```
 
-#### Inherited from
-
-`z.infer.fullScreenButton`
-
-***
-
-### geolocation?
+### uiControls.geolocation?
 
 > `optional` **geolocation**: `boolean`
 
@@ -97,13 +83,7 @@ click the button again, it will start tracking your position.
 false
 ```
 
-#### Inherited from
-
-`z.infer.geolocation`
-
-***
-
-### zoomControls?
+### uiControls.zoomControls?
 
 > `optional` **zoomControls**: `boolean`
 
@@ -120,13 +100,7 @@ the display of the zoom controls in the bottom right corner of the map.
 true
 ```
 
-#### Inherited from
-
-`z.infer.zoomControls`
-
-***
-
-### scaleBar?
+### uiControls.scaleBar?
 
 > `optional` **scaleBar**: `boolean`
 
@@ -138,6 +112,28 @@ Whether or not the scale bar is shown in an embedded map.
 true
 ```
 
-#### Inherited from
+### initialViewport?
 
-`z.infer.scaleBar`
+> `optional` **initialViewport**: `object`
+
+[ViewportCenterZoom](ViewportCenterZoom.md)
+
+### initialViewport.center
+
+> **center**: `object` = `LatLng`
+
+The center of the viewport in latitude and longitude.
+
+### initialViewport.center.latitude
+
+> **latitude**: `number` = `Latitude`
+
+### initialViewport.center.longitude
+
+> **longitude**: `number` = `Longitude`
+
+### initialViewport.zoom
+
+> **zoom**: `number` = `FeltZoom`
+
+The zoom level of the viewport.

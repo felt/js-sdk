@@ -13,17 +13,21 @@ export const ViewportCenterZoom = z.object({
    */
   zoom: FeltZoom,
 });
-export interface ViewportCenterZoomType
-  extends z.infer<typeof ViewportCenterZoom> {}
 
-const ViewportState = z.intersection(
-  ViewportCenterZoom,
-  z.object({
-    bounds: FeltBoundary,
-  }),
-);
+/**
+ * @category Viewport
+ */
+export type ViewportCenterZoomType = z.infer<typeof ViewportCenterZoom>;
 
-export interface ViewportState extends z.infer<typeof ViewportState> {}
+const ViewportStateSchema = z.object({
+  center: LatLng,
+  zoom: FeltZoom,
+  bounds: FeltBoundary,
+});
+/**
+ * @category Viewport
+ */
+export type ViewportState = z.infer<typeof ViewportStateSchema>;
 
 // MESSAGE TYPES
 // viewport.get
@@ -31,8 +35,11 @@ export const ViewportGetMessage = z.object({
   type: z.literal("viewport.get"),
   params: z.undefined(),
 });
-export interface ViewportGetMessage
-  extends z.infer<typeof ViewportGetMessage> {}
+
+/**
+ * @category Viewport
+ */
+export type ViewportGetMessage = z.infer<typeof ViewportGetMessage>;
 
 // viewport.goto
 const ViewportSetCenterZoomMessage = z.object({
@@ -40,24 +47,37 @@ const ViewportSetCenterZoomMessage = z.object({
   location: ViewportCenterZoom.partial(),
 });
 
-export interface ViewportSetCenterZoomMessage
-  extends z.infer<typeof ViewportSetCenterZoomMessage> {}
+/**
+ * @category Viewport
+ */
+export type ViewportSetCenterZoomMessage = z.infer<
+  typeof ViewportSetCenterZoomMessage
+>;
 
 export const ViewportGotoMessage = z.object({
   type: z.literal("viewport.goto"),
   params: ViewportSetCenterZoomMessage,
 });
-export interface ViewportGotoMessage
-  extends z.infer<typeof ViewportGotoMessage> {}
+
+/**
+ * @category Viewport
+ */
+export type ViewportGotoMessage = z.infer<typeof ViewportGotoMessage>;
 
 // viewport.move
 export const ViewportOnMoveMessage = z.object({
   eventName: z.literal("viewport.move"),
   id: z.string(),
 });
-export interface ViewportOnMoveMessage
-  extends z.infer<typeof ViewportOnMoveMessage> {}
 
-export const ViewportOnMoveEvent = ViewportState;
-export interface ViewportOnMoveEvent
-  extends z.infer<typeof ViewportOnMoveEvent> {}
+/**
+ * @category Viewport
+ */
+export type ViewportOnMoveMessage = z.infer<typeof ViewportOnMoveMessage>;
+
+export const ViewportOnMoveEvent = ViewportStateSchema;
+
+/**
+ * @category Viewport
+ */
+export type ViewportOnMoveEvent = z.infer<typeof ViewportOnMoveEvent>;

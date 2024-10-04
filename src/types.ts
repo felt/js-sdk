@@ -1,4 +1,7 @@
-import type { FeltController } from "./modules/controller";
+import type {
+  FeltController,
+  FeltControllerWithIframe,
+} from "./modules/controller";
 import type { UiController } from "./modules/ui/controller";
 import type { UiControlsOptionsType } from "./modules/ui/types";
 import type { ViewportController } from "./modules/viewport/controller";
@@ -13,6 +16,7 @@ import type { FeltBoundary, FeltZoom } from "./types/geo";
 export type {
   FeltBoundary,
   FeltController,
+  FeltControllerWithIframe,
   FeltEmbedOptionsType as FeltEmbedOptions,
   FeltZoom,
   UiController,

@@ -39,7 +39,7 @@ export const UiControlsOptions = z.object({
   /**
    * Whether or not the geolocation button is shown in an embedded map.
    *
-   * @description
+   * @remarks
    * The geolocation feature will plot your position on the map. If you
    * click the button again, it will start tracking your position.
    *

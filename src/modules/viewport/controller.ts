@@ -36,14 +36,14 @@ export type ViewportController = {
   /**
    * Adds a listener for when the viewport changes.
    *
-   * @param callback - The callback that is called when the viewport changes.
-   * It is called with the current viewport state.
+   * @param callback - This callback is called with the current viewport state whenever
+   * the viewport changes.
    *
    * @returns A function to unsubscribe from the listener
    *
    * @example
    * ```typescript
-   * const unsubscribe =Felt.viewport.onMove(viewport => console.log(viewport.center.latitude));
+   * const unsubscribe = Felt.viewport.onMove(viewport => console.log(viewport.center.latitude));
    *
    * // later on...
    * unsubscribe();

@@ -4,9 +4,13 @@ import { FeltBoundary, FeltZoom, LatLng } from "../../types/geo";
 // DATA TYPES
 export const ViewportCenterZoom = z.object({
   /**
-   * The center of the viewport is it?
+   * The center of the viewport in latitude and longitude.
    */
   center: LatLng,
+
+  /**
+   * The zoom level of the viewport.
+   */
   zoom: FeltZoom,
 });
 export interface ViewportCenterZoomType
@@ -33,12 +37,7 @@ export interface ViewportGetMessage
 // viewport.goto
 const ViewportSetCenterZoomMessage = z.object({
   type: z.literal("center"),
-
-  /**
-   * The center
-   */
-  center: ViewportCenterZoom.shape.center.optional(),
-  zoom: ViewportCenterZoom.shape.zoom.optional(),
+  location: ViewportCenterZoom.partial(),
 });
 
 export interface ViewportSetCenterZoomMessage

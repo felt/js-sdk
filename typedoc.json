@@ -1,7 +1,17 @@
 {
+  "$schema": "https://typedoc-plugin-markdown.org/schema.json",
   "disableSources": true,
+  "out": "./docs/api",
   "entryPoints": ["src/client.ts", "src/types.ts"],
   "sort": ["kind", "source-order"],
   "plugin": ["typedoc-plugin-zod", "typedoc-plugin-markdown"],
-  "cleanOutputDir": false
+  "cleanOutputDir": true,
+  "hideBreadcrumbs": true,
+  "indexFormat": "table",
+  "parametersFormat": "table",
+  "interfacePropertiesFormat": "table",
+  "classPropertiesFormat": "table",
+  "enumMembersFormat": "table",
+  "typeDeclarationFormat": "table",
+  "propertyMembersFormat": "table"
 }

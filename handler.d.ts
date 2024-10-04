@@ -1,5 +1,74 @@
-import { F as FeltHandlers } from './interface-C38ITkeW.js';
+import { b as UiControlsMessage, c as ViewportGotoMessage, d as ViewportGetMessage, a as ViewportState, e as ViewportOnMoveEvent } from './types-LiDTdt8Y.js';
 import 'zod';
+
+type UiModule = {
+    commands: {
+        ["ui_controls.update"]: UiControlsMessage;
+    };
+    queries: {};
+    listeners: {};
+};
+
+type ViewportModule = {
+    commands: {
+        ["viewport.goto"]: ViewportGotoMessage;
+    };
+    queries: {
+        ["viewport.get"]: {
+            request: ViewportGetMessage;
+            response: ViewportState;
+        };
+    };
+    listeners: {
+        ["viewport.move"]: ViewportOnMoveEvent;
+    };
+};
+
+type AllModules = UiModule | ViewportModule;
+
+type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : never;
+
+type FeltHandlers = {
+    methods: FeltCommandHandlers & FeltQueryHandlers;
+    listeners: FeltListenerHandlers;
+};
+type CommandSpec = UnionToIntersection<AllModules["commands"]>;
+type QuerySpec = UnionToIntersection<AllModules["queries"]>;
+type ListenerSpec = UnionToIntersection<AllModules["listeners"]>;
+type CommandHandlers<T> = {
+    [K in keyof T as K & string]: (payload: T[K]) => void;
+};
+type ExtractParams<T extends Record<string, {
+    params: any;
+}>> = {
+    [K in keyof T]: T[K] extends {
+        params: infer P;
+    } ? P : never;
+};
+type ExtractParamsFromQueries<T extends Record<string, {
+    request: {
+        params?: any;
+    };
+    response: any;
+}>> = {
+    [K in keyof T]: {
+        request: T[K]["request"]["params"];
+        response: T[K]["response"];
+    };
+};
+type FeltCommandHandlers = CommandHandlers<ExtractParams<CommandSpec>>;
+type QueryHandlers<T> = {
+    [K in keyof T as K & string]: (request: T[K] extends {
+        request: any;
+    } ? T[K]["request"] : never) => Promise<T[K] extends {
+        response: any;
+    } ? T[K]["response"] : never>;
+};
+type FeltQueryHandlers = QueryHandlers<ExtractParamsFromQueries<QuerySpec>>;
+type ListenerHandlers<T> = {
+    [K in keyof T as K & string]: (callback: (event: T[K]) => void) => VoidFunction;
+};
+type FeltListenerHandlers = ListenerHandlers<ListenerSpec>;
 
 /**
  * This function creates a message handler for the Felt SDK. Its job is to start listening

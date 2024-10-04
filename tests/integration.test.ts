@@ -98,20 +98,24 @@ describe("Felt SDK integration", () => {
 
     await client.viewport.goto({
       type: "center",
-      center: {
-        latitude: 1,
-        longitude: 1,
+      location: {
+        center: {
+          latitude: 1,
+          longitude: 1,
+        },
+        zoom: 1,
       },
-      zoom: 1,
     });
 
     expect(methods["viewport.goto"]).toHaveBeenCalledWith({
       type: "center",
-      center: {
-        latitude: 1,
-        longitude: 1,
+      location: {
+        center: {
+          latitude: 1,
+          longitude: 1,
+        },
+        zoom: 1,
       },
-      zoom: 1,
     });
   });
 

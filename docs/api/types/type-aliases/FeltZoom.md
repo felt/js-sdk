@@ -2,8 +2,6 @@
 
 ***
 
-[@feltjs/js-sdk](../../modules.md) / [types](../README.md) / FeltZoom
-
 # Type Alias: FeltZoom
 
 > **FeltZoom**: `number`

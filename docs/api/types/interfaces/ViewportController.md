@@ -2,8 +2,6 @@
 
 ***
 
-[@feltjs/js-sdk](../../modules.md) / [types](../README.md) / ViewportController
-
 # Interface: ViewportController
 
 The viewport controller allows you to control the viewport of the map.
@@ -21,7 +19,9 @@ Moves the map to the specified location.
 
 #### Parameters
 
-• **viewport**: [`ViewportSetCenterZoomMessage`](ViewportSetCenterZoomMessage.md)
+| Parameter | Type |
+| ------ | ------ |
+| `viewport` | [`ViewportSetCenterZoomMessage`](ViewportSetCenterZoomMessage.md) |
 
 #### Returns
 
@@ -57,10 +57,9 @@ Adds a listener for when the viewport changes.
 
 #### Parameters
 
-• **callback**
-
-The callback that is called when the viewport changes.
-It is called with the current viewport state.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `callback` | (`event`) => `void` | This callback is called with the current viewport state whenever the viewport changes. |
 
 #### Returns
 
@@ -71,7 +70,7 @@ A function to unsubscribe from the listener
 #### Example
 
 ```typescript
-const unsubscribe =Felt.viewport.onMove(viewport => console.log(viewport.center.latitude));
+const unsubscribe = Felt.viewport.onMove(viewport => console.log(viewport.center.latitude));
 
 // later on...
 unsubscribe();

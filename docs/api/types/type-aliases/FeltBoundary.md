@@ -2,8 +2,6 @@
 
 ***
 
-[@feltjs/js-sdk](../../modules.md) / [types](../README.md) / FeltBoundary
-
 # Type Alias: FeltBoundary
 
 > **FeltBoundary**: [`number`, `number`, `number`, `number`]

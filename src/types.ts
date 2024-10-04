@@ -6,7 +6,7 @@ import type { UiController } from "./modules/ui/controller";
 import type { UiControlsOptionsType } from "./modules/ui/types";
 import type { ViewportController } from "./modules/viewport/controller";
 import type {
-  ViewportCenterZoomType,
+  ViewportCenterZoom,
   ViewportSetCenterZoomMessage,
   ViewportState,
 } from "./modules/viewport/types";
@@ -24,7 +24,7 @@ export type {
   FeltZoom,
   UiController,
   UiControlsOptionsType as UiControlsOptions,
-  ViewportCenterZoomType as ViewportCenterZoom,
+  ViewportCenterZoom as ViewportCenterZoom,
   ViewportController,
   ViewportSetCenterZoomMessage,
   ViewportState,

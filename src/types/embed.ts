@@ -4,8 +4,8 @@ import {
   type UiControlsOptionsType as UiControlsOptions,
 } from "../modules/ui/types";
 import {
-  ViewportCenterZoom as VCZSchema,
-  type ViewportCenterZoomType as ViewportCenterZoom,
+  ViewportCenterZoomSchema as VCZSchema,
+  type ViewportCenterZoom,
 } from "../modules/viewport/types";
 
 /**
@@ -31,4 +31,5 @@ const FeltEmbedOptionsSchema = z.object({
 /**
  * @public
  */
-export type FeltEmbedOptions = z.infer<typeof FeltEmbedOptionsSchema>;
+export interface FeltEmbedOptions
+  extends z.infer<typeof FeltEmbedOptionsSchema> {}

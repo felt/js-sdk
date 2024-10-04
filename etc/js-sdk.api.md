@@ -4,9 +4,9 @@
 
 ```ts
 
-import { a } from './types-gxpdyMeJ.js';
-import { U } from './types-gxpdyMeJ.js';
-import { V } from './types-gxpdyMeJ.js';
+import { a } from './types-ucZfQj7-.js';
+import { U } from './types-ucZfQj7-.js';
+import { V } from './types-ucZfQj7-.js';
 import * as z from 'zod';
 
 // @public
@@ -29,7 +29,8 @@ type FeltControllerWithIframe = FeltController & {
 // Warning: (ae-forgotten-export) The symbol "FeltEmbedOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public (undocumented)
-type FeltEmbedOptions = z.infer<typeof FeltEmbedOptionsSchema>;
+interface FeltEmbedOptions extends z.infer<typeof FeltEmbedOptionsSchema> {
+}
 
 // @public (undocumented)
 const FeltEmbedOptionsSchema: z.ZodObject<{
@@ -119,7 +120,7 @@ const FeltEmbedOptionsSchema: z.ZodObject<{
 
 // @public
 interface UiController {
-    update: (controls: U) => void;
+    update(controls: U): void;
 }
 
 // @public
@@ -133,9 +134,9 @@ type ViewportController = {
 //
 // dist/client.d.ts:73:5 - (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
 // dist/client.d.ts:78:5 - (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:207:5 - (ae-forgotten-export) The symbol "FeltEmbedOptions" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:207:5 - (ae-forgotten-export) The symbol "FeltControllerWithIframe" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:214:5 - (ae-forgotten-export) The symbol "FeltController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:208:5 - (ae-forgotten-export) The symbol "FeltEmbedOptions" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:208:5 - (ae-forgotten-export) The symbol "FeltControllerWithIframe" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:215:5 - (ae-forgotten-export) The symbol "FeltController" needs to be exported by the entry point client.d.ts
 
 // (No @packageDocumentation comment for this package)
 

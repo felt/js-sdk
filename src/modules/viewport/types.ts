@@ -2,7 +2,7 @@ import * as z from "zod";
 import { FeltBoundary, FeltZoom, LatLng } from "../../types/geo";
 
 // DATA TYPES
-export const ViewportCenterZoom = z.object({
+export const ViewportCenterZoomSchema = z.object({
   /**
    * The center of the viewport in latitude and longitude.
    */
@@ -17,7 +17,8 @@ export const ViewportCenterZoom = z.object({
 /**
  * @category Viewport
  */
-export type ViewportCenterZoomType = z.infer<typeof ViewportCenterZoom>;
+export interface ViewportCenterZoom
+  extends z.infer<typeof ViewportCenterZoomSchema> {}
 
 const ViewportStateSchema = z.object({
   center: LatLng,
@@ -27,7 +28,7 @@ const ViewportStateSchema = z.object({
 /**
  * @category Viewport
  */
-export type ViewportState = z.infer<typeof ViewportStateSchema>;
+export interface ViewportState extends z.infer<typeof ViewportStateSchema> {}
 
 // MESSAGE TYPES
 // viewport.get
@@ -39,20 +40,20 @@ export const ViewportGetMessage = z.object({
 /**
  * @category Viewport
  */
-export type ViewportGetMessage = z.infer<typeof ViewportGetMessage>;
+export interface ViewportGetMessage
+  extends z.infer<typeof ViewportGetMessage> {}
 
 // viewport.goto
 const ViewportSetCenterZoomMessage = z.object({
   type: z.literal("center"),
-  location: ViewportCenterZoom.partial(),
+  location: ViewportCenterZoomSchema.partial(),
 });
 
 /**
  * @category Viewport
  */
-export type ViewportSetCenterZoomMessage = z.infer<
-  typeof ViewportSetCenterZoomMessage
->;
+export interface ViewportSetCenterZoomMessage
+  extends z.infer<typeof ViewportSetCenterZoomMessage> {}
 
 export const ViewportGotoMessage = z.object({
   type: z.literal("viewport.goto"),
@@ -62,7 +63,8 @@ export const ViewportGotoMessage = z.object({
 /**
  * @category Viewport
  */
-export type ViewportGotoMessage = z.infer<typeof ViewportGotoMessage>;
+export interface ViewportGotoMessage
+  extends z.infer<typeof ViewportGotoMessage> {}
 
 // viewport.move
 export const ViewportOnMoveMessage = z.object({
@@ -73,11 +75,13 @@ export const ViewportOnMoveMessage = z.object({
 /**
  * @category Viewport
  */
-export type ViewportOnMoveMessage = z.infer<typeof ViewportOnMoveMessage>;
+export interface ViewportOnMoveMessage
+  extends z.infer<typeof ViewportOnMoveMessage> {}
 
 export const ViewportOnMoveEvent = ViewportStateSchema;
 
 /**
  * @category Viewport
  */
-export type ViewportOnMoveEvent = z.infer<typeof ViewportOnMoveEvent>;
+export interface ViewportOnMoveEvent
+  extends z.infer<typeof ViewportOnMoveEvent> {}

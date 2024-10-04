@@ -66,11 +66,12 @@ export const UiControlsOptions = z.object({
   scaleBar: z.boolean().optional(),
 });
 
-export type UiControlsOptionsType = z.infer<typeof UiControlsOptions>;
+export interface UiControlsOptionsType
+  extends z.infer<typeof UiControlsOptions> {}
 
 // MESSAGE TYPES
 export const UiControlsMessage = z.object({
   type: z.literal("ui_controls.update"),
   params: UiControlsOptions,
 });
-export type UiControlsMessage = z.infer<typeof UiControlsMessage>;
+export interface UiControlsMessage extends z.infer<typeof UiControlsMessage> {}

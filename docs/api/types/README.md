@@ -11,14 +11,14 @@
 - [FeltController](interfaces/FeltController.md)
 - [FeltControllerWithIframe](interfaces/FeltControllerWithIframe.md)
 - [UiController](interfaces/UiController.md)
-- [UiControlsOptions](type-aliases/UiControlsOptions.md)
-- [FeltEmbedOptions](type-aliases/FeltEmbedOptions.md)
+- [UiControlsOptions](interfaces/UiControlsOptions.md)
+- [FeltEmbedOptions](interfaces/FeltEmbedOptions.md)
 - [FeltZoom](type-aliases/FeltZoom.md)
 - [FeltBoundary](type-aliases/FeltBoundary.md)
 
 ### Viewport
 
 - [ViewportController](interfaces/ViewportController.md)
-- [ViewportCenterZoom](type-aliases/ViewportCenterZoom.md)
-- [ViewportState](type-aliases/ViewportState.md)
-- [ViewportSetCenterZoomMessage](type-aliases/ViewportSetCenterZoomMessage.md)
+- [ViewportCenterZoom](interfaces/ViewportCenterZoom.md)
+- [ViewportState](interfaces/ViewportState.md)
+- [ViewportSetCenterZoomMessage](interfaces/ViewportSetCenterZoomMessage.md)

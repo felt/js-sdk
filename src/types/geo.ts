@@ -6,7 +6,7 @@ export const LatLng = z.object({
   latitude: Latitude,
   longitude: Longitude,
 });
-export type LatLng = z.infer<typeof LatLng>;
+export interface LatLng extends z.infer<typeof LatLng> {}
 
 /**
  * @ignore

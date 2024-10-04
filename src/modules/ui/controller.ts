@@ -17,5 +17,5 @@ export interface UiController {
    *
    * @param controls - The controls to update.
    */
-  update: (controls: UiControlsOptionsType) => void;
+  update(controls: UiControlsOptionsType): void;
 }

@@ -2,28 +2,46 @@
 
 ***
 
-# Type Alias: ViewportState
+# Interface: ViewportState
 
-> **ViewportState**: `object`
+## Extends
 
-## Type declaration
+- `TypeOf`\<*typeof* `ViewportStateSchema`\>
+
+## Properties
 
 ### center
 
 > **center**: `object` = `LatLng`
 
-### center.latitude
+#### latitude
 
 > **latitude**: `number` = `Latitude`
 
-### center.longitude
+#### longitude
 
 > **longitude**: `number` = `Longitude`
+
+#### Inherited from
+
+`z.infer.center`
+
+***
 
 ### zoom
 
 > **zoom**: `number` = `FeltZoom`
 
+#### Inherited from
+
+`z.infer.zoom`
+
+***
+
 ### bounds
 
 > **bounds**: [`number`, `number`, `number`, `number`] = `FeltBoundary`
+
+#### Inherited from
+
+`z.infer.bounds`

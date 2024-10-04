@@ -32,7 +32,6 @@
     "@changesets/cli": "^2.27.7",
     "@microsoft/api-extractor": "^7.47.9",
     "@types/node": "^22.7.4",
-    "@zamiell/typedoc-plugin-not-exported": "^0.3.0",
     "happy-dom": "^15.7.4",
     "knip": "^5.30.6",
     "prettier": "^3.3.3",

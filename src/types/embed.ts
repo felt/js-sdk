@@ -5,7 +5,7 @@ import {
   type ViewportCenterZoom,
 } from "../modules/viewport/types";
 
-export const FeltEmbedOptions = z.object({
+const FeltEmbedOptions = z.object({
   /**
    * @hidden
    */

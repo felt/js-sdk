@@ -6,9 +6,9 @@ export type FeltHandlers = {
   listeners: FeltListenerHandlers;
 };
 
-export type CommandSpec = UnionToIntersection<AllModules["commands"]>;
-export type QuerySpec = UnionToIntersection<AllModules["queries"]>;
-export type ListenerSpec = UnionToIntersection<AllModules["listeners"]>;
+type CommandSpec = UnionToIntersection<AllModules["commands"]>;
+type QuerySpec = UnionToIntersection<AllModules["queries"]>;
+type ListenerSpec = UnionToIntersection<AllModules["listeners"]>;
 
 type CommandHandlers<T> = {
   [K in keyof T as K & string]: (payload: T[K]) => void;
@@ -100,7 +100,7 @@ type MaybeOneQuery<K extends keyof QuerySpec> = {
 type OneQuery<K extends keyof QuerySpec> =
   MaybeOneQuery<K> extends undefined ? void : MaybeOneQuery<K>;
 
-export type FeltQuery<TKey extends keyof QuerySpec> = (
+type FeltQuery<TKey extends keyof QuerySpec> = (
   payload: OneQuery<TKey>,
 ) => Promise<QuerySpec[TKey]["response"]>;
 

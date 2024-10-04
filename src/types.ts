@@ -11,13 +11,13 @@ import type {
   ViewportState,
 } from "./modules/viewport/types";
 import type { FeltEmbedOptions } from "./types/embed";
-import type { FeltBoundarySchema, FeltZoom } from "./types/geo";
+import type { FeltBoundary, FeltZoom } from "./types/geo";
 
 // This file exists to document the types that are used within the SDK, without
 // having to export them as part of the public API of the SDK.
 
 export type {
-  FeltBoundarySchema as FeltBoundary,
+  FeltBoundary,
   FeltController,
   FeltControllerWithIframe,
   FeltEmbedOptions,

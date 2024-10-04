@@ -13,5 +13,7 @@
   "classPropertiesFormat": "table",
   "enumMembersFormat": "table",
   "typeDeclarationFormat": "table",
-  "propertyMembersFormat": "table"
+  "propertyMembersFormat": "table",
+
+  "treatWarningsAsErrors": true
 }

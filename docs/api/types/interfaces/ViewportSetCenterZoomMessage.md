@@ -10,11 +10,40 @@
 
 ## Properties
 
-| Property | Type | Description |
-| ------ | ------ | ------ |
-| `type` | `"center"` | - |
-| `location` | `object` | - |
-| `location.center?` | `object` | The center of the viewport in latitude and longitude. |
-| `location.center.latitude` | `number` | - |
-| `location.center.longitude` | `number` | - |
-| `location.zoom?` | `number` | The zoom level of the viewport. |
+### type
+
+> **type**: `"center"`
+
+#### Inherited from
+
+`z.infer.type`
+
+***
+
+### location
+
+> **location**: `object`
+
+#### center?
+
+> `optional` **center**: `object` = `LatLng`
+
+The center of the viewport in latitude and longitude.
+
+#### center.latitude
+
+> **latitude**: `number` = `Latitude`
+
+#### center.longitude
+
+> **longitude**: `number` = `Longitude`
+
+#### zoom?
+
+> `optional` **zoom**: `number` = `FeltZoom`
+
+The zoom level of the viewport.
+
+#### Inherited from
+
+`z.infer.location`

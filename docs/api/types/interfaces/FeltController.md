@@ -13,7 +13,17 @@ The various ways to interact with the map are namespaced for clarity.
 
 ## Properties
 
-| Property | Type | Description |
-| ------ | ------ | ------ |
-| `viewport` | [`ViewportController`](ViewportController.md) | The viewport controller allows you to control the viewport of the map. |
-| `ui` | [`UiController`](UiController.md) | The UI controllers allows you to enable and disable UI controls on the embedded map. |
+### viewport
+
+> **viewport**: [`ViewportController`](ViewportController.md)
+
+The viewport controller allows you to control the viewport of the map.
+
+***
+
+### ui
+
+> **ui**: [`UiController`](UiController.md)
+
+The UI controllers allows you to enable and disable UI controls on the
+embedded map.

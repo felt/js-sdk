@@ -9,6 +9,18 @@ embedded map.
 
 ## Properties
 
-| Property | Type | Description |
-| ------ | ------ | ------ |
-| `update` | (`controls`: [`UiControlsOptions`](UiControlsOptions.md)) => `void` | Updates the UI controls on the embedded map. |
+### update()
+
+> **update**: (`controls`) => `void`
+
+Updates the UI controls on the embedded map.
+
+#### Parameters
+
+• **controls**: [`UiControlsOptions`](UiControlsOptions.md)
+
+The controls to update.
+
+#### Returns
+
+`void`

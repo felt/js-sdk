@@ -8,23 +8,19 @@
 
 ### Interfaces
 
-| Interface | Description |
-| ------ | ------ |
-| [FeltController](interfaces/FeltController.md) | The FeltController allows you to control, inspect and observe a Felt map. The various ways to interact with the map are namespaced for clarity. |
-| [FeltControllerWithIframe](interfaces/FeltControllerWithIframe.md) | - |
-| [UiController](interfaces/UiController.md) | The UI controller allows you to enable and disable UI controls on the embedded map. |
-| [UiControlsOptions](interfaces/UiControlsOptions.md) | - |
-| [ViewportController](interfaces/ViewportController.md) | The viewport controller allows you to control the viewport of the map. |
-| [ViewportCenterZoom](interfaces/ViewportCenterZoom.md) | - |
-| [ViewportState](interfaces/ViewportState.md) | - |
-| [ViewportSetCenterZoomMessage](interfaces/ViewportSetCenterZoomMessage.md) | - |
+- [FeltController](interfaces/FeltController.md)
+- [FeltControllerWithIframe](interfaces/FeltControllerWithIframe.md)
+- [UiController](interfaces/UiController.md)
+- [UiControlsOptions](interfaces/UiControlsOptions.md)
+- [ViewportController](interfaces/ViewportController.md)
+- [ViewportCenterZoom](interfaces/ViewportCenterZoom.md)
+- [ViewportState](interfaces/ViewportState.md)
+- [ViewportSetCenterZoomMessage](interfaces/ViewportSetCenterZoomMessage.md)
 
 ### Type Aliases
 
-| Type alias | Description |
-| ------ | ------ |
-| [FeltZoom](type-aliases/FeltZoom.md) | The zoom level of the map. |
-| [FeltBoundary](type-aliases/FeltBoundary.md) | The edges of the map in the form of a bounding box. |
+- [FeltZoom](type-aliases/FeltZoom.md)
+- [FeltBoundary](type-aliases/FeltBoundary.md)
 
 ## References
 

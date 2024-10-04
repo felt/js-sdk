@@ -8,12 +8,8 @@
 
 ### Main
 
-| Variable | Description |
-| ------ | ------ |
-| [Felt](variables/Felt.md) | The Felt SDK is a library for embedding Felt maps into your website, allowing you to control and inspect the map programmatically. |
+- [Felt](variables/Felt.md)
 
 ### Other
 
-| Interface | Description |
-| ------ | ------ |
-| [FeltEmbedOptions](interfaces/FeltEmbedOptions.md) | - |
+- [FeltEmbedOptions](interfaces/FeltEmbedOptions.md)

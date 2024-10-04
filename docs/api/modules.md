@@ -6,7 +6,5 @@
 
 ## Modules
 
-| Module | Description |
-| ------ | ------ |
-| [client](client/README.md) | - |
-| [types](types/README.md) | - |
+- [client](client/README.md)
+- [types](types/README.md)

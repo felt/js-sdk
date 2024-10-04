@@ -19,9 +19,7 @@ Moves the map to the specified location.
 
 #### Parameters
 
-| Parameter | Type |
-| ------ | ------ |
-| `viewport` | [`ViewportSetCenterZoomMessage`](ViewportSetCenterZoomMessage.md) |
+• **viewport**: [`ViewportSetCenterZoomMessage`](ViewportSetCenterZoomMessage.md)
 
 #### Returns
 
@@ -57,9 +55,10 @@ Adds a listener for when the viewport changes.
 
 #### Parameters
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `callback` | (`event`) => `void` | This callback is called with the current viewport state whenever the viewport changes. |
+• **callback**
+
+This callback is called with the current viewport state whenever
+the viewport changes.
 
 #### Returns
 

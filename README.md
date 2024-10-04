@@ -1,3 +1,5 @@
-# @felt/js-sdk
+# @feltmaps/js-sdk
 
 An SDK for Felt maps.
+
+##

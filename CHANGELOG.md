@@ -1,4 +1,4 @@
-# @felt/js-sdk
+# @feltmaps/js-sdk
 
 ## 0.0.9
 

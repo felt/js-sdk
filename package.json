@@ -51,7 +51,6 @@
     "build": "npm run build:compile && npm run build:docs",
     "build:compile": "tsup",
     "build:docs": "typedoc",
-    "build:update_api": "npm run build:compile && api-extractor run --local",
     "check": "npm run check:format && npm run check:api && npm run check:unused && npm run check:types && npm run check:test && npm run check:docs",
     "check:api": "npm run build:compile && attw --pack . && api-extractor run",
     "check:docs": "npm run build:docs && git diff --exit-code --quiet docs/api || (echo 'Error: API docs are out of date. Please run npm run build:docs and commit the changes.' && exit 1)",
@@ -60,6 +59,7 @@
     "check:test": "vitest run",
     "check:types": "tsc",
     "ci": "npm run build && npm run check",
+    "update-api": "npm run build:compile && api-extractor run --local",
     "local-release": "npm run ci && changeset version && changeset publish",
     "prepublishOnly": "npm run ci"
   }

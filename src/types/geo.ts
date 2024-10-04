@@ -8,11 +8,6 @@ export const LatLngSchema = z.object({
 });
 
 /**
- * @category Types
- */
-export interface LatLng extends z.infer<typeof LatLngSchema> {}
-
-/**
  * @ignore
  */
 export const FeltZoom = z.number().min(1).max(23);

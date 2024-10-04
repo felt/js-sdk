@@ -1,9 +1,3 @@
-[**@feltjs/js-sdk**](../../README.md) • **Docs**
-
-***
-
-# Interface: ViewportController
-
 The viewport controller allows you to control the viewport of the map.
 
 You can get the current viewport, move the viewport, and be notified when

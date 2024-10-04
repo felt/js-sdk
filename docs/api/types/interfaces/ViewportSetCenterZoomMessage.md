@@ -1,9 +1,3 @@
-[**@feltjs/js-sdk**](../../README.md) • **Docs**
-
-***
-
-# Interface: ViewportSetCenterZoomMessage
-
 ## Extends
 
 - `TypeOf`\<*typeof* `ViewportSetCenterZoomMessage`\>

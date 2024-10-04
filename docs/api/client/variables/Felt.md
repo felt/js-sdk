@@ -1,9 +1,3 @@
-[**@feltjs/js-sdk**](../../README.md) • **Docs**
-
-***
-
-# Variable: Felt
-
 > `const` **Felt**: `object`
 
 The Felt SDK is a library for embedding Felt maps into your website,

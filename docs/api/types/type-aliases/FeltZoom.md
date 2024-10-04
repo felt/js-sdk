@@ -1,9 +1,3 @@
-[**@feltjs/js-sdk**](../../README.md) • **Docs**
-
-***
-
-# Type Alias: FeltZoom
-
 > **FeltZoom**: `number`
 
 The zoom level of the map.

@@ -1,9 +1,3 @@
-[**@feltjs/js-sdk**](../../README.md) • **Docs**
-
-***
-
-# Type Alias: FeltBoundary
-
 > **FeltBoundary**: [`number`, `number`, `number`, `number`]
 
 The edges of the map in the form of a bounding box.

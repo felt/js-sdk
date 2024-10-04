@@ -1,9 +1,3 @@
-[**@feltjs/js-sdk**](../../README.md) • **Docs**
-
-***
-
-# Interface: FeltEmbedOptions
-
 ## Extends
 
 - `TypeOf`\<*typeof* `FeltEmbedOptionsSchema`\>

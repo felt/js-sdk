@@ -1,9 +1,3 @@
-[**@feltjs/js-sdk**](../../README.md) • **Docs**
-
-***
-
-# Interface: UiController
-
 The UI controller allows you to enable and disable UI controls on the
 embedded map.
 

@@ -8,7 +8,6 @@
   "plugin": ["typedoc-plugin-zod", "typedoc-plugin-markdown"],
   "cleanOutputDir": true,
   "readme": "none",
-  "hideBreadcrumbs": true,
   "indexFormat": "list",
   "parametersFormat": "list",
   "interfacePropertiesFormat": "list",
@@ -16,6 +15,10 @@
   "enumMembersFormat": "table",
   "typeDeclarationFormat": "list",
   "propertyMembersFormat": "list",
+
+  "hideBreadcrumbs": true,
+  "hidePageHeader": true,
+  "hidePageTitle": true,
 
   "treatWarningsAsErrors": true,
 

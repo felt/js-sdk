@@ -142,7 +142,7 @@
     /**
      * (REQUIRED) Whether to generate an API report.
      */
-    "enabled": true
+    "enabled": true,
 
     /**
      * The base filename for the API report files, to be combined with "reportFolder" or "reportTempFolder"
@@ -208,7 +208,7 @@
      *
      * DEFAULT VALUE: "false"
      */
-    // "includeForgottenExports": false
+    "includeForgottenExports": true
   },
 
   /**
@@ -420,6 +420,10 @@
       "default": {
         "logLevel": "warning"
         // "addToApiReportFile": false
+      },
+
+      "ae-unresolved-link": {
+        "logLevel": "none"
       }
 
       // "ae-extra-release-tag": {

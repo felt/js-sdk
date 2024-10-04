@@ -11,15 +11,131 @@ import * as z from 'zod';
 
 // @public
 export const Felt: {
-    embed(container: HTMLElement, mapId: string, options?: FeltEmbedOptionsType): Promise<FeltControllerWithIframe>;
+    embed(container: HTMLElement, mapId: string, options?: FeltEmbedOptions): Promise<FeltControllerWithIframe>;
     control(feltWindow: Window): Promise<FeltController>;
+};
+
+// @public
+type FeltController = {
+    viewport: ViewportController;
+    ui: UiController;
+};
+
+// @public (undocumented)
+interface FeltControllerWithIframe extends FeltController {
+    iframe: HTMLIFrameElement;
+}
+
+// Warning: (ae-forgotten-export) The symbol "FeltEmbedOptions_2" needs to be exported by the entry point client.d.ts
+//
+// @public (undocumented)
+export interface FeltEmbedOptions extends z.infer<typeof FeltEmbedOptions_2> {
+}
+
+// @public (undocumented)
+const FeltEmbedOptions_2: z.ZodObject<{
+    origin: z.ZodOptional<z.ZodString>;
+    uiControls: z.ZodObject<{
+        showLegend: z.ZodOptional<z.ZodBoolean>;
+        cooperativeGestures: z.ZodOptional<z.ZodBoolean>;
+        fullScreenButton: z.ZodOptional<z.ZodBoolean>;
+        geolocation: z.ZodOptional<z.ZodBoolean>;
+        zoomControls: z.ZodOptional<z.ZodBoolean>;
+        scaleBar: z.ZodOptional<z.ZodBoolean>;
+    }, "strip", z.ZodTypeAny, {
+        showLegend?: boolean | undefined;
+        cooperativeGestures?: boolean | undefined;
+        fullScreenButton?: boolean | undefined;
+        geolocation?: boolean | undefined;
+        zoomControls?: boolean | undefined;
+        scaleBar?: boolean | undefined;
+    }, {
+        showLegend?: boolean | undefined;
+        cooperativeGestures?: boolean | undefined;
+        fullScreenButton?: boolean | undefined;
+        geolocation?: boolean | undefined;
+        zoomControls?: boolean | undefined;
+        scaleBar?: boolean | undefined;
+    }>;
+    initialViewport: z.ZodOptional<z.ZodObject<{
+        center: z.ZodObject<{
+            latitude: z.ZodNumber;
+            longitude: z.ZodNumber;
+        }, "strip", z.ZodTypeAny, {
+            latitude: number;
+            longitude: number;
+        }, {
+            latitude: number;
+            longitude: number;
+        }>;
+        zoom: z.ZodNumber;
+    }, "strip", z.ZodTypeAny, {
+        center: {
+            latitude: number;
+            longitude: number;
+        };
+        zoom: number;
+    }, {
+        center: {
+            latitude: number;
+            longitude: number;
+        };
+        zoom: number;
+    }>>;
+}, "strip", z.ZodTypeAny, {
+    uiControls: {
+        showLegend?: boolean | undefined;
+        cooperativeGestures?: boolean | undefined;
+        fullScreenButton?: boolean | undefined;
+        geolocation?: boolean | undefined;
+        zoomControls?: boolean | undefined;
+        scaleBar?: boolean | undefined;
+    };
+    origin?: string | undefined;
+    initialViewport?: {
+        center: {
+            latitude: number;
+            longitude: number;
+        };
+        zoom: number;
+    } | undefined;
+}, {
+    uiControls: {
+        showLegend?: boolean | undefined;
+        cooperativeGestures?: boolean | undefined;
+        fullScreenButton?: boolean | undefined;
+        geolocation?: boolean | undefined;
+        zoomControls?: boolean | undefined;
+        scaleBar?: boolean | undefined;
+    };
+    origin?: string | undefined;
+    initialViewport?: {
+        center: {
+            latitude: number;
+            longitude: number;
+        };
+        zoom: number;
+    } | undefined;
+}>;
+
+// @public
+interface UiController {
+    update: (controls: U) => void;
+}
+
+// @public
+type ViewportController = {
+    goto(viewport: V): void;
+    get(): Promise<a>;
+    onMove(callback: (event: a) => void): VoidFunction;
 };
 
 // Warnings were encountered during analysis:
 //
-// dist/client.d.ts:198:5 - (ae-forgotten-export) The symbol "FeltEmbedOptionsType" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:198:5 - (ae-forgotten-export) The symbol "FeltControllerWithIframe" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:205:5 - (ae-forgotten-export) The symbol "FeltController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:70:5 - (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:75:5 - (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:199:5 - (ae-forgotten-export) The symbol "FeltControllerWithIframe" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:206:5 - (ae-forgotten-export) The symbol "FeltController" needs to be exported by the entry point client.d.ts
 
 // (No @packageDocumentation comment for this package)
 

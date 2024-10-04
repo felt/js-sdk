@@ -146,6 +146,8 @@ export const Felt = {
   },
 };
 
+export type { FeltEmbedOptionsType as FeltEmbedOptions };
+
 /**
  * A stricter, more type-safe version of Object.entries that preserves the
  * type of the Object's keys instead of widening them to string.

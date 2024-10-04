@@ -5,6 +5,9 @@ import {
   type ViewportCenterZoom,
 } from "../modules/viewport/types";
 
+/**
+ * @public
+ */
 const FeltEmbedOptions = z.object({
   /**
    * @hidden
@@ -23,7 +26,7 @@ const FeltEmbedOptions = z.object({
 });
 
 /**
- * Docs from inferred
+ * @public
  */
 export interface FeltEmbedOptionsType
   extends z.infer<typeof FeltEmbedOptions> {}

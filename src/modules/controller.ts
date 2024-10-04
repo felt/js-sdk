@@ -19,6 +19,7 @@ export function makeController(feltWindow: Window): FeltController {
  * The FeltController allows you to control, inspect and observe a Felt map.
  * The various ways to interact with the map are namespaced for clarity.
  *
+ * @public
  * @interface
  */
 export type FeltController = {
@@ -34,6 +35,9 @@ export type FeltController = {
   ui: UiController;
 };
 
+/**
+ * @public
+ */
 export interface FeltControllerWithIframe extends FeltController {
   /**
    * The iframe element containing the Felt map.

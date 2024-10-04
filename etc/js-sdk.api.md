@@ -132,10 +132,10 @@ type ViewportController = {
 
 // Warnings were encountered during analysis:
 //
-// dist/client.d.ts:70:5 - (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:75:5 - (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:199:5 - (ae-forgotten-export) The symbol "FeltControllerWithIframe" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:206:5 - (ae-forgotten-export) The symbol "FeltController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:74:5 - (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:79:5 - (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:209:5 - (ae-forgotten-export) The symbol "FeltControllerWithIframe" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:216:5 - (ae-forgotten-export) The symbol "FeltController" needs to be exported by the entry point client.d.ts
 
 // (No @packageDocumentation comment for this package)
 

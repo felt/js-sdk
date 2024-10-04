@@ -6,7 +6,7 @@
 
 ### center
 
-> **center**: `object` = `LatLng`
+> **center**: `object` = `LatLngSchema`
 
 #### latitude
 
@@ -34,7 +34,7 @@
 
 ### bounds
 
-> **bounds**: [`number`, `number`, `number`, `number`] = `FeltBoundary`
+> **bounds**: [`number`, `number`, `number`, `number`] = `FeltBoundarySchema`
 
 #### Inherited from
 

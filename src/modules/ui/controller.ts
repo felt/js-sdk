@@ -1,5 +1,5 @@
 import { command } from "../../types/interface";
-import type { UiControlsOptionsType } from "./types";
+import type { UiControlsOptions } from "./types";
 
 export const uiController = (feltWindow: Window) => ({
   update: command(feltWindow, "ui_controls.update"),
@@ -9,6 +9,7 @@ export const uiController = (feltWindow: Window) => ({
  * The UI controller allows you to enable and disable UI controls on the
  * embedded map.
  *
+ * @category UI Controls
  * @public
  */
 export interface UiController {
@@ -17,5 +18,5 @@ export interface UiController {
    *
    * @param controls - The controls to update.
    */
-  update(controls: UiControlsOptionsType): void;
+  update(controls: UiControlsOptions): void;
 }

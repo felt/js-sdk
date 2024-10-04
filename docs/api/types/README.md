@@ -1,14 +1,23 @@
 ## Index
 
-### Other
+### Controller
 
 - [FeltController](interfaces/FeltController.md)
 - [FeltControllerWithIframe](interfaces/FeltControllerWithIframe.md)
+- [FeltEmbedOptions](interfaces/FeltEmbedOptions.md)
+
+### Other
+
+- [FeltBoundary](variables/FeltBoundary.md)
+
+### Types
+
+- [FeltZoom](type-aliases/FeltZoom.md)
+
+### UI Controls
+
 - [UiController](interfaces/UiController.md)
 - [UiControlsOptions](interfaces/UiControlsOptions.md)
-- [FeltEmbedOptions](interfaces/FeltEmbedOptions.md)
-- [FeltZoom](type-aliases/FeltZoom.md)
-- [FeltBoundary](type-aliases/FeltBoundary.md)
 
 ### Viewport
 

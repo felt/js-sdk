@@ -1,12 +1,12 @@
 import * as z from "zod";
-import { FeltBoundary, FeltZoom, LatLng } from "../../types/geo";
+import { FeltBoundarySchema, FeltZoom, LatLngSchema } from "../../types/geo";
 
 // DATA TYPES
 export const ViewportCenterZoomSchema = z.object({
   /**
    * The center of the viewport in latitude and longitude.
    */
-  center: LatLng,
+  center: LatLngSchema,
 
   /**
    * The zoom level of the viewport.
@@ -21,9 +21,9 @@ export interface ViewportCenterZoom
   extends z.infer<typeof ViewportCenterZoomSchema> {}
 
 const ViewportStateSchema = z.object({
-  center: LatLng,
+  center: LatLngSchema,
   zoom: FeltZoom,
-  bounds: FeltBoundary,
+  bounds: FeltBoundarySchema,
 });
 /**
  * @category Viewport

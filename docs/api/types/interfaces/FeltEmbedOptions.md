@@ -122,7 +122,7 @@ true
 
 #### center
 
-> **center**: `object` = `LatLng`
+> **center**: `object` = `LatLngSchema`
 
 The center of the viewport in latitude and longitude.
 

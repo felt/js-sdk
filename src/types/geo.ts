@@ -2,11 +2,15 @@ import * as z from "zod";
 
 const Longitude = z.number();
 const Latitude = z.number();
-export const LatLng = z.object({
+export const LatLngSchema = z.object({
   latitude: Latitude,
   longitude: Longitude,
 });
-export interface LatLng extends z.infer<typeof LatLng> {}
+
+/**
+ * @category Types
+ */
+export interface LatLng extends z.infer<typeof LatLngSchema> {}
 
 /**
  * @ignore
@@ -18,17 +22,23 @@ export const FeltZoom = z.number().min(1).max(23);
  *
  * It is a floating-point number between 1 and 23, where 1 is the most
  * zoomed out and 23 is the most zoomed in.
+ *
+ * @category Types
  */
 export type FeltZoom = z.infer<typeof FeltZoom>;
 
-/**
- * @ignore
- */
-export const FeltBoundary = z.tuple([Longitude, Latitude, Longitude, Latitude]);
+export const FeltBoundarySchema = z.tuple([
+  Longitude,
+  Latitude,
+  Longitude,
+  Latitude,
+]);
 
 /**
  * The edges of the map in the form of a bounding box.
  *
  * The boundary is a tuple of the form `[west, south, east, north]`.
+ *
+ * @category Types
  */
-export type FeltBoundary = z.infer<typeof FeltBoundary>;
+export type FeltBoundary = z.infer<typeof FeltBoundarySchema>;

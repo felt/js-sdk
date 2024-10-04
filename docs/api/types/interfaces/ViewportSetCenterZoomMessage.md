@@ -20,7 +20,7 @@
 
 #### center?
 
-> `optional` **center**: `object` = `LatLng`
+> `optional` **center**: `object` = `LatLngSchema`
 
 The center of the viewport in latitude and longitude.
 

@@ -49,9 +49,11 @@
   },
   "scripts": {
     "build": "npm run build:compile && npm run build:docs",
-    "build:compile": "tsup && attw --pack .",
+    "build:compile": "tsup",
     "build:docs": "typedoc",
-    "check": "npm run check:format && npm run check:unused && npm run check:types && npm run check:test:unit && npm run check:docs",
+    "check": "npm run check:format && npm run check:exports && npm run check:api && npm run check:unused && npm run check:types && npm run check:test:unit && npm run check:docs",
+    "check:exports": "npm run build:compile && attw --pack .",
+    "check:api": "npm run build:compile && api-extractor run",
     "check:docs": "npm run build:docs && git diff --exit-code --quiet docs/api || (echo 'Error: API docs are out of date. Please run npm run build:docs and commit the changes.' && exit 1)",
     "check:format": "prettier --check .",
     "check:unused": "knip",

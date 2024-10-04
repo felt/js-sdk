@@ -11,7 +11,7 @@ import {
 /**
  * @public
  */
-const FeltEmbedOptions = z.object({
+const FeltEmbedOptionsSchema = z.object({
   /**
    * @hidden
    */
@@ -31,4 +31,4 @@ const FeltEmbedOptions = z.object({
 /**
  * @public
  */
-export type FeltEmbedOptionsType = z.infer<typeof FeltEmbedOptions>;
+export type FeltEmbedOptions = z.infer<typeof FeltEmbedOptionsSchema>;

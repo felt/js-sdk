@@ -10,7 +10,7 @@ import type {
   ViewportSetCenterZoomMessage,
   ViewportState,
 } from "./modules/viewport/types";
-import type { FeltEmbedOptionsType } from "./types/embed";
+import type { FeltEmbedOptions } from "./types/embed";
 import type { FeltBoundary, FeltZoom } from "./types/geo";
 
 // This file exists to document the types that are used within the SDK, without
@@ -20,7 +20,7 @@ export type {
   FeltBoundary,
   FeltController,
   FeltControllerWithIframe,
-  FeltEmbedOptionsType as FeltEmbedOptions,
+  FeltEmbedOptions,
   FeltZoom,
   UiController,
   UiControlsOptionsType as UiControlsOptions,

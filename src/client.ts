@@ -3,7 +3,7 @@ import type {
   FeltControllerWithIframe,
 } from "./modules/controller";
 import { makeController } from "./modules/controller";
-import type { FeltEmbedOptionsType } from "./types/embed";
+import type { FeltEmbedOptions } from "./types/embed";
 
 /**
  * The Felt SDK is a library for embedding Felt maps into your website,
@@ -20,8 +20,8 @@ export const Felt = {
    * @param options - The options to configure the map.
    * @returns
    */
-  embed(container: HTMLElement, mapId: string, options?: FeltEmbedOptionsType) {
-    const defaultOptions: FeltEmbedOptionsType = {
+  embed(container: HTMLElement, mapId: string, options?: FeltEmbedOptions) {
+    const defaultOptions: FeltEmbedOptions = {
       uiControls: {
         showLegend: true,
         cooperativeGestures: true,
@@ -34,17 +34,15 @@ export const Felt = {
       origin: "https://felt.com",
     };
 
-    const propToUrlParam: Record<
-      keyof FeltEmbedOptionsType["uiControls"],
-      string
-    > = {
-      showLegend: "legend",
-      cooperativeGestures: "cooperativeGestures",
-      fullScreenButton: "link",
-      geolocation: "geolocation",
-      zoomControls: "zoomControls",
-      scaleBar: "scaleBar",
-    };
+    const propToUrlParam: Record<keyof FeltEmbedOptions["uiControls"], string> =
+      {
+        showLegend: "legend",
+        cooperativeGestures: "cooperativeGestures",
+        fullScreenButton: "link",
+        geolocation: "geolocation",
+        zoomControls: "zoomControls",
+        scaleBar: "scaleBar",
+      };
 
     const uiControlsOptions = {
       ...defaultOptions.uiControls,

@@ -4,9 +4,9 @@
 
 ```ts
 
-import { a } from './types-DqfRJof_.js';
-import { U } from './types-DqfRJof_.js';
-import { V } from './types-DqfRJof_.js';
+import { a } from './types-gxpdyMeJ.js';
+import { U } from './types-gxpdyMeJ.js';
+import { V } from './types-gxpdyMeJ.js';
 import * as z from 'zod';
 
 // @public
@@ -22,18 +22,17 @@ type FeltController = {
 };
 
 // @public (undocumented)
-interface FeltControllerWithIframe extends FeltController {
+type FeltControllerWithIframe = FeltController & {
     iframe: HTMLIFrameElement;
-}
+};
 
-// Warning: (ae-forgotten-export) The symbol "FeltEmbedOptions_2" needs to be exported by the entry point client.d.ts
+// Warning: (ae-forgotten-export) The symbol "FeltEmbedOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public (undocumented)
-export interface FeltEmbedOptions extends z.infer<typeof FeltEmbedOptions_2> {
-}
+type FeltEmbedOptions = z.infer<typeof FeltEmbedOptionsSchema>;
 
 // @public (undocumented)
-const FeltEmbedOptions_2: z.ZodObject<{
+const FeltEmbedOptionsSchema: z.ZodObject<{
     origin: z.ZodOptional<z.ZodString>;
     uiControls: z.ZodObject<{
         showLegend: z.ZodOptional<z.ZodBoolean>;
@@ -132,10 +131,11 @@ type ViewportController = {
 
 // Warnings were encountered during analysis:
 //
-// dist/client.d.ts:74:5 - (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:79:5 - (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:209:5 - (ae-forgotten-export) The symbol "FeltControllerWithIframe" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:216:5 - (ae-forgotten-export) The symbol "FeltController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:73:5 - (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:78:5 - (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:207:5 - (ae-forgotten-export) The symbol "FeltEmbedOptions" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:207:5 - (ae-forgotten-export) The symbol "FeltControllerWithIframe" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:214:5 - (ae-forgotten-export) The symbol "FeltController" needs to be exported by the entry point client.d.ts
 
 // (No @packageDocumentation comment for this package)
 

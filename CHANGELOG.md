@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 0.1.0
+
+### Minor Changes
+
+- a97b32c: New Felt.connect API and updated docs, CI, etc.
+
 ## 0.0.9
 
 ### Patch Changes

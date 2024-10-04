@@ -30,7 +30,6 @@
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.15.4",
     "@changesets/cli": "^2.27.7",
-    "@microsoft/api-documenter": "^7.25.17",
     "@microsoft/api-extractor": "^7.47.9",
     "@types/node": "^22.7.4",
     "@zamiell/typedoc-plugin-not-exported": "^0.3.0",
@@ -53,7 +52,7 @@
     "build": "npm run build:compile && npm run build:docs",
     "build:compile": "tsup && attw --pack .",
     "build:docs": "typedoc",
-    "check": "npm run check:format && npm run check:unused && npm run check:types && npm run check:test:unit",
+    "check": "npm run check:format && npm run check:unused && npm run check:types && npm run check:test:unit && npm run check:docs",
     "check:docs": "npm run build:docs && git diff --exit-code --quiet docs/api || (echo 'Error: API docs are out of date. Please run npm run build:docs and commit the changes.' && exit 1)",
     "check:format": "prettier --check .",
     "check:unused": "knip",

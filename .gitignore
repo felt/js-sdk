@@ -2,5 +2,5 @@ node_modules
 dist
 temp
 types-*.d.ts
-./*.js
-./*.d.ts
+/*.js
+/*.d.ts

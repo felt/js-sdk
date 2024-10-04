@@ -96,7 +96,7 @@ export const Felt = {
         { once: true },
       );
     })
-      .then(Felt.control)
+      .then(Felt.connect)
       .then((controller) => {
         const iframeController = controller as FeltControllerWithIframe;
         Object.defineProperties(iframeController, {
@@ -117,7 +117,7 @@ export const Felt = {
    * @param feltWindow - The iframe element containing the Felt map.
    * @returns
    */
-  control(feltWindow: Window): Promise<FeltController> {
+  connect(feltWindow: Window): Promise<FeltController> {
     const controller = makeController(feltWindow);
 
     return new Promise((resolve, reject) => {

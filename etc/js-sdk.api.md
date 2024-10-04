@@ -12,7 +12,7 @@ import * as z from 'zod';
 // @public
 export const Felt: {
     embed(container: HTMLElement, mapId: string, options?: FeltEmbedOptions): Promise<FeltControllerWithIframe>;
-    control(feltWindow: Window): Promise<FeltController>;
+    connect(feltWindow: Window): Promise<FeltController>;
 };
 
 // @public

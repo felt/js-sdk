@@ -15,5 +15,9 @@
   "typeDeclarationFormat": "table",
   "propertyMembersFormat": "table",
 
-  "treatWarningsAsErrors": true
+  "treatWarningsAsErrors": true,
+
+  "tableColumnSettings": {
+    "hideInherited": true
+  }
 }

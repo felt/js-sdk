@@ -79,7 +79,7 @@ describe("Felt SDK integration", () => {
   });
 
   test("queries work", async () => {
-    const client = await Felt.control(window);
+    const client = await Felt.connect(window);
 
     expect(client.viewport.get()).resolves.toEqual({
       center: {
@@ -92,7 +92,7 @@ describe("Felt SDK integration", () => {
   });
 
   test("commands work", async () => {
-    const client = await Felt.control(window);
+    const client = await Felt.connect(window);
 
     vi.spyOn(methods, "viewport.goto");
 
@@ -120,7 +120,7 @@ describe("Felt SDK integration", () => {
   });
 
   test("listeners work", async () => {
-    const client = await Felt.control(window);
+    const client = await Felt.connect(window);
 
     const spy = vi.fn();
 
@@ -158,7 +158,7 @@ describe("Felt SDK integration", () => {
   // report in the same way as messages that are Felt SDK messages that have
   // invalid payloads.
   test("Unknown messages are handled", async () => {
-    await Felt.control(window);
+    await Felt.connect(window);
     window.postMessage({ type: "foo" });
 
     expect(onUnknownMessage).toHaveBeenCalledOnce();
@@ -166,7 +166,7 @@ describe("Felt SDK integration", () => {
   });
 
   test("Invalid messages are handled", async () => {
-    await Felt.control(window);
+    await Felt.connect(window);
 
     window.postMessage({
       // the type field is correct but other fields are wrong
@@ -179,7 +179,7 @@ describe("Felt SDK integration", () => {
   });
 
   test("All client messages are handled", async () => {
-    const client = await Felt.control(window);
+    const client = await Felt.connect(window);
 
     // iterate through all the functions in the client, calling them
     // and making sure that we don't get any unknown messages

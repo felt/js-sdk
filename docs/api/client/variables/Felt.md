@@ -14,4 +14,4 @@ allowing you to control and inspect the map programmatically.
 | Name | Type | Description |
 | ------ | ------ | ------ |
 | `embed()` | `Promise`\<[`FeltControllerWithIframe`](../../types/interfaces/FeltControllerWithIframe.md)\> | Embeds a Felt map into the provided container. |
-| `control()` | `Promise`\<[`FeltController`](../../types/interfaces/FeltController.md)\> | Binds to an existing Felt map iframe. |
+| `connect()` | `Promise`\<[`FeltController`](../../types/interfaces/FeltController.md)\> | Binds to an existing Felt map iframe. |

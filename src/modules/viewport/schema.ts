@@ -7,13 +7,13 @@ import {
   type ViewportState,
 } from "./types";
 
-export const viewportModule = {
+export const viewportSchema = {
   commands: [ViewportGotoMessage],
   queries: [ViewportGetMessage],
   listeners: [ViewportOnMoveMessage],
 } satisfies ModuleSchema;
 
-export type ViewportModule = {
+export type ViewportSchema = {
   commands: {
     ["viewport.goto"]: ViewportGotoMessage;
   };

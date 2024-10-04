@@ -1,4 +1,4 @@
-import type { AllModules } from "../modules";
+import type { AllModules } from "../modules/schema";
 import type { UnionToIntersection } from "./utils";
 
 export type FeltHandlers = {

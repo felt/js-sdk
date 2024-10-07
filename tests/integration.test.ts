@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { Felt } from "../src/client.js";
 import { createMessageHandler } from "../src/handler.js";
+import type { ViewportState } from "../src/types.js";
 import { createWindow } from "./window.js";
 
 type Methods = Parameters<typeof createMessageHandler>[1]["methods"];
@@ -21,35 +22,28 @@ describe("Felt SDK integration", () => {
   const onInvalidMessage = vi.fn();
   const onUnknownMessage = vi.fn();
 
+  const fakeViewportState: ViewportState = {
+    center: {
+      latitude: 0,
+      longitude: 0,
+    },
+    zoom: 0,
+    bounds: [0, 0, 0, 0],
+  };
+
   beforeEach(() => {
     window = createWindow();
 
     methods = {
       "ui_controls.update": () => {},
       "viewport.goto": () => {},
-      "viewport.get": async () => {
-        return {
-          center: {
-            latitude: 0,
-            longitude: 0,
-          },
-          zoom: 0,
-          bounds: [0, 0, 0, 0],
-        };
-      },
+      "viewport.get": () => fakeViewportState,
     };
 
     listeners = {
       "viewport.move": (callback) => {
         function handleClick() {
-          callback({
-            center: {
-              latitude: 0,
-              longitude: 0,
-            },
-            zoom: 0,
-            bounds: [0, 0, 0, 0],
-          });
+          callback(fakeViewportState);
         }
 
         window.addEventListener("click", handleClick);
@@ -78,17 +72,17 @@ describe("Felt SDK integration", () => {
     tearDown();
   });
 
-  test("queries work", async () => {
+  test("sync queries work", async () => {
     const client = await Felt.connect(window);
 
-    expect(client.viewport.get()).resolves.toEqual({
-      center: {
-        latitude: 0,
-        longitude: 0,
-      },
-      zoom: 0,
-      bounds: [0, 0, 0, 0],
-    });
+    expect(client.viewport.get()).resolves.toEqual(fakeViewportState);
+  });
+
+  test("async queries work", async () => {
+    methods["viewport.get"] = () => Promise.resolve(fakeViewportState);
+    const client = await Felt.connect(window);
+
+    expect(client.viewport.get()).resolves.toEqual(fakeViewportState);
   });
 
   test("commands work", async () => {

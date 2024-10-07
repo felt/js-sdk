@@ -1,5 +1,5 @@
 import type { AllModules } from "../modules/schema";
-import type { UnionToIntersection } from "./utils";
+import type { PromiseOrNot, UnionToIntersection } from "./utils";
 
 export type FeltHandlers = {
   methods: FeltCommandHandlers & FeltQueryHandlers;
@@ -32,7 +32,7 @@ type FeltCommandHandlers = CommandHandlers<ExtractParams<CommandSpec>>;
 type QueryHandlers<T> = {
   [K in keyof T as K & string]: (
     request: T[K] extends { request: any } ? T[K]["request"] : never,
-  ) => Promise<T[K] extends { response: any } ? T[K]["response"] : never>;
+  ) => PromiseOrNot<T[K] extends { response: any } ? T[K]["response"] : never>;
 };
 
 type FeltQueryHandlers = QueryHandlers<ExtractParamsFromQueries<QuerySpec>>;

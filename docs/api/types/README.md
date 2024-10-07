@@ -1,10 +1,10 @@
 ## Index
 
-### Controller
+### Other
 
-- [FeltController](interfaces/FeltController.md)
-- [FeltControllerWithIframe](interfaces/FeltControllerWithIframe.md)
-- [FeltEmbedOptions](interfaces/FeltEmbedOptions.md)
+- [FeltController](README.md#feltcontroller)
+- [FeltControllerWithIframe](README.md#feltcontrollerwithiframe)
+- [FeltEmbedOptions](README.md#feltembedoptions)
 
 ### Types
 
@@ -22,3 +22,21 @@
 - [ViewportCenterZoom](interfaces/ViewportCenterZoom.md)
 - [ViewportState](interfaces/ViewportState.md)
 - [ViewportSetCenterZoomMessage](interfaces/ViewportSetCenterZoomMessage.md)
+
+## Other
+
+### FeltController
+
+Re-exports [FeltController](../client/interfaces/FeltController.md)
+
+***
+
+### FeltControllerWithIframe
+
+Re-exports [FeltControllerWithIframe](../client/interfaces/FeltControllerWithIframe.md)
+
+***
+
+### FeltEmbedOptions
+
+Re-exports [FeltEmbedOptions](../client/interfaces/FeltEmbedOptions.md)

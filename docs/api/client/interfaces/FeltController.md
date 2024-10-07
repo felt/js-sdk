@@ -5,7 +5,7 @@ The various ways to interact with the map are namespaced for clarity.
 
 ### viewport
 
-> **viewport**: [`ViewportController`](ViewportController.md)
+> **viewport**: [`ViewportController`](../../types/interfaces/ViewportController.md)
 
 The viewport controller allows you to control the viewport of the map.
 
@@ -13,7 +13,7 @@ The viewport controller allows you to control the viewport of the map.
 
 ### ui
 
-> **ui**: [`UiController`](UiController.md)
+> **ui**: [`UiController`](../../types/interfaces/UiController.md)
 
 The UI controllers allows you to enable and disable UI controls on the
 embedded map.

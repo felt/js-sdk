@@ -8,7 +8,7 @@
 
 > **uiControls**: `object` = `UiControlsOptionsSchema`
 
-[UiControlsOptions](UiControlsOptions.md)
+[UiControlsOptions](../../types/interfaces/UiControlsOptions.md)
 
 #### showLegend?
 
@@ -118,7 +118,7 @@ true
 
 > `optional` **initialViewport**: `object`
 
-[ViewportCenterZoom](ViewportCenterZoom.md)
+[ViewportCenterZoom](../../types/interfaces/ViewportCenterZoom.md)
 
 #### center
 

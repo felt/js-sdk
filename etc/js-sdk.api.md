@@ -16,20 +16,20 @@ export const Felt: {
 };
 
 // @public
-type FeltController = {
+export type FeltController = {
     viewport: ViewportController;
     ui: UiController;
 };
 
 // @public
-type FeltControllerWithIframe = FeltController & {
+export type FeltControllerWithIframe = FeltController & {
     iframe: HTMLIFrameElement;
 };
 
 // Warning: (ae-forgotten-export) The symbol "FeltEmbedOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public
-interface FeltEmbedOptions extends z.infer<typeof FeltEmbedOptionsSchema> {
+export interface FeltEmbedOptions extends z.infer<typeof FeltEmbedOptionsSchema> {
 }
 
 // @public (undocumented)
@@ -134,9 +134,6 @@ type ViewportController = {
 //
 // dist/client.d.ts:75:5 - (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
 // dist/client.d.ts:80:5 - (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:212:5 - (ae-forgotten-export) The symbol "FeltEmbedOptions" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:212:5 - (ae-forgotten-export) The symbol "FeltControllerWithIframe" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:219:5 - (ae-forgotten-export) The symbol "FeltController" needs to be exported by the entry point client.d.ts
 
 // (No @packageDocumentation comment for this package)
 

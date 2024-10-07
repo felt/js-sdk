@@ -19,13 +19,13 @@ The container element to embed the map into.
 
 The ID of the map to embed.
 
-• **options?**: [`FeltEmbedOptions`](../../types/interfaces/FeltEmbedOptions.md)
+• **options?**: [`FeltEmbedOptions`](../interfaces/FeltEmbedOptions.md)
 
 The options to configure the map.
 
 #### Returns
 
-`Promise`\<[`FeltControllerWithIframe`](../../types/interfaces/FeltControllerWithIframe.md)\>
+`Promise`\<[`FeltControllerWithIframe`](../interfaces/FeltControllerWithIframe.md)\>
 
 ### connect()
 
@@ -39,4 +39,4 @@ The iframe element containing the Felt map.
 
 #### Returns
 
-`Promise`\<[`FeltController`](../../types/interfaces/FeltController.md)\>
+`Promise`\<[`FeltController`](../interfaces/FeltController.md)\>

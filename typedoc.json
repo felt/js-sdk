@@ -16,6 +16,8 @@
   "typeDeclarationFormat": "list",
   "propertyMembersFormat": "list",
 
+  "categoryOrder": ["Main", "*"],
+
   "hideBreadcrumbs": true,
   "hidePageHeader": true,
   "hidePageTitle": true,

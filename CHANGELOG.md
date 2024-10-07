@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 0.1.2
+
+### Patch Changes
+
+- aef6be2: Remove unnecessary files from build
+
 ## 0.1.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 0.1.4
+
+### Patch Changes
+
+- 7ac0f05: Add required exports to client package
+
 ## 0.1.3
 
 ### Patch Changes

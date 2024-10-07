@@ -2,23 +2,14 @@ import type { AllModules } from "../modules/schema";
 import type { PromiseOrNot, UnionToIntersection } from "./utils";
 
 export type FeltHandlers = {
-  methods: FeltCommandHandlers & FeltQueryHandlers;
+  methods: FeltMethodHandlers;
   listeners: FeltListenerHandlers;
 };
 
-type CommandSpec = UnionToIntersection<AllModules["commands"]>;
-type QuerySpec = UnionToIntersection<AllModules["queries"]>;
+type MethodSpec = UnionToIntersection<AllModules["methods"]>;
 type ListenerSpec = UnionToIntersection<AllModules["listeners"]>;
 
-type CommandHandlers<T> = {
-  [K in keyof T as K & string]: (payload: T[K]) => void;
-};
-
-type ExtractParams<T extends Record<string, { params: any }>> = {
-  [K in keyof T]: T[K] extends { params: infer P } ? P : never;
-};
-
-type ExtractParamsFromQueries<
+type ExtractMethodParams<
   T extends Record<string, { request: { params?: any }; response: any }>,
 > = {
   [K in keyof T]: {
@@ -27,15 +18,13 @@ type ExtractParamsFromQueries<
   };
 };
 
-type FeltCommandHandlers = CommandHandlers<ExtractParams<CommandSpec>>;
-
-type QueryHandlers<T> = {
+type MethodHandlers<T> = {
   [K in keyof T as K & string]: (
     request: T[K] extends { request: any } ? T[K]["request"] : never,
   ) => PromiseOrNot<T[K] extends { response: any } ? T[K]["response"] : never>;
 };
 
-type FeltQueryHandlers = QueryHandlers<ExtractParamsFromQueries<QuerySpec>>;
+type FeltMethodHandlers = MethodHandlers<ExtractMethodParams<MethodSpec>>;
 
 type ListenerHandlers<T> = {
   [K in keyof T as K & string]: (
@@ -76,38 +65,21 @@ export function listener<TEventName extends keyof ListenerSpec>(
   };
 }
 
-type OneCommand<K extends keyof CommandSpec> = {
-  [K1 in K]: CommandSpec[K1];
+type MaybeOneMethod<K extends keyof MethodSpec> = {
+  [K1 in K]: MethodSpec[K1]["request"];
 }[K]["params"];
 
-type FeltCommand<TKey extends keyof CommandSpec> = (
-  payload: OneCommand<TKey>,
-) => void;
+type OneMethod<K extends keyof MethodSpec> =
+  MaybeOneMethod<K> extends undefined ? void : MaybeOneMethod<K>;
 
-export function command<TKey extends keyof CommandSpec>(
+type FeltMethod<TKey extends keyof MethodSpec> = (
+  payload: OneMethod<TKey>,
+) => Promise<MethodSpec[TKey]["response"]>;
+
+export function method<TKey extends keyof MethodSpec>(
   feltWindow: Window,
   type: TKey,
-): FeltCommand<TKey> {
-  return (params) => {
-    feltWindow.postMessage({ type, params }, "*");
-  };
-}
-
-type MaybeOneQuery<K extends keyof QuerySpec> = {
-  [K1 in K]: QuerySpec[K1]["request"];
-}[K]["params"];
-
-type OneQuery<K extends keyof QuerySpec> =
-  MaybeOneQuery<K> extends undefined ? void : MaybeOneQuery<K>;
-
-type FeltQuery<TKey extends keyof QuerySpec> = (
-  payload: OneQuery<TKey>,
-) => Promise<QuerySpec[TKey]["response"]>;
-
-export function query<TKey extends keyof QuerySpec>(
-  feltWindow: Window,
-  type: TKey,
-): FeltQuery<TKey> {
+): FeltMethod<TKey> {
   return (params) => {
     const messageChannel = new MessageChannel();
     feltWindow.postMessage({ type, params }, "*", [messageChannel.port2]);

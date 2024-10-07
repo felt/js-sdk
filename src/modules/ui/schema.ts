@@ -2,15 +2,16 @@ import type { ModuleSchema } from "../../lib/schema";
 import { UiControlsMessage } from "./types";
 
 export const uiSchema = {
-  commands: [UiControlsMessage],
-  queries: null,
+  methods: [UiControlsMessage],
   listeners: null,
 } satisfies ModuleSchema;
 
 export type UiSchema = {
-  commands: {
-    ["ui_controls.update"]: UiControlsMessage;
+  methods: {
+    ["ui_controls.update"]: {
+      request: UiControlsMessage;
+      response: void;
+    };
   };
-  queries: {};
   listeners: {};
 };

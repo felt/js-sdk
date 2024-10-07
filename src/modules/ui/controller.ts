@@ -1,8 +1,8 @@
-import { command } from "../../types/interface";
+import { method } from "../../types/interface";
 import type { UiControlsOptions } from "./types";
 
 export const uiController = (feltWindow: Window) => ({
-  update: command(feltWindow, "ui_controls.update"),
+  update: method(feltWindow, "ui_controls.update"),
 });
 
 /**

@@ -1,12 +1,12 @@
-import { command, listener, query } from "../../types/interface";
+import { listener, method } from "../../types/interface";
 import type { ViewportSetCenterZoomMessage, ViewportState } from "./types";
 
 /**
  * @ignore
  */
 export const viewportController = (feltWindow: Window): ViewportController => ({
-  goto: command(feltWindow, "viewport.goto"),
-  get: query(feltWindow, "viewport.get"),
+  goto: method(feltWindow, "viewport.goto"),
+  get: method(feltWindow, "viewport.get"),
   onMove: listener(feltWindow, "viewport.move"),
 });
 

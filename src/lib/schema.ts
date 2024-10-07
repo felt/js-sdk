@@ -3,14 +3,12 @@ import * as z from "zod";
 import { allModules } from "../modules/schema";
 
 export type ModuleSchema = {
-  commands: Array<z.ZodDiscriminatedUnionOption<"type">>;
-  queries: null | Array<z.ZodDiscriminatedUnionOption<"type">>;
+  methods: null | Array<z.ZodDiscriminatedUnionOption<"type">>;
   listeners: null | Array<z.ZodDiscriminatedUnionOption<"eventName">>;
 };
 
 const mergedSchemas = {
-  commands: allModules.map((schema) => schema.commands).flat(),
-  queries: allModules.map((schema) => schema.queries ?? []).flat(),
+  methods: allModules.map((schema) => schema.methods ?? []).flat(),
   listeners: allModules.map((schema) => schema.listeners ?? []).flat(),
 } satisfies ModuleSchema;
 
@@ -38,8 +36,7 @@ export const AllMessagesSchema = z.discriminatedUnion("type", [
   ReadySchema,
   AddListenerSchema,
   RemoveListenerSchema,
-  ...mergedSchemas.commands,
-  ...mergedSchemas.queries,
+  ...mergedSchemas.methods,
 ]);
 
 /**

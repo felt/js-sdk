@@ -8,16 +8,16 @@ import {
 } from "./types";
 
 export const viewportSchema = {
-  commands: [ViewportGotoMessage],
-  queries: [ViewportGetMessage],
+  methods: [ViewportGotoMessage, ViewportGetMessage],
   listeners: [ViewportOnMoveMessage],
 } satisfies ModuleSchema;
 
 export type ViewportSchema = {
-  commands: {
-    ["viewport.goto"]: ViewportGotoMessage;
-  };
-  queries: {
+  methods: {
+    ["viewport.goto"]: {
+      request: ViewportGotoMessage;
+      response: void;
+    };
     ["viewport.get"]: {
       request: ViewportGetMessage;
       response: ViewportState;

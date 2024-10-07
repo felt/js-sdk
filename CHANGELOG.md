@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 0.1.3
+
+### Patch Changes
+
+- 48d7e1b: Use methods instead of commands and queries
+
 ## 0.1.2
 
 ### Patch Changes

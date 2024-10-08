@@ -1,3 +1,6 @@
+/**
+ * The types that are documented in the SDK API reference.
+ */
 import type {
   FeltController,
   FeltControllerWithIframe,
@@ -7,14 +10,11 @@ import type { UiControlsOptions } from "./modules/ui/types";
 import type { ViewportController } from "./modules/viewport/controller";
 import type {
   ViewportCenterZoom,
-  ViewportSetCenterZoomMessage,
+  ViewportSetCenterZoomParams,
   ViewportState,
 } from "./modules/viewport/types";
 import type { FeltEmbedOptions } from "./types/embed";
 import type { FeltBoundary, FeltZoom } from "./types/geo";
-
-// This file exists to document the types that are used within the SDK, without
-// having to export them as part of the public API of the SDK.
 
 export type {
   FeltBoundary,
@@ -26,6 +26,6 @@ export type {
   UiControlsOptions,
   ViewportCenterZoom,
   ViewportController,
-  ViewportSetCenterZoomMessage,
+  ViewportSetCenterZoomParams,
   ViewportState,
 };

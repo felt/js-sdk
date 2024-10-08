@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { Felt } from "../src/client.js";
 import { createWindow } from "./window.js";
 
@@ -49,7 +49,7 @@ describe("Embedding an iframe with theFelt SDK", () => {
   });
 
   describe("embed", () => {
-    it("should create an iframe and return a controller", async () => {
+    test("should create an iframe and return a controller", async () => {
       const embedPromise = Felt.embed(container, "test-map-id", {
         uiControls: {},
       });
@@ -72,7 +72,7 @@ describe("Embedding an iframe with theFelt SDK", () => {
       expect(controller.ui).toBeTruthy();
     });
 
-    it("should set correct iframe attributes", async () => {
+    test("should set correct iframe attributes", async () => {
       Felt.embed(container, "test-map-id");
 
       const iframe = container.querySelector("iframe") as HTMLIFrameElement;
@@ -83,7 +83,7 @@ describe("Embedding an iframe with theFelt SDK", () => {
       expect(iframe.referrerPolicy).toBe("strict-origin-when-cross-origin");
     });
 
-    it("should handle custom options", async () => {
+    test("should handle custom options", async () => {
       const options = {
         uiControls: {
           showLegend: false,

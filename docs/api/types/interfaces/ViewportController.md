@@ -13,7 +13,7 @@ Moves the map to the specified location.
 
 #### Parameters
 
-• **viewport**: [`ViewportSetCenterZoomMessage`](ViewportSetCenterZoomMessage.md)
+• **viewport**: [`ViewportSetCenterZoomParams`](ViewportSetCenterZoomParams.md)
 
 #### Returns
 
@@ -41,13 +41,15 @@ Gets the current state of the viewport.
 
 ### onMove()
 
-> **onMove**(`callback`): `VoidFunction`
+> **onMove**(`args`): `VoidFunction`
 
 Adds a listener for when the viewport changes.
 
 #### Parameters
 
-• **callback**
+• **args**
+
+• **args.handler**
 
 This callback is called with the current viewport state whenever
 the viewport changes.
@@ -61,7 +63,9 @@ A function to unsubscribe from the listener
 #### Example
 
 ```typescript
-const unsubscribe = Felt.viewport.onMove(viewport => console.log(viewport.center.latitude));
+const unsubscribe = Felt.viewport.onMove({
+  handler: viewport => console.log(viewport.center.latitude),
+});
 
 // later on...
 unsubscribe();

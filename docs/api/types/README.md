@@ -21,7 +21,7 @@
 - [ViewportController](interfaces/ViewportController.md)
 - [ViewportCenterZoom](interfaces/ViewportCenterZoom.md)
 - [ViewportState](interfaces/ViewportState.md)
-- [ViewportSetCenterZoomMessage](interfaces/ViewportSetCenterZoomMessage.md)
+- [ViewportSetCenterZoomParams](interfaces/ViewportSetCenterZoomParams.md)
 
 ## Other
 

@@ -1,5 +1,15 @@
 import * as z from "zod";
 
+/**
+ * @public
+ * @category UI Controls
+ */
+export interface UiControlsOptions
+  extends z.infer<typeof UiControlsOptionsSchema> {}
+
+/**
+ * @internal
+ */
 export const UiControlsOptionsSchema = z.object({
   /**
    * Whether or not the legend is shown.
@@ -65,16 +75,3 @@ export const UiControlsOptionsSchema = z.object({
    */
   scaleBar: z.boolean().optional(),
 });
-
-/**
- * @category UI Controls
- */
-export interface UiControlsOptions
-  extends z.infer<typeof UiControlsOptionsSchema> {}
-
-// MESSAGE TYPES
-export const UiControlsMessage = z.object({
-  type: z.literal("ui_controls.update"),
-  params: UiControlsOptionsSchema,
-});
-export interface UiControlsMessage extends z.infer<typeof UiControlsMessage> {}

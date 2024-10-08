@@ -4,9 +4,8 @@
 
 ```ts
 
-import { a } from './types-CAJV2DLO.js';
-import { U } from './types-CAJV2DLO.js';
-import { V } from './types-CAJV2DLO.js';
+import { a } from './types-DZ6dRbiR.js';
+import { V } from './types-DZ6dRbiR.js';
 import * as z from 'zod';
 
 // @public
@@ -120,20 +119,53 @@ const FeltEmbedOptionsSchema: z.ZodObject<{
 
 // @public
 interface UiController {
-    update(controls: U): void;
+    // Warning: (ae-forgotten-export) The symbol "UiControlsOptions" needs to be exported by the entry point client.d.ts
+    update(controls: UiControlsOptions): void;
 }
+
+// Warning: (ae-forgotten-export) The symbol "UiControlsOptionsSchema" needs to be exported by the entry point client.d.ts
+//
+// @public
+interface UiControlsOptions extends z.infer<typeof UiControlsOptionsSchema> {
+}
+
+// @internal (undocumented)
+const UiControlsOptionsSchema: z.ZodObject<{
+    showLegend: z.ZodOptional<z.ZodBoolean>;
+    cooperativeGestures: z.ZodOptional<z.ZodBoolean>;
+    fullScreenButton: z.ZodOptional<z.ZodBoolean>;
+    geolocation: z.ZodOptional<z.ZodBoolean>;
+    zoomControls: z.ZodOptional<z.ZodBoolean>;
+    scaleBar: z.ZodOptional<z.ZodBoolean>;
+}, "strip", z.ZodTypeAny, {
+    showLegend?: boolean | undefined;
+    cooperativeGestures?: boolean | undefined;
+    fullScreenButton?: boolean | undefined;
+    geolocation?: boolean | undefined;
+    zoomControls?: boolean | undefined;
+    scaleBar?: boolean | undefined;
+}, {
+    showLegend?: boolean | undefined;
+    cooperativeGestures?: boolean | undefined;
+    fullScreenButton?: boolean | undefined;
+    geolocation?: boolean | undefined;
+    zoomControls?: boolean | undefined;
+    scaleBar?: boolean | undefined;
+}>;
 
 // @public
 type ViewportController = {
     goto(viewport: V): void;
     get(): Promise<a>;
-    onMove(callback: (event: a) => void): VoidFunction;
+    onMove(args: {
+        handler: (viewport: a) => void;
+    }): VoidFunction;
 };
 
 // Warnings were encountered during analysis:
 //
-// dist/client.d.ts:75:5 - (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:80:5 - (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:166:5 - (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:171:5 - (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
 
 // (No @packageDocumentation comment for this package)
 

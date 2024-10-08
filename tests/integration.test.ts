@@ -16,7 +16,7 @@ describe("Felt SDK integration", () => {
   // We really want to test that the messaging protocol works - if we know that it
   // works for each type of message then we can trust that it will work for the
   // functionality that we build on top of it.
-  let methods: Methods;
+  let methods: Partial<Methods>;
   let listeners: Partial<Listeners>;
 
   const onInvalidMessage = vi.fn();
@@ -41,9 +41,9 @@ describe("Felt SDK integration", () => {
     };
 
     listeners = {
-      "viewport.move": (callback) => {
+      "viewport.move": ({ handler }) => {
         function handleClick() {
-          callback(fakeViewportState);
+          handler(fakeViewportState);
         }
 
         window.addEventListener("click", handleClick);
@@ -118,7 +118,7 @@ describe("Felt SDK integration", () => {
 
     const spy = vi.fn();
 
-    const unsub = client.viewport.onMove(spy);
+    const unsub = client.viewport.onMove({ handler: spy });
 
     window.dispatchEvent(new Event("click"));
     // Wait for the event to be processed
@@ -179,7 +179,10 @@ describe("Felt SDK integration", () => {
     // and making sure that we don't get any unknown messages
     Object.values(client).forEach((namespace) => {
       Object.values(namespace).forEach((fn) => {
-        (fn as VoidFunction)();
+        // @ts-expect-error -- we need to pass some object that can be destructured in
+        // our handlers - we don't actually need to do anything with it, but we need to
+        // pass **something**.
+        (fn as VoidFunction)({});
       });
     });
 

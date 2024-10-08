@@ -1,3 +1,7 @@
+The parameters for the `viewport.goto` method.
+
+[ViewportController.goto](ViewportController.md#goto)
+
 ## Extends
 
 - `TypeOf`\<*typeof* `ViewportSetCenterZoomParamsSchema`\>

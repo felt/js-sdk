@@ -29,6 +29,10 @@ const ViewportStateSchema = z.object({
 });
 
 /**
+ * The parameters for the `viewport.goto` method.
+ *
+ * {@link ViewportController.goto}
+ *
  * @category Viewport
  */
 export interface ViewportSetCenterZoomParams
@@ -36,4 +40,17 @@ export interface ViewportSetCenterZoomParams
 export const ViewportSetCenterZoomParamsSchema = z.object({
   type: z.literal("center"),
   location: ViewportCenterZoomSchema.partial(),
+});
+
+/**
+ * The parameters for the `viewport.fitBounds` method.
+ *
+ * {@link ViewportController.fitBounds}
+ *
+ * @category Viewport
+ */
+export interface ViewportFitBoundsParams
+  extends z.infer<typeof ViewportFitBoundsParamsSchema> {}
+export const ViewportFitBoundsParamsSchema = z.object({
+  bounds: FeltBoundarySchema,
 });

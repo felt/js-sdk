@@ -22,6 +22,7 @@
 - [ViewportCenterZoom](interfaces/ViewportCenterZoom.md)
 - [ViewportState](interfaces/ViewportState.md)
 - [ViewportSetCenterZoomParams](interfaces/ViewportSetCenterZoomParams.md)
+- [ViewportFitBoundsParams](interfaces/ViewportFitBoundsParams.md)
 
 ## Other
 

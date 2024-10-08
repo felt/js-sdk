@@ -1,12 +1,17 @@
 import { listener, method } from "../../types/interface";
-import type { ViewportSetCenterZoomParams, ViewportState } from "./types";
+import type {
+  ViewportFitBoundsParams,
+  ViewportSetCenterZoomParams,
+  ViewportState,
+} from "./types";
 
 /**
  * @ignore
  */
 export const viewportController = (feltWindow: Window): ViewportController => ({
-  goto: method(feltWindow, "viewport.goto"),
   get: method(feltWindow, "viewport.get"),
+  goto: method(feltWindow, "viewport.goto"),
+  fitBounds: method(feltWindow, "viewport.fitBounds"),
   onMove: listener(feltWindow, "viewport.move"),
 });
 
@@ -22,6 +27,11 @@ export const viewportController = (feltWindow: Window): ViewportController => ({
  */
 export type ViewportController = {
   /**
+   * Gets the current state of the viewport.
+   */
+  get(): Promise<ViewportState>;
+
+  /**
    * Moves the map to the specified location.
    *
    * @example
@@ -32,15 +42,25 @@ export type ViewportController = {
   goto(viewport: ViewportSetCenterZoomParams): void;
 
   /**
-   * Gets the current state of the viewport.
+   * Fits the map to the specified bounds.
+   *
+   * @example
+   * ```typescript
+   * const west = -122.4194;
+   * const south = 37.7749;
+   * const east = -122.4194;
+   * const north = 37.7749;
+   * Felt.viewport.fitBounds({ bounds: [west, south, east, north] });
+   * ```
    */
-  get(): Promise<ViewportState>;
+  fitBounds(bounds: ViewportFitBoundsParams): void;
 
   /**
    * Adds a listener for when the viewport changes.
    *
    * @returns A function to unsubscribe from the listener
    *
+   * @event
    * @example
    * ```typescript
    * const unsubscribe = Felt.viewport.onMove({

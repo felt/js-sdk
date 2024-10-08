@@ -5,6 +5,18 @@ the viewport changes.
 
 ## Methods
 
+### get()
+
+> **get**(): `Promise`\<[`ViewportState`](ViewportState.md)\>
+
+Gets the current state of the viewport.
+
+#### Returns
+
+`Promise`\<[`ViewportState`](ViewportState.md)\>
+
+***
+
 ### goto()
 
 > **goto**(`viewport`): `void`
@@ -27,17 +39,31 @@ Felt.viewport.goto({ center: { lat: 0, lng: 0 }, zoom: 10 });
 
 ***
 
-### get()
+### fitBounds()
 
-> **get**(): `Promise`\<[`ViewportState`](ViewportState.md)\>
+> **fitBounds**(`bounds`): `void`
 
-Gets the current state of the viewport.
+Fits the map to the specified bounds.
+
+#### Parameters
+
+• **bounds**: [`ViewportFitBoundsParams`](ViewportFitBoundsParams.md)
 
 #### Returns
 
-`Promise`\<[`ViewportState`](ViewportState.md)\>
+`void`
 
-***
+#### Example
+
+```typescript
+const west = -122.4194;
+const south = 37.7749;
+const east = -122.4194;
+const north = 37.7749;
+Felt.viewport.fitBounds({ bounds: [west, south, east, north] });
+```
+
+## Events
 
 ### onMove()
 

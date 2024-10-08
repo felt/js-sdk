@@ -10,6 +10,7 @@ import type { UiControlsOptions } from "./modules/ui/types";
 import type { ViewportController } from "./modules/viewport/controller";
 import type {
   ViewportCenterZoom,
+  ViewportFitBoundsParams,
   ViewportSetCenterZoomParams,
   ViewportState,
 } from "./modules/viewport/types";
@@ -26,6 +27,7 @@ export type {
   UiControlsOptions,
   ViewportCenterZoom,
   ViewportController,
+  ViewportFitBoundsParams,
   ViewportSetCenterZoomParams,
   ViewportState,
 };

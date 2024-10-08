@@ -64,3 +64,14 @@ Steps to add a new module:
    to define the shape of the TypeScript API for that module.
 5. Add your controller to the "root" `src/modules/controller.ts` file, which glues together
    all the modules into a single object.
+
+Once you have added your module:
+
+1. Run `npm run update-api` to run api-extractor which updates the "api spec" file, which allows
+   reviewers to understand the changes made to the API.
+2. Run `npm run build:docs` to generate the docs changes.
+3. Stage or commit your changes. This is important, because the next step will fail if you have
+   docs changes that are unstaged as it is used to check that the docs are up to date.
+4. Run `npm run check` which will check that the package is correctly built, the docs have been
+   updated, the API spec has been updated and the tests are passing.
+5. Push your changes and open a PR.

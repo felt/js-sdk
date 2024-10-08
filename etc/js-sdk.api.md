@@ -4,8 +4,9 @@
 
 ```ts
 
-import { a } from './types-DZ6dRbiR.js';
-import { V } from './types-DZ6dRbiR.js';
+import { a } from './types-2nX7moDq.js';
+import { b } from './types-2nX7moDq.js';
+import { V } from './types-2nX7moDq.js';
 import * as z from 'zod';
 
 // @public
@@ -155,17 +156,18 @@ const UiControlsOptionsSchema: z.ZodObject<{
 
 // @public
 type ViewportController = {
-    goto(viewport: V): void;
-    get(): Promise<a>;
+    get(): Promise<V>;
+    goto(viewport: a): void;
+    fitBounds(bounds: b): void;
     onMove(args: {
-        handler: (viewport: a) => void;
+        handler: (viewport: V) => void;
     }): VoidFunction;
 };
 
 // Warnings were encountered during analysis:
 //
-// dist/client.d.ts:166:5 - (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:171:5 - (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:180:5 - (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:185:5 - (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
 
 // (No @packageDocumentation comment for this package)
 

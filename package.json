@@ -53,7 +53,7 @@
     "build:docs": "typedoc",
     "check": "npm run check:format && npm run check:api && npm run check:unused && npm run check:types && npm run check:test && npm run check:docs",
     "check:api": "npm run build:compile && attw --pack . && api-extractor run",
-    "check:docs": "npm run build:docs && git diff --exit-code --quiet docs/api || (echo 'Error: API docs are out of date. Please run npm run build:docs and commit the changes.' && exit 1)",
+    "check:docs": "npm run build:docs && bash ./scripts/check-api-docs.sh",
     "check:format": "prettier --check .",
     "check:unused": "knip",
     "check:test": "vitest run",

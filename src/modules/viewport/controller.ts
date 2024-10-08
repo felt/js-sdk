@@ -1,5 +1,5 @@
 import { listener, method } from "../../types/interface";
-import type { ViewportSetCenterZoomMessage, ViewportState } from "./types";
+import type { ViewportSetCenterZoomParams, ViewportState } from "./types";
 
 /**
  * @ignore
@@ -29,7 +29,7 @@ export type ViewportController = {
    * Felt.viewport.goto({ center: { lat: 0, lng: 0 }, zoom: 10 });
    * ```
    */
-  goto(viewport: ViewportSetCenterZoomMessage): void;
+  goto(viewport: ViewportSetCenterZoomParams): void;
 
   /**
    * Gets the current state of the viewport.
@@ -39,18 +39,25 @@ export type ViewportController = {
   /**
    * Adds a listener for when the viewport changes.
    *
-   * @param callback - This callback is called with the current viewport state whenever
-   * the viewport changes.
-   *
    * @returns A function to unsubscribe from the listener
    *
    * @example
    * ```typescript
-   * const unsubscribe = Felt.viewport.onMove(viewport => console.log(viewport.center.latitude));
+   * const unsubscribe = Felt.viewport.onMove({
+   *   handler: viewport => console.log(viewport.center.latitude),
+   * });
    *
    * // later on...
    * unsubscribe();
    * ```
    */
-  onMove(callback: (event: ViewportState) => void): VoidFunction;
+  onMove(args: {
+    /**
+     * This callback is called with the current viewport state whenever
+     * the viewport changes.
+     *
+     * @param viewport - The current viewport state.
+     */
+    handler: (viewport: ViewportState) => void;
+  }): VoidFunction;
 };

@@ -1,6 +1,6 @@
 ## Extends
 
-- `TypeOf`\<*typeof* `ViewportSetCenterZoomMessage`\>
+- `TypeOf`\<*typeof* `ViewportSetCenterZoomParamsSchema`\>
 
 ## Properties
 

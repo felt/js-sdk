@@ -18,6 +18,15 @@ type ExtractMethodParams<
   };
 };
 
+type ExtractListenerParams<
+  T extends Record<string, { options: any; eventParams: any }>,
+> = {
+  [K in keyof T]: {
+    options: T[K]["options"];
+    eventParams: T[K]["eventParams"];
+  };
+};
+
 type MethodHandlers<T> = {
   [K in keyof T as K & string]: (
     request: T[K] extends { request: any } ? T[K]["request"] : never,
@@ -27,33 +36,39 @@ type MethodHandlers<T> = {
 type FeltMethodHandlers = MethodHandlers<ExtractMethodParams<MethodSpec>>;
 
 type ListenerHandlers<T> = {
-  [K in keyof T as K & string]: (
-    callback: (event: T[K]) => void,
-  ) => VoidFunction;
+  [K in keyof T as K & string]: (args: {
+    handler: (
+      event: T[K] extends { eventParams: any } ? T[K]["eventParams"] : never,
+    ) => void;
+    options: T[K] extends { options: any } ? T[K]["options"] : never;
+  }) => VoidFunction;
 };
 
-type FeltListenerHandlers = ListenerHandlers<ListenerSpec>;
+type FeltListenerHandlers = ListenerHandlers<
+  ExtractListenerParams<ListenerSpec>
+>;
 
-type FeltEventListener<TKey extends keyof ListenerSpec> = (
-  callback: (event: ListenerSpec[TKey]) => void,
-) => VoidFunction;
+type FeltEventListener<TKey extends keyof ListenerSpec> = (args: {
+  handler: (event: ListenerSpec[TKey]["eventParams"]) => void;
+  options: ListenerSpec[TKey]["options"];
+}) => VoidFunction;
 
 export function listener<TEventName extends keyof ListenerSpec>(
   feltWindow: Window,
   eventName: TEventName,
 ): FeltEventListener<TEventName> {
-  return (callback) => {
+  return ({ handler, options }) => {
     const messageChannel = new MessageChannel();
 
     const id = crypto.randomUUID();
     feltWindow.postMessage(
-      { type: `felt.addListener`, event: { eventName, id } },
+      { type: `felt.addListener`, event: { eventName, id, options } },
       "*",
       [messageChannel.port2],
     );
 
     messageChannel.port1.onmessage = (event) => {
-      callback(event.data);
+      handler(event.data);
     };
 
     return () => {

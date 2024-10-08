@@ -1,7 +1,10 @@
 import { method } from "../../types/interface";
 import type { UiControlsOptions } from "./types";
 
-export const uiController = (feltWindow: Window) => ({
+/**
+ * @ignore
+ */
+export const uiController = (feltWindow: Window): UiController => ({
   update: method(feltWindow, "ui_controls.update"),
 });
 

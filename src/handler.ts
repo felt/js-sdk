@@ -57,8 +57,11 @@ export function createMessageHandler(
         // to filter it out to keep typescript quiet
         throw new Error("felt.addListener eventName cannot be empty");
       }
-      const unsubscribe = handlers.listeners[data.event.eventName]((e) => {
-        message.ports[0]?.postMessage(e);
+      const unsubscribe = handlers.listeners[data.event.eventName]({
+        options: data.event.options,
+        handler: (e) => {
+          message.ports[0]?.postMessage(e);
+        },
       });
       unsubscribeMap.set(data.event.id, unsubscribe);
     } else if (data.type === "felt.removeListener") {

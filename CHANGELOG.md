@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 0.2.0
+
+### Minor Changes
+
+- 54574c5: Allow options to listeners
+
 ## 0.1.4
 
 ### Patch Changes

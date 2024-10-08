@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 0.2.1
+
+### Patch Changes
+
+- 37ba777: Add viewport.fitBounds
+
 ## 0.2.0
 
 ### Minor Changes

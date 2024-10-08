@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 0.2.2
+
+### Patch Changes
+
+- 9a2c1dc: Add layers.getAll to client
+
 ## 0.2.1
 
 ### Patch Changes

@@ -4,7 +4,6 @@
 
 - [LayersController](interfaces/LayersController.md)
 - [LayerProcessingStatus](type-aliases/LayerProcessingStatus.md)
-- [Layer](type-aliases/Layer.md)
 - [LayersGetRequest](type-aliases/LayersGetRequest.md)
 - [LayersGetResponse](type-aliases/LayersGetResponse.md)
 
@@ -13,6 +12,7 @@
 - [FeltController](README.md#feltcontroller)
 - [FeltControllerWithIframe](README.md#feltcontrollerwithiframe)
 - [FeltEmbedOptions](README.md#feltembedoptions)
+- [Layer](README.md#layer)
 
 ### Types
 
@@ -49,3 +49,9 @@ Re-exports [FeltControllerWithIframe](../client/interfaces/FeltControllerWithIfr
 ### FeltEmbedOptions
 
 Re-exports [FeltEmbedOptions](../client/interfaces/FeltEmbedOptions.md)
+
+***
+
+### Layer
+
+Re-exports [Layer](../client/type-aliases/Layer.md)

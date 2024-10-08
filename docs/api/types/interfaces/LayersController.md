@@ -30,4 +30,32 @@ contain a `null` in the corresponding index.
 The layers matching the given IDs as an array. Any layers that don't
 exist will be represented by a `null` in the array.
 
-See [Layer](../type-aliases/Layer.md) for the structure of the layer object.
+See [Layer](../../client/type-aliases/Layer.md) for the structure of the layer object.
+
+***
+
+### getAll()
+
+> **getAll**(): `Promise`\<`object`\>
+
+#### Returns
+
+`Promise`\<`object`\>
+
+All layers on the map.
+
+##### layers
+
+> **layers**: `object`[]
+
+The layers in the map, ordered by the order specified in Felt. This is not
+necessarily the order that they are drawn in, as Felt draws points above
+lines and lines above polygons, for instance.
+
+See [Layer](../../client/type-aliases/Layer.md) for the structure of the layer object.
+
+#### Remarks
+
+The layers in the map, ordered by the order specified in Felt. This is not
+necessarily the order that they are drawn in, as Felt draws points above
+lines and lines above polygons, for instance.

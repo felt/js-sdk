@@ -4,11 +4,13 @@
 
 ```ts
 
-import { a } from './types-DRGTGmsL.js';
-import { b } from './types-DRGTGmsL.js';
-import { c } from './types-DRGTGmsL.js';
-import { L } from './types-DRGTGmsL.js';
-import { V } from './types-DRGTGmsL.js';
+import { a } from './types-DkhQbzoV.js';
+import { b } from './types-DkhQbzoV.js';
+import { c } from './types-DkhQbzoV.js';
+import { d } from './types-DkhQbzoV.js';
+import { L } from './types-DkhQbzoV.js';
+import { e as Layer } from './types-DkhQbzoV.js';
+import { V } from './types-DkhQbzoV.js';
 import * as z from 'zod';
 
 // @public
@@ -121,10 +123,14 @@ const FeltEmbedOptionsSchema: z.ZodObject<{
     } | undefined;
 }>;
 
+export { Layer }
+
 // @public
 interface LayersController {
     // (undocumented)
     get(request: L): Promise<a>;
+    // (undocumented)
+    getAll(): Promise<b>;
 }
 
 // @public
@@ -166,8 +172,8 @@ const UiControlsOptionsSchema: z.ZodObject<{
 // @public
 type ViewportController = {
     get(): Promise<V>;
-    goto(viewport: b): void;
-    fitBounds(bounds: c): void;
+    goto(viewport: c): void;
+    fitBounds(bounds: d): void;
     onMove(args: {
         handler: (viewport: V) => void;
     }): VoidFunction;
@@ -175,9 +181,9 @@ type ViewportController = {
 
 // Warnings were encountered during analysis:
 //
-// dist/client.d.ts:196:5 - (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:201:5 - (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:205:5 - (ae-forgotten-export) The symbol "LayersController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:205:5 - (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:210:5 - (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:214:5 - (ae-forgotten-export) The symbol "LayersController" needs to be exported by the entry point client.d.ts
 
 // (No @packageDocumentation comment for this package)
 

@@ -1,11 +1,16 @@
 import { method } from "../../types/interface";
-import type { LayersGetRequest, LayersGetResponse } from "./types";
+import type {
+  LayersGetAllResponse,
+  LayersGetRequest,
+  LayersGetResponse,
+} from "./types";
 
 /**
  * @ignore
  */
 export const layersController = (feltWindow: Window): LayersController => ({
   get: method(feltWindow, "layers.get"),
+  getAll: method(feltWindow, "layers.getAll"),
 });
 
 /**
@@ -22,4 +27,13 @@ export interface LayersController {
    * contain a `null` in the corresponding index.
    */
   get(request: LayersGetRequest): Promise<LayersGetResponse>;
+
+  /**
+   * @returns All layers on the map.
+   *
+   * @remarks The layers in the map, ordered by the order specified in Felt. This is not
+   * necessarily the order that they are drawn in, as Felt draws points above
+   * lines and lines above polygons, for instance.
+   */
+  getAll(): Promise<LayersGetAllResponse>;
 }

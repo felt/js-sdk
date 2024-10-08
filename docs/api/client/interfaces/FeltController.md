@@ -17,3 +17,11 @@ The viewport controller allows you to control the viewport of the map.
 
 The UI controllers allows you to enable and disable UI controls on the
 embedded map.
+
+***
+
+### layers
+
+> **layers**: [`LayersController`](../../types/interfaces/LayersController.md)
+
+The layers controller allows you to interact with layers on the map.

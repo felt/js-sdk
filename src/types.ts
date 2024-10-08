@@ -5,6 +5,13 @@ import type {
   FeltController,
   FeltControllerWithIframe,
 } from "./modules/controller";
+import type { LayersController } from "./modules/layers/controller";
+import type {
+  Layer,
+  LayerProcessingStatus,
+  LayersGetRequest,
+  LayersGetResponse,
+} from "./modules/layers/types";
 import type { UiController } from "./modules/ui/controller";
 import type { UiControlsOptions } from "./modules/ui/types";
 import type { ViewportController } from "./modules/viewport/controller";
@@ -23,6 +30,11 @@ export type {
   FeltControllerWithIframe,
   FeltEmbedOptions,
   FeltZoom,
+  Layer,
+  LayerProcessingStatus,
+  LayersController,
+  LayersGetRequest,
+  LayersGetResponse,
   UiController,
   UiControlsOptions,
   ViewportCenterZoom,

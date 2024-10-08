@@ -1,5 +1,13 @@
 ## Index
 
+### Layers
+
+- [LayersController](interfaces/LayersController.md)
+- [LayerProcessingStatus](type-aliases/LayerProcessingStatus.md)
+- [Layer](type-aliases/Layer.md)
+- [LayersGetRequest](type-aliases/LayersGetRequest.md)
+- [LayersGetResponse](type-aliases/LayersGetResponse.md)
+
 ### Other
 
 - [FeltController](README.md#feltcontroller)

@@ -4,9 +4,11 @@
 
 ```ts
 
-import { a } from './types-2nX7moDq.js';
-import { b } from './types-2nX7moDq.js';
-import { V } from './types-2nX7moDq.js';
+import { a } from './types-DRGTGmsL.js';
+import { b } from './types-DRGTGmsL.js';
+import { c } from './types-DRGTGmsL.js';
+import { L } from './types-DRGTGmsL.js';
+import { V } from './types-DRGTGmsL.js';
 import * as z from 'zod';
 
 // @public
@@ -19,6 +21,7 @@ export const Felt: {
 export type FeltController = {
     viewport: ViewportController;
     ui: UiController;
+    layers: LayersController;
 };
 
 // @public
@@ -119,6 +122,12 @@ const FeltEmbedOptionsSchema: z.ZodObject<{
 }>;
 
 // @public
+interface LayersController {
+    // (undocumented)
+    get(request: L): Promise<a>;
+}
+
+// @public
 interface UiController {
     // Warning: (ae-forgotten-export) The symbol "UiControlsOptions" needs to be exported by the entry point client.d.ts
     update(controls: UiControlsOptions): void;
@@ -157,8 +166,8 @@ const UiControlsOptionsSchema: z.ZodObject<{
 // @public
 type ViewportController = {
     get(): Promise<V>;
-    goto(viewport: a): void;
-    fitBounds(bounds: b): void;
+    goto(viewport: b): void;
+    fitBounds(bounds: c): void;
     onMove(args: {
         handler: (viewport: V) => void;
     }): VoidFunction;
@@ -166,8 +175,9 @@ type ViewportController = {
 
 // Warnings were encountered during analysis:
 //
-// dist/client.d.ts:180:5 - (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:185:5 - (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:196:5 - (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:201:5 - (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:205:5 - (ae-forgotten-export) The symbol "LayersController" needs to be exported by the entry point client.d.ts
 
 // (No @packageDocumentation comment for this package)
 

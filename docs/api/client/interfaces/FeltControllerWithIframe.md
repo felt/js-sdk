@@ -17,6 +17,14 @@ embedded map.
 
 ***
 
+### layers
+
+> **layers**: [`LayersController`](../../types/interfaces/LayersController.md)
+
+The layers controller allows you to interact with layers on the map.
+
+***
+
 ### iframe
 
 > **iframe**: `HTMLIFrameElement`

@@ -1,3 +1,4 @@
+import { layersController, type LayersController } from "./layers/controller";
 import { type UiController, uiController } from "./ui/controller";
 import {
   type ViewportController,
@@ -14,6 +15,7 @@ export function makeController(feltWindow: Window): FeltController {
   return {
     viewport: viewportController(feltWindow),
     ui: uiController(feltWindow),
+    layers: layersController(feltWindow),
   };
 }
 
@@ -40,6 +42,11 @@ export type FeltController = {
    * embedded map.
    */
   ui: UiController;
+
+  /**
+   * The layers controller allows you to interact with layers on the map.
+   */
+  layers: LayersController;
 };
 
 /**

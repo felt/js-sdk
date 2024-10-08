@@ -31,3 +31,8 @@ export type Method<
   request: TRequest;
   response: TResponse;
 };
+
+export type Listener<TOptions, TParams> = {
+  options: TOptions;
+  eventParams: TParams;
+};

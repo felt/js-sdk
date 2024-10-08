@@ -3,6 +3,7 @@ import type { ModuleSchema } from "../../lib/schema";
 import {
   listenerMessage,
   methodMessage,
+  type Listener,
   type Method,
 } from "../../types/builders";
 import { ViewportSetCenterZoomParamsSchema, type ViewportState } from "./types";
@@ -27,9 +28,4 @@ export type ViewportSchema = {
   listeners: {
     "viewport.move": Listener<void, ViewportState>;
   };
-};
-
-type Listener<TOptions, TParams> = {
-  options: TOptions;
-  eventParams: TParams;
 };

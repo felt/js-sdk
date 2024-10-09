@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 0.3.2
+
+### Patch Changes
+
+- 68e4574: Fix getLayers return type
+
 ## 0.3.1
 
 ### Patch Changes

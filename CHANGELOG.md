@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 0.4.1
+
+### Patch Changes
+
+- 720d595: Export LayerGroup and rename layerGroup.layers to layerIds
+
 ## 0.4.0
 
 ### Minor Changes

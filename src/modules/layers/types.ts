@@ -111,7 +111,7 @@ export const LayersGetLayersFilterSchema = z
 export type LayersGetLayersResponse = z.infer<
   typeof LayersGetLayersResponseSchema
 >;
-const LayersGetLayersResponseSchema = z.array(LayerSchema);
+const LayersGetLayersResponseSchema = z.array(LayerSchema.nullable());
 
 /**
  * The parameters for the `layers.setLayerVisibility` method.

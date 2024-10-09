@@ -2,4 +2,4 @@
 "@feltjs/js-sdk": patch
 ---
 
-Fix broken getLayers
+Fix getLayers return type

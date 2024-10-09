@@ -31,7 +31,7 @@ const layers = await layers.get({ ids: ["layer-1", "layer-2"] });
 
 ### getLayers()
 
-> **getLayers**(`filter`?): `Promise`\<`object`[]\>
+> **getLayers**(`filter`?): `Promise`\<(`null` \| `object`)[]\>
 
 Returns layers from the map, accoridng to the filters supplied. If no
 filters are supplied, all layers will be returned.
@@ -48,7 +48,7 @@ The ids of the layers to get.
 
 #### Returns
 
-`Promise`\<`object`[]\>
+`Promise`\<(`null` \| `object`)[]\>
 
 All layers on the map.
 

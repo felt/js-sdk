@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 0.3.1
+
+### Patch Changes
+
+- f87c61b: Fix broken getLayers
+
 ## 0.3.0
 
 ### Minor Changes

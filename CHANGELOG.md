@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 0.4.0
+
+### Minor Changes
+
+- aa3437b: Add layer groups and update layers a little
+
 ## 0.3.2
 
 ### Patch Changes

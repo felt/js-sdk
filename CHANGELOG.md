@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 0.3.0
+
+### Minor Changes
+
+- fc8b927: Update Layers API and add visibility control
+
 ## 0.2.2
 
 ### Patch Changes

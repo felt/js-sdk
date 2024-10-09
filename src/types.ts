@@ -10,7 +10,7 @@ import type {
   Layer,
   LayerGroup,
   LayerProcessingStatus,
-  LayersGetLayerGroupsFilter,
+  LayersGetGroupsFilter,
   LayersGetLayersFilter,
 } from "./modules/layers/types";
 import type { UiController } from "./modules/ui/controller";
@@ -35,7 +35,7 @@ export type {
   LayerGroup,
   LayerProcessingStatus,
   LayersController,
-  LayersGetLayerGroupsFilter,
+  LayersGetGroupsFilter,
   LayersGetLayersFilter,
   UiController,
   UiControlsOptions,

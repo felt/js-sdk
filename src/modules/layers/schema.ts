@@ -2,11 +2,11 @@ import * as z from "zod";
 import type { ModuleSchema } from "../../lib/schema";
 import { methodMessage, type Method } from "../../types/builders";
 import {
-  LayersGetLayerGroupsFilterSchema,
+  LayersGetGroupsFilterSchema,
   LayersGetLayersFilterSchema,
   LayersSetVisibilityRequestSchema,
+  type LayersGetGroupsResponse,
   type LayersGetLayerGroupResponse,
-  type LayersGetLayerGroupsResponse,
   type LayersGetLayerResponse,
   type LayersGetLayersResponse,
 } from "./types";
@@ -20,10 +20,10 @@ const LayersSetLayerVisibilityMessage = methodMessage(
   "layers.setLayerVisibility",
   LayersSetVisibilityRequestSchema,
 );
-const LayersGetLayerGroupMessage = methodMessage("layers.getGroup", z.string());
-const LayersGetLayerGroupsMessage = methodMessage(
-  "layers.getLayerGroups",
-  LayersGetLayerGroupsFilterSchema,
+const LayersGetGroupMessage = methodMessage("layers.getGroup", z.string());
+const LayersGetGroupsMessage = methodMessage(
+  "layers.getGroups",
+  LayersGetGroupsFilterSchema,
 );
 const LayersSetLayerGroupVisibilityMessage = methodMessage(
   "layers.setGroupVisibility",
@@ -35,8 +35,8 @@ export const layersSchema = {
     LayersGetLayerMessage,
     LayersGetLayersMessage,
     LayersSetLayerVisibilityMessage,
-    LayersGetLayerGroupMessage,
-    LayersGetLayerGroupsMessage,
+    LayersGetGroupMessage,
+    LayersGetGroupsMessage,
     LayersSetLayerGroupVisibilityMessage,
   ],
   listeners: null,
@@ -57,12 +57,12 @@ export type LayersSchema = {
       void
     >;
     "layers.getGroup": Method<
-      z.infer<typeof LayersGetLayerGroupMessage>,
+      z.infer<typeof LayersGetGroupMessage>,
       LayersGetLayerGroupResponse
     >;
-    "layers.getLayerGroups": Method<
-      z.infer<typeof LayersGetLayerGroupsMessage>,
-      LayersGetLayerGroupsResponse
+    "layers.getGroups": Method<
+      z.infer<typeof LayersGetGroupsMessage>,
+      LayersGetGroupsResponse
     >;
     "layers.setGroupVisibility": Method<
       z.infer<typeof LayersSetLayerGroupVisibilityMessage>,

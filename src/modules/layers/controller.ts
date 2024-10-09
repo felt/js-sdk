@@ -1,8 +1,8 @@
 import { method } from "../../types/interface";
 import type {
+  LayersGetGroupsFilter,
+  LayersGetGroupsResponse,
   LayersGetLayerGroupResponse,
-  LayersGetLayerGroupsFilter,
-  LayersGetLayerGroupsResponse,
   LayersGetLayerResponse,
   LayersGetLayersFilter,
   LayersGetLayersResponse,
@@ -17,7 +17,7 @@ export const layersController = (feltWindow: Window): LayersController => ({
   getLayers: method(feltWindow, "layers.getLayers"),
   setLayerVisibility: method(feltWindow, "layers.setLayerVisibility"),
   getGroup: method(feltWindow, "layers.getGroup"),
-  getGroups: method(feltWindow, "layers.getLayerGroups"),
+  getGroups: method(feltWindow, "layers.getGroups"),
   setGroupVisibility: method(feltWindow, "layers.setGroupVisibility"),
 });
 
@@ -104,8 +104,8 @@ export interface LayersController {
     /**
      * The filters to apply to the layer groups returned from the map.
      */
-    filter?: LayersGetLayerGroupsFilter,
-  ): Promise<LayersGetLayerGroupsResponse>;
+    filter?: LayersGetGroupsFilter,
+  ): Promise<LayersGetGroupsResponse>;
 
   /**
    * Hide or show layer groups with the given ids.

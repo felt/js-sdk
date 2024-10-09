@@ -199,10 +199,8 @@ const LayersGetLayersResponseSchema = z.array(LayerSchema.nullable());
  *
  * @category Layers
  */
-export type LayersGetLayerGroupsFilter = z.infer<
-  typeof LayersGetLayerGroupsFilterSchema
->;
-export const LayersGetLayerGroupsFilterSchema = z
+export type LayersGetGroupsFilter = z.infer<typeof LayersGetGroupsFilterSchema>;
+export const LayersGetGroupsFilterSchema = z
   .object({
     /**
      * The ids of the layer groups to get.
@@ -212,14 +210,14 @@ export const LayersGetLayerGroupsFilterSchema = z
   .optional();
 
 /**
- * The response from the `layers.getLayerGroups` method.
+ * The response from the `layers.getGroups` method.
  *
  * @category Layers
  */
-export type LayersGetLayerGroupsResponse = z.infer<
-  typeof LayersGetLayerGroupsResponseSchema
+export type LayersGetGroupsResponse = z.infer<
+  typeof LayersGetGroupsResponseSchema
 >;
-const LayersGetLayerGroupsResponseSchema = z.array(LayerGroupSchema.nullable());
+const LayersGetGroupsResponseSchema = z.array(LayerGroupSchema.nullable());
 /**
  * The parameters for the `layers.setLayerVisibility` and `layers.setGroupVisibility` methods.
  *

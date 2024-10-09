@@ -4,17 +4,18 @@
 
 ```ts
 
-import { a } from './types-BRgJmbs_.js';
-import { b } from './types-BRgJmbs_.js';
-import { c } from './types-BRgJmbs_.js';
-import { d } from './types-BRgJmbs_.js';
-import { e } from './types-BRgJmbs_.js';
-import { f } from './types-BRgJmbs_.js';
-import { g } from './types-BRgJmbs_.js';
-import { h } from './types-BRgJmbs_.js';
-import { L } from './types-BRgJmbs_.js';
-import { i as Layer } from './types-BRgJmbs_.js';
-import { V } from './types-BRgJmbs_.js';
+import { a } from './types-CVpw7a2w.js';
+import { b } from './types-CVpw7a2w.js';
+import { c } from './types-CVpw7a2w.js';
+import { d } from './types-CVpw7a2w.js';
+import { e } from './types-CVpw7a2w.js';
+import { f } from './types-CVpw7a2w.js';
+import { g } from './types-CVpw7a2w.js';
+import { h } from './types-CVpw7a2w.js';
+import { L } from './types-CVpw7a2w.js';
+import { i as Layer } from './types-CVpw7a2w.js';
+import { j as LayerGroup } from './types-CVpw7a2w.js';
+import { V } from './types-CVpw7a2w.js';
 import * as z from 'zod';
 
 // @public
@@ -128,6 +129,8 @@ const FeltEmbedOptionsSchema: z.ZodObject<{
 }>;
 
 export { Layer }
+
+export { LayerGroup }
 
 // @public
 interface LayersController {

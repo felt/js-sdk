@@ -20,9 +20,9 @@ The name of the layer group. This is shown in the legend.
 
 The caption of the layer group. This is shown in the legend.
 
-### layers
+### layerIds
 
-> **layers**: `string`[]
+> **layerIds**: `string`[]
 
 The ids of the layers in the layer group.
 

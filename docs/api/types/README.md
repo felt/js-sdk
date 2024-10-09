@@ -4,7 +4,6 @@
 
 - [LayersController](interfaces/LayersController.md)
 - [LayerProcessingStatus](type-aliases/LayerProcessingStatus.md)
-- [LayerGroup](type-aliases/LayerGroup.md)
 - [LayersGetLayersFilter](type-aliases/LayersGetLayersFilter.md)
 - [LayersGetLayerGroupsFilter](type-aliases/LayersGetLayerGroupsFilter.md)
 
@@ -14,6 +13,7 @@
 - [FeltControllerWithIframe](README.md#feltcontrollerwithiframe)
 - [FeltEmbedOptions](README.md#feltembedoptions)
 - [Layer](README.md#layer)
+- [LayerGroup](README.md#layergroup)
 
 ### Types
 
@@ -56,3 +56,9 @@ Re-exports [FeltEmbedOptions](../client/interfaces/FeltEmbedOptions.md)
 ### Layer
 
 Re-exports [Layer](../client/type-aliases/Layer.md)
+
+***
+
+### LayerGroup
+
+Re-exports [LayerGroup](../client/type-aliases/LayerGroup.md)

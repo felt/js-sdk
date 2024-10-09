@@ -122,7 +122,7 @@ const LayerGroupSchema = z.object({
    * @remarks
    * You can use these ids to get the full layer objects via the `layers.getLayers` method.
    */
-  layers: z.array(z.string()),
+  layerIds: z.array(z.string()),
 
   /**
    * Whether the layer group is visible or not.

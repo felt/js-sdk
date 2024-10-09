@@ -13,3 +13,4 @@
 ### Layers
 
 - [Layer](type-aliases/Layer.md)
+- [LayerGroup](type-aliases/LayerGroup.md)

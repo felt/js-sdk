@@ -146,7 +146,8 @@ export const Felt = {
   },
 };
 
-export type { Layer } from "./modules/layers/types";
+export type { Layer, LayerGroup } from "./modules/layers/types";
+
 export type { FeltController, FeltControllerWithIframe, FeltEmbedOptions };
 
 /**

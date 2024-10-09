@@ -8,7 +8,9 @@ import type {
 import type { LayersController } from "./modules/layers/controller";
 import type {
   Layer,
+  LayerGroup,
   LayerProcessingStatus,
+  LayersGetLayerGroupsFilter,
   LayersGetLayersFilter,
 } from "./modules/layers/types";
 import type { UiController } from "./modules/ui/controller";
@@ -30,8 +32,10 @@ export type {
   FeltEmbedOptions,
   FeltZoom,
   Layer,
+  LayerGroup,
   LayerProcessingStatus,
   LayersController,
+  LayersGetLayerGroupsFilter,
   LayersGetLayersFilter,
   UiController,
   UiControlsOptions,

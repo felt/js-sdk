@@ -2,8 +2,11 @@ import * as z from "zod";
 import type { ModuleSchema } from "../../lib/schema";
 import { methodMessage, type Method } from "../../types/builders";
 import {
+  LayersGetLayerGroupsFilterSchema,
   LayersGetLayersFilterSchema,
-  LayersSetLayerVisibilityRequestSchema,
+  LayersSetVisibilityRequestSchema,
+  type LayersGetLayerGroupResponse,
+  type LayersGetLayerGroupsResponse,
   type LayersGetLayerResponse,
   type LayersGetLayersResponse,
 } from "./types";
@@ -15,7 +18,16 @@ const LayersGetLayersMessage = methodMessage(
 );
 const LayersSetLayerVisibilityMessage = methodMessage(
   "layers.setLayerVisibility",
-  LayersSetLayerVisibilityRequestSchema,
+  LayersSetVisibilityRequestSchema,
+);
+const LayersGetLayerGroupMessage = methodMessage("layers.getGroup", z.string());
+const LayersGetLayerGroupsMessage = methodMessage(
+  "layers.getLayerGroups",
+  LayersGetLayerGroupsFilterSchema,
+);
+const LayersSetLayerGroupVisibilityMessage = methodMessage(
+  "layers.setGroupVisibility",
+  LayersSetVisibilityRequestSchema,
 );
 
 export const layersSchema = {
@@ -23,6 +35,9 @@ export const layersSchema = {
     LayersGetLayerMessage,
     LayersGetLayersMessage,
     LayersSetLayerVisibilityMessage,
+    LayersGetLayerGroupMessage,
+    LayersGetLayerGroupsMessage,
+    LayersSetLayerGroupVisibilityMessage,
   ],
   listeners: null,
 } satisfies ModuleSchema;
@@ -39,6 +54,18 @@ export type LayersSchema = {
     >;
     "layers.setLayerVisibility": Method<
       z.infer<typeof LayersSetLayerVisibilityMessage>,
+      void
+    >;
+    "layers.getGroup": Method<
+      z.infer<typeof LayersGetLayerGroupMessage>,
+      LayersGetLayerGroupResponse
+    >;
+    "layers.getLayerGroups": Method<
+      z.infer<typeof LayersGetLayerGroupsMessage>,
+      LayersGetLayerGroupsResponse
+    >;
+    "layers.setGroupVisibility": Method<
+      z.infer<typeof LayersSetLayerGroupVisibilityMessage>,
       void
     >;
   };

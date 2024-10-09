@@ -4,7 +4,9 @@
 
 - [LayersController](interfaces/LayersController.md)
 - [LayerProcessingStatus](type-aliases/LayerProcessingStatus.md)
+- [LayerGroup](type-aliases/LayerGroup.md)
 - [LayersGetLayersFilter](type-aliases/LayersGetLayersFilter.md)
+- [LayersGetLayerGroupsFilter](type-aliases/LayersGetLayerGroupsFilter.md)
 
 ### Other
 

@@ -62,12 +62,82 @@ const LayerSchema = z.object({
   visible: z.boolean(),
 
   /**
+   * Whether the layer is shown in the legend or not.
+   */
+  shownInLegend: z.boolean(),
+
+  /**
    * The current processing status of the layer.
    */
   status: LayerProcessingStatus,
 
-  geometryType: z.string(),
-  bounds: FeltBoundarySchema,
+  /**
+   * The geometry type of the layer.
+   *
+   * @remarks
+   * This will generally be one of:
+   * - `"Point"`
+   * - `"Line"`
+   * - `"Polygon"`
+   * - `"Raster"`
+   * - `null`
+   *
+   * When the layer is processing, or it is a data-only layer, it will be null. You should
+   * expect this to be able to be any string, however, as more geometry types can be added
+   * in the future.
+   */
+  geometryType: z.string().nullable(),
+
+  /**
+   * The bounding box of the layer. If the layer is processing, or the bounds have otherwise
+   * not been calculated or are not available, this will be `null`.
+   */
+  bounds: FeltBoundarySchema.nullable(),
+});
+
+/**
+ * @category Layers
+ * @group Entities
+ */
+export type LayerGroup = z.infer<typeof LayerGroupSchema>;
+const LayerGroupSchema = z.object({
+  /**
+   * A string identifying the layer group.
+   */
+  id: z.string(),
+
+  /**
+   * The name of the layer group. This is shown in the legend.
+   */
+  name: z.string(),
+
+  /**
+   * The caption of the layer group. This is shown in the legend.
+   */
+  caption: z.string().nullable(),
+
+  /**
+   * The ids of the layers in the layer group.
+   *
+   * @remarks
+   * You can use these ids to get the full layer objects via the `layers.getLayers` method.
+   */
+  layers: z.array(z.string()),
+
+  /**
+   * Whether the layer group is visible or not.
+   */
+  visible: z.boolean(),
+
+  /**
+   * Whether the layer group is shown in the legend or not.
+   */
+  shownInLegend: z.boolean(),
+
+  /**
+   * The bounding box of the layer group.
+   */
+  bounds: FeltBoundarySchema.nullable(),
 });
 
 /**
@@ -79,7 +149,18 @@ const LayerSchema = z.object({
 export type LayersGetLayerResponse = z.infer<
   typeof LayersGetLayerResponseSchema
 >;
-const LayersGetLayerResponseSchema = LayerSchema.optional();
+const LayersGetLayerResponseSchema = LayerSchema.nullable();
+
+/**
+ * The response from the `layers.getGroup` method. If the layer doesn't exist, the
+ * response will be `null`.
+ *
+ * @category Layers
+ */
+export type LayersGetLayerGroupResponse = z.infer<
+  typeof LayersGetLayerGroupResponseSchema
+>;
+const LayersGetLayerGroupResponseSchema = LayerGroupSchema.nullable();
 
 /**
  * The filter to apply to the layers. If this is not passed, all layers will be returned.
@@ -114,14 +195,40 @@ export type LayersGetLayersResponse = z.infer<
 const LayersGetLayersResponseSchema = z.array(LayerSchema.nullable());
 
 /**
- * The parameters for the `layers.setLayerVisibility` method.
+ * The filter to apply to the layer groups. If this is not passed, all layer groups will be returned.
  *
  * @category Layers
  */
-export type LayersSetLayerVisibilityRequest = z.infer<
-  typeof LayersSetLayerVisibilityRequestSchema
+export type LayersGetLayerGroupsFilter = z.infer<
+  typeof LayersGetLayerGroupsFilterSchema
 >;
-export const LayersSetLayerVisibilityRequestSchema = z.object({
+export const LayersGetLayerGroupsFilterSchema = z
+  .object({
+    /**
+     * The ids of the layer groups to get.
+     */
+    ids: z.array(z.string()).optional(),
+  })
+  .optional();
+
+/**
+ * The response from the `layers.getLayerGroups` method.
+ *
+ * @category Layers
+ */
+export type LayersGetLayerGroupsResponse = z.infer<
+  typeof LayersGetLayerGroupsResponseSchema
+>;
+const LayersGetLayerGroupsResponseSchema = z.array(LayerGroupSchema.nullable());
+/**
+ * The parameters for the `layers.setLayerVisibility` and `layers.setGroupVisibility` methods.
+ *
+ * @category Layers
+ */
+export type LayersSetVisibilityRequest = z.infer<
+  typeof LayersSetVisibilityRequestSchema
+>;
+export const LayersSetVisibilityRequestSchema = z.object({
   /**
    * The ids of the layers you want to change the visibility of.
    */

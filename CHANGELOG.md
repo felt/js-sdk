@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 0.4.2
+
+### Patch Changes
+
+- d8afd9c: Fix groups
+
 ## 0.4.1
 
 ### Patch Changes

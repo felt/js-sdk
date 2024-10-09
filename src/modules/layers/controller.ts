@@ -1,17 +1,22 @@
 import { method } from "../../types/interface";
 import type {
-  LayersGetAllResponse,
-  LayersGetRequest,
-  LayersGetResponse,
+  LayersGetLayerResponse,
+  LayersGetLayersFilter,
+  LayersGetLayersResponse,
+  LayersSetLayerVisibilityRequest,
 } from "./types";
 
 /**
  * @ignore
  */
 export const layersController = (feltWindow: Window): LayersController => ({
-  get: method(feltWindow, "layers.get"),
-  getAll: method(feltWindow, "layers.getAll"),
+  getLayer: method(feltWindow, "layers.getLayer"),
+  getLayers: method(feltWindow, "layers.getLayers"),
+  setLayerVisibility: method(feltWindow, "layers.setLayerVisibility"),
 });
+
+const x = method(window, "layers.getLayers");
+x();
 
 /**
  * The Layers controller allows you to get information about the layers on the
@@ -22,18 +27,49 @@ export const layersController = (feltWindow: Window): LayersController => ({
  */
 export interface LayersController {
   /**
-   * @returns The layers that match the requested IDs in an array in the same
-   * order as the requested IDs. If a layer doesn't exist, the response will
-   * contain a `null` in the corresponding index.
+   * Get a single layer from the map by its id.
+   *
+   * @example
+   * ```typescript
+   * const layers = await layers.get({ ids: ["layer-1", "layer-2"] });
+   * ```
+   * @returns The requested layer.
    */
-  get(request: LayersGetRequest): Promise<LayersGetResponse>;
+  getLayer(
+    /**
+     * The id of the layer you want to get.
+     */
+    id: string,
+  ): Promise<LayersGetLayerResponse>;
 
   /**
-   * @returns All layers on the map.
+   * Returns layers from the map, accoridng to the filters supplied. If no
+   * filters are supplied, all layers will be returned.
    *
    * @remarks The layers in the map, ordered by the order specified in Felt. This is not
    * necessarily the order that they are drawn in, as Felt draws points above
    * lines and lines above polygons, for instance.
+   *
+   * @example
+   * ```typescript
+   * const layers = await layers.getAll();
+   * ```
+   * @returns All layers on the map.
    */
-  getAll(): Promise<LayersGetAllResponse>;
+  getLayers(
+    /**
+     * The filters to apply to the layers returned from the map.
+     */
+    filter?: LayersGetLayersFilter | void,
+  ): Promise<LayersGetLayersResponse>;
+
+  /**
+   * Hide or show layers with the given ids.
+   *
+   * @example
+   * ```typescript
+   * layers.setLayerVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
+   * ```
+   */
+  setLayerVisibility(request: LayersSetLayerVisibilityRequest): Promise<void>;
 }

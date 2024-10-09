@@ -4,13 +4,14 @@
 
 ```ts
 
-import { a } from './types-DkhQbzoV.js';
-import { b } from './types-DkhQbzoV.js';
-import { c } from './types-DkhQbzoV.js';
-import { d } from './types-DkhQbzoV.js';
-import { L } from './types-DkhQbzoV.js';
-import { e as Layer } from './types-DkhQbzoV.js';
-import { V } from './types-DkhQbzoV.js';
+import { a } from './types-CuBkZUw8.js';
+import { b } from './types-CuBkZUw8.js';
+import { c } from './types-CuBkZUw8.js';
+import { d } from './types-CuBkZUw8.js';
+import { e } from './types-CuBkZUw8.js';
+import { L } from './types-CuBkZUw8.js';
+import { f as Layer } from './types-CuBkZUw8.js';
+import { V } from './types-CuBkZUw8.js';
 import * as z from 'zod';
 
 // @public
@@ -127,10 +128,11 @@ export { Layer }
 
 // @public
 interface LayersController {
-    // (undocumented)
-    get(request: L): Promise<a>;
-    // (undocumented)
-    getAll(): Promise<b>;
+    getLayer(
+    id: string): Promise<L>;
+    getLayers(
+    filter?: a | void): Promise<b>;
+    setLayerVisibility(request: c): Promise<void>;
 }
 
 // @public
@@ -172,8 +174,8 @@ const UiControlsOptionsSchema: z.ZodObject<{
 // @public
 type ViewportController = {
     get(): Promise<V>;
-    goto(viewport: c): void;
-    fitBounds(bounds: d): void;
+    goto(viewport: d): void;
+    fitBounds(bounds: e): void;
     onMove(args: {
         handler: (viewport: V) => void;
     }): VoidFunction;
@@ -181,9 +183,9 @@ type ViewportController = {
 
 // Warnings were encountered during analysis:
 //
-// dist/client.d.ts:205:5 - (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:210:5 - (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:214:5 - (ae-forgotten-export) The symbol "LayersController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:233:5 - (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:238:5 - (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:242:5 - (ae-forgotten-export) The symbol "LayersController" needs to be exported by the entry point client.d.ts
 
 // (No @packageDocumentation comment for this package)
 

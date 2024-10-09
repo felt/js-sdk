@@ -2,25 +2,40 @@ import * as z from "zod";
 import type { ModuleSchema } from "../../lib/schema";
 import { methodMessage, type Method } from "../../types/builders";
 import {
-  LayersGetRequestSchema,
-  type LayersGetAllResponse,
-  type LayersGetResponse,
+  LayersSetLayerVisibilityRequestSchema,
+  type LayersGetLayerResponse,
+  type LayersGetLayersResponse,
 } from "./types";
 
-const LayersGetMessage = methodMessage("layers.get", LayersGetRequestSchema);
-const LayersGetAllMessage = methodMessage("layers.getAll", z.undefined());
+const LayersGetLayerMessage = methodMessage("layers.getLayer", z.string());
+const LayersGetLayersMessage = methodMessage("layers.getLayers", z.undefined());
+const LayersSetLayerVisibilityMessage = methodMessage(
+  "layers.setLayerVisibility",
+  LayersSetLayerVisibilityRequestSchema,
+);
 
 export const layersSchema = {
-  methods: [LayersGetMessage, LayersGetAllMessage],
+  methods: [
+    LayersGetLayerMessage,
+    LayersGetLayersMessage,
+    LayersSetLayerVisibilityMessage,
+  ],
   listeners: null,
 } satisfies ModuleSchema;
 
 export type LayersSchema = {
   methods: {
-    "layers.get": Method<z.infer<typeof LayersGetMessage>, LayersGetResponse>;
-    "layers.getAll": Method<
-      z.infer<typeof LayersGetAllMessage>,
-      LayersGetAllResponse
+    "layers.getLayer": Method<
+      z.infer<typeof LayersGetLayerMessage>,
+      LayersGetLayerResponse
+    >;
+    "layers.getLayers": Method<
+      z.infer<typeof LayersGetLayersMessage>,
+      LayersGetLayersResponse
+    >;
+    "layers.setLayerVisibility": Method<
+      z.infer<typeof LayersSetLayerVisibilityMessage>,
+      void
     >;
   };
   listeners: {};

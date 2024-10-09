@@ -71,47 +71,57 @@ const LayerSchema = z.object({
 });
 
 /**
- * The parameters for the `layers.get` method.
+ * The response from the `layers.getLayer` method. If the layer doesn't exist, the
+ * response will be `null`.
  *
  * @category Layers
  */
-export type LayersGetRequest = z.infer<typeof LayersGetRequestSchema>;
-export const LayersGetRequestSchema = z.object({
+export type LayersGetLayerResponse = z.infer<
+  typeof LayersGetLayerResponseSchema
+>;
+const LayersGetLayerResponseSchema = LayerSchema.optional();
+
+/**
+ * The response from the `layers.getLayers` method.
+ *
+ * @remarks
+ * The layers in the map, ordered by the order specified in Felt. This is not
+ * necessarily the order that they are drawn in, as Felt draws points above
+ * lines and lines above polygons, for instance.
+ *
+ * See {@link Layer} for the structure of the layer object.
+ *
+ * @category Layers
+ */
+export type LayersGetLayersResponse = z.infer<
+  typeof LayersGetLayersResponseSchema
+>;
+const LayersGetLayersResponseSchema = z.array(LayerSchema);
+
+/**
+ * The parameters for the `layers.setLayerVisibility` method.
+ *
+ * @category Layers
+ */
+export type LayersSetLayerVisibilityRequest = z.infer<
+  typeof LayersSetLayerVisibilityRequestSchema
+>;
+export const LayersSetLayerVisibilityRequestSchema = z.object({
   /**
-   * The ids of the layers you want to get in the order you want them.
+   * The ids of the layers you want to change the visibility of.
    */
-  ids: z.array(z.string()),
+  show: z.array(z.string()).optional(),
+  hide: z.array(z.string()).optional(),
 });
 
 /**
- * The response from the `layers.get` method.
+ * The filter to apply to the layers. If this is not passed, all layers will be returned.
  *
  * @category Layers
  */
-export type LayersGetResponse = z.infer<typeof LayersGetResponseSchema>;
-const LayersGetResponseSchema = z.object({
+export type LayersGetLayersFilter = {
   /**
-   * The layers matching the given IDs as an array. Any layers that don't
-   * exist will be represented by a `null` in the array.
-   *
-   * See {@link Layer} for the structure of the layer object.
+   * The ids of the layers to get.
    */
-  layers: z.array(z.union([LayerSchema, z.null()])),
-});
-
-/**
- * The response from the `layers.getAll` method.
- *
- * @category Layers
- */
-export type LayersGetAllResponse = z.infer<typeof LayersGetAllResponseSchema>;
-const LayersGetAllResponseSchema = z.object({
-  /**
-   * The layers in the map, ordered by the order specified in Felt. This is not
-   * necessarily the order that they are drawn in, as Felt draws points above
-   * lines and lines above polygons, for instance.
-   *
-   * See {@link Layer} for the structure of the layer object.
-   */
-  layers: z.array(LayerSchema),
-});
+  ids?: string[];
+};

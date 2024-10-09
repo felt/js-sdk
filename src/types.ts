@@ -9,8 +9,7 @@ import type { LayersController } from "./modules/layers/controller";
 import type {
   Layer,
   LayerProcessingStatus,
-  LayersGetRequest,
-  LayersGetResponse,
+  LayersGetLayersFilter,
 } from "./modules/layers/types";
 import type { UiController } from "./modules/ui/controller";
 import type { UiControlsOptions } from "./modules/ui/types";
@@ -33,8 +32,7 @@ export type {
   Layer,
   LayerProcessingStatus,
   LayersController,
-  LayersGetRequest,
-  LayersGetResponse,
+  LayersGetLayersFilter,
   UiController,
   UiControlsOptions,
   ViewportCenterZoom,

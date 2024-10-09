@@ -4,8 +4,7 @@
 
 - [LayersController](interfaces/LayersController.md)
 - [LayerProcessingStatus](type-aliases/LayerProcessingStatus.md)
-- [LayersGetRequest](type-aliases/LayersGetRequest.md)
-- [LayersGetResponse](type-aliases/LayersGetResponse.md)
+- [LayersGetLayersFilter](type-aliases/LayersGetLayersFilter.md)
 
 ### Other
 

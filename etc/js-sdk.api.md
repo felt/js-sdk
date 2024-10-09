@@ -4,14 +4,14 @@
 
 ```ts
 
-import { a } from './types-CuBkZUw8.js';
-import { b } from './types-CuBkZUw8.js';
-import { c } from './types-CuBkZUw8.js';
-import { d } from './types-CuBkZUw8.js';
-import { e } from './types-CuBkZUw8.js';
-import { L } from './types-CuBkZUw8.js';
-import { f as Layer } from './types-CuBkZUw8.js';
-import { V } from './types-CuBkZUw8.js';
+import { a } from './types-DjRWeGOS.js';
+import { b } from './types-DjRWeGOS.js';
+import { c } from './types-DjRWeGOS.js';
+import { d } from './types-DjRWeGOS.js';
+import { e } from './types-DjRWeGOS.js';
+import { L } from './types-DjRWeGOS.js';
+import { f as Layer } from './types-DjRWeGOS.js';
+import { V } from './types-DjRWeGOS.js';
 import * as z from 'zod';
 
 // @public
@@ -131,7 +131,7 @@ interface LayersController {
     getLayer(
     id: string): Promise<L>;
     getLayers(
-    filter?: a | void): Promise<b>;
+    filter?: a): Promise<b>;
     setLayerVisibility(request: c): Promise<void>;
 }
 

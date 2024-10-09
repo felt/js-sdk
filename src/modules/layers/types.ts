@@ -82,6 +82,21 @@ export type LayersGetLayerResponse = z.infer<
 const LayersGetLayerResponseSchema = LayerSchema.optional();
 
 /**
+ * The filter to apply to the layers. If this is not passed, all layers will be returned.
+ *
+ * @category Layers
+ */
+export type LayersGetLayersFilter = z.infer<typeof LayersGetLayersFilterSchema>;
+export const LayersGetLayersFilterSchema = z
+  .object({
+    /**
+     * The ids of the layers to get.
+     */
+    ids: z.array(z.string()).optional(),
+  })
+  .optional();
+
+/**
  * The response from the `layers.getLayers` method.
  *
  * @remarks
@@ -113,15 +128,3 @@ export const LayersSetLayerVisibilityRequestSchema = z.object({
   show: z.array(z.string()).optional(),
   hide: z.array(z.string()).optional(),
 });
-
-/**
- * The filter to apply to the layers. If this is not passed, all layers will be returned.
- *
- * @category Layers
- */
-export type LayersGetLayersFilter = {
-  /**
-   * The ids of the layers to get.
-   */
-  ids?: string[];
-};

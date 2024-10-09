@@ -38,9 +38,13 @@ filters are supplied, all layers will be returned.
 
 #### Parameters
 
-• **filter?**: `void` \| [`LayersGetLayersFilter`](../type-aliases/LayersGetLayersFilter.md)
+• **filter?**
 
 The filters to apply to the layers returned from the map.
+
+• **filter.ids?**: `string`[] = `...`
+
+The ids of the layers to get.
 
 #### Returns
 

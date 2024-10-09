@@ -15,9 +15,6 @@ export const layersController = (feltWindow: Window): LayersController => ({
   setLayerVisibility: method(feltWindow, "layers.setLayerVisibility"),
 });
 
-const x = method(window, "layers.getLayers");
-x();
-
 /**
  * The Layers controller allows you to get information about the layers on the
  * map, and make changes to their visibility.
@@ -60,7 +57,7 @@ export interface LayersController {
     /**
      * The filters to apply to the layers returned from the map.
      */
-    filter?: LayersGetLayersFilter | void,
+    filter?: LayersGetLayersFilter,
   ): Promise<LayersGetLayersResponse>;
 
   /**

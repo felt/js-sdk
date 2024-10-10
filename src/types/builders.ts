@@ -13,14 +13,23 @@ export function methodMessage<
   });
 }
 
-export function listenerMessage<
+export function listenerMessageWithParams<
   TEventName extends string,
   TParams extends z.ZodType<any>,
->(eventName: TEventName, params?: TParams) {
+>(eventName: TEventName, params: TParams) {
   return z.object({
     eventName: z.literal(eventName),
     id: z.string(),
-    options: params ?? z.undefined(),
+    options: params,
+  });
+}
+
+export function listenerMessageNoParams<TEventName extends string>(
+  eventName: TEventName,
+) {
+  return z.object({
+    eventName: z.literal(eventName),
+    id: z.string(),
   });
 }
 

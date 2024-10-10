@@ -7,14 +7,6 @@
 - [LayersGetLayersFilter](type-aliases/LayersGetLayersFilter.md)
 - [LayersGetGroupsFilter](type-aliases/LayersGetGroupsFilter.md)
 
-### Other
-
-- [FeltController](README.md#feltcontroller)
-- [FeltControllerWithIframe](README.md#feltcontrollerwithiframe)
-- [FeltEmbedOptions](README.md#feltembedoptions)
-- [Layer](README.md#layer)
-- [LayerGroup](README.md#layergroup)
-
 ### Types
 
 - [FeltZoom](type-aliases/FeltZoom.md)
@@ -32,33 +24,3 @@
 - [ViewportState](interfaces/ViewportState.md)
 - [ViewportSetCenterZoomParams](interfaces/ViewportSetCenterZoomParams.md)
 - [ViewportFitBoundsParams](interfaces/ViewportFitBoundsParams.md)
-
-## Other
-
-### FeltController
-
-Re-exports [FeltController](../client/interfaces/FeltController.md)
-
-***
-
-### FeltControllerWithIframe
-
-Re-exports [FeltControllerWithIframe](../client/interfaces/FeltControllerWithIframe.md)
-
-***
-
-### FeltEmbedOptions
-
-Re-exports [FeltEmbedOptions](../client/interfaces/FeltEmbedOptions.md)
-
-***
-
-### Layer
-
-Re-exports [Layer](../client/type-aliases/Layer.md)
-
-***
-
-### LayerGroup
-
-Re-exports [LayerGroup](../client/type-aliases/LayerGroup.md)

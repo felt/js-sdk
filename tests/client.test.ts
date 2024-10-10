@@ -121,6 +121,10 @@ describe("Embedding an iframe with theFelt SDK", () => {
             return () => {};
           },
         },
+
+        layers: {
+          onLayerChange: () => {},
+        },
       } as unknown as FeltController;
 
       // @ts-expect-error whatever is not a module
@@ -165,6 +169,35 @@ describe("Embedding an iframe with theFelt SDK", () => {
 
       // @ts-expect-error extraneous params
       viewportController.onMove({ handler: () => {}, extra: "stuff" });
+
+      const layersController = controller.layers;
+      // @ts-expect-error missing handler
+      layersController.onLayerChange({
+        options: {
+          id: "3",
+        },
+      });
+
+      layersController.onLayerChange({
+        options: {
+          id: "3",
+          // @ts-expect-error extraneous params
+          extra: "stuff",
+        },
+      });
+
+      // @ts-expect-error missing options
+      layersController.onLayerChange({
+        handler: () => {},
+      });
+
+      layersController.onLayerChange({
+        options: {
+          // @ts-expect-error wrong param type
+          id: 4,
+        },
+        handler: () => {},
+      });
     });
   });
 });

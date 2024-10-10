@@ -28,7 +28,7 @@ type ExtractListenerParams<
 };
 
 type MethodHandlers<T> = {
-  [K in keyof T as K & string]: (
+  [K in keyof T]: (
     request: T[K] extends { request: any } ? T[K]["request"] : never,
   ) => PromiseOrNot<T[K] extends { response: any } ? T[K]["response"] : never>;
 };
@@ -36,7 +36,7 @@ type MethodHandlers<T> = {
 type FeltMethodHandlers = MethodHandlers<ExtractMethodParams<MethodSpec>>;
 
 type ListenerHandlers<T> = {
-  [K in keyof T as K & string]: (args: {
+  [K in keyof T]: (args: {
     handler: (
       event: T[K] extends { eventParams: any } ? T[K]["eventParams"] : never,
     ) => void;

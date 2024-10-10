@@ -1,5 +1,6 @@
-import { method } from "../../types/interface";
+import { listener, method } from "../../types/interface";
 import type {
+  Layer,
   LayersGetGroupsFilter,
   LayersGetGroupsResponse,
   LayersGetLayerGroupResponse,
@@ -19,6 +20,7 @@ export const layersController = (feltWindow: Window): LayersController => ({
   getGroup: method(feltWindow, "layers.getGroup"),
   getGroups: method(feltWindow, "layers.getGroups"),
   setGroupVisibility: method(feltWindow, "layers.setGroupVisibility"),
+  onLayerChange: listener(feltWindow, "layers.onLayerChange"),
 });
 
 /**
@@ -116,4 +118,44 @@ export interface LayersController {
    * ```
    */
   setGroupVisibility(visibility: LayersSetVisibilityRequest): Promise<void>;
+
+  /**
+   * Adds a listener for when a layer changes.
+   *
+   * @returns A function to unsubscribe from the listener
+   *
+   * @example
+   * ```typescript
+   * const unsubscribe = layers.onLayerChange({
+   *   options: { id: "layer-1" },
+   *   handler: layer => console.log(layer.bounds),
+   * });
+   *
+   * // later on...
+   * unsubscribe();
+   * ```
+   */
+  onLayerChange(args: {
+    options: {
+      /**
+       * The id of the layer to listen for changes to.
+       */
+      id: string;
+    };
+
+    /**
+     * The handler that is called when the layer changes.
+     */
+    handler: (
+      /**
+       * An object describing the change that occurred.
+       */
+      change: {
+        /**
+         * The new data for the layer.
+         */
+        layer: Layer;
+      },
+    ) => void;
+  }): VoidFunction;
 }

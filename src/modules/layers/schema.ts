@@ -1,10 +1,16 @@
 import * as z from "zod";
 import type { ModuleSchema } from "../../lib/schema";
-import { methodMessage, type Method } from "../../types/builders";
+import {
+  listenerMessageWithParams,
+  methodMessage,
+  type Listener,
+  type Method,
+} from "../../types/builders";
 import {
   LayersGetGroupsFilterSchema,
   LayersGetLayersFilterSchema,
   LayersSetVisibilityRequestSchema,
+  type Layer,
   type LayersGetGroupsResponse,
   type LayersGetLayerGroupResponse,
   type LayersGetLayerResponse,
@@ -30,6 +36,11 @@ const LayersSetLayerGroupVisibilityMessage = methodMessage(
   LayersSetVisibilityRequestSchema,
 );
 
+const LayersOnLayerChangeMessage = listenerMessageWithParams(
+  "layers.onLayerChange",
+  z.object({ id: z.string() }),
+);
+
 export const layersSchema = {
   methods: [
     LayersGetLayerMessage,
@@ -39,7 +50,7 @@ export const layersSchema = {
     LayersGetGroupsMessage,
     LayersSetLayerGroupVisibilityMessage,
   ],
-  listeners: null,
+  listeners: [LayersOnLayerChangeMessage],
 } satisfies ModuleSchema;
 
 export type LayersSchema = {
@@ -69,5 +80,10 @@ export type LayersSchema = {
       void
     >;
   };
-  listeners: {};
+  listeners: {
+    "layers.onLayerChange": Listener<
+      z.infer<typeof LayersOnLayerChangeMessage.shape.options>,
+      { layer: Layer | null }
+    >;
+  };
 };

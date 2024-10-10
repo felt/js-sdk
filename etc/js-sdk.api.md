@@ -4,18 +4,18 @@
 
 ```ts
 
-import { a } from './types-Cv0c8khM.js';
-import { b } from './types-Cv0c8khM.js';
-import { c } from './types-Cv0c8khM.js';
-import { d } from './types-Cv0c8khM.js';
-import { e } from './types-Cv0c8khM.js';
-import { f } from './types-Cv0c8khM.js';
-import { g } from './types-Cv0c8khM.js';
-import { h } from './types-Cv0c8khM.js';
-import { L } from './types-Cv0c8khM.js';
-import { i as Layer } from './types-Cv0c8khM.js';
-import { j as LayerGroup } from './types-Cv0c8khM.js';
-import { V } from './types-Cv0c8khM.js';
+import { a } from './types-BNUabHQ3.js';
+import { b } from './types-BNUabHQ3.js';
+import { c } from './types-BNUabHQ3.js';
+import { d } from './types-BNUabHQ3.js';
+import { e } from './types-BNUabHQ3.js';
+import { f } from './types-BNUabHQ3.js';
+import { h } from './types-BNUabHQ3.js';
+import { i } from './types-BNUabHQ3.js';
+import { L } from './types-BNUabHQ3.js';
+import { g as Layer } from './types-BNUabHQ3.js';
+import { j as LayerGroup } from './types-BNUabHQ3.js';
+import { V } from './types-BNUabHQ3.js';
 import * as z from 'zod';
 
 // @public
@@ -141,6 +141,15 @@ interface LayersController {
     id: string): Promise<L>;
     getLayers(
     filter?: a): Promise<b>;
+    onLayerChange(args: {
+        options: {
+            id: string;
+        };
+        handler: (
+        change: {
+            layer: Layer;
+        }) => void;
+    }): VoidFunction;
     setGroupVisibility(visibility: c): Promise<void>;
     setLayerVisibility(visibility: c): Promise<void>;
 }
@@ -184,8 +193,8 @@ const UiControlsOptionsSchema: z.ZodObject<{
 // @public
 type ViewportController = {
     get(): Promise<V>;
-    goto(viewport: g): void;
-    fitBounds(bounds: h): void;
+    goto(viewport: h): void;
+    fitBounds(bounds: i): void;
     onMove(args: {
         handler: (viewport: V) => void;
     }): VoidFunction;
@@ -193,9 +202,9 @@ type ViewportController = {
 
 // Warnings were encountered during analysis:
 //
-// dist/client.d.ts:270:5 - (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:275:5 - (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:279:5 - (ae-forgotten-export) The symbol "LayersController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:307:5 - (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:312:5 - (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
+// dist/client.d.ts:316:5 - (ae-forgotten-export) The symbol "LayersController" needs to be exported by the entry point client.d.ts
 
 // (No @packageDocumentation comment for this package)
 

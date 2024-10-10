@@ -1,7 +1,7 @@
 import * as z from "zod";
 import type { ModuleSchema } from "../../lib/schema";
 import {
-  listenerMessage,
+  listenerMessageNoParams,
   methodMessage,
   type Listener,
   type Method,
@@ -21,7 +21,7 @@ const ViewportFitBoundsMessage = methodMessage(
   "viewport.fitBounds",
   ViewportFitBoundsParamsSchema,
 );
-const ViewportOnMoveMessage = listenerMessage("viewport.move");
+const ViewportOnMoveMessage = listenerMessageNoParams("viewport.move");
 
 export const viewportSchema = {
   methods: [ViewportGotoMessage, ViewportGetMessage, ViewportFitBoundsMessage],

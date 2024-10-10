@@ -1,14 +1,8 @@
 /**
  * The types that are documented in the SDK API reference.
  */
-import type {
-  FeltController,
-  FeltControllerWithIframe,
-} from "./modules/controller";
 import type { LayersController } from "./modules/layers/controller";
 import type {
-  Layer,
-  LayerGroup,
   LayerProcessingStatus,
   LayersGetGroupsFilter,
   LayersGetLayersFilter,
@@ -22,17 +16,11 @@ import type {
   ViewportSetCenterZoomParams,
   ViewportState,
 } from "./modules/viewport/types";
-import type { FeltEmbedOptions } from "./types/embed";
 import type { FeltBoundary, FeltZoom } from "./types/geo";
 
 export type {
   FeltBoundary,
-  FeltController,
-  FeltControllerWithIframe,
-  FeltEmbedOptions,
   FeltZoom,
-  Layer,
-  LayerGroup,
   LayerProcessingStatus,
   LayersController,
   LayersGetGroupsFilter,

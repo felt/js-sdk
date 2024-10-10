@@ -177,3 +177,43 @@ The ids of the layers you want to change the visibility of.
 ```typescript
 layers.setGroupVisibility({ show: ["layer-group-1", "layer-group-2"], hide: ["layer-group-3"] });
 ```
+
+***
+
+### onLayerChange()
+
+> **onLayerChange**(`args`): `VoidFunction`
+
+Adds a listener for when a layer changes.
+
+#### Parameters
+
+• **args**
+
+• **args.options**
+
+• **args.options.id**: `string`
+
+The id of the layer to listen for changes to.
+
+• **args.handler**
+
+The handler that is called when the layer changes.
+
+#### Returns
+
+`VoidFunction`
+
+A function to unsubscribe from the listener
+
+#### Example
+
+```typescript
+const unsubscribe = layers.onLayerChange({
+  options: { id: "layer-1" },
+  handler: layer => console.log(layer.bounds),
+});
+
+// later on...
+unsubscribe();
+```

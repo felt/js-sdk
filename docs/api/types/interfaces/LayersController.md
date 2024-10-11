@@ -8,7 +8,7 @@ visibility toggled.
 
 ### getLayer()
 
-> **getLayer**(`id`): `Promise`\<`null` \| `object`\>
+> **getLayer**(`id`): `Promise`\<`null` \| [`LayersGetLayerResponse`](LayersGetLayerResponse.md)\>
 
 Get a single layer from the map by its id.
 
@@ -20,7 +20,7 @@ The id of the layer you want to get.
 
 #### Returns
 
-`Promise`\<`null` \| `object`\>
+`Promise`\<`null` \| [`LayersGetLayerResponse`](LayersGetLayerResponse.md)\>
 
 The requested layer.
 
@@ -41,13 +41,9 @@ filters are supplied, all layers will be returned.
 
 #### Parameters
 
-• **filter?**
+• **filter?**: [`LayersGetLayersFilter`](LayersGetLayersFilter.md)
 
 The filters to apply to the layers returned from the map.
-
-• **filter.ids?**: `string`[] = `...`
-
-The ids of the layers to get.
 
 #### Returns
 
@@ -77,13 +73,7 @@ Hide or show layers with the given ids.
 
 #### Parameters
 
-• **visibility**
-
-• **visibility.show?**: `string`[] = `...`
-
-The ids of the layers you want to change the visibility of.
-
-• **visibility.hide?**: `string`[] = `...`
+• **visibility**: [`LayersSetVisibilityRequest`](LayersSetVisibilityRequest.md)
 
 #### Returns
 
@@ -99,7 +89,7 @@ layers.setLayerVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
 
 ### getGroup()
 
-> **getGroup**(`id`): `Promise`\<`null` \| `object`\>
+> **getGroup**(`id`): `Promise`\<`null` \| [`LayersGetLayerGroupResponse`](LayersGetLayerGroupResponse.md)\>
 
 Get a layer group from the map by its id.
 
@@ -109,7 +99,7 @@ Get a layer group from the map by its id.
 
 #### Returns
 
-`Promise`\<`null` \| `object`\>
+`Promise`\<`null` \| [`LayersGetLayerGroupResponse`](LayersGetLayerGroupResponse.md)\>
 
 The requested layer group.
 
@@ -130,13 +120,9 @@ filters are supplied, all layer groups will be returned in rendering order.
 
 #### Parameters
 
-• **filter?**
+• **filter?**: [`LayersGetGroupsFilter`](LayersGetGroupsFilter.md)
 
 The filters to apply to the layer groups returned from the map.
-
-• **filter.ids?**: `string`[] = `...`
-
-The ids of the layer groups to get.
 
 #### Returns
 
@@ -160,13 +146,7 @@ Hide or show layer groups with the given ids.
 
 #### Parameters
 
-• **visibility**
-
-• **visibility.show?**: `string`[] = `...`
-
-The ids of the layers you want to change the visibility of.
-
-• **visibility.hide?**: `string`[] = `...`
+• **visibility**: [`LayersSetVisibilityRequest`](LayersSetVisibilityRequest.md)
 
 #### Returns
 

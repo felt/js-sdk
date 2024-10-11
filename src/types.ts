@@ -3,9 +3,15 @@
  */
 import type { LayersController } from "./modules/layers/controller";
 import type {
+  LayerChangeCallbackParams,
   LayerProcessingStatus,
   LayersGetGroupsFilter,
+  LayersGetGroupsResponse,
+  LayersGetLayerGroupResponse,
+  LayersGetLayerResponse,
   LayersGetLayersFilter,
+  LayersGetLayersResponse,
+  LayersSetVisibilityRequest,
 } from "./modules/layers/types";
 import type { UiController } from "./modules/ui/controller";
 import type { UiControlsOptions } from "./modules/ui/types";
@@ -21,10 +27,16 @@ import type { FeltBoundary, FeltZoom } from "./types/geo";
 export type {
   FeltBoundary,
   FeltZoom,
+  LayerChangeCallbackParams,
   LayerProcessingStatus,
   LayersController,
   LayersGetGroupsFilter,
+  LayersGetGroupsResponse,
+  LayersGetLayerGroupResponse,
+  LayersGetLayerResponse,
   LayersGetLayersFilter,
+  LayersGetLayersResponse,
+  LayersSetVisibilityRequest,
   UiController,
   UiControlsOptions,
   ViewportCenterZoom,

@@ -3,9 +3,15 @@
 ### Layers
 
 - [LayersController](interfaces/LayersController.md)
+- [LayersGetLayerResponse](interfaces/LayersGetLayerResponse.md)
+- [LayersGetLayerGroupResponse](interfaces/LayersGetLayerGroupResponse.md)
+- [LayersGetLayersFilter](interfaces/LayersGetLayersFilter.md)
+- [LayersGetGroupsFilter](interfaces/LayersGetGroupsFilter.md)
+- [LayersSetVisibilityRequest](interfaces/LayersSetVisibilityRequest.md)
+- [LayerChangeCallbackParams](interfaces/LayerChangeCallbackParams.md)
 - [LayerProcessingStatus](type-aliases/LayerProcessingStatus.md)
-- [LayersGetLayersFilter](type-aliases/LayersGetLayersFilter.md)
-- [LayersGetGroupsFilter](type-aliases/LayersGetGroupsFilter.md)
+- [LayersGetLayersResponse](type-aliases/LayersGetLayersResponse.md)
+- [LayersGetGroupsResponse](type-aliases/LayersGetGroupsResponse.md)
 
 ### Types
 

@@ -1,6 +1,6 @@
 import { listener, method } from "../../types/interface";
 import type {
-  Layer,
+  LayerChangeCallbackParams,
   LayersGetGroupsFilter,
   LayersGetGroupsResponse,
   LayersGetLayerGroupResponse,
@@ -48,7 +48,7 @@ export interface LayersController {
      * The id of the layer you want to get.
      */
     id: string,
-  ): Promise<LayersGetLayerResponse>;
+  ): Promise<LayersGetLayerResponse | null>;
 
   /**
    * Gets layers from the map, accoridng to the filters supplied. If no
@@ -90,7 +90,7 @@ export interface LayersController {
    * ```
    * @returns The requested layer group.
    */
-  getGroup(id: string): Promise<LayersGetLayerGroupResponse>;
+  getGroup(id: string): Promise<LayersGetLayerGroupResponse | null>;
 
   /**
    * Gets layer groups from the map, according to the filters supplied. If no
@@ -150,12 +150,7 @@ export interface LayersController {
       /**
        * An object describing the change that occurred.
        */
-      change: {
-        /**
-         * The new data for the layer.
-         */
-        layer: Layer;
-      },
+      change: LayerChangeCallbackParams,
     ) => void;
   }): VoidFunction;
 }

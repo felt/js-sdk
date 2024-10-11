@@ -10,7 +10,7 @@ import {
   LayersGetGroupsFilterSchema,
   LayersGetLayersFilterSchema,
   LayersSetVisibilityRequestSchema,
-  type Layer,
+  type LayerChangeCallbackParams,
   type LayersGetGroupsResponse,
   type LayersGetLayerGroupResponse,
   type LayersGetLayerResponse,
@@ -20,7 +20,7 @@ import {
 const LayersGetLayerMessage = methodMessage("layers.getLayer", z.string());
 const LayersGetLayersMessage = methodMessage(
   "layers.getLayers",
-  LayersGetLayersFilterSchema,
+  LayersGetLayersFilterSchema.optional(),
 );
 const LayersSetLayerVisibilityMessage = methodMessage(
   "layers.setLayerVisibility",
@@ -29,7 +29,7 @@ const LayersSetLayerVisibilityMessage = methodMessage(
 const LayersGetGroupMessage = methodMessage("layers.getGroup", z.string());
 const LayersGetGroupsMessage = methodMessage(
   "layers.getGroups",
-  LayersGetGroupsFilterSchema,
+  LayersGetGroupsFilterSchema.optional(),
 );
 const LayersSetLayerGroupVisibilityMessage = methodMessage(
   "layers.setGroupVisibility",
@@ -57,7 +57,7 @@ export type LayersSchema = {
   methods: {
     "layers.getLayer": Method<
       z.infer<typeof LayersGetLayerMessage>,
-      LayersGetLayerResponse
+      LayersGetLayerResponse | null
     >;
     "layers.getLayers": Method<
       z.infer<typeof LayersGetLayersMessage>,
@@ -83,7 +83,7 @@ export type LayersSchema = {
   listeners: {
     "layers.onLayerChange": Listener<
       z.infer<typeof LayersOnLayerChangeMessage.shape.options>,
-      { layer: Layer | null }
+      LayerChangeCallbackParams
     >;
   };
 };

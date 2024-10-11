@@ -12,5 +12,5 @@
 
 ### Layers
 
-- [Layer](type-aliases/Layer.md)
-- [LayerGroup](type-aliases/LayerGroup.md)
+- [Layer](interfaces/Layer.md)
+- [LayerGroup](interfaces/LayerGroup.md)

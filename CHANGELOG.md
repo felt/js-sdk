@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 0.5.0
+
+### Minor Changes
+
+- f14af85: Remove namespaces
+
 ## 0.4.3
 
 ### Patch Changes

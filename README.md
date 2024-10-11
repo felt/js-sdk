@@ -75,3 +75,12 @@ Once you have added your module:
 4. Run `npm run check` which will check that the package is correctly built, the docs have been
    updated, the API spec has been updated and the tests are passing.
 5. Push your changes and open a PR.
+6. Once you are happy with your PR, add and push a changeset commit with `npm run changeset` and
+   choose whether it should be a major, minor or patch release.
+
+#### Releasing
+
+**Note:** This is a temporary process while we don't have automated releases set up.
+
+1. From `main`, run `npm run local-release`. This will consolidate the changsets, bump the version
+   number accordingly, publish the package to npm and push the change to main.

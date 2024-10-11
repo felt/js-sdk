@@ -4,7 +4,7 @@ The parameters for the `gotoViewport` method.
 
 ## Extends
 
-- `TypeOf`\<*typeof* `ViewportSetCenterZoomParamsSchema`\>
+- `TypeOf`\<*typeof* `SetViewportCenterZoomParamsSchema`\>
 
 ## Properties
 

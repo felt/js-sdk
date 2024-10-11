@@ -2,7 +2,7 @@ The filter to apply to the layers. If this is not passed, all layers will be ret
 
 ## Extends
 
-- `TypeOf`\<*typeof* `LayersGetLayersFilterSchema`\>
+- `TypeOf`\<*typeof* `GetLayersFilterSchema`\>
 
 ## Properties
 

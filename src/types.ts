@@ -1,41 +1,35 @@
 /**
  * The types that are documented in the SDK API reference.
  */
-import type {
+export type {
+  GetLayerGroupResponse,
+  GetLayerGroupsFilter,
+  GetLayerGroupsResponse,
+  GetLayerResponse,
+  GetLayersFilter,
+  GetLayersResponse,
   LayerChangeCallbackParams,
   LayerProcessingStatus,
-  LayersGetGroupsFilter,
-  LayersGetGroupsResponse,
-  LayersGetLayerGroupResponse,
-  LayersGetLayerResponse,
-  LayersGetLayersFilter,
-  LayersGetLayersResponse,
-  LayersSetVisibilityRequest,
 } from "./modules/layers/types";
-import type { UiControlsOptions } from "./modules/ui/types";
-import type {
-  ViewportCenterZoom,
-  ViewportFitBoundsParams,
-  ViewportSetCenterZoomParams,
-  ViewportState,
-} from "./modules/viewport/types";
-import type { FeltBoundary, FeltZoom } from "./types/geo";
+
+export type { UiControlsOptions } from "./modules/ui/types";
 
 export type {
-  FeltBoundary,
-  FeltZoom,
-  LayerChangeCallbackParams,
-  LayerProcessingStatus,
-  LayersGetGroupsFilter,
-  LayersGetGroupsResponse,
-  LayersGetLayerGroupResponse,
-  LayersGetLayerResponse,
-  LayersGetLayersFilter,
-  LayersGetLayersResponse,
-  LayersSetVisibilityRequest,
-  UiControlsOptions,
+  SetViewportCenterZoomParams,
   ViewportCenterZoom,
   ViewportFitBoundsParams,
-  ViewportSetCenterZoomParams,
   ViewportState,
-};
+} from "./modules/viewport/types";
+
+export type { FeltBoundary, FeltZoom } from "./types/geo";
+export type { SetVisibilityRequest } from "./types/visibility";
+
+export type {
+  ElementChangeCallbackParams,
+  GetElementGroupResponse,
+  GetElementGroupsFilter,
+  GetElementGroupsResponse,
+  GetElementResponse,
+  GetElementsFilter,
+  GetElementsResponse,
+} from "./modules/elements/types";

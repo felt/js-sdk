@@ -1,13 +1,13 @@
 import { listener, method } from "../../types/interface";
+import type { SetVisibilityRequest } from "../../types/visibility";
 import type {
+  GetLayerGroupResponse,
+  GetLayerGroupsFilter,
+  GetLayerGroupsResponse,
+  GetLayerResponse,
+  GetLayersFilter,
+  GetLayersResponse,
   LayerChangeCallbackParams,
-  LayersGetGroupsFilter,
-  LayersGetGroupsResponse,
-  LayersGetLayerGroupResponse,
-  LayersGetLayerResponse,
-  LayersGetLayersFilter,
-  LayersGetLayersResponse,
-  LayersSetVisibilityRequest,
 } from "./types";
 
 /**
@@ -48,7 +48,7 @@ export interface LayersController {
      * The id of the layer you want to get.
      */
     id: string,
-  ): Promise<LayersGetLayerResponse | null>;
+  ): Promise<GetLayerResponse | null>;
 
   /**
    * Gets layers from the map, accoridng to the filters supplied. If no
@@ -68,8 +68,8 @@ export interface LayersController {
     /**
      * The filters to apply to the layers returned from the map.
      */
-    filter?: LayersGetLayersFilter,
-  ): Promise<LayersGetLayersResponse>;
+    filter?: GetLayersFilter,
+  ): Promise<GetLayersResponse>;
 
   /**
    * Hide or show layers with the given ids.
@@ -79,7 +79,7 @@ export interface LayersController {
    * felt.setLayerVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
    * ```
    */
-  setLayerVisibility(visibility: LayersSetVisibilityRequest): Promise<void>;
+  setLayerVisibility(visibility: SetVisibilityRequest): Promise<void>;
 
   /**
    * Get a layer group from the map by its id.
@@ -90,7 +90,7 @@ export interface LayersController {
    * ```
    * @returns The requested layer group.
    */
-  getLayerGroup(id: string): Promise<LayersGetLayerGroupResponse | null>;
+  getLayerGroup(id: string): Promise<GetLayerGroupResponse | null>;
 
   /**
    * Gets layer groups from the map, according to the filters supplied. If no
@@ -106,8 +106,8 @@ export interface LayersController {
     /**
      * The filters to apply to the layer groups returned from the map.
      */
-    filter?: LayersGetGroupsFilter,
-  ): Promise<LayersGetGroupsResponse>;
+    filter?: GetLayerGroupsFilter,
+  ): Promise<GetLayerGroupsResponse>;
 
   /**
    * Hide or show layer groups with the given ids.
@@ -117,9 +117,7 @@ export interface LayersController {
    * felt.setLayerGroupVisibility({ show: ["layer-group-1", "layer-group-2"], hide: ["layer-group-3"] });
    * ```
    */
-  setLayerGroupVisibility(
-    visibility: LayersSetVisibilityRequest,
-  ): Promise<void>;
+  setLayerGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
 
   /**
    * Adds a listener for when a layer changes.

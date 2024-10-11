@@ -1,3 +1,7 @@
+import {
+  elementsController,
+  type ElementsController,
+} from "./elements/controller";
 import { layersController, type LayersController } from "./layers/controller";
 import { type UiController, uiController } from "./ui/controller";
 import {
@@ -16,6 +20,7 @@ export function makeController(feltWindow: Window): FeltController {
     ...viewportController(feltWindow),
     ...uiController(feltWindow),
     ...layersController(feltWindow),
+    ...elementsController(feltWindow),
   };
 }
 
@@ -33,7 +38,8 @@ export function makeController(feltWindow: Window): FeltController {
  */
 export type FeltController = ViewportController &
   UiController &
-  LayersController;
+  LayersController &
+  ElementsController;
 
 /**
  * @category Controller

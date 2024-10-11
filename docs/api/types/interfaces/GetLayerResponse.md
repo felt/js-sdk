@@ -3,7 +3,7 @@ response will be `null`.
 
 ## Extends
 
-- `TypeOf`\<*typeof* `LayersGetLayerResponseSchema`\>
+- `TypeOf`\<*typeof* `GetLayerResponseSchema`\>
 
 ## Properties
 
@@ -19,18 +19,17 @@ The string identifying the layer
 
 ***
 
-### layerGroupId
+### groupId
 
-> **layerGroupId**: `string`
+> **groupId**: `null` \| `string`
 
 The ID of the layer group that the layer belongs to.
 
-Layers that appear unnested in Felt are still within a LayerGroup,
-but the LayerGroup doesn't show up in the UI.
+Layers that appear at the root level in Felt will not have a group ID.
 
 #### Inherited from
 
-`z.infer.layerGroupId`
+`z.infer.groupId`
 
 ***
 

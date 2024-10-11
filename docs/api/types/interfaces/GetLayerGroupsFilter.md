@@ -2,7 +2,7 @@ The filter to apply to the layer groups. If this is not passed, all layer groups
 
 ## Extends
 
-- `TypeOf`\<*typeof* `LayersGetGroupsFilterSchema`\>
+- `TypeOf`\<*typeof* `GetLayerGroupsFilterSchema`\>
 
 ## Properties
 

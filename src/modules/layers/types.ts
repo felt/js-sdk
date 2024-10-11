@@ -34,10 +34,9 @@ const LayerSchema = z.object({
   /**
    * The ID of the layer group that the layer belongs to.
    *
-   * Layers that appear unnested in Felt are still within a LayerGroup,
-   * but the LayerGroup doesn't show up in the UI.
+   * Layers that appear at the root level in Felt will not have a group ID.
    */
-  layerGroupId: z.string(),
+  groupId: z.string().nullable(),
 
   /**
    * The name of the layer can be displayed in the Legend, depending
@@ -146,9 +145,9 @@ const LayerGroupSchema = z.object({
  *
  * @category Layers
  */
-export interface LayersGetLayerResponse
-  extends z.infer<typeof LayersGetLayerResponseSchema> {}
-const LayersGetLayerResponseSchema = LayerSchema;
+export interface GetLayerResponse
+  extends z.infer<typeof GetLayerResponseSchema> {}
+const GetLayerResponseSchema = LayerSchema;
 
 /**
  * The response from the `getLayerGroup` method. If the layer doesn't exist, the
@@ -156,18 +155,18 @@ const LayersGetLayerResponseSchema = LayerSchema;
  *
  * @category Layers
  */
-export interface LayersGetLayerGroupResponse
-  extends z.infer<typeof LayersGetLayerGroupResponseSchema> {}
-const LayersGetLayerGroupResponseSchema = LayerGroupSchema;
+export interface GetLayerGroupResponse
+  extends z.infer<typeof GetLayerGroupResponseSchema> {}
+const GetLayerGroupResponseSchema = LayerGroupSchema;
 
 /**
  * The filter to apply to the layers. If this is not passed, all layers will be returned.
  *
  * @category Layers
  */
-export interface LayersGetLayersFilter
-  extends z.infer<typeof LayersGetLayersFilterSchema> {}
-export const LayersGetLayersFilterSchema = z.object({
+export interface GetLayersFilter
+  extends z.infer<typeof GetLayersFilterSchema> {}
+export const GetLayersFilterSchema = z.object({
   /**
    * The ids of the layers to get.
    */
@@ -186,19 +185,17 @@ export const LayersGetLayersFilterSchema = z.object({
  *
  * @category Layers
  */
-export type LayersGetLayersResponse = z.infer<
-  typeof LayersGetLayersResponseSchema
->;
-const LayersGetLayersResponseSchema = z.array(LayerSchema.nullable());
+export type GetLayersResponse = z.infer<typeof GetLayersResponseSchema>;
+const GetLayersResponseSchema = z.array(LayerSchema.nullable());
 
 /**
  * The filter to apply to the layer groups. If this is not passed, all layer groups will be returned.
  *
  * @category Layers
  */
-export interface LayersGetGroupsFilter
-  extends z.infer<typeof LayersGetGroupsFilterSchema> {}
-export const LayersGetGroupsFilterSchema = z.object({
+export interface GetLayerGroupsFilter
+  extends z.infer<typeof GetLayerGroupsFilterSchema> {}
+export const GetLayerGroupsFilterSchema = z.object({
   /**
    * The ids of the layer groups to get.
    */
@@ -210,24 +207,10 @@ export const LayersGetGroupsFilterSchema = z.object({
  *
  * @category Layers
  */
-export type LayersGetGroupsResponse = z.infer<
-  typeof LayersGetGroupsResponseSchema
+export type GetLayerGroupsResponse = z.infer<
+  typeof GetLayerGroupsResponseSchema
 >;
-const LayersGetGroupsResponseSchema = z.array(LayerGroupSchema.nullable());
-/**
- * The parameters for the `setLayerVisibility` and `setLayerGroupVisibility` methods.
- *
- * @category Layers
- */
-export interface LayersSetVisibilityRequest
-  extends z.infer<typeof LayersSetVisibilityRequestSchema> {}
-export const LayersSetVisibilityRequestSchema = z.object({
-  /**
-   * The ids of the layers you want to change the visibility of.
-   */
-  show: z.array(z.string()).optional(),
-  hide: z.array(z.string()).optional(),
-});
+const GetLayerGroupsResponseSchema = z.array(LayerGroupSchema.nullable());
 
 /**
  * The parameters for the `onLayerChange` listener.

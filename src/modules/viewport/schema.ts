@@ -7,31 +7,31 @@ import {
   type Method,
 } from "../../types/builders";
 import {
+  SetViewportCenterZoomParamsSchema,
   ViewportFitBoundsParamsSchema,
-  ViewportSetCenterZoomParamsSchema,
   type ViewportState,
 } from "./types";
 
-const ViewportGetMessage = methodMessage("getViewport", z.undefined());
-const ViewportGotoMessage = methodMessage(
+const GetViewportMessage = methodMessage("getViewport", z.undefined());
+const GotoViewportMessage = methodMessage(
   "gotoViewport",
-  ViewportSetCenterZoomParamsSchema,
+  SetViewportCenterZoomParamsSchema,
 );
 const ViewportFitBoundsMessage = methodMessage(
   "fitBounds",
   ViewportFitBoundsParamsSchema,
 );
-const ViewportOnMoveMessage = listenerMessageNoParams("onViewportMove");
+const OnViewportMoveMessage = listenerMessageNoParams("onViewportMove");
 
 export const viewportSchema = {
-  methods: [ViewportGotoMessage, ViewportGetMessage, ViewportFitBoundsMessage],
-  listeners: [ViewportOnMoveMessage],
+  methods: [GotoViewportMessage, GetViewportMessage, ViewportFitBoundsMessage],
+  listeners: [OnViewportMoveMessage],
 } satisfies ModuleSchema;
 
 export type ViewportSchema = {
   methods: {
-    getViewport: Method<z.infer<typeof ViewportGetMessage>, ViewportState>;
-    gotoViewport: Method<z.infer<typeof ViewportGotoMessage>, void>;
+    getViewport: Method<z.infer<typeof GetViewportMessage>, ViewportState>;
+    gotoViewport: Method<z.infer<typeof GotoViewportMessage>, void>;
     fitBounds: Method<z.infer<typeof ViewportFitBoundsMessage>, void>;
   };
   listeners: {

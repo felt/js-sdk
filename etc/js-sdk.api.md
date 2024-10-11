@@ -4,20 +4,52 @@
 
 ```ts
 
-import { a } from './types-P53dfmdj.js';
-import { b } from './types-P53dfmdj.js';
-import { c } from './types-P53dfmdj.js';
-import { d } from './types-P53dfmdj.js';
-import { e } from './types-P53dfmdj.js';
-import { f } from './types-P53dfmdj.js';
-import { g } from './types-P53dfmdj.js';
-import { h } from './types-P53dfmdj.js';
-import { i } from './types-P53dfmdj.js';
-import { L } from './types-P53dfmdj.js';
-import { j as Layer } from './types-P53dfmdj.js';
-import { k as LayerGroup } from './types-P53dfmdj.js';
-import { V } from './types-P53dfmdj.js';
+import { a } from './types-B40drmSW.js';
+import { b } from './types-B40drmSW.js';
+import { c } from './types-B40drmSW.js';
+import { d } from './types-B40drmSW.js';
+import { E } from './types-B40drmSW.js';
+import { e } from './types-B40drmSW.js';
+import { m as Element_2 } from './types-B40drmSW.js';
+import { n as ElementGroup } from './types-B40drmSW.js';
+import { f } from './types-B40drmSW.js';
+import { G } from './types-B40drmSW.js';
+import { g } from './types-B40drmSW.js';
+import { h } from './types-B40drmSW.js';
+import { i } from './types-B40drmSW.js';
+import { j } from './types-B40drmSW.js';
+import { k } from './types-B40drmSW.js';
+import { L } from './types-B40drmSW.js';
+import { l } from './types-B40drmSW.js';
+import { o as Layer } from './types-B40drmSW.js';
+import { p as LayerGroup } from './types-B40drmSW.js';
+import { S } from './types-B40drmSW.js';
+import { V } from './types-B40drmSW.js';
 import * as z from 'zod';
+
+export { Element_2 as Element }
+
+export { ElementGroup }
+
+// @public
+interface ElementsController {
+    getElement(
+    id: string): Promise<G | null>;
+    getElementGroup(id: string): Promise<c | null>;
+    getElementGroups(
+    filter?: d): Promise<e>;
+    getElements(
+    filter?: a): Promise<b>;
+    onElementChange(args: {
+        options: {
+            id: string;
+        };
+        handler: (
+        change: E) => void;
+    }): VoidFunction;
+    // Warning: (ae-forgotten-export) The symbol "SetVisibilityRequest" needs to be exported by the entry point client.d.ts
+    setElementGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
+}
 
 // @public
 export const Felt: {
@@ -28,9 +60,10 @@ export const Felt: {
 // Warning: (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
 // Warning: (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
 // Warning: (ae-forgotten-export) The symbol "LayersController" needs to be exported by the entry point client.d.ts
+// Warning: (ae-forgotten-export) The symbol "ElementsController" needs to be exported by the entry point client.d.ts
 //
 // @public
-export type FeltController = ViewportController & UiController & LayersController;
+export type FeltController = ViewportController & UiController & LayersController & ElementsController;
 
 // @public
 export type FeltControllerWithIframe = FeltController & {
@@ -136,22 +169,40 @@ export { LayerGroup }
 // @public
 interface LayersController {
     getLayer(
-    id: string): Promise<L | null>;
-    getLayerGroup(id: string): Promise<d | null>;
+    id: string): Promise<f | null>;
+    getLayerGroup(id: string): Promise<i | null>;
     getLayerGroups(
-    filter?: e): Promise<f>;
+    filter?: j): Promise<k>;
     getLayers(
-    filter?: a): Promise<b>;
+    filter?: g): Promise<h>;
     onLayerChange(args: {
         options: {
             id: string;
         };
         handler: (
-        change: g) => void;
+        change: L) => void;
     }): VoidFunction;
-    setLayerGroupVisibility(visibility: c): Promise<void>;
-    setLayerVisibility(visibility: c): Promise<void>;
+    setLayerGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
+    setLayerVisibility(visibility: SetVisibilityRequest): Promise<void>;
 }
+
+// Warning: (ae-forgotten-export) The symbol "SetVisibilityRequestSchema" needs to be exported by the entry point client.d.ts
+//
+// @public
+interface SetVisibilityRequest extends z.infer<typeof SetVisibilityRequestSchema> {
+}
+
+// @internal (undocumented)
+const SetVisibilityRequestSchema: z.ZodObject<{
+    show: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
+    hide: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
+}, "strip", z.ZodTypeAny, {
+    show?: string[] | undefined;
+    hide?: string[] | undefined;
+}, {
+    show?: string[] | undefined;
+    hide?: string[] | undefined;
+}>;
 
 // @public
 interface UiController {
@@ -192,8 +243,8 @@ const UiControlsOptionsSchema: z.ZodObject<{
 // @public
 type ViewportController = {
     getViewport(): Promise<V>;
-    gotoViewport(viewport: h): void;
-    fitBounds(bounds: i): void;
+    gotoViewport(viewport: S): void;
+    fitBounds(bounds: l): void;
     onViewportMove(args: {
         handler: (viewport: V) => void;
     }): VoidFunction;

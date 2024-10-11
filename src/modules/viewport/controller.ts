@@ -1,7 +1,7 @@
 import { listener, method } from "../../types/interface";
 import type {
+  SetViewportCenterZoomParams,
   ViewportFitBoundsParams,
-  ViewportSetCenterZoomParams,
   ViewportState,
 } from "./types";
 
@@ -39,7 +39,7 @@ export type ViewportController = {
    * felt.gotoViewport({ center: { lat: 0, lng: 0 }, zoom: 10 });
    * ```
    */
-  gotoViewport(viewport: ViewportSetCenterZoomParams): void;
+  gotoViewport(viewport: SetViewportCenterZoomParams): void;
 
   /**
    * Fits the map to the specified bounds.

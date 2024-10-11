@@ -36,9 +36,9 @@ const ViewportStateSchema = z.object({
  *
  * @category Viewport
  */
-export interface ViewportSetCenterZoomParams
-  extends z.infer<typeof ViewportSetCenterZoomParamsSchema> {}
-export const ViewportSetCenterZoomParamsSchema = z.object({
+export interface SetViewportCenterZoomParams
+  extends z.infer<typeof SetViewportCenterZoomParamsSchema> {}
+export const SetViewportCenterZoomParamsSchema = z.object({
   type: z.literal("center"),
   location: ViewportCenterZoomSchema.partial(),
 });

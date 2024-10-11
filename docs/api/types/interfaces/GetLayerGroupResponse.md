@@ -3,7 +3,7 @@ response will be `null`.
 
 ## Extends
 
-- `TypeOf`\<*typeof* `LayersGetLayerGroupResponseSchema`\>
+- `TypeOf`\<*typeof* `GetLayerGroupResponseSchema`\>
 
 ## Properties
 

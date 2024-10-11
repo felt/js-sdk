@@ -1,4 +1,4 @@
-The parameters for the `layers.onLayerChange` listener.
+The parameters for the `onLayerChange` listener.
 
 ## Properties
 

@@ -4,7 +4,7 @@ import { methodMessage, type Method } from "../../types/builders";
 import { UiControlsOptionsSchema } from "./types";
 
 const UiControlsMessage = methodMessage(
-  "ui_controls.update",
+  "updateUiControls",
   UiControlsOptionsSchema,
 );
 
@@ -15,7 +15,7 @@ export const uiSchema = {
 
 export type UiSchema = {
   methods: {
-    "ui_controls.update": Method<z.infer<typeof UiControlsMessage>, void>;
+    updateUiControls: Method<z.infer<typeof UiControlsMessage>, void>;
   };
   listeners: {};
 };

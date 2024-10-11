@@ -1,6 +1,6 @@
 > **LayersGetLayersResponse**: (`null` \| `object`)[]
 
-The response from the `layers.getLayers` method.
+The response from the `getLayers` method.
 
 ## Remarks
 

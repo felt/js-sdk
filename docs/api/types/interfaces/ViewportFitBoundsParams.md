@@ -1,6 +1,6 @@
-The parameters for the `viewport.fitBounds` method.
+The parameters for the `fitBounds` method.
 
-[ViewportController.fitBounds](ViewportController.md#fitbounds)
+[FeltController.fitBounds](../../client/interfaces/FeltController.md#fitbounds)
 
 ## Extends
 

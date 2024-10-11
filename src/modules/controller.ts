@@ -13,9 +13,9 @@ import {
  */
 export function makeController(feltWindow: Window): FeltController {
   return {
-    viewport: viewportController(feltWindow),
-    ui: uiController(feltWindow),
-    layers: layersController(feltWindow),
+    ...viewportController(feltWindow),
+    ...uiController(feltWindow),
+    ...layersController(feltWindow),
   };
 }
 
@@ -31,23 +31,9 @@ export function makeController(feltWindow: Window): FeltController {
  * @public
  * @interface
  */
-export type FeltController = {
-  /**
-   * The viewport controller allows you to control the viewport of the map.
-   */
-  viewport: ViewportController;
-
-  /**
-   * The UI controllers allows you to enable and disable UI controls on the
-   * embedded map.
-   */
-  ui: UiController;
-
-  /**
-   * The layers controller allows you to interact with layers on the map.
-   */
-  layers: LayersController;
-};
+export type FeltController = ViewportController &
+  UiController &
+  LayersController;
 
 /**
  * @category Controller

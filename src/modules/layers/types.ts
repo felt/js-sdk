@@ -120,7 +120,7 @@ const LayerGroupSchema = z.object({
    * The ids of the layers in the layer group.
    *
    * @remarks
-   * You can use these ids to get the full layer objects via the `layers.getLayers` method.
+   * You can use these ids to get the full layer objects via the `getLayers` method.
    */
   layerIds: z.array(z.string()),
 
@@ -141,7 +141,7 @@ const LayerGroupSchema = z.object({
 });
 
 /**
- * The response from the `layers.getLayer` method. If the layer doesn't exist, the
+ * The response from the `getLayer` method. If the layer doesn't exist, the
  * response will be `null`.
  *
  * @category Layers
@@ -151,7 +151,7 @@ export interface LayersGetLayerResponse
 const LayersGetLayerResponseSchema = LayerSchema;
 
 /**
- * The response from the `layers.getGroup` method. If the layer doesn't exist, the
+ * The response from the `getLayerGroup` method. If the layer doesn't exist, the
  * response will be `null`.
  *
  * @category Layers
@@ -175,7 +175,7 @@ export const LayersGetLayersFilterSchema = z.object({
 });
 
 /**
- * The response from the `layers.getLayers` method.
+ * The response from the `getLayers` method.
  *
  * @remarks
  * The layers in the map, ordered by the order specified in Felt. This is not
@@ -206,7 +206,7 @@ export const LayersGetGroupsFilterSchema = z.object({
 });
 
 /**
- * The response from the `layers.getGroups` method.
+ * The response from the `getLayerGroups` method.
  *
  * @category Layers
  */
@@ -215,7 +215,7 @@ export type LayersGetGroupsResponse = z.infer<
 >;
 const LayersGetGroupsResponseSchema = z.array(LayerGroupSchema.nullable());
 /**
- * The parameters for the `layers.setLayerVisibility` and `layers.setGroupVisibility` methods.
+ * The parameters for the `setLayerVisibility` and `setLayerGroupVisibility` methods.
  *
  * @category Layers
  */
@@ -230,7 +230,7 @@ export const LayersSetVisibilityRequestSchema = z.object({
 });
 
 /**
- * The parameters for the `layers.onLayerChange` listener.
+ * The parameters for the `onLayerChange` listener.
  *
  * @category Layers
  */

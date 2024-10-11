@@ -1,4 +1,4 @@
-The response from the `layers.getGroup` method. If the layer doesn't exist, the
+The response from the `getLayerGroup` method. If the layer doesn't exist, the
 response will be `null`.
 
 ## Extends
@@ -51,7 +51,7 @@ The ids of the layers in the layer group.
 
 #### Remarks
 
-You can use these ids to get the full layer objects via the `layers.getLayers` method.
+You can use these ids to get the full layer objects via the `getLayers` method.
 
 #### Inherited from
 

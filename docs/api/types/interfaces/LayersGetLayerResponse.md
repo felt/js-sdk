@@ -1,4 +1,4 @@
-The response from the `layers.getLayer` method. If the layer doesn't exist, the
+The response from the `getLayer` method. If the layer doesn't exist, the
 response will be `null`.
 
 ## Extends

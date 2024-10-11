@@ -35,13 +35,13 @@ describe("Felt SDK integration", () => {
     window = createWindow();
 
     methods = {
-      "ui_controls.update": () => {},
-      "viewport.goto": () => {},
-      "viewport.get": () => fakeViewportState,
+      updateUiControls: () => {},
+      gotoViewport: () => {},
+      getViewport: () => fakeViewportState,
     };
 
     listeners = {
-      "viewport.move": ({ handler }) => {
+      onViewportMove: ({ handler }) => {
         function handleClick() {
           handler(fakeViewportState);
         }
@@ -75,22 +75,22 @@ describe("Felt SDK integration", () => {
   test("sync queries work", async () => {
     const client = await Felt.connect(window);
 
-    expect(client.viewport.get()).resolves.toEqual(fakeViewportState);
+    expect(client.getViewport()).resolves.toEqual(fakeViewportState);
   });
 
   test("async queries work", async () => {
-    methods["viewport.get"] = () => Promise.resolve(fakeViewportState);
+    methods.getViewport = () => Promise.resolve(fakeViewportState);
     const client = await Felt.connect(window);
 
-    expect(client.viewport.get()).resolves.toEqual(fakeViewportState);
+    expect(client.getViewport()).resolves.toEqual(fakeViewportState);
   });
 
   test("commands work", async () => {
     const client = await Felt.connect(window);
 
-    vi.spyOn(methods, "viewport.goto");
+    vi.spyOn(methods, "gotoViewport");
 
-    await client.viewport.goto({
+    await client.gotoViewport({
       type: "center",
       location: {
         center: {
@@ -101,7 +101,7 @@ describe("Felt SDK integration", () => {
       },
     });
 
-    expect(methods["viewport.goto"]).toHaveBeenCalledWith({
+    expect(methods.gotoViewport).toHaveBeenCalledWith({
       type: "center",
       location: {
         center: {
@@ -118,7 +118,7 @@ describe("Felt SDK integration", () => {
 
     const spy = vi.fn();
 
-    const unsub = client.viewport.onMove({ handler: spy });
+    const unsub = client.onViewportMove({ handler: spy });
 
     window.dispatchEvent(new Event("click"));
     // Wait for the event to be processed
@@ -164,7 +164,7 @@ describe("Felt SDK integration", () => {
 
     window.postMessage({
       // the type field is correct but other fields are wrong
-      type: "viewport.goto",
+      type: "gotoViewport",
       params: {},
     });
 

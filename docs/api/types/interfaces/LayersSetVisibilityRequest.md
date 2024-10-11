@@ -1,4 +1,4 @@
-The parameters for the `layers.setLayerVisibility` and `layers.setGroupVisibility` methods.
+The parameters for the `setLayerVisibility` and `setLayerGroupVisibility` methods.
 
 ## Extends
 

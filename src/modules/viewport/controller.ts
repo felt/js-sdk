@@ -9,10 +9,10 @@ import type {
  * @ignore
  */
 export const viewportController = (feltWindow: Window): ViewportController => ({
-  get: method(feltWindow, "viewport.get"),
-  goto: method(feltWindow, "viewport.goto"),
-  fitBounds: method(feltWindow, "viewport.fitBounds"),
-  onMove: listener(feltWindow, "viewport.move"),
+  getViewport: method(feltWindow, "getViewport"),
+  gotoViewport: method(feltWindow, "gotoViewport"),
+  fitBounds: method(feltWindow, "fitBounds"),
+  onViewportMove: listener(feltWindow, "onViewportMove"),
 });
 
 /**
@@ -29,17 +29,17 @@ export type ViewportController = {
   /**
    * Gets the current state of the viewport.
    */
-  get(): Promise<ViewportState>;
+  getViewport(): Promise<ViewportState>;
 
   /**
    * Moves the map to the specified location.
    *
    * @example
    * ```typescript
-   * Felt.viewport.goto({ center: { lat: 0, lng: 0 }, zoom: 10 });
+   * felt.gotoViewport({ center: { lat: 0, lng: 0 }, zoom: 10 });
    * ```
    */
-  goto(viewport: ViewportSetCenterZoomParams): void;
+  gotoViewport(viewport: ViewportSetCenterZoomParams): void;
 
   /**
    * Fits the map to the specified bounds.
@@ -50,7 +50,7 @@ export type ViewportController = {
    * const south = 37.7749;
    * const east = -122.4194;
    * const north = 37.7749;
-   * Felt.viewport.fitBounds({ bounds: [west, south, east, north] });
+   * felt.fitBounds({ bounds: [west, south, east, north] });
    * ```
    */
   fitBounds(bounds: ViewportFitBoundsParams): void;
@@ -63,7 +63,7 @@ export type ViewportController = {
    * @event
    * @example
    * ```typescript
-   * const unsubscribe = Felt.viewport.onMove({
+   * const unsubscribe = felt.onViewportMove({
    *   handler: viewport => console.log(viewport.center.latitude),
    * });
    *
@@ -71,7 +71,7 @@ export type ViewportController = {
    * unsubscribe();
    * ```
    */
-  onMove(args: {
+  onViewportMove(args: {
     /**
      * This callback is called with the current viewport state whenever
      * the viewport changes.

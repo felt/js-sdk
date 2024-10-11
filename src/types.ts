@@ -1,7 +1,6 @@
 /**
  * The types that are documented in the SDK API reference.
  */
-import type { LayersController } from "./modules/layers/controller";
 import type {
   LayerChangeCallbackParams,
   LayerProcessingStatus,
@@ -13,9 +12,7 @@ import type {
   LayersGetLayersResponse,
   LayersSetVisibilityRequest,
 } from "./modules/layers/types";
-import type { UiController } from "./modules/ui/controller";
 import type { UiControlsOptions } from "./modules/ui/types";
-import type { ViewportController } from "./modules/viewport/controller";
 import type {
   ViewportCenterZoom,
   ViewportFitBoundsParams,
@@ -29,7 +26,6 @@ export type {
   FeltZoom,
   LayerChangeCallbackParams,
   LayerProcessingStatus,
-  LayersController,
   LayersGetGroupsFilter,
   LayersGetGroupsResponse,
   LayersGetLayerGroupResponse,
@@ -37,10 +33,8 @@ export type {
   LayersGetLayersFilter,
   LayersGetLayersResponse,
   LayersSetVisibilityRequest,
-  UiController,
   UiControlsOptions,
   ViewportCenterZoom,
-  ViewportController,
   ViewportFitBoundsParams,
   ViewportSetCenterZoomParams,
   ViewportState,

@@ -1,5 +1,6 @@
 import * as z from "zod";
 import { FeltBoundarySchema, FeltZoom, LatLngSchema } from "../../types/geo";
+import type { FeltController } from "../controller";
 
 /**
  * @category Viewport
@@ -29,9 +30,9 @@ const ViewportStateSchema = z.object({
 });
 
 /**
- * The parameters for the `viewport.goto` method.
+ * The parameters for the `gotoViewport` method.
  *
- * {@link ViewportController.goto}
+ * {@link FeltController.gotoViewport}
  *
  * @category Viewport
  */
@@ -43,9 +44,9 @@ export const ViewportSetCenterZoomParamsSchema = z.object({
 });
 
 /**
- * The parameters for the `viewport.fitBounds` method.
+ * The parameters for the `fitBounds` method.
  *
- * {@link ViewportController.fitBounds}
+ * {@link FeltController.fitBounds}
  *
  * @category Viewport
  */

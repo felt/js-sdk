@@ -14,13 +14,13 @@ import type {
  * @ignore
  */
 export const layersController = (feltWindow: Window): LayersController => ({
-  getLayer: method(feltWindow, "layers.getLayer"),
-  getLayers: method(feltWindow, "layers.getLayers"),
-  setLayerVisibility: method(feltWindow, "layers.setLayerVisibility"),
-  getGroup: method(feltWindow, "layers.getGroup"),
-  getGroups: method(feltWindow, "layers.getGroups"),
-  setGroupVisibility: method(feltWindow, "layers.setGroupVisibility"),
-  onLayerChange: listener(feltWindow, "layers.onLayerChange"),
+  getLayer: method(feltWindow, "getLayer"),
+  getLayers: method(feltWindow, "getLayers"),
+  setLayerVisibility: method(feltWindow, "setLayerVisibility"),
+  getLayerGroup: method(feltWindow, "getLayerGroup"),
+  getLayerGroups: method(feltWindow, "getLayerGroups"),
+  setLayerGroupVisibility: method(feltWindow, "setLayerGroupVisibility"),
+  onLayerChange: listener(feltWindow, "onLayerChange"),
 });
 
 /**
@@ -39,7 +39,7 @@ export interface LayersController {
    *
    * @example
    * ```typescript
-   * const layers = await layers.get({ ids: ["layer-1", "layer-2"] });
+   * const layers = await felt.getLayer({ ids: ["layer-1", "layer-2"] });
    * ```
    * @returns The requested layer.
    */
@@ -60,7 +60,7 @@ export interface LayersController {
    *
    * @example
    * ```typescript
-   * const layers = await layers.getAll();
+   * const layers = await felt.getLayers();
    * ```
    * @returns All layers on the map.
    */
@@ -76,7 +76,7 @@ export interface LayersController {
    *
    * @example
    * ```typescript
-   * layers.setLayerVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
+   * felt.setLayerVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
    * ```
    */
   setLayerVisibility(visibility: LayersSetVisibilityRequest): Promise<void>;
@@ -86,11 +86,11 @@ export interface LayersController {
    *
    * @example
    * ```typescript
-   * const layerGroup = await layers.getGroup("layer-group-1");
+   * felt.getLayerGroup("layer-group-1");
    * ```
    * @returns The requested layer group.
    */
-  getGroup(id: string): Promise<LayersGetLayerGroupResponse | null>;
+  getLayerGroup(id: string): Promise<LayersGetLayerGroupResponse | null>;
 
   /**
    * Gets layer groups from the map, according to the filters supplied. If no
@@ -98,11 +98,11 @@ export interface LayersController {
    *
    * @example
    * ```typescript
-   * const layerGroups = await layers.getGroups({ ids: ["layer-group-1", "layer-group-2"] });
+   * const layerGroups = await felt.getLayerGroups({ ids: ["layer-group-1", "layer-group-2"] });
    * ```
    * @returns The requested layer groups.
    */
-  getGroups(
+  getLayerGroups(
     /**
      * The filters to apply to the layer groups returned from the map.
      */
@@ -114,10 +114,12 @@ export interface LayersController {
    *
    * @example
    * ```typescript
-   * layers.setGroupVisibility({ show: ["layer-group-1", "layer-group-2"], hide: ["layer-group-3"] });
+   * felt.setLayerGroupVisibility({ show: ["layer-group-1", "layer-group-2"], hide: ["layer-group-3"] });
    * ```
    */
-  setGroupVisibility(visibility: LayersSetVisibilityRequest): Promise<void>;
+  setLayerGroupVisibility(
+    visibility: LayersSetVisibilityRequest,
+  ): Promise<void>;
 
   /**
    * Adds a listener for when a layer changes.
@@ -126,7 +128,7 @@ export interface LayersController {
    *
    * @example
    * ```typescript
-   * const unsubscribe = layers.onLayerChange({
+   * const unsubscribe = felt.onLayerChange({
    *   options: { id: "layer-1" },
    *   handler: layer => console.log(layer.bounds),
    * });

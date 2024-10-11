@@ -12,16 +12,16 @@ import {
   type ViewportState,
 } from "./types";
 
-const ViewportGetMessage = methodMessage("viewport.get", z.undefined());
+const ViewportGetMessage = methodMessage("getViewport", z.undefined());
 const ViewportGotoMessage = methodMessage(
-  "viewport.goto",
+  "gotoViewport",
   ViewportSetCenterZoomParamsSchema,
 );
 const ViewportFitBoundsMessage = methodMessage(
-  "viewport.fitBounds",
+  "fitBounds",
   ViewportFitBoundsParamsSchema,
 );
-const ViewportOnMoveMessage = listenerMessageNoParams("viewport.move");
+const ViewportOnMoveMessage = listenerMessageNoParams("onViewportMove");
 
 export const viewportSchema = {
   methods: [ViewportGotoMessage, ViewportGetMessage, ViewportFitBoundsMessage],
@@ -30,14 +30,11 @@ export const viewportSchema = {
 
 export type ViewportSchema = {
   methods: {
-    "viewport.get": Method<z.infer<typeof ViewportGetMessage>, ViewportState>;
-    "viewport.goto": Method<z.infer<typeof ViewportGotoMessage>, void>;
-    "viewport.fitBounds": Method<
-      z.infer<typeof ViewportFitBoundsMessage>,
-      void
-    >;
+    getViewport: Method<z.infer<typeof ViewportGetMessage>, ViewportState>;
+    gotoViewport: Method<z.infer<typeof ViewportGotoMessage>, void>;
+    fitBounds: Method<z.infer<typeof ViewportFitBoundsMessage>, void>;
   };
   listeners: {
-    "viewport.move": Listener<void, ViewportState>;
+    onViewportMove: Listener<void, ViewportState>;
   };
 };

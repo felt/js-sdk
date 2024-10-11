@@ -1,6 +1,6 @@
-The parameters for the `viewport.goto` method.
+The parameters for the `gotoViewport` method.
 
-[ViewportController.goto](ViewportController.md#goto)
+[FeltController.gotoViewport](../../client/interfaces/FeltController.md#gotoviewport)
 
 ## Extends
 

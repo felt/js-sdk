@@ -2,7 +2,6 @@
 
 ### Layers
 
-- [LayersController](interfaces/LayersController.md)
 - [LayersGetLayerResponse](interfaces/LayersGetLayerResponse.md)
 - [LayersGetLayerGroupResponse](interfaces/LayersGetLayerGroupResponse.md)
 - [LayersGetLayersFilter](interfaces/LayersGetLayersFilter.md)
@@ -20,12 +19,10 @@
 
 ### UI Controls
 
-- [UiController](interfaces/UiController.md)
 - [UiControlsOptions](interfaces/UiControlsOptions.md)
 
 ### Viewport
 
-- [ViewportController](interfaces/ViewportController.md)
 - [ViewportCenterZoom](interfaces/ViewportCenterZoom.md)
 - [ViewportState](interfaces/ViewportState.md)
 - [ViewportSetCenterZoomParams](interfaces/ViewportSetCenterZoomParams.md)

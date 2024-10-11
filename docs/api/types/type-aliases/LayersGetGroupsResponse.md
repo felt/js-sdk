@@ -1,3 +1,3 @@
 > **LayersGetGroupsResponse**: (`null` \| `object`)[]
 
-The response from the `layers.getGroups` method.
+The response from the `getLayerGroups` method.

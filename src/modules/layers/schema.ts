@@ -17,27 +17,27 @@ import {
   type LayersGetLayersResponse,
 } from "./types";
 
-const LayersGetLayerMessage = methodMessage("layers.getLayer", z.string());
+const LayersGetLayerMessage = methodMessage("getLayer", z.string());
 const LayersGetLayersMessage = methodMessage(
-  "layers.getLayers",
+  "getLayers",
   LayersGetLayersFilterSchema.optional(),
 );
 const LayersSetLayerVisibilityMessage = methodMessage(
-  "layers.setLayerVisibility",
+  "setLayerVisibility",
   LayersSetVisibilityRequestSchema,
 );
-const LayersGetGroupMessage = methodMessage("layers.getGroup", z.string());
+const LayersGetGroupMessage = methodMessage("getLayerGroup", z.string());
 const LayersGetGroupsMessage = methodMessage(
-  "layers.getGroups",
+  "getLayerGroups",
   LayersGetGroupsFilterSchema.optional(),
 );
 const LayersSetLayerGroupVisibilityMessage = methodMessage(
-  "layers.setGroupVisibility",
+  "setLayerGroupVisibility",
   LayersSetVisibilityRequestSchema,
 );
 
 const LayersOnLayerChangeMessage = listenerMessageWithParams(
-  "layers.onLayerChange",
+  "onLayerChange",
   z.object({ id: z.string() }),
 );
 
@@ -55,33 +55,33 @@ export const layersSchema = {
 
 export type LayersSchema = {
   methods: {
-    "layers.getLayer": Method<
+    getLayer: Method<
       z.infer<typeof LayersGetLayerMessage>,
       LayersGetLayerResponse | null
     >;
-    "layers.getLayers": Method<
+    getLayers: Method<
       z.infer<typeof LayersGetLayersMessage>,
       LayersGetLayersResponse
     >;
-    "layers.setLayerVisibility": Method<
+    setLayerVisibility: Method<
       z.infer<typeof LayersSetLayerVisibilityMessage>,
       void
     >;
-    "layers.getGroup": Method<
+    getLayerGroup: Method<
       z.infer<typeof LayersGetGroupMessage>,
-      LayersGetLayerGroupResponse
+      LayersGetLayerGroupResponse | null
     >;
-    "layers.getGroups": Method<
+    getLayerGroups: Method<
       z.infer<typeof LayersGetGroupsMessage>,
       LayersGetGroupsResponse
     >;
-    "layers.setGroupVisibility": Method<
+    setLayerGroupVisibility: Method<
       z.infer<typeof LayersSetLayerGroupVisibilityMessage>,
       void
     >;
   };
   listeners: {
-    "layers.onLayerChange": Listener<
+    onLayerChange: Listener<
       z.infer<typeof LayersOnLayerChangeMessage.shape.options>,
       LayerChangeCallbackParams
     >;

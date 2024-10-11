@@ -68,8 +68,6 @@ describe("Embedding an iframe with theFelt SDK", () => {
 
       const controller = await embedPromise;
       expect(controller).toBeTruthy();
-      expect(controller.viewport).toBeTruthy();
-      expect(controller.ui).toBeTruthy();
     });
 
     test("should set correct iframe attributes", async () => {
@@ -114,34 +112,28 @@ describe("Embedding an iframe with theFelt SDK", () => {
     // that the types are strict.
     test("incorrect params are caught by the compiler", async () => {
       const controller = {
-        viewport: {
-          goto: () => {},
-          get: async () => ({}),
-          onMove(args: unknown) {
-            return () => {};
-          },
+        gotoViewport: () => {},
+        getViewport: async () => ({}),
+        onViewportMove(args: unknown) {
+          return () => {};
         },
 
-        layers: {
-          onLayerChange: () => {},
-        },
+        onLayerChange: () => {},
       } as unknown as FeltController;
 
       // @ts-expect-error whatever is not a module
       controller.whatever;
 
-      const viewportController = controller.viewport;
-
       // @ts-expect-error missing params entirely
-      viewportController.goto();
+      controller.gotoViewport();
 
       // @ts-expect-error missing params fields
-      viewportController.goto({});
+      controller.gotoViewport({});
 
       // @ts-expect-error incorrect param type
-      viewportController.goto({ type: "wrong" });
+      controller.gotoViewport({ type: "wrong" });
 
-      viewportController.goto({
+      controller.gotoViewport({
         type: "center",
         location: {
           zoom: 10,
@@ -151,9 +143,9 @@ describe("Embedding an iframe with theFelt SDK", () => {
       });
 
       // @ts-expect-error method does not exist
-      viewportController.foo?.();
+      controller.foo?.();
 
-      const r = await viewportController.get();
+      const r = await controller.getViewport();
 
       // @ts-expect-error it's not an array
       r[0];
@@ -162,23 +154,22 @@ describe("Embedding an iframe with theFelt SDK", () => {
       r.foo?.["some-id"];
 
       // @ts-expect-error missing params
-      viewportController.onMove({});
+      controller.onViewportMove({});
 
       // @ts-expect-error handler is not a function
-      viewportController.onMove({ handler: "not a function" });
+      controller.onViewportMove({ handler: "not a function" });
 
       // @ts-expect-error extraneous params
-      viewportController.onMove({ handler: () => {}, extra: "stuff" });
+      controller.onViewportMove({ handler: () => {}, extra: "stuff" });
 
-      const layersController = controller.layers;
       // @ts-expect-error missing handler
-      layersController.onLayerChange({
+      controller.onLayerChange({
         options: {
           id: "3",
         },
       });
 
-      layersController.onLayerChange({
+      controller.onLayerChange({
         options: {
           id: "3",
           // @ts-expect-error extraneous params
@@ -187,11 +178,11 @@ describe("Embedding an iframe with theFelt SDK", () => {
       });
 
       // @ts-expect-error missing options
-      layersController.onLayerChange({
+      controller.onLayerChange({
         handler: () => {},
       });
 
-      layersController.onLayerChange({
+      controller.onLayerChange({
         options: {
           // @ts-expect-error wrong param type
           id: 4,

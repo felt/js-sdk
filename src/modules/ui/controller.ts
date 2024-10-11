@@ -5,7 +5,7 @@ import type { UiControlsOptions } from "./types";
  * @ignore
  */
 export const uiController = (feltWindow: Window): UiController => ({
-  update: method(feltWindow, "ui_controls.update"),
+  updateUiControls: method(feltWindow, "updateUiControls"),
 });
 
 /**
@@ -21,5 +21,5 @@ export interface UiController {
    *
    * @param controls - The controls to update.
    */
-  update(controls: UiControlsOptions): void;
+  updateUiControls(controls: UiControlsOptions): void;
 }

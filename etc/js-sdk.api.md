@@ -4,19 +4,19 @@
 
 ```ts
 
-import { a } from './types-C-kBwP1F.js';
-import { b } from './types-C-kBwP1F.js';
-import { c } from './types-C-kBwP1F.js';
-import { d } from './types-C-kBwP1F.js';
-import { e } from './types-C-kBwP1F.js';
-import { f } from './types-C-kBwP1F.js';
-import { g } from './types-C-kBwP1F.js';
-import { h } from './types-C-kBwP1F.js';
-import { i } from './types-C-kBwP1F.js';
-import { L } from './types-C-kBwP1F.js';
-import { j as Layer } from './types-C-kBwP1F.js';
-import { k as LayerGroup } from './types-C-kBwP1F.js';
-import { V } from './types-C-kBwP1F.js';
+import { a } from './types-P53dfmdj.js';
+import { b } from './types-P53dfmdj.js';
+import { c } from './types-P53dfmdj.js';
+import { d } from './types-P53dfmdj.js';
+import { e } from './types-P53dfmdj.js';
+import { f } from './types-P53dfmdj.js';
+import { g } from './types-P53dfmdj.js';
+import { h } from './types-P53dfmdj.js';
+import { i } from './types-P53dfmdj.js';
+import { L } from './types-P53dfmdj.js';
+import { j as Layer } from './types-P53dfmdj.js';
+import { k as LayerGroup } from './types-P53dfmdj.js';
+import { V } from './types-P53dfmdj.js';
 import * as z from 'zod';
 
 // @public
@@ -25,12 +25,12 @@ export const Felt: {
     connect(feltWindow: Window): Promise<FeltController>;
 };
 
+// Warning: (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
+// Warning: (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
+// Warning: (ae-forgotten-export) The symbol "LayersController" needs to be exported by the entry point client.d.ts
+//
 // @public
-export type FeltController = {
-    viewport: ViewportController;
-    ui: UiController;
-    layers: LayersController;
-};
+export type FeltController = ViewportController & UiController & LayersController;
 
 // @public
 export type FeltControllerWithIframe = FeltController & {
@@ -135,11 +135,11 @@ export { LayerGroup }
 
 // @public
 interface LayersController {
-    getGroup(id: string): Promise<d | null>;
-    getGroups(
-    filter?: e): Promise<f>;
     getLayer(
     id: string): Promise<L | null>;
+    getLayerGroup(id: string): Promise<d | null>;
+    getLayerGroups(
+    filter?: e): Promise<f>;
     getLayers(
     filter?: a): Promise<b>;
     onLayerChange(args: {
@@ -149,14 +149,14 @@ interface LayersController {
         handler: (
         change: g) => void;
     }): VoidFunction;
-    setGroupVisibility(visibility: c): Promise<void>;
+    setLayerGroupVisibility(visibility: c): Promise<void>;
     setLayerVisibility(visibility: c): Promise<void>;
 }
 
 // @public
 interface UiController {
     // Warning: (ae-forgotten-export) The symbol "UiControlsOptions" needs to be exported by the entry point client.d.ts
-    update(controls: UiControlsOptions): void;
+    updateUiControls(controls: UiControlsOptions): void;
 }
 
 // Warning: (ae-forgotten-export) The symbol "UiControlsOptionsSchema" needs to be exported by the entry point client.d.ts
@@ -191,19 +191,13 @@ const UiControlsOptionsSchema: z.ZodObject<{
 
 // @public
 type ViewportController = {
-    get(): Promise<V>;
-    goto(viewport: h): void;
+    getViewport(): Promise<V>;
+    gotoViewport(viewport: h): void;
     fitBounds(bounds: i): void;
-    onMove(args: {
+    onViewportMove(args: {
         handler: (viewport: V) => void;
     }): VoidFunction;
 };
-
-// Warnings were encountered during analysis:
-//
-// dist/client.d.ts:302:5 - (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:307:5 - (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
-// dist/client.d.ts:311:5 - (ae-forgotten-export) The symbol "LayersController" needs to be exported by the entry point client.d.ts
 
 // (No @packageDocumentation comment for this package)
 

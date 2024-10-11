@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 0.5.1
+
+### Patch Changes
+
+- b11fd6d: Add elements module
+
 ## 0.5.0
 
 ### Minor Changes

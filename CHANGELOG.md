@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 0.5.3
+
+### Patch Changes
+
+- 579d147: Add listeners for element and layer group changes
+
 ## 0.5.2
 
 ### Patch Changes

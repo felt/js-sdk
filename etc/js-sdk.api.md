@@ -4,19 +4,21 @@
 
 ```ts
 
-import { b } from './types-IXoFi4Po.js';
-import { c } from './types-IXoFi4Po.js';
-import { d } from './types-IXoFi4Po.js';
-import { E as Element_2 } from './types-IXoFi4Po.js';
-import { a as ElementGroup } from './types-IXoFi4Po.js';
-import { f } from './types-IXoFi4Po.js';
-import { G } from './types-IXoFi4Po.js';
-import { g } from './types-IXoFi4Po.js';
-import { h } from './types-IXoFi4Po.js';
-import { L as Layer } from './types-IXoFi4Po.js';
-import { e as LayerGroup } from './types-IXoFi4Po.js';
-import { S } from './types-IXoFi4Po.js';
-import { V } from './types-IXoFi4Po.js';
+import { b } from './types-BcwFdr2j.js';
+import { c } from './types-BcwFdr2j.js';
+import { d } from './types-BcwFdr2j.js';
+import { e } from './types-BcwFdr2j.js';
+import { E as Element_2 } from './types-BcwFdr2j.js';
+import { a as ElementGroup } from './types-BcwFdr2j.js';
+import { G } from './types-BcwFdr2j.js';
+import { g } from './types-BcwFdr2j.js';
+import { h } from './types-BcwFdr2j.js';
+import { i } from './types-BcwFdr2j.js';
+import { j } from './types-BcwFdr2j.js';
+import { L as Layer } from './types-BcwFdr2j.js';
+import { f as LayerGroup } from './types-BcwFdr2j.js';
+import { S } from './types-BcwFdr2j.js';
+import { V } from './types-BcwFdr2j.js';
 import * as z from 'zod';
 
 export { Element_2 as Element }
@@ -38,6 +40,12 @@ interface ElementsController {
         };
         handler: (
         change: c) => void;
+    }): VoidFunction;
+    onElementGroupChange(args: {
+        options: {
+            id: string;
+        };
+        handler: (change: d) => void;
     }): VoidFunction;
     // Warning: (ae-forgotten-export) The symbol "SetVisibilityRequest" needs to be exported by the entry point client.d.ts
     setElementGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
@@ -161,15 +169,21 @@ interface LayersController {
     id: string): Promise<Layer | null>;
     getLayerGroup(id: string): Promise<LayerGroup | null>;
     getLayerGroups(
-    filter?: f): Promise<Array<LayerGroup | null>>;
+    filter?: g): Promise<Array<LayerGroup | null>>;
     getLayers(
-    filter?: d): Promise<Array<Layer | null>>;
+    filter?: e): Promise<Array<Layer | null>>;
     onLayerChange(args: {
         options: {
             id: string;
         };
         handler: (
-        change: g) => void;
+        change: h) => void;
+    }): VoidFunction;
+    onLayerGroupChange(args: {
+        options: {
+            id: string;
+        };
+        handler: (change: i) => void;
     }): VoidFunction;
     setLayerGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
     setLayerVisibility(visibility: SetVisibilityRequest): Promise<void>;
@@ -233,7 +247,7 @@ const UiControlsOptionsSchema: z.ZodObject<{
 type ViewportController = {
     getViewport(): Promise<V>;
     gotoViewport(viewport: S): void;
-    fitBounds(bounds: h): void;
+    fitBounds(bounds: j): void;
     onViewportMove(args: {
         handler: (viewport: V) => void;
     }): VoidFunction;

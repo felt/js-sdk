@@ -4,6 +4,7 @@ import type {
   Element,
   ElementChangeCallbackParams,
   ElementGroup,
+  ElementGroupChangeCallbackParams,
   GetElementGroupsFilter,
   GetElementsFilter,
 } from "./types";
@@ -15,9 +16,10 @@ export const elementsController = (feltWindow: Window): ElementsController => ({
   getElement: method(feltWindow, "getElement"),
   getElements: method(feltWindow, "getElements"),
   setElementGroupVisibility: method(feltWindow, "setElementGroupVisibility"),
-  onElementChange: listener(feltWindow, "onElementChange"),
   getElementGroup: method(feltWindow, "getElementGroup"),
   getElementGroups: method(feltWindow, "getElementGroups"),
+  onElementChange: listener(feltWindow, "onElementChange"),
+  onElementGroupChange: listener(feltWindow, "onElementGroupChange"),
 });
 
 /**
@@ -108,11 +110,12 @@ export interface ElementsController {
    *
    * @returns A function to unsubscribe from the listener
    *
+   * @event
    * @example
    * ```typescript
    * const unsubscribe = felt.onElementChange({
    *   options: { id: "element-1" },
-   *   handler: element => console.log(element.bounds),
+   *   handler: element => console.log(element.id),
    * });
    *
    * // later on...
@@ -136,5 +139,29 @@ export interface ElementsController {
        */
       change: ElementChangeCallbackParams,
     ) => void;
+  }): VoidFunction;
+
+  /**
+   * Adds a listener for when an element group changes.
+   *
+   * @returns A function to unsubscribe from the listener
+   *
+   * @event
+   * @example
+   * ```typescript
+   * const unsubscribe = felt.onElementGroupChange({
+   *   options: { id: "element-group-1" },
+   *   handler: elementGroup => console.log(elementGroup.id),
+   * });
+   *
+   * // later on...
+   * unsubscribe();
+   * ```
+   */
+  onElementGroupChange(args: {
+    options: {
+      id: string;
+    };
+    handler: (change: ElementGroupChangeCallbackParams) => void;
   }): VoidFunction;
 }

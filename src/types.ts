@@ -5,6 +5,7 @@ export type {
   GetLayerGroupsFilter,
   GetLayersFilter,
   LayerChangeCallbackParams,
+  LayerGroupChangeCallbackParams,
   LayerProcessingStatus,
 } from "./modules/layers/types";
 
@@ -22,6 +23,7 @@ export type { SetVisibilityRequest } from "./types/visibility";
 
 export type {
   ElementChangeCallbackParams,
+  ElementGroupChangeCallbackParams,
   GetElementGroupsFilter,
   GetElementsFilter,
 } from "./modules/elements/types";

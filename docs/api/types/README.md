@@ -5,12 +5,14 @@
 * [GetElementsFilter](interfaces/GetElementsFilter.md)
 * [GetElementGroupsFilter](interfaces/GetElementGroupsFilter.md)
 * [ElementChangeCallbackParams](interfaces/ElementChangeCallbackParams.md)
+* [ElementGroupChangeCallbackParams](interfaces/ElementGroupChangeCallbackParams.md)
 
 ### Layers
 
 * [GetLayersFilter](interfaces/GetLayersFilter.md)
 * [GetLayerGroupsFilter](interfaces/GetLayerGroupsFilter.md)
 * [LayerChangeCallbackParams](interfaces/LayerChangeCallbackParams.md)
+* [LayerGroupChangeCallbackParams](interfaces/LayerGroupChangeCallbackParams.md)
 * [LayerProcessingStatus](type-aliases/LayerProcessingStatus.md)
 
 ### Types

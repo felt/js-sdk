@@ -223,3 +223,12 @@ export interface LayerChangeCallbackParams {
    */
   layer: Layer | null;
 }
+
+/**
+ * The parameters for the `onLayerGroupChange` listener.
+ *
+ * @category Layers
+ */
+export interface LayerGroupChangeCallbackParams {
+  layerGroup: LayerGroup | null;
+}

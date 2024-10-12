@@ -15,6 +15,7 @@ import {
   type GetLayerResponse,
   type GetLayersResponse,
   type LayerChangeCallbackParams,
+  type LayerGroupChangeCallbackParams,
 } from "./types";
 
 const GetLayerMessage = methodMessage("getLayer", z.string());
@@ -41,6 +42,11 @@ const OnLayerChangeMessage = listenerMessageWithParams(
   z.object({ id: z.string() }),
 );
 
+const OnLayerGroupChangeMessage = listenerMessageWithParams(
+  "onLayerGroupChange",
+  z.object({ id: z.string() }),
+);
+
 export const layersSchema = {
   methods: [
     GetLayerMessage,
@@ -50,7 +56,7 @@ export const layersSchema = {
     GetGroupsMessage,
     SetLayerGroupVisibilityMessage,
   ],
-  listeners: [OnLayerChangeMessage],
+  listeners: [OnLayerChangeMessage, OnLayerGroupChangeMessage],
 } satisfies ModuleSchema;
 
 export type LayersSchema = {
@@ -75,6 +81,10 @@ export type LayersSchema = {
     onLayerChange: Listener<
       z.infer<typeof OnLayerChangeMessage.shape.options>,
       LayerChangeCallbackParams
+    >;
+    onLayerGroupChange: Listener<
+      z.infer<typeof OnLayerGroupChangeMessage.shape.options>,
+      LayerGroupChangeCallbackParams
     >;
   };
 };

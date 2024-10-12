@@ -6,6 +6,7 @@ import type {
   Layer,
   LayerChangeCallbackParams,
   LayerGroup,
+  LayerGroupChangeCallbackParams,
 } from "./types";
 
 /**
@@ -19,6 +20,7 @@ export const layersController = (feltWindow: Window): LayersController => ({
   getLayerGroups: method(feltWindow, "getLayerGroups"),
   setLayerGroupVisibility: method(feltWindow, "setLayerGroupVisibility"),
   onLayerChange: listener(feltWindow, "onLayerChange"),
+  onLayerGroupChange: listener(feltWindow, "onLayerGroupChange"),
 });
 
 /**
@@ -122,6 +124,7 @@ export interface LayersController {
    *
    * @returns A function to unsubscribe from the listener
    *
+   * @event
    * @example
    * ```typescript
    * const unsubscribe = felt.onLayerChange({
@@ -150,5 +153,29 @@ export interface LayersController {
        */
       change: LayerChangeCallbackParams,
     ) => void;
+  }): VoidFunction;
+
+  /**
+   * Adds a listener for when a layer group changes.
+   *
+   * @returns A function to unsubscribe from the listener
+   *
+   * @event
+   * @example
+   * ```typescript
+   * const unsubscribe = felt.onLayerGroupChange({
+   *   options: { id: "layer-group-1" },
+   *   handler: layerGroup => console.log(layerGroup.id),
+   * });
+   *
+   * // later on...
+   * unsubscribe();
+   * ```
+   */
+  onLayerGroupChange(args: {
+    options: {
+      id: string;
+    };
+    handler: (change: LayerGroupChangeCallbackParams) => void;
   }): VoidFunction;
 }

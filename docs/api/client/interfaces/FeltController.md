@@ -11,19 +11,21 @@ The various ways to interact with the map are namespaced for clarity.
   * [getElementGroup()](#getelementgroup)
   * [getElementGroups()](#getelementgroups)
   * [setElementGroupVisibility()](#setelementgroupvisibility)
-  * [onElementChange()](#onelementchange)
   * [getLayer()](#getlayer)
   * [getLayers()](#getlayers)
   * [setLayerVisibility()](#setlayervisibility)
   * [getLayerGroup()](#getlayergroup)
   * [getLayerGroups()](#getlayergroups)
   * [setLayerGroupVisibility()](#setlayergroupvisibility)
-  * [onLayerChange()](#onlayerchange)
   * [updateUiControls()](#updateuicontrols)
   * [getViewport()](#getviewport)
   * [gotoViewport()](#gotoviewport)
   * [fitBounds()](#fitbounds)
 * [Events](#events)
+  * [onElementChange()](#onelementchange)
+  * [onElementGroupChange()](#onelementgroupchange)
+  * [onLayerChange()](#onlayerchange)
+  * [onLayerGroupChange()](#onlayergroupchange)
   * [onViewportMove()](#onviewportmove)
 
 ## Properties
@@ -168,41 +170,6 @@ Hide or show element groups with the given ids.
 
 ```typescript
 felt.setElementGroupVisibility({ show: ["element-group-1", "element-group-2"], hide: ["element-group-3"] });
-```
-
-***
-
-### onElementChange()
-
-> **onElementChange**(`args`): `VoidFunction`
-
-Adds a listener for when an element changes.
-
-#### Parameters
-
-| Parameter         | Type                 | Description                                          |
-| ----------------- | -------------------- | ---------------------------------------------------- |
-| `args`            | `object`             | -                                                    |
-| `args.options`    | `object`             | -                                                    |
-| `args.options.id` | `string`             | The id of the element to listen for changes to.      |
-| `args.handler`    | (`change`) => `void` | The handler that is called when the element changes. |
-
-#### Returns
-
-`VoidFunction`
-
-A function to unsubscribe from the listener
-
-#### Example
-
-```typescript
-const unsubscribe = felt.onElementChange({
-  options: { id: "element-1" },
-  handler: element => console.log(element.bounds),
-});
-
-// later on...
-unsubscribe();
 ```
 
 ***
@@ -367,41 +334,6 @@ felt.setLayerGroupVisibility({ show: ["layer-group-1", "layer-group-2"], hide: [
 
 ***
 
-### onLayerChange()
-
-> **onLayerChange**(`args`): `VoidFunction`
-
-Adds a listener for when a layer changes.
-
-#### Parameters
-
-| Parameter         | Type                 | Description                                        |
-| ----------------- | -------------------- | -------------------------------------------------- |
-| `args`            | `object`             | -                                                  |
-| `args.options`    | `object`             | -                                                  |
-| `args.options.id` | `string`             | The id of the layer to listen for changes to.      |
-| `args.handler`    | (`change`) => `void` | The handler that is called when the layer changes. |
-
-#### Returns
-
-`VoidFunction`
-
-A function to unsubscribe from the listener
-
-#### Example
-
-```typescript
-const unsubscribe = felt.onLayerChange({
-  options: { id: "layer-1" },
-  handler: layer => console.log(layer.bounds),
-});
-
-// later on...
-unsubscribe();
-```
-
-***
-
 ### updateUiControls()
 
 > **updateUiControls**(`controls`): `void`
@@ -483,6 +415,146 @@ felt.fitBounds({ bounds: [west, south, east, north] });
 ```
 
 ## Events
+
+### onElementChange()
+
+> **onElementChange**(`args`): `VoidFunction`
+
+Adds a listener for when an element changes.
+
+#### Parameters
+
+| Parameter         | Type                 | Description                                          |
+| ----------------- | -------------------- | ---------------------------------------------------- |
+| `args`            | `object`             | -                                                    |
+| `args.options`    | `object`             | -                                                    |
+| `args.options.id` | `string`             | The id of the element to listen for changes to.      |
+| `args.handler`    | (`change`) => `void` | The handler that is called when the element changes. |
+
+#### Returns
+
+`VoidFunction`
+
+A function to unsubscribe from the listener
+
+#### Example
+
+```typescript
+const unsubscribe = felt.onElementChange({
+  options: { id: "element-1" },
+  handler: element => console.log(element.id),
+});
+
+// later on...
+unsubscribe();
+```
+
+***
+
+### onElementGroupChange()
+
+> **onElementGroupChange**(`args`): `VoidFunction`
+
+Adds a listener for when an element group changes.
+
+#### Parameters
+
+| Parameter         | Type                 |
+| ----------------- | -------------------- |
+| `args`            | `object`             |
+| `args.options`    | `object`             |
+| `args.options.id` | `string`             |
+| `args.handler`    | (`change`) => `void` |
+
+#### Returns
+
+`VoidFunction`
+
+A function to unsubscribe from the listener
+
+#### Example
+
+```typescript
+const unsubscribe = felt.onElementGroupChange({
+  options: { id: "element-group-1" },
+  handler: elementGroup => console.log(elementGroup.id),
+});
+
+// later on...
+unsubscribe();
+```
+
+***
+
+### onLayerChange()
+
+> **onLayerChange**(`args`): `VoidFunction`
+
+Adds a listener for when a layer changes.
+
+#### Parameters
+
+| Parameter         | Type                 | Description                                        |
+| ----------------- | -------------------- | -------------------------------------------------- |
+| `args`            | `object`             | -                                                  |
+| `args.options`    | `object`             | -                                                  |
+| `args.options.id` | `string`             | The id of the layer to listen for changes to.      |
+| `args.handler`    | (`change`) => `void` | The handler that is called when the layer changes. |
+
+#### Returns
+
+`VoidFunction`
+
+A function to unsubscribe from the listener
+
+#### Example
+
+```typescript
+const unsubscribe = felt.onLayerChange({
+  options: { id: "layer-1" },
+  handler: layer => console.log(layer.bounds),
+});
+
+// later on...
+unsubscribe();
+```
+
+***
+
+### onLayerGroupChange()
+
+> **onLayerGroupChange**(`args`): `VoidFunction`
+
+Adds a listener for when a layer group changes.
+
+#### Parameters
+
+| Parameter         | Type                 |
+| ----------------- | -------------------- |
+| `args`            | `object`             |
+| `args.options`    | `object`             |
+| `args.options.id` | `string`             |
+| `args.handler`    | (`change`) => `void` |
+
+#### Returns
+
+`VoidFunction`
+
+A function to unsubscribe from the listener
+
+#### Example
+
+```typescript
+const unsubscribe = felt.onLayerGroupChange({
+  options: { id: "layer-group-1" },
+  handler: layerGroup => console.log(layerGroup.id),
+});
+
+// later on...
+unsubscribe();
+```
+
+***
 
 ### onViewportMove()
 

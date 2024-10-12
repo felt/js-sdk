@@ -11,6 +11,7 @@ import {
   GetElementGroupsFilterSchema,
   GetElementsFilterSchema,
   type ElementChangeCallbackParams,
+  type ElementGroupChangeCallbackParams,
   type GetElementGroupResponse,
   type GetElementGroupsResponse,
   type GetElementResponse,
@@ -37,6 +38,11 @@ const OnElementChangeMessage = listenerMessageWithParams(
   z.object({ id: z.string() }),
 );
 
+const OnElementGroupChangeMessage = listenerMessageWithParams(
+  "onElementGroupChange",
+  z.object({ id: z.string() }),
+);
+
 export const elementsSchema = {
   methods: [
     GetElementMessage,
@@ -45,7 +51,7 @@ export const elementsSchema = {
     GetGroupsMessage,
     SetElementGroupVisibilityMessage,
   ],
-  listeners: [OnElementChangeMessage],
+  listeners: [OnElementChangeMessage, OnElementGroupChangeMessage],
 } satisfies ModuleSchema;
 
 export type ElementsSchema = {
@@ -75,6 +81,10 @@ export type ElementsSchema = {
     onElementChange: Listener<
       z.infer<typeof OnElementChangeMessage.shape.options>,
       ElementChangeCallbackParams
+    >;
+    onElementGroupChange: Listener<
+      z.infer<typeof OnElementGroupChangeMessage.shape.options>,
+      ElementGroupChangeCallbackParams
     >;
   };
 };

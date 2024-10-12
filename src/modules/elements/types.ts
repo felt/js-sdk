@@ -159,3 +159,12 @@ export interface ElementChangeCallbackParams {
    */
   element: Element | null;
 }
+
+/**
+ * The parameters for the `onElementGroupChange` listener.
+ *
+ * @category Elements
+ */
+export interface ElementGroupChangeCallbackParams {
+  elementGroup: ElementGroup | null;
+}

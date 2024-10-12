@@ -1,5 +1,12 @@
 # @feltmaps/js-sdk
 
+## 0.5.2
+
+### Patch Changes
+
+- dc68048: Improve documentation output with remark
+- dc68048: Remove ControllerWithIframe in favour of a nullable iframe property.
+
 ## 0.5.1
 
 ### Patch Changes

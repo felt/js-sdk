@@ -1,7 +1,4 @@
-import type {
-  FeltController,
-  FeltControllerWithIframe,
-} from "./modules/controller";
+import type { FeltController } from "./modules/controller";
 import { makeController } from "./modules/controller";
 import type { FeltEmbedOptions } from "./types/embed";
 
@@ -98,8 +95,7 @@ export const Felt = {
     })
       .then(Felt.connect)
       .then((controller) => {
-        const iframeController = controller as FeltControllerWithIframe;
-        Object.defineProperties(iframeController, {
+        Object.defineProperties(controller, {
           iframe: {
             value: iframe,
             writable: false,
@@ -107,7 +103,7 @@ export const Felt = {
           },
         });
 
-        return iframeController;
+        return controller;
       });
   },
 
@@ -149,7 +145,7 @@ export const Felt = {
 export type { Element, ElementGroup } from "./modules/elements/types";
 export type { Layer, LayerGroup } from "./modules/layers/types";
 
-export type { FeltController, FeltControllerWithIframe, FeltEmbedOptions };
+export type { FeltController, FeltEmbedOptions };
 
 /**
  * A stricter, more type-safe version of Object.entries that preserves the

@@ -4,6 +4,6 @@ The parameters for the `onLayerChange` listener.
 
 ### layer
 
-> **layer**: `null` \| [`Layer`](../../client/interfaces/Layer.md)
+> **layer**: `null` | [`Layer`](../../client/interfaces/Layer.md)
 
 The new data for the layer or null if the layer was removed.

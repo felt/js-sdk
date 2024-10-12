@@ -1,13 +1,11 @@
 import { listener, method } from "../../types/interface";
 import type { SetVisibilityRequest } from "../../types/visibility";
 import type {
-  GetLayerGroupResponse,
   GetLayerGroupsFilter,
-  GetLayerGroupsResponse,
-  GetLayerResponse,
   GetLayersFilter,
-  GetLayersResponse,
+  Layer,
   LayerChangeCallbackParams,
+  LayerGroup,
 } from "./types";
 
 /**
@@ -48,10 +46,10 @@ export interface LayersController {
      * The id of the layer you want to get.
      */
     id: string,
-  ): Promise<GetLayerResponse | null>;
+  ): Promise<Layer | null>;
 
   /**
-   * Gets layers from the map, accoridng to the filters supplied. If no
+   * Gets layers from the map, according to the filters supplied. If no
    * filters are supplied, all layers will be returned.
    *
    * @remarks The layers in the map, ordered by the order specified in Felt. This is not
@@ -69,7 +67,7 @@ export interface LayersController {
      * The filters to apply to the layers returned from the map.
      */
     filter?: GetLayersFilter,
-  ): Promise<GetLayersResponse>;
+  ): Promise<Array<Layer | null>>;
 
   /**
    * Hide or show layers with the given ids.
@@ -90,7 +88,7 @@ export interface LayersController {
    * ```
    * @returns The requested layer group.
    */
-  getLayerGroup(id: string): Promise<GetLayerGroupResponse | null>;
+  getLayerGroup(id: string): Promise<LayerGroup | null>;
 
   /**
    * Gets layer groups from the map, according to the filters supplied. If no
@@ -107,7 +105,7 @@ export interface LayersController {
      * The filters to apply to the layer groups returned from the map.
      */
     filter?: GetLayerGroupsFilter,
-  ): Promise<GetLayerGroupsResponse>;
+  ): Promise<Array<LayerGroup | null>>;
 
   /**
    * Hide or show layer groups with the given ids.

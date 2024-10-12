@@ -1,6 +1,6 @@
 ## Extends
 
-- `TypeOf`\<*typeof* `ViewportCenterZoomSchema`\>
+* `TypeOf`\<*typeof* `ViewportCenterZoomSchema`>
 
 ## Properties
 
@@ -10,13 +10,10 @@
 
 The center of the viewport in latitude and longitude.
 
-#### latitude
-
-> **latitude**: `number` = `Latitude`
-
-#### longitude
-
-> **longitude**: `number` = `Longitude`
+| Name        | Type     | Default value |
+| ----------- | -------- | ------------- |
+| `latitude`  | `number` | Latitude      |
+| `longitude` | `number` | Longitude     |
 
 #### Inherited from
 

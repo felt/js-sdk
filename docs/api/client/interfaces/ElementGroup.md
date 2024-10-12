@@ -1,6 +1,6 @@
 ## Extends
 
-- `TypeOf`\<*typeof* `ElementGroupSchema`\>
+* `TypeOf`\<*typeof* `ElementGroupSchema`>
 
 ## Properties
 
@@ -30,7 +30,7 @@ The name of the element group. This is shown in the legend.
 
 ### caption
 
-> **caption**: `null` \| `string`
+> **caption**: `null` | `string`
 
 The caption of the element group. This is shown in the legend.
 
@@ -42,7 +42,7 @@ The caption of the element group. This is shown in the legend.
 
 ### elementIds
 
-> **elementIds**: `string`[]
+> **elementIds**: `string`\[]
 
 The ids of the elements in the element group.
 

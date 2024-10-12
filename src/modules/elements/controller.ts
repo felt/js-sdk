@@ -1,13 +1,11 @@
 import { listener, method } from "../../types/interface";
 import type { SetVisibilityRequest } from "../../types/visibility";
 import type {
+  Element,
   ElementChangeCallbackParams,
-  GetElementGroupResponse,
+  ElementGroup,
   GetElementGroupsFilter,
-  GetElementGroupsResponse,
-  GetElementResponse,
   GetElementsFilter,
-  GetElementsResponse,
 } from "./types";
 
 /**
@@ -44,7 +42,7 @@ export interface ElementsController {
      * The id of the element you want to get.
      */
     id: string,
-  ): Promise<GetElementResponse | null>;
+  ): Promise<Element | null>;
 
   /**
    * Gets elements from the map, according to the filters supplied. If no
@@ -65,7 +63,7 @@ export interface ElementsController {
      * The filters to apply to the elements returned from the map.
      */
     filter?: GetElementsFilter,
-  ): Promise<GetElementsResponse>;
+  ): Promise<Array<Element | null>>;
 
   /**
    * Get an element group from the map by its id.
@@ -76,7 +74,7 @@ export interface ElementsController {
    * ```
    * @returns The requested element group.
    */
-  getElementGroup(id: string): Promise<GetElementGroupResponse | null>;
+  getElementGroup(id: string): Promise<ElementGroup | null>;
 
   /**
    * Gets element groups from the map, according to the filters supplied. If no
@@ -93,7 +91,7 @@ export interface ElementsController {
      * The filters to apply to the element groups returned from the map.
      */
     filter?: GetElementGroupsFilter,
-  ): Promise<GetElementGroupsResponse>;
+  ): Promise<Array<ElementGroup | null>>;
 
   /**
    * Hide or show element groups with the given ids.

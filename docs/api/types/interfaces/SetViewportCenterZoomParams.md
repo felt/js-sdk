@@ -2,9 +2,16 @@ The parameters for the `gotoViewport` method.
 
 [FeltController.gotoViewport](../../client/interfaces/FeltController.md#gotoviewport)
 
+## Table of Contents
+
+* [Extends](#extends)
+* [Properties](#properties)
+  * [type](#type)
+  * [location](#location)
+
 ## Extends
 
-- `TypeOf`\<*typeof* `SetViewportCenterZoomParamsSchema`\>
+* `TypeOf`\<*typeof* `SetViewportCenterZoomParamsSchema`>
 
 ## Properties
 
@@ -22,25 +29,12 @@ The parameters for the `gotoViewport` method.
 
 > **location**: `object`
 
-#### center?
-
-> `optional` **center**: `object` = `LatLngSchema`
-
-The center of the viewport in latitude and longitude.
-
-#### center.latitude
-
-> **latitude**: `number` = `Latitude`
-
-#### center.longitude
-
-> **longitude**: `number` = `Longitude`
-
-#### zoom?
-
-> `optional` **zoom**: `number` = `FeltZoom`
-
-The zoom level of the viewport.
+| Name               | Type     | Default value | Description                                           |
+| ------------------ | -------- | ------------- | ----------------------------------------------------- |
+| `center`?          | `object` | LatLngSchema  | The center of the viewport in latitude and longitude. |
+| `center.latitude`  | `number` | Latitude      | -                                                     |
+| `center.longitude` | `number` | Longitude     | -                                                     |
+| `zoom`?            | `number` | FeltZoom      | The zoom level of the viewport.                       |
 
 #### Inherited from
 

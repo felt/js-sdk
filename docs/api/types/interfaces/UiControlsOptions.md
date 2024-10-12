@@ -1,6 +1,6 @@
 ## Extends
 
-- `TypeOf`\<*typeof* `UiControlsOptionsSchema`\>
+* `TypeOf`\<*typeof* `UiControlsOptionsSchema`>
 
 ## Properties
 

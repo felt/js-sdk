@@ -1,23 +1,56 @@
 The FeltController allows you to control, inspect and observe a Felt map.
 The various ways to interact with the map are namespaced for clarity.
 
+## Table of Contents
+
+* [Properties](#properties)
+  * [iframe](#iframe)
+* [Methods](#methods)
+  * [getElement()](#getelement)
+  * [getElements()](#getelements)
+  * [getElementGroup()](#getelementgroup)
+  * [getElementGroups()](#getelementgroups)
+  * [setElementGroupVisibility()](#setelementgroupvisibility)
+  * [onElementChange()](#onelementchange)
+  * [getLayer()](#getlayer)
+  * [getLayers()](#getlayers)
+  * [setLayerVisibility()](#setlayervisibility)
+  * [getLayerGroup()](#getlayergroup)
+  * [getLayerGroups()](#getlayergroups)
+  * [setLayerGroupVisibility()](#setlayergroupvisibility)
+  * [onLayerChange()](#onlayerchange)
+  * [updateUiControls()](#updateuicontrols)
+  * [getViewport()](#getviewport)
+  * [gotoViewport()](#gotoviewport)
+  * [fitBounds()](#fitbounds)
+* [Events](#events)
+  * [onViewportMove()](#onviewportmove)
+
+## Properties
+
+### iframe
+
+> **iframe**: `null` | `HTMLIFrameElement`
+
+The iframe element containing the Felt map, if it is an embedded map.
+
 ## Methods
 
 ### getElement()
 
-> **getElement**(`id`): `Promise`\<`null` \| [`GetElementResponse`](../../types/interfaces/GetElementResponse.md)\>
+> **getElement**(`id`): `Promise`\<`null` | [`Element`](Element.md)>
 
 Get a single element from the map by its id.
 
 #### Parameters
 
-• **id**: `string`
-
-The id of the element you want to get.
+| Parameter | Type     | Description                            |
+| --------- | -------- | -------------------------------------- |
+| `id`      | `string` | The id of the element you want to get. |
 
 #### Returns
 
-`Promise`\<`null` \| [`GetElementResponse`](../../types/interfaces/GetElementResponse.md)\>
+`Promise`\<`null` | [`Element`](Element.md)>
 
 The requested element.
 
@@ -31,20 +64,20 @@ const element = await felt.getElement("element-1");
 
 ### getElements()
 
-> **getElements**(`filter`?): `Promise`\<(`null` \| `object`)[]\>
+> **getElements**(`filter`?): `Promise`\<(`null` | [`Element`](Element.md))\[]>
 
 Gets elements from the map, according to the filters supplied. If no
 filters are supplied, all elements will be returned.
 
 #### Parameters
 
-• **filter?**: [`GetElementsFilter`](../../types/interfaces/GetElementsFilter.md)
-
-The filters to apply to the elements returned from the map.
+| Parameter | Type                                                               | Description                                                 |
+| --------- | ------------------------------------------------------------------ | ----------------------------------------------------------- |
+| `filter`? | [`GetElementsFilter`](../../types/interfaces/GetElementsFilter.md) | The filters to apply to the elements returned from the map. |
 
 #### Returns
 
-`Promise`\<(`null` \| `object`)[]\>
+`Promise`\<(`null` | [`Element`](Element.md))\[]>
 
 All elements on the map.
 
@@ -64,17 +97,19 @@ const elements = await felt.getElements();
 
 ### getElementGroup()
 
-> **getElementGroup**(`id`): `Promise`\<`null` \| [`GetElementGroupResponse`](../../types/interfaces/GetElementGroupResponse.md)\>
+> **getElementGroup**(`id`): `Promise`\<`null` | [`ElementGroup`](ElementGroup.md)>
 
 Get an element group from the map by its id.
 
 #### Parameters
 
-• **id**: `string`
+| Parameter | Type     |
+| --------- | -------- |
+| `id`      | `string` |
 
 #### Returns
 
-`Promise`\<`null` \| [`GetElementGroupResponse`](../../types/interfaces/GetElementGroupResponse.md)\>
+`Promise`\<`null` | [`ElementGroup`](ElementGroup.md)>
 
 The requested element group.
 
@@ -88,20 +123,20 @@ felt.getElementGroup("element-group-1");
 
 ### getElementGroups()
 
-> **getElementGroups**(`filter`?): `Promise`\<(`null` \| `object`)[]\>
+> **getElementGroups**(`filter`?): `Promise`\<(`null` | [`ElementGroup`](ElementGroup.md))\[]>
 
 Gets element groups from the map, according to the filters supplied. If no
 filters are supplied, all element groups will be returned in rendering order.
 
 #### Parameters
 
-• **filter?**: [`GetElementGroupsFilter`](../../types/interfaces/GetElementGroupsFilter.md)
-
-The filters to apply to the element groups returned from the map.
+| Parameter | Type                                                                         | Description                                                       |
+| --------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `filter`? | [`GetElementGroupsFilter`](../../types/interfaces/GetElementGroupsFilter.md) | The filters to apply to the element groups returned from the map. |
 
 #### Returns
 
-`Promise`\<(`null` \| `object`)[]\>
+`Promise`\<(`null` | [`ElementGroup`](ElementGroup.md))\[]>
 
 The requested element groups.
 
@@ -115,17 +150,19 @@ const elementGroups = await felt.getElementGroups({ ids: ["element-group-1", "el
 
 ### setElementGroupVisibility()
 
-> **setElementGroupVisibility**(`visibility`): `Promise`\<`void`\>
+> **setElementGroupVisibility**(`visibility`): `Promise`\<`void`>
 
 Hide or show element groups with the given ids.
 
 #### Parameters
 
-• **visibility**: [`SetVisibilityRequest`](../../types/interfaces/SetVisibilityRequest.md)
+| Parameter    | Type                                                                     |
+| ------------ | ------------------------------------------------------------------------ |
+| `visibility` | [`SetVisibilityRequest`](../../types/interfaces/SetVisibilityRequest.md) |
 
 #### Returns
 
-`Promise`\<`void`\>
+`Promise`\<`void`>
 
 #### Example
 
@@ -143,17 +180,12 @@ Adds a listener for when an element changes.
 
 #### Parameters
 
-• **args**
-
-• **args.options**
-
-• **args.options.id**: `string`
-
-The id of the element to listen for changes to.
-
-• **args.handler**
-
-The handler that is called when the element changes.
+| Parameter         | Type                 | Description                                          |
+| ----------------- | -------------------- | ---------------------------------------------------- |
+| `args`            | `object`             | -                                                    |
+| `args.options`    | `object`             | -                                                    |
+| `args.options.id` | `string`             | The id of the element to listen for changes to.      |
+| `args.handler`    | (`change`) => `void` | The handler that is called when the element changes. |
 
 #### Returns
 
@@ -177,19 +209,19 @@ unsubscribe();
 
 ### getLayer()
 
-> **getLayer**(`id`): `Promise`\<`null` \| [`GetLayerResponse`](../../types/interfaces/GetLayerResponse.md)\>
+> **getLayer**(`id`): `Promise`\<`null` | [`Layer`](Layer.md)>
 
 Get a single layer from the map by its id.
 
 #### Parameters
 
-• **id**: `string`
-
-The id of the layer you want to get.
+| Parameter | Type     | Description                          |
+| --------- | -------- | ------------------------------------ |
+| `id`      | `string` | The id of the layer you want to get. |
 
 #### Returns
 
-`Promise`\<`null` \| [`GetLayerResponse`](../../types/interfaces/GetLayerResponse.md)\>
+`Promise`\<`null` | [`Layer`](Layer.md)>
 
 The requested layer.
 
@@ -203,20 +235,20 @@ const layers = await felt.getLayer({ ids: ["layer-1", "layer-2"] });
 
 ### getLayers()
 
-> **getLayers**(`filter`?): `Promise`\<(`null` \| `object`)[]\>
+> **getLayers**(`filter`?): `Promise`\<(`null` | [`Layer`](Layer.md))\[]>
 
-Gets layers from the map, accoridng to the filters supplied. If no
+Gets layers from the map, according to the filters supplied. If no
 filters are supplied, all layers will be returned.
 
 #### Parameters
 
-• **filter?**: [`GetLayersFilter`](../../types/interfaces/GetLayersFilter.md)
-
-The filters to apply to the layers returned from the map.
+| Parameter | Type                                                           | Description                                               |
+| --------- | -------------------------------------------------------------- | --------------------------------------------------------- |
+| `filter`? | [`GetLayersFilter`](../../types/interfaces/GetLayersFilter.md) | The filters to apply to the layers returned from the map. |
 
 #### Returns
 
-`Promise`\<(`null` \| `object`)[]\>
+`Promise`\<(`null` | [`Layer`](Layer.md))\[]>
 
 All layers on the map.
 
@@ -236,17 +268,19 @@ const layers = await felt.getLayers();
 
 ### setLayerVisibility()
 
-> **setLayerVisibility**(`visibility`): `Promise`\<`void`\>
+> **setLayerVisibility**(`visibility`): `Promise`\<`void`>
 
 Hide or show layers with the given ids.
 
 #### Parameters
 
-• **visibility**: [`SetVisibilityRequest`](../../types/interfaces/SetVisibilityRequest.md)
+| Parameter    | Type                                                                     |
+| ------------ | ------------------------------------------------------------------------ |
+| `visibility` | [`SetVisibilityRequest`](../../types/interfaces/SetVisibilityRequest.md) |
 
 #### Returns
 
-`Promise`\<`void`\>
+`Promise`\<`void`>
 
 #### Example
 
@@ -258,17 +292,19 @@ felt.setLayerVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
 
 ### getLayerGroup()
 
-> **getLayerGroup**(`id`): `Promise`\<`null` \| [`GetLayerGroupResponse`](../../types/interfaces/GetLayerGroupResponse.md)\>
+> **getLayerGroup**(`id`): `Promise`\<`null` | [`LayerGroup`](LayerGroup.md)>
 
 Get a layer group from the map by its id.
 
 #### Parameters
 
-• **id**: `string`
+| Parameter | Type     |
+| --------- | -------- |
+| `id`      | `string` |
 
 #### Returns
 
-`Promise`\<`null` \| [`GetLayerGroupResponse`](../../types/interfaces/GetLayerGroupResponse.md)\>
+`Promise`\<`null` | [`LayerGroup`](LayerGroup.md)>
 
 The requested layer group.
 
@@ -282,20 +318,20 @@ felt.getLayerGroup("layer-group-1");
 
 ### getLayerGroups()
 
-> **getLayerGroups**(`filter`?): `Promise`\<(`null` \| `object`)[]\>
+> **getLayerGroups**(`filter`?): `Promise`\<(`null` | [`LayerGroup`](LayerGroup.md))\[]>
 
 Gets layer groups from the map, according to the filters supplied. If no
 filters are supplied, all layer groups will be returned in rendering order.
 
 #### Parameters
 
-• **filter?**: [`GetLayerGroupsFilter`](../../types/interfaces/GetLayerGroupsFilter.md)
-
-The filters to apply to the layer groups returned from the map.
+| Parameter | Type                                                                     | Description                                                     |
+| --------- | ------------------------------------------------------------------------ | --------------------------------------------------------------- |
+| `filter`? | [`GetLayerGroupsFilter`](../../types/interfaces/GetLayerGroupsFilter.md) | The filters to apply to the layer groups returned from the map. |
 
 #### Returns
 
-`Promise`\<(`null` \| `object`)[]\>
+`Promise`\<(`null` | [`LayerGroup`](LayerGroup.md))\[]>
 
 The requested layer groups.
 
@@ -309,17 +345,19 @@ const layerGroups = await felt.getLayerGroups({ ids: ["layer-group-1", "layer-gr
 
 ### setLayerGroupVisibility()
 
-> **setLayerGroupVisibility**(`visibility`): `Promise`\<`void`\>
+> **setLayerGroupVisibility**(`visibility`): `Promise`\<`void`>
 
 Hide or show layer groups with the given ids.
 
 #### Parameters
 
-• **visibility**: [`SetVisibilityRequest`](../../types/interfaces/SetVisibilityRequest.md)
+| Parameter    | Type                                                                     |
+| ------------ | ------------------------------------------------------------------------ |
+| `visibility` | [`SetVisibilityRequest`](../../types/interfaces/SetVisibilityRequest.md) |
 
 #### Returns
 
-`Promise`\<`void`\>
+`Promise`\<`void`>
 
 #### Example
 
@@ -337,17 +375,12 @@ Adds a listener for when a layer changes.
 
 #### Parameters
 
-• **args**
-
-• **args.options**
-
-• **args.options.id**: `string`
-
-The id of the layer to listen for changes to.
-
-• **args.handler**
-
-The handler that is called when the layer changes.
+| Parameter         | Type                 | Description                                        |
+| ----------------- | -------------------- | -------------------------------------------------- |
+| `args`            | `object`             | -                                                  |
+| `args.options`    | `object`             | -                                                  |
+| `args.options.id` | `string`             | The id of the layer to listen for changes to.      |
+| `args.handler`    | (`change`) => `void` | The handler that is called when the layer changes. |
 
 #### Returns
 
@@ -377,9 +410,9 @@ Updates the UI controls on the embedded map.
 
 #### Parameters
 
-• **controls**: [`UiControlsOptions`](../../types/interfaces/UiControlsOptions.md)
-
-The controls to update.
+| Parameter  | Type                                                               | Description             |
+| ---------- | ------------------------------------------------------------------ | ----------------------- |
+| `controls` | [`UiControlsOptions`](../../types/interfaces/UiControlsOptions.md) | The controls to update. |
 
 #### Returns
 
@@ -389,13 +422,13 @@ The controls to update.
 
 ### getViewport()
 
-> **getViewport**(): `Promise`\<[`ViewportState`](../../types/interfaces/ViewportState.md)\>
+> **getViewport**(): `Promise`\<[`ViewportState`](../../types/interfaces/ViewportState.md)>
 
 Gets the current state of the viewport.
 
 #### Returns
 
-`Promise`\<[`ViewportState`](../../types/interfaces/ViewportState.md)\>
+`Promise`\<[`ViewportState`](../../types/interfaces/ViewportState.md)>
 
 ***
 
@@ -407,7 +440,9 @@ Moves the map to the specified location.
 
 #### Parameters
 
-• **viewport**: [`SetViewportCenterZoomParams`](../../types/interfaces/SetViewportCenterZoomParams.md)
+| Parameter  | Type                                                                                   |
+| ---------- | -------------------------------------------------------------------------------------- |
+| `viewport` | [`SetViewportCenterZoomParams`](../../types/interfaces/SetViewportCenterZoomParams.md) |
 
 #### Returns
 
@@ -429,7 +464,9 @@ Fits the map to the specified bounds.
 
 #### Parameters
 
-• **bounds**: [`ViewportFitBoundsParams`](../../types/interfaces/ViewportFitBoundsParams.md)
+| Parameter | Type                                                                           |
+| --------- | ------------------------------------------------------------------------------ |
+| `bounds`  | [`ViewportFitBoundsParams`](../../types/interfaces/ViewportFitBoundsParams.md) |
 
 #### Returns
 
@@ -455,12 +492,10 @@ Adds a listener for when the viewport changes.
 
 #### Parameters
 
-• **args**
-
-• **args.handler**
-
-This callback is called with the current viewport state whenever
-the viewport changes.
+| Parameter      | Type                   | Description                                                                            |
+| -------------- | ---------------------- | -------------------------------------------------------------------------------------- |
+| `args`         | `object`               | -                                                                                      |
+| `args.handler` | (`viewport`) => `void` | This callback is called with the current viewport state whenever the viewport changes. |
 
 #### Returns
 

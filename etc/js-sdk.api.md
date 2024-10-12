@@ -4,27 +4,19 @@
 
 ```ts
 
-import { a } from './types-B40drmSW.js';
-import { b } from './types-B40drmSW.js';
-import { c } from './types-B40drmSW.js';
-import { d } from './types-B40drmSW.js';
-import { E } from './types-B40drmSW.js';
-import { e } from './types-B40drmSW.js';
-import { m as Element_2 } from './types-B40drmSW.js';
-import { n as ElementGroup } from './types-B40drmSW.js';
-import { f } from './types-B40drmSW.js';
-import { G } from './types-B40drmSW.js';
-import { g } from './types-B40drmSW.js';
-import { h } from './types-B40drmSW.js';
-import { i } from './types-B40drmSW.js';
-import { j } from './types-B40drmSW.js';
-import { k } from './types-B40drmSW.js';
-import { L } from './types-B40drmSW.js';
-import { l } from './types-B40drmSW.js';
-import { o as Layer } from './types-B40drmSW.js';
-import { p as LayerGroup } from './types-B40drmSW.js';
-import { S } from './types-B40drmSW.js';
-import { V } from './types-B40drmSW.js';
+import { b } from './types-IXoFi4Po.js';
+import { c } from './types-IXoFi4Po.js';
+import { d } from './types-IXoFi4Po.js';
+import { E as Element_2 } from './types-IXoFi4Po.js';
+import { a as ElementGroup } from './types-IXoFi4Po.js';
+import { f } from './types-IXoFi4Po.js';
+import { G } from './types-IXoFi4Po.js';
+import { g } from './types-IXoFi4Po.js';
+import { h } from './types-IXoFi4Po.js';
+import { L as Layer } from './types-IXoFi4Po.js';
+import { e as LayerGroup } from './types-IXoFi4Po.js';
+import { S } from './types-IXoFi4Po.js';
+import { V } from './types-IXoFi4Po.js';
 import * as z from 'zod';
 
 export { Element_2 as Element }
@@ -34,18 +26,18 @@ export { ElementGroup }
 // @public
 interface ElementsController {
     getElement(
-    id: string): Promise<G | null>;
-    getElementGroup(id: string): Promise<c | null>;
+    id: string): Promise<Element_2 | null>;
+    getElementGroup(id: string): Promise<ElementGroup | null>;
     getElementGroups(
-    filter?: d): Promise<e>;
+    filter?: b): Promise<Array<ElementGroup | null>>;
     getElements(
-    filter?: a): Promise<b>;
+    filter?: G): Promise<Array<Element_2 | null>>;
     onElementChange(args: {
         options: {
             id: string;
         };
         handler: (
-        change: E) => void;
+        change: c) => void;
     }): VoidFunction;
     // Warning: (ae-forgotten-export) The symbol "SetVisibilityRequest" needs to be exported by the entry point client.d.ts
     setElementGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
@@ -53,7 +45,7 @@ interface ElementsController {
 
 // @public
 export const Felt: {
-    embed(container: HTMLElement, mapId: string, options?: FeltEmbedOptions): Promise<FeltControllerWithIframe>;
+    embed(container: HTMLElement, mapId: string, options?: FeltEmbedOptions): Promise<FeltController>;
     connect(feltWindow: Window): Promise<FeltController>;
 };
 
@@ -63,12 +55,9 @@ export const Felt: {
 // Warning: (ae-forgotten-export) The symbol "ElementsController" needs to be exported by the entry point client.d.ts
 //
 // @public
-export type FeltController = ViewportController & UiController & LayersController & ElementsController;
-
-// @public
-export type FeltControllerWithIframe = FeltController & {
-    iframe: HTMLIFrameElement;
-};
+export type FeltController = {
+    iframe: HTMLIFrameElement | null;
+} & ViewportController & UiController & LayersController & ElementsController;
 
 // Warning: (ae-forgotten-export) The symbol "FeltEmbedOptionsSchema" needs to be exported by the entry point client.d.ts
 //
@@ -169,18 +158,18 @@ export { LayerGroup }
 // @public
 interface LayersController {
     getLayer(
-    id: string): Promise<f | null>;
-    getLayerGroup(id: string): Promise<i | null>;
+    id: string): Promise<Layer | null>;
+    getLayerGroup(id: string): Promise<LayerGroup | null>;
     getLayerGroups(
-    filter?: j): Promise<k>;
+    filter?: f): Promise<Array<LayerGroup | null>>;
     getLayers(
-    filter?: g): Promise<h>;
+    filter?: d): Promise<Array<Layer | null>>;
     onLayerChange(args: {
         options: {
             id: string;
         };
         handler: (
-        change: L) => void;
+        change: g) => void;
     }): VoidFunction;
     setLayerGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
     setLayerVisibility(visibility: SetVisibilityRequest): Promise<void>;
@@ -244,7 +233,7 @@ const UiControlsOptionsSchema: z.ZodObject<{
 type ViewportController = {
     getViewport(): Promise<V>;
     gotoViewport(viewport: S): void;
-    fitBounds(bounds: l): void;
+    fitBounds(bounds: h): void;
     onViewportMove(args: {
         handler: (viewport: V) => void;
     }): VoidFunction;

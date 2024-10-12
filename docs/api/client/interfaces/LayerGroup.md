@@ -1,6 +1,6 @@
 ## Extends
 
-- `TypeOf`\<*typeof* `LayerGroupSchema`\>
+* `TypeOf`\<*typeof* `LayerGroupSchema`>
 
 ## Properties
 
@@ -30,7 +30,7 @@ The name of the layer group. This is shown in the legend.
 
 ### caption
 
-> **caption**: `null` \| `string`
+> **caption**: `null` | `string`
 
 The caption of the layer group. This is shown in the legend.
 
@@ -42,7 +42,7 @@ The caption of the layer group. This is shown in the legend.
 
 ### layerIds
 
-> **layerIds**: `string`[]
+> **layerIds**: `string`\[]
 
 The ids of the layers in the layer group.
 
@@ -82,7 +82,7 @@ Whether the layer group is shown in the legend or not.
 
 ### bounds
 
-> **bounds**: `null` \| [`number`, `number`, `number`, `number`]
+> **bounds**: `null` | \[`number`, `number`, `number`, `number`]
 
 The bounding box of the layer group.
 

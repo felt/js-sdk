@@ -1,6 +1,6 @@
 ## Extends
 
-- `TypeOf`\<*typeof* `ViewportStateSchema`\>
+* `TypeOf`\<*typeof* `ViewportStateSchema`>
 
 ## Properties
 
@@ -8,13 +8,10 @@
 
 > **center**: `object` = `LatLngSchema`
 
-#### latitude
-
-> **latitude**: `number` = `Latitude`
-
-#### longitude
-
-> **longitude**: `number` = `Longitude`
+| Name        | Type     | Default value |
+| ----------- | -------- | ------------- |
+| `latitude`  | `number` | Latitude      |
+| `longitude` | `number` | Longitude     |
 
 #### Inherited from
 
@@ -34,7 +31,7 @@
 
 ### bounds
 
-> **bounds**: [`number`, `number`, `number`, `number`] = `FeltBoundarySchema`
+> **bounds**: \[`number`, `number`, `number`, `number`] = `FeltBoundarySchema`
 
 #### Inherited from
 

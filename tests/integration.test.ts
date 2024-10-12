@@ -177,13 +177,11 @@ describe("Felt SDK integration", () => {
 
     // iterate through all the functions in the client, calling them
     // and making sure that we don't get any unknown messages
-    Object.values(client).forEach((namespace) => {
-      Object.values(namespace).forEach((fn) => {
-        // @ts-expect-error -- we need to pass some object that can be destructured in
-        // our handlers - we don't actually need to do anything with it, but we need to
-        // pass **something**.
-        (fn as VoidFunction)({});
-      });
+    Object.values(client).forEach((fn) => {
+      // @ts-expect-error -- we need to pass some object that can be destructured in
+      // our handlers - we don't actually need to do anything with it, but we need to
+      // pass **something**.
+      (fn as VoidFunction)?.({});
     });
 
     expect(onUnknownMessage).not.toHaveBeenCalled();

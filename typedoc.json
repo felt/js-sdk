@@ -5,16 +5,21 @@
   "entryPoints": ["src/client.ts", "src/types.ts"],
   "entryModule": "src/client.ts",
   "sort": ["kind", "source-order"],
-  "plugin": ["typedoc-plugin-zod", "typedoc-plugin-markdown"],
+  "plugin": [
+    "typedoc-plugin-zod",
+    "typedoc-plugin-markdown",
+    "typedoc-plugin-remark",
+    "typedoc-plugin-merge-modules"
+  ],
   "cleanOutputDir": true,
   "readme": "none",
   "indexFormat": "list",
-  "parametersFormat": "list",
+  "parametersFormat": "table",
   "interfacePropertiesFormat": "list",
   "classPropertiesFormat": "list",
   "enumMembersFormat": "table",
-  "typeDeclarationFormat": "list",
-  "propertyMembersFormat": "list",
+  "typeDeclarationFormat": "table",
+  "propertyMembersFormat": "table",
 
   "categoryOrder": ["Main", "*"],
 
@@ -26,5 +31,11 @@
 
   "tableColumnSettings": {
     "hideInherited": true
-  }
+  },
+
+  "remarkPlugins": [
+    ["remark-toc", { "heading": "Table of Contents", "maxDepth": 3 }]
+  ],
+
+  "mergeModulesMergeMode": "module-category"
 }

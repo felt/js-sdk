@@ -4,6 +4,6 @@ The parameters for the `onElementChange` listener.
 
 ### element
 
-> **element**: `null` \| [`Element`](../../client/interfaces/Element.md)
+> **element**: `null` | [`Element`](../../client/interfaces/Element.md)
 
 The new data for the element or null if the element was removed.

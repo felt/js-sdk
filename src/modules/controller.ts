@@ -17,6 +17,7 @@ import {
  */
 export function makeController(feltWindow: Window): FeltController {
   return {
+    iframe: null,
     ...viewportController(feltWindow),
     ...uiController(feltWindow),
     ...layersController(feltWindow),
@@ -36,19 +37,12 @@ export function makeController(feltWindow: Window): FeltController {
  * @public
  * @interface
  */
-export type FeltController = ViewportController &
+export type FeltController = {
+  /**
+   * The iframe element containing the Felt map, if it is an embedded map.
+   */
+  iframe: HTMLIFrameElement | null;
+} & ViewportController &
   UiController &
   LayersController &
   ElementsController;
-
-/**
- * @category Controller
- * @public
- * @interface
- */
-export type FeltControllerWithIframe = FeltController & {
-  /**
-   * The iframe element containing the Felt map.
-   */
-  iframe: HTMLIFrameElement;
-};

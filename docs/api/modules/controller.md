@@ -17,7 +17,7 @@ The iframe element containing the Felt map, if it is an embedded map.
 
 ##### getElement()
 
-> **getElement**(`id`): `Promise`\<`null` | [`Element`](elements/types.md#element-1)>
+> **getElement**(`id`): `Promise`\<`null` | [`Element`](elements/types.md#element)>
 
 Get a single element from the map by its id.
 
@@ -29,7 +29,7 @@ Get a single element from the map by its id.
 
 ###### Returns
 
-`Promise`\<`null` | [`Element`](elements/types.md#element-1)>
+`Promise`\<`null` | [`Element`](elements/types.md#element)>
 
 The requested element.
 
@@ -41,7 +41,7 @@ const element = await felt.getElement("element-1");
 
 ##### getElements()
 
-> **getElements**(`filter`?): `Promise`\<(`null` | [`Element`](elements/types.md#element-1))\[]>
+> **getElements**(`filter`?): `Promise`\<(`null` | [`Element`](elements/types.md#element))\[]>
 
 Gets elements from the map, according to the filters supplied. If no
 filters are supplied, all elements will be returned.
@@ -54,7 +54,7 @@ filters are supplied, all elements will be returned.
 
 ###### Returns
 
-`Promise`\<(`null` | [`Element`](elements/types.md#element-1))\[]>
+`Promise`\<(`null` | [`Element`](elements/types.md#element))\[]>
 
 All elements on the map.
 

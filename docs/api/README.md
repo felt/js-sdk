@@ -1,7 +1,3 @@
-## Documents
-
-* [Getting Started](documents/Getting-Started.md)
-
 ## Modules
 
 * [modules/controller](modules/controller.md)

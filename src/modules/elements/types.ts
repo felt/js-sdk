@@ -3,6 +3,7 @@ import * as z from "zod";
 /**
  * @category Elements
  * @group Entities
+ * @module Elementmod
  */
 export interface Element extends z.infer<typeof ElementSchema> {}
 const ElementSchema = z.object({

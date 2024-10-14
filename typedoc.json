@@ -16,11 +16,11 @@
   "plugin": [
     "typedoc-plugin-zod",
     "typedoc-plugin-markdown",
-    "typedoc-plugin-remark",
+    "typedoc-plugin-remark"
     // "typedoc-plugin-merge-modules",
-    "./navigation.mjs"
+    // "./navigation.mjs"
   ],
-  "projectDocuments": ["docs/Getting Started.md"],
+  // "projectDocuments": ["docs/Getting Started.md"],
   "cleanOutputDir": true,
   "readme": "none",
   "indexFormat": "list",
@@ -44,7 +44,7 @@
   },
 
   "remarkPlugins": [
-    ["remark-toc", { "heading": "Table of Contents", "maxDepth": 3 }]
+    ["remark-toc", { "heading": "Table of Contents", "maxDepth": 5 }]
   ],
 
   // "mergeModulesMergeMode": "project",

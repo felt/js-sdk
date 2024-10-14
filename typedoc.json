@@ -3,22 +3,17 @@
   "disableSources": true,
   "out": "./docs/api",
   "entryPoints": [
-    "src/modules/elements/types.ts",
-    "src/modules/layers/types.ts",
-    "src/modules/ui/types.ts",
-    "src/modules/viewport/types.ts", 
-    "src/modules/controller.ts", 
+    "src/client.ts", 
     "src/types.ts"
   ],
   "entryModule": "src/client.ts",
-  "outputFileStrategy": "modules",
   "sort": ["kind", "source-order"],
   "plugin": [
     "typedoc-plugin-zod",
     "typedoc-plugin-markdown",
-    "typedoc-plugin-remark"
-    // "typedoc-plugin-merge-modules",
-    // "./navigation.mjs"
+    "typedoc-plugin-remark",
+    "typedoc-plugin-merge-modules",
+    "./navigation.mjs"
   ],
   // "projectDocuments": ["docs/Getting Started.md"],
   "cleanOutputDir": true,
@@ -44,10 +39,10 @@
   },
 
   "remarkPlugins": [
-    ["remark-toc", { "heading": "Table of Contents", "maxDepth": 5 }]
+    ["remark-toc", { "heading": "Table of Contents", "maxDepth": 3 }]
   ],
 
-  // "mergeModulesMergeMode": "project",
+  "mergeModulesMergeMode": "project",
 
   // "navigation": {
   //   "includeCategories": true,

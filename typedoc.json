@@ -17,7 +17,7 @@
     "typedoc-plugin-zod",
     "typedoc-plugin-markdown",
     "typedoc-plugin-remark",
-    "typedoc-plugin-merge-modules",
+    // "typedoc-plugin-merge-modules",
     "./navigation.mjs"
   ],
   // "projectDocuments": ["docs/Getting Started.md"],
@@ -48,8 +48,10 @@
   ],
 
   "outputFileStrategy": "modules",
+  "flattenOutputFiles": true,
 
-  "mergeModulesMergeMode": "project",
+  // "mergeModulesMergeMode": "module-category",
+  // "mergeModulesRenameDefaults": true,
 
   "navigation": {
     "includeCategories": true,

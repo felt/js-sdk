@@ -1,3 +1,7 @@
+/**
+ * This is the doc comment for the layers module
+ * @module Layers
+ */
 import * as z from "zod";
 import { FeltBoundarySchema } from "../../types/geo";
 

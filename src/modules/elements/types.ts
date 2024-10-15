@@ -1,3 +1,7 @@
+/**
+ * This is the doc comment for the elements module
+ * @module Elements
+ */
 import * as z from "zod";
 
 /**

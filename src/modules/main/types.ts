@@ -1,3 +1,7 @@
+/**
+ * This is the doc comment for the main module
+ * @module Main
+ */
 import type { FeltController } from "../controller";
 import { makeController } from "../controller";
 import type { FeltEmbedOptions } from "../../types/embed";

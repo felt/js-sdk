@@ -1,3 +1,37 @@
+This is the doc comment for the ui module
+
+## Contents
+
+* [Other](#other)
+  * [UiControlsOptionsSchema](#uicontrolsoptionsschema)
+    * [Type declaration](#type-declaration)
+* [UI Controls](#ui-controls)
+  * [UiControlsOptions](#uicontrolsoptions)
+    * [Extends](#extends)
+    * [Properties](#properties)
+      * [showLegend?](#showlegend)
+        * [Default Value](#default-value)
+        * [Inherited from](#inherited-from)
+      * [cooperativeGestures?](#cooperativegestures)
+        * [Remarks](#remarks)
+        * [Default Value](#default-value-1)
+        * [Inherited from](#inherited-from-1)
+      * [fullScreenButton?](#fullscreenbutton)
+        * [Remarks](#remarks-1)
+        * [Default Value](#default-value-2)
+        * [Inherited from](#inherited-from-2)
+      * [geolocation?](#geolocation)
+        * [Remarks](#remarks-2)
+        * [Default Value](#default-value-3)
+        * [Inherited from](#inherited-from-3)
+      * [zoomControls?](#zoomcontrols)
+        * [Remarks](#remarks-3)
+        * [Default Value](#default-value-4)
+        * [Inherited from](#inherited-from-4)
+      * [scaleBar?](#scalebar)
+        * [Default Value](#default-value-5)
+        * [Inherited from](#inherited-from-5)
+
 ## Other
 
 ### UiControlsOptionsSchema
@@ -23,7 +57,7 @@
 
 #### Extends
 
-* `TypeOf`\<*typeof* [`UiControlsOptionsSchema`](modules.ui.types.md#uicontrolsoptionsschema)>
+* `TypeOf`\<*typeof* [`UiControlsOptionsSchema`](UI.md#uicontrolsoptionsschema)>
 
 #### Properties
 

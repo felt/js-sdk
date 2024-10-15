@@ -1,3 +1,8 @@
+/**
+ * This is the doc comment for the viewport module
+ * 
+ * @module Viewport
+ */
 import * as z from "zod";
 import { FeltBoundarySchema, FeltZoom, LatLngSchema } from "../../types/geo";
 import type { FeltController } from "../controller";

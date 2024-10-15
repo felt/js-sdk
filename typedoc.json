@@ -36,6 +36,7 @@
   "hideBreadcrumbs": true,
   "hidePageHeader": true,
   "hidePageTitle": true,
+  "hideGroupHeadings": true,
 
   "treatWarningsAsErrors": true,
 
@@ -44,7 +45,7 @@
   },
 
   "remarkPlugins": [
-    ["remark-toc", { "heading": "Table of Contents" }]
+    ["remark-toc", { "maxDepth": 6 }],
   ],
 
   "outputFileStrategy": "modules",
@@ -54,8 +55,8 @@
   // "mergeModulesRenameDefaults": true,
 
   "navigation": {
-    "includeCategories": true,
-    "includeGroups": true,
+    "includeCategories": false,
+    "includeGroups": false,
     "includeFolders": false
   },
   "categorizeByGroup": false

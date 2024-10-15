@@ -1,3 +1,5 @@
+This is the doc comment for the controller module
+
 ## Controller
 
 ### FeltController
@@ -17,7 +19,7 @@ The iframe element containing the Felt map, if it is an embedded map.
 
 ##### getElement()
 
-> **getElement**(`id`): `Promise`\<`null` | [`Element`](modules.elements.types.md#element)>
+> **getElement**(`id`): `Promise`\<`null` | [`Element`](Elements.md#element)>
 
 Get a single element from the map by its id.
 
@@ -29,7 +31,7 @@ Get a single element from the map by its id.
 
 ###### Returns
 
-`Promise`\<`null` | [`Element`](modules.elements.types.md#element)>
+`Promise`\<`null` | [`Element`](Elements.md#element)>
 
 The requested element.
 
@@ -41,20 +43,20 @@ const element = await felt.getElement("element-1");
 
 ##### getElements()
 
-> **getElements**(`filter`?): `Promise`\<(`null` | [`Element`](modules.elements.types.md#element))\[]>
+> **getElements**(`filter`?): `Promise`\<(`null` | [`Element`](Elements.md#element))\[]>
 
 Gets elements from the map, according to the filters supplied. If no
 filters are supplied, all elements will be returned.
 
 ###### Parameters
 
-| Parameter | Type                                                               | Description                                                 |
-| --------- | ------------------------------------------------------------------ | ----------------------------------------------------------- |
-| `filter`? | [`GetElementsFilter`](modules.elements.types.md#getelementsfilter) | The filters to apply to the elements returned from the map. |
+| Parameter | Type                                                 | Description                                                 |
+| --------- | ---------------------------------------------------- | ----------------------------------------------------------- |
+| `filter`? | [`GetElementsFilter`](Elements.md#getelementsfilter) | The filters to apply to the elements returned from the map. |
 
 ###### Returns
 
-`Promise`\<(`null` | [`Element`](modules.elements.types.md#element))\[]>
+`Promise`\<(`null` | [`Element`](Elements.md#element))\[]>
 
 All elements on the map.
 
@@ -72,7 +74,7 @@ const elements = await felt.getElements();
 
 ##### getElementGroup()
 
-> **getElementGroup**(`id`): `Promise`\<`null` | [`ElementGroup`](modules.elements.types.md#elementgroup-1)>
+> **getElementGroup**(`id`): `Promise`\<`null` | [`ElementGroup`](Elements.md#elementgroup-1)>
 
 Get an element group from the map by its id.
 
@@ -84,7 +86,7 @@ Get an element group from the map by its id.
 
 ###### Returns
 
-`Promise`\<`null` | [`ElementGroup`](modules.elements.types.md#elementgroup-1)>
+`Promise`\<`null` | [`ElementGroup`](Elements.md#elementgroup-1)>
 
 The requested element group.
 
@@ -96,20 +98,20 @@ felt.getElementGroup("element-group-1");
 
 ##### getElementGroups()
 
-> **getElementGroups**(`filter`?): `Promise`\<(`null` | [`ElementGroup`](modules.elements.types.md#elementgroup-1))\[]>
+> **getElementGroups**(`filter`?): `Promise`\<(`null` | [`ElementGroup`](Elements.md#elementgroup-1))\[]>
 
 Gets element groups from the map, according to the filters supplied. If no
 filters are supplied, all element groups will be returned in rendering order.
 
 ###### Parameters
 
-| Parameter | Type                                                                         | Description                                                       |
-| --------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `filter`? | [`GetElementGroupsFilter`](modules.elements.types.md#getelementgroupsfilter) | The filters to apply to the element groups returned from the map. |
+| Parameter | Type                                                           | Description                                                       |
+| --------- | -------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `filter`? | [`GetElementGroupsFilter`](Elements.md#getelementgroupsfilter) | The filters to apply to the element groups returned from the map. |
 
 ###### Returns
 
-`Promise`\<(`null` | [`ElementGroup`](modules.elements.types.md#elementgroup-1))\[]>
+`Promise`\<(`null` | [`ElementGroup`](Elements.md#elementgroup-1))\[]>
 
 The requested element groups.
 
@@ -143,7 +145,7 @@ felt.setElementGroupVisibility({ show: ["element-group-1", "element-group-2"], h
 
 ##### getLayer()
 
-> **getLayer**(`id`): `Promise`\<`null` | [`Layer`](modules.layers.types.md#layer-1)>
+> **getLayer**(`id`): `Promise`\<`null` | [`Layer`](Layers.md#layer-1)>
 
 Get a single layer from the map by its id.
 
@@ -155,7 +157,7 @@ Get a single layer from the map by its id.
 
 ###### Returns
 
-`Promise`\<`null` | [`Layer`](modules.layers.types.md#layer-1)>
+`Promise`\<`null` | [`Layer`](Layers.md#layer-1)>
 
 The requested layer.
 
@@ -167,20 +169,20 @@ const layers = await felt.getLayer({ ids: ["layer-1", "layer-2"] });
 
 ##### getLayers()
 
-> **getLayers**(`filter`?): `Promise`\<(`null` | [`Layer`](modules.layers.types.md#layer-1))\[]>
+> **getLayers**(`filter`?): `Promise`\<(`null` | [`Layer`](Layers.md#layer-1))\[]>
 
 Gets layers from the map, according to the filters supplied. If no
 filters are supplied, all layers will be returned.
 
 ###### Parameters
 
-| Parameter | Type                                                         | Description                                               |
-| --------- | ------------------------------------------------------------ | --------------------------------------------------------- |
-| `filter`? | [`GetLayersFilter`](modules.layers.types.md#getlayersfilter) | The filters to apply to the layers returned from the map. |
+| Parameter | Type                                           | Description                                               |
+| --------- | ---------------------------------------------- | --------------------------------------------------------- |
+| `filter`? | [`GetLayersFilter`](Layers.md#getlayersfilter) | The filters to apply to the layers returned from the map. |
 
 ###### Returns
 
-`Promise`\<(`null` | [`Layer`](modules.layers.types.md#layer-1))\[]>
+`Promise`\<(`null` | [`Layer`](Layers.md#layer-1))\[]>
 
 All layers on the map.
 
@@ -220,7 +222,7 @@ felt.setLayerVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
 
 ##### getLayerGroup()
 
-> **getLayerGroup**(`id`): `Promise`\<`null` | [`LayerGroup`](modules.layers.types.md#layergroup-1)>
+> **getLayerGroup**(`id`): `Promise`\<`null` | [`LayerGroup`](Layers.md#layergroup-1)>
 
 Get a layer group from the map by its id.
 
@@ -232,7 +234,7 @@ Get a layer group from the map by its id.
 
 ###### Returns
 
-`Promise`\<`null` | [`LayerGroup`](modules.layers.types.md#layergroup-1)>
+`Promise`\<`null` | [`LayerGroup`](Layers.md#layergroup-1)>
 
 The requested layer group.
 
@@ -244,20 +246,20 @@ felt.getLayerGroup("layer-group-1");
 
 ##### getLayerGroups()
 
-> **getLayerGroups**(`filter`?): `Promise`\<(`null` | [`LayerGroup`](modules.layers.types.md#layergroup-1))\[]>
+> **getLayerGroups**(`filter`?): `Promise`\<(`null` | [`LayerGroup`](Layers.md#layergroup-1))\[]>
 
 Gets layer groups from the map, according to the filters supplied. If no
 filters are supplied, all layer groups will be returned in rendering order.
 
 ###### Parameters
 
-| Parameter | Type                                                                   | Description                                                     |
-| --------- | ---------------------------------------------------------------------- | --------------------------------------------------------------- |
-| `filter`? | [`GetLayerGroupsFilter`](modules.layers.types.md#getlayergroupsfilter) | The filters to apply to the layer groups returned from the map. |
+| Parameter | Type                                                     | Description                                                     |
+| --------- | -------------------------------------------------------- | --------------------------------------------------------------- |
+| `filter`? | [`GetLayerGroupsFilter`](Layers.md#getlayergroupsfilter) | The filters to apply to the layer groups returned from the map. |
 
 ###### Returns
 
-`Promise`\<(`null` | [`LayerGroup`](modules.layers.types.md#layergroup-1))\[]>
+`Promise`\<(`null` | [`LayerGroup`](Layers.md#layergroup-1))\[]>
 
 The requested layer groups.
 
@@ -297,9 +299,9 @@ Updates the UI controls on the embedded map.
 
 ###### Parameters
 
-| Parameter  | Type                                                         | Description             |
-| ---------- | ------------------------------------------------------------ | ----------------------- |
-| `controls` | [`UiControlsOptions`](modules.ui.types.md#uicontrolsoptions) | The controls to update. |
+| Parameter  | Type                                           | Description             |
+| ---------- | ---------------------------------------------- | ----------------------- |
+| `controls` | [`UiControlsOptions`](UI.md#uicontrolsoptions) | The controls to update. |
 
 ###### Returns
 
@@ -307,13 +309,13 @@ Updates the UI controls on the embedded map.
 
 ##### getViewport()
 
-> **getViewport**(): `Promise`\<[`ViewportState`](modules.viewport.types.md#viewportstate)>
+> **getViewport**(): `Promise`\<[`ViewportState`](Viewport.md#viewportstate)>
 
 Gets the current state of the viewport.
 
 ###### Returns
 
-`Promise`\<[`ViewportState`](modules.viewport.types.md#viewportstate)>
+`Promise`\<[`ViewportState`](Viewport.md#viewportstate)>
 
 ##### gotoViewport()
 
@@ -323,9 +325,9 @@ Moves the map to the specified location.
 
 ###### Parameters
 
-| Parameter  | Type                                                                                   |
-| ---------- | -------------------------------------------------------------------------------------- |
-| `viewport` | [`SetViewportCenterZoomParams`](modules.viewport.types.md#setviewportcenterzoomparams) |
+| Parameter  | Type                                                                     |
+| ---------- | ------------------------------------------------------------------------ |
+| `viewport` | [`SetViewportCenterZoomParams`](Viewport.md#setviewportcenterzoomparams) |
 
 ###### Returns
 
@@ -345,9 +347,9 @@ Fits the map to the specified bounds.
 
 ###### Parameters
 
-| Parameter | Type                                                                           |
-| --------- | ------------------------------------------------------------------------------ |
-| `bounds`  | [`ViewportFitBoundsParams`](modules.viewport.types.md#viewportfitboundsparams) |
+| Parameter | Type                                                             |
+| --------- | ---------------------------------------------------------------- |
+| `bounds`  | [`ViewportFitBoundsParams`](Viewport.md#viewportfitboundsparams) |
 
 ###### Returns
 

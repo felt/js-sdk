@@ -1,3 +1,7 @@
+/**
+ * This is the doc comment for the ui module
+ * @module UI
+ */
 import * as z from "zod";
 
 /**

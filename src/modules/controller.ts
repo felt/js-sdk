@@ -1,3 +1,7 @@
+/**
+ * This is the doc comment for the controller module
+ * @module Controller
+ */
 import {
   elementsController,
   type ElementsController,

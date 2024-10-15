@@ -12,7 +12,7 @@
 
 > **uiControls**: `object` = `UiControlsOptionsSchema`
 
-[UiControlsOptions](modules.ui.types.md#uicontrolsoptions)
+[UiControlsOptions](UI.md#uicontrolsoptions)
 
 | Name                   | Type      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ---------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -31,7 +31,7 @@
 
 > `optional` **initialViewport**: `object`
 
-[ViewportCenterZoom](modules.viewport.types.md#viewportcenterzoom)
+[ViewportCenterZoom](Viewport.md#viewportcenterzoom)
 
 | Name               | Type     | Default value | Description                                           |
 | ------------------ | -------- | ------------- | ----------------------------------------------------- |
@@ -48,59 +48,59 @@
 
 ### GetLayerGroupsFilter
 
-Re-exports [GetLayerGroupsFilter](modules.layers.types.md#getlayergroupsfilter)
+Re-exports [GetLayerGroupsFilter](Layers.md#getlayergroupsfilter)
 
 ### GetLayersFilter
 
-Re-exports [GetLayersFilter](modules.layers.types.md#getlayersfilter)
+Re-exports [GetLayersFilter](Layers.md#getlayersfilter)
 
 ### LayerChangeCallbackParams
 
-Re-exports [LayerChangeCallbackParams](modules.layers.types.md#layerchangecallbackparams)
+Re-exports [LayerChangeCallbackParams](Layers.md#layerchangecallbackparams)
 
 ### LayerGroupChangeCallbackParams
 
-Re-exports [LayerGroupChangeCallbackParams](modules.layers.types.md#layergroupchangecallbackparams)
+Re-exports [LayerGroupChangeCallbackParams](Layers.md#layergroupchangecallbackparams)
 
 ### LayerProcessingStatus
 
-Re-exports [LayerProcessingStatus](modules.layers.types.md#layerprocessingstatus)
+Re-exports [LayerProcessingStatus](Layers.md#layerprocessingstatus)
 
 ### UiControlsOptions
 
-Re-exports [UiControlsOptions](modules.ui.types.md#uicontrolsoptions)
+Re-exports [UiControlsOptions](UI.md#uicontrolsoptions)
 
 ### SetViewportCenterZoomParams
 
-Re-exports [SetViewportCenterZoomParams](modules.viewport.types.md#setviewportcenterzoomparams)
+Re-exports [SetViewportCenterZoomParams](Viewport.md#setviewportcenterzoomparams)
 
 ### ViewportCenterZoom
 
-Re-exports [ViewportCenterZoom](modules.viewport.types.md#viewportcenterzoom)
+Re-exports [ViewportCenterZoom](Viewport.md#viewportcenterzoom)
 
 ### ViewportFitBoundsParams
 
-Re-exports [ViewportFitBoundsParams](modules.viewport.types.md#viewportfitboundsparams)
+Re-exports [ViewportFitBoundsParams](Viewport.md#viewportfitboundsparams)
 
 ### ViewportState
 
-Re-exports [ViewportState](modules.viewport.types.md#viewportstate)
+Re-exports [ViewportState](Viewport.md#viewportstate)
 
 ### ElementChangeCallbackParams
 
-Re-exports [ElementChangeCallbackParams](modules.elements.types.md#elementchangecallbackparams)
+Re-exports [ElementChangeCallbackParams](Elements.md#elementchangecallbackparams)
 
 ### ElementGroupChangeCallbackParams
 
-Re-exports [ElementGroupChangeCallbackParams](modules.elements.types.md#elementgroupchangecallbackparams)
+Re-exports [ElementGroupChangeCallbackParams](Elements.md#elementgroupchangecallbackparams)
 
 ### GetElementGroupsFilter
 
-Re-exports [GetElementGroupsFilter](modules.elements.types.md#getelementgroupsfilter)
+Re-exports [GetElementGroupsFilter](Elements.md#getelementgroupsfilter)
 
 ### GetElementsFilter
 
-Re-exports [GetElementsFilter](modules.elements.types.md#getelementsfilter)
+Re-exports [GetElementsFilter](Elements.md#getelementsfilter)
 
 ## Types
 

@@ -1,3 +1,91 @@
+This is the doc comment for the elements module
+
+## Contents
+
+* [Elements](#elements)
+  * [ElementGroup](#elementgroup)
+    * [Extends](#extends)
+    * [Properties](#properties)
+      * [id](#id)
+        * [Inherited from](#inherited-from)
+      * [name](#name)
+        * [Inherited from](#inherited-from-1)
+      * [caption](#caption)
+        * [Inherited from](#inherited-from-2)
+      * [elementIds](#elementids)
+        * [Remarks](#remarks)
+        * [Inherited from](#inherited-from-3)
+      * [visible](#visible)
+        * [Inherited from](#inherited-from-4)
+      * [shownInLegend](#showninlegend)
+        * [Inherited from](#inherited-from-5)
+  * [GetElementResponse](#getelementresponse)
+    * [Extends](#extends-1)
+    * [Properties](#properties-1)
+      * [id](#id-1)
+        * [Inherited from](#inherited-from-6)
+      * [type](#type)
+        * [Inherited from](#inherited-from-7)
+      * [groupId](#groupid)
+        * [Inherited from](#inherited-from-8)
+      * [name](#name-1)
+        * [Inherited from](#inherited-from-9)
+      * [description](#description)
+        * [Inherited from](#inherited-from-10)
+  * [GetElementGroupResponse](#getelementgroupresponse)
+    * [Extends](#extends-2)
+    * [Properties](#properties-2)
+      * [id](#id-2)
+        * [Inherited from](#inherited-from-11)
+      * [name](#name-2)
+        * [Inherited from](#inherited-from-12)
+      * [caption](#caption-1)
+        * [Inherited from](#inherited-from-13)
+      * [elementIds](#elementids-1)
+        * [Remarks](#remarks-1)
+        * [Inherited from](#inherited-from-14)
+      * [visible](#visible-1)
+        * [Inherited from](#inherited-from-15)
+      * [shownInLegend](#showninlegend-1)
+        * [Inherited from](#inherited-from-16)
+  * [GetElementsFilter](#getelementsfilter)
+    * [Extends](#extends-3)
+    * [Properties](#properties-3)
+      * [ids?](#ids)
+        * [Inherited from](#inherited-from-17)
+  * [GetElementGroupsFilter](#getelementgroupsfilter)
+    * [Extends](#extends-4)
+    * [Properties](#properties-4)
+      * [ids?](#ids-1)
+        * [Inherited from](#inherited-from-18)
+  * [ElementChangeCallbackParams](#elementchangecallbackparams)
+    * [Properties](#properties-5)
+      * [element](#element)
+  * [ElementGroupChangeCallbackParams](#elementgroupchangecallbackparams)
+    * [Properties](#properties-6)
+      * [elementGroup](#elementgroup-1)
+  * [GetElementsResponse](#getelementsresponse)
+    * [Remarks](#remarks-2)
+  * [GetElementGroupsResponse](#getelementgroupsresponse)
+* [Other](#other)
+  * [Element](#element-1)
+    * [Extends](#extends-5)
+    * [Properties](#properties-7)
+      * [id](#id-3)
+        * [Inherited from](#inherited-from-19)
+      * [type](#type-1)
+        * [Inherited from](#inherited-from-20)
+      * [groupId](#groupid-1)
+        * [Inherited from](#inherited-from-21)
+      * [name](#name-3)
+        * [Inherited from](#inherited-from-22)
+      * [description](#description-1)
+        * [Inherited from](#inherited-from-23)
+  * [GetElementsFilterSchema](#getelementsfilterschema)
+    * [Type declaration](#type-declaration)
+  * [GetElementGroupsFilterSchema](#getelementgroupsfilterschema)
+    * [Type declaration](#type-declaration-1)
+
 ## Elements
 
 ### ElementGroup
@@ -223,7 +311,7 @@ The filter to apply to the elements. If this is not passed, all elements will be
 
 #### Extends
 
-* `TypeOf`\<*typeof* [`GetElementsFilterSchema`](modules.elements.types.md#getelementsfilterschema)>
+* `TypeOf`\<*typeof* [`GetElementsFilterSchema`](Elements.md#getelementsfilterschema)>
 
 #### Properties
 
@@ -245,7 +333,7 @@ The filter to apply to the element groups. If this is not passed, all element gr
 
 #### Extends
 
-* `TypeOf`\<*typeof* [`GetElementGroupsFilterSchema`](modules.elements.types.md#getelementgroupsfilterschema)>
+* `TypeOf`\<*typeof* [`GetElementGroupsFilterSchema`](Elements.md#getelementgroupsfilterschema)>
 
 #### Properties
 
@@ -269,7 +357,7 @@ The parameters for the `onElementChange` listener.
 
 ##### element
 
-> **element**: `null` | [`Element`](modules.elements.types.md#element)
+> **element**: `null` | [`Element`](Elements.md#element)
 
 The new data for the element or null if the element was removed.
 
@@ -283,7 +371,7 @@ The parameters for the `onElementGroupChange` listener.
 
 ##### elementGroup
 
-> **elementGroup**: `null` | [`ElementGroup`](modules.elements.types.md#elementgroup-1)
+> **elementGroup**: `null` | [`ElementGroup`](Elements.md#elementgroup-1)
 
 ***
 
@@ -299,7 +387,7 @@ The elements in the map, ordered by the order specified in Felt. This is not
 necessarily the order that they are drawn in, as Felt draws points above
 lines and lines above polygons, for instance.
 
-See [Element](modules.elements.types.md#element) for the structure of the element object.
+See [Element](Elements.md#element) for the structure of the element object.
 
 ***
 

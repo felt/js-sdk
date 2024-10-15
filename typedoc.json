@@ -17,7 +17,7 @@
     "typedoc-plugin-zod",
     "typedoc-plugin-markdown",
     "typedoc-plugin-remark",
-    // "typedoc-plugin-merge-modules",
+    "typedoc-plugin-merge-modules",
     "./navigation.mjs"
   ],
   // "projectDocuments": ["docs/Getting Started.md"],
@@ -44,17 +44,17 @@
   },
 
   "remarkPlugins": [
-    ["remark-toc", { "heading": "Table of Contents", "maxDepth": 3 }]
+    ["remark-toc", { "heading": "Table of Contents" }]
   ],
 
-  "outputFileStrategy": "modules"
+  "outputFileStrategy": "modules",
 
-  // "mergeModulesMergeMode": "project",
+  "mergeModulesMergeMode": "project",
 
-  // "navigation": {
-  //   "includeCategories": true,
-  //   "includeGroups": true,
-  //   "includeFolders": true
-  // },
-  // "categorizeByGroup": false
+  "navigation": {
+    "includeCategories": true,
+    "includeGroups": true,
+    "includeFolders": false
+  },
+  "categorizeByGroup": false
 }

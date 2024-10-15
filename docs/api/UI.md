@@ -1,6 +1,6 @@
 This is the doc comment for the ui module
 
-## what
+## Contents
 
 * [UiControlsOptions](#uicontrolsoptions)
   * [Extends](#extends)

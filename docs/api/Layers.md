@@ -1,6 +1,6 @@
 This is the doc comment for the layers module
 
-## what
+## Contents
 
 * [Layer](#layer)
   * [Extends](#extends)

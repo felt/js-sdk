@@ -1,6 +1,6 @@
 This is the doc comment for the elements module
 
-## what
+## Contents
 
 * [Element](#element)
   * [Extends](#extends)

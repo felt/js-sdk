@@ -2,7 +2,7 @@ This is the doc comment for the controller module
 The FeltController allows you to control, inspect and observe a Felt map.
 The various ways to interact with the map are namespaced for clarity.
 
-## what
+## Contents
 
 * [FeltController](#feltcontroller)
   * [Properties](#properties)

@@ -1,6 +1,6 @@
 This is the doc comment for the viewport module
 
-## what
+## Contents
 
 * [ViewportCenterZoom](#viewportcenterzoom)
   * [Extends](#extends)

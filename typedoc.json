@@ -45,7 +45,7 @@
   },
 
   "remarkPlugins": [
-    ["remark-toc", { "maxDepth": 4, "heading": "what" }],
+    ["remark-toc", { "maxDepth": 4 }],
   ],
 
   "outputFileStrategy": "modules",

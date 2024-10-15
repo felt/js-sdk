@@ -30,7 +30,6 @@ const FeltEmbedOptionsSchema = z.object({
 
 /**
  * @public
- * @category Controller
  */
 export interface FeltEmbedOptions
   extends z.infer<typeof FeltEmbedOptionsSchema> {}

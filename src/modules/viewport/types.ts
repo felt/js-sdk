@@ -7,9 +7,6 @@ import * as z from "zod";
 import { FeltBoundarySchema, FeltZoom, LatLngSchema } from "../../types/geo";
 import type { FeltController } from "../controller";
 
-/**
- * @category Viewport
- */
 export interface ViewportCenterZoom
   extends z.infer<typeof ViewportCenterZoomSchema> {}
 export const ViewportCenterZoomSchema = z.object({
@@ -24,9 +21,7 @@ export const ViewportCenterZoomSchema = z.object({
   zoom: FeltZoom,
 });
 
-/**
- * @category Viewport
- */
+
 export interface ViewportState extends z.infer<typeof ViewportStateSchema> {}
 const ViewportStateSchema = z.object({
   center: LatLngSchema,
@@ -39,7 +34,6 @@ const ViewportStateSchema = z.object({
  *
  * {@link FeltController.gotoViewport}
  *
- * @category Viewport
  */
 export interface SetViewportCenterZoomParams
   extends z.infer<typeof SetViewportCenterZoomParamsSchema> {}
@@ -53,7 +47,6 @@ export const SetViewportCenterZoomParamsSchema = z.object({
  *
  * {@link FeltController.fitBounds}
  *
- * @category Viewport
  */
 export interface ViewportFitBoundsParams
   extends z.infer<typeof ViewportFitBoundsParamsSchema> {}

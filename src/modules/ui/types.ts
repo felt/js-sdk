@@ -6,7 +6,6 @@ import * as z from "zod";
 
 /**
  * @public
- * @category UI Controls
  */
 export interface UiControlsOptions
   extends z.infer<typeof UiControlsOptionsSchema> {}

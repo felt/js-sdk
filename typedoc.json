@@ -8,10 +8,10 @@
     "src/modules/layers/types.ts",
     "src/modules/ui/types.ts",
     "src/modules/viewport/types.ts",
-    "src/modules/controller.ts",
+    "src/modules/controller/types.ts",
     "src/types.ts"
   ],
-  "entryModule": "src/client.ts",
+  // "entryModule": "src/client.ts",
   "sort": ["kind", "source-order"],
   "plugin": [
     "typedoc-plugin-zod",
@@ -45,7 +45,7 @@
   },
 
   "remarkPlugins": [
-    ["remark-toc", { "maxDepth": 6 }],
+    ["remark-toc", { "maxDepth": 4, "heading": "what" }],
   ],
 
   "outputFileStrategy": "modules",
@@ -54,10 +54,10 @@
   // "mergeModulesMergeMode": "module-category",
   // "mergeModulesRenameDefaults": true,
 
-  "navigation": {
-    "includeCategories": false,
-    "includeGroups": false,
-    "includeFolders": false
-  },
-  "categorizeByGroup": false
+  // "navigation": {
+  //   "includeCategories": false,
+  //   "includeGroups": false,
+  //   "includeFolders": false
+  // },
+  // "categorizeByGroup": false
 }

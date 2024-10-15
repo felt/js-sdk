@@ -1,95 +1,43 @@
 This is the doc comment for the viewport module
 
-Table of contents
+## what
 
-## Contents
+* [ViewportCenterZoom](#viewportcenterzoom)
+  * [Extends](#extends)
+  * [Properties](#properties)
+    * [center](#center)
+    * [zoom](#zoom)
+* [ViewportState](#viewportstate)
+  * [Extends](#extends-1)
+  * [Properties](#properties-1)
+    * [center](#center-1)
+    * [zoom](#zoom-1)
+    * [bounds](#bounds)
+* [SetViewportCenterZoomParams](#setviewportcenterzoomparams)
+  * [Extends](#extends-2)
+  * [Properties](#properties-2)
+    * [type](#type)
+    * [location](#location)
+* [ViewportFitBoundsParams](#viewportfitboundsparams)
+  * [Extends](#extends-3)
+  * [Properties](#properties-3)
+    * [bounds](#bounds-1)
+* [ViewportCenterZoomSchema](#viewportcenterzoomschema)
+  * [Type declaration](#type-declaration)
+* [SetViewportCenterZoomParamsSchema](#setviewportcenterzoomparamsschema)
+  * [Type declaration](#type-declaration-1)
+* [ViewportFitBoundsParamsSchema](#viewportfitboundsparamsschema)
+  * [Type declaration](#type-declaration-2)
 
-* [Other](#other)
-  * [ViewportCenterZoomSchema](#viewportcenterzoomschema)
-    * [Type declaration](#type-declaration)
-  * [SetViewportCenterZoomParamsSchema](#setviewportcenterzoomparamsschema)
-    * [Type declaration](#type-declaration-1)
-  * [ViewportFitBoundsParamsSchema](#viewportfitboundsparamsschema)
-    * [Type declaration](#type-declaration-2)
-* [Viewport](#viewport)
-  * [ViewportCenterZoom](#viewportcenterzoom)
-    * [Extends](#extends)
-    * [Properties](#properties)
-      * [center](#center)
-        * [Inherited from](#inherited-from)
-      * [zoom](#zoom)
-        * [Inherited from](#inherited-from-1)
-  * [ViewportState](#viewportstate)
-    * [Extends](#extends-1)
-    * [Properties](#properties-1)
-      * [center](#center-1)
-        * [Inherited from](#inherited-from-2)
-      * [zoom](#zoom-1)
-        * [Inherited from](#inherited-from-3)
-      * [bounds](#bounds)
-        * [Inherited from](#inherited-from-4)
-  * [SetViewportCenterZoomParams](#setviewportcenterzoomparams)
-    * [Extends](#extends-2)
-    * [Properties](#properties-2)
-      * [type](#type)
-        * [Inherited from](#inherited-from-5)
-      * [location](#location)
-        * [Inherited from](#inherited-from-6)
-  * [ViewportFitBoundsParams](#viewportfitboundsparams)
-    * [Extends](#extends-3)
-    * [Properties](#properties-3)
-      * [bounds](#bounds-1)
-        * [Inherited from](#inherited-from-7)
+## ViewportCenterZoom
 
-## Other
-
-### ViewportCenterZoomSchema
-
-> `const` **ViewportCenterZoomSchema**: `ZodObject`\<`object`, `"strip"`, `ZodTypeAny`, `object`, `object`>
-
-#### Type declaration
-
-| Name     | Type                                                                | Default value | Description                                           |
-| -------- | ------------------------------------------------------------------- | ------------- | ----------------------------------------------------- |
-| `center` | `ZodObject`\<`object`, `"strip"`, `ZodTypeAny`, `object`, `object`> | LatLngSchema  | The center of the viewport in latitude and longitude. |
-| `zoom`   | `ZodNumber`                                                         | FeltZoom      | The zoom level of the viewport.                       |
-
-***
-
-### SetViewportCenterZoomParamsSchema
-
-> `const` **SetViewportCenterZoomParamsSchema**: `ZodObject`\<`object`, `"strip"`, `ZodTypeAny`, `object`, `object`>
-
-#### Type declaration
-
-| Name       | Type                                                                |
-| ---------- | ------------------------------------------------------------------- |
-| `type`     | `ZodLiteral`\<`"center"`>                                           |
-| `location` | `ZodObject`\<`object`, `"strip"`, `ZodTypeAny`, `object`, `object`> |
-
-***
-
-### ViewportFitBoundsParamsSchema
-
-> `const` **ViewportFitBoundsParamsSchema**: `ZodObject`\<`object`, `"strip"`, `ZodTypeAny`, `object`, `object`>
-
-#### Type declaration
-
-| Name     | Type                                                                       | Default value      |
-| -------- | -------------------------------------------------------------------------- | ------------------ |
-| `bounds` | `ZodTuple`\<\[`ZodNumber`, `ZodNumber`, `ZodNumber`, `ZodNumber`], `null`> | FeltBoundarySchema |
-
-## Viewport
-
-### ViewportCenterZoom
-
-#### Extends
+### Extends
 
 * `TypeOf`\<*typeof* [`ViewportCenterZoomSchema`](Viewport.md#viewportcenterzoomschema)>
 
-#### Properties
+### Properties
 
-##### center
+#### center
 
 > **center**: `object` = `LatLngSchema`
 
@@ -100,31 +48,31 @@ The center of the viewport in latitude and longitude.
 | `latitude`  | `number` | Latitude      |
 | `longitude` | `number` | Longitude     |
 
-###### Inherited from
+##### Inherited from
 
 `z.infer.center`
 
-##### zoom
+#### zoom
 
 > **zoom**: `number` = `FeltZoom`
 
 The zoom level of the viewport.
 
-###### Inherited from
+##### Inherited from
 
 `z.infer.zoom`
 
 ***
 
-### ViewportState
+## ViewportState
 
-#### Extends
+### Extends
 
 * `TypeOf`\<*typeof* `ViewportStateSchema`>
 
-#### Properties
+### Properties
 
-##### center
+#### center
 
 > **center**: `object` = `LatLngSchema`
 
@@ -133,49 +81,49 @@ The zoom level of the viewport.
 | `latitude`  | `number` | Latitude      |
 | `longitude` | `number` | Longitude     |
 
-###### Inherited from
+##### Inherited from
 
 `z.infer.center`
 
-##### zoom
+#### zoom
 
 > **zoom**: `number` = `FeltZoom`
 
-###### Inherited from
+##### Inherited from
 
 `z.infer.zoom`
 
-##### bounds
+#### bounds
 
 > **bounds**: \[`number`, `number`, `number`, `number`] = `FeltBoundarySchema`
 
-###### Inherited from
+##### Inherited from
 
 `z.infer.bounds`
 
 ***
 
-### SetViewportCenterZoomParams
+## SetViewportCenterZoomParams
 
 The parameters for the `gotoViewport` method.
 
 [FeltController.gotoViewport](Controller.md#gotoviewport)
 
-#### Extends
+### Extends
 
 * `TypeOf`\<*typeof* [`SetViewportCenterZoomParamsSchema`](Viewport.md#setviewportcenterzoomparamsschema)>
 
-#### Properties
+### Properties
 
-##### type
+#### type
 
 > **type**: `"center"`
 
-###### Inherited from
+##### Inherited from
 
 `z.infer.type`
 
-##### location
+#### location
 
 > **location**: `object`
 
@@ -186,28 +134,66 @@ The parameters for the `gotoViewport` method.
 | `center.longitude` | `number` | Longitude     | -                                                     |
 | `zoom`?            | `number` | FeltZoom      | The zoom level of the viewport.                       |
 
-###### Inherited from
+##### Inherited from
 
 `z.infer.location`
 
 ***
 
-### ViewportFitBoundsParams
+## ViewportFitBoundsParams
 
 The parameters for the `fitBounds` method.
 
 [FeltController.fitBounds](Controller.md#fitbounds)
 
-#### Extends
+### Extends
 
 * `TypeOf`\<*typeof* [`ViewportFitBoundsParamsSchema`](Viewport.md#viewportfitboundsparamsschema)>
 
-#### Properties
+### Properties
 
-##### bounds
+#### bounds
 
 > **bounds**: \[`number`, `number`, `number`, `number`] = `FeltBoundarySchema`
 
-###### Inherited from
+##### Inherited from
 
 `z.infer.bounds`
+
+***
+
+## ViewportCenterZoomSchema
+
+> `const` **ViewportCenterZoomSchema**: `ZodObject`\<`object`, `"strip"`, `ZodTypeAny`, `object`, `object`>
+
+### Type declaration
+
+| Name     | Type                                                                | Default value | Description                                           |
+| -------- | ------------------------------------------------------------------- | ------------- | ----------------------------------------------------- |
+| `center` | `ZodObject`\<`object`, `"strip"`, `ZodTypeAny`, `object`, `object`> | LatLngSchema  | The center of the viewport in latitude and longitude. |
+| `zoom`   | `ZodNumber`                                                         | FeltZoom      | The zoom level of the viewport.                       |
+
+***
+
+## SetViewportCenterZoomParamsSchema
+
+> `const` **SetViewportCenterZoomParamsSchema**: `ZodObject`\<`object`, `"strip"`, `ZodTypeAny`, `object`, `object`>
+
+### Type declaration
+
+| Name       | Type                                                                |
+| ---------- | ------------------------------------------------------------------- |
+| `type`     | `ZodLiteral`\<`"center"`>                                           |
+| `location` | `ZodObject`\<`object`, `"strip"`, `ZodTypeAny`, `object`, `object`> |
+
+***
+
+## ViewportFitBoundsParamsSchema
+
+> `const` **ViewportFitBoundsParamsSchema**: `ZodObject`\<`object`, `"strip"`, `ZodTypeAny`, `object`, `object`>
+
+### Type declaration
+
+| Name     | Type                                                                       | Default value      |
+| -------- | -------------------------------------------------------------------------- | ------------------ |
+| `bounds` | `ZodTuple`\<\[`ZodNumber`, `ZodNumber`, `ZodNumber`, `ZodNumber`], `null`> | FeltBoundarySchema |

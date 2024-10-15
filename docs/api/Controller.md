@@ -1,361 +1,358 @@
 This is the doc comment for the controller module
-
-## Controller
-
-### FeltController
-
 The FeltController allows you to control, inspect and observe a Felt map.
 The various ways to interact with the map are namespaced for clarity.
 
-#### Properties
+## FeltController
 
-##### iframe
+### Properties
+
+#### iframe
 
 > **iframe**: `null` | `HTMLIFrameElement`
 
 The iframe element containing the Felt map, if it is an embedded map.
 
-#### Methods
+### Methods
 
-##### getElement()
+#### getElement()
 
-> **getElement**(`id`): `Promise`\<`null` | [`Element`](Elements.md#element)>
+> **getElement**(`id`): `Promise`\<`null` | [`Element`](Elements.md#element-1)>
 
 Get a single element from the map by its id.
 
-###### Parameters
+##### Parameters
 
 | Parameter | Type     | Description                            |
 | --------- | -------- | -------------------------------------- |
 | `id`      | `string` | The id of the element you want to get. |
 
-###### Returns
+##### Returns
 
-`Promise`\<`null` | [`Element`](Elements.md#element)>
+`Promise`\<`null` | [`Element`](Elements.md#element-1)>
 
 The requested element.
 
-###### Example
+##### Example
 
 ```typescript
 const element = await felt.getElement("element-1");
 ```
 
-##### getElements()
+#### getElements()
 
-> **getElements**(`filter`?): `Promise`\<(`null` | [`Element`](Elements.md#element))\[]>
+> **getElements**(`filter`?): `Promise`\<(`null` | [`Element`](Elements.md#element-1))\[]>
 
 Gets elements from the map, according to the filters supplied. If no
 filters are supplied, all elements will be returned.
 
-###### Parameters
+##### Parameters
 
 | Parameter | Type                                                 | Description                                                 |
 | --------- | ---------------------------------------------------- | ----------------------------------------------------------- |
 | `filter`? | [`GetElementsFilter`](Elements.md#getelementsfilter) | The filters to apply to the elements returned from the map. |
 
-###### Returns
+##### Returns
 
-`Promise`\<(`null` | [`Element`](Elements.md#element))\[]>
+`Promise`\<(`null` | [`Element`](Elements.md#element-1))\[]>
 
 All elements on the map.
 
-###### Remarks
+##### Remarks
 
 The elements in the map, ordered by the order specified in Felt. This is not
 necessarily the order that they are drawn in, as Felt draws points above
 lines and lines above polygons, for instance.
 
-###### Example
+##### Example
 
 ```typescript
 const elements = await felt.getElements();
 ```
 
-##### getElementGroup()
+#### getElementGroup()
 
 > **getElementGroup**(`id`): `Promise`\<`null` | [`ElementGroup`](Elements.md#elementgroup-1)>
 
 Get an element group from the map by its id.
 
-###### Parameters
+##### Parameters
 
 | Parameter | Type     |
 | --------- | -------- |
 | `id`      | `string` |
 
-###### Returns
+##### Returns
 
 `Promise`\<`null` | [`ElementGroup`](Elements.md#elementgroup-1)>
 
 The requested element group.
 
-###### Example
+##### Example
 
 ```typescript
 felt.getElementGroup("element-group-1");
 ```
 
-##### getElementGroups()
+#### getElementGroups()
 
 > **getElementGroups**(`filter`?): `Promise`\<(`null` | [`ElementGroup`](Elements.md#elementgroup-1))\[]>
 
 Gets element groups from the map, according to the filters supplied. If no
 filters are supplied, all element groups will be returned in rendering order.
 
-###### Parameters
+##### Parameters
 
 | Parameter | Type                                                           | Description                                                       |
 | --------- | -------------------------------------------------------------- | ----------------------------------------------------------------- |
 | `filter`? | [`GetElementGroupsFilter`](Elements.md#getelementgroupsfilter) | The filters to apply to the element groups returned from the map. |
 
-###### Returns
+##### Returns
 
 `Promise`\<(`null` | [`ElementGroup`](Elements.md#elementgroup-1))\[]>
 
 The requested element groups.
 
-###### Example
+##### Example
 
 ```typescript
 const elementGroups = await felt.getElementGroups({ ids: ["element-group-1", "element-group-2"] });
 ```
 
-##### setElementGroupVisibility()
+#### setElementGroupVisibility()
 
 > **setElementGroupVisibility**(`visibility`): `Promise`\<`void`>
 
 Hide or show element groups with the given ids.
 
-###### Parameters
+##### Parameters
 
 | Parameter    | Type                                                    |
 | ------------ | ------------------------------------------------------- |
 | `visibility` | [`SetVisibilityRequest`](types.md#setvisibilityrequest) |
 
-###### Returns
+##### Returns
 
 `Promise`\<`void`>
 
-###### Example
+##### Example
 
 ```typescript
 felt.setElementGroupVisibility({ show: ["element-group-1", "element-group-2"], hide: ["element-group-3"] });
 ```
 
-##### getLayer()
+#### getLayer()
 
 > **getLayer**(`id`): `Promise`\<`null` | [`Layer`](Layers.md#layer-1)>
 
 Get a single layer from the map by its id.
 
-###### Parameters
+##### Parameters
 
 | Parameter | Type     | Description                          |
 | --------- | -------- | ------------------------------------ |
 | `id`      | `string` | The id of the layer you want to get. |
 
-###### Returns
+##### Returns
 
 `Promise`\<`null` | [`Layer`](Layers.md#layer-1)>
 
 The requested layer.
 
-###### Example
+##### Example
 
 ```typescript
 const layers = await felt.getLayer({ ids: ["layer-1", "layer-2"] });
 ```
 
-##### getLayers()
+#### getLayers()
 
 > **getLayers**(`filter`?): `Promise`\<(`null` | [`Layer`](Layers.md#layer-1))\[]>
 
 Gets layers from the map, according to the filters supplied. If no
 filters are supplied, all layers will be returned.
 
-###### Parameters
+##### Parameters
 
 | Parameter | Type                                           | Description                                               |
 | --------- | ---------------------------------------------- | --------------------------------------------------------- |
 | `filter`? | [`GetLayersFilter`](Layers.md#getlayersfilter) | The filters to apply to the layers returned from the map. |
 
-###### Returns
+##### Returns
 
 `Promise`\<(`null` | [`Layer`](Layers.md#layer-1))\[]>
 
 All layers on the map.
 
-###### Remarks
+##### Remarks
 
 The layers in the map, ordered by the order specified in Felt. This is not
 necessarily the order that they are drawn in, as Felt draws points above
 lines and lines above polygons, for instance.
 
-###### Example
+##### Example
 
 ```typescript
 const layers = await felt.getLayers();
 ```
 
-##### setLayerVisibility()
+#### setLayerVisibility()
 
 > **setLayerVisibility**(`visibility`): `Promise`\<`void`>
 
 Hide or show layers with the given ids.
 
-###### Parameters
+##### Parameters
 
 | Parameter    | Type                                                    |
 | ------------ | ------------------------------------------------------- |
 | `visibility` | [`SetVisibilityRequest`](types.md#setvisibilityrequest) |
 
-###### Returns
+##### Returns
 
 `Promise`\<`void`>
 
-###### Example
+##### Example
 
 ```typescript
 felt.setLayerVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
 ```
 
-##### getLayerGroup()
+#### getLayerGroup()
 
 > **getLayerGroup**(`id`): `Promise`\<`null` | [`LayerGroup`](Layers.md#layergroup-1)>
 
 Get a layer group from the map by its id.
 
-###### Parameters
+##### Parameters
 
 | Parameter | Type     |
 | --------- | -------- |
 | `id`      | `string` |
 
-###### Returns
+##### Returns
 
 `Promise`\<`null` | [`LayerGroup`](Layers.md#layergroup-1)>
 
 The requested layer group.
 
-###### Example
+##### Example
 
 ```typescript
 felt.getLayerGroup("layer-group-1");
 ```
 
-##### getLayerGroups()
+#### getLayerGroups()
 
 > **getLayerGroups**(`filter`?): `Promise`\<(`null` | [`LayerGroup`](Layers.md#layergroup-1))\[]>
 
 Gets layer groups from the map, according to the filters supplied. If no
 filters are supplied, all layer groups will be returned in rendering order.
 
-###### Parameters
+##### Parameters
 
 | Parameter | Type                                                     | Description                                                     |
 | --------- | -------------------------------------------------------- | --------------------------------------------------------------- |
 | `filter`? | [`GetLayerGroupsFilter`](Layers.md#getlayergroupsfilter) | The filters to apply to the layer groups returned from the map. |
 
-###### Returns
+##### Returns
 
 `Promise`\<(`null` | [`LayerGroup`](Layers.md#layergroup-1))\[]>
 
 The requested layer groups.
 
-###### Example
+##### Example
 
 ```typescript
 const layerGroups = await felt.getLayerGroups({ ids: ["layer-group-1", "layer-group-2"] });
 ```
 
-##### setLayerGroupVisibility()
+#### setLayerGroupVisibility()
 
 > **setLayerGroupVisibility**(`visibility`): `Promise`\<`void`>
 
 Hide or show layer groups with the given ids.
 
-###### Parameters
+##### Parameters
 
 | Parameter    | Type                                                    |
 | ------------ | ------------------------------------------------------- |
 | `visibility` | [`SetVisibilityRequest`](types.md#setvisibilityrequest) |
 
-###### Returns
+##### Returns
 
 `Promise`\<`void`>
 
-###### Example
+##### Example
 
 ```typescript
 felt.setLayerGroupVisibility({ show: ["layer-group-1", "layer-group-2"], hide: ["layer-group-3"] });
 ```
 
-##### updateUiControls()
+#### updateUiControls()
 
 > **updateUiControls**(`controls`): `void`
 
 Updates the UI controls on the embedded map.
 
-###### Parameters
+##### Parameters
 
 | Parameter  | Type                                           | Description             |
 | ---------- | ---------------------------------------------- | ----------------------- |
 | `controls` | [`UiControlsOptions`](UI.md#uicontrolsoptions) | The controls to update. |
 
-###### Returns
+##### Returns
 
 `void`
 
-##### getViewport()
+#### getViewport()
 
 > **getViewport**(): `Promise`\<[`ViewportState`](Viewport.md#viewportstate)>
 
 Gets the current state of the viewport.
 
-###### Returns
+##### Returns
 
 `Promise`\<[`ViewportState`](Viewport.md#viewportstate)>
 
-##### gotoViewport()
+#### gotoViewport()
 
 > **gotoViewport**(`viewport`): `void`
 
 Moves the map to the specified location.
 
-###### Parameters
+##### Parameters
 
 | Parameter  | Type                                                                     |
 | ---------- | ------------------------------------------------------------------------ |
 | `viewport` | [`SetViewportCenterZoomParams`](Viewport.md#setviewportcenterzoomparams) |
 
-###### Returns
+##### Returns
 
 `void`
 
-###### Example
+##### Example
 
 ```typescript
 felt.gotoViewport({ center: { lat: 0, lng: 0 }, zoom: 10 });
 ```
 
-##### fitBounds()
+#### fitBounds()
 
 > **fitBounds**(`bounds`): `void`
 
 Fits the map to the specified bounds.
 
-###### Parameters
+##### Parameters
 
 | Parameter | Type                                                             |
 | --------- | ---------------------------------------------------------------- |
 | `bounds`  | [`ViewportFitBoundsParams`](Viewport.md#viewportfitboundsparams) |
 
-###### Returns
+##### Returns
 
 `void`
 
-###### Example
+##### Example
 
 ```typescript
 const west = -122.4194;
@@ -365,15 +362,15 @@ const north = 37.7749;
 felt.fitBounds({ bounds: [west, south, east, north] });
 ```
 
-#### Events
+### Events
 
-##### onElementChange()
+#### onElementChange()
 
 > **onElementChange**(`args`): `VoidFunction`
 
 Adds a listener for when an element changes.
 
-###### Parameters
+##### Parameters
 
 | Parameter         | Type                 | Description                                          |
 | ----------------- | -------------------- | ---------------------------------------------------- |
@@ -382,13 +379,13 @@ Adds a listener for when an element changes.
 | `args.options.id` | `string`             | The id of the element to listen for changes to.      |
 | `args.handler`    | (`change`) => `void` | The handler that is called when the element changes. |
 
-###### Returns
+##### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-###### Example
+##### Example
 
 ```typescript
 const unsubscribe = felt.onElementChange({
@@ -400,13 +397,13 @@ const unsubscribe = felt.onElementChange({
 unsubscribe();
 ```
 
-##### onElementGroupChange()
+#### onElementGroupChange()
 
 > **onElementGroupChange**(`args`): `VoidFunction`
 
 Adds a listener for when an element group changes.
 
-###### Parameters
+##### Parameters
 
 | Parameter         | Type                 |
 | ----------------- | -------------------- |
@@ -415,13 +412,13 @@ Adds a listener for when an element group changes.
 | `args.options.id` | `string`             |
 | `args.handler`    | (`change`) => `void` |
 
-###### Returns
+##### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-###### Example
+##### Example
 
 ```typescript
 const unsubscribe = felt.onElementGroupChange({
@@ -433,13 +430,13 @@ const unsubscribe = felt.onElementGroupChange({
 unsubscribe();
 ```
 
-##### onLayerChange()
+#### onLayerChange()
 
 > **onLayerChange**(`args`): `VoidFunction`
 
 Adds a listener for when a layer changes.
 
-###### Parameters
+##### Parameters
 
 | Parameter         | Type                 | Description                                        |
 | ----------------- | -------------------- | -------------------------------------------------- |
@@ -448,13 +445,13 @@ Adds a listener for when a layer changes.
 | `args.options.id` | `string`             | The id of the layer to listen for changes to.      |
 | `args.handler`    | (`change`) => `void` | The handler that is called when the layer changes. |
 
-###### Returns
+##### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-###### Example
+##### Example
 
 ```typescript
 const unsubscribe = felt.onLayerChange({
@@ -466,13 +463,13 @@ const unsubscribe = felt.onLayerChange({
 unsubscribe();
 ```
 
-##### onLayerGroupChange()
+#### onLayerGroupChange()
 
 > **onLayerGroupChange**(`args`): `VoidFunction`
 
 Adds a listener for when a layer group changes.
 
-###### Parameters
+##### Parameters
 
 | Parameter         | Type                 |
 | ----------------- | -------------------- |
@@ -481,13 +478,13 @@ Adds a listener for when a layer group changes.
 | `args.options.id` | `string`             |
 | `args.handler`    | (`change`) => `void` |
 
-###### Returns
+##### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-###### Example
+##### Example
 
 ```typescript
 const unsubscribe = felt.onLayerGroupChange({
@@ -499,26 +496,26 @@ const unsubscribe = felt.onLayerGroupChange({
 unsubscribe();
 ```
 
-##### onViewportMove()
+#### onViewportMove()
 
 > **onViewportMove**(`args`): `VoidFunction`
 
 Adds a listener for when the viewport changes.
 
-###### Parameters
+##### Parameters
 
 | Parameter      | Type                   | Description                                                                            |
 | -------------- | ---------------------- | -------------------------------------------------------------------------------------- |
 | `args`         | `object`               | -                                                                                      |
 | `args.handler` | (`viewport`) => `void` | This callback is called with the current viewport state whenever the viewport changes. |
 
-###### Returns
+##### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-###### Example
+##### Example
 
 ```typescript
 const unsubscribe = felt.onViewportMove({

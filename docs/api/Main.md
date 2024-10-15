@@ -1,15 +1,13 @@
 This is the doc comment for the main module
 
-## Main
-
-### Felt
+## Felt
 
 > `const` **Felt**: `object`
 
 The Felt SDK is a library for embedding Felt maps into your website,
 allowing you to control and inspect the map programmatically.
 
-#### Type declaration
+### Type declaration
 
 | Name        | Type                                                         | Description                                    |
 | ----------- | ------------------------------------------------------------ | ---------------------------------------------- |

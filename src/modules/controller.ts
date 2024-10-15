@@ -38,6 +38,8 @@ export function makeController(feltWindow: Window): FeltController {
 
 /**
  * @group Entities
+ * @public
+ * @interface
  */
 export type FeltController = {
   /**

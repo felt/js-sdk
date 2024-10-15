@@ -11,6 +11,7 @@ import type { FeltEmbedOptions } from "../../types/embed";
  * allowing you to control and inspect the map programmatically.
  *
  * @public
+ * @category Main
  */
 export const Felt = {
   /**

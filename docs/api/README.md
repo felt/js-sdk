@@ -1,6 +1,6 @@
 ## Modules
 
-* [Controller](Controller.md)
+* [FeltController](FeltController.md)
 * [Elements](Elements.md)
 * [Layers](Layers.md)
 * [Main](Main.md)

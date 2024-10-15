@@ -107,7 +107,7 @@ The zoom level of the viewport.
 
 The parameters for the `gotoViewport` method.
 
-[FeltController.gotoViewport](Controller.md#gotoviewport)
+[FeltController.gotoViewport](FeltController.md#gotoviewport)
 
 ### Extends
 
@@ -144,7 +144,7 @@ The parameters for the `gotoViewport` method.
 
 The parameters for the `fitBounds` method.
 
-[FeltController.fitBounds](Controller.md#fitbounds)
+[FeltController.fitBounds](FeltController.md#fitbounds)
 
 ### Extends
 

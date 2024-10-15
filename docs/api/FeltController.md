@@ -2,6 +2,35 @@ This is the doc comment for the controller module
 The FeltController allows you to control, inspect and observe a Felt map.
 The various ways to interact with the map are namespaced for clarity.
 
+## what
+
+* [FeltController](#feltcontroller)
+  * [Properties](#properties)
+    * [iframe](#iframe)
+  * [Methods](#methods)
+    * [getElement()](#getelement)
+    * [getElements()](#getelements)
+    * [getElementGroup()](#getelementgroup)
+    * [getElementGroups()](#getelementgroups)
+    * [setElementGroupVisibility()](#setelementgroupvisibility)
+    * [getLayer()](#getlayer)
+    * [getLayers()](#getlayers)
+    * [setLayerVisibility()](#setlayervisibility)
+    * [getLayerGroup()](#getlayergroup)
+    * [getLayerGroups()](#getlayergroups)
+    * [setLayerGroupVisibility()](#setlayergroupvisibility)
+    * [updateUiControls()](#updateuicontrols)
+    * [getViewport()](#getviewport)
+    * [gotoViewport()](#gotoviewport)
+    * [fitBounds()](#fitbounds)
+  * [Events](#events)
+    * [onElementChange()](#onelementchange)
+    * [onElementGroupChange()](#onelementgroupchange)
+    * [onLayerChange()](#onlayerchange)
+    * [onLayerGroupChange()](#onlayergroupchange)
+    * [onViewportMove()](#onviewportmove)
+* [Testingtesting](#testingtesting)
+
 ## FeltController
 
 ### Properties
@@ -525,3 +554,7 @@ const unsubscribe = felt.onViewportMove({
 // later on...
 unsubscribe();
 ```
+
+***
+
+## Testingtesting

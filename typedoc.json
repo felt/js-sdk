@@ -3,7 +3,12 @@
   "disableSources": true,
   "out": "./docs/api",
   "entryPoints": [
-    "src/client.ts", 
+    "src/modules/main/types.ts",
+    "src/modules/elements/types.ts",
+    "src/modules/layers/types.ts",
+    "src/modules/ui/types.ts",
+    "src/modules/viewport/types.ts",
+    "src/modules/controller.ts",
     "src/types.ts"
   ],
   "entryModule": "src/client.ts",
@@ -12,7 +17,7 @@
     "typedoc-plugin-zod",
     "typedoc-plugin-markdown",
     "typedoc-plugin-remark",
-    "typedoc-plugin-merge-modules",
+    // "typedoc-plugin-merge-modules",
     "./navigation.mjs"
   ],
   // "projectDocuments": ["docs/Getting Started.md"],
@@ -42,7 +47,9 @@
     ["remark-toc", { "heading": "Table of Contents", "maxDepth": 3 }]
   ],
 
-  "mergeModulesMergeMode": "project",
+  "outputFileStrategy": "modules"
+
+  // "mergeModulesMergeMode": "project",
 
   // "navigation": {
   //   "includeCategories": true,

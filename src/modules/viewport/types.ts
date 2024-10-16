@@ -33,9 +33,7 @@ const ViewportStateSchema = z.object({
 
 /**
  * The parameters for the `gotoViewport` method.
- *
- * {@link FeltController.gotoViewport}
- *
+ * *
  */
 export interface SetViewportCenterZoomParams
   extends z.infer<typeof SetViewportCenterZoomParamsSchema> {}
@@ -49,16 +47,14 @@ export const SetViewportCenterZoomParamsSchema = z.object({
 
 /**
  * The parameters for the `fitBounds` method.
- *
- * {@link FeltController.fitBounds}
- *
+ * *
  */
 export interface ViewportFitBoundsParams
   extends z.infer<typeof ViewportFitBoundsParamsSchema> {}
 /**
  * @ignore
+ * @internal
  */
 export const ViewportFitBoundsParamsSchema = z.object({
   bounds: FeltBoundarySchema,
 });
-

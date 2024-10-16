@@ -1,11 +1,9 @@
 import * as z from "zod";
 import {
   UiControlsOptionsSchema,
-  type UiControlsOptions,
 } from "../modules/ui/types";
 import {
   ViewportCenterZoomSchema as VCZSchema,
-  type ViewportCenterZoom,
 } from "../modules/viewport/types";
 
 /**
@@ -17,14 +15,9 @@ const FeltEmbedOptionsSchema = z.object({
    */
   origin: z.string().optional(),
 
-  /**
-   * {@link UiControlsOptions}
-   */
+
   uiControls: UiControlsOptionsSchema,
 
-  /**
-   * {@link ViewportCenterZoom}
-   */
   initialViewport: VCZSchema.optional(),
 });
 

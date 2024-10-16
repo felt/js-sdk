@@ -11,6 +11,7 @@ export interface UiControlsOptions
   extends z.infer<typeof UiControlsOptionsSchema> {}
 
 /**
+ * @internal
  * @ignore
  */
 export const UiControlsOptionsSchema = z.object({

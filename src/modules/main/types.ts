@@ -154,3 +154,8 @@ export const Felt = {
 const entries = Object.entries as <T extends object>(
   obj: T,
 ) => Array<[Exclude<keyof T, number>, T[keyof T]]>;
+
+/**
+ * The types that are documented in the SDK API reference.
+ */
+export type { FeltEmbedOptions } from "../../types/embed";

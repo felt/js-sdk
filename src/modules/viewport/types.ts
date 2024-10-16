@@ -9,6 +9,9 @@ import type { FeltController } from "../controller";
 
 export interface ViewportCenterZoom
   extends z.infer<typeof ViewportCenterZoomSchema> {}
+/**
+ * @ignore
+ */
 export const ViewportCenterZoomSchema = z.object({
   /**
    * The center of the viewport in latitude and longitude.
@@ -36,6 +39,9 @@ const ViewportStateSchema = z.object({
  */
 export interface SetViewportCenterZoomParams
   extends z.infer<typeof SetViewportCenterZoomParamsSchema> {}
+/**
+ * @ignore
+ */
 export const SetViewportCenterZoomParamsSchema = z.object({
   type: z.literal("center"),
   location: ViewportCenterZoomSchema.partial(),
@@ -49,6 +55,10 @@ export const SetViewportCenterZoomParamsSchema = z.object({
  */
 export interface ViewportFitBoundsParams
   extends z.infer<typeof ViewportFitBoundsParamsSchema> {}
+/**
+ * @ignore
+ */
 export const ViewportFitBoundsParamsSchema = z.object({
   bounds: FeltBoundarySchema,
 });
+

@@ -9,7 +9,7 @@
     "src/modules/ui/types.ts",
     "src/modules/viewport/types.ts",
     "src/modules/controller.ts",
-    "src/types.ts"
+    "src/modules/common.ts"
   ],
   // "entryModule": "src/client.ts",
   "sort": ["kind", "source-order"],

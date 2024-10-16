@@ -155,9 +155,9 @@ Hide or show element groups with the given ids.
 
 ##### Parameters
 
-| Parameter    | Type                                                    |
-| ------------ | ------------------------------------------------------- |
-| `visibility` | [`SetVisibilityRequest`](types.md#setvisibilityrequest) |
+| Parameter    | Type                                                     |
+| ------------ | -------------------------------------------------------- |
+| `visibility` | [`SetVisibilityRequest`](common.md#setvisibilityrequest) |
 
 ##### Returns
 
@@ -232,9 +232,9 @@ Hide or show layers with the given ids.
 
 ##### Parameters
 
-| Parameter    | Type                                                    |
-| ------------ | ------------------------------------------------------- |
-| `visibility` | [`SetVisibilityRequest`](types.md#setvisibilityrequest) |
+| Parameter    | Type                                                     |
+| ------------ | -------------------------------------------------------- |
+| `visibility` | [`SetVisibilityRequest`](common.md#setvisibilityrequest) |
 
 ##### Returns
 
@@ -303,9 +303,9 @@ Hide or show layer groups with the given ids.
 
 ##### Parameters
 
-| Parameter    | Type                                                    |
-| ------------ | ------------------------------------------------------- |
-| `visibility` | [`SetVisibilityRequest`](types.md#setvisibilityrequest) |
+| Parameter    | Type                                                     |
+| ------------ | -------------------------------------------------------- |
+| `visibility` | [`SetVisibilityRequest`](common.md#setvisibilityrequest) |
 
 ##### Returns
 
@@ -558,3 +558,5 @@ unsubscribe();
 ***
 
 ## Testingtesting
+
+Without this we don't get a Table of Contents for FeltController

@@ -164,6 +164,9 @@ const GetLayerGroupResponseSchema = LayerGroupSchema;
  */
 export interface GetLayersFilter
   extends z.infer<typeof GetLayersFilterSchema> {}
+/**
+ * @ignore
+ */
 export const GetLayersFilterSchema = z.object({
   /**
    * The ids of the layers to get.
@@ -191,6 +194,9 @@ const GetLayersResponseSchema = z.array(LayerSchema.nullable());
  */
 export interface GetLayerGroupsFilter
   extends z.infer<typeof GetLayerGroupsFilterSchema> {}
+/**
+ * @ignore
+ */
 export const GetLayerGroupsFilterSchema = z.object({
   /**
    * The ids of the layer groups to get.

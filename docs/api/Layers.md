@@ -60,12 +60,6 @@ This is the doc comment for the layers module
 * [GetLayersResponse](#getlayersresponse)
   * [Remarks](#remarks-4)
 * [GetLayerGroupsResponse](#getlayergroupsresponse)
-* [GetLayersFilterSchema](#getlayersfilterschema)
-  * [Type declaration](#type-declaration)
-    * [ids](#ids-2)
-* [GetLayerGroupsFilterSchema](#getlayergroupsfilterschema)
-  * [Type declaration](#type-declaration-1)
-    * [ids](#ids-3)
 
 ## Layer
 
@@ -437,31 +431,3 @@ See [Layer](Layers.md#layer-1) for the structure of the layer object.
 > **GetLayerGroupsResponse**: (`null` | `object`)\[]
 
 The response from the `getLayerGroups` method.
-
-***
-
-## GetLayersFilterSchema
-
-> `const` **GetLayersFilterSchema**: `ZodObject`\<`object`, `"strip"`, `ZodTypeAny`, `object`, `object`>
-
-### Type declaration
-
-#### ids
-
-> **ids**: `ZodOptional`\<`ZodArray`\<`ZodString`, `"many"`>>
-
-The ids of the layers to get.
-
-***
-
-## GetLayerGroupsFilterSchema
-
-> `const` **GetLayerGroupsFilterSchema**: `ZodObject`\<`object`, `"strip"`, `ZodTypeAny`, `object`, `object`>
-
-### Type declaration
-
-#### ids
-
-> **ids**: `ZodOptional`\<`ZodArray`\<`ZodString`, `"many"`>>
-
-The ids of the layer groups to get.

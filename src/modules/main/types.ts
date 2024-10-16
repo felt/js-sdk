@@ -2,9 +2,9 @@
  * This is the doc comment for the main module
  * @module Main
  */
+import type { FeltEmbedOptions } from "../../types/embed";
 import type { FeltController } from "../controller";
 import { makeController } from "../controller";
-import type { FeltEmbedOptions } from "../../types/embed";
 
 /**
  * The Felt SDK is a library for embedding Felt maps into your website,
@@ -146,7 +146,6 @@ export const Felt = {
     });
   },
 };
-
 
 /**
  * A stricter, more type-safe version of Object.entries that preserves the

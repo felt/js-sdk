@@ -41,15 +41,12 @@
 
   "tableColumnSettings": {
     "hideInherited": true,
-    "hideDefaults": false,
+    "hideDefaults": false
   },
 
-  "remarkPlugins": [
-    ["remark-toc", { "maxDepth": 4 }],
-  ],
+  "remarkPlugins": [["remark-toc", { "maxDepth": 4 }]],
 
   "outputFileStrategy": "modules",
   "flattenOutputFiles": true,
   "theme": "customTheme"
-
 }

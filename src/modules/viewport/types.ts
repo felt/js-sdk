@@ -1,6 +1,6 @@
 /**
  * This is the doc comment for the viewport module
- * 
+ *
  * @module Viewport
  */
 import * as z from "zod";
@@ -20,7 +20,6 @@ export const ViewportCenterZoomSchema = z.object({
    */
   zoom: FeltZoom,
 });
-
 
 export interface ViewportState extends z.infer<typeof ViewportStateSchema> {}
 const ViewportStateSchema = z.object({

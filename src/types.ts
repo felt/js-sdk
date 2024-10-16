@@ -18,9 +18,9 @@ export type {
   ViewportState,
 } from "./modules/viewport/types";
 
+export type { FeltEmbedOptions } from "./types/embed";
 export type { FeltBoundary, FeltZoom } from "./types/geo";
 export type { SetVisibilityRequest } from "./types/visibility";
-export type {FeltEmbedOptions} from "./types/embed";
 
 export type {
   ElementChangeCallbackParams,

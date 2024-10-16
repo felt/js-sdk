@@ -101,6 +101,9 @@ const GetElementGroupResponseSchema = ElementGroupSchema;
  */
 export interface GetElementsFilter
   extends z.infer<typeof GetElementsFilterSchema> {}
+/**
+ * @ignore
+ */
 export const GetElementsFilterSchema = z.object({
   /**
    * The ids of the elements to get.
@@ -128,6 +131,9 @@ const GetElementsResponseSchema = z.array(ElementSchema.nullable());
  */
 export interface GetElementGroupsFilter
   extends z.infer<typeof GetElementGroupsFilterSchema> {}
+/**
+ * @ignore
+ */
 export const GetElementGroupsFilterSchema = z.object({
   /**
    * The ids of the element groups to get.

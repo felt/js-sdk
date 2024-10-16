@@ -47,10 +47,6 @@ This is the doc comment for the elements module
 * [GetElementsResponse](#getelementsresponse)
   * [Remarks](#remarks-2)
 * [GetElementGroupsResponse](#getelementgroupsresponse)
-* [GetElementsFilterSchema](#getelementsfilterschema)
-  * [Type declaration](#type-declaration)
-* [GetElementGroupsFilterSchema](#getelementgroupsfilterschema)
-  * [Type declaration](#type-declaration-1)
 
 ## Element
 
@@ -303,27 +299,3 @@ See [Element](Elements.md#element-1) for the structure of the element object.
 > **GetElementGroupsResponse**: (`null` | `object`)\[]
 
 The response from the `getElementGroups` method.
-
-***
-
-## GetElementsFilterSchema
-
-> `const` **GetElementsFilterSchema**: `ZodObject`\<`object`, `"strip"`, `ZodTypeAny`, `object`, `object`>
-
-### Type declaration
-
-| Name  | Type                                               | Description                     |
-| ----- | -------------------------------------------------- | ------------------------------- |
-| `ids` | `ZodOptional`\<`ZodArray`\<`ZodString`, `"many"`>> | The ids of the elements to get. |
-
-***
-
-## GetElementGroupsFilterSchema
-
-> `const` **GetElementGroupsFilterSchema**: `ZodObject`\<`object`, `"strip"`, `ZodTypeAny`, `object`, `object`>
-
-### Type declaration
-
-| Name  | Type                                               | Description                           |
-| ----- | -------------------------------------------------- | ------------------------------------- |
-| `ids` | `ZodOptional`\<`ZodArray`\<`ZodString`, `"many"`>> | The ids of the element groups to get. |

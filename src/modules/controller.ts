@@ -51,7 +51,8 @@ export type FeltController = {
   ElementsController;
 
 
-  /**
+/**
+ * Without this we don't get a Table of Contents for FeltController
  * @public
  * @interface
  */

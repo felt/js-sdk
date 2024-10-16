@@ -3,7 +3,6 @@ This is the doc comment for the elements module
 ## Contents
 
 * [Element](#element)
-  * [Extends](#extends)
   * [Properties](#properties)
     * [id](#id)
     * [type](#type)
@@ -11,7 +10,6 @@ This is the doc comment for the elements module
     * [name](#name)
     * [description](#description)
 * [ElementGroup](#elementgroup)
-  * [Extends](#extends-1)
   * [Properties](#properties-1)
     * [id](#id-1)
     * [name](#name-1)
@@ -20,7 +18,6 @@ This is the doc comment for the elements module
     * [visible](#visible)
     * [shownInLegend](#showninlegend)
 * [GetElementResponse](#getelementresponse)
-  * [Extends](#extends-2)
   * [Properties](#properties-2)
     * [id](#id-2)
     * [type](#type-1)
@@ -28,7 +25,6 @@ This is the doc comment for the elements module
     * [name](#name-2)
     * [description](#description-1)
 * [GetElementGroupResponse](#getelementgroupresponse)
-  * [Extends](#extends-3)
   * [Properties](#properties-3)
     * [id](#id-3)
     * [name](#name-3)
@@ -37,11 +33,9 @@ This is the doc comment for the elements module
     * [visible](#visible-1)
     * [shownInLegend](#showninlegend-1)
 * [GetElementsFilter](#getelementsfilter)
-  * [Extends](#extends-4)
   * [Properties](#properties-4)
     * [ids?](#ids)
 * [GetElementGroupsFilter](#getelementgroupsfilter)
-  * [Extends](#extends-5)
   * [Properties](#properties-5)
     * [ids?](#ids-1)
 * [ElementChangeCallbackParams](#elementchangecallbackparams)
@@ -60,10 +54,6 @@ This is the doc comment for the elements module
 
 ## Element
 
-### Extends
-
-* `TypeOf`\<*typeof* `ElementSchema`>
-
 ### Properties
 
 #### id
@@ -72,19 +62,11 @@ This is the doc comment for the elements module
 
 The string identifying the element
 
-##### Inherited from
-
-`z.infer.id`
-
 #### type
 
 > **type**: `string`
 
 The type of element, such as a Place, Polygon, Line, Route, etc.
-
-##### Inherited from
-
-`z.infer.type`
 
 #### groupId
 
@@ -93,20 +75,12 @@ The type of element, such as a Place, Polygon, Line, Route, etc.
 The ID of the element group that the element belongs to, or null
 if the element is not inside an element group.
 
-##### Inherited from
-
-`z.infer.groupId`
-
 #### name
 
 > **name**: `null` | `string`
 
 The name of the element can be displayed in the Legend, depending
 on how the element's legend is configured in its style.
-
-##### Inherited from
-
-`z.infer.name`
 
 #### description
 
@@ -115,17 +89,9 @@ on how the element's legend is configured in its style.
 The element description forms part of the element's metadata. This is visible
 to users via the element info button in the legend.
 
-##### Inherited from
-
-`z.infer.description`
-
 ***
 
 ## ElementGroup
-
-### Extends
-
-* `TypeOf`\<*typeof* `ElementGroupSchema`>
 
 ### Properties
 
@@ -135,29 +101,17 @@ to users via the element info button in the legend.
 
 A string identifying the element group.
 
-##### Inherited from
-
-`z.infer.id`
-
 #### name
 
 > **name**: `string`
 
 The name of the element group. This is shown in the legend.
 
-##### Inherited from
-
-`z.infer.name`
-
 #### caption
 
 > **caption**: `null` | `string`
 
 The caption of the element group. This is shown in the legend.
-
-##### Inherited from
-
-`z.infer.caption`
 
 #### elementIds
 
@@ -169,29 +123,17 @@ The ids of the elements in the element group.
 
 You can use these ids to get the full element objects via the `getElements` method.
 
-##### Inherited from
-
-`z.infer.elementIds`
-
 #### visible
 
 > **visible**: `boolean`
 
 Whether the element group is visible or not.
 
-##### Inherited from
-
-`z.infer.visible`
-
 #### shownInLegend
 
 > **shownInLegend**: `boolean`
 
 Whether the element group is shown in the legend or not.
-
-##### Inherited from
-
-`z.infer.shownInLegend`
 
 ***
 
@@ -200,10 +142,6 @@ Whether the element group is shown in the legend or not.
 The response from the `getElement` method. If the element doesn't exist, the
 response will be `null`.
 
-### Extends
-
-* `TypeOf`\<*typeof* `GetElementResponseSchema`>
-
 ### Properties
 
 #### id
@@ -212,19 +150,11 @@ response will be `null`.
 
 The string identifying the element
 
-##### Inherited from
-
-`z.infer.id`
-
 #### type
 
 > **type**: `string`
 
 The type of element, such as a Place, Polygon, Line, Route, etc.
-
-##### Inherited from
-
-`z.infer.type`
 
 #### groupId
 
@@ -233,20 +163,12 @@ The type of element, such as a Place, Polygon, Line, Route, etc.
 The ID of the element group that the element belongs to, or null
 if the element is not inside an element group.
 
-##### Inherited from
-
-`z.infer.groupId`
-
 #### name
 
 > **name**: `null` | `string`
 
 The name of the element can be displayed in the Legend, depending
 on how the element's legend is configured in its style.
-
-##### Inherited from
-
-`z.infer.name`
 
 #### description
 
@@ -255,20 +177,12 @@ on how the element's legend is configured in its style.
 The element description forms part of the element's metadata. This is visible
 to users via the element info button in the legend.
 
-##### Inherited from
-
-`z.infer.description`
-
 ***
 
 ## GetElementGroupResponse
 
 The response from the `getElementGroup` method. If the element doesn't exist, the
 response will be `null`.
-
-### Extends
-
-* `TypeOf`\<*typeof* `GetElementGroupResponseSchema`>
 
 ### Properties
 
@@ -278,29 +192,17 @@ response will be `null`.
 
 A string identifying the element group.
 
-##### Inherited from
-
-`z.infer.id`
-
 #### name
 
 > **name**: `string`
 
 The name of the element group. This is shown in the legend.
 
-##### Inherited from
-
-`z.infer.name`
-
 #### caption
 
 > **caption**: `null` | `string`
 
 The caption of the element group. This is shown in the legend.
-
-##### Inherited from
-
-`z.infer.caption`
 
 #### elementIds
 
@@ -312,19 +214,11 @@ The ids of the elements in the element group.
 
 You can use these ids to get the full element objects via the `getElements` method.
 
-##### Inherited from
-
-`z.infer.elementIds`
-
 #### visible
 
 > **visible**: `boolean`
 
 Whether the element group is visible or not.
-
-##### Inherited from
-
-`z.infer.visible`
 
 #### shownInLegend
 
@@ -332,19 +226,11 @@ Whether the element group is visible or not.
 
 Whether the element group is shown in the legend or not.
 
-##### Inherited from
-
-`z.infer.shownInLegend`
-
 ***
 
 ## GetElementsFilter
 
 The filter to apply to the elements. If this is not passed, all elements will be returned.
-
-### Extends
-
-* `TypeOf`\<*typeof* [`GetElementsFilterSchema`](Elements.md#getelementsfilterschema)>
 
 ### Properties
 
@@ -354,19 +240,11 @@ The filter to apply to the elements. If this is not passed, all elements will be
 
 The ids of the elements to get.
 
-##### Inherited from
-
-`z.infer.ids`
-
 ***
 
 ## GetElementGroupsFilter
 
 The filter to apply to the element groups. If this is not passed, all element groups will be returned.
-
-### Extends
-
-* `TypeOf`\<*typeof* [`GetElementGroupsFilterSchema`](Elements.md#getelementgroupsfilterschema)>
 
 ### Properties
 
@@ -375,10 +253,6 @@ The filter to apply to the element groups. If this is not passed, all element gr
 > `optional` **ids**: `string`\[]
 
 The ids of the element groups to get.
-
-##### Inherited from
-
-`z.infer.ids`
 
 ***
 

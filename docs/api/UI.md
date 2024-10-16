@@ -3,7 +3,6 @@ This is the doc comment for the ui module
 ## Contents
 
 * [UiControlsOptions](#uicontrolsoptions)
-  * [Extends](#extends)
   * [Properties](#properties)
     * [showLegend?](#showlegend)
     * [cooperativeGestures?](#cooperativegestures)
@@ -15,10 +14,6 @@ This is the doc comment for the ui module
   * [Type declaration](#type-declaration)
 
 ## UiControlsOptions
-
-### Extends
-
-* `TypeOf`\<*typeof* [`UiControlsOptionsSchema`](UI.md#uicontrolsoptionsschema)>
 
 ### Properties
 
@@ -33,10 +28,6 @@ Whether or not the legend is shown.
 ```ts
 true
 ```
-
-##### Inherited from
-
-`z.infer.showLegend`
 
 #### cooperativeGestures?
 
@@ -62,10 +53,6 @@ scrolling.
 true
 ```
 
-##### Inherited from
-
-`z.infer.cooperativeGestures`
-
 #### fullScreenButton?
 
 > `optional` **fullScreenButton**: `boolean`
@@ -81,10 +68,6 @@ When clicked, this will open the map in a new tab or window.
 ```ts
 true
 ```
-
-##### Inherited from
-
-`z.infer.fullScreenButton`
 
 #### geolocation?
 
@@ -103,10 +86,6 @@ click the button again, it will start tracking your position.
 false
 ```
 
-##### Inherited from
-
-`z.infer.geolocation`
-
 #### zoomControls?
 
 > `optional` **zoomControls**: `boolean`
@@ -124,10 +103,6 @@ the display of the zoom controls in the bottom right corner of the map.
 true
 ```
 
-##### Inherited from
-
-`z.infer.zoomControls`
-
 #### scaleBar?
 
 > `optional` **scaleBar**: `boolean`
@@ -139,10 +114,6 @@ Whether or not the scale bar is shown in an embedded map.
 ```ts
 true
 ```
-
-##### Inherited from
-
-`z.infer.scaleBar`
 
 ***
 

@@ -17,8 +17,7 @@
     "typedoc-plugin-zod",
     "typedoc-plugin-markdown",
     "typedoc-plugin-remark",
-    // "typedoc-plugin-merge-modules",
-    // "./navigation.mjs"
+    "./customTheme.mjs"
   ],
   // "projectDocuments": ["docs/Getting Started.md"],
   "cleanOutputDir": true,
@@ -41,7 +40,8 @@
   "treatWarningsAsErrors": true,
 
   "tableColumnSettings": {
-    "hideInherited": true
+    "hideInherited": true,
+    "hideDefaults": false,
   },
 
   "remarkPlugins": [
@@ -50,14 +50,6 @@
 
   "outputFileStrategy": "modules",
   "flattenOutputFiles": true,
+  "theme": "customTheme"
 
-  // "mergeModulesMergeMode": "module-category",
-  // "mergeModulesRenameDefaults": true,
-
-  // "navigation": {
-  //   "includeCategories": false,
-  //   "includeGroups": false,
-  //   "includeFolders": false
-  // },
-  // "categorizeByGroup": false
 }

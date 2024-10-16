@@ -3,7 +3,6 @@ This is the doc comment for the layers module
 ## Contents
 
 * [Layer](#layer)
-  * [Extends](#extends)
   * [Properties](#properties)
     * [id](#id)
     * [groupId](#groupid)
@@ -16,7 +15,6 @@ This is the doc comment for the layers module
     * [geometryType](#geometrytype)
     * [bounds](#bounds)
 * [LayerGroup](#layergroup)
-  * [Extends](#extends-1)
   * [Properties](#properties-1)
     * [id](#id-1)
     * [name](#name-1)
@@ -26,7 +24,6 @@ This is the doc comment for the layers module
     * [shownInLegend](#showninlegend-1)
     * [bounds](#bounds-1)
 * [GetLayerResponse](#getlayerresponse)
-  * [Extends](#extends-2)
   * [Properties](#properties-2)
     * [id](#id-2)
     * [groupId](#groupid-1)
@@ -39,7 +36,6 @@ This is the doc comment for the layers module
     * [geometryType](#geometrytype-1)
     * [bounds](#bounds-2)
 * [GetLayerGroupResponse](#getlayergroupresponse)
-  * [Extends](#extends-3)
   * [Properties](#properties-3)
     * [id](#id-3)
     * [name](#name-3)
@@ -49,11 +45,9 @@ This is the doc comment for the layers module
     * [shownInLegend](#showninlegend-3)
     * [bounds](#bounds-3)
 * [GetLayersFilter](#getlayersfilter)
-  * [Extends](#extends-4)
   * [Properties](#properties-4)
     * [ids?](#ids)
 * [GetLayerGroupsFilter](#getlayergroupsfilter)
-  * [Extends](#extends-5)
   * [Properties](#properties-5)
     * [ids?](#ids-1)
 * [LayerChangeCallbackParams](#layerchangecallbackparams)
@@ -73,10 +67,6 @@ This is the doc comment for the layers module
 
 ## Layer
 
-### Extends
-
-* `TypeOf`\<*typeof* `LayerSchema`>
-
 ### Properties
 
 #### id
@@ -84,10 +74,6 @@ This is the doc comment for the layers module
 > **id**: `string`
 
 The string identifying the layer
-
-##### Inherited from
-
-`z.infer.id`
 
 #### groupId
 
@@ -97,10 +83,6 @@ The ID of the layer group that the layer belongs to.
 
 Layers that appear at the root level in Felt will not have a group ID.
 
-##### Inherited from
-
-`z.infer.groupId`
-
 #### name
 
 > **name**: `string`
@@ -108,19 +90,11 @@ Layers that appear at the root level in Felt will not have a group ID.
 The name of the layer can be displayed in the Legend, depending
 on how the layer's legend is configured in its style.
 
-##### Inherited from
-
-`z.infer.name`
-
 #### caption
 
 > **caption**: `null` | `string`
 
 The layer's caption is shown in the legend.
-
-##### Inherited from
-
-`z.infer.caption`
 
 #### description
 
@@ -129,19 +103,11 @@ The layer's caption is shown in the legend.
 The layer description forms part of the layer's metadata. This is visible
 to users via the layer info button in the legend.
 
-##### Inherited from
-
-`z.infer.description`
-
 #### visible
 
 > **visible**: `boolean`
 
 Whether the layer is visible or not.
-
-##### Inherited from
-
-`z.infer.visible`
 
 #### shownInLegend
 
@@ -149,19 +115,11 @@ Whether the layer is visible or not.
 
 Whether the layer is shown in the legend or not.
 
-##### Inherited from
-
-`z.infer.shownInLegend`
-
 #### status
 
 > **status**: `"processing"` | `"completed"` | `"failed"` | `"incomplete"` = `LayerProcessingStatus`
 
 The current processing status of the layer.
-
-##### Inherited from
-
-`z.infer.status`
 
 #### geometryType
 
@@ -183,10 +141,6 @@ When the layer is processing, or it is a data-only layer, it will be null. You s
 expect this to be able to be any string, however, as more geometry types can be added
 in the future.
 
-##### Inherited from
-
-`z.infer.geometryType`
-
 #### bounds
 
 > **bounds**: `null` | \[`number`, `number`, `number`, `number`]
@@ -194,17 +148,9 @@ in the future.
 The bounding box of the layer. If the layer is processing, or the bounds have otherwise
 not been calculated or are not available, this will be `null`.
 
-##### Inherited from
-
-`z.infer.bounds`
-
 ***
 
 ## LayerGroup
-
-### Extends
-
-* `TypeOf`\<*typeof* `LayerGroupSchema`>
 
 ### Properties
 
@@ -214,29 +160,17 @@ not been calculated or are not available, this will be `null`.
 
 A string identifying the layer group.
 
-##### Inherited from
-
-`z.infer.id`
-
 #### name
 
 > **name**: `string`
 
 The name of the layer group. This is shown in the legend.
 
-##### Inherited from
-
-`z.infer.name`
-
 #### caption
 
 > **caption**: `null` | `string`
 
 The caption of the layer group. This is shown in the legend.
-
-##### Inherited from
-
-`z.infer.caption`
 
 #### layerIds
 
@@ -248,19 +182,11 @@ The ids of the layers in the layer group.
 
 You can use these ids to get the full layer objects via the `getLayers` method.
 
-##### Inherited from
-
-`z.infer.layerIds`
-
 #### visible
 
 > **visible**: `boolean`
 
 Whether the layer group is visible or not.
-
-##### Inherited from
-
-`z.infer.visible`
 
 #### shownInLegend
 
@@ -268,19 +194,11 @@ Whether the layer group is visible or not.
 
 Whether the layer group is shown in the legend or not.
 
-##### Inherited from
-
-`z.infer.shownInLegend`
-
 #### bounds
 
 > **bounds**: `null` | \[`number`, `number`, `number`, `number`]
 
 The bounding box of the layer group.
-
-##### Inherited from
-
-`z.infer.bounds`
 
 ***
 
@@ -289,10 +207,6 @@ The bounding box of the layer group.
 The response from the `getLayer` method. If the layer doesn't exist, the
 response will be `null`.
 
-### Extends
-
-* `TypeOf`\<*typeof* `GetLayerResponseSchema`>
-
 ### Properties
 
 #### id
@@ -300,10 +214,6 @@ response will be `null`.
 > **id**: `string`
 
 The string identifying the layer
-
-##### Inherited from
-
-`z.infer.id`
 
 #### groupId
 
@@ -313,10 +223,6 @@ The ID of the layer group that the layer belongs to.
 
 Layers that appear at the root level in Felt will not have a group ID.
 
-##### Inherited from
-
-`z.infer.groupId`
-
 #### name
 
 > **name**: `string`
@@ -324,19 +230,11 @@ Layers that appear at the root level in Felt will not have a group ID.
 The name of the layer can be displayed in the Legend, depending
 on how the layer's legend is configured in its style.
 
-##### Inherited from
-
-`z.infer.name`
-
 #### caption
 
 > **caption**: `null` | `string`
 
 The layer's caption is shown in the legend.
-
-##### Inherited from
-
-`z.infer.caption`
 
 #### description
 
@@ -345,19 +243,11 @@ The layer's caption is shown in the legend.
 The layer description forms part of the layer's metadata. This is visible
 to users via the layer info button in the legend.
 
-##### Inherited from
-
-`z.infer.description`
-
 #### visible
 
 > **visible**: `boolean`
 
 Whether the layer is visible or not.
-
-##### Inherited from
-
-`z.infer.visible`
 
 #### shownInLegend
 
@@ -365,19 +255,11 @@ Whether the layer is visible or not.
 
 Whether the layer is shown in the legend or not.
 
-##### Inherited from
-
-`z.infer.shownInLegend`
-
 #### status
 
 > **status**: `"processing"` | `"completed"` | `"failed"` | `"incomplete"` = `LayerProcessingStatus`
 
 The current processing status of the layer.
-
-##### Inherited from
-
-`z.infer.status`
 
 #### geometryType
 
@@ -399,10 +281,6 @@ When the layer is processing, or it is a data-only layer, it will be null. You s
 expect this to be able to be any string, however, as more geometry types can be added
 in the future.
 
-##### Inherited from
-
-`z.infer.geometryType`
-
 #### bounds
 
 > **bounds**: `null` | \[`number`, `number`, `number`, `number`]
@@ -410,20 +288,12 @@ in the future.
 The bounding box of the layer. If the layer is processing, or the bounds have otherwise
 not been calculated or are not available, this will be `null`.
 
-##### Inherited from
-
-`z.infer.bounds`
-
 ***
 
 ## GetLayerGroupResponse
 
 The response from the `getLayerGroup` method. If the layer doesn't exist, the
 response will be `null`.
-
-### Extends
-
-* `TypeOf`\<*typeof* `GetLayerGroupResponseSchema`>
 
 ### Properties
 
@@ -433,29 +303,17 @@ response will be `null`.
 
 A string identifying the layer group.
 
-##### Inherited from
-
-`z.infer.id`
-
 #### name
 
 > **name**: `string`
 
 The name of the layer group. This is shown in the legend.
 
-##### Inherited from
-
-`z.infer.name`
-
 #### caption
 
 > **caption**: `null` | `string`
 
 The caption of the layer group. This is shown in the legend.
-
-##### Inherited from
-
-`z.infer.caption`
 
 #### layerIds
 
@@ -467,19 +325,11 @@ The ids of the layers in the layer group.
 
 You can use these ids to get the full layer objects via the `getLayers` method.
 
-##### Inherited from
-
-`z.infer.layerIds`
-
 #### visible
 
 > **visible**: `boolean`
 
 Whether the layer group is visible or not.
-
-##### Inherited from
-
-`z.infer.visible`
 
 #### shownInLegend
 
@@ -487,29 +337,17 @@ Whether the layer group is visible or not.
 
 Whether the layer group is shown in the legend or not.
 
-##### Inherited from
-
-`z.infer.shownInLegend`
-
 #### bounds
 
 > **bounds**: `null` | \[`number`, `number`, `number`, `number`]
 
 The bounding box of the layer group.
 
-##### Inherited from
-
-`z.infer.bounds`
-
 ***
 
 ## GetLayersFilter
 
 The filter to apply to the layers. If this is not passed, all layers will be returned.
-
-### Extends
-
-* `TypeOf`\<*typeof* [`GetLayersFilterSchema`](Layers.md#getlayersfilterschema)>
 
 ### Properties
 
@@ -519,19 +357,11 @@ The filter to apply to the layers. If this is not passed, all layers will be ret
 
 The ids of the layers to get.
 
-##### Inherited from
-
-`z.infer.ids`
-
 ***
 
 ## GetLayerGroupsFilter
 
 The filter to apply to the layer groups. If this is not passed, all layer groups will be returned.
-
-### Extends
-
-* `TypeOf`\<*typeof* [`GetLayerGroupsFilterSchema`](Layers.md#getlayergroupsfilterschema)>
 
 ### Properties
 
@@ -540,10 +370,6 @@ The filter to apply to the layer groups. If this is not passed, all layer groups
 > `optional` **ids**: `string`\[]
 
 The ids of the layer groups to get.
-
-##### Inherited from
-
-`z.infer.ids`
 
 ***
 

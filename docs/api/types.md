@@ -58,10 +58,6 @@ Re-exports [GetElementsFilter](Elements.md#getelementsfilter)
 
 ### FeltEmbedOptions
 
-#### Extends
-
-* `TypeOf`\<*typeof* `FeltEmbedOptionsSchema`>
-
 #### Properties
 
 ##### uiControls
@@ -79,10 +75,6 @@ Re-exports [GetElementsFilter](Elements.md#getelementsfilter)
 | `zoomControls`?        | `boolean` | Whether or not the zoom controls are shown in an embedded map. **Remarks** This does not affect whether or not the map can be zoomed, just the display of the zoom controls in the bottom right corner of the map.                                                                                                                                                                                                                                                                                                                                             |
 | `scaleBar`?            | `boolean` | Whether or not the scale bar is shown in an embedded map.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
-###### Inherited from
-
-`z.infer.uiControls`
-
 ##### initialViewport?
 
 > `optional` **initialViewport**: `object`
@@ -95,10 +87,6 @@ Re-exports [GetElementsFilter](Elements.md#getelementsfilter)
 | `center.latitude`  | `number` | Latitude      | -                                                     |
 | `center.longitude` | `number` | Longitude     | -                                                     |
 | `zoom`             | `number` | FeltZoom      | The zoom level of the viewport.                       |
-
-###### Inherited from
-
-`z.infer.initialViewport`
 
 ## Types
 
@@ -127,10 +115,6 @@ The boundary is a tuple of the form `[west, south, east, north]`.
 
 The parameters for the methods that change the visibility of entities.
 
-#### Extends
-
-* `TypeOf`\<*typeof* `SetVisibilityRequestSchema`>
-
 #### Properties
 
 ##### show?
@@ -139,14 +123,6 @@ The parameters for the methods that change the visibility of entities.
 
 The ids of the entities you want to change the visibility of.
 
-###### Inherited from
-
-`z.infer.show`
-
 ##### hide?
 
 > `optional` **hide**: `string`\[]
-
-###### Inherited from
-
-`z.infer.hide`

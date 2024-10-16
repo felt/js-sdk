@@ -62,8 +62,10 @@ This is the doc comment for the layers module
 * [GetLayerGroupsResponse](#getlayergroupsresponse)
 * [GetLayersFilterSchema](#getlayersfilterschema)
   * [Type declaration](#type-declaration)
+    * [ids](#ids-2)
 * [GetLayerGroupsFilterSchema](#getlayergroupsfilterschema)
   * [Type declaration](#type-declaration-1)
+    * [ids](#ids-3)
 
 ## Layer
 
@@ -444,9 +446,11 @@ The response from the `getLayerGroups` method.
 
 ### Type declaration
 
-| Name  | Type                                               | Description                   |
-| ----- | -------------------------------------------------- | ----------------------------- |
-| `ids` | `ZodOptional`\<`ZodArray`\<`ZodString`, `"many"`>> | The ids of the layers to get. |
+#### ids
+
+> **ids**: `ZodOptional`\<`ZodArray`\<`ZodString`, `"many"`>>
+
+The ids of the layers to get.
 
 ***
 
@@ -456,6 +460,8 @@ The response from the `getLayerGroups` method.
 
 ### Type declaration
 
-| Name  | Type                                               | Description                         |
-| ----- | -------------------------------------------------- | ----------------------------------- |
-| `ids` | `ZodOptional`\<`ZodArray`\<`ZodString`, `"many"`>> | The ids of the layer groups to get. |
+#### ids
+
+> **ids**: `ZodOptional`\<`ZodArray`\<`ZodString`, `"many"`>>
+
+The ids of the layer groups to get.

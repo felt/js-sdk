@@ -12,6 +12,7 @@ import type { FeltEmbedOptions } from "../../types/embed";
  *
  * @public
  * @category Main
+ * @interface
  */
 export const Felt = {
   /**

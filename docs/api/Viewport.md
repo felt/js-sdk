@@ -20,10 +20,15 @@ This is the doc comment for the viewport module
     * [bounds](#bounds-1)
 * [ViewportCenterZoomSchema](#viewportcenterzoomschema)
   * [Type declaration](#type-declaration)
+    * [center](#center-2)
+    * [zoom](#zoom-2)
 * [SetViewportCenterZoomParamsSchema](#setviewportcenterzoomparamsschema)
-  * [Type declaration](#type-declaration-1)
-* [ViewportFitBoundsParamsSchema](#viewportfitboundsparamsschema)
   * [Type declaration](#type-declaration-2)
+    * [type](#type-1)
+    * [location](#location-1)
+* [ViewportFitBoundsParamsSchema](#viewportfitboundsparamsschema)
+  * [Type declaration](#type-declaration-4)
+    * [bounds](#bounds-2)
 
 ## ViewportCenterZoom
 
@@ -116,10 +121,24 @@ The parameters for the `fitBounds` method.
 
 ### Type declaration
 
-| Name     | Type                                                                | Default value | Description                                           |
-| -------- | ------------------------------------------------------------------- | ------------- | ----------------------------------------------------- |
-| `center` | `ZodObject`\<`object`, `"strip"`, `ZodTypeAny`, `object`, `object`> | LatLngSchema  | The center of the viewport in latitude and longitude. |
-| `zoom`   | `ZodNumber`                                                         | FeltZoom      | The zoom level of the viewport.                       |
+#### center
+
+> **center**: `ZodObject`\<`object`, `"strip"`, `ZodTypeAny`, `object`, `object`> = `LatLngSchema`
+
+The center of the viewport in latitude and longitude.
+
+##### Type declaration
+
+| Name        | Type        | Default value |
+| ----------- | ----------- | ------------- |
+| `latitude`  | `ZodNumber` | Latitude      |
+| `longitude` | `ZodNumber` | Longitude     |
+
+#### zoom
+
+> **zoom**: `ZodNumber` = `FeltZoom`
+
+The zoom level of the viewport.
 
 ***
 
@@ -129,10 +148,20 @@ The parameters for the `fitBounds` method.
 
 ### Type declaration
 
-| Name       | Type                                                                |
-| ---------- | ------------------------------------------------------------------- |
-| `type`     | `ZodLiteral`\<`"center"`>                                           |
-| `location` | `ZodObject`\<`object`, `"strip"`, `ZodTypeAny`, `object`, `object`> |
+#### type
+
+> **type**: `ZodLiteral`\<`"center"`>
+
+#### location
+
+> **location**: `ZodObject`\<`object`, `"strip"`, `ZodTypeAny`, `object`, `object`>
+
+##### Type declaration
+
+| Name     | Type                                                                                | Default value | Description                                           |
+| -------- | ----------------------------------------------------------------------------------- | ------------- | ----------------------------------------------------- |
+| `center` | `ZodOptional`\<`ZodObject`\<`object`, `"strip"`, `ZodTypeAny`, `object`, `object`>> | LatLngSchema  | The center of the viewport in latitude and longitude. |
+| `zoom`   | `ZodOptional`\<`ZodNumber`>                                                         | FeltZoom      | The zoom level of the viewport.                       |
 
 ***
 
@@ -142,6 +171,6 @@ The parameters for the `fitBounds` method.
 
 ### Type declaration
 
-| Name     | Type                                                                       | Default value      |
-| -------- | -------------------------------------------------------------------------- | ------------------ |
-| `bounds` | `ZodTuple`\<\[`ZodNumber`, `ZodNumber`, `ZodNumber`, `ZodNumber`], `null`> | FeltBoundarySchema |
+#### bounds
+
+> **bounds**: `ZodTuple`\<\[`ZodNumber`, `ZodNumber`, `ZodNumber`, `ZodNumber`], `null`> = `FeltBoundarySchema`

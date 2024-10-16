@@ -27,7 +27,7 @@
   "interfacePropertiesFormat": "list",
   "classPropertiesFormat": "list",
   "enumMembersFormat": "table",
-  "typeDeclarationFormat": "table",
+  "typeDeclarationFormat": "list",
   "propertyMembersFormat": "table",
 
   "categoryOrder": ["Main", "*"],

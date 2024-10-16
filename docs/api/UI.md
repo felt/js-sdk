@@ -12,6 +12,12 @@ This is the doc comment for the ui module
     * [scaleBar?](#scalebar)
 * [UiControlsOptionsSchema](#uicontrolsoptionsschema)
   * [Type declaration](#type-declaration)
+    * [showLegend](#showlegend-1)
+    * [cooperativeGestures](#cooperativegestures-1)
+    * [fullScreenButton](#fullscreenbutton-1)
+    * [geolocation](#geolocation-1)
+    * [zoomControls](#zoomcontrols-1)
+    * [scaleBar](#scalebar-1)
 
 ## UiControlsOptions
 
@@ -125,11 +131,100 @@ true
 
 ### Type declaration
 
-| Name                  | Type                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| --------------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `showLegend`          | `ZodOptional`\<`ZodBoolean`> | Whether or not the legend is shown.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| `cooperativeGestures` | `ZodOptional`\<`ZodBoolean`> | When co-operative gestures are enabled, the pan and zoom gestures are adjusted to work better when the map is embedded in another page. **Remarks** On mobile devices, enabling co-operative gestures will allow the user to pan past the embedded map with a single finger drag. To pan the map, they must use two fingers. On desktop devices, enabling co-operative gestures allows the user to scroll past the embedded map using their scroll wheel or trackpad. To zoom the map, they must hold the Ctrl (Windows) or Command key (Mac) while scrolling. |
-| `fullScreenButton`    | `ZodOptional`\<`ZodBoolean`> | Whether or not the full screen button is shown in an embedded map. **Remarks** When clicked, this will open the map in a new tab or window.                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| `geolocation`         | `ZodOptional`\<`ZodBoolean`> | Whether or not the geolocation button is shown in an embedded map. **Remarks** The geolocation feature will plot your position on the map. If you click the button again, it will start tracking your position.                                                                                                                                                                                                                                                                                                                                                |
-| `zoomControls`        | `ZodOptional`\<`ZodBoolean`> | Whether or not the zoom controls are shown in an embedded map. **Remarks** This does not affect whether or not the map can be zoomed, just the display of the zoom controls in the bottom right corner of the map.                                                                                                                                                                                                                                                                                                                                             |
-| `scaleBar`            | `ZodOptional`\<`ZodBoolean`> | Whether or not the scale bar is shown in an embedded map.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+#### showLegend
+
+> **showLegend**: `ZodOptional`\<`ZodBoolean`>
+
+Whether or not the legend is shown.
+
+##### Default Value
+
+```ts
+true
+```
+
+#### cooperativeGestures
+
+> **cooperativeGestures**: `ZodOptional`\<`ZodBoolean`>
+
+When co-operative gestures are enabled, the pan and zoom gestures are
+adjusted to work better when the map is embedded in another page.
+
+##### Remarks
+
+On mobile devices, enabling co-operative gestures will allow the user to
+pan past the embedded map with a single finger drag. To pan the map, they
+must use two fingers.
+
+On desktop devices, enabling co-operative gestures allows the user to
+scroll past the embedded map using their scroll wheel or trackpad. To
+zoom the map, they must hold the Ctrl (Windows) or Command key (Mac) while
+scrolling.
+
+##### Default Value
+
+```ts
+true
+```
+
+#### fullScreenButton
+
+> **fullScreenButton**: `ZodOptional`\<`ZodBoolean`>
+
+Whether or not the full screen button is shown in an embedded map.
+
+##### Remarks
+
+When clicked, this will open the map in a new tab or window.
+
+##### Default Value
+
+```ts
+true
+```
+
+#### geolocation
+
+> **geolocation**: `ZodOptional`\<`ZodBoolean`>
+
+Whether or not the geolocation button is shown in an embedded map.
+
+##### Remarks
+
+The geolocation feature will plot your position on the map. If you
+click the button again, it will start tracking your position.
+
+##### Default Value
+
+```ts
+false
+```
+
+#### zoomControls
+
+> **zoomControls**: `ZodOptional`\<`ZodBoolean`>
+
+Whether or not the zoom controls are shown in an embedded map.
+
+##### Remarks
+
+This does not affect whether or not the map can be zoomed, just
+the display of the zoom controls in the bottom right corner of the map.
+
+##### Default Value
+
+```ts
+true
+```
+
+#### scaleBar
+
+> **scaleBar**: `ZodOptional`\<`ZodBoolean`>
+
+Whether or not the scale bar is shown in an embedded map.
+
+##### Default Value
+
+```ts
+true
+```

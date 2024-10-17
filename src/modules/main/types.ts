@@ -11,8 +11,6 @@ import { makeController } from "../controller";
  * allowing you to control and inspect the map programmatically.
  *
  * @public
- * @category Main
- * @interface
  */
 export const Felt = {
   /**

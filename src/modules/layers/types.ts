@@ -15,7 +15,7 @@ import { FeltBoundarySchema } from "../../types/geo";
  * - `incomplete`: The layer has not been processed.
  *
  */
-export type LayerProcessingStatus = z.infer<typeof LayerProcessingStatus>;
+type LayerProcessingStatusType = z.infer<typeof LayerProcessingStatus>;
 const LayerProcessingStatus = z.enum([
   "processing",
   "completed",

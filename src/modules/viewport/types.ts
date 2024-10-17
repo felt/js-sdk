@@ -5,7 +5,6 @@
  */
 import * as z from "zod";
 import { FeltBoundarySchema, FeltZoom, LatLngSchema } from "../../types/geo";
-import type { FeltController } from "../controller";
 
 export interface ViewportCenterZoom
   extends z.infer<typeof ViewportCenterZoomSchema> {}

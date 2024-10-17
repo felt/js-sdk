@@ -1,3 +1,10 @@
+/**
+ * This is the doc comment for the controller module
+ * The FeltController allows you to control, inspect and observe a Felt map.
+ * The various ways to interact with the map are namespaced for clarity.
+ *
+ * @module FeltController
+ */
 import {
   elementsController,
   type ElementsController,
@@ -30,10 +37,6 @@ export function makeController(feltWindow: Window): FeltController {
 // and document the type correctly, so we define it explicitly here.
 
 /**
- * The FeltController allows you to control, inspect and observe a Felt map.
- * The various ways to interact with the map are namespaced for clarity.
- *
- * @category Controller
  * @public
  * @interface
  */
@@ -46,3 +49,10 @@ export type FeltController = {
   UiController &
   LayersController &
   ElementsController;
+
+/**
+ * Without this we don't get a Table of Contents for FeltController
+ * @public
+ * @interface
+ */
+export type Testingtesting = {};

@@ -1,14 +1,18 @@
+/**
+ * This is the doc comment for the ui module
+ * @module UI
+ */
 import * as z from "zod";
 
 /**
  * @public
- * @category UI Controls
  */
 export interface UiControlsOptions
   extends z.infer<typeof UiControlsOptionsSchema> {}
 
 /**
  * @internal
+ * @ignore
  */
 export const UiControlsOptionsSchema = z.object({
   /**

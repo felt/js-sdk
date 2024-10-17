@@ -1,3 +1,7 @@
+/**
+ * This is the doc comment for the layers module
+ * @module Layers
+ */
 import * as z from "zod";
 import { FeltBoundarySchema } from "../../types/geo";
 
@@ -10,9 +14,8 @@ import { FeltBoundarySchema } from "../../types/geo";
  * - `failed`: The layer failed to process and cannot be viewed on the map.
  * - `incomplete`: The layer has not been processed.
  *
- * @category Layers
  */
-export type LayerProcessingStatus = z.infer<typeof LayerProcessingStatus>;
+type LayerProcessingStatusType = z.infer<typeof LayerProcessingStatus>;
 const LayerProcessingStatus = z.enum([
   "processing",
   "completed",
@@ -21,7 +24,6 @@ const LayerProcessingStatus = z.enum([
 ]);
 
 /**
- * @category Layers
  * @group Entities
  */
 export interface Layer extends z.infer<typeof LayerSchema> {}
@@ -95,7 +97,6 @@ const LayerSchema = z.object({
 });
 
 /**
- * @category Layers
  * @group Entities
  */
 export interface LayerGroup extends z.infer<typeof LayerGroupSchema> {}
@@ -143,7 +144,6 @@ const LayerGroupSchema = z.object({
  * The response from the `getLayer` method. If the layer doesn't exist, the
  * response will be `null`.
  *
- * @category Layers
  */
 export interface GetLayerResponse
   extends z.infer<typeof GetLayerResponseSchema> {}
@@ -153,7 +153,6 @@ const GetLayerResponseSchema = LayerSchema;
  * The response from the `getLayerGroup` method. If the layer doesn't exist, the
  * response will be `null`.
  *
- * @category Layers
  */
 export interface GetLayerGroupResponse
   extends z.infer<typeof GetLayerGroupResponseSchema> {}
@@ -162,10 +161,12 @@ const GetLayerGroupResponseSchema = LayerGroupSchema;
 /**
  * The filter to apply to the layers. If this is not passed, all layers will be returned.
  *
- * @category Layers
  */
 export interface GetLayersFilter
   extends z.infer<typeof GetLayersFilterSchema> {}
+/**
+ * @ignore
+ */
 export const GetLayersFilterSchema = z.object({
   /**
    * The ids of the layers to get.
@@ -183,7 +184,6 @@ export const GetLayersFilterSchema = z.object({
  *
  * See {@link Layer} for the structure of the layer object.
  *
- * @category Layers
  */
 export type GetLayersResponse = z.infer<typeof GetLayersResponseSchema>;
 const GetLayersResponseSchema = z.array(LayerSchema.nullable());
@@ -191,10 +191,12 @@ const GetLayersResponseSchema = z.array(LayerSchema.nullable());
 /**
  * The filter to apply to the layer groups. If this is not passed, all layer groups will be returned.
  *
- * @category Layers
  */
 export interface GetLayerGroupsFilter
   extends z.infer<typeof GetLayerGroupsFilterSchema> {}
+/**
+ * @ignore
+ */
 export const GetLayerGroupsFilterSchema = z.object({
   /**
    * The ids of the layer groups to get.
@@ -205,7 +207,6 @@ export const GetLayerGroupsFilterSchema = z.object({
 /**
  * The response from the `getLayerGroups` method.
  *
- * @category Layers
  */
 export type GetLayerGroupsResponse = z.infer<
   typeof GetLayerGroupsResponseSchema
@@ -215,7 +216,6 @@ const GetLayerGroupsResponseSchema = z.array(LayerGroupSchema.nullable());
 /**
  * The parameters for the `onLayerChange` listener.
  *
- * @category Layers
  */
 export interface LayerChangeCallbackParams {
   /**
@@ -227,7 +227,6 @@ export interface LayerChangeCallbackParams {
 /**
  * The parameters for the `onLayerGroupChange` listener.
  *
- * @category Layers
  */
 export interface LayerGroupChangeCallbackParams {
   layerGroup: LayerGroup | null;

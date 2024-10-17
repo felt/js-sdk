@@ -1,14 +1,23 @@
-## Extends
+This is the doc comment for the main module
 
-* `TypeOf`\<*typeof* `FeltEmbedOptionsSchema`>
+## Contents
 
-## Properties
+* [FeltEmbedOptions](#feltembedoptions)
+  * [Properties](#properties)
+    * [uiControls](#uicontrols)
+    * [initialViewport?](#initialviewport)
+* [Felt](#felt)
+  * [Type declaration](#type-declaration)
+    * [embed()](#embed)
+    * [connect()](#connect)
 
-### uiControls
+## FeltEmbedOptions
+
+### Properties
+
+#### uiControls
 
 > **uiControls**: `object` = `UiControlsOptionsSchema`
-
-[UiControlsOptions](../../types/interfaces/UiControlsOptions.md)
 
 | Name                   | Type      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ---------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19,25 +28,54 @@
 | `zoomControls`?        | `boolean` | Whether or not the zoom controls are shown in an embedded map. **Remarks** This does not affect whether or not the map can be zoomed, just the display of the zoom controls in the bottom right corner of the map.                                                                                                                                                                                                                                                                                                                                             |
 | `scaleBar`?            | `boolean` | Whether or not the scale bar is shown in an embedded map.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
-#### Inherited from
-
-`z.infer.uiControls`
-
-***
-
-### initialViewport?
+#### initialViewport?
 
 > `optional` **initialViewport**: `object`
 
-[ViewportCenterZoom](../../types/interfaces/ViewportCenterZoom.md)
+| Name               | Type     | Default value  | Description                                           |
+| ------------------ | -------- | -------------- | ----------------------------------------------------- |
+| `center`           | `object` | LatLngSchema   | The center of the viewport in latitude and longitude. |
+| `center.latitude`  | `number` | Latitude       | -                                                     |
+| `center.longitude` | `number` | Longitude      | -                                                     |
+| `zoom`             | `number` | FeltZoomSchema | The zoom level of the viewport.                       |
 
-| Name               | Type     | Default value | Description                                           |
-| ------------------ | -------- | ------------- | ----------------------------------------------------- |
-| `center`           | `object` | LatLngSchema  | The center of the viewport in latitude and longitude. |
-| `center.latitude`  | `number` | Latitude      | -                                                     |
-| `center.longitude` | `number` | Longitude     | -                                                     |
-| `zoom`             | `number` | FeltZoom      | The zoom level of the viewport.                       |
+***
 
-#### Inherited from
+## Felt
 
-`z.infer.initialViewport`
+> `const` **Felt**: `object`
+
+The Felt SDK is a library for embedding Felt maps into your website,
+allowing you to control and inspect the map programmatically.
+
+### Type declaration
+
+#### embed()
+
+Embeds a Felt map into the provided container.
+
+##### Parameters
+
+| Parameter   | Type                                           | Description                                  |
+| ----------- | ---------------------------------------------- | -------------------------------------------- |
+| `container` | `HTMLElement`                                  | The container element to embed the map into. |
+| `mapId`     | `string`                                       | The ID of the map to embed.                  |
+| `options`?  | [`FeltEmbedOptions`](Main.md#feltembedoptions) | The options to configure the map.            |
+
+##### Returns
+
+`Promise`\<[`FeltController`](FeltController.md#feltcontroller)>
+
+#### connect()
+
+Binds to an existing Felt map iframe.
+
+##### Parameters
+
+| Parameter    | Type     | Description                                 |
+| ------------ | -------- | ------------------------------------------- |
+| `feltWindow` | `Window` | The iframe element containing the Felt map. |
+
+##### Returns
+
+`Promise`\<[`FeltController`](FeltController.md#feltcontroller)>

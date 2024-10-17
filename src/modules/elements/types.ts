@@ -1,7 +1,10 @@
+/**
+ * This is the doc comment for the elements module
+ * @module Elements
+ */
 import * as z from "zod";
 
 /**
- * @category Elements
  * @group Entities
  */
 export interface Element extends z.infer<typeof ElementSchema> {}
@@ -36,7 +39,6 @@ const ElementSchema = z.object({
 });
 
 /**
- * @category Elements
  * @group Entities
  */
 export interface ElementGroup extends z.infer<typeof ElementGroupSchema> {}
@@ -79,7 +81,6 @@ const ElementGroupSchema = z.object({
  * The response from the `getElement` method. If the element doesn't exist, the
  * response will be `null`.
  *
- * @category Elements
  */
 export interface GetElementResponse
   extends z.infer<typeof GetElementResponseSchema> {}
@@ -89,7 +90,6 @@ const GetElementResponseSchema = ElementSchema;
  * The response from the `getElementGroup` method. If the element doesn't exist, the
  * response will be `null`.
  *
- * @category Elements
  */
 export interface GetElementGroupResponse
   extends z.infer<typeof GetElementGroupResponseSchema> {}
@@ -98,10 +98,12 @@ const GetElementGroupResponseSchema = ElementGroupSchema;
 /**
  * The filter to apply to the elements. If this is not passed, all elements will be returned.
  *
- * @category Elements
  */
 export interface GetElementsFilter
   extends z.infer<typeof GetElementsFilterSchema> {}
+/**
+ * @ignore
+ */
 export const GetElementsFilterSchema = z.object({
   /**
    * The ids of the elements to get.
@@ -119,7 +121,6 @@ export const GetElementsFilterSchema = z.object({
  *
  * See {@link Element} for the structure of the element object.
  *
- * @category Elements
  */
 export type GetElementsResponse = z.infer<typeof GetElementsResponseSchema>;
 const GetElementsResponseSchema = z.array(ElementSchema.nullable());
@@ -127,10 +128,12 @@ const GetElementsResponseSchema = z.array(ElementSchema.nullable());
 /**
  * The filter to apply to the element groups. If this is not passed, all element groups will be returned.
  *
- * @category Elements
  */
 export interface GetElementGroupsFilter
   extends z.infer<typeof GetElementGroupsFilterSchema> {}
+/**
+ * @ignore
+ */
 export const GetElementGroupsFilterSchema = z.object({
   /**
    * The ids of the element groups to get.
@@ -141,7 +144,6 @@ export const GetElementGroupsFilterSchema = z.object({
 /**
  * The response from the `getElementGroups` method.
  *
- * @category Elements
  */
 export type GetElementGroupsResponse = z.infer<
   typeof GetElementGroupsResponseSchema
@@ -151,7 +153,6 @@ const GetElementGroupsResponseSchema = z.array(ElementGroupSchema.nullable());
 /**
  * The parameters for the `onElementChange` listener.
  *
- * @category Elements
  */
 export interface ElementChangeCallbackParams {
   /**
@@ -163,7 +164,6 @@ export interface ElementChangeCallbackParams {
 /**
  * The parameters for the `onElementGroupChange` listener.
  *
- * @category Elements
  */
 export interface ElementGroupChangeCallbackParams {
   elementGroup: ElementGroup | null;

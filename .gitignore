@@ -3,3 +3,4 @@ dist
 temp
 /*.js
 /*.d.ts
+.tool-versions

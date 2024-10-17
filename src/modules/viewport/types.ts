@@ -4,10 +4,14 @@
  * @module Viewport
  */
 import * as z from "zod";
-import { FeltBoundarySchema, FeltZoom, LatLngSchema } from "../../types/geo";
+import {
+  FeltBoundarySchema,
+  FeltZoomSchema,
+  LatLngSchema,
+} from "../../types/geo";
 
-export interface ViewportCenterZoom
-  extends z.infer<typeof ViewportCenterZoomSchema> {}
+// export interface ViewportCenterZoom
+//   extends z.infer<typeof ViewportCenterZoomSchema> {}
 /**
  * @ignore
  */
@@ -20,13 +24,13 @@ export const ViewportCenterZoomSchema = z.object({
   /**
    * The zoom level of the viewport.
    */
-  zoom: FeltZoom,
+  zoom: FeltZoomSchema,
 });
 
 export interface ViewportState extends z.infer<typeof ViewportStateSchema> {}
 const ViewportStateSchema = z.object({
   center: LatLngSchema,
-  zoom: FeltZoom,
+  zoom: FeltZoomSchema,
   bounds: FeltBoundarySchema,
 });
 

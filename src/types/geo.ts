@@ -9,8 +9,9 @@ export const LatLngSchema = z.object({
 
 /**
  * @ignore
+ * @internal
  */
-export const FeltZoom = z.number().min(1).max(23);
+export const FeltZoomSchema = z.number().min(1).max(23);
 
 /**
  * The zoom level of the map.
@@ -19,9 +20,14 @@ export const FeltZoom = z.number().min(1).max(23);
  * zoomed out and 23 is the most zoomed in.
  *
  * @category Types
+ * @public
  */
-export type FeltZoom = z.infer<typeof FeltZoom>;
+export type FeltZoom = z.infer<typeof FeltZoomSchema>;
 
+/**
+ * @ignore
+ * @internal
+ */
 export const FeltBoundarySchema = z.tuple([
   Longitude,
   Latitude,
@@ -35,5 +41,6 @@ export const FeltBoundarySchema = z.tuple([
  * The boundary is a tuple of the form `[west, south, east, north]`.
  *
  * @category Types
+ * @public
  */
 export type FeltBoundary = z.infer<typeof FeltBoundarySchema>;

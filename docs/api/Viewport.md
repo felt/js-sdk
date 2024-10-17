@@ -2,45 +2,18 @@ This is the doc comment for the viewport module
 
 ## Contents
 
-* [ViewportCenterZoom](#viewportcenterzoom)
+* [ViewportState](#viewportstate)
   * [Properties](#properties)
     * [center](#center)
     * [zoom](#zoom)
-* [ViewportState](#viewportstate)
-  * [Properties](#properties-1)
-    * [center](#center-1)
-    * [zoom](#zoom-1)
     * [bounds](#bounds)
 * [SetViewportCenterZoomParams](#setviewportcenterzoomparams)
-  * [Properties](#properties-2)
+  * [Properties](#properties-1)
     * [type](#type)
     * [location](#location)
 * [ViewportFitBoundsParams](#viewportfitboundsparams)
-  * [Properties](#properties-3)
+  * [Properties](#properties-2)
     * [bounds](#bounds-1)
-
-## ViewportCenterZoom
-
-### Properties
-
-#### center
-
-> **center**: `object` = `LatLngSchema`
-
-The center of the viewport in latitude and longitude.
-
-| Name        | Type     | Default value |
-| ----------- | -------- | ------------- |
-| `latitude`  | `number` | Latitude      |
-| `longitude` | `number` | Longitude     |
-
-#### zoom
-
-> **zoom**: `number` = `FeltZoom`
-
-The zoom level of the viewport.
-
-***
 
 ## ViewportState
 
@@ -57,7 +30,7 @@ The zoom level of the viewport.
 
 #### zoom
 
-> **zoom**: `number` = `FeltZoom`
+> **zoom**: `number` = `FeltZoomSchema`
 
 #### bounds
 
@@ -80,12 +53,12 @@ The parameters for the `gotoViewport` method.
 
 > **location**: `object`
 
-| Name               | Type     | Default value | Description                                           |
-| ------------------ | -------- | ------------- | ----------------------------------------------------- |
-| `center`?          | `object` | LatLngSchema  | The center of the viewport in latitude and longitude. |
-| `center.latitude`  | `number` | Latitude      | -                                                     |
-| `center.longitude` | `number` | Longitude     | -                                                     |
-| `zoom`?            | `number` | FeltZoom      | The zoom level of the viewport.                       |
+| Name               | Type     | Default value  | Description                                           |
+| ------------------ | -------- | -------------- | ----------------------------------------------------- |
+| `center`?          | `object` | LatLngSchema   | The center of the viewport in latitude and longitude. |
+| `center.latitude`  | `number` | Latitude       | -                                                     |
+| `center.longitude` | `number` | Longitude      | -                                                     |
+| `zoom`?            | `number` | FeltZoomSchema | The zoom level of the viewport.                       |
 
 ***
 

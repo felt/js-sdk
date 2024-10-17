@@ -6,3 +6,9 @@ export type { Layer, LayerGroup } from "./modules/layers/types";
 export { Felt } from "./modules/main/types.js";
 
 export type { FeltController, FeltEmbedOptions };
+
+export type {
+  FeltBoundary,
+  FeltZoom,
+  SetVisibilityRequest,
+} from "./modules/common";

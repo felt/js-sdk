@@ -47,7 +47,6 @@ interface ElementsController {
         };
         handler: (change: d) => void;
     }): VoidFunction;
-    // Warning: (ae-forgotten-export) The symbol "SetVisibilityRequest" needs to be exported by the entry point client.d.ts
     setElementGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
 }
 
@@ -56,6 +55,14 @@ export const Felt: {
     embed(container: HTMLElement, mapId: string, options?: FeltEmbedOptions): Promise<FeltController>;
     connect(feltWindow: Window): Promise<FeltController>;
 };
+
+// Warning: (ae-forgotten-export) The symbol "FeltBoundarySchema" needs to be exported by the entry point client.d.ts
+//
+// @public
+export type FeltBoundary = z.infer<typeof FeltBoundarySchema>;
+
+// @internal (undocumented)
+const FeltBoundarySchema: z.ZodTuple<[z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber], null>;
 
 // Warning: (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
 // Warning: (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
@@ -159,6 +166,14 @@ const FeltEmbedOptionsSchema: z.ZodObject<{
     } | undefined;
 }>;
 
+// Warning: (ae-forgotten-export) The symbol "FeltZoomSchema" needs to be exported by the entry point client.d.ts
+//
+// @public
+export type FeltZoom = z.infer<typeof FeltZoomSchema>;
+
+// @internal (undocumented)
+const FeltZoomSchema: z.ZodNumber;
+
 export { Layer }
 
 export { LayerGroup }
@@ -192,7 +207,7 @@ interface LayersController {
 // Warning: (ae-forgotten-export) The symbol "SetVisibilityRequestSchema" needs to be exported by the entry point client.d.ts
 //
 // @public
-interface SetVisibilityRequest extends z.infer<typeof SetVisibilityRequestSchema> {
+export interface SetVisibilityRequest extends z.infer<typeof SetVisibilityRequestSchema> {
 }
 
 // @internal (undocumented)

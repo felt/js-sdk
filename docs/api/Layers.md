@@ -56,7 +56,6 @@ This is the doc comment for the layers module
 * [LayerGroupChangeCallbackParams](#layergroupchangecallbackparams)
   * [Properties](#properties-7)
     * [layerGroup](#layergroup-1)
-* [LayerProcessingStatus](#layerprocessingstatus)
 * [GetLayersResponse](#getlayersresponse)
   * [Remarks](#remarks-4)
 * [GetLayerGroupsResponse](#getlayergroupsresponse)
@@ -392,21 +391,6 @@ The parameters for the `onLayerGroupChange` listener.
 #### layerGroup
 
 > **layerGroup**: `null` | [`LayerGroup`](Layers.md#layergroup-1)
-
-***
-
-## LayerProcessingStatus
-
-> **LayerProcessingStatus**: `"processing"` | `"completed"` | `"failed"` | `"incomplete"`
-
-This describes the processing status of a layer.
-
-The various values are:
-
-* `processing`: The layer has been uploaded or updated and is still processing.
-* `completed`: The layer has been processed and can be viewed on the map.
-* `failed`: The layer failed to process and cannot be viewed on the map.
-* `incomplete`: The layer has not been processed.
 
 ***
 

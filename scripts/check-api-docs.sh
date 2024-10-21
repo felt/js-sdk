@@ -9,5 +9,7 @@ if git diff --exit-code --quiet docs/api; then
   exit 0
 else
   echo "Error: API docs are out of date. Please run npm run build:docs and commit the changes."
+  echo "Changed files:"
+  git diff --name-only docs/api
   exit 1
 fi

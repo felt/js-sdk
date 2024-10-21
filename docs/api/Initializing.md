@@ -56,11 +56,11 @@ Embeds a Felt map into the provided container.
 
 ##### Parameters
 
-| Parameter   | Type                                           | Description                                  |
-| ----------- | ---------------------------------------------- | -------------------------------------------- |
-| `container` | `HTMLElement`                                  | The container element to embed the map into. |
-| `mapId`     | `string`                                       | The ID of the map to embed.                  |
-| `options`?  | [`FeltEmbedOptions`](Main.md#feltembedoptions) | The options to configure the map.            |
+| Parameter   | Type                                                   | Description                                  |
+| ----------- | ------------------------------------------------------ | -------------------------------------------- |
+| `container` | `HTMLElement`                                          | The container element to embed the map into. |
+| `mapId`     | `string`                                               | The ID of the map to embed.                  |
+| `options`?  | [`FeltEmbedOptions`](Initializing.md#feltembedoptions) | The options to configure the map.            |
 
 ##### Returns
 

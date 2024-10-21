@@ -1,6 +1,6 @@
 /**
  * This is the doc comment for the main module
- * @module Main
+ * @module Initializing
  */
 import type { FeltEmbedOptions } from "../../types/embed";
 import type { FeltController } from "../controller";

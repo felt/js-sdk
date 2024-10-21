@@ -157,7 +157,7 @@ Hide or show element groups with the given ids.
 
 | Parameter    | Type                                                     |
 | ------------ | -------------------------------------------------------- |
-| `visibility` | [`SetVisibilityRequest`](common.md#setvisibilityrequest) |
+| `visibility` | [`SetVisibilityRequest`](Shared.md#setvisibilityrequest) |
 
 ##### Returns
 
@@ -234,7 +234,7 @@ Hide or show layers with the given ids.
 
 | Parameter    | Type                                                     |
 | ------------ | -------------------------------------------------------- |
-| `visibility` | [`SetVisibilityRequest`](common.md#setvisibilityrequest) |
+| `visibility` | [`SetVisibilityRequest`](Shared.md#setvisibilityrequest) |
 
 ##### Returns
 
@@ -305,7 +305,7 @@ Hide or show layer groups with the given ids.
 
 | Parameter    | Type                                                     |
 | ------------ | -------------------------------------------------------- |
-| `visibility` | [`SetVisibilityRequest`](common.md#setvisibilityrequest) |
+| `visibility` | [`SetVisibilityRequest`](Shared.md#setvisibilityrequest) |
 
 ##### Returns
 

@@ -3,15 +3,10 @@
   "disableSources": true,
   "out": "./docs/api",
   "entryPoints": [
-    "src/modules/main/types.ts",
-    "src/modules/elements/types.ts",
-    "src/modules/layers/types.ts",
-    "src/modules/ui/types.ts",
-    "src/modules/viewport/types.ts",
+    "src/modules/*/types.ts",
     "src/modules/controller.ts",
     "src/modules/common.ts"
   ],
-  // "entryModule": "src/client.ts",
   "sort": ["kind", "source-order"],
   "plugin": [
     "typedoc-plugin-zod",
@@ -19,7 +14,6 @@
     "typedoc-plugin-remark",
     "./customTheme.mjs"
   ],
-  // "projectDocuments": ["docs/Getting Started.md"],
   "cleanOutputDir": true,
   "readme": "none",
   "indexFormat": "list",
@@ -30,7 +24,7 @@
   "typeDeclarationFormat": "list",
   "propertyMembersFormat": "table",
 
-  "categoryOrder": ["Main", "*"],
+  "categoryOrder": ["Initializing", "*"],
 
   "hideBreadcrumbs": true,
   "hidePageHeader": true,

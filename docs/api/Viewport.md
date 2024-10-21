@@ -64,7 +64,7 @@ The parameters for the `gotoViewport` method.
 
 ## ViewportFitBoundsParams
 
-The parameters for the `fitBounds` method.
+The parameters for the `fitViewportToBounds` method.
 \*
 
 ### Properties

@@ -11,7 +11,7 @@ import type {
 export const viewportController = (feltWindow: Window): ViewportController => ({
   getViewport: method(feltWindow, "getViewport"),
   gotoViewport: method(feltWindow, "gotoViewport"),
-  fitBounds: method(feltWindow, "fitBounds"),
+  fitViewportToBounds: method(feltWindow, "fitViewportToBounds"),
   onViewportMove: listener(feltWindow, "onViewportMove"),
 });
 
@@ -50,10 +50,10 @@ export type ViewportController = {
    * const south = 37.7749;
    * const east = -122.4194;
    * const north = 37.7749;
-   * felt.fitBounds({ bounds: [west, south, east, north] });
+   * felt.fitViewportToBounds({ bounds: [west, south, east, north] });
    * ```
    */
-  fitBounds(bounds: ViewportFitBoundsParams): void;
+  fitViewportToBounds(bounds: ViewportFitBoundsParams): void;
 
   /**
    * Adds a listener for when the viewport changes.

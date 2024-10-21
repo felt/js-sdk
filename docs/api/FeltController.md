@@ -23,7 +23,7 @@ The various ways to interact with the map are namespaced for clarity.
     * [updateUiControls()](#updateuicontrols)
     * [getViewport()](#getviewport)
     * [gotoViewport()](#gotoviewport)
-    * [fitBounds()](#fitbounds)
+    * [fitViewportToBounds()](#fitviewporttobounds)
   * [Events](#events)
     * [onElementChange()](#onelementchange)
     * [onElementGroupChange()](#onelementgroupchange)
@@ -383,9 +383,9 @@ Moves the map to the specified location.
 felt.gotoViewport({ center: { lat: 0, lng: 0 }, zoom: 10 });
 ```
 
-#### fitBounds()
+#### fitViewportToBounds()
 
-> **fitBounds**(`bounds`): `void`
+> **fitViewportToBounds**(`bounds`): `void`
 
 Fits the map to the specified bounds.
 
@@ -406,7 +406,7 @@ const west = -122.4194;
 const south = 37.7749;
 const east = -122.4194;
 const north = 37.7749;
-felt.fitBounds({ bounds: [west, south, east, north] });
+felt.fitViewportToBounds({ bounds: [west, south, east, north] });
 ```
 
 ### Events

@@ -18,7 +18,7 @@ const GotoViewportMessage = methodMessage(
   SetViewportCenterZoomParamsSchema,
 );
 const ViewportFitBoundsMessage = methodMessage(
-  "fitBounds",
+  "fitViewportToBounds",
   ViewportFitBoundsParamsSchema,
 );
 const OnViewportMoveMessage = listenerMessageNoParams("onViewportMove");
@@ -32,7 +32,7 @@ export type ViewportSchema = {
   methods: {
     getViewport: Method<z.infer<typeof GetViewportMessage>, ViewportState>;
     gotoViewport: Method<z.infer<typeof GotoViewportMessage>, void>;
-    fitBounds: Method<z.infer<typeof ViewportFitBoundsMessage>, void>;
+    fitViewportToBounds: Method<z.infer<typeof ViewportFitBoundsMessage>, void>;
   };
   listeners: {
     onViewportMove: Listener<void, ViewportState>;

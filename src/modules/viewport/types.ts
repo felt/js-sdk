@@ -49,7 +49,7 @@ export const SetViewportCenterZoomParamsSchema = z.object({
 });
 
 /**
- * The parameters for the `fitBounds` method.
+ * The parameters for the `fitViewportToBounds` method.
  * *
  */
 export interface ViewportFitBoundsParams

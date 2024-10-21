@@ -4,23 +4,23 @@
 
 ```ts
 
-import { b } from './types-BnDi1S1o.js';
-import { c } from './types-BnDi1S1o.js';
-import { d } from './types-BnDi1S1o.js';
-import { e } from './types-BnDi1S1o.js';
-import { E as Element_2 } from './types-BnDi1S1o.js';
-import { a as ElementGroup } from './types-BnDi1S1o.js';
-import { j as EntityIdentifier } from './types-BnDi1S1o.js';
-import { G } from './types-BnDi1S1o.js';
-import { g } from './types-BnDi1S1o.js';
-import { h } from './types-BnDi1S1o.js';
-import { i } from './types-BnDi1S1o.js';
-import { k } from './types-BnDi1S1o.js';
-import { l } from './types-BnDi1S1o.js';
-import { L as Layer } from './types-BnDi1S1o.js';
-import { f as LayerGroup } from './types-BnDi1S1o.js';
-import { S } from './types-BnDi1S1o.js';
-import { V } from './types-BnDi1S1o.js';
+import { b } from './types-2I-9yS3l.js';
+import { c } from './types-2I-9yS3l.js';
+import { d } from './types-2I-9yS3l.js';
+import { e } from './types-2I-9yS3l.js';
+import { E as Element_2 } from './types-2I-9yS3l.js';
+import { a as ElementGroup } from './types-2I-9yS3l.js';
+import { j as EntityIdentifier } from './types-2I-9yS3l.js';
+import { G } from './types-2I-9yS3l.js';
+import { g } from './types-2I-9yS3l.js';
+import { h } from './types-2I-9yS3l.js';
+import { i } from './types-2I-9yS3l.js';
+import { k } from './types-2I-9yS3l.js';
+import { l } from './types-2I-9yS3l.js';
+import { L as Layer } from './types-2I-9yS3l.js';
+import { f as LayerGroup } from './types-2I-9yS3l.js';
+import { S } from './types-2I-9yS3l.js';
+import { V } from './types-2I-9yS3l.js';
 import * as z from 'zod';
 
 export { Element_2 as Element }
@@ -273,7 +273,7 @@ const UiControlsOptionsSchema: z.ZodObject<{
 type ViewportController = {
     getViewport(): Promise<V>;
     gotoViewport(viewport: k): void;
-    fitBounds(bounds: l): void;
+    fitViewportToBounds(bounds: l): void;
     onViewportMove(args: {
         handler: (viewport: V) => void;
     }): VoidFunction;

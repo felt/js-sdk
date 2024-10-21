@@ -1,5 +1,15 @@
 # @feltmaps/js-sdk
 
+## 0.6.0
+
+### Minor Changes
+
+- 48b006d: Change fitViewport to fitViewportToBounds so viewport is mentioned, clarifying the API
+
+### Patch Changes
+
+- 4b88b82: Adds getSelection and onSelectionChange APIs
+
 ## 0.5.3
 
 ### Patch Changes

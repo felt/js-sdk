@@ -10,6 +10,10 @@ import {
   type ElementsController,
 } from "./elements/controller";
 import { layersController, type LayersController } from "./layers/controller";
+import {
+  selectionController,
+  type SelectionController,
+} from "./selection/controller";
 import { type UiController, uiController } from "./ui/controller";
 import {
   type ViewportController,
@@ -29,6 +33,7 @@ export function makeController(feltWindow: Window): FeltController {
     ...uiController(feltWindow),
     ...layersController(feltWindow),
     ...elementsController(feltWindow),
+    ...selectionController(feltWindow),
   };
 }
 
@@ -48,7 +53,8 @@ export type FeltController = {
 } & ViewportController &
   UiController &
   LayersController &
-  ElementsController;
+  ElementsController &
+  SelectionController;
 
 /**
  * Without this we don't get a Table of Contents for FeltController

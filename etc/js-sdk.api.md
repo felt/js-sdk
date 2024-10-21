@@ -4,21 +4,23 @@
 
 ```ts
 
-import { b } from './types-BeVftXK1.js';
-import { c } from './types-BeVftXK1.js';
-import { d } from './types-BeVftXK1.js';
-import { e } from './types-BeVftXK1.js';
-import { E as Element_2 } from './types-BeVftXK1.js';
-import { a as ElementGroup } from './types-BeVftXK1.js';
-import { G } from './types-BeVftXK1.js';
-import { g } from './types-BeVftXK1.js';
-import { h } from './types-BeVftXK1.js';
-import { i } from './types-BeVftXK1.js';
-import { j } from './types-BeVftXK1.js';
-import { L as Layer } from './types-BeVftXK1.js';
-import { f as LayerGroup } from './types-BeVftXK1.js';
-import { S } from './types-BeVftXK1.js';
-import { V } from './types-BeVftXK1.js';
+import { b } from './types-BnDi1S1o.js';
+import { c } from './types-BnDi1S1o.js';
+import { d } from './types-BnDi1S1o.js';
+import { e } from './types-BnDi1S1o.js';
+import { E as Element_2 } from './types-BnDi1S1o.js';
+import { a as ElementGroup } from './types-BnDi1S1o.js';
+import { j as EntityIdentifier } from './types-BnDi1S1o.js';
+import { G } from './types-BnDi1S1o.js';
+import { g } from './types-BnDi1S1o.js';
+import { h } from './types-BnDi1S1o.js';
+import { i } from './types-BnDi1S1o.js';
+import { k } from './types-BnDi1S1o.js';
+import { l } from './types-BnDi1S1o.js';
+import { L as Layer } from './types-BnDi1S1o.js';
+import { f as LayerGroup } from './types-BnDi1S1o.js';
+import { S } from './types-BnDi1S1o.js';
+import { V } from './types-BnDi1S1o.js';
 import * as z from 'zod';
 
 export { Element_2 as Element }
@@ -50,6 +52,8 @@ interface ElementsController {
     setElementGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
 }
 
+export { EntityIdentifier }
+
 // @public
 export const Felt: {
     embed(container: HTMLElement, mapId: string, options?: FeltEmbedOptions): Promise<FeltController>;
@@ -68,11 +72,12 @@ const FeltBoundarySchema: z.ZodTuple<[z.ZodNumber, z.ZodNumber, z.ZodNumber, z.Z
 // Warning: (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
 // Warning: (ae-forgotten-export) The symbol "LayersController" needs to be exported by the entry point client.d.ts
 // Warning: (ae-forgotten-export) The symbol "ElementsController" needs to be exported by the entry point client.d.ts
+// Warning: (ae-forgotten-export) The symbol "SelectionController" needs to be exported by the entry point client.d.ts
 //
 // @public (undocumented)
 export type FeltController = {
     iframe: HTMLIFrameElement | null;
-} & ViewportController & UiController & LayersController & ElementsController;
+} & ViewportController & UiController & LayersController & ElementsController & SelectionController;
 
 // Warning: (ae-forgotten-export) The symbol "FeltEmbedOptionsSchema" needs to be exported by the entry point client.d.ts
 //
@@ -204,6 +209,12 @@ interface LayersController {
     setLayerVisibility(visibility: SetVisibilityRequest): Promise<void>;
 }
 
+// @public
+interface SelectionController {
+    getSelection(): Promise<EntityIdentifier[]>;
+    onSelectionChange(params: S): VoidFunction;
+}
+
 // Warning: (ae-forgotten-export) The symbol "SetVisibilityRequestSchema" needs to be exported by the entry point client.d.ts
 //
 // @public
@@ -261,8 +272,8 @@ const UiControlsOptionsSchema: z.ZodObject<{
 // @public
 type ViewportController = {
     getViewport(): Promise<V>;
-    gotoViewport(viewport: S): void;
-    fitBounds(bounds: j): void;
+    gotoViewport(viewport: k): void;
+    fitBounds(bounds: l): void;
     onViewportMove(args: {
         handler: (viewport: V) => void;
     }): VoidFunction;

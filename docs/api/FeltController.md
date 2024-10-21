@@ -19,6 +19,7 @@ The various ways to interact with the map are namespaced for clarity.
     * [getLayerGroup()](#getlayergroup)
     * [getLayerGroups()](#getlayergroups)
     * [setLayerGroupVisibility()](#setlayergroupvisibility)
+    * [getSelection()](#getselection)
     * [updateUiControls()](#updateuicontrols)
     * [getViewport()](#getviewport)
     * [gotoViewport()](#gotoviewport)
@@ -28,6 +29,7 @@ The various ways to interact with the map are namespaced for clarity.
     * [onElementGroupChange()](#onelementgroupchange)
     * [onLayerChange()](#onlayerchange)
     * [onLayerGroupChange()](#onlayergroupchange)
+    * [onSelectionChange()](#onselectionchange)
     * [onViewportMove()](#onviewportmove)
 * [Testingtesting](#testingtesting)
 
@@ -317,6 +319,22 @@ Hide or show layer groups with the given ids.
 felt.setLayerGroupVisibility({ show: ["layer-group-1", "layer-group-2"], hide: ["layer-group-3"] });
 ```
 
+#### getSelection()
+
+> **getSelection**(): `Promise`\<[`EntityIdentifier`](Selection.md#entityidentifier)\[]>
+
+Gets the current selection as a list of entity identifiers.
+
+##### Returns
+
+`Promise`\<[`EntityIdentifier`](Selection.md#entityidentifier)\[]>
+
+##### Example
+
+```typescript
+const selection = await felt.getSelection();
+```
+
 #### updateUiControls()
 
 > **updateUiControls**(`controls`): `void`
@@ -519,6 +537,35 @@ A function to unsubscribe from the listener
 const unsubscribe = felt.onLayerGroupChange({
   options: { id: "layer-group-1" },
   handler: layerGroup => console.log(layerGroup.id),
+});
+
+// later on...
+unsubscribe();
+```
+
+#### onSelectionChange()
+
+> **onSelectionChange**(`params`): `VoidFunction`
+
+Adds a listener for when the selection changes.
+
+##### Parameters
+
+| Parameter | Type                                                          |
+| --------- | ------------------------------------------------------------- |
+| `params`  | [`SelectionChangeParams`](Selection.md#selectionchangeparams) |
+
+##### Returns
+
+`VoidFunction`
+
+A function to unsubscribe from the listener
+
+##### Example
+
+```typescript
+const unsubscribe = felt.onSelectionChange({
+  handler: ({selection}) => console.log(selection),
 });
 
 // later on...

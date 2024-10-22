@@ -4,23 +4,27 @@
 
 ```ts
 
-import { b } from './types-2I-9yS3l.js';
-import { c } from './types-2I-9yS3l.js';
-import { d } from './types-2I-9yS3l.js';
-import { e } from './types-2I-9yS3l.js';
-import { E as Element_2 } from './types-2I-9yS3l.js';
-import { a as ElementGroup } from './types-2I-9yS3l.js';
-import { j as EntityIdentifier } from './types-2I-9yS3l.js';
-import { G } from './types-2I-9yS3l.js';
-import { g } from './types-2I-9yS3l.js';
-import { h } from './types-2I-9yS3l.js';
-import { i } from './types-2I-9yS3l.js';
-import { k } from './types-2I-9yS3l.js';
-import { l } from './types-2I-9yS3l.js';
-import { L as Layer } from './types-2I-9yS3l.js';
-import { f as LayerGroup } from './types-2I-9yS3l.js';
-import { S } from './types-2I-9yS3l.js';
-import { V } from './types-2I-9yS3l.js';
+import { b } from './types-CqFKl1e0.js';
+import { c } from './types-CqFKl1e0.js';
+import { d } from './types-CqFKl1e0.js';
+import { e } from './types-CqFKl1e0.js';
+import { E as Element_2 } from './types-CqFKl1e0.js';
+import { a as ElementGroup } from './types-CqFKl1e0.js';
+import { n as EntityIdentifier } from './types-CqFKl1e0.js';
+import { f } from './types-CqFKl1e0.js';
+import { G } from './types-CqFKl1e0.js';
+import { h } from './types-CqFKl1e0.js';
+import { i } from './types-CqFKl1e0.js';
+import { j } from './types-CqFKl1e0.js';
+import { l } from './types-CqFKl1e0.js';
+import { L as Layer } from './types-CqFKl1e0.js';
+import { g as LayerGroup } from './types-CqFKl1e0.js';
+import { k as LegendItem } from './types-CqFKl1e0.js';
+import { m } from './types-CqFKl1e0.js';
+import { o } from './types-CqFKl1e0.js';
+import { p } from './types-CqFKl1e0.js';
+import { S } from './types-CqFKl1e0.js';
+import { V } from './types-CqFKl1e0.js';
 import * as z from 'zod';
 
 export { Element_2 as Element }
@@ -189,15 +193,17 @@ interface LayersController {
     id: string): Promise<Layer | null>;
     getLayerGroup(id: string): Promise<LayerGroup | null>;
     getLayerGroups(
-    filter?: g): Promise<Array<LayerGroup | null>>;
+    filter?: h): Promise<Array<LayerGroup | null>>;
     getLayers(
     filter?: e): Promise<Array<Layer | null>>;
+    getLegendItem(id: j): Promise<LegendItem | null>;
+    getLegendItems(filter?: l): Promise<Array<LegendItem | null>>;
     onLayerChange(args: {
         options: {
             id: string;
         };
         handler: (
-        change: h) => void;
+        change: f) => void;
     }): VoidFunction;
     onLayerGroupChange(args: {
         options: {
@@ -205,9 +211,19 @@ interface LayersController {
         };
         handler: (change: i) => void;
     }): VoidFunction;
+    onLegendItemChange(args: {
+        options: j;
+        handler: (change: m) => void;
+    }): VoidFunction;
     setLayerGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
     setLayerVisibility(visibility: SetVisibilityRequest): Promise<void>;
+    setLegendItemVisibility(visibility: {
+        show?: Array<j>;
+        hide?: Array<j>;
+    }): Promise<void>;
 }
+
+export { LegendItem }
 
 // @public
 interface SelectionController {
@@ -272,8 +288,8 @@ const UiControlsOptionsSchema: z.ZodObject<{
 // @public
 type ViewportController = {
     getViewport(): Promise<V>;
-    gotoViewport(viewport: k): void;
-    fitViewportToBounds(bounds: l): void;
+    gotoViewport(viewport: o): void;
+    fitViewportToBounds(bounds: p): void;
     onViewportMove(args: {
         handler: (viewport: V) => void;
     }): VoidFunction;

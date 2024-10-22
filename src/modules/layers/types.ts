@@ -231,3 +231,74 @@ export interface LayerChangeCallbackParams {
 export interface LayerGroupChangeCallbackParams {
   layerGroup: LayerGroup | null;
 }
+
+/**
+ * A legend item, which often represents a sub-class of features in a
+ * layer in the case of categorical or classed layers.
+ */
+export interface LegendItem extends LegendItemIdentifier {
+  /**
+   * The title of the legend item.
+   */
+  title: string | Array<string>;
+
+  /**
+   * Whether the title depends on the zoom level or not. If it does, you
+   * need to call `getLegendItem` when the zoom level changes.
+   *
+   * Note that as the zoom level changes, the `onLegendItemChange` handler
+   * will not be called, so you need to call `getLegendItem` yourself.
+   */
+  titleDependsOnZoom: boolean;
+
+  /**
+   * Whether the legend item is visible or not.
+   */
+  visible: boolean;
+}
+
+/**
+ * The identifier for a legend item. It is a compound key of the layer to
+ * which the legend item belongs and the legend item's own id.
+ */
+export interface LegendItemIdentifier
+  extends z.infer<typeof LegendItemIdentifierSchema> {}
+/** @ignore */
+export const LegendItemIdentifierSchema = z.object({
+  /**
+   * The id of the legend item.
+   */
+  id: z.string(),
+
+  /**
+   * The id of the layer the legend item belongs to.
+   */
+  layerId: z.string(),
+});
+
+/**
+ * Filter for legend items. If nothing is passed, all legend items will be returned.
+ */
+export interface LegendItemsFilter
+  extends z.infer<typeof LegendItemsFilterSchema> {}
+/** @ignore */
+export const LegendItemsFilterSchema = z.object({
+  /**
+   * Array of legend item identifiers to filter by.
+   */
+  ids: LegendItemIdentifierSchema.array().optional(),
+  /**
+   * Array of layer ids to filter legend items by.
+   */
+  layerIds: z.string().array().optional(),
+});
+
+/**
+ * The parameters for the `onLegendItemChange` listener.
+ */
+export interface LegendItemChangeCallbackParams {
+  /**
+   * The new data for the legend item or null if the legend item was removed.
+   */
+  legendItem: LegendItem | null;
+}

@@ -115,7 +115,7 @@ export interface ElementsController {
    * ```typescript
    * const unsubscribe = felt.onElementChange({
    *   options: { id: "element-1" },
-   *   handler: element => console.log(element.id),
+   *   handler: ({element}) => console.log(element.id),
    * });
    *
    * // later on...

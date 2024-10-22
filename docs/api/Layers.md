@@ -56,6 +56,24 @@ This is the doc comment for the layers module
 * [LayerGroupChangeCallbackParams](#layergroupchangecallbackparams)
   * [Properties](#properties-7)
     * [layerGroup](#layergroup-1)
+* [LegendItem](#legenditem)
+  * [Properties](#properties-8)
+    * [title](#title)
+    * [titleDependsOnZoom](#titledependsonzoom)
+    * [visible](#visible-4)
+    * [id](#id-4)
+    * [layerId](#layerid)
+* [LegendItemIdentifier](#legenditemidentifier)
+  * [Properties](#properties-9)
+    * [id](#id-5)
+    * [layerId](#layerid-1)
+* [LegendItemsFilter](#legenditemsfilter)
+  * [Properties](#properties-10)
+    * [ids?](#ids-2)
+    * [layerIds?](#layerids-2)
+* [LegendItemChangeCallbackParams](#legenditemchangecallbackparams)
+  * [Properties](#properties-11)
+    * [legendItem](#legenditem-1)
 * [GetLayersResponse](#getlayersresponse)
   * [Remarks](#remarks-4)
 * [GetLayerGroupsResponse](#getlayergroupsresponse)
@@ -391,6 +409,104 @@ The parameters for the `onLayerGroupChange` listener.
 #### layerGroup
 
 > **layerGroup**: `null` | [`LayerGroup`](Layers.md#layergroup-1)
+
+***
+
+## LegendItem
+
+A legend item, which often represents a sub-class of features in a
+layer in the case of categorical or classed layers.
+
+### Properties
+
+#### title
+
+> **title**: `string` | `string`\[]
+
+The title of the legend item.
+
+#### titleDependsOnZoom
+
+> **titleDependsOnZoom**: `boolean`
+
+Whether the title depends on the zoom level or not. If it does, you
+need to call `getLegendItem` when the zoom level changes.
+
+Note that as the zoom level changes, the `onLegendItemChange` handler
+will not be called, so you need to call `getLegendItem` yourself.
+
+#### visible
+
+> **visible**: `boolean`
+
+Whether the legend item is visible or not.
+
+#### id
+
+> **id**: `string`
+
+The id of the legend item.
+
+#### layerId
+
+> **layerId**: `string`
+
+The id of the layer the legend item belongs to.
+
+***
+
+## LegendItemIdentifier
+
+The identifier for a legend item. It is a compound key of the layer to
+which the legend item belongs and the legend item's own id.
+
+### Properties
+
+#### id
+
+> **id**: `string`
+
+The id of the legend item.
+
+#### layerId
+
+> **layerId**: `string`
+
+The id of the layer the legend item belongs to.
+
+***
+
+## LegendItemsFilter
+
+Filter for legend items. If nothing is passed, all legend items will be returned.
+
+### Properties
+
+#### ids?
+
+> `optional` **ids**: `object`\[]
+
+Array of legend item identifiers to filter by.
+
+#### layerIds?
+
+> `optional` **layerIds**: `string`\[]
+
+Array of layer ids to filter legend items by.
+
+***
+
+## LegendItemChangeCallbackParams
+
+The parameters for the `onLegendItemChange` listener.
+
+### Properties
+
+#### legendItem
+
+> **legendItem**: `null` | [`LegendItem`](Layers.md#legenditem)
+
+The new data for the legend item or null if the legend item was removed.
 
 ***
 

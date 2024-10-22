@@ -7,20 +7,33 @@ import type {
   LayerChangeCallbackParams,
   LayerGroup,
   LayerGroupChangeCallbackParams,
+  LegendItem,
+  LegendItemChangeCallbackParams,
+  LegendItemIdentifier,
+  LegendItemsFilter,
 } from "./types";
 
 /**
  * @ignore
  */
 export const layersController = (feltWindow: Window): LayersController => ({
+  // layers
   getLayer: method(feltWindow, "getLayer"),
   getLayers: method(feltWindow, "getLayers"),
   setLayerVisibility: method(feltWindow, "setLayerVisibility"),
+  onLayerChange: listener(feltWindow, "onLayerChange"),
+
+  // groups
   getLayerGroup: method(feltWindow, "getLayerGroup"),
   getLayerGroups: method(feltWindow, "getLayerGroups"),
   setLayerGroupVisibility: method(feltWindow, "setLayerGroupVisibility"),
-  onLayerChange: listener(feltWindow, "onLayerChange"),
   onLayerGroupChange: listener(feltWindow, "onLayerGroupChange"),
+
+  // legend items
+  getLegendItem: method(feltWindow, "getLegendItem"),
+  getLegendItems: method(feltWindow, "getLegendItems"),
+  setLegendItemVisibility: method(feltWindow, "setLegendItemVisibility"),
+  onLegendItemChange: listener(feltWindow, "onLegendItemChange"),
 });
 
 /**
@@ -34,6 +47,8 @@ export const layersController = (feltWindow: Window): LayersController => ({
  * @public
  */
 export interface LayersController {
+  // LAYERS
+
   /**
    * Get a single layer from the map by its id.
    *
@@ -82,6 +97,44 @@ export interface LayersController {
   setLayerVisibility(visibility: SetVisibilityRequest): Promise<void>;
 
   /**
+   * Adds a listener for when a layer changes.
+   *
+   * @returns A function to unsubscribe from the listener
+   *
+   * @event
+   * @example
+   * ```typescript
+   * const unsubscribe = felt.onLayerChange({
+   *   options: { id: "layer-1" },
+   *   handler: ({layer}) => console.log(layer.bounds),
+   * });
+   *
+   * // later on...
+   * unsubscribe();
+   * ```
+   */
+  onLayerChange(args: {
+    options: {
+      /**
+       * The id of the layer to listen for changes to.
+       */
+      id: string;
+    };
+
+    /**
+     * The handler that is called when the layer changes.
+     */
+    handler: (
+      /**
+       * An object describing the change that occurred.
+       */
+      change: LayerChangeCallbackParams,
+    ) => void;
+  }): VoidFunction;
+
+  // GROUPS
+
+  /**
    * Get a layer group from the map by its id.
    *
    * @example
@@ -120,42 +173,6 @@ export interface LayersController {
   setLayerGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
 
   /**
-   * Adds a listener for when a layer changes.
-   *
-   * @returns A function to unsubscribe from the listener
-   *
-   * @event
-   * @example
-   * ```typescript
-   * const unsubscribe = felt.onLayerChange({
-   *   options: { id: "layer-1" },
-   *   handler: layer => console.log(layer.bounds),
-   * });
-   *
-   * // later on...
-   * unsubscribe();
-   * ```
-   */
-  onLayerChange(args: {
-    options: {
-      /**
-       * The id of the layer to listen for changes to.
-       */
-      id: string;
-    };
-
-    /**
-     * The handler that is called when the layer changes.
-     */
-    handler: (
-      /**
-       * An object describing the change that occurred.
-       */
-      change: LayerChangeCallbackParams,
-    ) => void;
-  }): VoidFunction;
-
-  /**
    * Adds a listener for when a layer group changes.
    *
    * @returns A function to unsubscribe from the listener
@@ -165,7 +182,7 @@ export interface LayersController {
    * ```typescript
    * const unsubscribe = felt.onLayerGroupChange({
    *   options: { id: "layer-group-1" },
-   *   handler: layerGroup => console.log(layerGroup.id),
+   *   handler: ({layerGroup}) => console.log(layerGroup.id),
    * });
    *
    * // later on...
@@ -177,5 +194,71 @@ export interface LayersController {
       id: string;
     };
     handler: (change: LayerGroupChangeCallbackParams) => void;
+  }): VoidFunction;
+
+  // LEGEND ITEMS
+
+  /**
+   * Allows you to get the state of a single legend item.
+   *
+   * @example
+   * ```typescript
+   * const legendItem = await felt.getLegendItem({
+   *   id: "legend-item-1",
+   *   layerId: "layer-1",
+   * })
+   * ```
+   */
+  getLegendItem(id: LegendItemIdentifier): Promise<LegendItem | null>;
+
+  /**
+   * Allows you to obtain the state of several legend items, by passing in
+   * filters describing which legend items you want.
+   *
+   * If you do not pass any filters, you will receive all legend items.
+   *
+   * @example
+   * ```typescript
+   * const legendItems = await felt.getLegendItems({layerId: "layer-1"});
+   * ```
+   */
+  getLegendItems(filter?: LegendItemsFilter): Promise<Array<LegendItem | null>>;
+
+  /**
+   * Hide or show legend items with the given identifiers.
+   *
+   * @example
+   * ```typescript
+   * felt.setLegendItemVisibility({
+   *   show: [{layerId: "layer-group-1", id: "item-1-0"}],
+   *   hide: [{layerId: "layer-group-2", id: "item-2-0"}],
+   * })
+   * ```
+   */
+  setLegendItemVisibility(visibility: {
+    show?: Array<LegendItemIdentifier>;
+    hide?: Array<LegendItemIdentifier>;
+  }): Promise<void>;
+
+  /**
+   * Adds a listener for when a legend item changes.
+   *
+   * @returns A function to unsubscribe from the listener
+   *
+   * @event
+   * @example
+   * ```typescript
+   * const unsubscribe = felt.onLegendItemChange({
+   *   options: { layerId: "layer-1", id: "item-1-0" },
+   *   handler: ({legendItem}) => console.log(legendItem.visible),
+   * });
+   *
+   * // later on...
+   * unsubscribe();
+   * ```
+   */
+  onLegendItemChange(args: {
+    options: LegendItemIdentifier;
+    handler: (change: LegendItemChangeCallbackParams) => void;
   }): VoidFunction;
 }

@@ -19,6 +19,9 @@ The various ways to interact with the map are namespaced for clarity.
     * [getLayerGroup()](#getlayergroup)
     * [getLayerGroups()](#getlayergroups)
     * [setLayerGroupVisibility()](#setlayergroupvisibility)
+    * [getLegendItem()](#getlegenditem)
+    * [getLegendItems()](#getlegenditems)
+    * [setLegendItemVisibility()](#setlegenditemvisibility)
     * [getSelection()](#getselection)
     * [updateUiControls()](#updateuicontrols)
     * [getViewport()](#getviewport)
@@ -29,6 +32,7 @@ The various ways to interact with the map are namespaced for clarity.
     * [onElementGroupChange()](#onelementgroupchange)
     * [onLayerChange()](#onlayerchange)
     * [onLayerGroupChange()](#onlayergroupchange)
+    * [onLegendItemChange()](#onlegenditemchange)
     * [onSelectionChange()](#onselectionchange)
     * [onViewportMove()](#onviewportmove)
 * [Testingtesting](#testingtesting)
@@ -319,6 +323,83 @@ Hide or show layer groups with the given ids.
 felt.setLayerGroupVisibility({ show: ["layer-group-1", "layer-group-2"], hide: ["layer-group-3"] });
 ```
 
+#### getLegendItem()
+
+> **getLegendItem**(`id`): `Promise`\<`null` | [`LegendItem`](Layers.md#legenditem)>
+
+Allows you to get the state of a single legend item.
+
+##### Parameters
+
+| Parameter | Type                                                     |
+| --------- | -------------------------------------------------------- |
+| `id`      | [`LegendItemIdentifier`](Layers.md#legenditemidentifier) |
+
+##### Returns
+
+`Promise`\<`null` | [`LegendItem`](Layers.md#legenditem)>
+
+##### Example
+
+```typescript
+const legendItem = await felt.getLegendItem({
+  id: "legend-item-1",
+  layerId: "layer-1",
+})
+```
+
+#### getLegendItems()
+
+> **getLegendItems**(`filter`?): `Promise`\<(`null` | [`LegendItem`](Layers.md#legenditem))\[]>
+
+Allows you to obtain the state of several legend items, by passing in
+filters describing which legend items you want.
+
+If you do not pass any filters, you will receive all legend items.
+
+##### Parameters
+
+| Parameter | Type                                               |
+| --------- | -------------------------------------------------- |
+| `filter`? | [`LegendItemsFilter`](Layers.md#legenditemsfilter) |
+
+##### Returns
+
+`Promise`\<(`null` | [`LegendItem`](Layers.md#legenditem))\[]>
+
+##### Example
+
+```typescript
+const legendItems = await felt.getLegendItems({layerId: "layer-1"});
+```
+
+#### setLegendItemVisibility()
+
+> **setLegendItemVisibility**(`visibility`): `Promise`\<`void`>
+
+Hide or show legend items with the given identifiers.
+
+##### Parameters
+
+| Parameter          | Type                                                        |
+| ------------------ | ----------------------------------------------------------- |
+| `visibility`       | `object`                                                    |
+| `visibility.show`? | [`LegendItemIdentifier`](Layers.md#legenditemidentifier)\[] |
+| `visibility.hide`? | [`LegendItemIdentifier`](Layers.md#legenditemidentifier)\[] |
+
+##### Returns
+
+`Promise`\<`void`>
+
+##### Example
+
+```typescript
+felt.setLegendItemVisibility({
+  show: [{layerId: "layer-group-1", id: "item-1-0"}],
+  hide: [{layerId: "layer-group-2", id: "item-2-0"}],
+})
+```
+
 #### getSelection()
 
 > **getSelection**(): `Promise`\<[`EntityIdentifier`](Selection.md#entityidentifier)\[]>
@@ -437,7 +518,7 @@ A function to unsubscribe from the listener
 ```typescript
 const unsubscribe = felt.onElementChange({
   options: { id: "element-1" },
-  handler: element => console.log(element.id),
+  handler: ({element}) => console.log(element.id),
 });
 
 // later on...
@@ -503,7 +584,7 @@ A function to unsubscribe from the listener
 ```typescript
 const unsubscribe = felt.onLayerChange({
   options: { id: "layer-1" },
-  handler: layer => console.log(layer.bounds),
+  handler: ({layer}) => console.log(layer.bounds),
 });
 
 // later on...
@@ -536,7 +617,39 @@ A function to unsubscribe from the listener
 ```typescript
 const unsubscribe = felt.onLayerGroupChange({
   options: { id: "layer-group-1" },
-  handler: layerGroup => console.log(layerGroup.id),
+  handler: ({layerGroup}) => console.log(layerGroup.id),
+});
+
+// later on...
+unsubscribe();
+```
+
+#### onLegendItemChange()
+
+> **onLegendItemChange**(`args`): `VoidFunction`
+
+Adds a listener for when a legend item changes.
+
+##### Parameters
+
+| Parameter      | Type                                                     |
+| -------------- | -------------------------------------------------------- |
+| `args`         | `object`                                                 |
+| `args.options` | [`LegendItemIdentifier`](Layers.md#legenditemidentifier) |
+| `args.handler` | (`change`) => `void`                                     |
+
+##### Returns
+
+`VoidFunction`
+
+A function to unsubscribe from the listener
+
+##### Example
+
+```typescript
+const unsubscribe = felt.onLegendItemChange({
+  options: { layerId: "layer-1", id: "item-1-0" },
+  handler: ({legendItem}) => console.log(legendItem.visible),
 });
 
 // later on...

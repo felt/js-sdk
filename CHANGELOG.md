@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 0.6.1
+
+### Patch Changes
+
+- 2c69a0b: Add legend items API
+
 ## 0.6.0
 
 ### Minor Changes

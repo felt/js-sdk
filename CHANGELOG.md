@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 0.8.0
+
+### Minor Changes
+
+- 226c9e9: Add filters API
+
 ## 0.7.0
 
 ### Minor Changes

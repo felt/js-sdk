@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 0.7.0
+
+### Minor Changes
+
+- 8955b07: Update viewport types
+
 ## 0.6.1
 
 ### Patch Changes

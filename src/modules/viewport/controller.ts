@@ -10,7 +10,7 @@ import type {
  */
 export const viewportController = (feltWindow: Window): ViewportController => ({
   getViewport: method(feltWindow, "getViewport"),
-  gotoViewport: method(feltWindow, "gotoViewport"),
+  setViewport: method(feltWindow, "setViewport"),
   fitViewportToBounds: method(feltWindow, "fitViewportToBounds"),
   onViewportMove: listener(feltWindow, "onViewportMove"),
 });
@@ -36,10 +36,13 @@ export type ViewportController = {
    *
    * @example
    * ```typescript
-   * felt.gotoViewport({ center: { lat: 0, lng: 0 }, zoom: 10 });
+   * felt.setViewport({
+   *   center: { latitude: 0, longitude: 0 },
+   *   zoom: 10,
+   * });
    * ```
    */
-  gotoViewport(viewport: SetViewportCenterZoomParams): void;
+  setViewport(viewport: SetViewportCenterZoomParams): void;
 
   /**
    * Fits the map to the specified bounds.

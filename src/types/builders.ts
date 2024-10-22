@@ -7,7 +7,7 @@ export function methodMessage<
   type: TType,
   params: TParams,
 ): z.ZodObject<{ type: z.ZodLiteral<TType>; params: TParams }> {
-  return z.object({
+  return z.strictObject({
     type: z.literal(type),
     params,
   });
@@ -15,19 +15,19 @@ export function methodMessage<
 
 export function listenerMessageWithParams<
   TEventName extends string,
-  TParams extends z.ZodType<any>,
->(eventName: TEventName, params: TParams) {
-  return z.object({
+  TOptions extends z.ZodType<any>,
+>(eventName: TEventName, options: TOptions) {
+  return z.strictObject({
     eventName: z.literal(eventName),
     id: z.string(),
-    options: params,
+    options,
   });
 }
 
 export function listenerMessageNoParams<TEventName extends string>(
   eventName: TEventName,
 ) {
-  return z.object({
+  return z.strictObject({
     eventName: z.literal(eventName),
     id: z.string(),
   });

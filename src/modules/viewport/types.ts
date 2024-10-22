@@ -35,7 +35,7 @@ const ViewportStateSchema = z.object({
 });
 
 /**
- * The parameters for the `gotoViewport` method.
+ * The parameters for the `setViewport` method.
  * *
  */
 export interface SetViewportCenterZoomParams
@@ -44,8 +44,8 @@ export interface SetViewportCenterZoomParams
  * @ignore
  */
 export const SetViewportCenterZoomParamsSchema = z.object({
-  type: z.literal("center"),
-  location: ViewportCenterZoomSchema.partial(),
+  center: ViewportCenterZoomSchema.shape.center.optional(),
+  zoom: ViewportCenterZoomSchema.shape.zoom.optional(),
 });
 
 /**

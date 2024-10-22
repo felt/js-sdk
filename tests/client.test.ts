@@ -112,7 +112,7 @@ describe("Embedding an iframe with theFelt SDK", () => {
     // that the types are strict.
     test("incorrect params are caught by the compiler", async () => {
       const controller = {
-        gotoViewport: () => {},
+        setViewport: () => {},
         getViewport: async () => ({}),
         onViewportMove(args: unknown) {
           return () => {};
@@ -125,21 +125,15 @@ describe("Embedding an iframe with theFelt SDK", () => {
       controller.whatever;
 
       // @ts-expect-error missing params entirely
-      controller.gotoViewport();
-
-      // @ts-expect-error missing params fields
-      controller.gotoViewport({});
+      controller.setViewport();
 
       // @ts-expect-error incorrect param type
-      controller.gotoViewport({ type: "wrong" });
+      controller.setViewport({ type: "wrong" });
 
-      controller.gotoViewport({
-        type: "center",
-        location: {
-          zoom: 10,
-          // @ts-expect-error - this is an extraneous param
-          lat: 0,
-        },
+      controller.setViewport({
+        zoom: 10,
+        // @ts-expect-error - this is an extraneous param
+        lat: 0,
       });
 
       // @ts-expect-error method does not exist

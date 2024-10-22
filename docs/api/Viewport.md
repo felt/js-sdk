@@ -9,8 +9,8 @@ This is the doc comment for the viewport module
     * [bounds](#bounds)
 * [SetViewportCenterZoomParams](#setviewportcenterzoomparams)
   * [Properties](#properties-1)
-    * [type](#type)
-    * [location](#location)
+    * [center?](#center-1)
+    * [zoom?](#zoom-1)
 * [ViewportFitBoundsParams](#viewportfitboundsparams)
   * [Properties](#properties-2)
     * [bounds](#bounds-1)
@@ -40,25 +40,23 @@ This is the doc comment for the viewport module
 
 ## SetViewportCenterZoomParams
 
-The parameters for the `gotoViewport` method.
+The parameters for the `setViewport` method.
 \*
 
 ### Properties
 
-#### type
+#### center?
 
-> **type**: `"center"`
+> `optional` **center**: `object`
 
-#### location
+| Name        | Type     | Default value |
+| ----------- | -------- | ------------- |
+| `latitude`  | `number` | Latitude      |
+| `longitude` | `number` | Longitude     |
 
-> **location**: `object`
+#### zoom?
 
-| Name               | Type     | Default value  | Description                                           |
-| ------------------ | -------- | -------------- | ----------------------------------------------------- |
-| `center`?          | `object` | LatLngSchema   | The center of the viewport in latitude and longitude. |
-| `center.latitude`  | `number` | Latitude       | -                                                     |
-| `center.longitude` | `number` | Longitude      | -                                                     |
-| `zoom`?            | `number` | FeltZoomSchema | The zoom level of the viewport.                       |
+> `optional` **zoom**: `number`
 
 ***
 

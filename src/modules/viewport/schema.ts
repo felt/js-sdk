@@ -14,7 +14,7 @@ import {
 
 const GetViewportMessage = methodMessage("getViewport", z.undefined());
 const GotoViewportMessage = methodMessage(
-  "gotoViewport",
+  "setViewport",
   SetViewportCenterZoomParamsSchema,
 );
 const ViewportFitBoundsMessage = methodMessage(
@@ -31,7 +31,7 @@ export const viewportSchema = {
 export type ViewportSchema = {
   methods: {
     getViewport: Method<z.infer<typeof GetViewportMessage>, ViewportState>;
-    gotoViewport: Method<z.infer<typeof GotoViewportMessage>, void>;
+    setViewport: Method<z.infer<typeof GotoViewportMessage>, void>;
     fitViewportToBounds: Method<z.infer<typeof ViewportFitBoundsMessage>, void>;
   };
   listeners: {

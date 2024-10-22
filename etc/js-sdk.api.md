@@ -4,27 +4,27 @@
 
 ```ts
 
-import { b } from './types-CqFKl1e0.js';
-import { c } from './types-CqFKl1e0.js';
-import { d } from './types-CqFKl1e0.js';
-import { e } from './types-CqFKl1e0.js';
-import { E as Element_2 } from './types-CqFKl1e0.js';
-import { a as ElementGroup } from './types-CqFKl1e0.js';
-import { n as EntityIdentifier } from './types-CqFKl1e0.js';
-import { f } from './types-CqFKl1e0.js';
-import { G } from './types-CqFKl1e0.js';
-import { h } from './types-CqFKl1e0.js';
-import { i } from './types-CqFKl1e0.js';
-import { j } from './types-CqFKl1e0.js';
-import { l } from './types-CqFKl1e0.js';
-import { L as Layer } from './types-CqFKl1e0.js';
-import { g as LayerGroup } from './types-CqFKl1e0.js';
-import { k as LegendItem } from './types-CqFKl1e0.js';
-import { m } from './types-CqFKl1e0.js';
-import { o } from './types-CqFKl1e0.js';
-import { p } from './types-CqFKl1e0.js';
-import { S } from './types-CqFKl1e0.js';
-import { V } from './types-CqFKl1e0.js';
+import { b } from './types-C9CI7HdH.js';
+import { c } from './types-C9CI7HdH.js';
+import { d } from './types-C9CI7HdH.js';
+import { e } from './types-C9CI7HdH.js';
+import { E as Element_2 } from './types-C9CI7HdH.js';
+import { a as ElementGroup } from './types-C9CI7HdH.js';
+import { n as EntityIdentifier } from './types-C9CI7HdH.js';
+import { f } from './types-C9CI7HdH.js';
+import { G } from './types-C9CI7HdH.js';
+import { h } from './types-C9CI7HdH.js';
+import { i } from './types-C9CI7HdH.js';
+import { j } from './types-C9CI7HdH.js';
+import { l } from './types-C9CI7HdH.js';
+import { L as Layer } from './types-C9CI7HdH.js';
+import { g as LayerGroup } from './types-C9CI7HdH.js';
+import { k as LegendItem } from './types-C9CI7HdH.js';
+import { m } from './types-C9CI7HdH.js';
+import { o } from './types-C9CI7HdH.js';
+import { p } from './types-C9CI7HdH.js';
+import { S } from './types-C9CI7HdH.js';
+import { V } from './types-C9CI7HdH.js';
 import * as z from 'zod';
 
 export { Element_2 as Element }
@@ -288,7 +288,7 @@ const UiControlsOptionsSchema: z.ZodObject<{
 // @public
 type ViewportController = {
     getViewport(): Promise<V>;
-    gotoViewport(viewport: o): void;
+    setViewport(viewport: o): void;
     fitViewportToBounds(bounds: p): void;
     onViewportMove(args: {
         handler: (viewport: V) => void;

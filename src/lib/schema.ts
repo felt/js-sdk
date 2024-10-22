@@ -14,16 +14,16 @@ const mergedSchemas = {
 
 const EventSchema = z.discriminatedUnion("eventName", [
   // this first literal event keeps zod quiet when creating the discriminated union
-  z.object({ eventName: z.literal("") }),
+  z.strictObject({ eventName: z.literal("") }),
   ...mergedSchemas.listeners,
 ]);
 
-const AddListenerSchema = z.object({
+const AddListenerSchema = z.strictObject({
   type: z.literal("felt.addListener"),
   event: EventSchema,
 });
 
-const RemoveListenerSchema = z.object({
+const RemoveListenerSchema = z.strictObject({
   type: z.literal("felt.removeListener"),
   id: z.string(),
 });

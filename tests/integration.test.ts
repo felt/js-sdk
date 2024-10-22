@@ -36,7 +36,7 @@ describe("Felt SDK integration", () => {
 
     methods = {
       updateUiControls: () => {},
-      gotoViewport: () => {},
+      setViewport: () => {},
       getViewport: () => fakeViewportState,
     };
 
@@ -72,44 +72,38 @@ describe("Felt SDK integration", () => {
     tearDown();
   });
 
-  test("sync queries work", async () => {
+  test("sync methods work", async () => {
     const client = await Felt.connect(window);
 
     expect(client.getViewport()).resolves.toEqual(fakeViewportState);
   });
 
-  test("async queries work", async () => {
+  test("async methods work", async () => {
     methods.getViewport = () => Promise.resolve(fakeViewportState);
     const client = await Felt.connect(window);
 
     expect(client.getViewport()).resolves.toEqual(fakeViewportState);
   });
 
-  test("commands work", async () => {
+  test("void methods work", async () => {
     const client = await Felt.connect(window);
 
-    vi.spyOn(methods, "gotoViewport");
+    vi.spyOn(methods, "setViewport");
 
-    await client.gotoViewport({
-      type: "center",
-      location: {
-        center: {
-          latitude: 1,
-          longitude: 1,
-        },
-        zoom: 1,
+    await client.setViewport({
+      center: {
+        latitude: 1,
+        longitude: 1,
       },
+      zoom: 1,
     });
 
-    expect(methods.gotoViewport).toHaveBeenCalledWith({
-      type: "center",
-      location: {
-        center: {
-          latitude: 1,
-          longitude: 1,
-        },
-        zoom: 1,
+    expect(methods.setViewport).toHaveBeenCalledWith({
+      center: {
+        latitude: 1,
+        longitude: 1,
       },
+      zoom: 1,
     });
   });
 
@@ -163,9 +157,9 @@ describe("Felt SDK integration", () => {
     await Felt.connect(window);
 
     window.postMessage({
-      // the type field is correct but other fields are wrong
-      type: "gotoViewport",
-      params: {},
+      type: "setViewport",
+      // longitude is missing
+      params: { center: { latitude: 0 } },
     });
 
     expect(onUnknownMessage).not.toHaveBeenCalled();

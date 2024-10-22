@@ -25,7 +25,7 @@ The various ways to interact with the map are namespaced for clarity.
     * [getSelection()](#getselection)
     * [updateUiControls()](#updateuicontrols)
     * [getViewport()](#getviewport)
-    * [gotoViewport()](#gotoviewport)
+    * [setViewport()](#setviewport)
     * [fitViewportToBounds()](#fitviewporttobounds)
   * [Events](#events)
     * [onElementChange()](#onelementchange)
@@ -442,9 +442,9 @@ Gets the current state of the viewport.
 
 `Promise`\<[`ViewportState`](Viewport.md#viewportstate)>
 
-#### gotoViewport()
+#### setViewport()
 
-> **gotoViewport**(`viewport`): `void`
+> **setViewport**(`viewport`): `void`
 
 Moves the map to the specified location.
 
@@ -461,7 +461,10 @@ Moves the map to the specified location.
 ##### Example
 
 ```typescript
-felt.gotoViewport({ center: { lat: 0, lng: 0 }, zoom: 10 });
+felt.setViewport({
+  center: { latitude: 0, longitude: 0 },
+  zoom: 10,
+});
 ```
 
 #### fitViewportToBounds()

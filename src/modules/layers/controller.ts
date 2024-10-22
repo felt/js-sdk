@@ -1,5 +1,6 @@
 import { listener, method } from "../../types/interface";
 import type { SetVisibilityRequest } from "../../types/visibility";
+import type { Filters, GetFiltersResponse } from "./filter.types";
 import type {
   GetLayerGroupsFilter,
   GetLayersFilter,
@@ -34,6 +35,10 @@ export const layersController = (feltWindow: Window): LayersController => ({
   getLegendItems: method(feltWindow, "getLegendItems"),
   setLegendItemVisibility: method(feltWindow, "setLegendItemVisibility"),
   onLegendItemChange: listener(feltWindow, "onLegendItemChange"),
+
+  // filters
+  getLayerFilters: method(feltWindow, "getLayerFilters"),
+  setLayerFilters: method(feltWindow, "setLayerFilters"),
 });
 
 /**
@@ -261,4 +266,44 @@ export interface LayersController {
     options: LegendItemIdentifier;
     handler: (change: LegendItemChangeCallbackParams) => void;
   }): VoidFunction;
+
+  // FILTERS
+  /**
+   * Get the filters for a layer.
+   *
+   * @remarks
+   * The return type gives you the filters split up into the various sources
+   * that make up the overall filters for a layer.
+   *
+   * @example
+   * ```typescript
+   * const filters = await felt.getLayerFilters("layer-1");
+   * console.log(filters.combined, filters.style, filters.ephemeral, filters.components);
+   * ```
+   */
+  getLayerFilters(layerId: string): Promise<GetFiltersResponse | null>;
+
+  /**
+   * Sets the **ephemeral** filters for a layer.
+   *
+   * @example
+   * ```typescript
+   * felt.setLayerFilters({
+   *   layerId: "layer-1",
+   *   filters: ["AREA", "gt", 30_000],
+   * });
+   * ```
+   */
+  setLayerFilters(params: {
+    /**
+     * The layer that you want to set the filters for.
+     */
+    layerId: string;
+
+    /**
+     * The filters to set for the layer. This will replace any ephemeral filters
+     * that are currently set for the layer.
+     */
+    filters: Filters;
+  }): Promise<void>;
 }

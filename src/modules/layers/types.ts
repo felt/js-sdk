@@ -302,3 +302,11 @@ export interface LegendItemChangeCallbackParams {
    */
   legendItem: LegendItem | null;
 }
+
+export type {
+  FilterExpression,
+  FilterLogicGate,
+  Filters,
+  FilterTernary,
+  GetFiltersResponse,
+} from "./filter.types";

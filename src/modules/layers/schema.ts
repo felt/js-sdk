@@ -7,6 +7,7 @@ import {
   type Method,
 } from "../../types/builders";
 import { SetVisibilityRequestSchema } from "../../types/visibility";
+import { FiltersSchema, type GetFiltersResponse } from "./filter.types";
 import {
   GetLayerGroupsFilterSchema,
   GetLayersFilterSchema,
@@ -73,6 +74,16 @@ const SetLegendItemVisibilityMessage = methodMessage(
   }),
 );
 
+// FILTERS
+const GetFiltersMessage = methodMessage("getLayerFilters", z.string());
+const SetFiltersMessage = methodMessage(
+  "setLayerFilters",
+  z.object({
+    layerId: z.string(),
+    filters: FiltersSchema,
+  }),
+);
+
 export const layersSchema = {
   methods: [
     GetLayerMessage,
@@ -86,6 +97,9 @@ export const layersSchema = {
     GetLegendItemMessage,
     GetLegendItemsMessage,
     SetLegendItemVisibilityMessage,
+
+    GetFiltersMessage,
+    SetFiltersMessage,
   ],
   listeners: [
     OnLayerChangeMessage,
@@ -125,6 +139,13 @@ export type LayersSchema = {
       z.infer<typeof SetLegendItemVisibilityMessage>,
       void
     >;
+
+    getLayerFilters: Method<
+      z.infer<typeof GetFiltersMessage>,
+      GetFiltersResponse | null
+    >;
+
+    setLayerFilters: Method<z.infer<typeof SetFiltersMessage>, void>;
   };
   listeners: {
     onLayerChange: Listener<

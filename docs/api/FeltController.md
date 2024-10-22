@@ -22,6 +22,8 @@ The various ways to interact with the map are namespaced for clarity.
     * [getLegendItem()](#getlegenditem)
     * [getLegendItems()](#getlegenditems)
     * [setLegendItemVisibility()](#setlegenditemvisibility)
+    * [getLayerFilters()](#getlayerfilters)
+    * [setLayerFilters()](#setlayerfilters)
     * [getSelection()](#getselection)
     * [updateUiControls()](#updateuicontrols)
     * [getViewport()](#getviewport)
@@ -398,6 +400,61 @@ felt.setLegendItemVisibility({
   show: [{layerId: "layer-group-1", id: "item-1-0"}],
   hide: [{layerId: "layer-group-2", id: "item-2-0"}],
 })
+```
+
+#### getLayerFilters()
+
+> **getLayerFilters**(`layerId`): `Promise`\<`null` | `object`>
+
+Get the filters for a layer.
+
+##### Parameters
+
+| Parameter | Type     |
+| --------- | -------- |
+| `layerId` | `string` |
+
+##### Returns
+
+`Promise`\<`null` | `object`>
+
+##### Remarks
+
+The return type gives you the filters split up into the various sources
+that make up the overall filters for a layer.
+
+##### Example
+
+```typescript
+const filters = await felt.getLayerFilters("layer-1");
+console.log(filters.combined, filters.style, filters.ephemeral, filters.components);
+```
+
+#### setLayerFilters()
+
+> **setLayerFilters**(`params`): `Promise`\<`void`>
+
+Sets the **ephemeral** filters for a layer.
+
+##### Parameters
+
+| Parameter        | Type                                                                                                                                                                                                                                                                                                                                               | Description                                                                                                     |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `params`         | `object`                                                                                                                                                                                                                                                                                                                                           | -                                                                                                               |
+| `params.layerId` | `string`                                                                                                                                                                                                                                                                                                                                           | The layer that you want to set the filters for.                                                                 |
+| `params.filters` | `null` \| `boolean` \| \[`null` \| `string`, `"in"` \| `"ni"`, `null` \| (`null` \| `string` \| `number` \| `boolean`)\[]] \| \[`null` \| `string`, `"lt"` \| `"gt"` \| `"le"` \| `"ge"` \| `"eq"` \| `"ne"` \| `"cn"` \| `"nc"` \| `"is"` \| `"isnt"`, `null` \| `string` \| `number` \| `boolean`] \| [`FilterTernary`](Layers.md#filterternary) | The filters to set for the layer. This will replace any ephemeral filters that are currently set for the layer. |
+
+##### Returns
+
+`Promise`\<`void`>
+
+##### Example
+
+```typescript
+felt.setLayerFilters({
+  layerId: "layer-1",
+  filters: ["AREA", "gt", 30_000],
+});
 ```
 
 #### getSelection()

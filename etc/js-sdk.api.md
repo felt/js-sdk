@@ -4,27 +4,29 @@
 
 ```ts
 
-import { b } from './types-C9CI7HdH.js';
-import { c } from './types-C9CI7HdH.js';
-import { d } from './types-C9CI7HdH.js';
-import { e } from './types-C9CI7HdH.js';
-import { E as Element_2 } from './types-C9CI7HdH.js';
-import { a as ElementGroup } from './types-C9CI7HdH.js';
-import { n as EntityIdentifier } from './types-C9CI7HdH.js';
-import { f } from './types-C9CI7HdH.js';
-import { G } from './types-C9CI7HdH.js';
-import { h } from './types-C9CI7HdH.js';
-import { i } from './types-C9CI7HdH.js';
-import { j } from './types-C9CI7HdH.js';
-import { l } from './types-C9CI7HdH.js';
-import { L as Layer } from './types-C9CI7HdH.js';
-import { g as LayerGroup } from './types-C9CI7HdH.js';
-import { k as LegendItem } from './types-C9CI7HdH.js';
-import { m } from './types-C9CI7HdH.js';
-import { o } from './types-C9CI7HdH.js';
-import { p } from './types-C9CI7HdH.js';
-import { S } from './types-C9CI7HdH.js';
-import { V } from './types-C9CI7HdH.js';
+import { b } from './types-BwjivB8e.js';
+import { c } from './types-BwjivB8e.js';
+import { d } from './types-BwjivB8e.js';
+import { e } from './types-BwjivB8e.js';
+import { E as Element_2 } from './types-BwjivB8e.js';
+import { a as ElementGroup } from './types-BwjivB8e.js';
+import { o as EntityIdentifier } from './types-BwjivB8e.js';
+import { F } from './types-BwjivB8e.js';
+import { f } from './types-BwjivB8e.js';
+import { G } from './types-BwjivB8e.js';
+import { h } from './types-BwjivB8e.js';
+import { i } from './types-BwjivB8e.js';
+import { j } from './types-BwjivB8e.js';
+import { l } from './types-BwjivB8e.js';
+import { L as Layer } from './types-BwjivB8e.js';
+import { g as LayerGroup } from './types-BwjivB8e.js';
+import { k as LegendItem } from './types-BwjivB8e.js';
+import { m } from './types-BwjivB8e.js';
+import { n } from './types-BwjivB8e.js';
+import { p } from './types-BwjivB8e.js';
+import { q } from './types-BwjivB8e.js';
+import { S } from './types-BwjivB8e.js';
+import { V } from './types-BwjivB8e.js';
 import * as z from 'zod';
 
 export { Element_2 as Element }
@@ -191,6 +193,7 @@ export { LayerGroup }
 interface LayersController {
     getLayer(
     id: string): Promise<Layer | null>;
+    getLayerFilters(layerId: string): Promise<n | null>;
     getLayerGroup(id: string): Promise<LayerGroup | null>;
     getLayerGroups(
     filter?: h): Promise<Array<LayerGroup | null>>;
@@ -215,6 +218,10 @@ interface LayersController {
         options: j;
         handler: (change: m) => void;
     }): VoidFunction;
+    setLayerFilters(params: {
+        layerId: string;
+        filters: F;
+    }): Promise<void>;
     setLayerGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
     setLayerVisibility(visibility: SetVisibilityRequest): Promise<void>;
     setLegendItemVisibility(visibility: {
@@ -288,8 +295,8 @@ const UiControlsOptionsSchema: z.ZodObject<{
 // @public
 type ViewportController = {
     getViewport(): Promise<V>;
-    setViewport(viewport: o): void;
-    fitViewportToBounds(bounds: p): void;
+    setViewport(viewport: p): void;
+    fitViewportToBounds(bounds: q): void;
     onViewportMove(args: {
         handler: (viewport: V) => void;
     }): VoidFunction;

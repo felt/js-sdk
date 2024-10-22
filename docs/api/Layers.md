@@ -74,6 +74,16 @@ This is the doc comment for the layers module
 * [LegendItemChangeCallbackParams](#legenditemchangecallbackparams)
   * [Properties](#properties-11)
     * [legendItem](#legenditem-1)
+* [FilterLogicGate](#filterlogicgate)
+* [FilterExpression](#filterexpression)
+* [FilterTernary](#filterternary)
+* [Filters](#filters)
+* [GetFiltersResponse](#getfiltersresponse)
+  * [Type declaration](#type-declaration)
+    * [style](#style)
+    * [components](#components)
+    * [ephemeral](#ephemeral)
+    * [combined](#combined)
 * [GetLayersResponse](#getlayersresponse)
   * [Remarks](#remarks-4)
 * [GetLayerGroupsResponse](#getlayergroupsresponse)
@@ -507,6 +517,54 @@ The parameters for the `onLegendItemChange` listener.
 > **legendItem**: `null` | [`LegendItem`](Layers.md#legenditem)
 
 The new data for the legend item or null if the legend item was removed.
+
+***
+
+## FilterLogicGate
+
+> **FilterLogicGate**: `"and"` | `"or"`
+
+***
+
+## FilterExpression
+
+> **FilterExpression**: \[`null` | `string`, `"in"` | `"ni"`, `null` | (`null` | `string` | `number` | `boolean`)\[]] | \[`null` | `string`, `"lt"` | `"gt"` | `"le"` | `"ge"` | `"eq"` | `"ne"` | `"cn"` | `"nc"` | `"is"` | `"isnt"`, `null` | `string` | `number` | `boolean`]
+
+***
+
+## FilterTernary
+
+> **FilterTernary**: \[[`FilterTernary`](Layers.md#filterternary) | [`FilterExpression`](Layers.md#filterexpression) | `null` | `boolean`, [`FilterLogicGate`](Layers.md#filterlogicgate), [`FilterTernary`](Layers.md#filterternary) | [`FilterExpression`](Layers.md#filterexpression) | `null` | `boolean`]
+
+***
+
+## Filters
+
+> **Filters**: `null` | `boolean` | \[`null` | `string`, `"in"` | `"ni"`, `null` | (`null` | `string` | `number` | `boolean`)\[]] | \[`null` | `string`, `"lt"` | `"gt"` | `"le"` | `"ge"` | `"eq"` | `"ne"` | `"cn"` | `"nc"` | `"is"` | `"isnt"`, `null` | `string` | `number` | `boolean`] | [`FilterTernary`](Layers.md#filterternary)
+
+***
+
+## GetFiltersResponse
+
+> **GetFiltersResponse**: `object`
+
+### Type declaration
+
+#### style
+
+> **style**: `null` | `boolean` | \[`null` | `string`, `"in"` | `"ni"`, `null` | (`null` | `string` | `number` | `boolean`)\[]] | \[`null` | `string`, `"lt"` | `"gt"` | `"le"` | `"ge"` | `"eq"` | `"ne"` | `"cn"` | `"nc"` | `"is"` | `"isnt"`, `null` | `string` | `number` | `boolean`] | [`FilterTernary`](Layers.md#filterternary) = `FiltersSchema`
+
+#### components
+
+> **components**: `null` | `boolean` | \[`null` | `string`, `"in"` | `"ni"`, `null` | (`null` | `string` | `number` | `boolean`)\[]] | \[`null` | `string`, `"lt"` | `"gt"` | `"le"` | `"ge"` | `"eq"` | `"ne"` | `"cn"` | `"nc"` | `"is"` | `"isnt"`, `null` | `string` | `number` | `boolean`] | [`FilterTernary`](Layers.md#filterternary) = `FiltersSchema`
+
+#### ephemeral
+
+> **ephemeral**: `null` | `boolean` | \[`null` | `string`, `"in"` | `"ni"`, `null` | (`null` | `string` | `number` | `boolean`)\[]] | \[`null` | `string`, `"lt"` | `"gt"` | `"le"` | `"ge"` | `"eq"` | `"ne"` | `"cn"` | `"nc"` | `"is"` | `"isnt"`, `null` | `string` | `number` | `boolean`] | [`FilterTernary`](Layers.md#filterternary) = `FiltersSchema`
+
+#### combined
+
+> **combined**: `null` | `boolean` | \[`null` | `string`, `"in"` | `"ni"`, `null` | (`null` | `string` | `number` | `boolean`)\[]] | \[`null` | `string`, `"lt"` | `"gt"` | `"le"` | `"ge"` | `"eq"` | `"ne"` | `"cn"` | `"nc"` | `"is"` | `"isnt"`, `null` | `string` | `number` | `boolean`] | [`FilterTernary`](Layers.md#filterternary) = `FiltersSchema`
 
 ***
 

@@ -1,5 +1,11 @@
 # @feltjs/js-sdk
 
+## 0.9.1
+
+### Patch Changes
+
+- b9c1703: Add better readme
+
 ## 0.9.0
 
 ### Minor Changes

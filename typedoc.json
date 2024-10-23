@@ -34,7 +34,7 @@
     "hideDefaults": false
   },
 
-  "remarkPlugins": [["remark-toc", { "maxDepth": 4 }]],
+  "remarkPlugins": [["remark-toc", { "maxDepth": 3 }]],
 
   "outputFileStrategy": "members",
   "flattenOutputFiles": false,

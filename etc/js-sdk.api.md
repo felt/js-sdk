@@ -78,9 +78,9 @@ export { FeltBoundary }
 // Warning: (ae-forgotten-export) The symbol "SelectionController" needs to be exported by the entry point client.d.ts
 //
 // @public
-export type FeltController = {
+export interface FeltController extends ViewportController, UiController, LayersController, ElementsController, SelectionController {
     iframe: HTMLIFrameElement | null;
-} & ViewportController & UiController & LayersController & ElementsController & SelectionController;
+}
 
 // Warning: (ae-forgotten-export) The symbol "FeltEmbedOptionsSchema" needs to be exported by the entry point client.d.ts
 //

@@ -2,15 +2,7 @@
   "$schema": "https://typedoc-plugin-markdown.org/schema.json",
   "disableSources": true,
   "out": "./docs/api",
-  "entryPoints": [
-    // this is the entry point for the docs
-    "src/modules/initializing/index.ts",
-
-    // each module
-    "src/modules/*/index.ts",
-
-    "src/modules/controller.ts"
-  ],
+  "entryPoints": ["src/modules/*/index.ts"],
   "sort": ["kind", "source-order"],
   "plugin": [
     "typedoc-plugin-zod",

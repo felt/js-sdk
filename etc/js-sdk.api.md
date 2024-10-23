@@ -4,32 +4,32 @@
 
 ```ts
 
-import { b } from './types-Bufara4P.js';
-import { c } from './types-Bufara4P.js';
-import { d } from './types-Bufara4P.js';
-import { e } from './types-Bufara4P.js';
-import { E as Element_2 } from './types-Bufara4P.js';
-import { a as ElementGroup } from './types-Bufara4P.js';
-import { o as EntityIdentifier } from './types-Bufara4P.js';
-import { F } from './types-Bufara4P.js';
-import { f } from './types-Bufara4P.js';
-import { s as FeltBoundary } from './types-Bufara4P.js';
-import { t as FeltZoom } from './types-Bufara4P.js';
-import { G } from './types-Bufara4P.js';
-import { h } from './types-Bufara4P.js';
-import { i } from './types-Bufara4P.js';
-import { j } from './types-Bufara4P.js';
-import { l } from './types-Bufara4P.js';
-import { L as Layer } from './types-Bufara4P.js';
-import { g as LayerGroup } from './types-Bufara4P.js';
-import { k as LegendItem } from './types-Bufara4P.js';
-import { m } from './types-Bufara4P.js';
-import { n } from './types-Bufara4P.js';
-import { p } from './types-Bufara4P.js';
-import { q } from './types-Bufara4P.js';
-import { r } from './types-Bufara4P.js';
-import { S as SetVisibilityRequest } from './types-Bufara4P.js';
-import { V } from './types-Bufara4P.js';
+import { b } from './types-BKiOI28-.js';
+import { c } from './types-BKiOI28-.js';
+import { d } from './types-BKiOI28-.js';
+import { e } from './types-BKiOI28-.js';
+import { E as Element_2 } from './types-BKiOI28-.js';
+import { a as ElementGroup } from './types-BKiOI28-.js';
+import { o as EntityIdentifier } from './types-BKiOI28-.js';
+import { F } from './types-BKiOI28-.js';
+import { f } from './types-BKiOI28-.js';
+import { s as FeltBoundary } from './types-BKiOI28-.js';
+import { t as FeltZoom } from './types-BKiOI28-.js';
+import { G } from './types-BKiOI28-.js';
+import { h } from './types-BKiOI28-.js';
+import { i } from './types-BKiOI28-.js';
+import { j } from './types-BKiOI28-.js';
+import { l } from './types-BKiOI28-.js';
+import { L as Layer } from './types-BKiOI28-.js';
+import { g as LayerGroup } from './types-BKiOI28-.js';
+import { k as LegendItem } from './types-BKiOI28-.js';
+import { m } from './types-BKiOI28-.js';
+import { n } from './types-BKiOI28-.js';
+import { p } from './types-BKiOI28-.js';
+import { q } from './types-BKiOI28-.js';
+import { r } from './types-BKiOI28-.js';
+import { S as SetVisibilityRequest } from './types-BKiOI28-.js';
+import { V } from './types-BKiOI28-.js';
 import * as z from 'zod';
 
 export { Element_2 as Element }

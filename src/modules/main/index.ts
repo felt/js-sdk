@@ -8,8 +8,23 @@ import * as z from "zod";
 import { UiControlsOptionsSchema } from "~/modules/ui/types";
 import { ViewportCenterZoomSchema as VCZSchema } from "~/modules/viewport/types";
 
-import type { FeltController } from "~/modules/controller";
-import { makeController } from "~/modules/controller";
+import {
+  elementsController,
+  type ElementsController,
+} from "~/modules/elements/controller";
+import {
+  layersController,
+  type LayersController,
+} from "~/modules/layers/controller";
+import {
+  selectionController,
+  type SelectionController,
+} from "~/modules/selection/controller";
+import { type UiController, uiController } from "~/modules/ui/controller";
+import {
+  type ViewportController,
+  viewportController,
+} from "~/modules/viewport/controller";
 
 /**
  * The Felt SDK is a library for embedding Felt maps into your website,
@@ -149,6 +164,44 @@ export const Felt = {
     });
   },
 };
+
+/**
+ * This pieces together the controller for the Felt SDK from the various namespaced
+ * controllers.
+ *
+ * @ignore
+ */
+export function makeController(feltWindow: Window): FeltController {
+  return {
+    iframe: null,
+    ...viewportController(feltWindow),
+    ...uiController(feltWindow),
+    ...layersController(feltWindow),
+    ...elementsController(feltWindow),
+    ...selectionController(feltWindow),
+  };
+}
+
+// We could infer the type of the controller from the above definition, but that
+// prevents documentation generation from working properly, as it cannot infer
+// and document the type correctly, so we define it explicitly here.
+
+/**
+ * @public
+ * @interface
+ */
+export type FeltController = {
+  /**
+   * The iframe element containing the Felt map, if it is an embedded map.
+   *
+   * @readonly
+   */
+  iframe: HTMLIFrameElement | null;
+} & ViewportController &
+  UiController &
+  LayersController &
+  ElementsController &
+  SelectionController;
 
 /**
  * A stricter, more type-safe version of Object.entries that preserves the

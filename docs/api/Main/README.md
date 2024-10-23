@@ -1,16 +1,12 @@
 This is the doc comment for the main module
 
-## Contents
+## Index
 
-* [Felt](#felt)
-* [FeltEmbedOptions](#feltembedoptions)
+### Interfaces
 
-## Felt
+* [FeltController](interfaces/FeltController.md)
+* [FeltEmbedOptions](interfaces/FeltEmbedOptions.md)
 
-Re-exports [Felt](variables/Felt.md)
+### Variables
 
-***
-
-## FeltEmbedOptions
-
-Re-exports [FeltEmbedOptions](interfaces/FeltEmbedOptions.md)
+* [Felt](variables/Felt.md)

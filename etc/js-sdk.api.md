@@ -4,32 +4,32 @@
 
 ```ts
 
-import { b } from './types-BKiOI28-.js';
-import { c } from './types-BKiOI28-.js';
-import { d } from './types-BKiOI28-.js';
-import { e } from './types-BKiOI28-.js';
-import { E as Element_2 } from './types-BKiOI28-.js';
-import { a as ElementGroup } from './types-BKiOI28-.js';
-import { o as EntityIdentifier } from './types-BKiOI28-.js';
-import { F } from './types-BKiOI28-.js';
-import { f } from './types-BKiOI28-.js';
-import { s as FeltBoundary } from './types-BKiOI28-.js';
-import { t as FeltZoom } from './types-BKiOI28-.js';
-import { G } from './types-BKiOI28-.js';
-import { h } from './types-BKiOI28-.js';
-import { i } from './types-BKiOI28-.js';
-import { j } from './types-BKiOI28-.js';
-import { l } from './types-BKiOI28-.js';
-import { L as Layer } from './types-BKiOI28-.js';
-import { g as LayerGroup } from './types-BKiOI28-.js';
-import { k as LegendItem } from './types-BKiOI28-.js';
-import { m } from './types-BKiOI28-.js';
-import { n } from './types-BKiOI28-.js';
-import { p } from './types-BKiOI28-.js';
-import { q } from './types-BKiOI28-.js';
-import { r } from './types-BKiOI28-.js';
-import { S as SetVisibilityRequest } from './types-BKiOI28-.js';
-import { V } from './types-BKiOI28-.js';
+import { b } from './types-GC2PUyOG.js';
+import { c } from './types-GC2PUyOG.js';
+import { d } from './types-GC2PUyOG.js';
+import { e } from './types-GC2PUyOG.js';
+import { E as Element_2 } from './types-GC2PUyOG.js';
+import { a as ElementGroup } from './types-GC2PUyOG.js';
+import { o as EntityIdentifier } from './types-GC2PUyOG.js';
+import { F } from './types-GC2PUyOG.js';
+import { f } from './types-GC2PUyOG.js';
+import { s as FeltBoundary } from './types-GC2PUyOG.js';
+import { t as FeltZoom } from './types-GC2PUyOG.js';
+import { G } from './types-GC2PUyOG.js';
+import { h } from './types-GC2PUyOG.js';
+import { i } from './types-GC2PUyOG.js';
+import { j } from './types-GC2PUyOG.js';
+import { l } from './types-GC2PUyOG.js';
+import { L as Layer } from './types-GC2PUyOG.js';
+import { g as LayerGroup } from './types-GC2PUyOG.js';
+import { k as LegendItem } from './types-GC2PUyOG.js';
+import { m } from './types-GC2PUyOG.js';
+import { n } from './types-GC2PUyOG.js';
+import { p } from './types-GC2PUyOG.js';
+import { q } from './types-GC2PUyOG.js';
+import { r } from './types-GC2PUyOG.js';
+import { S as SetVisibilityRequest } from './types-GC2PUyOG.js';
+import { V } from './types-GC2PUyOG.js';
 import * as z from 'zod';
 
 export { Element_2 as Element }

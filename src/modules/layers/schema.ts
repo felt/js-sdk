@@ -7,7 +7,7 @@ import {
   type Method,
 } from "~/lib/types/builders";
 import { SetVisibilityRequestSchema } from "~/modules/shared";
-import { FiltersSchema, type GetFiltersResponse } from "./filter.types";
+import { FiltersSchema, type LayerFilters } from "./filter.types";
 import {
   GetLayerGroupsFilterSchema,
   GetLayersFilterSchema,
@@ -142,7 +142,7 @@ export type LayersSchema = {
 
     getLayerFilters: Method<
       z.infer<typeof GetFiltersMessage>,
-      GetFiltersResponse | null
+      LayerFilters | null
     >;
 
     setLayerFilters: Method<z.infer<typeof SetFiltersMessage>, void>;

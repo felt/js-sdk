@@ -92,7 +92,7 @@ export const FiltersSchema = z.union([
 /**
  * @group Filters
  */
-export interface GetFiltersResponse {
+export interface LayerFilters {
   style: Filters;
   components: Filters;
   ephemeral: Filters;

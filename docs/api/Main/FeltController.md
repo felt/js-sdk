@@ -509,7 +509,7 @@ felt.setLegendItemVisibility({
 
 ### getLayerFilters()
 
-> **getLayerFilters**(`layerId`): `Promise`\<`null` | [`GetFiltersResponse`](../Layers/GetFiltersResponse.md)>
+> **getLayerFilters**(`layerId`): `Promise`\<`null` | [`LayerFilters`](../Layers/LayerFilters.md)>
 
 Get the filters for a layer.
 
@@ -521,7 +521,7 @@ Get the filters for a layer.
 
 #### Returns
 
-`Promise`\<`null` | [`GetFiltersResponse`](../Layers/GetFiltersResponse.md)>
+`Promise`\<`null` | [`LayerFilters`](../Layers/LayerFilters.md)>
 
 #### Remarks
 

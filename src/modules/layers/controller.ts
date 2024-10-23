@@ -1,6 +1,6 @@
 import { listener, method } from "~/lib/types/interface";
 import type { SetVisibilityRequest } from "~/modules/shared";
-import type { Filters, GetFiltersResponse } from "./filter.types";
+import type { Filters, LayerFilters } from "./filter.types";
 import type {
   GetLayerGroupsFilter,
   GetLayersFilter,
@@ -281,7 +281,7 @@ export interface LayersController {
    * console.log(filters.combined, filters.style, filters.ephemeral, filters.components);
    * ```
    */
-  getLayerFilters(layerId: string): Promise<GetFiltersResponse | null>;
+  getLayerFilters(layerId: string): Promise<LayerFilters | null>;
 
   /**
    * Sets the **ephemeral** filters for a layer.

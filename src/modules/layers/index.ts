@@ -21,5 +21,5 @@ export type {
   FilterLogicGate,
   FilterTernary,
   Filters,
-  GetFiltersResponse,
+  LayerFilters,
 } from "./filter.types";

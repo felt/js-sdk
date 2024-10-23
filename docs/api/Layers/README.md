@@ -6,7 +6,7 @@ This is the doc comment for the layers module
 
 ### Filters
 
-* [GetFiltersResponse](GetFiltersResponse.md)
+* [LayerFilters](LayerFilters.md)
 * [FilterLogicGate](FilterLogicGate.md)
 * [FilterExpression](FilterExpression.md)
 * [FilterTernary](FilterTernary.md)

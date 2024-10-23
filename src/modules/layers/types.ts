@@ -1,9 +1,5 @@
-/**
- * This is the doc comment for the layers module
- * @module Layers
- */
 import * as z from "zod";
-import { FeltBoundarySchema } from "../../types/geo";
+import { type FeltBoundary, FeltBoundarySchema } from "../shared";
 
 /**
  * This describes the processing status of a layer.
@@ -14,9 +10,10 @@ import { FeltBoundarySchema } from "../../types/geo";
  * - `failed`: The layer failed to process and cannot be viewed on the map.
  * - `incomplete`: The layer has not been processed.
  *
+ * @group Layers
  */
-type LayerProcessingStatusType = z.infer<typeof LayerProcessingStatus>;
-const LayerProcessingStatus = z.enum([
+export type LayerProcessingStatus = z.infer<typeof LayerProcessingStatusSchema>;
+const LayerProcessingStatusSchema = z.enum([
   "processing",
   "completed",
   "failed",
@@ -24,7 +21,7 @@ const LayerProcessingStatus = z.enum([
 ]);
 
 /**
- * @group Entities
+ * @group Layers
  */
 export interface Layer extends z.infer<typeof LayerSchema> {}
 const LayerSchema = z.object({
@@ -69,8 +66,10 @@ const LayerSchema = z.object({
 
   /**
    * The current processing status of the layer.
+   *
+   * {@link LayerProcessingStatus}
    */
-  status: LayerProcessingStatus,
+  status: LayerProcessingStatusSchema,
 
   /**
    * The geometry type of the layer.
@@ -92,12 +91,14 @@ const LayerSchema = z.object({
   /**
    * The bounding box of the layer. If the layer is processing, or the bounds have otherwise
    * not been calculated or are not available, this will be `null`.
+   *
+   * {@link FeltBoundary}
    */
   bounds: FeltBoundarySchema.nullable(),
 });
 
 /**
- * @group Entities
+ * @group LayerGroups
  */
 export interface LayerGroup extends z.infer<typeof LayerGroupSchema> {}
 const LayerGroupSchema = z.object({
@@ -136,6 +137,8 @@ const LayerGroupSchema = z.object({
 
   /**
    * The bounding box of the layer group.
+   *
+   * {@link FeltBoundary}
    */
   bounds: FeltBoundarySchema.nullable(),
 });
@@ -144,6 +147,7 @@ const LayerGroupSchema = z.object({
  * The response from the `getLayer` method. If the layer doesn't exist, the
  * response will be `null`.
  *
+ * @group Layers
  */
 export interface GetLayerResponse
   extends z.infer<typeof GetLayerResponseSchema> {}
@@ -153,14 +157,16 @@ const GetLayerResponseSchema = LayerSchema;
  * The response from the `getLayerGroup` method. If the layer doesn't exist, the
  * response will be `null`.
  *
+ * @group LayerGroups
  */
 export interface GetLayerGroupResponse
   extends z.infer<typeof GetLayerGroupResponseSchema> {}
 const GetLayerGroupResponseSchema = LayerGroupSchema;
 
 /**
- * The filter to apply to the layers. If this is not passed, all layers will be returned.
+ * The filter to apply when getting layers.
  *
+ * @group Layers
  */
 export interface GetLayersFilter
   extends z.infer<typeof GetLayersFilterSchema> {}
@@ -184,13 +190,16 @@ export const GetLayersFilterSchema = z.object({
  *
  * See {@link Layer} for the structure of the layer object.
  *
+ * @group Layers
  */
-export type GetLayersResponse = z.infer<typeof GetLayersResponseSchema>;
+export interface GetLayersResponse
+  extends z.infer<typeof GetLayersResponseSchema> {}
 const GetLayersResponseSchema = z.array(LayerSchema.nullable());
 
 /**
- * The filter to apply to the layer groups. If this is not passed, all layer groups will be returned.
+ * The filter to apply when getting layer groups.
  *
+ * @group LayerGroups
  */
 export interface GetLayerGroupsFilter
   extends z.infer<typeof GetLayerGroupsFilterSchema> {}
@@ -207,6 +216,7 @@ export const GetLayerGroupsFilterSchema = z.object({
 /**
  * The response from the `getLayerGroups` method.
  *
+ * @group LayerGroups
  */
 export type GetLayerGroupsResponse = z.infer<
   typeof GetLayerGroupsResponseSchema
@@ -216,6 +226,7 @@ const GetLayerGroupsResponseSchema = z.array(LayerGroupSchema.nullable());
 /**
  * The parameters for the `onLayerChange` listener.
  *
+ * @group Layers
  */
 export interface LayerChangeCallbackParams {
   /**
@@ -227,6 +238,7 @@ export interface LayerChangeCallbackParams {
 /**
  * The parameters for the `onLayerGroupChange` listener.
  *
+ * @group LayerGroups
  */
 export interface LayerGroupChangeCallbackParams {
   layerGroup: LayerGroup | null;
@@ -235,6 +247,8 @@ export interface LayerGroupChangeCallbackParams {
 /**
  * A legend item, which often represents a sub-class of features in a
  * layer in the case of categorical or classed layers.
+ *
+ * @group LegendItems
  */
 export interface LegendItem extends LegendItemIdentifier {
   /**
@@ -260,6 +274,8 @@ export interface LegendItem extends LegendItemIdentifier {
 /**
  * The identifier for a legend item. It is a compound key of the layer to
  * which the legend item belongs and the legend item's own id.
+ *
+ * @group LegendItems
  */
 export interface LegendItemIdentifier
   extends z.infer<typeof LegendItemIdentifierSchema> {}
@@ -278,6 +294,8 @@ export const LegendItemIdentifierSchema = z.object({
 
 /**
  * Filter for legend items. If nothing is passed, all legend items will be returned.
+ *
+ * @group LegendItems
  */
 export interface LegendItemsFilter
   extends z.infer<typeof LegendItemsFilterSchema> {}
@@ -295,6 +313,8 @@ export const LegendItemsFilterSchema = z.object({
 
 /**
  * The parameters for the `onLegendItemChange` listener.
+ *
+ * @group LegendItems
  */
 export interface LegendItemChangeCallbackParams {
   /**
@@ -302,11 +322,3 @@ export interface LegendItemChangeCallbackParams {
    */
   legendItem: LegendItem | null;
 }
-
-export type {
-  FilterExpression,
-  FilterLogicGate,
-  Filters,
-  FilterTernary,
-  GetFiltersResponse,
-} from "./filter.types";

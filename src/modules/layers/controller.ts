@@ -1,5 +1,5 @@
 import { listener, method } from "../../types/interface";
-import type { SetVisibilityRequest } from "../../types/visibility";
+import type { SetVisibilityRequest } from "../shared";
 import type { Filters, GetFiltersResponse } from "./filter.types";
 import type {
   GetLayerGroupsFilter,
@@ -48,7 +48,7 @@ export const layersController = (feltWindow: Window): LayersController => ({
  * Layers can be organised into groups, and their groups can also have their
  * visibility toggled.
  *
- * @category Layers
+ * @group Layers
  * @public
  */
 export interface LayersController {

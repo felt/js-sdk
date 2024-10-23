@@ -4,29 +4,32 @@
 
 ```ts
 
-import { b } from './types-BwjivB8e.js';
-import { c } from './types-BwjivB8e.js';
-import { d } from './types-BwjivB8e.js';
-import { e } from './types-BwjivB8e.js';
-import { E as Element_2 } from './types-BwjivB8e.js';
-import { a as ElementGroup } from './types-BwjivB8e.js';
-import { o as EntityIdentifier } from './types-BwjivB8e.js';
-import { F } from './types-BwjivB8e.js';
-import { f } from './types-BwjivB8e.js';
-import { G } from './types-BwjivB8e.js';
-import { h } from './types-BwjivB8e.js';
-import { i } from './types-BwjivB8e.js';
-import { j } from './types-BwjivB8e.js';
-import { l } from './types-BwjivB8e.js';
-import { L as Layer } from './types-BwjivB8e.js';
-import { g as LayerGroup } from './types-BwjivB8e.js';
-import { k as LegendItem } from './types-BwjivB8e.js';
-import { m } from './types-BwjivB8e.js';
-import { n } from './types-BwjivB8e.js';
-import { p } from './types-BwjivB8e.js';
-import { q } from './types-BwjivB8e.js';
-import { S } from './types-BwjivB8e.js';
-import { V } from './types-BwjivB8e.js';
+import { b } from './types-Bufara4P.js';
+import { c } from './types-Bufara4P.js';
+import { d } from './types-Bufara4P.js';
+import { e } from './types-Bufara4P.js';
+import { E as Element_2 } from './types-Bufara4P.js';
+import { a as ElementGroup } from './types-Bufara4P.js';
+import { o as EntityIdentifier } from './types-Bufara4P.js';
+import { F } from './types-Bufara4P.js';
+import { f } from './types-Bufara4P.js';
+import { s as FeltBoundary } from './types-Bufara4P.js';
+import { t as FeltZoom } from './types-Bufara4P.js';
+import { G } from './types-Bufara4P.js';
+import { h } from './types-Bufara4P.js';
+import { i } from './types-Bufara4P.js';
+import { j } from './types-Bufara4P.js';
+import { l } from './types-Bufara4P.js';
+import { L as Layer } from './types-Bufara4P.js';
+import { g as LayerGroup } from './types-Bufara4P.js';
+import { k as LegendItem } from './types-Bufara4P.js';
+import { m } from './types-Bufara4P.js';
+import { n } from './types-Bufara4P.js';
+import { p } from './types-Bufara4P.js';
+import { q } from './types-Bufara4P.js';
+import { r } from './types-Bufara4P.js';
+import { S as SetVisibilityRequest } from './types-Bufara4P.js';
+import { V } from './types-Bufara4P.js';
 import * as z from 'zod';
 
 export { Element_2 as Element }
@@ -66,13 +69,7 @@ export const Felt: {
     connect(feltWindow: Window): Promise<FeltController>;
 };
 
-// Warning: (ae-forgotten-export) The symbol "FeltBoundarySchema" needs to be exported by the entry point client.d.ts
-//
-// @public
-export type FeltBoundary = z.infer<typeof FeltBoundarySchema>;
-
-// @internal (undocumented)
-const FeltBoundarySchema: z.ZodTuple<[z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber], null>;
+export { FeltBoundary }
 
 // Warning: (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
 // Warning: (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
@@ -177,13 +174,7 @@ const FeltEmbedOptionsSchema: z.ZodObject<{
     } | undefined;
 }>;
 
-// Warning: (ae-forgotten-export) The symbol "FeltZoomSchema" needs to be exported by the entry point client.d.ts
-//
-// @public
-export type FeltZoom = z.infer<typeof FeltZoomSchema>;
-
-// @internal (undocumented)
-const FeltZoomSchema: z.ZodNumber;
+export { FeltZoom }
 
 export { Layer }
 
@@ -235,26 +226,10 @@ export { LegendItem }
 // @public
 interface SelectionController {
     getSelection(): Promise<EntityIdentifier[]>;
-    onSelectionChange(params: S): VoidFunction;
+    onSelectionChange(params: p): VoidFunction;
 }
 
-// Warning: (ae-forgotten-export) The symbol "SetVisibilityRequestSchema" needs to be exported by the entry point client.d.ts
-//
-// @public
-export interface SetVisibilityRequest extends z.infer<typeof SetVisibilityRequestSchema> {
-}
-
-// @internal (undocumented)
-const SetVisibilityRequestSchema: z.ZodObject<{
-    show: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
-    hide: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
-}, "strip", z.ZodTypeAny, {
-    show?: string[] | undefined;
-    hide?: string[] | undefined;
-}, {
-    show?: string[] | undefined;
-    hide?: string[] | undefined;
-}>;
+export { SetVisibilityRequest }
 
 // @public
 interface UiController {
@@ -295,8 +270,8 @@ const UiControlsOptionsSchema: z.ZodObject<{
 // @public
 type ViewportController = {
     getViewport(): Promise<V>;
-    setViewport(viewport: p): void;
-    fitViewportToBounds(bounds: q): void;
+    setViewport(viewport: q): void;
+    fitViewportToBounds(bounds: r): void;
     onViewportMove(args: {
         handler: (viewport: V) => void;
     }): VoidFunction;

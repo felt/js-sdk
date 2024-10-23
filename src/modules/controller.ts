@@ -1,9 +1,8 @@
 /**
  * This is the doc comment for the controller module
  * The FeltController allows you to control, inspect and observe a Felt map.
- * The various ways to interact with the map are namespaced for clarity.
  *
- * @module FeltController
+ * @module Main
  */
 import {
   elementsController,
@@ -48,6 +47,8 @@ export function makeController(feltWindow: Window): FeltController {
 export type FeltController = {
   /**
    * The iframe element containing the Felt map, if it is an embedded map.
+   *
+   * @readonly
    */
   iframe: HTMLIFrameElement | null;
 } & ViewportController &
@@ -55,10 +56,3 @@ export type FeltController = {
   LayersController &
   ElementsController &
   SelectionController;
-
-/**
- * Without this we don't get a Table of Contents for FeltController
- * @public
- * @interface
- */
-export type Testingtesting = {};

@@ -14,8 +14,11 @@ const ScalarFilterOperatorSchema = z.enum([
   "isnt", // Is not
 ]);
 
-const FilterLogicGateSchema = z.enum(["and", "or"]);
+/**
+ * @group Filters
+ */
 export type FilterLogicGate = z.infer<typeof FilterLogicGateSchema>;
+const FilterLogicGateSchema = z.enum(["and", "or"]);
 
 const AnyFilterValueSchema = z.union([
   z.number(),
@@ -38,12 +41,23 @@ const ScalarValueFilterExpressionSchema = z.tuple([
   AnyFilterValueSchema,
 ]);
 
+/**
+ * @group Filters
+ */
+export type FilterExpression = z.infer<typeof FilterExpressionSchema>;
 const FilterExpressionSchema = z.union([
   ArrayValueFilterExpressionSchema,
   ScalarValueFilterExpressionSchema,
 ]);
-export type FilterExpression = z.infer<typeof FilterExpressionSchema>;
 
+/**
+ * @group Filters
+ */
+export type FilterTernary = [
+  FilterTernary | FilterExpression | null | boolean,
+  FilterLogicGate,
+  FilterTernary | FilterExpression | null | boolean,
+];
 const FilterTernarySchema: z.ZodType<FilterTernary> = z.tuple([
   z.lazy(() =>
     z.union([
@@ -64,25 +78,23 @@ const FilterTernarySchema: z.ZodType<FilterTernary> = z.tuple([
   ),
 ]);
 
-export type FilterTernary = [
-  FilterTernary | FilterExpression | null | boolean,
-  FilterLogicGate,
-  FilterTernary | FilterExpression | null | boolean,
-];
-
+/**
+ * @group Filters
+ */
+export type Filters = FilterTernary | FilterExpression | null | boolean;
 export const FiltersSchema = z.union([
   FilterTernarySchema,
   FilterExpressionSchema,
   z.null(),
   z.boolean(),
 ]);
-export type Filters = z.infer<typeof FiltersSchema>;
 
-const GetFiltersResponseSchema = z.object({
-  style: FiltersSchema,
-  components: FiltersSchema,
-  ephemeral: FiltersSchema,
-
-  combined: FiltersSchema,
-});
-export type GetFiltersResponse = z.infer<typeof GetFiltersResponseSchema>;
+/**
+ * @group Filters
+ */
+export interface GetFiltersResponse {
+  style: Filters;
+  components: Filters;
+  ephemeral: Filters;
+  combined: Filters;
+}

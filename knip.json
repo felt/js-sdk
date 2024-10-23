@@ -3,9 +3,8 @@
   "entry": [
     "src/client.ts",
     "src/handler.ts",
-    "src/modules/*/types.ts",
-    "src/modules/controller.ts",
-    "src/modules/common.ts"
+    "src/modules/*/index.ts",
+    "src/modules/controller.ts"
   ],
   "project": ["src/**/*.ts"],
   "ignoreDependencies": ["remark-toc"]

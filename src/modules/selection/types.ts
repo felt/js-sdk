@@ -1,9 +1,5 @@
 /**
- * @module Selection
- */
-
-/**
- * @category Callbacks
+ * @group Callbacks
  */
 export interface SelectionChangeParams {
   handler: (change: SelectionChange) => void;
@@ -12,7 +8,7 @@ export interface SelectionChangeParams {
 /**
  * The payload to the `onSelectionChange` handler.
  *
- * @category Callbacks
+ * @group Callbacks
  */
 export interface SelectionChange {
   /**
@@ -35,6 +31,7 @@ export interface SelectionChange {
  * Identifies an element on the map.
  *
  * @interface
+ * @group Identifiers
  */
 export type ElementIdentifier = {
   type: "element";
@@ -45,6 +42,7 @@ export type ElementIdentifier = {
  * Identifies an element group.
  *
  * @interface
+ * @group Identifiers
  */
 export type ElementGroupIdentifier = {
   type: "elementGroup";
@@ -55,6 +53,7 @@ export type ElementGroupIdentifier = {
  * Identifies a layer on the map.
  *
  * @interface
+ * @group Identifiers
  */
 export type LayerIdentifier = {
   type: "layer";
@@ -65,6 +64,7 @@ export type LayerIdentifier = {
  * Identifies a layer group on the map.
  *
  * @interface
+ * @group Identifiers
  */
 export type LayerGroupIdentifier = {
   type: "layerGroup";
@@ -75,6 +75,7 @@ export type LayerGroupIdentifier = {
  * Identifies a feature on the map, and the layer it belongs to.
  *
  * @interface
+ * @group Identifiers
  */
 export type FeatureIdentifier = {
   type: "feature";
@@ -83,10 +84,9 @@ export type FeatureIdentifier = {
 };
 
 /**
-/**
  * An identifier for an entity on the map.
  *
- * @category Entities
+ * @group Identifiers
  */
 export type EntityIdentifier =
   | ElementIdentifier

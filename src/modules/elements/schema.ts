@@ -6,7 +6,7 @@ import {
   type Listener,
   type Method,
 } from "../../types/builders";
-import { SetVisibilityRequestSchema } from "../../types/visibility";
+import { SetVisibilityRequestSchema } from "../shared";
 import {
   GetElementGroupsFilterSchema,
   GetElementsFilterSchema,

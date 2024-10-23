@@ -1,20 +1,13 @@
-/**
- * This is the doc comment for the viewport module
- *
- * @module Viewport
- */
 import * as z from "zod";
 import {
+  type FeltBoundary,
+  type FeltZoom,
+  type LatLng,
   FeltBoundarySchema,
   FeltZoomSchema,
   LatLngSchema,
-} from "../../types/geo";
+} from "../shared";
 
-// export interface ViewportCenterZoom
-//   extends z.infer<typeof ViewportCenterZoomSchema> {}
-/**
- * @ignore
- */
 export const ViewportCenterZoomSchema = z.object({
   /**
    * The center of the viewport in latitude and longitude.
@@ -23,11 +16,20 @@ export const ViewportCenterZoomSchema = z.object({
 
   /**
    * The zoom level of the viewport.
+   *
+   * {@link FeltZoom}
    */
   zoom: FeltZoomSchema,
 });
 
-export interface ViewportState extends z.infer<typeof ViewportStateSchema> {}
+/**
+ *
+ */
+export interface ViewportState {
+  center: LatLng;
+  zoom: FeltZoom;
+  bounds: FeltBoundary;
+}
 const ViewportStateSchema = z.object({
   center: LatLngSchema,
   zoom: FeltZoomSchema,
@@ -36,13 +38,9 @@ const ViewportStateSchema = z.object({
 
 /**
  * The parameters for the `setViewport` method.
- * *
  */
 export interface SetViewportCenterZoomParams
   extends z.infer<typeof SetViewportCenterZoomParamsSchema> {}
-/**
- * @ignore
- */
 export const SetViewportCenterZoomParamsSchema = z.object({
   center: ViewportCenterZoomSchema.shape.center.optional(),
   zoom: ViewportCenterZoomSchema.shape.zoom.optional(),
@@ -50,14 +48,14 @@ export const SetViewportCenterZoomParamsSchema = z.object({
 
 /**
  * The parameters for the `fitViewportToBounds` method.
- * *
  */
 export interface ViewportFitBoundsParams
   extends z.infer<typeof ViewportFitBoundsParamsSchema> {}
-/**
- * @ignore
- * @internal
- */
 export const ViewportFitBoundsParamsSchema = z.object({
+  /**
+   * The bounds to fit the viewport to.
+   *
+   * {@link FeltBoundary}
+   */
   bounds: FeltBoundarySchema,
 });

@@ -1,5 +1,6 @@
 import { listener, method } from "../../types/interface";
-import type { SetVisibilityRequest } from "../../types/visibility";
+import type { SetVisibilityRequest } from "../shared";
+
 import type {
   Element,
   ElementChangeCallbackParams,
@@ -26,7 +27,7 @@ export const elementsController = (feltWindow: Window): ElementsController => ({
  * The Elements controller allows you to get information about the elements on the
  * map, and make changes to their visibility.
  *
- * @category Elements
+ * @group Elements
  * @public
  */
 export interface ElementsController {

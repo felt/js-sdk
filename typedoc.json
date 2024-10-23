@@ -3,9 +3,13 @@
   "disableSources": true,
   "out": "./docs/api",
   "entryPoints": [
-    "src/modules/*/types.ts",
-    "src/modules/controller.ts",
-    "src/modules/common.ts"
+    // this is the entry point for the docs
+    "src/modules/initializing/index.ts",
+
+    // each module
+    "src/modules/*/index.ts",
+
+    "src/modules/controller.ts"
   ],
   "sort": ["kind", "source-order"],
   "plugin": [
@@ -40,7 +44,8 @@
 
   "remarkPlugins": [["remark-toc", { "maxDepth": 4 }]],
 
-  "outputFileStrategy": "modules",
-  "flattenOutputFiles": true,
-  "theme": "customTheme"
+  "outputFileStrategy": "members",
+  "flattenOutputFiles": false,
+  "theme": "customTheme",
+  "entryModule": "Initializing"
 }

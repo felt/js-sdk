@@ -1,5 +1,5 @@
 import { AllMessagesSchema, PreliminarySchema } from "./lib/schema";
-import type { FeltHandlers } from "./types/interface";
+import type { FeltHandlers } from "./lib/types/interface";
 
 /**
  * This function creates a message handler for the Felt SDK. Its job is to start listening

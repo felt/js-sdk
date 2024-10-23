@@ -1,5 +1,5 @@
 import * as z from "zod";
-import { type FeltBoundary, FeltBoundarySchema } from "../shared";
+import { type FeltBoundary, FeltBoundarySchema } from "~/modules/shared";
 
 /**
  * This describes the processing status of a layer.

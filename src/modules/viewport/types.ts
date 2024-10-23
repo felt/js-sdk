@@ -6,7 +6,7 @@ import {
   FeltBoundarySchema,
   FeltZoomSchema,
   LatLngSchema,
-} from "../shared";
+} from "~/modules/shared";
 
 export const ViewportCenterZoomSchema = z.object({
   /**

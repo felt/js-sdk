@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
-import { Felt, type FeltController } from "../src/client.js";
-import { createWindow } from "./window.js";
+import { Felt, type FeltController } from "~/client";
+import { createWindow } from "./window";
 
 describe("Embedding an iframe with theFelt SDK", () => {
   let container: HTMLElement;

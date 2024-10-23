@@ -1,6 +1,6 @@
 import * as z from "zod";
 
-import { allModules } from "../modules/schema";
+import { allModules } from "~/modules/schema";
 
 export type ModuleSchema = {
   methods: null | Array<z.ZodDiscriminatedUnionOption<"type">>;

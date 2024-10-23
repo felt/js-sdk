@@ -1,4 +1,4 @@
-import type { AllModules } from "../modules/schema";
+import type { AllModules } from "~/modules/schema";
 import type { PromiseOrNot, UnionToIntersection } from "./utils";
 
 export type FeltHandlers = {

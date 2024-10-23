@@ -5,11 +5,11 @@
  */
 
 import * as z from "zod";
-import { UiControlsOptionsSchema } from "../ui/types";
-import { ViewportCenterZoomSchema as VCZSchema } from "../viewport/types";
+import { UiControlsOptionsSchema } from "~/modules/ui/types";
+import { ViewportCenterZoomSchema as VCZSchema } from "~/modules/viewport/types";
 
-import type { FeltController } from "../controller";
-import { makeController } from "../controller";
+import type { FeltController } from "~/modules/controller";
+import { makeController } from "~/modules/controller";
 
 /**
  * The Felt SDK is a library for embedding Felt maps into your website,

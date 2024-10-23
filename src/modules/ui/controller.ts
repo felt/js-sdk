@@ -1,4 +1,4 @@
-import { method } from "../../types/interface";
+import { method } from "~/lib/types/interface";
 import type { UiControlsOptions } from "./types";
 
 /**

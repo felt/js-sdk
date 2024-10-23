@@ -1,5 +1,5 @@
-import { listener, method } from "../../types/interface";
-import type { SetVisibilityRequest } from "../shared";
+import { listener, method } from "~/lib/types/interface";
+import type { SetVisibilityRequest } from "~/modules/shared";
 
 import type {
   Element,

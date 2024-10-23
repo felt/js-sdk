@@ -1,4 +1,5 @@
-This is the doc comment for the elements module
+The Felt SDK lets you get information about the elements in the map, and the
+groups that they belong to.
 
 ## Index
 

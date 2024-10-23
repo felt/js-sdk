@@ -1,6 +1,6 @@
 import * as z from "zod";
-import type { ModuleSchema } from "../../lib/schema";
-import { methodMessage, type Method } from "../../types/builders";
+import type { ModuleSchema } from "~/lib/schema";
+import { methodMessage, type Method } from "~/lib/types/builders";
 import { UiControlsOptionsSchema } from "./types";
 
 const UiControlsMessage = methodMessage(

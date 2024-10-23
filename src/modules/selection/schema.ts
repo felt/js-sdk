@@ -1,11 +1,11 @@
 import * as z from "zod";
-import type { ModuleSchema } from "../../lib/schema";
+import type { ModuleSchema } from "~/lib/schema";
 import {
   listenerMessageNoParams,
   methodMessage,
   type Listener,
   type Method,
-} from "../../types/builders";
+} from "~/lib/types/builders";
 import type { EntityIdentifier } from "./types";
 
 const GetSelectionMessage = methodMessage("getSelection", z.undefined());

@@ -1,8 +1,9 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
-import { Felt } from "../src/client.js";
-import { createMessageHandler } from "../src/handler.js";
-import type { ViewportState } from "../src/modules/viewport/types.js";
-import { createWindow } from "./window.js";
+import { Felt } from "~/client";
+
+import { createMessageHandler } from "~/handler";
+import type { ViewportState } from "~/modules/viewport/types";
+import { createWindow } from "./window";
 
 type Methods = Parameters<typeof createMessageHandler>[1]["methods"];
 type Listeners = Parameters<typeof createMessageHandler>[1]["listeners"];

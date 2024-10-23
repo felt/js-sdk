@@ -1,4 +1,4 @@
-import { listener, method } from "../../types/interface";
+import { listener, method } from "~/lib/types/interface";
 import type { EntityIdentifier, SelectionChangeParams } from "./types";
 
 /**

@@ -77,14 +77,14 @@ export { FeltBoundary }
 // Warning: (ae-forgotten-export) The symbol "ElementsController" needs to be exported by the entry point client.d.ts
 // Warning: (ae-forgotten-export) The symbol "SelectionController" needs to be exported by the entry point client.d.ts
 //
-// @public (undocumented)
+// @public
 export type FeltController = {
     iframe: HTMLIFrameElement | null;
 } & ViewportController & UiController & LayersController & ElementsController & SelectionController;
 
 // Warning: (ae-forgotten-export) The symbol "FeltEmbedOptionsSchema" needs to be exported by the entry point client.d.ts
 //
-// @public (undocumented)
+// @public
 export interface FeltEmbedOptions extends z.infer<typeof FeltEmbedOptionsSchema> {
 }
 

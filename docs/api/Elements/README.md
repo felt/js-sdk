@@ -1,3 +1,5 @@
+***
+
 The Felt SDK lets you get information about the elements in the map, and the
 groups that they belong to.
 
@@ -5,12 +7,12 @@ groups that they belong to.
 
 ### ElementGroups
 
-* [ElementGroup](interfaces/ElementGroup.md)
-* [GetElementGroupsFilter](interfaces/GetElementGroupsFilter.md)
-* [ElementGroupChangeCallbackParams](interfaces/ElementGroupChangeCallbackParams.md)
+* [ElementGroup](ElementGroup.md)
+* [GetElementGroupsFilter](GetElementGroupsFilter.md)
+* [ElementGroupChangeCallbackParams](ElementGroupChangeCallbackParams.md)
 
 ### Elements
 
-* [Element](interfaces/Element.md)
-* [GetElementsFilter](interfaces/GetElementsFilter.md)
-* [ElementChangeCallbackParams](interfaces/ElementChangeCallbackParams.md)
+* [Element](Element.md)
+* [GetElementsFilter](GetElementsFilter.md)
+* [ElementChangeCallbackParams](ElementChangeCallbackParams.md)

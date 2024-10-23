@@ -1,12 +1,14 @@
+***
+
 This is the doc comment for the main module
 
 ## Index
 
-### Interfaces
+### Controller
 
-* [FeltController](interfaces/FeltController.md)
-* [FeltEmbedOptions](interfaces/FeltEmbedOptions.md)
+* [FeltController](FeltController.md)
 
-### Variables
+### Instantiation
 
-* [Felt](variables/Felt.md)
+* [FeltEmbedOptions](FeltEmbedOptions.md)
+* [Felt](Felt.md)

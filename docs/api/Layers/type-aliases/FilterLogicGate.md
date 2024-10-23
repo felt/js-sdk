@@ -1,1 +1,0 @@
-> **FilterLogicGate**: `"and"` | `"or"`

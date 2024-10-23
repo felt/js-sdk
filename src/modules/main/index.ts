@@ -31,6 +31,8 @@ import {
  * allowing you to control and inspect the map programmatically.
  *
  * @public
+ *
+ * @group Instantiation
  */
 export const Felt = {
   /**
@@ -189,6 +191,7 @@ export function makeController(feltWindow: Window): FeltController {
 /**
  * @public
  * @interface
+ * @group Controller
  */
 export type FeltController = {
   /**
@@ -226,6 +229,7 @@ const FeltEmbedOptionsSchema = z.object({
 });
 
 /**
+ * @group Instantiation
  * @public
  */
 export interface FeltEmbedOptions

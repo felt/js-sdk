@@ -1,5 +1,11 @@
 # @feltjs/js-sdk
 
+## 0.9.0
+
+### Minor Changes
+
+- 17a9725: Public release
+
 ## 0.8.0
 
 ### Minor Changes

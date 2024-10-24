@@ -1,5 +1,11 @@
 # @feltjs/js-sdk
 
+## 0.9.2
+
+### Patch Changes
+
+- 904e4c6: Fix incorrect bundling
+
 ## 0.9.1
 
 ### Patch Changes

@@ -1,4 +1,4 @@
-# @feltmaps/js-sdk
+# @feltjs/js-sdk
 
 An SDK for Felt maps.
 
@@ -9,13 +9,13 @@ Documentation site is coming soon.
 Install the SDK using your preferred package manager:
 
 ```bash
-npm install @feltmaps/js-sdk
+npm install @feltjs/js-sdk
 ```
 
 Embed a Felt map in your app and use the SDK to control it:
 
 ```typescript
-import { Felt } from "@feltmaps/js-sdk";
+import { Felt } from "@feltjs/js-sdk";
 
 const map = await Felt.embed(
   document.querySelector("#container"),

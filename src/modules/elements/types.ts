@@ -32,6 +32,12 @@ const ElementSchema = z.object({
    * to users via the element info button in the legend.
    */
   description: z.string().nullable(),
+
+  /**
+   * The attributes of the element, which can be added via the Element Inspector
+   * under the Detail tab.
+   */
+  attributes: z.record(z.unknown()),
 });
 
 /**

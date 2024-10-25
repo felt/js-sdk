@@ -42,3 +42,12 @@ on how the element's legend is configured in its style.
 
 The element description forms part of the element's metadata. This is visible
 to users via the element info button in the legend.
+
+***
+
+### attributes
+
+> **attributes**: `Record`\<`string`, `unknown`>
+
+The attributes of the element, which can be added via the Element Inspector
+under the Detail tab.

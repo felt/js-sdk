@@ -4,33 +4,33 @@
 
 ```ts
 
-import { b } from './types-fZ1tuugG.js';
-import { c } from './types-fZ1tuugG.js';
-import { d } from './types-fZ1tuugG.js';
-import { e } from './types-fZ1tuugG.js';
-import { E as Element_2 } from './types-fZ1tuugG.js';
-import { a as ElementGroup } from './types-fZ1tuugG.js';
-import { o as EntityNode } from './types-fZ1tuugG.js';
-import { F } from './types-fZ1tuugG.js';
-import { f } from './types-fZ1tuugG.js';
-import { r as Feature } from './types-fZ1tuugG.js';
-import { s as FeltBoundary } from './types-fZ1tuugG.js';
-import { t as FeltZoom } from './types-fZ1tuugG.js';
-import { G } from './types-fZ1tuugG.js';
-import { h } from './types-fZ1tuugG.js';
-import { i } from './types-fZ1tuugG.js';
-import { j } from './types-fZ1tuugG.js';
-import { l } from './types-fZ1tuugG.js';
-import { L as Layer } from './types-fZ1tuugG.js';
-import { g as LayerGroup } from './types-fZ1tuugG.js';
-import { k as LegendItem } from './types-fZ1tuugG.js';
-import { M } from './types-fZ1tuugG.js';
-import { m } from './types-fZ1tuugG.js';
-import { n } from './types-fZ1tuugG.js';
-import { p } from './types-fZ1tuugG.js';
-import { q } from './types-fZ1tuugG.js';
-import { S as SetVisibilityRequest } from './types-fZ1tuugG.js';
-import { V } from './types-fZ1tuugG.js';
+import { b } from './types-COVw-euk.js';
+import { c } from './types-COVw-euk.js';
+import { d } from './types-COVw-euk.js';
+import { e } from './types-COVw-euk.js';
+import { E as Element_2 } from './types-COVw-euk.js';
+import { a as ElementGroup } from './types-COVw-euk.js';
+import { o as EntityNode } from './types-COVw-euk.js';
+import { F } from './types-COVw-euk.js';
+import { f } from './types-COVw-euk.js';
+import { r as Feature } from './types-COVw-euk.js';
+import { s as FeltBoundary } from './types-COVw-euk.js';
+import { t as FeltZoom } from './types-COVw-euk.js';
+import { G } from './types-COVw-euk.js';
+import { h } from './types-COVw-euk.js';
+import { i } from './types-COVw-euk.js';
+import { j } from './types-COVw-euk.js';
+import { l } from './types-COVw-euk.js';
+import { L as Layer } from './types-COVw-euk.js';
+import { g as LayerGroup } from './types-COVw-euk.js';
+import { k as LegendItem } from './types-COVw-euk.js';
+import { M } from './types-COVw-euk.js';
+import { m } from './types-COVw-euk.js';
+import { n } from './types-COVw-euk.js';
+import { p } from './types-COVw-euk.js';
+import { q } from './types-COVw-euk.js';
+import { S as SetVisibilityRequest } from './types-COVw-euk.js';
+import { V } from './types-COVw-euk.js';
 import { z } from 'zod';
 
 export { Element_2 as Element }

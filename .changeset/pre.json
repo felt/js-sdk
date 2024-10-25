@@ -5,6 +5,7 @@
     "@feltjs/js-sdk": "0.9.2"
   },
   "changesets": [
-    "eighty-flowers-bake"
+    "eighty-flowers-bake",
+    "fifty-mangos-shave"
   ]
 }

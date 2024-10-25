@@ -28,7 +28,7 @@ export const elementsController = (feltWindow: Window): ElementsController => ({
  * map, and make changes to their visibility.
  *
  * @group Elements
- * @public
+ * @internal
  */
 export interface ElementsController {
   /**

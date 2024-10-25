@@ -1,6 +1,7 @@
 ## Modules
 
 * [Elements](Elements)
+* [Interactions](Interactions)
 * [Layers](Layers)
 * [Main](Main)
 * [Selection](Selection)

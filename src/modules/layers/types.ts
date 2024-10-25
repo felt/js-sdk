@@ -1,6 +1,8 @@
 import { z } from "zod";
 import { type FeltBoundary, FeltBoundarySchema } from "~/modules/shared";
 
+export type { Feature } from "./features/types";
+
 /**
  * This describes the processing status of a layer.
  *

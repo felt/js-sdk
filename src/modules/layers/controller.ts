@@ -49,7 +49,7 @@ export const layersController = (feltWindow: Window): LayersController => ({
  * visibility toggled.
  *
  * @group Layers
- * @public
+ * @internal
  */
 export interface LayersController {
   // LAYERS

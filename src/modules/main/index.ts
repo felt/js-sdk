@@ -42,6 +42,10 @@ import {
   type ViewportController,
   viewportController,
 } from "~/modules/viewport/controller";
+import {
+  interactionsController,
+  type InteractionsController,
+} from "../interactions/controller";
 import type { FeltEmbedOptions } from "./types";
 
 /**
@@ -199,6 +203,7 @@ export function makeController(feltWindow: Window): FeltController {
     ...layersController(feltWindow),
     ...elementsController(feltWindow),
     ...selectionController(feltWindow),
+    ...interactionsController(feltWindow),
   };
 }
 
@@ -215,7 +220,8 @@ export interface FeltController
     UiController,
     LayersController,
     ElementsController,
-    SelectionController {
+    SelectionController,
+    InteractionsController {
   /**
    * The iframe element containing the Felt map, if it is an embedded map.
    *

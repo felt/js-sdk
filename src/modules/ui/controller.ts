@@ -13,7 +13,7 @@ export const uiController = (feltWindow: Window): UiController => ({
  * embedded map.
  *
  * @group UI Controls
- * @public
+ * @internal
  */
 export interface UiController {
   /**

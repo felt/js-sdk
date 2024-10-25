@@ -15,7 +15,7 @@ export const selectionController = (
  * The Selection controller allows you to listen for changes to the selection on the map.
  *
  * @group Selection
- * @public
+ * @internal
  */
 export interface SelectionController {
   /**

@@ -3,7 +3,7 @@ import { UiControlsOptionsSchema } from "~/modules/ui/types";
 import { ViewportCenterZoomSchema } from "~/modules/viewport/types";
 
 /**
- * @public
+ * @internal
  */
 const FeltEmbedOptionsSchema = z.object({
   /**

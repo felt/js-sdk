@@ -29,6 +29,8 @@
 * [Events](#events)
   * [onElementChange()](#onelementchange)
   * [onElementGroupChange()](#onelementgroupchange)
+  * [onPointerClick()](#onpointerclick)
+  * [onPointerMove()](#onpointermove)
   * [onLayerChange()](#onlayerchange)
   * [onLayerGroupChange()](#onlayergroupchange)
   * [onLegendItemChange()](#onlegenditemchange)
@@ -648,6 +650,70 @@ A function to unsubscribe from the listener
 const unsubscribe = felt.onElementGroupChange({
   options: { id: "element-group-1" },
   handler: elementGroup => console.log(elementGroup.id),
+});
+
+// later on...
+unsubscribe();
+```
+
+***
+
+### onPointerClick()
+
+> **onPointerClick**(`params`): `VoidFunction`
+
+Allows you to be notified the user clicks on the map.
+
+#### Parameters
+
+| Parameter        | Type                |
+| ---------------- | ------------------- |
+| `params`         | `object`            |
+| `params.handler` | (`event`) => `void` |
+
+#### Returns
+
+`VoidFunction`
+
+A function to unsubscribe from the listener
+
+#### Example
+
+```typescript
+const unsubscribe = felt.onPointerClick({
+  handler: (event) => console.log(event.center, event.features),
+});
+
+// later on...
+unsubscribe();
+```
+
+***
+
+### onPointerMove()
+
+> **onPointerMove**(`params`): `VoidFunction`
+
+Allows you to be notified the user moves the mouse over the map.
+
+#### Parameters
+
+| Parameter        | Type                |
+| ---------------- | ------------------- |
+| `params`         | `object`            |
+| `params.handler` | (`event`) => `void` |
+
+#### Returns
+
+`VoidFunction`
+
+A function to unsubscribe from the listener
+
+#### Example
+
+```typescript
+const unsubscribe = felt.onPointerMove({
+  handler: (event) => console.log(event.center, event.features),
 });
 
 // later on...

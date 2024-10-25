@@ -16,6 +16,7 @@
  * @module Layers
  */
 export type {
+  Feature,
   GetLayerGroupsFilter,
   GetLayersFilter,
   Layer,
@@ -28,8 +29,6 @@ export type {
   LegendItemIdentifier,
   LegendItemsFilter,
 } from "./types";
-
-export type { Feature } from "./features/types";
 
 export type {
   FilterExpression,

@@ -4,38 +4,40 @@
 
 ```ts
 
-import { b } from './types-BK_3YlPE.js';
-import { c } from './types-BK_3YlPE.js';
-import { d } from './types-BK_3YlPE.js';
-import { e } from './types-BK_3YlPE.js';
-import { E as Element_2 } from './types-BK_3YlPE.js';
-import { a as ElementGroup } from './types-BK_3YlPE.js';
-import { o as EntityNode } from './types-BK_3YlPE.js';
-import { F } from './types-BK_3YlPE.js';
-import { f } from './types-BK_3YlPE.js';
-import { r as FeltBoundary } from './types-BK_3YlPE.js';
-import { s as FeltZoom } from './types-BK_3YlPE.js';
-import { G } from './types-BK_3YlPE.js';
-import { h } from './types-BK_3YlPE.js';
-import { i } from './types-BK_3YlPE.js';
-import { j } from './types-BK_3YlPE.js';
-import { l } from './types-BK_3YlPE.js';
-import { L as Layer } from './types-BK_3YlPE.js';
-import { g as LayerGroup } from './types-BK_3YlPE.js';
-import { k as LegendItem } from './types-BK_3YlPE.js';
-import { m } from './types-BK_3YlPE.js';
-import { n } from './types-BK_3YlPE.js';
-import { p } from './types-BK_3YlPE.js';
-import { q } from './types-BK_3YlPE.js';
-import { S as SetVisibilityRequest } from './types-BK_3YlPE.js';
-import { V } from './types-BK_3YlPE.js';
+import { b } from './types-fZ1tuugG.js';
+import { c } from './types-fZ1tuugG.js';
+import { d } from './types-fZ1tuugG.js';
+import { e } from './types-fZ1tuugG.js';
+import { E as Element_2 } from './types-fZ1tuugG.js';
+import { a as ElementGroup } from './types-fZ1tuugG.js';
+import { o as EntityNode } from './types-fZ1tuugG.js';
+import { F } from './types-fZ1tuugG.js';
+import { f } from './types-fZ1tuugG.js';
+import { r as Feature } from './types-fZ1tuugG.js';
+import { s as FeltBoundary } from './types-fZ1tuugG.js';
+import { t as FeltZoom } from './types-fZ1tuugG.js';
+import { G } from './types-fZ1tuugG.js';
+import { h } from './types-fZ1tuugG.js';
+import { i } from './types-fZ1tuugG.js';
+import { j } from './types-fZ1tuugG.js';
+import { l } from './types-fZ1tuugG.js';
+import { L as Layer } from './types-fZ1tuugG.js';
+import { g as LayerGroup } from './types-fZ1tuugG.js';
+import { k as LegendItem } from './types-fZ1tuugG.js';
+import { M } from './types-fZ1tuugG.js';
+import { m } from './types-fZ1tuugG.js';
+import { n } from './types-fZ1tuugG.js';
+import { p } from './types-fZ1tuugG.js';
+import { q } from './types-fZ1tuugG.js';
+import { S as SetVisibilityRequest } from './types-fZ1tuugG.js';
+import { V } from './types-fZ1tuugG.js';
 import { z } from 'zod';
 
 export { Element_2 as Element }
 
 export { ElementGroup }
 
-// @public
+// @internal
 interface ElementsController {
     getElement(
     id: string): Promise<Element_2 | null>;
@@ -62,6 +64,8 @@ interface ElementsController {
 
 export { EntityNode }
 
+export { Feature }
+
 // @public
 export const Felt: {
     embed(container: HTMLElement, mapId: string, options?: FeltEmbedOptions): Promise<FeltController>;
@@ -75,9 +79,10 @@ export { FeltBoundary }
 // Warning: (ae-forgotten-export) The symbol "LayersController" needs to be exported by the entry point client.d.ts
 // Warning: (ae-forgotten-export) The symbol "ElementsController" needs to be exported by the entry point client.d.ts
 // Warning: (ae-forgotten-export) The symbol "SelectionController" needs to be exported by the entry point client.d.ts
+// Warning: (ae-forgotten-export) The symbol "InteractionsController" needs to be exported by the entry point client.d.ts
 //
 // @public
-export interface FeltController extends ViewportController, UiController, LayersController, ElementsController, SelectionController {
+export interface FeltController extends ViewportController, UiController, LayersController, ElementsController, SelectionController, InteractionsController {
     iframe: HTMLIFrameElement | null;
 }
 
@@ -87,7 +92,7 @@ export interface FeltController extends ViewportController, UiController, Layers
 export interface FeltEmbedOptions extends z.infer<typeof FeltEmbedOptionsSchema> {
 }
 
-// @public (undocumented)
+// @internal (undocumented)
 const FeltEmbedOptionsSchema: z.ZodObject<{
     origin: z.ZodOptional<z.ZodString>;
     uiControls: z.ZodObject<{
@@ -175,11 +180,21 @@ const FeltEmbedOptionsSchema: z.ZodObject<{
 
 export { FeltZoom }
 
+// @internal (undocumented)
+interface InteractionsController {
+    onPointerClick(params: {
+        handler: (event: M) => void;
+    }): VoidFunction;
+    onPointerMove(params: {
+        handler: (event: M) => void;
+    }): VoidFunction;
+}
+
 export { Layer }
 
 export { LayerGroup }
 
-// @public
+// @internal
 interface LayersController {
     getLayer(
     id: string): Promise<Layer | null>;
@@ -222,7 +237,7 @@ interface LayersController {
 
 export { LegendItem }
 
-// @public
+// @internal
 interface SelectionController {
     getSelection(): Promise<EntityNode[]>;
     onSelectionChange(params: {
@@ -234,7 +249,7 @@ interface SelectionController {
 
 export { SetVisibilityRequest }
 
-// @public
+// @internal
 interface UiController {
     // Warning: (ae-forgotten-export) The symbol "UiControlsOptions" needs to be exported by the entry point client.d.ts
     updateUiControls(controls: UiControlsOptions): void;
@@ -270,7 +285,7 @@ const UiControlsOptionsSchema: z.ZodObject<{
     scaleBar?: boolean | undefined;
 }>;
 
-// @public
+// @internal
 type ViewportController = {
     getViewport(): Promise<V>;
     setViewport(viewport: p): void;

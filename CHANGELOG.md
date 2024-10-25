@@ -1,5 +1,11 @@
 # @feltjs/js-sdk
 
+## 0.10.0-next.0
+
+### Minor Changes
+
+- 129dd0b: Change selection API
+
 ## 0.9.2
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @feltjs/js-sdk
 
+## 0.10.0-next.1
+
+### Patch Changes
+
+- 0c66886: Add onPointerMove and onPointerClick
+
 ## 0.10.0-next.0
 
 ### Minor Changes

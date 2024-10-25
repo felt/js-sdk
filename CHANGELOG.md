@@ -1,5 +1,16 @@
 # @feltjs/js-sdk
 
+## 0.10.0
+
+### Minor Changes
+
+- 129dd0b: Change selection API
+
+### Patch Changes
+
+- 0c66886: Add onPointerMove and onPointerClick
+- 6015bd7: Add element attributes
+
 ## 0.10.0-next.2
 
 ### Patch Changes

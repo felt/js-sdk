@@ -2,16 +2,11 @@
 
 ## Index
 
-### Callbacks
+### Entity Nodes
 
-* [SelectionChangeParams](SelectionChangeParams.md)
-* [SelectionChange](SelectionChange.md)
-
-### Identifiers
-
-* [ElementIdentifier](ElementIdentifier.md)
-* [ElementGroupIdentifier](ElementGroupIdentifier.md)
-* [LayerIdentifier](LayerIdentifier.md)
-* [LayerGroupIdentifier](LayerGroupIdentifier.md)
-* [FeatureIdentifier](FeatureIdentifier.md)
-* [EntityIdentifier](EntityIdentifier.md)
+* [ElementNode](ElementNode.md)
+* [ElementGroupNode](ElementGroupNode.md)
+* [LayerNode](LayerNode.md)
+* [LayerGroupNode](LayerGroupNode.md)
+* [FeatureNode](FeatureNode.md)
+* [EntityNode](EntityNode.md)

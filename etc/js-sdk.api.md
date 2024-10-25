@@ -4,33 +4,32 @@
 
 ```ts
 
-import { b } from './types-GC2PUyOG.js';
-import { c } from './types-GC2PUyOG.js';
-import { d } from './types-GC2PUyOG.js';
-import { e } from './types-GC2PUyOG.js';
-import { E as Element_2 } from './types-GC2PUyOG.js';
-import { a as ElementGroup } from './types-GC2PUyOG.js';
-import { o as EntityIdentifier } from './types-GC2PUyOG.js';
-import { F } from './types-GC2PUyOG.js';
-import { f } from './types-GC2PUyOG.js';
-import { s as FeltBoundary } from './types-GC2PUyOG.js';
-import { t as FeltZoom } from './types-GC2PUyOG.js';
-import { G } from './types-GC2PUyOG.js';
-import { h } from './types-GC2PUyOG.js';
-import { i } from './types-GC2PUyOG.js';
-import { j } from './types-GC2PUyOG.js';
-import { l } from './types-GC2PUyOG.js';
-import { L as Layer } from './types-GC2PUyOG.js';
-import { g as LayerGroup } from './types-GC2PUyOG.js';
-import { k as LegendItem } from './types-GC2PUyOG.js';
-import { m } from './types-GC2PUyOG.js';
-import { n } from './types-GC2PUyOG.js';
-import { p } from './types-GC2PUyOG.js';
-import { q } from './types-GC2PUyOG.js';
-import { r } from './types-GC2PUyOG.js';
-import { S as SetVisibilityRequest } from './types-GC2PUyOG.js';
-import { V } from './types-GC2PUyOG.js';
-import * as z from 'zod';
+import { b } from './types-BK_3YlPE.js';
+import { c } from './types-BK_3YlPE.js';
+import { d } from './types-BK_3YlPE.js';
+import { e } from './types-BK_3YlPE.js';
+import { E as Element_2 } from './types-BK_3YlPE.js';
+import { a as ElementGroup } from './types-BK_3YlPE.js';
+import { o as EntityNode } from './types-BK_3YlPE.js';
+import { F } from './types-BK_3YlPE.js';
+import { f } from './types-BK_3YlPE.js';
+import { r as FeltBoundary } from './types-BK_3YlPE.js';
+import { s as FeltZoom } from './types-BK_3YlPE.js';
+import { G } from './types-BK_3YlPE.js';
+import { h } from './types-BK_3YlPE.js';
+import { i } from './types-BK_3YlPE.js';
+import { j } from './types-BK_3YlPE.js';
+import { l } from './types-BK_3YlPE.js';
+import { L as Layer } from './types-BK_3YlPE.js';
+import { g as LayerGroup } from './types-BK_3YlPE.js';
+import { k as LegendItem } from './types-BK_3YlPE.js';
+import { m } from './types-BK_3YlPE.js';
+import { n } from './types-BK_3YlPE.js';
+import { p } from './types-BK_3YlPE.js';
+import { q } from './types-BK_3YlPE.js';
+import { S as SetVisibilityRequest } from './types-BK_3YlPE.js';
+import { V } from './types-BK_3YlPE.js';
+import { z } from 'zod';
 
 export { Element_2 as Element }
 
@@ -61,7 +60,7 @@ interface ElementsController {
     setElementGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
 }
 
-export { EntityIdentifier }
+export { EntityNode }
 
 // @public
 export const Felt: {
@@ -225,8 +224,12 @@ export { LegendItem }
 
 // @public
 interface SelectionController {
-    getSelection(): Promise<EntityIdentifier[]>;
-    onSelectionChange(params: p): VoidFunction;
+    getSelection(): Promise<EntityNode[]>;
+    onSelectionChange(params: {
+        handler: (change: {
+            selection: EntityNode[];
+        }) => void;
+    }): VoidFunction;
 }
 
 export { SetVisibilityRequest }
@@ -270,8 +273,8 @@ const UiControlsOptionsSchema: z.ZodObject<{
 // @public
 type ViewportController = {
     getViewport(): Promise<V>;
-    setViewport(viewport: q): void;
-    fitViewportToBounds(bounds: r): void;
+    setViewport(viewport: p): void;
+    fitViewportToBounds(bounds: q): void;
     onViewportMove(args: {
         handler: (viewport: V) => void;
     }): VoidFunction;

@@ -1,5 +1,5 @@
 import { listener, method } from "~/lib/types/interface";
-import type { EntityIdentifier, SelectionChangeParams } from "./types";
+import type { EntityNode } from "./types";
 
 /**
  * @ignore
@@ -26,7 +26,7 @@ export interface SelectionController {
    * const selection = await felt.getSelection();
    * ```
    */
-  getSelection(): Promise<EntityIdentifier[]>;
+  getSelection(): Promise<EntityNode[]>;
 
   /**
    * Adds a listener for when the selection changes.
@@ -44,5 +44,22 @@ export interface SelectionController {
    * unsubscribe();
    * ```
    */
-  onSelectionChange(params: SelectionChangeParams): VoidFunction;
+  onSelectionChange(params: {
+    handler: (change: {
+      /**
+       * The new selection. In the case where there are multiple entities selected,
+       * the array describes the chronological and semeantic order of the selection.
+       *
+       * Entities of the same type that are selected later will appear later in the
+       * list, but there are cases where multiple entity types can be selected at once,
+       * such as elements and features. In this case, the order of the _types_ of entities
+       * tells you which are considered more semantically important.
+       *
+       * For example, if a feature and element are selected, the feature will be at the
+       * tail of the list because pressing Escape will deselect the feature first, then
+       * pressing Escape again will deselect the element.
+       */
+      selection: EntityNode[];
+    }) => void;
+  }): VoidFunction;
 }

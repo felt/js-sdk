@@ -2,12 +2,10 @@
  * @module Selection
  */
 export type {
-  ElementGroupIdentifier,
-  ElementIdentifier,
-  EntityIdentifier,
-  FeatureIdentifier,
-  LayerGroupIdentifier,
-  LayerIdentifier,
-  SelectionChange,
-  SelectionChangeParams,
+  ElementGroupNode,
+  ElementNode,
+  EntityNode,
+  FeatureNode,
+  LayerGroupNode,
+  LayerNode,
 } from "./types";

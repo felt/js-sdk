@@ -1,4 +1,4 @@
-import * as z from "zod";
+import { z } from "zod";
 import { UiControlsOptionsSchema } from "~/modules/ui/types";
 import { ViewportCenterZoomSchema } from "~/modules/viewport/types";
 

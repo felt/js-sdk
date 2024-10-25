@@ -485,13 +485,13 @@ felt.setLayerFilters({
 
 ### getSelection()
 
-> **getSelection**(): `Promise`\<[`EntityIdentifier`](../Selection/EntityIdentifier.md)\[]>
+> **getSelection**(): `Promise`\<[`EntityNode`](../Selection/EntityNode.md)\[]>
 
 Gets the current selection as a list of entity identifiers.
 
 #### Returns
 
-`Promise`\<[`EntityIdentifier`](../Selection/EntityIdentifier.md)\[]>
+`Promise`\<[`EntityNode`](../Selection/EntityNode.md)\[]>
 
 #### Example
 
@@ -768,9 +768,10 @@ Adds a listener for when the selection changes.
 
 #### Parameters
 
-| Parameter | Type                                                             |
-| --------- | ---------------------------------------------------------------- |
-| `params`  | [`SelectionChangeParams`](../Selection/SelectionChangeParams.md) |
+| Parameter        | Type                 |
+| ---------------- | -------------------- |
+| `params`         | `object`             |
+| `params.handler` | (`change`) => `void` |
 
 #### Returns
 

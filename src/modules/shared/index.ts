@@ -1,7 +1,7 @@
 /**
  * @module Shared
  */
-import * as z from "zod";
+import { z } from "zod";
 
 const Longitude = z.number();
 const Latitude = z.number();

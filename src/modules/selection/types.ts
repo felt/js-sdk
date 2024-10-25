@@ -1,96 +1,70 @@
-/**
- * @group Callbacks
- */
-export interface SelectionChangeParams {
-  handler: (change: SelectionChange) => void;
-}
+import type { Element, ElementGroup } from "../elements/types";
+import type { Feature } from "../layers/features/types";
+import type { Layer, LayerGroup } from "../layers/types";
 
 /**
- * The payload to the `onSelectionChange` handler.
- *
- * @group Callbacks
- */
-export interface SelectionChange {
-  /**
-   * The new selection. In the case where there are multiple entities selected,
-   * the array describes the chronological and semeantic order of the selection.
-   *
-   * Entities of the same type that are selected later will appear later in the
-   * list, but there are cases where multiple entity types can be selected at once,
-   * such as elements and features. In this case, the order of the _types_ of entities
-   * tells you which are considered more semantically important.
-   *
-   * For example, if a feature and element are selected, the feature will be at the
-   * tail of the list because pressing Escape will deselect the feature first, then
-   * pressing Escape again will deselect the element.
-   */
-  selection: Array<EntityIdentifier>;
-}
-
-/**
- * Identifies an element on the map.
+ * References an element on the map.
  *
  * @interface
- * @group Identifiers
+ * @group Entity Nodes
  */
-export type ElementIdentifier = {
+export type ElementNode = {
   type: "element";
-  id: string;
+  entity: Element;
 };
 
 /**
- * Identifies an element group.
+ * References an element group.
  *
  * @interface
- * @group Identifiers
+ * @group Entity Nodes
  */
-export type ElementGroupIdentifier = {
+export type ElementGroupNode = {
   type: "elementGroup";
-  id: string;
+  entity: ElementGroup;
 };
 
 /**
- * Identifies a layer on the map.
+ * References a layer on the map.
  *
  * @interface
- * @group Identifiers
+ * @group Entity Nodes
  */
-export type LayerIdentifier = {
+export type LayerNode = {
   type: "layer";
-  id: string;
+  entity: Layer;
 };
 
 /**
- * Identifies a layer group on the map.
+ * References a layer group on the map.
  *
  * @interface
- * @group Identifiers
+ * @group Entity Nodes
  */
-export type LayerGroupIdentifier = {
+export type LayerGroupNode = {
   type: "layerGroup";
-  id: string;
+  entity: LayerGroup;
 };
 
 /**
- * Identifies a feature on the map, and the layer it belongs to.
+ * References a feature on the map.
  *
  * @interface
- * @group Identifiers
+ * @group Entity Nodes
  */
-export type FeatureIdentifier = {
+export type FeatureNode = {
   type: "feature";
-  layerId: string;
-  id: string | number;
+  entity: Feature;
 };
 
 /**
- * An identifier for an entity on the map.
+ * A reference to any kind of entity in the map.
  *
- * @group Identifiers
+ * @group Entity Nodes
  */
-export type EntityIdentifier =
-  | ElementIdentifier
-  | ElementGroupIdentifier
-  | LayerIdentifier
-  | LayerGroupIdentifier
-  | FeatureIdentifier;
+export type EntityNode =
+  | ElementNode
+  | ElementGroupNode
+  | LayerNode
+  | LayerGroupNode
+  | FeatureNode;

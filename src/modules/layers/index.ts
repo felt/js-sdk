@@ -29,6 +29,8 @@ export type {
   LegendItemsFilter,
 } from "./types";
 
+export type { Feature } from "./features/types";
+
 export type {
   FilterExpression,
   FilterLogicGate,

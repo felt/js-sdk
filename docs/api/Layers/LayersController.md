@@ -40,16 +40,16 @@ const layers = await felt.getLayer({ ids: ["layer-1", "layer-2"] });
 
 ### getLayers()
 
-> **getLayers**(`filter`?: [`GetLayersFilter`](GetLayersFilter.md)): `Promise`\<(`null` | [`Layer`](Layer.md))\[]>
+> **getLayers**(`constraint`?: [`GetLayersConstraint`](GetLayersConstraint.md)): `Promise`\<(`null` | [`Layer`](Layer.md))\[]>
 
-Gets layers from the map, according to the filters supplied. If no
-filters are supplied, all layers will be returned.
+Gets layers from the map, according to the constraints supplied. If no
+constraints are supplied, all layers will be returned.
 
 #### Parameters
 
-| Parameter | Type                                    | Description                                               |
-| --------- | --------------------------------------- | --------------------------------------------------------- |
-| `filter`? | [`GetLayersFilter`](GetLayersFilter.md) | The filters to apply to the layers returned from the map. |
+| Parameter     | Type                                            | Description                                                   |
+| ------------- | ----------------------------------------------- | ------------------------------------------------------------- |
+| `constraint`? | [`GetLayersConstraint`](GetLayersConstraint.md) | The constraints to apply to the layers returned from the map. |
 
 #### Returns
 
@@ -123,16 +123,16 @@ felt.getLayerGroup("layer-group-1");
 
 ### getLayerGroups()
 
-> **getLayerGroups**(`filter`?: [`GetLayerGroupsFilter`](GetLayerGroupsFilter.md)): `Promise`\<(`null` | [`LayerGroup`](LayerGroup.md))\[]>
+> **getLayerGroups**(`constraint`?: [`GetLayerGroupsConstraint`](GetLayerGroupsConstraint.md)): `Promise`\<(`null` | [`LayerGroup`](LayerGroup.md))\[]>
 
-Gets layer groups from the map, according to the filters supplied. If no
-filters are supplied, all layer groups will be returned in rendering order.
+Gets layer groups from the map, according to the constraints supplied. If no
+constraints are supplied, all layer groups will be returned in rendering order.
 
 #### Parameters
 
-| Parameter | Type                                              | Description                                                     |
-| --------- | ------------------------------------------------- | --------------------------------------------------------------- |
-| `filter`? | [`GetLayerGroupsFilter`](GetLayerGroupsFilter.md) | The filters to apply to the layer groups returned from the map. |
+| Parameter     | Type                                                      | Description                                                         |
+| ------------- | --------------------------------------------------------- | ------------------------------------------------------------------- |
+| `constraint`? | [`GetLayerGroupsConstraint`](GetLayerGroupsConstraint.md) | The constraints to apply to the layer groups returned from the map. |
 
 #### Returns
 
@@ -201,18 +201,18 @@ const legendItem = await felt.getLegendItem({
 
 ### getLegendItems()
 
-> **getLegendItems**(`filter`?: [`LegendItemsFilter`](LegendItemsFilter.md)): `Promise`\<(`null` | [`LegendItem`](LegendItem.md))\[]>
+> **getLegendItems**(`constraint`?: [`LegendItemsConstraint`](LegendItemsConstraint.md)): `Promise`\<(`null` | [`LegendItem`](LegendItem.md))\[]>
 
 Allows you to obtain the state of several legend items, by passing in
-filters describing which legend items you want.
+constraints describing which legend items you want.
 
-If you do not pass any filters, you will receive all legend items.
+If you do not pass any constraints, you will receive all legend items.
 
 #### Parameters
 
-| Parameter | Type                                        |
-| --------- | ------------------------------------------- |
-| `filter`? | [`LegendItemsFilter`](LegendItemsFilter.md) |
+| Parameter     | Type                                                |
+| ------------- | --------------------------------------------------- |
+| `constraint`? | [`LegendItemsConstraint`](LegendItemsConstraint.md) |
 
 #### Returns
 

@@ -37,16 +37,16 @@ const element = await felt.getElement("element-1");
 
 ### getElements()
 
-> **getElements**(`filter`?: [`GetElementsFilter`](GetElementsFilter.md)): `Promise`\<(`null` | [`Element`](Element.md))\[]>
+> **getElements**(`constraint`?: [`GetElementsConstraint`](GetElementsConstraint.md)): `Promise`\<(`null` | [`Element`](Element.md))\[]>
 
-Gets elements from the map, according to the filters supplied. If no
-filters are supplied, all elements will be returned.
+Gets elements from the map, according to the constraints supplied. If no
+constraints are supplied, all elements will be returned.
 
 #### Parameters
 
-| Parameter | Type                                        | Description                                                 |
-| --------- | ------------------------------------------- | ----------------------------------------------------------- |
-| `filter`? | [`GetElementsFilter`](GetElementsFilter.md) | The filters to apply to the elements returned from the map. |
+| Parameter     | Type                                                | Description                                                     |
+| ------------- | --------------------------------------------------- | --------------------------------------------------------------- |
+| `constraint`? | [`GetElementsConstraint`](GetElementsConstraint.md) | The constraints to apply to the elements returned from the map. |
 
 #### Returns
 
@@ -96,16 +96,16 @@ felt.getElementGroup("element-group-1");
 
 ### getElementGroups()
 
-> **getElementGroups**(`filter`?: [`GetElementGroupsFilter`](GetElementGroupsFilter.md)): `Promise`\<(`null` | [`ElementGroup`](ElementGroup.md))\[]>
+> **getElementGroups**(`constraint`?: [`GetElementGroupsConstraint`](GetElementGroupsConstraint.md)): `Promise`\<(`null` | [`ElementGroup`](ElementGroup.md))\[]>
 
 Gets element groups from the map, according to the filters supplied. If no
-filters are supplied, all element groups will be returned in rendering order.
+constraints are supplied, all element groups will be returned in rendering order.
 
 #### Parameters
 
-| Parameter | Type                                                  | Description                                                       |
-| --------- | ----------------------------------------------------- | ----------------------------------------------------------------- |
-| `filter`? | [`GetElementGroupsFilter`](GetElementGroupsFilter.md) | The filters to apply to the element groups returned from the map. |
+| Parameter     | Type                                                          | Description                                                           |
+| ------------- | ------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `constraint`? | [`GetElementGroupsConstraint`](GetElementGroupsConstraint.md) | The constraints to apply to the element groups returned from the map. |
 
 #### Returns
 

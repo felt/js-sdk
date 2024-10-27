@@ -8,8 +8,8 @@ import {
 } from "~/lib/types/builders";
 import { SetVisibilityRequestSchema } from "~/modules/shared";
 import {
-  GetElementGroupsFilterSchema,
-  GetElementsFilterSchema,
+  GetElementGroupsConstraintSchema,
+  GetElementsConstraintSchema,
   type Element,
   type ElementChangeCallbackParams,
   type ElementGroup,
@@ -19,12 +19,12 @@ import {
 const GetElementMessage = methodMessage("getElement", z.string());
 const GetElementsMessage = methodMessage(
   "getElements",
-  GetElementsFilterSchema.optional(),
+  GetElementsConstraintSchema.optional(),
 );
 const GetGroupMessage = methodMessage("getElementGroup", z.string());
 const GetGroupsMessage = methodMessage(
   "getElementGroups",
-  GetElementGroupsFilterSchema.optional(),
+  GetElementGroupsConstraintSchema.optional(),
 );
 const SetElementGroupVisibilityMessage = methodMessage(
   "setElementGroupVisibility",

@@ -9,8 +9,8 @@ export type {
   ElementChangeCallbackParams,
   ElementGroup,
   ElementGroupChangeCallbackParams,
-  GetElementGroupsFilter,
-  GetElementsFilter,
+  GetElementGroupsConstraint,
+  GetElementsConstraint,
 } from "./types";
 
 export type { ElementsController } from "./controller";

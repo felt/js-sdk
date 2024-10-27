@@ -1,6 +1,6 @@
 ***
 
-The filter to apply when getting layer groups.
+The constraints to apply when getting layer groups.
 
 ## Properties
 

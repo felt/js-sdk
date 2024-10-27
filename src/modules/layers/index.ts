@@ -17,8 +17,8 @@
  */
 export type {
   Feature,
-  GetLayerGroupsFilter,
-  GetLayersFilter,
+  GetLayerGroupsConstraint,
+  GetLayersConstraint,
   Layer,
   LayerChangeCallbackParams,
   LayerGroup,
@@ -27,7 +27,7 @@ export type {
   LegendItem,
   LegendItemChangeCallbackParams,
   LegendItemIdentifier,
-  LegendItemsFilter,
+  LegendItemsConstraint,
 } from "./types";
 
 export type {

@@ -4,33 +4,33 @@
 
 ```ts
 
-import { b } from './types-GtNHyXBc.js';
-import { c } from './types-GtNHyXBc.js';
-import { d } from './types-GtNHyXBc.js';
-import { e } from './types-GtNHyXBc.js';
-import { E as Element_2 } from './types-GtNHyXBc.js';
-import { a as ElementGroup } from './types-GtNHyXBc.js';
-import { o as EntityNode } from './types-GtNHyXBc.js';
-import { F } from './types-GtNHyXBc.js';
-import { f } from './types-GtNHyXBc.js';
-import { r as Feature } from './types-GtNHyXBc.js';
-import { s as FeltBoundary } from './types-GtNHyXBc.js';
-import { t as FeltZoom } from './types-GtNHyXBc.js';
-import { G } from './types-GtNHyXBc.js';
-import { h } from './types-GtNHyXBc.js';
-import { i } from './types-GtNHyXBc.js';
-import { j } from './types-GtNHyXBc.js';
-import { l } from './types-GtNHyXBc.js';
-import { L as Layer } from './types-GtNHyXBc.js';
-import { g as LayerGroup } from './types-GtNHyXBc.js';
-import { k as LegendItem } from './types-GtNHyXBc.js';
-import { M } from './types-GtNHyXBc.js';
-import { m } from './types-GtNHyXBc.js';
-import { n } from './types-GtNHyXBc.js';
-import { p } from './types-GtNHyXBc.js';
-import { q } from './types-GtNHyXBc.js';
-import { S as SetVisibilityRequest } from './types-GtNHyXBc.js';
-import { V } from './types-GtNHyXBc.js';
+import { b } from './types-BWYSDFzf.js';
+import { c } from './types-BWYSDFzf.js';
+import { d } from './types-BWYSDFzf.js';
+import { e } from './types-BWYSDFzf.js';
+import { E as Element_2 } from './types-BWYSDFzf.js';
+import { a as ElementGroup } from './types-BWYSDFzf.js';
+import { o as EntityNode } from './types-BWYSDFzf.js';
+import { F } from './types-BWYSDFzf.js';
+import { f } from './types-BWYSDFzf.js';
+import { r as Feature } from './types-BWYSDFzf.js';
+import { s as FeltBoundary } from './types-BWYSDFzf.js';
+import { t as FeltZoom } from './types-BWYSDFzf.js';
+import { G } from './types-BWYSDFzf.js';
+import { h } from './types-BWYSDFzf.js';
+import { i } from './types-BWYSDFzf.js';
+import { j } from './types-BWYSDFzf.js';
+import { l } from './types-BWYSDFzf.js';
+import { L as Layer } from './types-BWYSDFzf.js';
+import { g as LayerGroup } from './types-BWYSDFzf.js';
+import { k as LegendItem } from './types-BWYSDFzf.js';
+import { M } from './types-BWYSDFzf.js';
+import { m } from './types-BWYSDFzf.js';
+import { n } from './types-BWYSDFzf.js';
+import { p } from './types-BWYSDFzf.js';
+import { q } from './types-BWYSDFzf.js';
+import { S as SetVisibilityRequest } from './types-BWYSDFzf.js';
+import { V } from './types-BWYSDFzf.js';
 import { z } from 'zod';
 
 export { Element_2 as Element }
@@ -43,9 +43,9 @@ interface ElementsController {
     id: string): Promise<Element_2 | null>;
     getElementGroup(id: string): Promise<ElementGroup | null>;
     getElementGroups(
-    filter?: b): Promise<Array<ElementGroup | null>>;
+    constraint?: b): Promise<Array<ElementGroup | null>>;
     getElements(
-    filter?: G): Promise<Array<Element_2 | null>>;
+    constraint?: G): Promise<Array<Element_2 | null>>;
     onElementChange(args: {
         options: {
             id: string;
@@ -202,11 +202,11 @@ interface LayersController {
     getLayerFilters(layerId: string): Promise<n | null>;
     getLayerGroup(id: string): Promise<LayerGroup | null>;
     getLayerGroups(
-    filter?: h): Promise<Array<LayerGroup | null>>;
+    constraint?: h): Promise<Array<LayerGroup | null>>;
     getLayers(
-    filter?: e): Promise<Array<Layer | null>>;
+    constraint?: e): Promise<Array<Layer | null>>;
     getLegendItem(id: j): Promise<LegendItem | null>;
-    getLegendItems(filter?: l): Promise<Array<LegendItem | null>>;
+    getLegendItems(constraint?: l): Promise<Array<LegendItem | null>>;
     onLayerChange(args: {
         options: {
             id: string;

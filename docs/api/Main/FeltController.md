@@ -50,16 +50,16 @@ const element = await felt.getElement("element-1");
 
 ### getElements()
 
-> **getElements**(`filter`?: [`GetElementsFilter`](../Elements/GetElementsFilter.md)): `Promise`\<(`null` | [`Element`](../Elements/Element.md))\[]>
+> **getElements**(`constraint`?: [`GetElementsConstraint`](../Elements/GetElementsConstraint.md)): `Promise`\<(`null` | [`Element`](../Elements/Element.md))\[]>
 
-Gets elements from the map, according to the filters supplied. If no
-filters are supplied, all elements will be returned.
+Gets elements from the map, according to the constraints supplied. If no
+constraints are supplied, all elements will be returned.
 
 #### Parameters
 
-| Parameter | Type                                                    | Description                                                 |
-| --------- | ------------------------------------------------------- | ----------------------------------------------------------- |
-| `filter`? | [`GetElementsFilter`](../Elements/GetElementsFilter.md) | The filters to apply to the elements returned from the map. |
+| Parameter     | Type                                                            | Description                                                     |
+| ------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| `constraint`? | [`GetElementsConstraint`](../Elements/GetElementsConstraint.md) | The constraints to apply to the elements returned from the map. |
 
 #### Returns
 
@@ -109,16 +109,16 @@ felt.getElementGroup("element-group-1");
 
 ### getElementGroups()
 
-> **getElementGroups**(`filter`?: [`GetElementGroupsFilter`](../Elements/GetElementGroupsFilter.md)): `Promise`\<(`null` | [`ElementGroup`](../Elements/ElementGroup.md))\[]>
+> **getElementGroups**(`constraint`?: [`GetElementGroupsConstraint`](../Elements/GetElementGroupsConstraint.md)): `Promise`\<(`null` | [`ElementGroup`](../Elements/ElementGroup.md))\[]>
 
 Gets element groups from the map, according to the filters supplied. If no
-filters are supplied, all element groups will be returned in rendering order.
+constraints are supplied, all element groups will be returned in rendering order.
 
 #### Parameters
 
-| Parameter | Type                                                              | Description                                                       |
-| --------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `filter`? | [`GetElementGroupsFilter`](../Elements/GetElementGroupsFilter.md) | The filters to apply to the element groups returned from the map. |
+| Parameter     | Type                                                                      | Description                                                           |
+| ------------- | ------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `constraint`? | [`GetElementGroupsConstraint`](../Elements/GetElementGroupsConstraint.md) | The constraints to apply to the element groups returned from the map. |
 
 #### Returns
 
@@ -186,16 +186,16 @@ const layers = await felt.getLayer({ ids: ["layer-1", "layer-2"] });
 
 ### getLayers()
 
-> **getLayers**(`filter`?: [`GetLayersFilter`](../Layers/GetLayersFilter.md)): `Promise`\<(`null` | [`Layer`](../Layers/Layer.md))\[]>
+> **getLayers**(`constraint`?: [`GetLayersConstraint`](../Layers/GetLayersConstraint.md)): `Promise`\<(`null` | [`Layer`](../Layers/Layer.md))\[]>
 
-Gets layers from the map, according to the filters supplied. If no
-filters are supplied, all layers will be returned.
+Gets layers from the map, according to the constraints supplied. If no
+constraints are supplied, all layers will be returned.
 
 #### Parameters
 
-| Parameter | Type                                              | Description                                               |
-| --------- | ------------------------------------------------- | --------------------------------------------------------- |
-| `filter`? | [`GetLayersFilter`](../Layers/GetLayersFilter.md) | The filters to apply to the layers returned from the map. |
+| Parameter     | Type                                                      | Description                                                   |
+| ------------- | --------------------------------------------------------- | ------------------------------------------------------------- |
+| `constraint`? | [`GetLayersConstraint`](../Layers/GetLayersConstraint.md) | The constraints to apply to the layers returned from the map. |
 
 #### Returns
 
@@ -269,16 +269,16 @@ felt.getLayerGroup("layer-group-1");
 
 ### getLayerGroups()
 
-> **getLayerGroups**(`filter`?: [`GetLayerGroupsFilter`](../Layers/GetLayerGroupsFilter.md)): `Promise`\<(`null` | [`LayerGroup`](../Layers/LayerGroup.md))\[]>
+> **getLayerGroups**(`constraint`?: [`GetLayerGroupsConstraint`](../Layers/GetLayerGroupsConstraint.md)): `Promise`\<(`null` | [`LayerGroup`](../Layers/LayerGroup.md))\[]>
 
-Gets layer groups from the map, according to the filters supplied. If no
-filters are supplied, all layer groups will be returned in rendering order.
+Gets layer groups from the map, according to the constraints supplied. If no
+constraints are supplied, all layer groups will be returned in rendering order.
 
 #### Parameters
 
-| Parameter | Type                                                        | Description                                                     |
-| --------- | ----------------------------------------------------------- | --------------------------------------------------------------- |
-| `filter`? | [`GetLayerGroupsFilter`](../Layers/GetLayerGroupsFilter.md) | The filters to apply to the layer groups returned from the map. |
+| Parameter     | Type                                                                | Description                                                         |
+| ------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `constraint`? | [`GetLayerGroupsConstraint`](../Layers/GetLayerGroupsConstraint.md) | The constraints to apply to the layer groups returned from the map. |
 
 #### Returns
 
@@ -347,18 +347,18 @@ const legendItem = await felt.getLegendItem({
 
 ### getLegendItems()
 
-> **getLegendItems**(`filter`?: [`LegendItemsFilter`](../Layers/LegendItemsFilter.md)): `Promise`\<(`null` | [`LegendItem`](../Layers/LegendItem.md))\[]>
+> **getLegendItems**(`constraint`?: [`LegendItemsConstraint`](../Layers/LegendItemsConstraint.md)): `Promise`\<(`null` | [`LegendItem`](../Layers/LegendItem.md))\[]>
 
 Allows you to obtain the state of several legend items, by passing in
-filters describing which legend items you want.
+constraints describing which legend items you want.
 
-If you do not pass any filters, you will receive all legend items.
+If you do not pass any constraints, you will receive all legend items.
 
 #### Parameters
 
-| Parameter | Type                                                  |
-| --------- | ----------------------------------------------------- |
-| `filter`? | [`LegendItemsFilter`](../Layers/LegendItemsFilter.md) |
+| Parameter     | Type                                                          |
+| ------------- | ------------------------------------------------------------- |
+| `constraint`? | [`LegendItemsConstraint`](../Layers/LegendItemsConstraint.md) |
 
 #### Returns
 

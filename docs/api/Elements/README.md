@@ -12,11 +12,11 @@ groups that they belong to.
 ### ElementGroups
 
 * [ElementGroup](ElementGroup.md)
-* [GetElementGroupsFilter](GetElementGroupsFilter.md)
+* [GetElementGroupsConstraint](GetElementGroupsConstraint.md)
 * [ElementGroupChangeCallbackParams](ElementGroupChangeCallbackParams.md)
 
 ### Elements
 
 * [Element](Element.md)
-* [GetElementsFilter](GetElementsFilter.md)
+* [GetElementsConstraint](GetElementsConstraint.md)
 * [ElementChangeCallbackParams](ElementChangeCallbackParams.md)

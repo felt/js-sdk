@@ -142,16 +142,16 @@ export interface LayerGroup {
 }
 
 /**
- * The filter to apply when getting layers.
+ * The constraints to apply when getting layers.
  *
  * @group Layers
  */
-export interface GetLayersFilter
-  extends z.infer<typeof GetLayersFilterSchema> {}
+export interface GetLayersConstraint
+  extends z.infer<typeof GetLayersConstraintSchema> {}
 /**
  * @ignore
  */
-export const GetLayersFilterSchema = z.object({
+export const GetLayersConstraintSchema = z.object({
   /**
    * The ids of the layers to get.
    */
@@ -159,11 +159,11 @@ export const GetLayersFilterSchema = z.object({
 });
 
 /**
- * The filter to apply when getting layer groups.
+ * The constraints to apply when getting layer groups.
  *
  * @group LayerGroups
  */
-export interface GetLayerGroupsFilter
+export interface GetLayerGroupsConstraint
   extends z.infer<typeof GetLayerGroupsFilterSchema> {}
 /**
  * @ignore
@@ -245,20 +245,21 @@ export const LegendItemIdentifierSchema = z.object({
 });
 
 /**
- * Filter for legend items. If nothing is passed, all legend items will be returned.
+ * Constraints for legend items. If nothing is passed, all legend items will be returned.
  *
  * @group LegendItems
  */
-export interface LegendItemsFilter
-  extends z.infer<typeof LegendItemsFilterSchema> {}
+export interface LegendItemsConstraint
+  extends z.infer<typeof LegendItemsConstraintSchema> {}
 /** @ignore */
-export const LegendItemsFilterSchema = z.object({
+export const LegendItemsConstraintSchema = z.object({
   /**
-   * Array of legend item identifiers to filter by.
+   * Array of legend item identifiers to constrain by.
    */
   ids: LegendItemIdentifierSchema.array().optional(),
+
   /**
-   * Array of layer ids to filter legend items by.
+   * Array of layer ids to constrain legend items by.
    */
   layerIds: z.string().array().optional(),
 });

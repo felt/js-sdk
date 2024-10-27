@@ -1,6 +1,6 @@
 ***
 
-The filter to apply when getting elements.
+The constraints to apply when getting elements.
 
 ## Properties
 

@@ -80,6 +80,39 @@ const FilterTernarySchema: z.ZodType<FilterTernary> = z.tuple([
 
 /**
  * @group Filters
+ *
+ * Filters can be used to change which features in a layer are rendered. Filters can be
+ * applied to a layer by the `setLayerFilters` method on the Felt controller.
+ *
+ * @remarks
+ * The possible operators are:
+ * - `lt`: Less than
+ * - `gt`: Greater than
+ * - `le`: Less than or equal to
+ * - `ge`: Greater than or equal to
+ * - `eq`: Equal to
+ * - `ne`: Not equal to
+ * - `cn`: Contains
+ * - `nc`: Does not contain
+ *
+ * The allowed boolean operators are:
+ * - `and`: Logical AND
+ * - `or`: Logical OR
+ *
+ * @example
+ * ```typescript
+ * // a simple filter
+ * felt.setLayerFilters({
+ *   layerId: "layer-1",
+ *   filters: ["AREA", "gt", 30_000],
+ * });
+ *
+ * // compound filters can be constructed using boolean logic:
+ * felt.setLayerFilters({
+ *   layerId: "layer-1",
+ *   filters: [["AREA", "gt", 30_000], "and", ["COLOR", "eq", "red"]]
+ * })
+ * ```
  */
 export type Filters = FilterTernary | FilterExpression | null | boolean;
 export const FiltersSchema = z.union([
@@ -91,10 +124,38 @@ export const FiltersSchema = z.union([
 
 /**
  * @group Filters
+ *
+ * The filters that are currently set on a layer.
+ *
+ * A layer's filters are the combination of various different places
+ * in which filters can be applied.
+ *
  */
 export interface LayerFilters {
+  /**
+   * Filters that are set in the layer's style. These are the lowest level
+   * of filters, and can only be set by editing the map.
+   */
   style: Filters;
+
+  /**
+   * Filters that are set in the layer's components, which are interactive
+   * elements in the legend. These can be set by viewers for their own session,
+   * but their default value can be set by the map creator.
+   */
   components: Filters;
+
+  /**
+   * Filters that are set ephemerally by viewers in their own session.
+   *
+   * These are the filters that are set when the `setLayerFilters` method is
+   * called. There is no way to set these in the Felt UI - they can only be
+   * set using the SDK.
+   */
   ephemeral: Filters;
+
+  /**
+   * The combined result of all the filters set on the layer.
+   */
   combined: Filters;
 }

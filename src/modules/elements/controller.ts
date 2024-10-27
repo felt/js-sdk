@@ -6,8 +6,8 @@ import type {
   ElementChangeCallbackParams,
   ElementGroup,
   ElementGroupChangeCallbackParams,
-  GetElementGroupsFilter,
-  GetElementsFilter,
+  GetElementGroupsConstraint,
+  GetElementsConstraint,
 } from "./types";
 
 /**
@@ -48,8 +48,8 @@ export interface ElementsController {
   ): Promise<Element | null>;
 
   /**
-   * Gets elements from the map, according to the filters supplied. If no
-   * filters are supplied, all elements will be returned.
+   * Gets elements from the map, according to the constraints supplied. If no
+   * constraints are supplied, all elements will be returned.
    *
    * @remarks The elements in the map, ordered by the order specified in Felt. This is not
    * necessarily the order that they are drawn in, as Felt draws points above
@@ -63,9 +63,9 @@ export interface ElementsController {
    */
   getElements(
     /**
-     * The filters to apply to the elements returned from the map.
+     * The constraints to apply to the elements returned from the map.
      */
-    filter?: GetElementsFilter,
+    constraint?: GetElementsConstraint,
   ): Promise<Array<Element | null>>;
 
   /**
@@ -81,7 +81,7 @@ export interface ElementsController {
 
   /**
    * Gets element groups from the map, according to the filters supplied. If no
-   * filters are supplied, all element groups will be returned in rendering order.
+   * constraints are supplied, all element groups will be returned in rendering order.
    *
    * @example
    * ```typescript
@@ -91,9 +91,9 @@ export interface ElementsController {
    */
   getElementGroups(
     /**
-     * The filters to apply to the element groups returned from the map.
+     * The constraints to apply to the element groups returned from the map.
      */
-    filter?: GetElementGroupsFilter,
+    constraint?: GetElementGroupsConstraint,
   ): Promise<Array<ElementGroup | null>>;
 
   /**

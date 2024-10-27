@@ -78,13 +78,13 @@ export interface ElementGroup {
 }
 
 /**
- * The filter to apply when getting elements.
+ * The constraints to apply when getting elements.
  *
  * @group Elements
  */
-export interface GetElementsFilter
-  extends z.infer<typeof GetElementsFilterSchema> {}
-export const GetElementsFilterSchema = z.object({
+export interface GetElementsConstraint
+  extends z.infer<typeof GetElementsConstraintSchema> {}
+export const GetElementsConstraintSchema = z.object({
   /**
    * The ids of the elements to get.
    */
@@ -92,16 +92,16 @@ export const GetElementsFilterSchema = z.object({
 });
 
 /**
- * The filter to apply when getting element groups.
+ * The constraints to apply when getting element groups.
  *
  * @group ElementGroups
  */
-export interface GetElementGroupsFilter
-  extends z.infer<typeof GetElementGroupsFilterSchema> {}
+export interface GetElementGroupsConstraint
+  extends z.infer<typeof GetElementGroupsConstraintSchema> {}
 /**
  * @ignore
  */
-export const GetElementGroupsFilterSchema = z.object({
+export const GetElementGroupsConstraintSchema = z.object({
   /**
    * The ids of the element groups to get.
    */

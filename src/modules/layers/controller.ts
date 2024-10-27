@@ -2,8 +2,8 @@ import { listener, method } from "~/lib/types/interface";
 import type { SetVisibilityRequest } from "~/modules/shared";
 import type { Filters, LayerFilters } from "./filter.types";
 import type {
-  GetLayerGroupsFilter,
-  GetLayersFilter,
+  GetLayerGroupsConstraint,
+  GetLayersConstraint,
   Layer,
   LayerChangeCallbackParams,
   LayerGroup,
@@ -11,7 +11,7 @@ import type {
   LegendItem,
   LegendItemChangeCallbackParams,
   LegendItemIdentifier,
-  LegendItemsFilter,
+  LegendItemsConstraint,
 } from "./types";
 
 /**
@@ -71,8 +71,8 @@ export interface LayersController {
   ): Promise<Layer | null>;
 
   /**
-   * Gets layers from the map, according to the filters supplied. If no
-   * filters are supplied, all layers will be returned.
+   * Gets layers from the map, according to the constraints supplied. If no
+   * constraints are supplied, all layers will be returned.
    *
    * @remarks The layers in the map, ordered by the order specified in Felt. This is not
    * necessarily the order that they are drawn in, as Felt draws points above
@@ -86,9 +86,9 @@ export interface LayersController {
    */
   getLayers(
     /**
-     * The filters to apply to the layers returned from the map.
+     * The constraints to apply to the layers returned from the map.
      */
-    filter?: GetLayersFilter,
+    constraint?: GetLayersConstraint,
   ): Promise<Array<Layer | null>>;
 
   /**
@@ -151,8 +151,8 @@ export interface LayersController {
   getLayerGroup(id: string): Promise<LayerGroup | null>;
 
   /**
-   * Gets layer groups from the map, according to the filters supplied. If no
-   * filters are supplied, all layer groups will be returned in rendering order.
+   * Gets layer groups from the map, according to the constraints supplied. If no
+   * constraints are supplied, all layer groups will be returned in rendering order.
    *
    * @example
    * ```typescript
@@ -162,9 +162,9 @@ export interface LayersController {
    */
   getLayerGroups(
     /**
-     * The filters to apply to the layer groups returned from the map.
+     * The constraints to apply to the layer groups returned from the map.
      */
-    filter?: GetLayerGroupsFilter,
+    constraint?: GetLayerGroupsConstraint,
   ): Promise<Array<LayerGroup | null>>;
 
   /**
@@ -218,16 +218,18 @@ export interface LayersController {
 
   /**
    * Allows you to obtain the state of several legend items, by passing in
-   * filters describing which legend items you want.
+   * constraints describing which legend items you want.
    *
-   * If you do not pass any filters, you will receive all legend items.
+   * If you do not pass any constraints, you will receive all legend items.
    *
    * @example
    * ```typescript
    * const legendItems = await felt.getLegendItems({layerId: "layer-1"});
    * ```
    */
-  getLegendItems(filter?: LegendItemsFilter): Promise<Array<LegendItem | null>>;
+  getLegendItems(
+    constraint?: LegendItemsConstraint,
+  ): Promise<Array<LegendItem | null>>;
 
   /**
    * Hide or show legend items with the given identifiers.

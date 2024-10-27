@@ -10,9 +10,9 @@ import { SetVisibilityRequestSchema } from "~/modules/shared";
 import { FiltersSchema, type LayerFilters } from "./filter.types";
 import {
   GetLayerGroupsFilterSchema,
-  GetLayersFilterSchema,
+  GetLayersConstraintSchema,
   LegendItemIdentifierSchema,
-  LegendItemsFilterSchema,
+  LegendItemsConstraintSchema,
   type Layer,
   type LayerChangeCallbackParams,
   type LayerGroup,
@@ -25,7 +25,7 @@ import {
 const GetLayerMessage = methodMessage("getLayer", z.string());
 const GetLayersMessage = methodMessage(
   "getLayers",
-  GetLayersFilterSchema.optional(),
+  GetLayersConstraintSchema.optional(),
 );
 const SetLayerVisibilityMessage = methodMessage(
   "setLayerVisibility",
@@ -58,7 +58,7 @@ const GetLegendItemMessage = methodMessage(
 );
 const GetLegendItemsMessage = methodMessage(
   "getLegendItems",
-  LegendItemsFilterSchema.optional(),
+  LegendItemsConstraintSchema.optional(),
 );
 const OnLegendItemChangeMessage = listenerMessageWithParams(
   "onLegendItemChange",

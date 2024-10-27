@@ -3,6 +3,12 @@ import { UiControlsOptionsSchema } from "~/modules/ui/types";
 import { ViewportCenterZoomSchema } from "~/modules/viewport/types";
 
 /**
+ * @group Instantiation
+ * @public
+ */
+export interface FeltEmbedOptions
+  extends z.infer<typeof FeltEmbedOptionsSchema> {}
+/**
  * @internal
  */
 const FeltEmbedOptionsSchema = z.object({
@@ -15,10 +21,3 @@ const FeltEmbedOptionsSchema = z.object({
 
   initialViewport: ViewportCenterZoomSchema.optional(),
 });
-
-/**
- * @group Instantiation
- * @public
- */
-export interface FeltEmbedOptions
-  extends z.infer<typeof FeltEmbedOptionsSchema> {}

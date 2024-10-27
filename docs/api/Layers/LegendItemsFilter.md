@@ -6,7 +6,7 @@ Filter for legend items. If nothing is passed, all legend items will be returned
 
 ### ids?
 
-> `optional` **ids**: `object`\[]
+> `optional` **ids**: \{`id`: `string`;`layerId`: `string`; }\[]
 
 Array of legend item identifiers to filter by.
 

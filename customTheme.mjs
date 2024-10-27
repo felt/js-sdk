@@ -1,5 +1,3 @@
-import fs from "fs";
-import path from "path";
 import { MarkdownTheme, MarkdownThemeContext } from "typedoc-plugin-markdown";
 
 /**
@@ -10,21 +8,12 @@ export function load(app) {
 
   // adding a separator ensures that gitbook doesn't mark any page that begins with say "## Properties" as
   // having the title Properties in the sidebar.
-  app.renderer.markdownHooks.on("page.begin", () => `***\n`);
-
-  // remove the root level readme.md
-  app.renderer.on("endRender", ({ outputDirectory }) => {
-    try {
-      const readmePath = path.join(outputDirectory, "README.md");
-
-      if (fs.existsSync(readmePath)) {
-        let content = fs.readFileSync(readmePath, "utf8");
-        content = content.replace(/\/README\.md/g, "");
-        fs.writeFileSync(readmePath, content, "utf8");
-      }
-    } catch (error) {
-      console.error("Error processing README.md:", error);
+  app.renderer.markdownHooks.on("page.begin", ({ page }) => {
+    // Don't add a separator to the main page, so we can control the title shown in gitbook
+    if (page.filename.endsWith("/docs/api/README.md")) {
+      return;
     }
+    return `***\n`;
   });
 }
 
@@ -44,10 +33,16 @@ class MyMarkdownTheme extends MarkdownTheme {
 }
 
 class MyMarkdownThemeContext extends MarkdownThemeContext {
+  _oldPartials = this.partials;
+
   // customise partials
   partials = {
     ...this.partials,
-    hierarchy: () => {},
+    hierarchy: (model, options) => {
+      if (model.types[0].qualifiedName.endsWith("Controller")) {
+        return this._oldPartials.hierarchy(model, options);
+      }
+    },
     inheritance: () => {},
   };
 }

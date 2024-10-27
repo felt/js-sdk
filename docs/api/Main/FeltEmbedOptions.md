@@ -4,7 +4,7 @@
 
 ### uiControls
 
-> **uiControls**: `object` = `UiControlsOptionsSchema`
+> **uiControls**: \{`showLegend`: `boolean`;`cooperativeGestures`: `boolean`;`fullScreenButton`: `boolean`;`geolocation`: `boolean`;`zoomControls`: `boolean`;`scaleBar`: `boolean`; } = `UiControlsOptionsSchema`
 
 | Name                   | Type      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ---------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19,11 +19,11 @@
 
 ### initialViewport?
 
-> `optional` **initialViewport**: `object`
+> `optional` **initialViewport**: \{`center`: `LatLngSchema`;`zoom`: `FeltZoomSchema`; }
 
-| Name               | Type     | Default value  | Description                                                       |
-| ------------------ | -------- | -------------- | ----------------------------------------------------------------- |
-| `center`           | `object` | LatLngSchema   | The center of the viewport in latitude and longitude.             |
-| `center.latitude`  | `number` | Latitude       | -                                                                 |
-| `center.longitude` | `number` | Longitude      | -                                                                 |
-| `zoom`             | `number` | FeltZoomSchema | The zoom level of the viewport. [FeltZoom](../Shared/FeltZoom.md) |
+| Name               | Type                                                 | Default value  | Description                                                       |
+| ------------------ | ---------------------------------------------------- | -------------- | ----------------------------------------------------------------- |
+| `center`           | \{`latitude`: `Latitude`;`longitude`: `Longitude`; } | LatLngSchema   | The center of the viewport in latitude and longitude.             |
+| `center.latitude`  | `number`                                             | Latitude       | -                                                                 |
+| `center.longitude` | `number`                                             | Longitude      | -                                                                 |
+| `zoom`             | `number`                                             | FeltZoomSchema | The zoom level of the viewport. [FeltZoom](../Shared/FeltZoom.md) |

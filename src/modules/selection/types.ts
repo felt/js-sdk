@@ -3,6 +3,21 @@ import type { Feature } from "../layers/features/types";
 import type { Layer, LayerGroup } from "../layers/types";
 
 /**
+ * A reference to any kind of entity in the map.
+ *
+ * @remarks
+ * EntityNodes are used when you have some collection of entities and you need to
+ *
+ * @group Entity Node
+ */
+export type EntityNode =
+  | ElementNode
+  | ElementGroupNode
+  | LayerNode
+  | LayerGroupNode
+  | FeatureNode;
+
+/**
  * References an element on the map.
  *
  * @interface
@@ -56,15 +71,3 @@ export type FeatureNode = {
   type: "feature";
   entity: Feature;
 };
-
-/**
- * A reference to any kind of entity in the map.
- *
- * @group Entity Nodes
- */
-export type EntityNode =
-  | ElementNode
-  | ElementGroupNode
-  | LayerNode
-  | LayerGroupNode
-  | FeatureNode;

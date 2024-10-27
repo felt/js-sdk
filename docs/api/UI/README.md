@@ -8,3 +8,7 @@ UI features such as the legend and the full screen button.
 ### Interfaces
 
 * [UiControlsOptions](UiControlsOptions.md)
+
+### Controller
+
+* [UiController](UiController.md)

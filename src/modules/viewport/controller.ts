@@ -21,10 +21,10 @@ export const viewportController = (feltWindow: Window): ViewportController => ({
  * You can get the current viewport, move the viewport, and be notified when
  * the viewport changes.
  *
- * @internal
- * @interface
+ * @group Controller
+ * @public
  */
-export type ViewportController = {
+export interface ViewportController {
   /**
    * Gets the current state of the viewport.
    */
@@ -82,4 +82,4 @@ export type ViewportController = {
      */
     handler: (viewport: ViewportState) => void;
   }): VoidFunction;
-};
+}

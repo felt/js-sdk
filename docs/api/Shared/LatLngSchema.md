@@ -1,6 +1,6 @@
 ***
 
-> `const` **LatLngSchema**: `ZodObject`\<`object`, `"strip"`, `ZodTypeAny`, `object`, `object`>
+> `const` **LatLngSchema**: `ZodObject`\<\{`latitude`: `Latitude`;`longitude`: `Longitude`; }, `"strip"`, `ZodTypeAny`, \{`latitude`: `Latitude`;`longitude`: `Longitude`; }, \{`latitude`: `Latitude`;`longitude`: `Longitude`; }>
 
 ## Type declaration
 

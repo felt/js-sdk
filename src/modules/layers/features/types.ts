@@ -2,7 +2,7 @@
  * A feature is a single geographical item in a layer.
  * The unique ID for a feature is a compound key made up of the layer ID and the feature ID.
  */
-export type Feature = {
+export interface Feature {
   /**
    * The identifier of the feature, unique within the layer.
    */
@@ -27,4 +27,4 @@ export type Feature = {
    * The properties of the feature, as a bag of attributes.
    */
   properties: Record<string, unknown>;
-};
+}

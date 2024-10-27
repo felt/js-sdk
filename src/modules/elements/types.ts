@@ -3,62 +3,60 @@ import { z } from "zod";
 /**
  * @group Elements
  */
-export interface Element extends z.infer<typeof ElementSchema> {}
-const ElementSchema = z.object({
+export interface Element {
   /**
    * The string identifying the element
    */
-  id: z.string(),
+  id: string;
 
   /**
    * The type of element, such as a Place, Polygon, Line, Route, etc.
    */
-  type: z.string(),
+  type: string;
 
   /**
    * The ID of the element group that the element belongs to, or null
    * if the element is not inside an element group.
    */
-  groupId: z.string().nullable(),
+  groupId: string | null;
 
   /**
    * The name of the element can be displayed in the Legend, depending
    * on how the element's legend is configured in its style.
    */
-  name: z.string().nullable(),
+  name: string | null;
 
   /**
    * The element description forms part of the element's metadata. This is visible
    * to users via the element info button in the legend.
    */
-  description: z.string().nullable(),
+  description: string | null;
 
   /**
    * The attributes of the element, which can be added via the Element Inspector
    * under the Detail tab.
    */
-  attributes: z.record(z.unknown()),
-});
+  attributes: Record<string, unknown>;
+}
 
 /**
  * @group ElementGroups
  */
-export interface ElementGroup extends z.infer<typeof ElementGroupSchema> {}
-const ElementGroupSchema = z.object({
+export interface ElementGroup {
   /**
    * A string identifying the element group.
    */
-  id: z.string(),
+  id: string;
 
   /**
    * The name of the element group. This is shown in the legend.
    */
-  name: z.string(),
+  name: string;
 
   /**
    * The caption of the element group. This is shown in the legend.
    */
-  caption: z.string().nullable(),
+  caption: string | null;
 
   /**
    * The ids of the elements in the element group.
@@ -66,38 +64,18 @@ const ElementGroupSchema = z.object({
    * @remarks
    * You can use these ids to get the full element objects via the `getElements` method.
    */
-  elementIds: z.array(z.string()),
+  elementIds: Array<string>;
 
   /**
    * Whether the element group is visible or not.
    */
-  visible: z.boolean(),
+  visible: boolean;
 
   /**
    * Whether the element group is shown in the legend or not.
    */
-  shownInLegend: z.boolean(),
-});
-
-/**
- * The response from the `getElement` method. If the element doesn't exist, the
- * response will be `null`.
- *
- * @group Elements
- */
-export interface GetElementResponse
-  extends z.infer<typeof GetElementResponseSchema> {}
-const GetElementResponseSchema = ElementSchema;
-
-/**
- * The response from the `getElementGroup` method. If the element doesn't exist, the
- * response will be `null`.
- *
- * @group ElementGroups
- */
-export interface GetElementGroupResponse
-  extends z.infer<typeof GetElementGroupResponseSchema> {}
-const GetElementGroupResponseSchema = ElementGroupSchema;
+  shownInLegend: boolean;
+}
 
 /**
  * The filter to apply when getting elements.
@@ -112,22 +90,6 @@ export const GetElementsFilterSchema = z.object({
    */
   ids: z.array(z.string()).optional(),
 });
-
-/**
- * The response from the `getElements` method.
- *
- * @remarks
- * The elements in the map, ordered by the order specified in Felt. This is not
- * necessarily the order that they are drawn in, as Felt draws points above
- * lines and lines above polygons, for instance.
- *
- * See {@link Element} for the structure of the element object.
- *
- * @group Elements
- */
-export interface GetElementsResponse
-  extends z.infer<typeof GetElementsResponseSchema> {}
-const GetElementsResponseSchema = z.array(ElementSchema.nullable());
 
 /**
  * The filter to apply when getting element groups.
@@ -145,15 +107,6 @@ export const GetElementGroupsFilterSchema = z.object({
    */
   ids: z.array(z.string()).optional(),
 });
-
-/**
- * The response from the `getElementGroups` method.
- *
- * @group ElementGroups
- */
-export interface GetElementGroupsResponse
-  extends z.infer<typeof GetElementGroupsResponseSchema> {}
-const GetElementGroupsResponseSchema = z.array(ElementGroupSchema.nullable());
 
 /**
  * The parameters for the `onElementChange` listener.

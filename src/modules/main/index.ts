@@ -1,21 +1,23 @@
 /**
- * The Main module represents the entry point for the Felt SDK.
- *
  * Use the {@link Felt} object to embed a new iframe, or connect to an existing embedded
  * iframe.
  *
  * Once you have connected to a Felt map (either by embedding or connecting to an existing
  * iframe), you can use the {@link FeltController} object to control the map.
  *
+ * To see what you can do with the map, see the documentation for the {@link FeltController}
+ * interface and its constituent controllers.
+ *
  * @example
  * ```typescript
  * // embed the map
  * const map = await Felt.embed(container, "felt-map-abc-123");
  *
- * // get information about the layers
+ * // now the map is loaded and connected, you can use the FeltController interface
+ * // to control the map. For instance, to get information about the layers
  * const layers = await map.getLayers();
  *
- * // set the viewport to a specific location and zoom level
+ * // Or to set the viewport to a specific location and zoom level
  * await map.setViewport({
  *   center: { latitude: 37.8113, longitude: -122.2682 },
  *   zoom: 10,
@@ -25,27 +27,13 @@
  * @module Main
  */
 
-import {
-  elementsController,
-  type ElementsController,
-} from "~/modules/elements/controller";
-import {
-  layersController,
-  type LayersController,
-} from "~/modules/layers/controller";
-import {
-  selectionController,
-  type SelectionController,
-} from "~/modules/selection/controller";
-import { type UiController, uiController } from "~/modules/ui/controller";
-import {
-  type ViewportController,
-  viewportController,
-} from "~/modules/viewport/controller";
-import {
-  interactionsController,
-  type InteractionsController,
-} from "../interactions/controller";
+import type { ElementsController } from "~/modules/elements/controller";
+import type { LayersController } from "~/modules/layers/controller";
+import type { SelectionController } from "~/modules/selection/controller";
+import type { UiController } from "~/modules/ui/controller";
+import type { ViewportController } from "~/modules/viewport/controller";
+import type { InteractionsController } from "../interactions/controller";
+import { makeController } from "./makeController";
 import type { FeltEmbedOptions } from "./types";
 
 /**
@@ -189,31 +177,21 @@ export const Felt = {
   },
 };
 
-/**
- * This pieces together the controller for the Felt SDK from the various namespaced
- * controllers.
- *
- * @ignore
- */
-export function makeController(feltWindow: Window): FeltController {
-  return {
-    iframe: null,
-    ...viewportController(feltWindow),
-    ...uiController(feltWindow),
-    ...layersController(feltWindow),
-    ...elementsController(feltWindow),
-    ...selectionController(feltWindow),
-    ...interactionsController(feltWindow),
-  };
-}
-
 // We could infer the type of the controller from the above definition, but that
 // prevents documentation generation from working properly, as it cannot infer
 // and document the type correctly, so we define it explicitly here.
 
 /**
- * @public
+ * This is the main interface for interacting with a Felt map.
+ *
+ * This interface is composed of the various controllers, each having a
+ * different area of responsibility.
+ *
+ * All the methods are listed here, but each controller is documented on its
+ * own to make it easier to find related methods and events.
+ *
  * @group Controller
+ * @public
  */
 export interface FeltController
   extends ViewportController,

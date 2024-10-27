@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { type FeltBoundary, FeltBoundarySchema } from "~/modules/shared";
+import { type FeltBoundary } from "~/modules/shared";
 
 export type { Feature } from "./features/types";
 
@@ -25,53 +25,50 @@ const LayerProcessingStatusSchema = z.enum([
 /**
  * @group Layers
  */
-export interface Layer extends z.infer<typeof LayerSchema> {}
-const LayerSchema = z.object({
+export interface Layer {
   /**
    * The string identifying the layer
    */
-  id: z.string(),
+  id: string;
 
   /**
    * The ID of the layer group that the layer belongs to.
    *
    * Layers that appear at the root level in Felt will not have a group ID.
    */
-  groupId: z.string().nullable(),
+  groupId: string | null;
 
   /**
    * The name of the layer can be displayed in the Legend, depending
    * on how the layer's legend is configured in its style.
    */
-  name: z.string(),
+  name: string;
 
   /**
    * The layer's caption is shown in the legend.
    */
-  caption: z.string().nullable(),
+  caption: string | null;
 
   /**
    * The layer description forms part of the layer's metadata. This is visible
    * to users via the layer info button in the legend.
    */
-  description: z.string().nullable(),
+  description: string | null;
 
   /**
    * Whether the layer is visible or not.
    */
-  visible: z.boolean(),
+  visible: boolean;
 
   /**
    * Whether the layer is shown in the legend or not.
    */
-  shownInLegend: z.boolean(),
+  shownInLegend: boolean;
 
   /**
    * The current processing status of the layer.
-   *
-   * {@link LayerProcessingStatus}
    */
-  status: LayerProcessingStatusSchema,
+  status: LayerProcessingStatus;
 
   /**
    * The geometry type of the layer.
@@ -88,7 +85,7 @@ const LayerSchema = z.object({
    * expect this to be able to be any string, however, as more geometry types can be added
    * in the future.
    */
-  geometryType: z.string().nullable(),
+  geometryType: string | null;
 
   /**
    * The bounding box of the layer. If the layer is processing, or the bounds have otherwise
@@ -96,28 +93,27 @@ const LayerSchema = z.object({
    *
    * {@link FeltBoundary}
    */
-  bounds: FeltBoundarySchema.nullable(),
-});
+  bounds: FeltBoundary | null;
+}
 
 /**
  * @group LayerGroups
  */
-export interface LayerGroup extends z.infer<typeof LayerGroupSchema> {}
-const LayerGroupSchema = z.object({
+export interface LayerGroup {
   /**
    * A string identifying the layer group.
    */
-  id: z.string(),
+  id: string;
 
   /**
    * The name of the layer group. This is shown in the legend.
    */
-  name: z.string(),
+  name: string;
 
   /**
    * The caption of the layer group. This is shown in the legend.
    */
-  caption: z.string().nullable(),
+  caption: string | null;
 
   /**
    * The ids of the layers in the layer group.
@@ -125,45 +121,25 @@ const LayerGroupSchema = z.object({
    * @remarks
    * You can use these ids to get the full layer objects via the `getLayers` method.
    */
-  layerIds: z.array(z.string()),
+  layerIds: Array<string>;
 
   /**
    * Whether the layer group is visible or not.
    */
-  visible: z.boolean(),
+  visible: boolean;
 
   /**
    * Whether the layer group is shown in the legend or not.
    */
-  shownInLegend: z.boolean(),
+  shownInLegend: boolean;
 
   /**
    * The bounding box of the layer group.
    *
    * {@link FeltBoundary}
    */
-  bounds: FeltBoundarySchema.nullable(),
-});
-
-/**
- * The response from the `getLayer` method. If the layer doesn't exist, the
- * response will be `null`.
- *
- * @group Layers
- */
-export interface GetLayerResponse
-  extends z.infer<typeof GetLayerResponseSchema> {}
-const GetLayerResponseSchema = LayerSchema;
-
-/**
- * The response from the `getLayerGroup` method. If the layer doesn't exist, the
- * response will be `null`.
- *
- * @group LayerGroups
- */
-export interface GetLayerGroupResponse
-  extends z.infer<typeof GetLayerGroupResponseSchema> {}
-const GetLayerGroupResponseSchema = LayerGroupSchema;
+  bounds: FeltBoundary | null;
+}
 
 /**
  * The filter to apply when getting layers.
@@ -183,22 +159,6 @@ export const GetLayersFilterSchema = z.object({
 });
 
 /**
- * The response from the `getLayers` method.
- *
- * @remarks
- * The layers in the map, ordered by the order specified in Felt. This is not
- * necessarily the order that they are drawn in, as Felt draws points above
- * lines and lines above polygons, for instance.
- *
- * See {@link Layer} for the structure of the layer object.
- *
- * @group Layers
- */
-export interface GetLayersResponse
-  extends z.infer<typeof GetLayersResponseSchema> {}
-const GetLayersResponseSchema = z.array(LayerSchema.nullable());
-
-/**
  * The filter to apply when getting layer groups.
  *
  * @group LayerGroups
@@ -214,16 +174,6 @@ export const GetLayerGroupsFilterSchema = z.object({
    */
   ids: z.array(z.string()).optional(),
 });
-
-/**
- * The response from the `getLayerGroups` method.
- *
- * @group LayerGroups
- */
-export type GetLayerGroupsResponse = z.infer<
-  typeof GetLayerGroupsResponseSchema
->;
-const GetLayerGroupsResponseSchema = z.array(LayerGroupSchema.nullable());
 
 /**
  * The parameters for the `onLayerChange` listener.

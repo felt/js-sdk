@@ -12,7 +12,10 @@ export const interactionsController = (
 });
 
 /**
- * @internal
+ * The Interactions controller allows you to observe interactions with the map
+ *
+ * @group Controller
+ * @public
  */
 export interface InteractionsController {
   /**
@@ -51,7 +54,15 @@ export interface InteractionsController {
    * unsubscribe();
    * ```
    */
-  onPointerMove(params: {
-    handler: (event: MapInteractionEvent) => void;
-  }): VoidFunction;
+  onPointerMove(
+    /**
+     * Params for the listener
+     */
+    params: {
+      /**
+       * The handler function
+       */
+      handler: (event: MapInteractionEvent) => void;
+    },
+  ): VoidFunction;
 }

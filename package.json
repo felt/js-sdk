@@ -36,7 +36,6 @@
     "knip": "^5.31.0",
     "prettier": "^3.3.3",
     "prettier-plugin-organize-imports": "^4.1.0",
-    "remark-toc": "^9.0.0",
     "tsup": "^8.3.0",
     "typedoc": "^0.26.7",
     "typedoc-plugin-markdown": "^4.2.9",

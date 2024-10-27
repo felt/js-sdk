@@ -9,3 +9,5 @@ export type {
   ViewportFitBoundsParams,
   ViewportState,
 } from "./types";
+
+export type { ViewportController } from "./controller";

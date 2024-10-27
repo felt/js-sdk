@@ -4,40 +4,40 @@
 
 ```ts
 
-import { b } from './types-COVw-euk.js';
-import { c } from './types-COVw-euk.js';
-import { d } from './types-COVw-euk.js';
-import { e } from './types-COVw-euk.js';
-import { E as Element_2 } from './types-COVw-euk.js';
-import { a as ElementGroup } from './types-COVw-euk.js';
-import { o as EntityNode } from './types-COVw-euk.js';
-import { F } from './types-COVw-euk.js';
-import { f } from './types-COVw-euk.js';
-import { r as Feature } from './types-COVw-euk.js';
-import { s as FeltBoundary } from './types-COVw-euk.js';
-import { t as FeltZoom } from './types-COVw-euk.js';
-import { G } from './types-COVw-euk.js';
-import { h } from './types-COVw-euk.js';
-import { i } from './types-COVw-euk.js';
-import { j } from './types-COVw-euk.js';
-import { l } from './types-COVw-euk.js';
-import { L as Layer } from './types-COVw-euk.js';
-import { g as LayerGroup } from './types-COVw-euk.js';
-import { k as LegendItem } from './types-COVw-euk.js';
-import { M } from './types-COVw-euk.js';
-import { m } from './types-COVw-euk.js';
-import { n } from './types-COVw-euk.js';
-import { p } from './types-COVw-euk.js';
-import { q } from './types-COVw-euk.js';
-import { S as SetVisibilityRequest } from './types-COVw-euk.js';
-import { V } from './types-COVw-euk.js';
+import { b } from './types-GtNHyXBc.js';
+import { c } from './types-GtNHyXBc.js';
+import { d } from './types-GtNHyXBc.js';
+import { e } from './types-GtNHyXBc.js';
+import { E as Element_2 } from './types-GtNHyXBc.js';
+import { a as ElementGroup } from './types-GtNHyXBc.js';
+import { o as EntityNode } from './types-GtNHyXBc.js';
+import { F } from './types-GtNHyXBc.js';
+import { f } from './types-GtNHyXBc.js';
+import { r as Feature } from './types-GtNHyXBc.js';
+import { s as FeltBoundary } from './types-GtNHyXBc.js';
+import { t as FeltZoom } from './types-GtNHyXBc.js';
+import { G } from './types-GtNHyXBc.js';
+import { h } from './types-GtNHyXBc.js';
+import { i } from './types-GtNHyXBc.js';
+import { j } from './types-GtNHyXBc.js';
+import { l } from './types-GtNHyXBc.js';
+import { L as Layer } from './types-GtNHyXBc.js';
+import { g as LayerGroup } from './types-GtNHyXBc.js';
+import { k as LegendItem } from './types-GtNHyXBc.js';
+import { M } from './types-GtNHyXBc.js';
+import { m } from './types-GtNHyXBc.js';
+import { n } from './types-GtNHyXBc.js';
+import { p } from './types-GtNHyXBc.js';
+import { q } from './types-GtNHyXBc.js';
+import { S as SetVisibilityRequest } from './types-GtNHyXBc.js';
+import { V } from './types-GtNHyXBc.js';
 import { z } from 'zod';
 
 export { Element_2 as Element }
 
 export { ElementGroup }
 
-// @internal
+// @public
 interface ElementsController {
     getElement(
     id: string): Promise<Element_2 | null>;
@@ -180,12 +180,13 @@ const FeltEmbedOptionsSchema: z.ZodObject<{
 
 export { FeltZoom }
 
-// @internal (undocumented)
+// @public
 interface InteractionsController {
     onPointerClick(params: {
         handler: (event: M) => void;
     }): VoidFunction;
-    onPointerMove(params: {
+    onPointerMove(
+    params: {
         handler: (event: M) => void;
     }): VoidFunction;
 }
@@ -194,7 +195,7 @@ export { Layer }
 
 export { LayerGroup }
 
-// @internal
+// @public
 interface LayersController {
     getLayer(
     id: string): Promise<Layer | null>;
@@ -237,7 +238,7 @@ interface LayersController {
 
 export { LegendItem }
 
-// @internal
+// @public
 interface SelectionController {
     getSelection(): Promise<EntityNode[]>;
     onSelectionChange(params: {
@@ -249,7 +250,7 @@ interface SelectionController {
 
 export { SetVisibilityRequest }
 
-// @internal
+// @public
 interface UiController {
     // Warning: (ae-forgotten-export) The symbol "UiControlsOptions" needs to be exported by the entry point client.d.ts
     updateUiControls(controls: UiControlsOptions): void;
@@ -285,15 +286,15 @@ const UiControlsOptionsSchema: z.ZodObject<{
     scaleBar?: boolean | undefined;
 }>;
 
-// @internal
-type ViewportController = {
-    getViewport(): Promise<V>;
-    setViewport(viewport: p): void;
+// @public
+interface ViewportController {
     fitViewportToBounds(bounds: q): void;
+    getViewport(): Promise<V>;
     onViewportMove(args: {
         handler: (viewport: V) => void;
     }): VoidFunction;
-};
+    setViewport(viewport: p): void;
+}
 
 // (No @packageDocumentation comment for this package)
 

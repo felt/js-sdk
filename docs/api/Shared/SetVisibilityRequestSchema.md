@@ -1,6 +1,6 @@
 ***
 
-> `const` **SetVisibilityRequestSchema**: `ZodObject`\<`object`, `"strip"`, `ZodTypeAny`, `object`, `object`>
+> `const` **SetVisibilityRequestSchema**: `ZodObject`\<\{`show`: `ZodOptional`\<`ZodArray`\<`ZodString`, `"many"`>>;`hide`: `ZodOptional`\<`ZodArray`\<`ZodString`, `"many"`>>; }, `"strip"`, `ZodTypeAny`, \{`show`: `string`\[];`hide`: `string`\[]; }, \{`show`: `string`\[];`hide`: `string`\[]; }>
 
 **`Internal`**
 

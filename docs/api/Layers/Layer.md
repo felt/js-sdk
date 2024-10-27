@@ -64,11 +64,9 @@ Whether the layer is shown in the legend or not.
 
 ### status
 
-> **status**: `"processing"` | `"completed"` | `"failed"` | `"incomplete"` = `LayerProcessingStatusSchema`
+> **status**: `"processing"` | `"completed"` | `"failed"` | `"incomplete"`
 
 The current processing status of the layer.
-
-[LayerProcessingStatus](LayerProcessingStatus.md)
 
 ***
 

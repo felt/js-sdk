@@ -13,11 +13,9 @@ import {
   GetLayersFilterSchema,
   LegendItemIdentifierSchema,
   LegendItemsFilterSchema,
-  type GetLayerGroupResponse,
-  type GetLayerGroupsResponse,
-  type GetLayerResponse,
-  type GetLayersResponse,
+  type Layer,
   type LayerChangeCallbackParams,
+  type LayerGroup,
   type LayerGroupChangeCallbackParams,
   type LegendItem,
   type LegendItemChangeCallbackParams,
@@ -110,17 +108,14 @@ export const layersSchema = {
 
 export type LayersSchema = {
   methods: {
-    getLayer: Method<z.infer<typeof GetLayerMessage>, GetLayerResponse | null>;
-    getLayers: Method<z.infer<typeof GetLayersMessage>, GetLayersResponse>;
+    getLayer: Method<z.infer<typeof GetLayerMessage>, Layer | null>;
+    getLayers: Method<z.infer<typeof GetLayersMessage>, Array<Layer | null>>;
     setLayerVisibility: Method<z.infer<typeof SetLayerVisibilityMessage>, void>;
 
-    getLayerGroup: Method<
-      z.infer<typeof GetGroupMessage>,
-      GetLayerGroupResponse | null
-    >;
+    getLayerGroup: Method<z.infer<typeof GetGroupMessage>, LayerGroup | null>;
     getLayerGroups: Method<
       z.infer<typeof GetGroupsMessage>,
-      GetLayerGroupsResponse
+      Array<LayerGroup | null>
     >;
     setLayerGroupVisibility: Method<
       z.infer<typeof SetLayerGroupVisibilityMessage>,

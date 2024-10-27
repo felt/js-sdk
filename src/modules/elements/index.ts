@@ -12,3 +12,5 @@ export type {
   GetElementGroupsFilter,
   GetElementsFilter,
 } from "./types";
+
+export type { ElementsController } from "./controller";

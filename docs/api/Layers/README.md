@@ -16,9 +16,13 @@ independently of the Layer, so you can turn on and off each category or class in
 
 ## Index
 
-### Type Aliases
+### Interfaces
 
 * [Feature](Feature.md)
+
+### Controller
+
+* [LayersController](LayersController.md)
 
 ### Filters
 

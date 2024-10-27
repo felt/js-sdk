@@ -5,8 +5,17 @@ current viewport, getting the current viewport, and being notified when the view
 
 ## Index
 
-### Interfaces
+### Controller
 
-* [ViewportState](ViewportState.md)
+* [ViewportController](ViewportController.md)
+
+### Types
+
 * [SetViewportCenterZoomParams](SetViewportCenterZoomParams.md)
 * [ViewportFitBoundsParams](ViewportFitBoundsParams.md)
+
+### Types
+
+The current state of the viewport, including the derived bounds.
+
+* [ViewportState](ViewportState.md)

@@ -48,8 +48,8 @@ export const layersController = (feltWindow: Window): LayersController => ({
  * Layers can be organised into groups, and their groups can also have their
  * visibility toggled.
  *
- * @group Layers
- * @internal
+ * @group Controller
+ * @public
  */
 export interface LayersController {
   // LAYERS

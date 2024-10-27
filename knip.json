@@ -1,6 +1,5 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
   "entry": ["src/client.ts", "src/handler.ts", "src/modules/*/index.ts"],
-  "project": ["src/**/*.ts"],
-  "ignoreDependencies": ["remark-toc"]
+  "project": ["src/**/*.ts"]
 }

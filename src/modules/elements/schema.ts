@@ -10,12 +10,10 @@ import { SetVisibilityRequestSchema } from "~/modules/shared";
 import {
   GetElementGroupsFilterSchema,
   GetElementsFilterSchema,
+  type Element,
   type ElementChangeCallbackParams,
+  type ElementGroup,
   type ElementGroupChangeCallbackParams,
-  type GetElementGroupResponse,
-  type GetElementGroupsResponse,
-  type GetElementResponse,
-  type GetElementsResponse,
 } from "./types";
 
 const GetElementMessage = methodMessage("getElement", z.string());
@@ -56,21 +54,18 @@ export const elementsSchema = {
 
 export type ElementsSchema = {
   methods: {
-    getElement: Method<
-      z.infer<typeof GetElementMessage>,
-      GetElementResponse | null
-    >;
+    getElement: Method<z.infer<typeof GetElementMessage>, Element | null>;
     getElements: Method<
       z.infer<typeof GetElementsMessage>,
-      GetElementsResponse
+      Array<Element | null>
     >;
     getElementGroup: Method<
       z.infer<typeof GetGroupMessage>,
-      GetElementGroupResponse | null
+      ElementGroup | null
     >;
     getElementGroups: Method<
       z.infer<typeof GetGroupsMessage>,
-      GetElementGroupsResponse
+      Array<ElementGroup | null>
     >;
     setElementGroupVisibility: Method<
       z.infer<typeof SetElementGroupVisibilityMessage>,

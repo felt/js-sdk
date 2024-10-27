@@ -19,7 +19,7 @@ import { Felt } from "@feltjs/js-sdk";
 
 const map = await Felt.embed(
   document.querySelector("#container"),
-  "felt-map-id",
+  "FELT_MAP_ID",
 );
 const layers = await map.getLayers();
 const elements = await map.getElements();

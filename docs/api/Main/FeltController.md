@@ -1,41 +1,16 @@
 ***
 
-## Contents
+This is the main interface for interacting with a Felt map.
 
-* [Properties](#properties)
-  * [iframe](#iframe)
-* [Methods](#methods)
-  * [getElement()](#getelement)
-  * [getElements()](#getelements)
-  * [getElementGroup()](#getelementgroup)
-  * [getElementGroups()](#getelementgroups)
-  * [setElementGroupVisibility()](#setelementgroupvisibility)
-  * [getLayer()](#getlayer)
-  * [getLayers()](#getlayers)
-  * [setLayerVisibility()](#setlayervisibility)
-  * [getLayerGroup()](#getlayergroup)
-  * [getLayerGroups()](#getlayergroups)
-  * [setLayerGroupVisibility()](#setlayergroupvisibility)
-  * [getLegendItem()](#getlegenditem)
-  * [getLegendItems()](#getlegenditems)
-  * [setLegendItemVisibility()](#setlegenditemvisibility)
-  * [getLayerFilters()](#getlayerfilters)
-  * [setLayerFilters()](#setlayerfilters)
-  * [getSelection()](#getselection)
-  * [updateUiControls()](#updateuicontrols)
-  * [getViewport()](#getviewport)
-  * [setViewport()](#setviewport)
-  * [fitViewportToBounds()](#fitviewporttobounds)
-* [Events](#events)
-  * [onElementChange()](#onelementchange)
-  * [onElementGroupChange()](#onelementgroupchange)
-  * [onPointerClick()](#onpointerclick)
-  * [onPointerMove()](#onpointermove)
-  * [onLayerChange()](#onlayerchange)
-  * [onLayerGroupChange()](#onlayergroupchange)
-  * [onLegendItemChange()](#onlegenditemchange)
-  * [onSelectionChange()](#onselectionchange)
-  * [onViewportMove()](#onviewportmove)
+This interface is composed of the various controllers, each having a
+different area of responsibility.
+
+All the methods are listed here, but each controller is documented on its
+own to make it easier to find related methods and events.
+
+## Extends
+
+* [`ViewportController`](../Viewport/ViewportController.md).[`UiController`](../UI/UiController.md).[`LayersController`](../Layers/LayersController.md).[`ElementsController`](../Elements/ElementsController.md).[`SelectionController`](../Selection/SelectionController.md).[`InteractionsController`](../Interactions/InteractionsController.md)
 
 ## Properties
 
@@ -49,7 +24,7 @@ The iframe element containing the Felt map, if it is an embedded map.
 
 ### getElement()
 
-> **getElement**(`id`): `Promise`\<`null` | [`Element`](../Elements/Element.md)>
+> **getElement**(`id`: `string`): `Promise`\<`null` | [`Element`](../Elements/Element.md)>
 
 Get a single element from the map by its id.
 
@@ -75,7 +50,7 @@ const element = await felt.getElement("element-1");
 
 ### getElements()
 
-> **getElements**(`filter`?): `Promise`\<(`null` | [`Element`](../Elements/Element.md))\[]>
+> **getElements**(`filter`?: [`GetElementsFilter`](../Elements/GetElementsFilter.md)): `Promise`\<(`null` | [`Element`](../Elements/Element.md))\[]>
 
 Gets elements from the map, according to the filters supplied. If no
 filters are supplied, all elements will be returned.
@@ -108,7 +83,7 @@ const elements = await felt.getElements();
 
 ### getElementGroup()
 
-> **getElementGroup**(`id`): `Promise`\<`null` | [`ElementGroup`](../Elements/ElementGroup.md)>
+> **getElementGroup**(`id`: `string`): `Promise`\<`null` | [`ElementGroup`](../Elements/ElementGroup.md)>
 
 Get an element group from the map by its id.
 
@@ -134,7 +109,7 @@ felt.getElementGroup("element-group-1");
 
 ### getElementGroups()
 
-> **getElementGroups**(`filter`?): `Promise`\<(`null` | [`ElementGroup`](../Elements/ElementGroup.md))\[]>
+> **getElementGroups**(`filter`?: [`GetElementGroupsFilter`](../Elements/GetElementGroupsFilter.md)): `Promise`\<(`null` | [`ElementGroup`](../Elements/ElementGroup.md))\[]>
 
 Gets element groups from the map, according to the filters supplied. If no
 filters are supplied, all element groups will be returned in rendering order.
@@ -161,7 +136,7 @@ const elementGroups = await felt.getElementGroups({ ids: ["element-group-1", "el
 
 ### setElementGroupVisibility()
 
-> **setElementGroupVisibility**(`visibility`): `Promise`\<`void`>
+> **setElementGroupVisibility**(`visibility`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`\<`void`>
 
 Hide or show element groups with the given ids.
 
@@ -185,7 +160,7 @@ felt.setElementGroupVisibility({ show: ["element-group-1", "element-group-2"], h
 
 ### getLayer()
 
-> **getLayer**(`id`): `Promise`\<`null` | [`Layer`](../Layers/Layer.md)>
+> **getLayer**(`id`: `string`): `Promise`\<`null` | [`Layer`](../Layers/Layer.md)>
 
 Get a single layer from the map by its id.
 
@@ -211,7 +186,7 @@ const layers = await felt.getLayer({ ids: ["layer-1", "layer-2"] });
 
 ### getLayers()
 
-> **getLayers**(`filter`?): `Promise`\<(`null` | [`Layer`](../Layers/Layer.md))\[]>
+> **getLayers**(`filter`?: [`GetLayersFilter`](../Layers/GetLayersFilter.md)): `Promise`\<(`null` | [`Layer`](../Layers/Layer.md))\[]>
 
 Gets layers from the map, according to the filters supplied. If no
 filters are supplied, all layers will be returned.
@@ -244,7 +219,7 @@ const layers = await felt.getLayers();
 
 ### setLayerVisibility()
 
-> **setLayerVisibility**(`visibility`): `Promise`\<`void`>
+> **setLayerVisibility**(`visibility`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`\<`void`>
 
 Hide or show layers with the given ids.
 
@@ -268,7 +243,7 @@ felt.setLayerVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
 
 ### getLayerGroup()
 
-> **getLayerGroup**(`id`): `Promise`\<`null` | [`LayerGroup`](../Layers/LayerGroup.md)>
+> **getLayerGroup**(`id`: `string`): `Promise`\<`null` | [`LayerGroup`](../Layers/LayerGroup.md)>
 
 Get a layer group from the map by its id.
 
@@ -294,7 +269,7 @@ felt.getLayerGroup("layer-group-1");
 
 ### getLayerGroups()
 
-> **getLayerGroups**(`filter`?): `Promise`\<(`null` | [`LayerGroup`](../Layers/LayerGroup.md))\[]>
+> **getLayerGroups**(`filter`?: [`GetLayerGroupsFilter`](../Layers/GetLayerGroupsFilter.md)): `Promise`\<(`null` | [`LayerGroup`](../Layers/LayerGroup.md))\[]>
 
 Gets layer groups from the map, according to the filters supplied. If no
 filters are supplied, all layer groups will be returned in rendering order.
@@ -321,7 +296,7 @@ const layerGroups = await felt.getLayerGroups({ ids: ["layer-group-1", "layer-gr
 
 ### setLayerGroupVisibility()
 
-> **setLayerGroupVisibility**(`visibility`): `Promise`\<`void`>
+> **setLayerGroupVisibility**(`visibility`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`\<`void`>
 
 Hide or show layer groups with the given ids.
 
@@ -345,7 +320,7 @@ felt.setLayerGroupVisibility({ show: ["layer-group-1", "layer-group-2"], hide: [
 
 ### getLegendItem()
 
-> **getLegendItem**(`id`): `Promise`\<`null` | [`LegendItem`](../Layers/LegendItem.md)>
+> **getLegendItem**(`id`: [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)): `Promise`\<`null` | [`LegendItem`](../Layers/LegendItem.md)>
 
 Allows you to get the state of a single legend item.
 
@@ -372,7 +347,7 @@ const legendItem = await felt.getLegendItem({
 
 ### getLegendItems()
 
-> **getLegendItems**(`filter`?): `Promise`\<(`null` | [`LegendItem`](../Layers/LegendItem.md))\[]>
+> **getLegendItems**(`filter`?: [`LegendItemsFilter`](../Layers/LegendItemsFilter.md)): `Promise`\<(`null` | [`LegendItem`](../Layers/LegendItem.md))\[]>
 
 Allows you to obtain the state of several legend items, by passing in
 filters describing which legend items you want.
@@ -399,7 +374,7 @@ const legendItems = await felt.getLegendItems({layerId: "layer-1"});
 
 ### setLegendItemVisibility()
 
-> **setLegendItemVisibility**(`visibility`): `Promise`\<`void`>
+> **setLegendItemVisibility**(`visibility`: \{`show`: [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)\[];`hide`: [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)\[]; }): `Promise`\<`void`>
 
 Hide or show legend items with the given identifiers.
 
@@ -428,7 +403,7 @@ felt.setLegendItemVisibility({
 
 ### getLayerFilters()
 
-> **getLayerFilters**(`layerId`): `Promise`\<`null` | [`LayerFilters`](../Layers/LayerFilters.md)>
+> **getLayerFilters**(`layerId`: `string`): `Promise`\<`null` | [`LayerFilters`](../Layers/LayerFilters.md)>
 
 Get the filters for a layer.
 
@@ -458,7 +433,7 @@ console.log(filters.combined, filters.style, filters.ephemeral, filters.componen
 
 ### setLayerFilters()
 
-> **setLayerFilters**(`params`): `Promise`\<`void`>
+> **setLayerFilters**(`params`: \{`layerId`: `string`;`filters`: [`Filters`](../Layers/Filters.md); }): `Promise`\<`void`>
 
 Sets the **ephemeral** filters for a layer.
 
@@ -505,7 +480,7 @@ const selection = await felt.getSelection();
 
 ### updateUiControls()
 
-> **updateUiControls**(`controls`): `void`
+> **updateUiControls**(`controls`: [`UiControlsOptions`](../UI/UiControlsOptions.md)): `void`
 
 Updates the UI controls on the embedded map.
 
@@ -535,7 +510,7 @@ Gets the current state of the viewport.
 
 ### setViewport()
 
-> **setViewport**(`viewport`): `void`
+> **setViewport**(`viewport`: [`SetViewportCenterZoomParams`](../Viewport/SetViewportCenterZoomParams.md)): `void`
 
 Moves the map to the specified location.
 
@@ -562,7 +537,7 @@ felt.setViewport({
 
 ### fitViewportToBounds()
 
-> **fitViewportToBounds**(`bounds`): `void`
+> **fitViewportToBounds**(`bounds`: [`ViewportFitBoundsParams`](../Viewport/ViewportFitBoundsParams.md)): `void`
 
 Fits the map to the specified bounds.
 
@@ -590,18 +565,18 @@ felt.fitViewportToBounds({ bounds: [west, south, east, north] });
 
 ### onElementChange()
 
-> **onElementChange**(`args`): `VoidFunction`
+> **onElementChange**(`args`: \{`options`: \{`id`: `string`; };`handler`: (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when an element changes.
 
 #### Parameters
 
-| Parameter         | Type                 | Description                                          |
-| ----------------- | -------------------- | ---------------------------------------------------- |
-| `args`            | `object`             | -                                                    |
-| `args.options`    | `object`             | -                                                    |
-| `args.options.id` | `string`             | The id of the element to listen for changes to.      |
-| `args.handler`    | (`change`) => `void` | The handler that is called when the element changes. |
+| Parameter         | Type                                                                                              | Description                                          |
+| ----------------- | ------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| `args`            | `object`                                                                                          | -                                                    |
+| `args.options`    | `object`                                                                                          | -                                                    |
+| `args.options.id` | `string`                                                                                          | The id of the element to listen for changes to.      |
+| `args.handler`    | (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void` | The handler that is called when the element changes. |
 
 #### Returns
 
@@ -625,18 +600,18 @@ unsubscribe();
 
 ### onElementGroupChange()
 
-> **onElementGroupChange**(`args`): `VoidFunction`
+> **onElementGroupChange**(`args`: \{`options`: \{`id`: `string`; };`handler`: (`change`: [`ElementGroupChangeCallbackParams`](../Elements/ElementGroupChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when an element group changes.
 
 #### Parameters
 
-| Parameter         | Type                 |
-| ----------------- | -------------------- |
-| `args`            | `object`             |
-| `args.options`    | `object`             |
-| `args.options.id` | `string`             |
-| `args.handler`    | (`change`) => `void` |
+| Parameter         | Type                                                                                                        |
+| ----------------- | ----------------------------------------------------------------------------------------------------------- |
+| `args`            | `object`                                                                                                    |
+| `args.options`    | `object`                                                                                                    |
+| `args.options.id` | `string`                                                                                                    |
+| `args.handler`    | (`change`: [`ElementGroupChangeCallbackParams`](../Elements/ElementGroupChangeCallbackParams.md)) => `void` |
 
 #### Returns
 
@@ -660,16 +635,16 @@ unsubscribe();
 
 ### onPointerClick()
 
-> **onPointerClick**(`params`): `VoidFunction`
+> **onPointerClick**(`params`: \{`handler`: (`event`: [`MapInteractionEvent`](../Interactions/MapInteractionEvent.md)) => `void`; }): `VoidFunction`
 
 Allows you to be notified the user clicks on the map.
 
 #### Parameters
 
-| Parameter        | Type                |
-| ---------------- | ------------------- |
-| `params`         | `object`            |
-| `params.handler` | (`event`) => `void` |
+| Parameter        | Type                                                                                 |
+| ---------------- | ------------------------------------------------------------------------------------ |
+| `params`         | `object`                                                                             |
+| `params.handler` | (`event`: [`MapInteractionEvent`](../Interactions/MapInteractionEvent.md)) => `void` |
 
 #### Returns
 
@@ -692,16 +667,16 @@ unsubscribe();
 
 ### onPointerMove()
 
-> **onPointerMove**(`params`): `VoidFunction`
+> **onPointerMove**(`params`: \{`handler`: (`event`: [`MapInteractionEvent`](../Interactions/MapInteractionEvent.md)) => `void`; }): `VoidFunction`
 
 Allows you to be notified the user moves the mouse over the map.
 
 #### Parameters
 
-| Parameter        | Type                |
-| ---------------- | ------------------- |
-| `params`         | `object`            |
-| `params.handler` | (`event`) => `void` |
+| Parameter        | Type                                                                                 | Description             |
+| ---------------- | ------------------------------------------------------------------------------------ | ----------------------- |
+| `params`         | `object`                                                                             | Params for the listener |
+| `params.handler` | (`event`: [`MapInteractionEvent`](../Interactions/MapInteractionEvent.md)) => `void` | The handler function    |
 
 #### Returns
 
@@ -724,18 +699,18 @@ unsubscribe();
 
 ### onLayerChange()
 
-> **onLayerChange**(`args`): `VoidFunction`
+> **onLayerChange**(`args`: \{`options`: \{`id`: `string`; };`handler`: (`change`: [`LayerChangeCallbackParams`](../Layers/LayerChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when a layer changes.
 
 #### Parameters
 
-| Parameter         | Type                 | Description                                        |
-| ----------------- | -------------------- | -------------------------------------------------- |
-| `args`            | `object`             | -                                                  |
-| `args.options`    | `object`             | -                                                  |
-| `args.options.id` | `string`             | The id of the layer to listen for changes to.      |
-| `args.handler`    | (`change`) => `void` | The handler that is called when the layer changes. |
+| Parameter         | Type                                                                                        | Description                                        |
+| ----------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| `args`            | `object`                                                                                    | -                                                  |
+| `args.options`    | `object`                                                                                    | -                                                  |
+| `args.options.id` | `string`                                                                                    | The id of the layer to listen for changes to.      |
+| `args.handler`    | (`change`: [`LayerChangeCallbackParams`](../Layers/LayerChangeCallbackParams.md)) => `void` | The handler that is called when the layer changes. |
 
 #### Returns
 
@@ -759,18 +734,18 @@ unsubscribe();
 
 ### onLayerGroupChange()
 
-> **onLayerGroupChange**(`args`): `VoidFunction`
+> **onLayerGroupChange**(`args`: \{`options`: \{`id`: `string`; };`handler`: (`change`: [`LayerGroupChangeCallbackParams`](../Layers/LayerGroupChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when a layer group changes.
 
 #### Parameters
 
-| Parameter         | Type                 |
-| ----------------- | -------------------- |
-| `args`            | `object`             |
-| `args.options`    | `object`             |
-| `args.options.id` | `string`             |
-| `args.handler`    | (`change`) => `void` |
+| Parameter         | Type                                                                                                  |
+| ----------------- | ----------------------------------------------------------------------------------------------------- |
+| `args`            | `object`                                                                                              |
+| `args.options`    | `object`                                                                                              |
+| `args.options.id` | `string`                                                                                              |
+| `args.handler`    | (`change`: [`LayerGroupChangeCallbackParams`](../Layers/LayerGroupChangeCallbackParams.md)) => `void` |
 
 #### Returns
 
@@ -794,17 +769,17 @@ unsubscribe();
 
 ### onLegendItemChange()
 
-> **onLegendItemChange**(`args`): `VoidFunction`
+> **onLegendItemChange**(`args`: \{`options`: [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md);`handler`: (`change`: [`LegendItemChangeCallbackParams`](../Layers/LegendItemChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when a legend item changes.
 
 #### Parameters
 
-| Parameter      | Type                                                        |
-| -------------- | ----------------------------------------------------------- |
-| `args`         | `object`                                                    |
-| `args.options` | [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md) |
-| `args.handler` | (`change`) => `void`                                        |
+| Parameter      | Type                                                                                                  |
+| -------------- | ----------------------------------------------------------------------------------------------------- |
+| `args`         | `object`                                                                                              |
+| `args.options` | [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)                                           |
+| `args.handler` | (`change`: [`LegendItemChangeCallbackParams`](../Layers/LegendItemChangeCallbackParams.md)) => `void` |
 
 #### Returns
 
@@ -828,16 +803,16 @@ unsubscribe();
 
 ### onSelectionChange()
 
-> **onSelectionChange**(`params`): `VoidFunction`
+> **onSelectionChange**(`params`: \{`handler`: (`change`: \{`selection`: [`EntityNode`](../Selection/EntityNode.md)\[]; }) => `void`; }): `VoidFunction`
 
 Adds a listener for when the selection changes.
 
 #### Parameters
 
-| Parameter        | Type                 |
-| ---------------- | -------------------- |
-| `params`         | `object`             |
-| `params.handler` | (`change`) => `void` |
+| Parameter        | Type                                                                                  |
+| ---------------- | ------------------------------------------------------------------------------------- |
+| `params`         | `object`                                                                              |
+| `params.handler` | (`change`: \{`selection`: [`EntityNode`](../Selection/EntityNode.md)\[]; }) => `void` |
 
 #### Returns
 
@@ -860,16 +835,16 @@ unsubscribe();
 
 ### onViewportMove()
 
-> **onViewportMove**(`args`): `VoidFunction`
+> **onViewportMove**(`args`: \{`handler`: (`viewport`: [`ViewportState`](../Viewport/ViewportState.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when the viewport changes.
 
 #### Parameters
 
-| Parameter      | Type                   | Description                                                                            |
-| -------------- | ---------------------- | -------------------------------------------------------------------------------------- |
-| `args`         | `object`               | -                                                                                      |
-| `args.handler` | (`viewport`) => `void` | This callback is called with the current viewport state whenever the viewport changes. |
+| Parameter      | Type                                                                    | Description                                                                            |
+| -------------- | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `args`         | `object`                                                                | -                                                                                      |
+| `args.handler` | (`viewport`: [`ViewportState`](../Viewport/ViewportState.md)) => `void` | This callback is called with the current viewport state whenever the viewport changes. |
 
 #### Returns
 

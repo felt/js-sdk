@@ -12,8 +12,8 @@ export const uiController = (feltWindow: Window): UiController => ({
  * The UI controller allows you to enable and disable UI controls on the
  * embedded map.
  *
- * @group UI Controls
- * @internal
+ * @group Controller
+ * @public
  */
 export interface UiController {
   /**

@@ -37,3 +37,5 @@ export type {
   Filters,
   LayerFilters,
 } from "./filter.types";
+
+export type { LayersController } from "./controller";

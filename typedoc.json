@@ -11,7 +11,6 @@
     "./customTheme.mjs"
   ],
   "cleanOutputDir": true,
-  "readme": "none",
   "indexFormat": "list",
   "parametersFormat": "table",
   "interfacePropertiesFormat": "list",
@@ -20,7 +19,10 @@
   "typeDeclarationFormat": "list",
   "propertyMembersFormat": "table",
 
-  "categoryOrder": ["Initializing", "*"],
+  "expandParameters": true,
+  "expandObjects": true,
+
+  "categoryOrder": ["Controller", "*"],
 
   "hideBreadcrumbs": true,
   "hidePageHeader": true,
@@ -29,15 +31,18 @@
 
   "treatWarningsAsErrors": true,
 
+  // don't enable this, because it breaks references to some types on some pages,
+  // even though it gives us nice syntax highlighting.
+  "useCodeBlocks": false,
+
   "tableColumnSettings": {
     "hideInherited": true,
     "hideDefaults": false
   },
 
-  "remarkPlugins": [["remark-toc", { "maxDepth": 3 }]],
-
   "outputFileStrategy": "members",
   "flattenOutputFiles": false,
   "theme": "customTheme",
-  "entryModule": "Initializing"
+  "readme": "./src/docs_api_readme_prepend.md",
+  "mergeReadme": true
 }

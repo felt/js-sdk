@@ -5,6 +5,10 @@ groups that they belong to.
 
 ## Index
 
+### Controller
+
+* [ElementsController](ElementsController.md)
+
 ### ElementGroups
 
 * [ElementGroup](ElementGroup.md)

@@ -2,6 +2,9 @@
 
 > **Filters**: [`FilterTernary`](FilterTernary.md) | [`FilterExpression`](FilterExpression.md) | `null` | `boolean`
 
+Filters can be used to change which features in a layer are rendered. Filters can be
+applied to a layer by the `setLayerFilters` method on the Felt controller.
+
 ## Remarks
 
 The possible operators are:

@@ -26,25 +26,11 @@ independently of the Layer, so you can turn on and off each category or class in
 
 ### Filters
 
+* [LayerFilters](LayerFilters.md)
 * [FilterLogicGate](FilterLogicGate.md)
 * [FilterExpression](FilterExpression.md)
 * [FilterTernary](FilterTernary.md)
-
-### Filters
-
-Filters can be used to change which features in a layer are rendered. Filters can be
-applied to a layer by the `setLayerFilters` method on the Felt controller.
-
 * [Filters](Filters.md)
-
-### Filters
-
-The filters that are currently set on a layer.
-
-A layer's filters are the combination of various different places
-in which filters can be applied.
-
-* [LayerFilters](LayerFilters.md)
 
 ### LayerGroups
 

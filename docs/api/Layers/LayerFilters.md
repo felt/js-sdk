@@ -1,5 +1,10 @@
 ***
 
+The filters that are currently set on a layer.
+
+A layer's filters are the combination of various different places
+in which filters can be applied.
+
 ## Properties
 
 ### style

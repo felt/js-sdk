@@ -79,7 +79,6 @@ const FilterTernarySchema: z.ZodType<FilterTernary> = z.tuple([
 ]);
 
 /**
- * @group Filters
  *
  * Filters can be used to change which features in a layer are rendered. Filters can be
  * applied to a layer by the `setLayerFilters` method on the Felt controller.
@@ -113,6 +112,8 @@ const FilterTernarySchema: z.ZodType<FilterTernary> = z.tuple([
  *   filters: [["AREA", "gt", 30_000], "and", ["COLOR", "eq", "red"]]
  * })
  * ```
+ *
+ * @group Filters
  */
 export type Filters = FilterTernary | FilterExpression | null | boolean;
 export const FiltersSchema = z.union([
@@ -123,13 +124,12 @@ export const FiltersSchema = z.union([
 ]);
 
 /**
- * @group Filters
- *
  * The filters that are currently set on a layer.
  *
  * A layer's filters are the combination of various different places
  * in which filters can be applied.
  *
+ * @group Filters
  */
 export interface LayerFilters {
   /**

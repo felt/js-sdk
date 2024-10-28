@@ -1,5 +1,5 @@
 import { listener, method } from "~/lib/types/interface";
-import type { SetVisibilityRequest } from "~/modules/shared/types";
+import type { Geometry, SetVisibilityRequest } from "~/modules/shared/types";
 
 import type {
   Element,
@@ -15,6 +15,7 @@ import type {
  */
 export const elementsController = (feltWindow: Window): ElementsController => ({
   getElement: method(feltWindow, "getElement"),
+  getElementGeometry: method(feltWindow, "getElementGeometry"),
   getElements: method(feltWindow, "getElements"),
   setElementGroupVisibility: method(feltWindow, "setElementGroupVisibility"),
   getElementGroup: method(feltWindow, "getElementGroup"),
@@ -46,6 +47,22 @@ export interface ElementsController {
      */
     id: string,
   ): Promise<Element | null>;
+
+  /**
+   * Get the geometry of an element.
+   *
+   * @example
+   * ```typescript
+   * const geometry = await felt.getElementGeometry("element-1");
+   * console.log(geometry?.type, geometry?.coordinates);
+   * ```
+   */
+  getElementGeometry(
+    /**
+     * The id of the element you want to get the geometry of.
+     */
+    id: string,
+  ): Promise<Geometry | null>;
 
   /**
    * Gets elements from the map, according to the constraints supplied. If no

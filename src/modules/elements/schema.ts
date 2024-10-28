@@ -6,7 +6,10 @@ import {
   type Listener,
   type Method,
 } from "~/lib/types/builders";
-import { SetVisibilityRequestSchema } from "~/modules/shared/types";
+import {
+  SetVisibilityRequestSchema,
+  type Geometry,
+} from "~/modules/shared/types";
 import {
   GetElementGroupsConstraintSchema,
   GetElementsConstraintSchema,
@@ -17,6 +20,10 @@ import {
 } from "./types";
 
 const GetElementMessage = methodMessage("getElement", z.string());
+const GetElementGeometryMessage = methodMessage(
+  "getElementGeometry",
+  z.string(),
+);
 const GetElementsMessage = methodMessage(
   "getElements",
   GetElementsConstraintSchema.optional(),
@@ -44,6 +51,7 @@ const OnElementGroupChangeMessage = listenerMessageWithParams(
 export const elementsSchema = {
   methods: [
     GetElementMessage,
+    GetElementGeometryMessage,
     GetElementsMessage,
     GetGroupMessage,
     GetGroupsMessage,
@@ -55,6 +63,10 @@ export const elementsSchema = {
 export type ElementsSchema = {
   methods: {
     getElement: Method<z.infer<typeof GetElementMessage>, Element | null>;
+    getElementGeometry: Method<
+      z.infer<typeof GetElementGeometryMessage>,
+      Geometry | null
+    >;
     getElements: Method<
       z.infer<typeof GetElementsMessage>,
       Array<Element | null>

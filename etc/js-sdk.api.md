@@ -4,33 +4,34 @@
 
 ```ts
 
-import { b } from './types-CQXZ8sEh.js';
-import { c } from './types-CQXZ8sEh.js';
-import { d } from './types-CQXZ8sEh.js';
-import { e } from './types-CQXZ8sEh.js';
-import { E as Element_2 } from './types-CQXZ8sEh.js';
-import { a as ElementGroup } from './types-CQXZ8sEh.js';
-import { o as EntityNode } from './types-CQXZ8sEh.js';
-import { F } from './types-CQXZ8sEh.js';
-import { f } from './types-CQXZ8sEh.js';
-import { r as Feature } from './types-CQXZ8sEh.js';
-import { s as FeltBoundary } from './types-CQXZ8sEh.js';
-import { t as FeltZoom } from './types-CQXZ8sEh.js';
-import { G } from './types-CQXZ8sEh.js';
-import { h } from './types-CQXZ8sEh.js';
-import { i } from './types-CQXZ8sEh.js';
-import { j } from './types-CQXZ8sEh.js';
-import { l } from './types-CQXZ8sEh.js';
-import { L as Layer } from './types-CQXZ8sEh.js';
-import { g as LayerGroup } from './types-CQXZ8sEh.js';
-import { k as LegendItem } from './types-CQXZ8sEh.js';
-import { M } from './types-CQXZ8sEh.js';
-import { m } from './types-CQXZ8sEh.js';
-import { n } from './types-CQXZ8sEh.js';
-import { p } from './types-CQXZ8sEh.js';
-import { q } from './types-CQXZ8sEh.js';
-import { S as SetVisibilityRequest } from './types-CQXZ8sEh.js';
-import { V } from './types-CQXZ8sEh.js';
+import { a } from './types-DO7UbwVI.js';
+import { c } from './types-DO7UbwVI.js';
+import { d } from './types-DO7UbwVI.js';
+import { e } from './types-DO7UbwVI.js';
+import { E as Element_2 } from './types-DO7UbwVI.js';
+import { b as ElementGroup } from './types-DO7UbwVI.js';
+import { p as EntityNode } from './types-DO7UbwVI.js';
+import { F } from './types-DO7UbwVI.js';
+import { f } from './types-DO7UbwVI.js';
+import { s as Feature } from './types-DO7UbwVI.js';
+import { t as FeltBoundary } from './types-DO7UbwVI.js';
+import { u as FeltZoom } from './types-DO7UbwVI.js';
+import { g } from './types-DO7UbwVI.js';
+import { G as Geometry } from './types-DO7UbwVI.js';
+import { i } from './types-DO7UbwVI.js';
+import { j } from './types-DO7UbwVI.js';
+import { k } from './types-DO7UbwVI.js';
+import { L as Layer } from './types-DO7UbwVI.js';
+import { h as LayerGroup } from './types-DO7UbwVI.js';
+import { l as LegendItem } from './types-DO7UbwVI.js';
+import { M } from './types-DO7UbwVI.js';
+import { m } from './types-DO7UbwVI.js';
+import { n } from './types-DO7UbwVI.js';
+import { o } from './types-DO7UbwVI.js';
+import { q } from './types-DO7UbwVI.js';
+import { r } from './types-DO7UbwVI.js';
+import { S as SetVisibilityRequest } from './types-DO7UbwVI.js';
+import { V } from './types-DO7UbwVI.js';
 import { z } from 'zod';
 
 export { Element_2 as Element }
@@ -41,23 +42,25 @@ export { ElementGroup }
 interface ElementsController {
     getElement(
     id: string): Promise<Element_2 | null>;
+    getElementGeometry(
+    id: string): Promise<Geometry | null>;
     getElementGroup(id: string): Promise<ElementGroup | null>;
     getElementGroups(
-    constraint?: b): Promise<Array<ElementGroup | null>>;
+    constraint?: c): Promise<Array<ElementGroup | null>>;
     getElements(
-    constraint?: G): Promise<Array<Element_2 | null>>;
+    constraint?: a): Promise<Array<Element_2 | null>>;
     onElementChange(args: {
         options: {
             id: string;
         };
         handler: (
-        change: c) => void;
+        change: d) => void;
     }): VoidFunction;
     onElementGroupChange(args: {
         options: {
             id: string;
         };
-        handler: (change: d) => void;
+        handler: (change: e) => void;
     }): VoidFunction;
     setElementGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
 }
@@ -180,6 +183,8 @@ const FeltEmbedOptionsSchema: z.ZodObject<{
 
 export { FeltZoom }
 
+export { Geometry }
+
 // @public
 interface InteractionsController {
     onPointerClick(params: {
@@ -199,30 +204,30 @@ export { LayerGroup }
 interface LayersController {
     getLayer(
     id: string): Promise<Layer | null>;
-    getLayerFilters(layerId: string): Promise<n | null>;
+    getLayerFilters(layerId: string): Promise<o | null>;
     getLayerGroup(id: string): Promise<LayerGroup | null>;
     getLayerGroups(
-    constraint?: h): Promise<Array<LayerGroup | null>>;
+    constraint?: i): Promise<Array<LayerGroup | null>>;
     getLayers(
-    constraint?: e): Promise<Array<Layer | null>>;
-    getLegendItem(id: j): Promise<LegendItem | null>;
-    getLegendItems(constraint?: l): Promise<Array<LegendItem | null>>;
+    constraint?: f): Promise<Array<Layer | null>>;
+    getLegendItem(id: k): Promise<LegendItem | null>;
+    getLegendItems(constraint?: m): Promise<Array<LegendItem | null>>;
     onLayerChange(args: {
         options: {
             id: string;
         };
         handler: (
-        change: f) => void;
+        change: g) => void;
     }): VoidFunction;
     onLayerGroupChange(args: {
         options: {
             id: string;
         };
-        handler: (change: i) => void;
+        handler: (change: j) => void;
     }): VoidFunction;
     onLegendItemChange(args: {
-        options: j;
-        handler: (change: m) => void;
+        options: k;
+        handler: (change: n) => void;
     }): VoidFunction;
     setLayerFilters(params: {
         layerId: string;
@@ -231,8 +236,8 @@ interface LayersController {
     setLayerGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
     setLayerVisibility(visibility: SetVisibilityRequest): Promise<void>;
     setLegendItemVisibility(visibility: {
-        show?: Array<j>;
-        hide?: Array<j>;
+        show?: Array<k>;
+        hide?: Array<k>;
     }): Promise<void>;
 }
 
@@ -288,12 +293,12 @@ const UiControlsOptionsSchema: z.ZodObject<{
 
 // @public
 interface ViewportController {
-    fitViewportToBounds(bounds: q): void;
+    fitViewportToBounds(bounds: r): void;
     getViewport(): Promise<V>;
     onViewportMove(args: {
         handler: (viewport: V) => void;
     }): VoidFunction;
-    setViewport(viewport: p): void;
+    setViewport(viewport: q): void;
 }
 
 // (No @packageDocumentation comment for this package)

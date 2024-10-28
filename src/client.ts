@@ -14,5 +14,6 @@ export type { FeltController, FeltEmbedOptions } from "./modules/main";
 export type {
   FeltBoundary,
   FeltZoom,
+  Geometry,
   SetVisibilityRequest,
 } from "./modules/shared/types";

@@ -15,6 +15,64 @@ export const LatLngSchema = z.object({
 });
 
 /**
+ * A tuple representing a longitude and latitude coordinate.
+ *
+ * This is used hen serializing geometry because that's the standard used in
+ * GeoJSON.
+ */
+export type LngLatTuple = [longitude: number, latitude: number];
+
+/**
+ * A GeoJSON-like point geometry.
+ */
+export type PointGeometry = {
+  type: "Point";
+  coordinates: LngLatTuple;
+};
+
+/**
+ * A GeoJSON-like polygon geometry.
+ */
+export type PolygonGeometry = {
+  type: "Polygon";
+  coordinates: LngLatTuple[][];
+};
+
+/**
+ * A GeoJSON-like multi-polygon geometry.
+ */
+export type MultiPolygonGeometry = {
+  type: "MultiPolygon";
+  coordinates: PolygonGeometry["coordinates"][];
+};
+
+/**
+ * A GeoJSON-like line string geometry.
+ */
+export type LineStringGeometry = {
+  type: "LineString";
+  coordinates: LngLatTuple[];
+};
+
+/**
+ * A GeoJSON-like multi-line string geometry.
+ */
+export type MultiLineStringGeometry = {
+  type: "MultiLineString";
+  coordinates: LineStringGeometry["coordinates"][];
+};
+
+/**
+ * A GeoJSON-like geometry of any type
+ */
+export type Geometry =
+  | PointGeometry
+  | PolygonGeometry
+  | LineStringGeometry
+  | MultiLineStringGeometry
+  | MultiPolygonGeometry;
+
+/**
  * @ignore
  * @internal
  */

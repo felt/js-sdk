@@ -48,6 +48,31 @@ const element = await felt.getElement("element-1");
 
 ***
 
+### getElementGeometry()
+
+> **getElementGeometry**(`id`: `string`): `Promise`\<`null` | [`Geometry`](../Shared/Geometry.md)>
+
+Get the geometry of an element.
+
+#### Parameters
+
+| Parameter | Type     | Description                                            |
+| --------- | -------- | ------------------------------------------------------ |
+| `id`      | `string` | The id of the element you want to get the geometry of. |
+
+#### Returns
+
+`Promise`\<`null` | [`Geometry`](../Shared/Geometry.md)>
+
+#### Example
+
+```typescript
+const geometry = await felt.getElementGeometry("element-1");
+console.log(geometry?.type, geometry?.coordinates);
+```
+
+***
+
 ### getElements()
 
 > **getElements**(`constraint`?: [`GetElementsConstraint`](../Elements/GetElementsConstraint.md)): `Promise`\<(`null` | [`Element`](../Elements/Element.md))\[]>

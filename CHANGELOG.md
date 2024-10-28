@@ -1,5 +1,11 @@
 # @feltjs/js-sdk
 
+## 0.10.1-next.0
+
+### Patch Changes
+
+- a87b451: Add getElementGeometry
+
 ## 0.10.0
 
 ### Minor Changes

@@ -6,7 +6,14 @@ you to build powerful, interactive custom applications around Felt.
 You are able to control many aspects of the Felt UI and map contents, as well as being notified
 of events happening in the map such as clicks, selections, etc.
 
-## Installation
+## Getting started
+
+### React
+
+If you are using React, you can use the [Felt SDK React Starter Repo](https://github.com/felt/js-sdk-starter-react)
+to get started quickly from an example application.
+
+### Manual setup
 
 Assuming you are using a modern JavaScript environment, install the SDK using your preferred
 package manager:

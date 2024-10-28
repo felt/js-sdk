@@ -4,7 +4,7 @@ HTML.
 All Felt maps are embedded in iframes, and the SDK can do this for you or can connect to an
 existing Felt iframe.
 
-## Felt Map IDs
+## Felt map IDs
 
 Felt map IDs are unique identifiers for Felt maps. They are used to embed maps in iframes, and to
 connect to existing iframes.

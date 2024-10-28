@@ -1,5 +1,5 @@
 import { listener, method } from "~/lib/types/interface";
-import type { SetVisibilityRequest } from "~/modules/shared";
+import type { SetVisibilityRequest } from "~/modules/shared/types";
 import type { Filters, LayerFilters } from "./filter.types";
 import type {
   GetLayerGroupsConstraint,

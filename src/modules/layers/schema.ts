@@ -6,7 +6,7 @@ import {
   type Listener,
   type Method,
 } from "~/lib/types/builders";
-import { SetVisibilityRequestSchema } from "~/modules/shared";
+import { SetVisibilityRequestSchema } from "~/modules/shared/types";
 import { FiltersSchema, type LayerFilters } from "./filter.types";
 import {
   GetLayerGroupsFilterSchema,

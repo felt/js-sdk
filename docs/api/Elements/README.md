@@ -9,7 +9,7 @@ groups that they belong to.
 
 * [ElementsController](ElementsController.md)
 
-### ElementGroups
+### Element Groups
 
 * [ElementGroup](ElementGroup.md)
 * [GetElementGroupsConstraint](GetElementGroupsConstraint.md)

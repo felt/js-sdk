@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { type FeltBoundary } from "~/modules/shared";
+import { type FeltBoundary } from "~/modules/shared/types";
 
 export type { Feature } from "./features/types";
 
@@ -97,7 +97,7 @@ export interface Layer {
 }
 
 /**
- * @group LayerGroups
+ * @group Layer Groups
  */
 export interface LayerGroup {
   /**
@@ -161,7 +161,7 @@ export const GetLayersConstraintSchema = z.object({
 /**
  * The constraints to apply when getting layer groups.
  *
- * @group LayerGroups
+ * @group Layer Groups
  */
 export interface GetLayerGroupsConstraint
   extends z.infer<typeof GetLayerGroupsFilterSchema> {}
@@ -190,7 +190,7 @@ export interface LayerChangeCallbackParams {
 /**
  * The parameters for the `onLayerGroupChange` listener.
  *
- * @group LayerGroups
+ * @group Layer Groups
  */
 export interface LayerGroupChangeCallbackParams {
   layerGroup: LayerGroup | null;
@@ -200,7 +200,7 @@ export interface LayerGroupChangeCallbackParams {
  * A legend item, which often represents a sub-class of features in a
  * layer in the case of categorical or classed layers.
  *
- * @group LegendItems
+ * @group Legend Items
  */
 export interface LegendItem extends LegendItemIdentifier {
   /**
@@ -227,7 +227,7 @@ export interface LegendItem extends LegendItemIdentifier {
  * The identifier for a legend item. It is a compound key of the layer to
  * which the legend item belongs and the legend item's own id.
  *
- * @group LegendItems
+ * @group Legend Items
  */
 export interface LegendItemIdentifier
   extends z.infer<typeof LegendItemIdentifierSchema> {}
@@ -247,7 +247,7 @@ export const LegendItemIdentifierSchema = z.object({
 /**
  * Constraints for legend items. If nothing is passed, all legend items will be returned.
  *
- * @group LegendItems
+ * @group Legend Items
  */
 export interface LegendItemsConstraint
   extends z.infer<typeof LegendItemsConstraintSchema> {}
@@ -267,7 +267,7 @@ export const LegendItemsConstraintSchema = z.object({
 /**
  * The parameters for the `onLegendItemChange` listener.
  *
- * @group LegendItems
+ * @group Legend Items
  */
 export interface LegendItemChangeCallbackParams {
   /**

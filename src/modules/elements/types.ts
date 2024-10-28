@@ -40,7 +40,7 @@ export interface Element {
 }
 
 /**
- * @group ElementGroups
+ * @group Element Groups
  */
 export interface ElementGroup {
   /**
@@ -94,7 +94,7 @@ export const GetElementsConstraintSchema = z.object({
 /**
  * The constraints to apply when getting element groups.
  *
- * @group ElementGroups
+ * @group Element Groups
  */
 export interface GetElementGroupsConstraint
   extends z.infer<typeof GetElementGroupsConstraintSchema> {}
@@ -123,7 +123,7 @@ export interface ElementChangeCallbackParams {
 /**
  * The parameters for the `onElementGroupChange` listener.
  *
- * @group ElementGroups
+ * @group Element Groups
  */
 export interface ElementGroupChangeCallbackParams {
   elementGroup: ElementGroup | null;

@@ -32,7 +32,7 @@ independently of the Layer, so you can turn on and off each category or class in
 * [FilterTernary](FilterTernary.md)
 * [Filters](Filters.md)
 
-### LayerGroups
+### Layer Groups
 
 * [LayerGroup](LayerGroup.md)
 * [GetLayerGroupsConstraint](GetLayerGroupsConstraint.md)
@@ -45,7 +45,7 @@ independently of the Layer, so you can turn on and off each category or class in
 * [LayerChangeCallbackParams](LayerChangeCallbackParams.md)
 * [LayerProcessingStatus](LayerProcessingStatus.md)
 
-### LegendItems
+### Legend Items
 
 * [LegendItem](LegendItem.md)
 * [LegendItemIdentifier](LegendItemIdentifier.md)

@@ -15,4 +15,4 @@ export type {
   FeltBoundary,
   FeltZoom,
   SetVisibilityRequest,
-} from "./modules/shared";
+} from "./modules/shared/types";

@@ -1,5 +1,11 @@
 # @feltjs/js-sdk
 
+## 0.10.1-next.1
+
+### Patch Changes
+
+- facfbc2: Export more types for client
+
 ## 0.10.1-next.0
 
 ### Patch Changes

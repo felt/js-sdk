@@ -1,24 +1,34 @@
 import { z } from "zod";
 import {
   type FeltBoundary,
-  type FeltZoom,
-  type LatLng,
   FeltBoundarySchema,
+  type FeltZoom,
   FeltZoomSchema,
+  type LatLng,
   LatLngSchema,
 } from "~/modules/shared/types";
 
-export const ViewportCenterZoomSchema = z.object({
+/**
+ * The input type for setting the viewport to a particular center and zoom.
+ *
+ * @group Types
+ */
+export interface ViewportCenterZoom
+  extends z.infer<typeof ViewportCenterZoomSchema> {
   /**
    * The center of the viewport in latitude and longitude.
    */
-  center: LatLngSchema,
+  center: LatLng;
 
   /**
    * The zoom level of the viewport.
-   *
-   * {@link FeltZoom}
    */
+
+  zoom: FeltZoom;
+}
+export const ViewportCenterZoomSchema = z.object({
+  center: LatLngSchema,
+
   zoom: FeltZoomSchema,
 });
 
@@ -71,12 +81,14 @@ export const SetViewportCenterZoomParamsSchema = z.object({
  * @group Types
  */
 export interface ViewportFitBoundsParams
-  extends z.infer<typeof ViewportFitBoundsParamsSchema> {}
-export const ViewportFitBoundsParamsSchema = z.object({
+  extends z.infer<typeof ViewportFitBoundsParamsSchema> {
   /**
    * The bounds to fit the viewport to.
    *
    * {@link FeltBoundary}
    */
+  bounds: FeltBoundary;
+}
+export const ViewportFitBoundsParamsSchema = z.object({
   bounds: FeltBoundarySchema,
 });

@@ -11,6 +11,7 @@ current viewport, getting the current viewport, and being notified when the view
 
 ### Types
 
+* [ViewportCenterZoom](ViewportCenterZoom.md)
 * [SetViewportCenterZoomParams](SetViewportCenterZoomParams.md)
 * [ViewportFitBoundsParams](ViewportFitBoundsParams.md)
 

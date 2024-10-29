@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { type FeltBoundary } from "~/modules/shared/types";
+import type { FeltBoundary } from "~/modules/shared/types";
 
 export type { Feature } from "./features/types";
 

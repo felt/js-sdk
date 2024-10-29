@@ -63,7 +63,7 @@ export function listener<TEventName extends keyof ListenerSpec>(
     const id = crypto.randomUUID();
     feltWindow.postMessage(
       {
-        type: `felt.addListener`,
+        type: "felt.addListener",
         event: options ? { eventName, id, options } : { eventName, id },
       },
       "*",
@@ -78,7 +78,7 @@ export function listener<TEventName extends keyof ListenerSpec>(
       messageChannel.port1.onmessage = null;
       messageChannel.port1.close();
       messageChannel.port2.close();
-      feltWindow.postMessage({ type: `felt.removeListener`, id }, "*");
+      feltWindow.postMessage({ type: "felt.removeListener", id }, "*");
     };
   };
 }

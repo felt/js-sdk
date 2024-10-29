@@ -6,7 +6,7 @@ The parameters for the `fitViewportToBounds` method.
 
 ### bounds
 
-> **bounds**: \[`number`, `number`, `number`, `number`] = `FeltBoundarySchema`
+> **bounds**: \[`number`, `number`, `number`, `number`]
 
 The bounds to fit the viewport to.
 

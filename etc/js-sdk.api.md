@@ -4,63 +4,88 @@
 
 ```ts
 
-import { a } from './types-DO7UbwVI.js';
-import { c } from './types-DO7UbwVI.js';
-import { d } from './types-DO7UbwVI.js';
-import { e } from './types-DO7UbwVI.js';
-import { E as Element_2 } from './types-DO7UbwVI.js';
-import { b as ElementGroup } from './types-DO7UbwVI.js';
-import { p as EntityNode } from './types-DO7UbwVI.js';
-import { F } from './types-DO7UbwVI.js';
-import { f } from './types-DO7UbwVI.js';
-import { s as Feature } from './types-DO7UbwVI.js';
-import { t as FeltBoundary } from './types-DO7UbwVI.js';
-import { u as FeltZoom } from './types-DO7UbwVI.js';
-import { g } from './types-DO7UbwVI.js';
-import { G as Geometry } from './types-DO7UbwVI.js';
-import { i } from './types-DO7UbwVI.js';
-import { j } from './types-DO7UbwVI.js';
-import { k } from './types-DO7UbwVI.js';
-import { L as Layer } from './types-DO7UbwVI.js';
-import { h as LayerGroup } from './types-DO7UbwVI.js';
-import { l as LegendItem } from './types-DO7UbwVI.js';
-import { M } from './types-DO7UbwVI.js';
-import { m } from './types-DO7UbwVI.js';
-import { n } from './types-DO7UbwVI.js';
-import { o } from './types-DO7UbwVI.js';
-import { q } from './types-DO7UbwVI.js';
-import { r } from './types-DO7UbwVI.js';
-import { S as SetVisibilityRequest } from './types-DO7UbwVI.js';
-import { V } from './types-DO7UbwVI.js';
+import { E as Element_2 } from './types-CsCtPYly.js';
+import { d as ElementChangeCallbackParams } from './types-CsCtPYly.js';
+import { b as ElementGroup } from './types-CsCtPYly.js';
+import { e as ElementGroupChangeCallbackParams } from './types-CsCtPYly.js';
+import { y as ElementGroupNode } from './types-CsCtPYly.js';
+import { z as ElementNode } from './types-CsCtPYly.js';
+import { p as EntityNode } from './types-CsCtPYly.js';
+import { t as Feature } from './types-CsCtPYly.js';
+import { A as FeatureNode } from './types-CsCtPYly.js';
+import { D as FeltBoundary } from './types-CsCtPYly.js';
+import { H as FeltZoom } from './types-CsCtPYly.js';
+import { v as FilterExpression } from './types-CsCtPYly.js';
+import { w as FilterLogicGate } from './types-CsCtPYly.js';
+import { F as Filters } from './types-CsCtPYly.js';
+import { x as FilterTernary } from './types-CsCtPYly.js';
+import { G as Geometry } from './types-CsCtPYly.js';
+import { c as GetElementGroupsConstraint } from './types-CsCtPYly.js';
+import { a as GetElementsConstraint } from './types-CsCtPYly.js';
+import { i as GetLayerGroupsConstraint } from './types-CsCtPYly.js';
+import { f as GetLayersConstraint } from './types-CsCtPYly.js';
+import { I as LatLng } from './types-CsCtPYly.js';
+import { L as Layer } from './types-CsCtPYly.js';
+import { g as LayerChangeCallbackParams } from './types-CsCtPYly.js';
+import { o as LayerFilters } from './types-CsCtPYly.js';
+import { h as LayerGroup } from './types-CsCtPYly.js';
+import { j as LayerGroupChangeCallbackParams } from './types-CsCtPYly.js';
+import { B as LayerGroupNode } from './types-CsCtPYly.js';
+import { C as LayerNode } from './types-CsCtPYly.js';
+import { u as LayerProcessingStatus } from './types-CsCtPYly.js';
+import { l as LegendItem } from './types-CsCtPYly.js';
+import { n as LegendItemChangeCallbackParams } from './types-CsCtPYly.js';
+import { k as LegendItemIdentifier } from './types-CsCtPYly.js';
+import { m as LegendItemsConstraint } from './types-CsCtPYly.js';
+import { J as LineStringGeometry } from './types-CsCtPYly.js';
+import { K as LngLatTuple } from './types-CsCtPYly.js';
+import { M as MapInteractionEvent } from './types-CsCtPYly.js';
+import { N as MultiLineStringGeometry } from './types-CsCtPYly.js';
+import { O as MultiPolygonGeometry } from './types-CsCtPYly.js';
+import { P as PointGeometry } from './types-CsCtPYly.js';
+import { Q as PolygonGeometry } from './types-CsCtPYly.js';
+import { q as SetViewportCenterZoomParams } from './types-CsCtPYly.js';
+import { S as SetVisibilityRequest } from './types-CsCtPYly.js';
+import { s as ViewportCenterZoom } from './types-CsCtPYly.js';
+import { r as ViewportFitBoundsParams } from './types-CsCtPYly.js';
+import { V as ViewportState } from './types-CsCtPYly.js';
 import { z } from 'zod';
 
 export { Element_2 as Element }
 
+export { ElementChangeCallbackParams }
+
 export { ElementGroup }
 
+export { ElementGroupChangeCallbackParams }
+
+export { ElementGroupNode }
+
+export { ElementNode }
+
 // @public
-interface ElementsController {
+export interface ElementsController {
     getElement(
     id: string): Promise<Element_2 | null>;
     getElementGeometry(
     id: string): Promise<Geometry | null>;
     getElementGroup(id: string): Promise<ElementGroup | null>;
     getElementGroups(
-    constraint?: c): Promise<Array<ElementGroup | null>>;
+    constraint?: GetElementGroupsConstraint): Promise<Array<ElementGroup | null>>;
     getElements(
-    constraint?: a): Promise<Array<Element_2 | null>>;
+    constraint?: GetElementsConstraint): Promise<Array<Element_2 | null>>;
     onElementChange(args: {
         options: {
             id: string;
         };
         handler: (
-        change: d) => void;
+        change: ElementChangeCallbackParams) => void;
     }): VoidFunction;
     onElementGroupChange(args: {
         options: {
             id: string;
         };
-        handler: (change: e) => void;
+        handler: (change: ElementGroupChangeCallbackParams) => void;
     }): VoidFunction;
     setElementGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
 }
@@ -68,6 +93,8 @@ interface ElementsController {
 export { EntityNode }
 
 export { Feature }
+
+export { FeatureNode }
 
 // @public
 export const Felt: {
@@ -77,13 +104,6 @@ export const Felt: {
 
 export { FeltBoundary }
 
-// Warning: (ae-forgotten-export) The symbol "ViewportController" needs to be exported by the entry point client.d.ts
-// Warning: (ae-forgotten-export) The symbol "UiController" needs to be exported by the entry point client.d.ts
-// Warning: (ae-forgotten-export) The symbol "LayersController" needs to be exported by the entry point client.d.ts
-// Warning: (ae-forgotten-export) The symbol "ElementsController" needs to be exported by the entry point client.d.ts
-// Warning: (ae-forgotten-export) The symbol "SelectionController" needs to be exported by the entry point client.d.ts
-// Warning: (ae-forgotten-export) The symbol "InteractionsController" needs to be exported by the entry point client.d.ts
-//
 // @public
 export interface FeltController extends ViewportController, UiController, LayersController, ElementsController, SelectionController, InteractionsController {
     iframe: HTMLIFrameElement | null;
@@ -93,6 +113,10 @@ export interface FeltController extends ViewportController, UiController, Layers
 //
 // @public
 export interface FeltEmbedOptions extends z.infer<typeof FeltEmbedOptionsSchema> {
+    // (undocumented)
+    initialViewport?: ViewportCenterZoom;
+    // (undocumented)
+    uiControls: UiControlsOptions;
 }
 
 // @internal (undocumented)
@@ -183,68 +207,118 @@ const FeltEmbedOptionsSchema: z.ZodObject<{
 
 export { FeltZoom }
 
+export { FilterExpression }
+
+export { FilterLogicGate }
+
+export { Filters }
+
+export { FilterTernary }
+
 export { Geometry }
 
+export { GetElementGroupsConstraint }
+
+export { GetElementsConstraint }
+
+export { GetLayerGroupsConstraint }
+
+export { GetLayersConstraint }
+
 // @public
-interface InteractionsController {
+export interface InteractionsController {
     onPointerClick(params: {
-        handler: (event: M) => void;
+        handler: (event: MapInteractionEvent) => void;
     }): VoidFunction;
     onPointerMove(
     params: {
-        handler: (event: M) => void;
+        handler: (event: MapInteractionEvent) => void;
     }): VoidFunction;
 }
 
+export { LatLng }
+
 export { Layer }
+
+export { LayerChangeCallbackParams }
+
+export { LayerFilters }
 
 export { LayerGroup }
 
+export { LayerGroupChangeCallbackParams }
+
+export { LayerGroupNode }
+
+export { LayerNode }
+
+export { LayerProcessingStatus }
+
 // @public
-interface LayersController {
+export interface LayersController {
     getLayer(
     id: string): Promise<Layer | null>;
-    getLayerFilters(layerId: string): Promise<o | null>;
+    getLayerFilters(layerId: string): Promise<LayerFilters | null>;
     getLayerGroup(id: string): Promise<LayerGroup | null>;
     getLayerGroups(
-    constraint?: i): Promise<Array<LayerGroup | null>>;
+    constraint?: GetLayerGroupsConstraint): Promise<Array<LayerGroup | null>>;
     getLayers(
-    constraint?: f): Promise<Array<Layer | null>>;
-    getLegendItem(id: k): Promise<LegendItem | null>;
-    getLegendItems(constraint?: m): Promise<Array<LegendItem | null>>;
+    constraint?: GetLayersConstraint): Promise<Array<Layer | null>>;
+    getLegendItem(id: LegendItemIdentifier): Promise<LegendItem | null>;
+    getLegendItems(constraint?: LegendItemsConstraint): Promise<Array<LegendItem | null>>;
     onLayerChange(args: {
         options: {
             id: string;
         };
         handler: (
-        change: g) => void;
+        change: LayerChangeCallbackParams) => void;
     }): VoidFunction;
     onLayerGroupChange(args: {
         options: {
             id: string;
         };
-        handler: (change: j) => void;
+        handler: (change: LayerGroupChangeCallbackParams) => void;
     }): VoidFunction;
     onLegendItemChange(args: {
-        options: k;
-        handler: (change: n) => void;
+        options: LegendItemIdentifier;
+        handler: (change: LegendItemChangeCallbackParams) => void;
     }): VoidFunction;
     setLayerFilters(params: {
         layerId: string;
-        filters: F;
+        filters: Filters;
     }): Promise<void>;
     setLayerGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
     setLayerVisibility(visibility: SetVisibilityRequest): Promise<void>;
     setLegendItemVisibility(visibility: {
-        show?: Array<k>;
-        hide?: Array<k>;
+        show?: Array<LegendItemIdentifier>;
+        hide?: Array<LegendItemIdentifier>;
     }): Promise<void>;
 }
 
 export { LegendItem }
 
+export { LegendItemChangeCallbackParams }
+
+export { LegendItemIdentifier }
+
+export { LegendItemsConstraint }
+
+export { LineStringGeometry }
+
+export { LngLatTuple }
+
+export { MapInteractionEvent }
+
+export { MultiLineStringGeometry }
+
+export { MultiPolygonGeometry }
+
+export { PointGeometry }
+
+export { PolygonGeometry }
+
 // @public
-interface SelectionController {
+export interface SelectionController {
     getSelection(): Promise<EntityNode[]>;
     onSelectionChange(params: {
         handler: (change: {
@@ -253,18 +327,19 @@ interface SelectionController {
     }): VoidFunction;
 }
 
+export { SetViewportCenterZoomParams }
+
 export { SetVisibilityRequest }
 
 // @public
-interface UiController {
-    // Warning: (ae-forgotten-export) The symbol "UiControlsOptions" needs to be exported by the entry point client.d.ts
+export interface UiController {
     updateUiControls(controls: UiControlsOptions): void;
 }
 
 // Warning: (ae-forgotten-export) The symbol "UiControlsOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public (undocumented)
-interface UiControlsOptions extends z.infer<typeof UiControlsOptionsSchema> {
+export interface UiControlsOptions extends z.infer<typeof UiControlsOptionsSchema> {
 }
 
 // @internal (undocumented)
@@ -291,15 +366,21 @@ const UiControlsOptionsSchema: z.ZodObject<{
     scaleBar?: boolean | undefined;
 }>;
 
+export { ViewportCenterZoom }
+
 // @public
-interface ViewportController {
-    fitViewportToBounds(bounds: r): void;
-    getViewport(): Promise<V>;
+export interface ViewportController {
+    fitViewportToBounds(bounds: ViewportFitBoundsParams): void;
+    getViewport(): Promise<ViewportState>;
     onViewportMove(args: {
-        handler: (viewport: V) => void;
+        handler: (viewport: ViewportState) => void;
     }): VoidFunction;
-    setViewport(viewport: q): void;
+    setViewport(viewport: SetViewportCenterZoomParams): void;
 }
+
+export { ViewportFitBoundsParams }
+
+export { ViewportState }
 
 // (No @packageDocumentation comment for this package)
 

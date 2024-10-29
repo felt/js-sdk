@@ -1,5 +1,12 @@
 # @feltjs/js-sdk
 
+## 0.10.2
+
+### Patch Changes
+
+- db53c42: Improve TS Language Server types by using alternative zod inference type for objects
+- 70899d2: Add raster values to hover and click interaction events
+
 ## 0.10.2-next.1
 
 ### Patch Changes

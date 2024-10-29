@@ -1,0 +1,10 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@feltjs/js-sdk": "0.10.1"
+  },
+  "changesets": [
+    "silent-zoos-kneel"
+  ]
+}

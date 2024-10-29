@@ -19,6 +19,7 @@ independently of the Layer, so you can turn on and off each category or class in
 ### Interfaces
 
 * [Feature](Feature.md)
+* [RasterValue](RasterValue.md)
 
 ### Controller
 

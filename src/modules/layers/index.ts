@@ -28,6 +28,7 @@ export type {
   LegendItemChangeCallbackParams,
   LegendItemIdentifier,
   LegendItemsConstraint,
+  RasterValue,
 } from "./types";
 
 export type {

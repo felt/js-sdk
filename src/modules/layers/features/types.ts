@@ -28,3 +28,35 @@ export interface Feature {
    */
   properties: Record<string, unknown>;
 }
+
+/**
+ * A raster pixel value for a specific layer.
+ *
+ * @interface
+ */
+export type RasterValue = {
+  /**
+   * The value of the pixel.
+   */
+  value: number;
+
+  /**
+   * The ID of the layer that the pixel belongs to.
+   */
+  layerId: string;
+
+  /**
+   * The name of the category that the pixel belongs to.
+   */
+  categoryName: null | string;
+
+  /**
+   * The color of the pixel. Each value is between 0 and 255.
+   */
+  color: null | {
+    r: number;
+    g: number;
+    b: number;
+    a: number;
+  };
+};

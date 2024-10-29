@@ -4,51 +4,52 @@
 
 ```ts
 
-import { E as Element_2 } from './types-CsCtPYly.js';
-import { d as ElementChangeCallbackParams } from './types-CsCtPYly.js';
-import { b as ElementGroup } from './types-CsCtPYly.js';
-import { e as ElementGroupChangeCallbackParams } from './types-CsCtPYly.js';
-import { y as ElementGroupNode } from './types-CsCtPYly.js';
-import { z as ElementNode } from './types-CsCtPYly.js';
-import { p as EntityNode } from './types-CsCtPYly.js';
-import { t as Feature } from './types-CsCtPYly.js';
-import { A as FeatureNode } from './types-CsCtPYly.js';
-import { D as FeltBoundary } from './types-CsCtPYly.js';
-import { H as FeltZoom } from './types-CsCtPYly.js';
-import { v as FilterExpression } from './types-CsCtPYly.js';
-import { w as FilterLogicGate } from './types-CsCtPYly.js';
-import { F as Filters } from './types-CsCtPYly.js';
-import { x as FilterTernary } from './types-CsCtPYly.js';
-import { G as Geometry } from './types-CsCtPYly.js';
-import { c as GetElementGroupsConstraint } from './types-CsCtPYly.js';
-import { a as GetElementsConstraint } from './types-CsCtPYly.js';
-import { i as GetLayerGroupsConstraint } from './types-CsCtPYly.js';
-import { f as GetLayersConstraint } from './types-CsCtPYly.js';
-import { I as LatLng } from './types-CsCtPYly.js';
-import { L as Layer } from './types-CsCtPYly.js';
-import { g as LayerChangeCallbackParams } from './types-CsCtPYly.js';
-import { o as LayerFilters } from './types-CsCtPYly.js';
-import { h as LayerGroup } from './types-CsCtPYly.js';
-import { j as LayerGroupChangeCallbackParams } from './types-CsCtPYly.js';
-import { B as LayerGroupNode } from './types-CsCtPYly.js';
-import { C as LayerNode } from './types-CsCtPYly.js';
-import { u as LayerProcessingStatus } from './types-CsCtPYly.js';
-import { l as LegendItem } from './types-CsCtPYly.js';
-import { n as LegendItemChangeCallbackParams } from './types-CsCtPYly.js';
-import { k as LegendItemIdentifier } from './types-CsCtPYly.js';
-import { m as LegendItemsConstraint } from './types-CsCtPYly.js';
-import { J as LineStringGeometry } from './types-CsCtPYly.js';
-import { K as LngLatTuple } from './types-CsCtPYly.js';
-import { M as MapInteractionEvent } from './types-CsCtPYly.js';
-import { N as MultiLineStringGeometry } from './types-CsCtPYly.js';
-import { O as MultiPolygonGeometry } from './types-CsCtPYly.js';
-import { P as PointGeometry } from './types-CsCtPYly.js';
-import { Q as PolygonGeometry } from './types-CsCtPYly.js';
-import { q as SetViewportCenterZoomParams } from './types-CsCtPYly.js';
-import { S as SetVisibilityRequest } from './types-CsCtPYly.js';
-import { s as ViewportCenterZoom } from './types-CsCtPYly.js';
-import { r as ViewportFitBoundsParams } from './types-CsCtPYly.js';
-import { V as ViewportState } from './types-CsCtPYly.js';
+import { E as Element_2 } from './types-B7F62xAx.js';
+import { d as ElementChangeCallbackParams } from './types-B7F62xAx.js';
+import { b as ElementGroup } from './types-B7F62xAx.js';
+import { e as ElementGroupChangeCallbackParams } from './types-B7F62xAx.js';
+import { y as ElementGroupNode } from './types-B7F62xAx.js';
+import { z as ElementNode } from './types-B7F62xAx.js';
+import { p as EntityNode } from './types-B7F62xAx.js';
+import { t as Feature } from './types-B7F62xAx.js';
+import { A as FeatureNode } from './types-B7F62xAx.js';
+import { D as FeltBoundary } from './types-B7F62xAx.js';
+import { H as FeltZoom } from './types-B7F62xAx.js';
+import { v as FilterExpression } from './types-B7F62xAx.js';
+import { w as FilterLogicGate } from './types-B7F62xAx.js';
+import { F as Filters } from './types-B7F62xAx.js';
+import { x as FilterTernary } from './types-B7F62xAx.js';
+import { G as Geometry } from './types-B7F62xAx.js';
+import { c as GetElementGroupsConstraint } from './types-B7F62xAx.js';
+import { a as GetElementsConstraint } from './types-B7F62xAx.js';
+import { i as GetLayerGroupsConstraint } from './types-B7F62xAx.js';
+import { f as GetLayersConstraint } from './types-B7F62xAx.js';
+import { I as LatLng } from './types-B7F62xAx.js';
+import { L as Layer } from './types-B7F62xAx.js';
+import { g as LayerChangeCallbackParams } from './types-B7F62xAx.js';
+import { o as LayerFilters } from './types-B7F62xAx.js';
+import { h as LayerGroup } from './types-B7F62xAx.js';
+import { j as LayerGroupChangeCallbackParams } from './types-B7F62xAx.js';
+import { B as LayerGroupNode } from './types-B7F62xAx.js';
+import { C as LayerNode } from './types-B7F62xAx.js';
+import { u as LayerProcessingStatus } from './types-B7F62xAx.js';
+import { l as LegendItem } from './types-B7F62xAx.js';
+import { n as LegendItemChangeCallbackParams } from './types-B7F62xAx.js';
+import { k as LegendItemIdentifier } from './types-B7F62xAx.js';
+import { m as LegendItemsConstraint } from './types-B7F62xAx.js';
+import { J as LineStringGeometry } from './types-B7F62xAx.js';
+import { K as LngLatTuple } from './types-B7F62xAx.js';
+import { M as MapInteractionEvent } from './types-B7F62xAx.js';
+import { N as MultiLineStringGeometry } from './types-B7F62xAx.js';
+import { O as MultiPolygonGeometry } from './types-B7F62xAx.js';
+import { P as PointGeometry } from './types-B7F62xAx.js';
+import { Q as PolygonGeometry } from './types-B7F62xAx.js';
+import { R as RasterValue } from './types-B7F62xAx.js';
+import { q as SetViewportCenterZoomParams } from './types-B7F62xAx.js';
+import { S as SetVisibilityRequest } from './types-B7F62xAx.js';
+import { s as ViewportCenterZoom } from './types-B7F62xAx.js';
+import { r as ViewportFitBoundsParams } from './types-B7F62xAx.js';
+import { V as ViewportState } from './types-B7F62xAx.js';
 import { z } from 'zod';
 
 export { Element_2 as Element }
@@ -316,6 +317,8 @@ export { MultiPolygonGeometry }
 export { PointGeometry }
 
 export { PolygonGeometry }
+
+export { RasterValue }
 
 // @public
 export interface SelectionController {

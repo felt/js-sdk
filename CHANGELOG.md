@@ -1,5 +1,12 @@
 # @feltjs/js-sdk
 
+## 0.10.1
+
+### Patch Changes
+
+- a87b451: Add getElementGeometry
+- facfbc2: Export more types for client
+
 ## 0.10.1-next.1
 
 ### Patch Changes

@@ -1,11 +1,12 @@
 import { z } from "zod";
 import type { ModuleSchema } from "~/lib/schema";
 import {
-  listenerMessageNoParams,
-  methodMessage,
   type Listener,
   type Method,
+  listenerMessageNoParams,
+  methodMessage,
 } from "~/lib/types/builders";
+import type { zInfer } from "~/lib/types/utils";
 import type { EntityNode } from "./types";
 
 const GetSelectionMessage = methodMessage("getSelection", z.undefined());
@@ -18,10 +19,7 @@ export const selectionSchema = {
 
 export type SelectionSchema = {
   methods: {
-    getSelection: Method<
-      z.infer<typeof GetSelectionMessage>,
-      Array<EntityNode>
-    >;
+    getSelection: Method<zInfer<typeof GetSelectionMessage>, Array<EntityNode>>;
   };
   listeners: {
     onSelectionChange: Listener<void, { selection: Array<EntityNode> }>;

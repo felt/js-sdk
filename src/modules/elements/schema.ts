@@ -1,22 +1,23 @@
 import { z } from "zod";
 import type { ModuleSchema } from "~/lib/schema";
 import {
-  listenerMessageWithParams,
-  methodMessage,
   type Listener,
   type Method,
+  listenerMessageWithParams,
+  methodMessage,
 } from "~/lib/types/builders";
+import type { zInfer } from "~/lib/types/utils";
 import {
-  SetVisibilityRequestSchema,
   type Geometry,
+  SetVisibilityRequestSchema,
 } from "~/modules/shared/types";
 import {
-  GetElementGroupsConstraintSchema,
-  GetElementsConstraintSchema,
   type Element,
   type ElementChangeCallbackParams,
   type ElementGroup,
   type ElementGroupChangeCallbackParams,
+  GetElementGroupsConstraintSchema,
+  GetElementsConstraintSchema,
 } from "./types";
 
 const GetElementMessage = methodMessage("getElement", z.string());
@@ -62,35 +63,35 @@ export const elementsSchema = {
 
 export type ElementsSchema = {
   methods: {
-    getElement: Method<z.infer<typeof GetElementMessage>, Element | null>;
+    getElement: Method<zInfer<typeof GetElementMessage>, Element | null>;
     getElementGeometry: Method<
-      z.infer<typeof GetElementGeometryMessage>,
+      zInfer<typeof GetElementGeometryMessage>,
       Geometry | null
     >;
     getElements: Method<
-      z.infer<typeof GetElementsMessage>,
+      zInfer<typeof GetElementsMessage>,
       Array<Element | null>
     >;
     getElementGroup: Method<
-      z.infer<typeof GetGroupMessage>,
+      zInfer<typeof GetGroupMessage>,
       ElementGroup | null
     >;
     getElementGroups: Method<
-      z.infer<typeof GetGroupsMessage>,
+      zInfer<typeof GetGroupsMessage>,
       Array<ElementGroup | null>
     >;
     setElementGroupVisibility: Method<
-      z.infer<typeof SetElementGroupVisibilityMessage>,
+      zInfer<typeof SetElementGroupVisibilityMessage>,
       void
     >;
   };
   listeners: {
     onElementChange: Listener<
-      z.infer<typeof OnElementChangeMessage.shape.options>,
+      zInfer<typeof OnElementChangeMessage.shape.options>,
       ElementChangeCallbackParams
     >;
     onElementGroupChange: Listener<
-      z.infer<typeof OnElementGroupChangeMessage.shape.options>,
+      zInfer<typeof OnElementGroupChangeMessage.shape.options>,
       ElementGroupChangeCallbackParams
     >;
   };

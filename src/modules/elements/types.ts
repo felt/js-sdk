@@ -1,4 +1,5 @@
 import { z } from "zod";
+import type { zInfer } from "~/lib/types/utils";
 
 /**
  * @group Elements
@@ -83,7 +84,7 @@ export interface ElementGroup {
  * @group Elements
  */
 export interface GetElementsConstraint
-  extends z.infer<typeof GetElementsConstraintSchema> {}
+  extends zInfer<typeof GetElementsConstraintSchema> {}
 export const GetElementsConstraintSchema = z.object({
   /**
    * The ids of the elements to get.
@@ -97,7 +98,7 @@ export const GetElementsConstraintSchema = z.object({
  * @group Element Groups
  */
 export interface GetElementGroupsConstraint
-  extends z.infer<typeof GetElementGroupsConstraintSchema> {}
+  extends zInfer<typeof GetElementGroupsConstraintSchema> {}
 /**
  * @ignore
  */

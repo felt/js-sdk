@@ -1,24 +1,25 @@
 import { z } from "zod";
 import type { ModuleSchema } from "~/lib/schema";
 import {
-  listenerMessageWithParams,
-  methodMessage,
   type Listener,
   type Method,
+  listenerMessageWithParams,
+  methodMessage,
 } from "~/lib/types/builders";
+import type { zInfer } from "~/lib/types/utils";
 import { SetVisibilityRequestSchema } from "~/modules/shared/types";
 import { FiltersSchema, type LayerFilters } from "./filter.types";
 import {
   GetLayerGroupsFilterSchema,
   GetLayersConstraintSchema,
-  LegendItemIdentifierSchema,
-  LegendItemsConstraintSchema,
   type Layer,
   type LayerChangeCallbackParams,
   type LayerGroup,
   type LayerGroupChangeCallbackParams,
   type LegendItem,
   type LegendItemChangeCallbackParams,
+  LegendItemIdentifierSchema,
+  LegendItemsConstraintSchema,
 } from "./types";
 
 // LAYERS
@@ -108,51 +109,51 @@ export const layersSchema = {
 
 export type LayersSchema = {
   methods: {
-    getLayer: Method<z.infer<typeof GetLayerMessage>, Layer | null>;
-    getLayers: Method<z.infer<typeof GetLayersMessage>, Array<Layer | null>>;
-    setLayerVisibility: Method<z.infer<typeof SetLayerVisibilityMessage>, void>;
+    getLayer: Method<zInfer<typeof GetLayerMessage>, Layer | null>;
+    getLayers: Method<zInfer<typeof GetLayersMessage>, Array<Layer | null>>;
+    setLayerVisibility: Method<zInfer<typeof SetLayerVisibilityMessage>, void>;
 
-    getLayerGroup: Method<z.infer<typeof GetGroupMessage>, LayerGroup | null>;
+    getLayerGroup: Method<zInfer<typeof GetGroupMessage>, LayerGroup | null>;
     getLayerGroups: Method<
-      z.infer<typeof GetGroupsMessage>,
+      zInfer<typeof GetGroupsMessage>,
       Array<LayerGroup | null>
     >;
     setLayerGroupVisibility: Method<
-      z.infer<typeof SetLayerGroupVisibilityMessage>,
+      zInfer<typeof SetLayerGroupVisibilityMessage>,
       void
     >;
 
     getLegendItem: Method<
-      z.infer<typeof GetLegendItemMessage>,
+      zInfer<typeof GetLegendItemMessage>,
       LegendItem | null
     >;
     getLegendItems: Method<
-      z.infer<typeof GetLegendItemsMessage>,
+      zInfer<typeof GetLegendItemsMessage>,
       Array<LegendItem | null>
     >;
     setLegendItemVisibility: Method<
-      z.infer<typeof SetLegendItemVisibilityMessage>,
+      zInfer<typeof SetLegendItemVisibilityMessage>,
       void
     >;
 
     getLayerFilters: Method<
-      z.infer<typeof GetFiltersMessage>,
+      zInfer<typeof GetFiltersMessage>,
       LayerFilters | null
     >;
 
-    setLayerFilters: Method<z.infer<typeof SetFiltersMessage>, void>;
+    setLayerFilters: Method<zInfer<typeof SetFiltersMessage>, void>;
   };
   listeners: {
     onLayerChange: Listener<
-      z.infer<typeof OnLayerChangeMessage.shape.options>,
+      zInfer<typeof OnLayerChangeMessage.shape.options>,
       LayerChangeCallbackParams
     >;
     onLayerGroupChange: Listener<
-      z.infer<typeof OnLayerGroupChangeMessage.shape.options>,
+      zInfer<typeof OnLayerGroupChangeMessage.shape.options>,
       LayerGroupChangeCallbackParams
     >;
     onLegendItemChange: Listener<
-      z.infer<typeof OnLegendItemChangeMessage.shape.options>,
+      zInfer<typeof OnLegendItemChangeMessage.shape.options>,
       LegendItemChangeCallbackParams
     >;
   };

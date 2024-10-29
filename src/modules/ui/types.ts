@@ -1,10 +1,12 @@
 import { z } from "zod";
+import type { zInfer } from "~/lib/types/utils";
 
 /**
  * @public
+ * @interface
  */
 export interface UiControlsOptions
-  extends z.infer<typeof UiControlsOptionsSchema> {}
+  extends zInfer<typeof UiControlsOptionsSchema> {}
 
 /**
  * @internal

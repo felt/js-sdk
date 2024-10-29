@@ -4,53 +4,54 @@
 
 ```ts
 
-import { E as Element_2 } from './types-B7F62xAx.js';
-import { d as ElementChangeCallbackParams } from './types-B7F62xAx.js';
-import { b as ElementGroup } from './types-B7F62xAx.js';
-import { e as ElementGroupChangeCallbackParams } from './types-B7F62xAx.js';
-import { y as ElementGroupNode } from './types-B7F62xAx.js';
-import { z as ElementNode } from './types-B7F62xAx.js';
-import { p as EntityNode } from './types-B7F62xAx.js';
-import { t as Feature } from './types-B7F62xAx.js';
-import { A as FeatureNode } from './types-B7F62xAx.js';
-import { D as FeltBoundary } from './types-B7F62xAx.js';
-import { H as FeltZoom } from './types-B7F62xAx.js';
-import { v as FilterExpression } from './types-B7F62xAx.js';
-import { w as FilterLogicGate } from './types-B7F62xAx.js';
-import { F as Filters } from './types-B7F62xAx.js';
-import { x as FilterTernary } from './types-B7F62xAx.js';
-import { G as Geometry } from './types-B7F62xAx.js';
-import { c as GetElementGroupsConstraint } from './types-B7F62xAx.js';
-import { a as GetElementsConstraint } from './types-B7F62xAx.js';
-import { i as GetLayerGroupsConstraint } from './types-B7F62xAx.js';
-import { f as GetLayersConstraint } from './types-B7F62xAx.js';
-import { I as LatLng } from './types-B7F62xAx.js';
-import { L as Layer } from './types-B7F62xAx.js';
-import { g as LayerChangeCallbackParams } from './types-B7F62xAx.js';
-import { o as LayerFilters } from './types-B7F62xAx.js';
-import { h as LayerGroup } from './types-B7F62xAx.js';
-import { j as LayerGroupChangeCallbackParams } from './types-B7F62xAx.js';
-import { B as LayerGroupNode } from './types-B7F62xAx.js';
-import { C as LayerNode } from './types-B7F62xAx.js';
-import { u as LayerProcessingStatus } from './types-B7F62xAx.js';
-import { l as LegendItem } from './types-B7F62xAx.js';
-import { n as LegendItemChangeCallbackParams } from './types-B7F62xAx.js';
-import { k as LegendItemIdentifier } from './types-B7F62xAx.js';
-import { m as LegendItemsConstraint } from './types-B7F62xAx.js';
-import { J as LineStringGeometry } from './types-B7F62xAx.js';
-import { K as LngLatTuple } from './types-B7F62xAx.js';
-import { M as MapInteractionEvent } from './types-B7F62xAx.js';
-import { N as MultiLineStringGeometry } from './types-B7F62xAx.js';
-import { O as MultiPolygonGeometry } from './types-B7F62xAx.js';
-import { P as PointGeometry } from './types-B7F62xAx.js';
-import { Q as PolygonGeometry } from './types-B7F62xAx.js';
-import { R as RasterValue } from './types-B7F62xAx.js';
-import { q as SetViewportCenterZoomParams } from './types-B7F62xAx.js';
-import { S as SetVisibilityRequest } from './types-B7F62xAx.js';
-import { s as ViewportCenterZoom } from './types-B7F62xAx.js';
-import { r as ViewportFitBoundsParams } from './types-B7F62xAx.js';
-import { V as ViewportState } from './types-B7F62xAx.js';
-import { z } from 'zod';
+import { E as Element_2 } from './types-DJittD68.js';
+import { d as ElementChangeCallbackParams } from './types-DJittD68.js';
+import { b as ElementGroup } from './types-DJittD68.js';
+import { e as ElementGroupChangeCallbackParams } from './types-DJittD68.js';
+import { y as ElementGroupNode } from './types-DJittD68.js';
+import { A as ElementNode } from './types-DJittD68.js';
+import { p as EntityNode } from './types-DJittD68.js';
+import { t as Feature } from './types-DJittD68.js';
+import { B as FeatureNode } from './types-DJittD68.js';
+import { H as FeltBoundary } from './types-DJittD68.js';
+import { I as FeltZoom } from './types-DJittD68.js';
+import { v as FilterExpression } from './types-DJittD68.js';
+import { w as FilterLogicGate } from './types-DJittD68.js';
+import { F as Filters } from './types-DJittD68.js';
+import { x as FilterTernary } from './types-DJittD68.js';
+import { G as Geometry } from './types-DJittD68.js';
+import { c as GetElementGroupsConstraint } from './types-DJittD68.js';
+import { a as GetElementsConstraint } from './types-DJittD68.js';
+import { i as GetLayerGroupsConstraint } from './types-DJittD68.js';
+import { f as GetLayersConstraint } from './types-DJittD68.js';
+import { J as LatLng } from './types-DJittD68.js';
+import { L as Layer } from './types-DJittD68.js';
+import { g as LayerChangeCallbackParams } from './types-DJittD68.js';
+import { o as LayerFilters } from './types-DJittD68.js';
+import { h as LayerGroup } from './types-DJittD68.js';
+import { j as LayerGroupChangeCallbackParams } from './types-DJittD68.js';
+import { C as LayerGroupNode } from './types-DJittD68.js';
+import { D as LayerNode } from './types-DJittD68.js';
+import { u as LayerProcessingStatus } from './types-DJittD68.js';
+import { l as LegendItem } from './types-DJittD68.js';
+import { n as LegendItemChangeCallbackParams } from './types-DJittD68.js';
+import { k as LegendItemIdentifier } from './types-DJittD68.js';
+import { m as LegendItemsConstraint } from './types-DJittD68.js';
+import { K as LineStringGeometry } from './types-DJittD68.js';
+import { N as LngLatTuple } from './types-DJittD68.js';
+import { M as MapInteractionEvent } from './types-DJittD68.js';
+import { O as MultiLineStringGeometry } from './types-DJittD68.js';
+import { P as MultiPolygonGeometry } from './types-DJittD68.js';
+import { Q as PointGeometry } from './types-DJittD68.js';
+import { T as PolygonGeometry } from './types-DJittD68.js';
+import { R as RasterValue } from './types-DJittD68.js';
+import { q as SetViewportCenterZoomParams } from './types-DJittD68.js';
+import { S as SetVisibilityRequest } from './types-DJittD68.js';
+import { s as ViewportCenterZoom } from './types-DJittD68.js';
+import { r as ViewportFitBoundsParams } from './types-DJittD68.js';
+import { V as ViewportState } from './types-DJittD68.js';
+import { z } from './types-DJittD68.js';
+import { z as z_2 } from 'zod';
 
 export { Element_2 as Element }
 
@@ -113,7 +114,7 @@ export interface FeltController extends ViewportController, UiController, Layers
 // Warning: (ae-forgotten-export) The symbol "FeltEmbedOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public
-export interface FeltEmbedOptions extends z.infer<typeof FeltEmbedOptionsSchema> {
+export interface FeltEmbedOptions extends z<typeof FeltEmbedOptionsSchema> {
     // (undocumented)
     initialViewport?: ViewportCenterZoom;
     // (undocumented)
@@ -121,16 +122,16 @@ export interface FeltEmbedOptions extends z.infer<typeof FeltEmbedOptionsSchema>
 }
 
 // @internal (undocumented)
-const FeltEmbedOptionsSchema: z.ZodObject<{
-    origin: z.ZodOptional<z.ZodString>;
-    uiControls: z.ZodObject<{
-        showLegend: z.ZodOptional<z.ZodBoolean>;
-        cooperativeGestures: z.ZodOptional<z.ZodBoolean>;
-        fullScreenButton: z.ZodOptional<z.ZodBoolean>;
-        geolocation: z.ZodOptional<z.ZodBoolean>;
-        zoomControls: z.ZodOptional<z.ZodBoolean>;
-        scaleBar: z.ZodOptional<z.ZodBoolean>;
-    }, "strip", z.ZodTypeAny, {
+const FeltEmbedOptionsSchema: z_2.ZodObject<{
+    origin: z_2.ZodOptional<z_2.ZodString>;
+    uiControls: z_2.ZodObject<{
+        showLegend: z_2.ZodOptional<z_2.ZodBoolean>;
+        cooperativeGestures: z_2.ZodOptional<z_2.ZodBoolean>;
+        fullScreenButton: z_2.ZodOptional<z_2.ZodBoolean>;
+        geolocation: z_2.ZodOptional<z_2.ZodBoolean>;
+        zoomControls: z_2.ZodOptional<z_2.ZodBoolean>;
+        scaleBar: z_2.ZodOptional<z_2.ZodBoolean>;
+    }, "strip", z_2.ZodTypeAny, {
         showLegend?: boolean | undefined;
         cooperativeGestures?: boolean | undefined;
         fullScreenButton?: boolean | undefined;
@@ -145,19 +146,19 @@ const FeltEmbedOptionsSchema: z.ZodObject<{
         zoomControls?: boolean | undefined;
         scaleBar?: boolean | undefined;
     }>;
-    initialViewport: z.ZodOptional<z.ZodObject<{
-        center: z.ZodObject<{
-            latitude: z.ZodNumber;
-            longitude: z.ZodNumber;
-        }, "strip", z.ZodTypeAny, {
+    initialViewport: z_2.ZodOptional<z_2.ZodObject<{
+        center: z_2.ZodObject<{
+            latitude: z_2.ZodNumber;
+            longitude: z_2.ZodNumber;
+        }, "strip", z_2.ZodTypeAny, {
             latitude: number;
             longitude: number;
         }, {
             latitude: number;
             longitude: number;
         }>;
-        zoom: z.ZodNumber;
-    }, "strip", z.ZodTypeAny, {
+        zoom: z_2.ZodNumber;
+    }, "strip", z_2.ZodTypeAny, {
         center: {
             latitude: number;
             longitude: number;
@@ -170,7 +171,7 @@ const FeltEmbedOptionsSchema: z.ZodObject<{
         };
         zoom: number;
     }>>;
-}, "strip", z.ZodTypeAny, {
+}, "strip", z_2.ZodTypeAny, {
     uiControls: {
         showLegend?: boolean | undefined;
         cooperativeGestures?: boolean | undefined;
@@ -342,18 +343,18 @@ export interface UiController {
 // Warning: (ae-forgotten-export) The symbol "UiControlsOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public (undocumented)
-export interface UiControlsOptions extends z.infer<typeof UiControlsOptionsSchema> {
+export interface UiControlsOptions extends z<typeof UiControlsOptionsSchema> {
 }
 
 // @internal (undocumented)
-const UiControlsOptionsSchema: z.ZodObject<{
-    showLegend: z.ZodOptional<z.ZodBoolean>;
-    cooperativeGestures: z.ZodOptional<z.ZodBoolean>;
-    fullScreenButton: z.ZodOptional<z.ZodBoolean>;
-    geolocation: z.ZodOptional<z.ZodBoolean>;
-    zoomControls: z.ZodOptional<z.ZodBoolean>;
-    scaleBar: z.ZodOptional<z.ZodBoolean>;
-}, "strip", z.ZodTypeAny, {
+const UiControlsOptionsSchema: z_2.ZodObject<{
+    showLegend: z_2.ZodOptional<z_2.ZodBoolean>;
+    cooperativeGestures: z_2.ZodOptional<z_2.ZodBoolean>;
+    fullScreenButton: z_2.ZodOptional<z_2.ZodBoolean>;
+    geolocation: z_2.ZodOptional<z_2.ZodBoolean>;
+    zoomControls: z_2.ZodOptional<z_2.ZodBoolean>;
+    scaleBar: z_2.ZodOptional<z_2.ZodBoolean>;
+}, "strip", z_2.ZodTypeAny, {
     showLegend?: boolean | undefined;
     cooperativeGestures?: boolean | undefined;
     fullScreenButton?: boolean | undefined;

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import type { zInfer } from "~/lib/types/utils";
 import {
   type FeltBoundary,
   FeltBoundarySchema,
@@ -14,7 +15,7 @@ import {
  * @group Types
  */
 export interface ViewportCenterZoom
-  extends z.infer<typeof ViewportCenterZoomSchema> {
+  extends zInfer<typeof ViewportCenterZoomSchema> {
   /**
    * The center of the viewport in latitude and longitude.
    */
@@ -69,7 +70,7 @@ export interface ViewportState {
  * @group Types
  */
 export interface SetViewportCenterZoomParams
-  extends z.infer<typeof SetViewportCenterZoomParamsSchema> {}
+  extends zInfer<typeof SetViewportCenterZoomParamsSchema> {}
 export const SetViewportCenterZoomParamsSchema = z.object({
   center: ViewportCenterZoomSchema.shape.center.optional(),
   zoom: ViewportCenterZoomSchema.shape.zoom.optional(),
@@ -81,7 +82,7 @@ export const SetViewportCenterZoomParamsSchema = z.object({
  * @group Types
  */
 export interface ViewportFitBoundsParams
-  extends z.infer<typeof ViewportFitBoundsParamsSchema> {
+  extends zInfer<typeof ViewportFitBoundsParamsSchema> {
   /**
    * The bounds to fit the viewport to.
    *

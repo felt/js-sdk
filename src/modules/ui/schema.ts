@@ -1,6 +1,6 @@
-import type { z } from "zod";
 import type { ModuleSchema } from "~/lib/schema";
 import { type Method, methodMessage } from "~/lib/types/builders";
+import type { zInfer } from "~/lib/types/utils";
 import { UiControlsOptionsSchema } from "./types";
 
 const UiControlsMessage = methodMessage(
@@ -15,7 +15,7 @@ export const uiSchema = {
 
 export type UiSchema = {
   methods: {
-    updateUiControls: Method<z.infer<typeof UiControlsMessage>, void>;
+    updateUiControls: Method<zInfer<typeof UiControlsMessage>, void>;
   };
   listeners: {};
 };

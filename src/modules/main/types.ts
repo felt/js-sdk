@@ -1,4 +1,5 @@
 import { z } from "zod";
+import type { zInfer } from "~/lib/types/utils";
 import {
   type UiControlsOptions,
   UiControlsOptionsSchema,
@@ -13,7 +14,7 @@ import {
  * @public
  */
 export interface FeltEmbedOptions
-  extends z.infer<typeof FeltEmbedOptionsSchema> {
+  extends zInfer<typeof FeltEmbedOptionsSchema> {
   uiControls: UiControlsOptions;
   initialViewport?: ViewportCenterZoom;
 }

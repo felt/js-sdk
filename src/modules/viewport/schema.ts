@@ -1,11 +1,12 @@
 import { z } from "zod";
 import type { ModuleSchema } from "~/lib/schema";
 import {
-  listenerMessageNoParams,
-  methodMessage,
   type Listener,
   type Method,
+  listenerMessageNoParams,
+  methodMessage,
 } from "~/lib/types/builders";
+import type { zInfer } from "~/lib/types/utils";
 import {
   SetViewportCenterZoomParamsSchema,
   ViewportFitBoundsParamsSchema,
@@ -30,9 +31,9 @@ export const viewportSchema = {
 
 export type ViewportSchema = {
   methods: {
-    getViewport: Method<z.infer<typeof GetViewportMessage>, ViewportState>;
-    setViewport: Method<z.infer<typeof GotoViewportMessage>, void>;
-    fitViewportToBounds: Method<z.infer<typeof ViewportFitBoundsMessage>, void>;
+    getViewport: Method<zInfer<typeof GetViewportMessage>, ViewportState>;
+    setViewport: Method<zInfer<typeof GotoViewportMessage>, void>;
+    fitViewportToBounds: Method<zInfer<typeof ViewportFitBoundsMessage>, void>;
   };
   listeners: {
     onViewportMove: Listener<void, ViewportState>;

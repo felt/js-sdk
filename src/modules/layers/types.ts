@@ -1,4 +1,5 @@
 import { z } from "zod";
+import type { zInfer } from "~/lib/types/utils";
 import type { FeltBoundary } from "~/modules/shared/types";
 
 export type { Feature, RasterValue } from "./features/types";
@@ -147,7 +148,7 @@ export interface LayerGroup {
  * @group Layers
  */
 export interface GetLayersConstraint
-  extends z.infer<typeof GetLayersConstraintSchema> {}
+  extends zInfer<typeof GetLayersConstraintSchema> {}
 /**
  * @ignore
  */
@@ -164,7 +165,7 @@ export const GetLayersConstraintSchema = z.object({
  * @group Layer Groups
  */
 export interface GetLayerGroupsConstraint
-  extends z.infer<typeof GetLayerGroupsFilterSchema> {}
+  extends zInfer<typeof GetLayerGroupsFilterSchema> {}
 /**
  * @ignore
  */
@@ -230,7 +231,7 @@ export interface LegendItem extends LegendItemIdentifier {
  * @group Legend Items
  */
 export interface LegendItemIdentifier
-  extends z.infer<typeof LegendItemIdentifierSchema> {}
+  extends zInfer<typeof LegendItemIdentifierSchema> {}
 /** @ignore */
 export const LegendItemIdentifierSchema = z.object({
   /**
@@ -250,7 +251,7 @@ export const LegendItemIdentifierSchema = z.object({
  * @group Legend Items
  */
 export interface LegendItemsConstraint
-  extends z.infer<typeof LegendItemsConstraintSchema> {}
+  extends zInfer<typeof LegendItemsConstraintSchema> {}
 /** @ignore */
 export const LegendItemsConstraintSchema = z.object({
   /**

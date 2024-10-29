@@ -1,4 +1,5 @@
 import { z } from "zod";
+import type { zInfer } from "~/lib/types/utils";
 
 const Longitude = z.number();
 const Latitude = z.number();
@@ -117,7 +118,7 @@ export type FeltBoundary = z.infer<typeof FeltBoundarySchema>;
  * @category Visibility
  */
 export interface SetVisibilityRequest
-  extends z.infer<typeof SetVisibilityRequestSchema> {}
+  extends zInfer<typeof SetVisibilityRequestSchema> {}
 /**
  * @internal
  */

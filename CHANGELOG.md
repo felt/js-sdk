@@ -1,5 +1,11 @@
 # @feltjs/js-sdk
 
+## 0.10.2-next.1
+
+### Patch Changes
+
+- db53c42: Improve TS Language Server types by using alternative zod inference type for objects
+
 ## 0.10.2-next.0
 
 ### Patch Changes

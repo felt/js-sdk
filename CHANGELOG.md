@@ -1,5 +1,11 @@
 # @feltjs/js-sdk
 
+## 0.10.2-next.0
+
+### Patch Changes
+
+- 70899d2: Add raster values to hover and click interaction events
+
 ## 0.10.1
 
 ### Patch Changes

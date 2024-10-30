@@ -1,0 +1,8 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@feltjs/js-sdk": "0.10.2"
+  },
+  "changesets": []
+}

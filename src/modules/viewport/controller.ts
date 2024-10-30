@@ -13,6 +13,7 @@ export const viewportController = (feltWindow: Window): ViewportController => ({
   setViewport: method(feltWindow, "setViewport"),
   fitViewportToBounds: method(feltWindow, "fitViewportToBounds"),
   onViewportMove: listener(feltWindow, "onViewportMove"),
+  onViewportMoveEnd: listener(feltWindow, "onViewportMoveEnd"),
 });
 
 /**
@@ -80,6 +81,28 @@ export interface ViewportController {
      *
      * @param viewport - The current viewport state.
      */
+    handler: (viewport: ViewportState) => void;
+  }): VoidFunction;
+
+  /**
+   * Adds a listener for when the viewport move ends, which is when the user
+   * stops dragging or zooming the map, animations have finished, or inertial
+   * dragging ends.
+   *
+   * @returns A function to unsubscribe from the listener
+   *
+   * @event
+   * @example
+   * ```typescript
+   * const unsubscribe = felt.onViewportMoveEnd({
+   *   handler: viewport => console.log(viewport.center.latitude),
+   * });
+   *
+   * // later on...
+   * unsubscribe();
+   * ```
+   */
+  onViewportMoveEnd(args: {
     handler: (viewport: ViewportState) => void;
   }): VoidFunction;
 }

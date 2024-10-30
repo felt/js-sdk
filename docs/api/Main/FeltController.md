@@ -887,3 +887,37 @@ const unsubscribe = felt.onViewportMove({
 // later on...
 unsubscribe();
 ```
+
+***
+
+### onViewportMoveEnd()
+
+> **onViewportMoveEnd**(`args`: \{`handler`: (`viewport`: [`ViewportState`](../Viewport/ViewportState.md)) => `void`; }): `VoidFunction`
+
+Adds a listener for when the viewport move ends, which is when the user
+stops dragging or zooming the map, animations have finished, or inertial
+dragging ends.
+
+#### Parameters
+
+| Parameter      | Type                                                                    |
+| -------------- | ----------------------------------------------------------------------- |
+| `args`         | `object`                                                                |
+| `args.handler` | (`viewport`: [`ViewportState`](../Viewport/ViewportState.md)) => `void` |
+
+#### Returns
+
+`VoidFunction`
+
+A function to unsubscribe from the listener
+
+#### Example
+
+```typescript
+const unsubscribe = felt.onViewportMoveEnd({
+  handler: viewport => console.log(viewport.center.latitude),
+});
+
+// later on...
+unsubscribe();
+```

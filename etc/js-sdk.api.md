@@ -379,6 +379,9 @@ export interface ViewportController {
     onViewportMove(args: {
         handler: (viewport: ViewportState) => void;
     }): VoidFunction;
+    onViewportMoveEnd(args: {
+        handler: (viewport: ViewportState) => void;
+    }): VoidFunction;
     setViewport(viewport: SetViewportCenterZoomParams): void;
 }
 

@@ -1,5 +1,11 @@
 # @feltjs/js-sdk
 
+## 0.10.3-next.0
+
+### Patch Changes
+
+- 37039b3: Add onViewportMoveEnd
+
 ## 0.10.2
 
 ### Patch Changes

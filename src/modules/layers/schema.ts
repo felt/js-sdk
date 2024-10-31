@@ -10,8 +10,10 @@ import type { zInfer } from "~/lib/types/utils";
 import { SetVisibilityRequestSchema } from "~/modules/shared/types";
 import { FiltersSchema, type LayerFilters } from "./filter.types";
 import {
+  type Feature,
   GetLayerGroupsFilterSchema,
   GetLayersConstraintSchema,
+  GetRenderedFeaturesConstraintSchema,
   type Layer,
   type LayerChangeCallbackParams,
   type LayerGroup,
@@ -83,6 +85,12 @@ const SetFiltersMessage = methodMessage(
   }),
 );
 
+// RENDERED FEATURES
+const GetRenderedFeaturesMessage = methodMessage(
+  "getRenderedFeatures",
+  GetRenderedFeaturesConstraintSchema.optional(),
+);
+
 export const layersSchema = {
   methods: [
     GetLayerMessage,
@@ -99,6 +107,8 @@ export const layersSchema = {
 
     GetFiltersMessage,
     SetFiltersMessage,
+
+    GetRenderedFeaturesMessage,
   ],
   listeners: [
     OnLayerChangeMessage,
@@ -142,6 +152,11 @@ export type LayersSchema = {
     >;
 
     setLayerFilters: Method<zInfer<typeof SetFiltersMessage>, void>;
+
+    getRenderedFeatures: Method<
+      zInfer<typeof GetRenderedFeaturesMessage>,
+      Array<Feature>
+    >;
   };
   listeners: {
     onLayerChange: Listener<

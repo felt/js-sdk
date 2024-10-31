@@ -19,6 +19,7 @@ export type {
   Feature,
   GetLayerGroupsConstraint,
   GetLayersConstraint,
+  GetRenderedFeaturesConstraint,
   Layer,
   LayerChangeCallbackParams,
   LayerGroup,

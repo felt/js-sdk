@@ -312,6 +312,35 @@ felt.setLayerFilters({
 });
 ```
 
+***
+
+### getRenderedFeatures()
+
+> **getRenderedFeatures**(`params`?: [`GetRenderedFeaturesConstraint`](GetRenderedFeaturesConstraint.md)): `Promise`\<[`Feature`](Feature.md)\[]>
+
+Get the features that are currently **rendered** on the map in the viewport.
+
+Note that this is explicitly about the features that are rendered, which isn't
+necessarily a complete list of all the features in the viewport. This is because
+of the way features are tiled: at low zoom levels or high feature densities, many
+features are omitted from what is rendered on the screen.
+
+#### Parameters
+
+| Parameter | Type                                                                | Description                                                     |
+| --------- | ------------------------------------------------------------------- | --------------------------------------------------------------- |
+| `params`? | [`GetRenderedFeaturesConstraint`](GetRenderedFeaturesConstraint.md) | The constraints to apply to the features returned from the map. |
+
+#### Returns
+
+`Promise`\<[`Feature`](Feature.md)\[]>
+
+#### Example
+
+```typescript
+const features = await felt.getRenderedFeatures();
+```
+
 ## Events
 
 ### onLayerChange()

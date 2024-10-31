@@ -276,3 +276,19 @@ export interface LegendItemChangeCallbackParams {
    */
   legendItem: LegendItem | null;
 }
+
+/**
+ * Constraints for the `getRenderedFeatures` method. If no constraints are
+ * provided, all rendered features will be returned.
+ *
+ * @group Layers
+ */
+export interface GetRenderedFeaturesConstraint
+  extends zInfer<typeof GetRenderedFeaturesConstraintSchema> {}
+/** @ignore */
+export const GetRenderedFeaturesConstraintSchema = z.object({
+  /**
+   * The ids of the layers to get rendered features for.
+   */
+  layerIds: z.array(z.string()).optional(),
+});

@@ -2,8 +2,10 @@ import { listener, method } from "~/lib/types/interface";
 import type { SetVisibilityRequest } from "~/modules/shared/types";
 import type { Filters, LayerFilters } from "./filter.types";
 import type {
+  Feature,
   GetLayerGroupsConstraint,
   GetLayersConstraint,
+  GetRenderedFeaturesConstraint,
   Layer,
   LayerChangeCallbackParams,
   LayerGroup,
@@ -39,6 +41,9 @@ export const layersController = (feltWindow: Window): LayersController => ({
   // filters
   getLayerFilters: method(feltWindow, "getLayerFilters"),
   setLayerFilters: method(feltWindow, "setLayerFilters"),
+
+  // rendered features
+  getRenderedFeatures: method(feltWindow, "getRenderedFeatures"),
 });
 
 /**
@@ -308,4 +313,24 @@ export interface LayersController {
      */
     filters: Filters;
   }): Promise<void>;
+
+  /**
+   * Get the features that are currently **rendered** on the map in the viewport.
+   *
+   * Note that this is explicitly about the features that are rendered, which isn't
+   * necessarily a complete list of all the features in the viewport. This is because
+   * of the way features are tiled: at low zoom levels or high feature densities, many
+   * features are omitted from what is rendered on the screen.
+   *
+   * @example
+   * ```typescript
+   * const features = await felt.getRenderedFeatures();
+   * ```
+   */
+  getRenderedFeatures(
+    /**
+     * The constraints to apply to the features returned from the map.
+     */
+    params?: GetRenderedFeaturesConstraint,
+  ): Promise<Array<Feature>>;
 }

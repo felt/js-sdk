@@ -4,53 +4,54 @@
 
 ```ts
 
-import { E as Element_2 } from './types-DJittD68.js';
-import { d as ElementChangeCallbackParams } from './types-DJittD68.js';
-import { b as ElementGroup } from './types-DJittD68.js';
-import { e as ElementGroupChangeCallbackParams } from './types-DJittD68.js';
-import { y as ElementGroupNode } from './types-DJittD68.js';
-import { A as ElementNode } from './types-DJittD68.js';
-import { p as EntityNode } from './types-DJittD68.js';
-import { t as Feature } from './types-DJittD68.js';
-import { B as FeatureNode } from './types-DJittD68.js';
-import { H as FeltBoundary } from './types-DJittD68.js';
-import { I as FeltZoom } from './types-DJittD68.js';
-import { v as FilterExpression } from './types-DJittD68.js';
-import { w as FilterLogicGate } from './types-DJittD68.js';
-import { F as Filters } from './types-DJittD68.js';
-import { x as FilterTernary } from './types-DJittD68.js';
-import { G as Geometry } from './types-DJittD68.js';
-import { c as GetElementGroupsConstraint } from './types-DJittD68.js';
-import { a as GetElementsConstraint } from './types-DJittD68.js';
-import { i as GetLayerGroupsConstraint } from './types-DJittD68.js';
-import { f as GetLayersConstraint } from './types-DJittD68.js';
-import { J as LatLng } from './types-DJittD68.js';
-import { L as Layer } from './types-DJittD68.js';
-import { g as LayerChangeCallbackParams } from './types-DJittD68.js';
-import { o as LayerFilters } from './types-DJittD68.js';
-import { h as LayerGroup } from './types-DJittD68.js';
-import { j as LayerGroupChangeCallbackParams } from './types-DJittD68.js';
-import { C as LayerGroupNode } from './types-DJittD68.js';
-import { D as LayerNode } from './types-DJittD68.js';
-import { u as LayerProcessingStatus } from './types-DJittD68.js';
-import { l as LegendItem } from './types-DJittD68.js';
-import { n as LegendItemChangeCallbackParams } from './types-DJittD68.js';
-import { k as LegendItemIdentifier } from './types-DJittD68.js';
-import { m as LegendItemsConstraint } from './types-DJittD68.js';
-import { K as LineStringGeometry } from './types-DJittD68.js';
-import { N as LngLatTuple } from './types-DJittD68.js';
-import { M as MapInteractionEvent } from './types-DJittD68.js';
-import { O as MultiLineStringGeometry } from './types-DJittD68.js';
-import { P as MultiPolygonGeometry } from './types-DJittD68.js';
-import { Q as PointGeometry } from './types-DJittD68.js';
-import { T as PolygonGeometry } from './types-DJittD68.js';
-import { R as RasterValue } from './types-DJittD68.js';
-import { q as SetViewportCenterZoomParams } from './types-DJittD68.js';
-import { S as SetVisibilityRequest } from './types-DJittD68.js';
-import { s as ViewportCenterZoom } from './types-DJittD68.js';
-import { r as ViewportFitBoundsParams } from './types-DJittD68.js';
-import { V as ViewportState } from './types-DJittD68.js';
-import { z } from './types-DJittD68.js';
+import { E as Element_2 } from './types-C0ycmt8U.js';
+import { d as ElementChangeCallbackParams } from './types-C0ycmt8U.js';
+import { b as ElementGroup } from './types-C0ycmt8U.js';
+import { e as ElementGroupChangeCallbackParams } from './types-C0ycmt8U.js';
+import { A as ElementGroupNode } from './types-C0ycmt8U.js';
+import { B as ElementNode } from './types-C0ycmt8U.js';
+import { r as EntityNode } from './types-C0ycmt8U.js';
+import { q as Feature } from './types-C0ycmt8U.js';
+import { C as FeatureNode } from './types-C0ycmt8U.js';
+import { I as FeltBoundary } from './types-C0ycmt8U.js';
+import { J as FeltZoom } from './types-C0ycmt8U.js';
+import { w as FilterExpression } from './types-C0ycmt8U.js';
+import { x as FilterLogicGate } from './types-C0ycmt8U.js';
+import { F as Filters } from './types-C0ycmt8U.js';
+import { y as FilterTernary } from './types-C0ycmt8U.js';
+import { G as Geometry } from './types-C0ycmt8U.js';
+import { c as GetElementGroupsConstraint } from './types-C0ycmt8U.js';
+import { a as GetElementsConstraint } from './types-C0ycmt8U.js';
+import { i as GetLayerGroupsConstraint } from './types-C0ycmt8U.js';
+import { f as GetLayersConstraint } from './types-C0ycmt8U.js';
+import { p as GetRenderedFeaturesConstraint } from './types-C0ycmt8U.js';
+import { K as LatLng } from './types-C0ycmt8U.js';
+import { L as Layer } from './types-C0ycmt8U.js';
+import { g as LayerChangeCallbackParams } from './types-C0ycmt8U.js';
+import { o as LayerFilters } from './types-C0ycmt8U.js';
+import { h as LayerGroup } from './types-C0ycmt8U.js';
+import { j as LayerGroupChangeCallbackParams } from './types-C0ycmt8U.js';
+import { D as LayerGroupNode } from './types-C0ycmt8U.js';
+import { H as LayerNode } from './types-C0ycmt8U.js';
+import { v as LayerProcessingStatus } from './types-C0ycmt8U.js';
+import { l as LegendItem } from './types-C0ycmt8U.js';
+import { n as LegendItemChangeCallbackParams } from './types-C0ycmt8U.js';
+import { k as LegendItemIdentifier } from './types-C0ycmt8U.js';
+import { m as LegendItemsConstraint } from './types-C0ycmt8U.js';
+import { N as LineStringGeometry } from './types-C0ycmt8U.js';
+import { O as LngLatTuple } from './types-C0ycmt8U.js';
+import { M as MapInteractionEvent } from './types-C0ycmt8U.js';
+import { P as MultiLineStringGeometry } from './types-C0ycmt8U.js';
+import { Q as MultiPolygonGeometry } from './types-C0ycmt8U.js';
+import { T as PointGeometry } from './types-C0ycmt8U.js';
+import { U as PolygonGeometry } from './types-C0ycmt8U.js';
+import { R as RasterValue } from './types-C0ycmt8U.js';
+import { s as SetViewportCenterZoomParams } from './types-C0ycmt8U.js';
+import { S as SetVisibilityRequest } from './types-C0ycmt8U.js';
+import { u as ViewportCenterZoom } from './types-C0ycmt8U.js';
+import { t as ViewportFitBoundsParams } from './types-C0ycmt8U.js';
+import { V as ViewportState } from './types-C0ycmt8U.js';
+import { z } from './types-C0ycmt8U.js';
 import { z as z_2 } from 'zod';
 
 export { Element_2 as Element }
@@ -227,6 +228,8 @@ export { GetLayerGroupsConstraint }
 
 export { GetLayersConstraint }
 
+export { GetRenderedFeaturesConstraint }
+
 // @public
 export interface InteractionsController {
     onPointerClick(params: {
@@ -268,6 +271,8 @@ export interface LayersController {
     constraint?: GetLayersConstraint): Promise<Array<Layer | null>>;
     getLegendItem(id: LegendItemIdentifier): Promise<LegendItem | null>;
     getLegendItems(constraint?: LegendItemsConstraint): Promise<Array<LegendItem | null>>;
+    getRenderedFeatures(
+    params?: GetRenderedFeaturesConstraint): Promise<Array<Feature>>;
     onLayerChange(args: {
         options: {
             id: string;

@@ -44,6 +44,7 @@ independently of the Layer, so you can turn on and off each category or class in
 * [Layer](Layer.md)
 * [GetLayersConstraint](GetLayersConstraint.md)
 * [LayerChangeCallbackParams](LayerChangeCallbackParams.md)
+* [GetRenderedFeaturesConstraint](GetRenderedFeaturesConstraint.md)
 * [LayerProcessingStatus](LayerProcessingStatus.md)
 
 ### Legend Items

@@ -5,6 +5,7 @@
     "@feltjs/js-sdk": "0.10.2"
   },
   "changesets": [
+    "fresh-birds-hide",
     "lemon-frogs-lick"
   ]
 }

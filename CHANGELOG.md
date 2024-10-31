@@ -1,5 +1,11 @@
 # @feltjs/js-sdk
 
+## 0.10.3-next.1
+
+### Patch Changes
+
+- f05cffc: Add getRenderedFeatures
+
 ## 0.10.3-next.0
 
 ### Patch Changes

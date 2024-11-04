@@ -1,5 +1,11 @@
 # @feltjs/js-sdk
 
+## 0.10.3-next.2
+
+### Patch Changes
+
+- df34fc3: Add option to disable/enable on-map interactions
+
 ## 0.10.3-next.1
 
 ### Patch Changes

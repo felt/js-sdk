@@ -320,6 +320,12 @@ export { MultiLineStringGeometry }
 
 export { MultiPolygonGeometry }
 
+// Warning: (ae-forgotten-export) The symbol "UiOnMapInteractionsOptionsSchema" needs to be exported by the entry point client.d.ts
+//
+// @public
+export interface OnMapInteractionsOptions extends z<typeof UiOnMapInteractionsOptionsSchema> {
+}
+
 export { PointGeometry }
 
 export { PolygonGeometry }
@@ -342,6 +348,7 @@ export { SetVisibilityRequest }
 
 // @public
 export interface UiController {
+    setOnMapInteractionsUi(options: OnMapInteractionsOptions): void;
     updateUiControls(controls: UiControlsOptions): void;
 }
 
@@ -373,6 +380,27 @@ const UiControlsOptionsSchema: z_2.ZodObject<{
     geolocation?: boolean | undefined;
     zoomControls?: boolean | undefined;
     scaleBar?: boolean | undefined;
+}>;
+
+// @internal (undocumented)
+const UiOnMapInteractionsOptionsSchema: z_2.ZodObject<{
+    featureSelectPanel: z_2.ZodOptional<z_2.ZodBoolean>;
+    featureHoverPanel: z_2.ZodOptional<z_2.ZodBoolean>;
+    elementSelectPanel: z_2.ZodOptional<z_2.ZodBoolean>;
+    linkClickOpen: z_2.ZodOptional<z_2.ZodBoolean>;
+    imageLightboxOpen: z_2.ZodOptional<z_2.ZodBoolean>;
+}, "strip", z_2.ZodTypeAny, {
+    featureSelectPanel?: boolean | undefined;
+    featureHoverPanel?: boolean | undefined;
+    elementSelectPanel?: boolean | undefined;
+    linkClickOpen?: boolean | undefined;
+    imageLightboxOpen?: boolean | undefined;
+}, {
+    featureSelectPanel?: boolean | undefined;
+    featureHoverPanel?: boolean | undefined;
+    elementSelectPanel?: boolean | undefined;
+    linkClickOpen?: boolean | undefined;
+    imageLightboxOpen?: boolean | undefined;
 }>;
 
 export { ViewportCenterZoom }

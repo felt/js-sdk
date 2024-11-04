@@ -550,6 +550,32 @@ Updates the UI controls on the embedded map.
 
 ***
 
+### setOnMapInteractionsUi()
+
+> **setOnMapInteractionsUi**(`options`: [`OnMapInteractionsOptions`](../UI/OnMapInteractionsOptions.md)): `void`
+
+Control the on-map UI shown when interacting with features and elements.
+
+If you add your own click, selection or hover handlers you may want to disable
+various parts of the Felt UI. This method allows you to control the visibility of
+various parts of the UI that might otherwise be shown when people click or hover
+on things.
+
+This does not affect selection. That means that selectable features and elements
+will still be selected when clicked.
+
+#### Parameters
+
+| Parameter | Type                                                            |
+| --------- | --------------------------------------------------------------- |
+| `options` | [`OnMapInteractionsOptions`](../UI/OnMapInteractionsOptions.md) |
+
+#### Returns
+
+`void`
+
+***
+
 ### getViewport()
 
 > **getViewport**(): `Promise`\<[`ViewportState`](../Viewport/ViewportState.md)>

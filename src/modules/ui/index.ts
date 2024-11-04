@@ -4,6 +4,9 @@
  *
  * @module UI
  */
-export type { UiControlsOptions } from "./types";
+export type {
+  UiOnMapInteractionsOptions as OnMapInteractionsOptions,
+  UiControlsOptions,
+} from "./types";
 
 export type { UiController } from "./controller";

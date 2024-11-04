@@ -3,7 +3,6 @@ import type { zInfer } from "~/lib/types/utils";
 
 /**
  * @public
- * @interface
  */
 export interface UiControlsOptions
   extends zInfer<typeof UiControlsOptionsSchema> {}
@@ -76,4 +75,52 @@ export const UiControlsOptionsSchema = z.object({
    * @defaultValue true
    */
   scaleBar: z.boolean().optional(),
+});
+
+/**
+ * The options for which parts of the Felt UI can be shown when interacting with
+ * features and elements on the map.
+ *
+ * Switching these off can be useful if you add your own click, selection or hover
+ * handlers for features and elements.
+ *
+ * @public
+ */
+export interface UiOnMapInteractionsOptions
+  extends zInfer<typeof UiOnMapInteractionsOptionsSchema> {}
+
+/**
+ * @internal
+ * @ignore
+ */
+export const UiOnMapInteractionsOptionsSchema = z.object({
+  /**
+   * Set this to `false` to prevent the panel that shows information about a selected
+   * feature from being shown.
+   */
+  featureSelectPanel: z.boolean().optional(),
+
+  /**
+   * Set this to `false` to prevent the panel that shows information about a hovered
+   * feature from being shown.
+   */
+  featureHoverPanel: z.boolean().optional(),
+
+  /**
+   * Set this to `false` to prevent the panel that shows information about a selected
+   * element from being shown.
+   */
+  elementSelectPanel: z.boolean().optional(),
+
+  /**
+   * Set this to `false` to prevent clicking on a map link element from opening that link
+   * in a new tab or window.
+   */
+  linkClickOpen: z.boolean().optional(),
+
+  /**
+   * Set this to `false` to prevent clicking on an image element from opening the image
+   * in a lightbox.
+   */
+  imageLightboxOpen: z.boolean().optional(),
 });

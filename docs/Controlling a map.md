@@ -9,7 +9,10 @@ existing Felt iframe.
 Felt map IDs are unique identifiers for Felt maps. They are used to embed maps in iframes, and to
 connect to existing iframes.
 
-To get the ID of a Felt map, you can look at the URL of the map. For example, the map at
+To get the ID of a Felt map, click the Map settings button in the main toolbar, and then you can
+see the Map ID in the Developers section.
+
+Alternatively, you can look at the URL of the map. For example, the map at
 `https://felt.com/map/Map-title-xPV9BqMuYQxmUraVWy9C89BNA` has the ID `xPV9BqMuYQxmUraVWy9C89BNA`.
 
 Throughout the documentation, we'll use the placeholder `FELT_MAP_ID` to refer to a Felt map ID.

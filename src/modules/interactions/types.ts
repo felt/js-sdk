@@ -9,7 +9,7 @@ export interface MapInteractionEvent {
   /**
    * The cursor position in world coordinates.
    */
-  center: LatLng;
+  coordinate: LatLng;
 
   /**
    * The vector features that are under the cursor.

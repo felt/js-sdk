@@ -4,9 +4,9 @@ The event object passed to the interaction listeners.
 
 ## Properties
 
-### center
+### coordinate
 
-> **center**: [`LatLng`](../Shared/LatLng.md)
+> **coordinate**: [`LatLng`](../Shared/LatLng.md)
 
 The cursor position in world coordinates.
 

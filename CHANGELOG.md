@@ -1,5 +1,15 @@
 # @feltjs/js-sdk
 
+## 0.10.3
+
+### Patch Changes
+
+- df34fc3: Add option to disable/enable on-map interactions
+- f05cffc: Add getRenderedFeatures
+- 37039b3: Add onViewportMoveEnd
+- c0eed0d: Move docs and fix bundle
+- d996b28: Rename center to coordinate
+
 ## 0.10.3-next.4
 
 ### Patch Changes

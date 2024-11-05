@@ -1,5 +1,11 @@
 # @feltjs/js-sdk
 
+## 0.10.3-next.4
+
+### Patch Changes
+
+- c0eed0d: Move docs and fix bundle
+
 ## 0.10.3-next.3
 
 ### Patch Changes

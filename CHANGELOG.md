@@ -1,5 +1,11 @@
 # @feltjs/js-sdk
 
+## 0.10.3-next.3
+
+### Patch Changes
+
+- d996b28: Rename center to coordinate
+
 ## 0.10.3-next.2
 
 ### Patch Changes

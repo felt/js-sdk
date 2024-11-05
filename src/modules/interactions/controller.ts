@@ -1,4 +1,4 @@
-import { listener } from "~/lib/types/interface";
+import { listener } from "~/lib/interface";
 import type { MapInteractionEvent } from "./types";
 
 /**

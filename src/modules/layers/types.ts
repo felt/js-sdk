@@ -1,5 +1,5 @@
 import { z } from "zod";
-import type { zInfer } from "~/lib/types/utils";
+import type { zInfer } from "~/lib/utils";
 import type { FeltBoundary } from "~/modules/shared/types";
 
 export type { Feature, RasterValue } from "./features/types";

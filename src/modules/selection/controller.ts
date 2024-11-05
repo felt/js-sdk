@@ -1,4 +1,4 @@
-import { listener, method } from "~/lib/types/interface";
+import { listener, method } from "~/lib/interface";
 import type { EntityNode } from "./types";
 
 /**

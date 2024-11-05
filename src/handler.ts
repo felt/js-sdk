@@ -1,5 +1,7 @@
-import { AllMessagesSchema, PreliminarySchema } from "./lib/schema";
-import type { FeltHandlers } from "./lib/types/interface";
+import { z } from "zod";
+import type { FeltHandlers } from "./lib/interface";
+import type { ModuleSchema } from "./lib/ModuleSchema";
+import { allModules } from "./modules/main/schema";
 
 /**
  * This function creates a message handler for the Felt SDK. Its job is to start listening
@@ -92,3 +94,47 @@ export function createMessageHandler(
     feltWindow.removeEventListener("message", handleMessage);
   };
 }
+
+const mergedSchemas = {
+  methods: allModules.map((schema) => schema.methods ?? []).flat(),
+  listeners: allModules.map((schema) => schema.listeners ?? []).flat(),
+} satisfies ModuleSchema;
+
+const EventSchema = z.discriminatedUnion("eventName", [
+  // this first literal event keeps zod quiet when creating the discriminated union
+  z.strictObject({ eventName: z.literal("") }),
+  ...mergedSchemas.listeners,
+]);
+
+const AddListenerSchema = z.strictObject({
+  type: z.literal("felt.addListener"),
+  event: EventSchema,
+});
+
+const RemoveListenerSchema = z.strictObject({
+  type: z.literal("felt.removeListener"),
+  id: z.string(),
+});
+
+const ReadySchema = z.strictObject({
+  type: z.literal("felt.ready"),
+});
+
+const AllMessagesSchema = z.discriminatedUnion("type", [
+  ReadySchema,
+  AddListenerSchema,
+  RemoveListenerSchema,
+  ...mergedSchemas.methods,
+]);
+
+/**
+ * A derived schema that only checks the type of the message.
+ */
+const PreliminarySchema = z.object({
+  type: z.enum(
+    AllMessagesSchema.options.map((option) => option.shape.type.value) as [
+      string,
+      ...string[],
+    ],
+  ),
+});

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import type { zInfer } from "~/lib/types/utils";
+import type { zInfer } from "~/lib/utils";
 
 /**
  * @group Elements

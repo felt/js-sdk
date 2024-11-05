@@ -1,4 +1,4 @@
-import { listener, method } from "~/lib/types/interface";
+import { listener, method } from "~/lib/interface";
 import type { SetVisibilityRequest } from "~/modules/shared/types";
 import type { Filters, LayerFilters } from "./filter.types";
 import type {

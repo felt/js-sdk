@@ -27,14 +27,40 @@
  * @module Main
  */
 
-import type { ElementsController } from "~/modules/elements/controller";
-import type { LayersController } from "~/modules/layers/controller";
-import type { SelectionController } from "~/modules/selection/controller";
-import type { UiController } from "~/modules/ui/controller";
-import type { ViewportController } from "~/modules/viewport/controller";
-import type { InteractionsController } from "../interactions/controller";
-import { makeController } from "./makeController";
-import type { FeltEmbedOptions } from "./types";
+import { z } from "zod";
+import type { zInfer } from "~/lib/utils";
+import {
+  type UiControlsOptions,
+  UiControlsOptionsSchema,
+} from "~/modules/ui/types";
+import {
+  type ViewportCenterZoom,
+  ViewportCenterZoomSchema,
+} from "~/modules/viewport/types";
+import { type FeltController, makeController } from "./controller";
+
+/**
+ * @group Instantiation
+ * @public
+ */
+export interface FeltEmbedOptions
+  extends zInfer<typeof FeltEmbedOptionsSchema> {
+  uiControls: UiControlsOptions;
+  initialViewport?: ViewportCenterZoom;
+}
+/**
+ * @internal
+ */
+const FeltEmbedOptionsSchema = z.object({
+  /**
+   * @hidden
+   */
+  origin: z.string().optional(),
+
+  uiControls: UiControlsOptionsSchema,
+
+  initialViewport: ViewportCenterZoomSchema.optional(),
+});
 
 /**
  * The Felt SDK is a library for embedding Felt maps into your website,
@@ -177,36 +203,7 @@ export const Felt = {
   },
 };
 
-// We could infer the type of the controller from the above definition, but that
-// prevents documentation generation from working properly, as it cannot infer
-// and document the type correctly, so we define it explicitly here.
-
-/**
- * This is the main interface for interacting with a Felt map.
- *
- * This interface is composed of the various controllers, each having a
- * different area of responsibility.
- *
- * All the methods are listed here, but each controller is documented on its
- * own to make it easier to find related methods and events.
- *
- * @group Controller
- * @public
- */
-export interface FeltController
-  extends ViewportController,
-    UiController,
-    LayersController,
-    ElementsController,
-    SelectionController,
-    InteractionsController {
-  /**
-   * The iframe element containing the Felt map, if it is an embedded map.
-   *
-   * @readonly
-   */
-  iframe: HTMLIFrameElement | null;
-}
+export type { FeltController };
 
 /**
  * A stricter, more type-safe version of Object.entries that preserves the
@@ -215,5 +212,3 @@ export interface FeltController
 const entries = Object.entries as <T extends object>(
   obj: T,
 ) => Array<[Exclude<keyof T, number>, T[keyof T]]>;
-
-export type { FeltEmbedOptions } from "./types";

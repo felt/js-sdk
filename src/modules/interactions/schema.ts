@@ -1,5 +1,5 @@
-import type { ModuleSchema } from "~/lib/schema";
-import { type Listener, listenerMessageNoParams } from "~/lib/types/builders";
+import type { ModuleSchema } from "~/lib/ModuleSchema";
+import { type Listener, listenerMessageNoParams } from "~/lib/builders";
 import type { MapInteractionEvent } from "./types";
 
 const OnPointerClickMessage = listenerMessageNoParams("onPointerClick");

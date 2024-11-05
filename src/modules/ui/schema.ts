@@ -1,6 +1,6 @@
-import type { ModuleSchema } from "~/lib/schema";
-import { type Method, methodMessage } from "~/lib/types/builders";
-import type { zInfer } from "~/lib/types/utils";
+import type { ModuleSchema } from "~/lib/ModuleSchema";
+import { type Method, methodMessage } from "~/lib/builders";
+import type { zInfer } from "~/lib/utils";
 import {
   UiControlsOptionsSchema,
   UiOnMapInteractionsOptionsSchema,

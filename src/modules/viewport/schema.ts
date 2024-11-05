@@ -1,12 +1,12 @@
 import { z } from "zod";
-import type { ModuleSchema } from "~/lib/schema";
+import type { ModuleSchema } from "~/lib/ModuleSchema";
 import {
   type Listener,
   type Method,
   listenerMessageNoParams,
   methodMessage,
-} from "~/lib/types/builders";
-import type { zInfer } from "~/lib/types/utils";
+} from "~/lib/builders";
+import type { zInfer } from "~/lib/utils";
 import {
   SetViewportCenterZoomParamsSchema,
   ViewportFitBoundsParamsSchema,

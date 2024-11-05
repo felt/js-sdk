@@ -1,12 +1,12 @@
 import { z } from "zod";
-import type { ModuleSchema } from "~/lib/schema";
+import type { ModuleSchema } from "~/lib/ModuleSchema";
 import {
   type Listener,
   type Method,
   listenerMessageWithParams,
   methodMessage,
-} from "~/lib/types/builders";
-import type { zInfer } from "~/lib/types/utils";
+} from "~/lib/builders";
+import type { zInfer } from "~/lib/utils";
 import { SetVisibilityRequestSchema } from "~/modules/shared/types";
 import { FiltersSchema, type LayerFilters } from "./filter.types";
 import {

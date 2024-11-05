@@ -65,6 +65,8 @@
     "ci": "npm run build && npm run check",
     "update-api": "npm run build:compile && api-extractor run --local",
     "local-release": "git checkout main && git pull && npm run ci && changeset version && changeset publish && git push --follow-tags",
+    "enter-prerelease": "changeset pre enter next",
+    "exit-prerelease": "changeset pre exit",
     "prepublishOnly": "npm run ci"
   }
 }

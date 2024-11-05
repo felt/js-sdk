@@ -10,7 +10,7 @@ export function load(app) {
   // having the title Properties in the sidebar.
   app.renderer.markdownHooks.on("page.begin", ({ page }) => {
     // Don't add a separator to the main page, so we can control the title shown in gitbook
-    if (page.filename.endsWith("/docs/api/README.md")) {
+    if (page.filename.endsWith("/docs/README.md")) {
       return;
     }
     return `***\n`;

@@ -1,7 +1,7 @@
 {
   "$schema": "https://typedoc-plugin-markdown.org/schema.json",
   "disableSources": true,
-  "out": "./docs/api",
+  "out": "./docs",
   "entryPoints": ["src/modules/*/index.ts"],
   "sort": ["kind", "source-order"],
   "plugin": [

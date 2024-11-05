@@ -27,40 +27,8 @@
  * @module Main
  */
 
-import { z } from "zod";
-import type { zInfer } from "~/lib/utils";
-import {
-  type UiControlsOptions,
-  UiControlsOptionsSchema,
-} from "~/modules/ui/types";
-import {
-  type ViewportCenterZoom,
-  ViewportCenterZoomSchema,
-} from "~/modules/viewport/types";
 import { type FeltController, makeController } from "./controller";
-
-/**
- * @group Instantiation
- * @public
- */
-export interface FeltEmbedOptions
-  extends zInfer<typeof FeltEmbedOptionsSchema> {
-  uiControls: UiControlsOptions;
-  initialViewport?: ViewportCenterZoom;
-}
-/**
- * @internal
- */
-const FeltEmbedOptionsSchema = z.object({
-  /**
-   * @hidden
-   */
-  origin: z.string().optional(),
-
-  uiControls: UiControlsOptionsSchema,
-
-  initialViewport: ViewportCenterZoomSchema.optional(),
-});
+import type { FeltEmbedOptions } from "./types";
 
 /**
  * The Felt SDK is a library for embedding Felt maps into your website,
@@ -203,7 +171,7 @@ export const Felt = {
   },
 };
 
-export type { FeltController };
+export type { FeltController, FeltEmbedOptions };
 
 /**
  * A stricter, more type-safe version of Object.entries that preserves the

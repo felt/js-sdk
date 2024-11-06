@@ -1,5 +1,11 @@
 # @feltjs/js-sdk
 
+## 1.0.0
+
+### Major Changes
+
+- fc9a702: Declare v1
+
 ## 0.10.3
 
 ### Patch Changes

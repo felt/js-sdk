@@ -2,8 +2,8 @@
 
 An SDK for Felt maps.
 
-[Documentation](https://developers.felt.com/js-sdk)
-[API Reference](https://developers.felt.com/js-api)
+- [Documentation](https://developers.felt.com/js-sdk)
+- [API Reference](https://developers.felt.com/js-api)
 
 ## Quickstart
 

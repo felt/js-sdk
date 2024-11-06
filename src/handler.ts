@@ -82,9 +82,15 @@ export function createMessageHandler(
       unsubscribeMap.get(data.id)?.();
       unsubscribeMap.delete(data.id);
     } else {
-      const handler = handlers.methods[data.type] as any;
-      const result = await handler(data.params);
-      message.ports[0]?.postMessage(result);
+      try {
+        const handler = handlers.methods[data.type] as any;
+        const result = await handler(data.params);
+        message.ports[0]?.postMessage(result);
+      } catch (error) {
+        message.ports[0]?.postMessage({
+          __error__: errorStringFromUnknown(error),
+        });
+      }
     }
   }
 
@@ -93,6 +99,22 @@ export function createMessageHandler(
   return () => {
     feltWindow.removeEventListener("message", handleMessage);
   };
+}
+
+function errorStringFromUnknown(error: unknown): string {
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  if (typeof error === "object" && error !== null && "message" in error) {
+    return String(error.message);
+  }
+
+  if (typeof error === "string") {
+    return error;
+  }
+
+  return "Unknown error";
 }
 
 const mergedSchemas = {

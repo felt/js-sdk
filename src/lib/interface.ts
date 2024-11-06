@@ -102,9 +102,13 @@ export function method<TKey extends keyof MethodSpec>(
     const messageChannel = new MessageChannel();
     feltWindow.postMessage({ type, params }, "*", [messageChannel.port2]);
 
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       messageChannel.port1.onmessage = (event) => {
-        resolve(event.data);
+        if (event.data && "__error__" in event.data) {
+          reject(new Error(event.data.__error__));
+        } else {
+          resolve(event.data);
+        }
         messageChannel.port1.close();
         messageChannel.port2.close();
       };

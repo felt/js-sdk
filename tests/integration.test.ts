@@ -172,13 +172,24 @@ describe("Felt SDK integration", () => {
 
     // iterate through all the functions in the client, calling them
     // and making sure that we don't get any unknown messages
-    Object.values(client).forEach((fn) => {
-      // @ts-expect-error -- we need to pass some object that can be destructured in
-      // our handlers - we don't actually need to do anything with it, but we need to
-      // pass **something**.
-      (fn as VoidFunction)?.({});
+    Object.values(client).forEach(async (fn) => {
+      try {
+        // @ts-expect-error -- we need to pass some object that can be destructured in
+        // our handlers - we don't actually need to do anything with it, but we need to
+        // pass **something**.
+        await (fn as VoidFunction)?.({});
+      } catch (e) {}
     });
 
     expect(onUnknownMessage).not.toHaveBeenCalled();
+  });
+
+  test("Errors in method handlers turn into promise rejections", async () => {
+    methods.getViewport = () => {
+      throw new Error("test error");
+    };
+
+    const client = await Felt.connect(window);
+    await expect(client.getViewport()).rejects.toThrow("test error");
   });
 });

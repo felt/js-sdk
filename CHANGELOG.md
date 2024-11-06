@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.0.1
+
+### Patch Changes
+
+- 52170cc: Add error handling via promise rejections
+
 ## 1.0.0
 
 ### Major Changes

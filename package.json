@@ -26,6 +26,14 @@
     "handler.d.ts",
     "types-*.ts"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felt/js-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/felt/js-sdk/issues"
+  },
+  "homepage": "https://developers.felt.com",
   "type": "module",
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.16.4",

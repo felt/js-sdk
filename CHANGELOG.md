@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.0.2
+
+### Patch Changes
+
+- 82d1b07: Improve readme
+
 ## 1.0.1
 
 ### Patch Changes

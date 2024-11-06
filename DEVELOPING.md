@@ -96,7 +96,7 @@ correctly.
 You will need to first link the package to the Felt app:
 
 1. From this repo, run `yarn link`
-2. From the Felt app, run `yarn link @feltjs/js-sdk`
+2. From the Felt app, run `yarn link @feltmaps/js-sdk`
 3. Restart the Felt app to ensure the changes are picked up - this should happen automatically
    without restarting but I'm not sure it's 100% reliable.
 
@@ -127,13 +127,13 @@ Now your changes are in `main` which is where the prerelease will be published f
 To publish the prerelease package:
 
 1. Ensure we are in prerelease mode with `npm run enter-prerelease`
-2. Run `npm run local-release` which will build the package and publish it to `@feltjs/js-sdk`
+2. Run `npm run local-release` which will build the package and publish it to `@feltmaps/js-sdk`
    with the `next` tag. This will print out the version it created, something like `0.0.1-next.0`.
 
 To use the prerelease package in Felt:
 
 1. In the Felt app, update the version in `package.json` to match the version you just published,
-   like: `"@feltjs/js-sdk": "0.0.1-next.0"` and install with `yarn install`.
+   like: `"@feltmaps/js-sdk": "0.0.1-next.0"` and install with `yarn install`.
 2. Open a PR in the Felt repo and merge it.
 
 #### Public release
@@ -141,6 +141,6 @@ To use the prerelease package in Felt:
 Once `main` is in a state to promote to a public release, you can do the following on `main`:
 
 1. Run `npm run exit-prerelease` to remove the prerelease tag and bump the version number.
-2. Run `npm run local-release` to publish the package to the `@feltjs/js-sdk` npm package.
+2. Run `npm run local-release` to publish the package to the `@feltmaps/js-sdk` npm package.
 3. Merge the change into the `release` branch with `git checkout release && git merge main --ff-only && git push`.
    This will publish the API reference docs to the public docs site.

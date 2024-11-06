@@ -1,5 +1,5 @@
 {
-  "name": "@feltjs/js-sdk",
+  "name": "@feltmaps/js-sdk",
   "version": "1.0.0",
   "description": "An SDK for Felt maps",
   "keywords": [

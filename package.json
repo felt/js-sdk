@@ -1,0 +1,80 @@
+{
+  "name": "@feltmaps/js-sdk",
+  "version": "1.0.2",
+  "description": "An SDK for Felt maps",
+  "keywords": [
+    "felt",
+    "sdk"
+  ],
+  "main": "./dist/client.cjs",
+  "types": "./dist/client.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/client.js",
+      "require": "./dist/client.cjs"
+    },
+    "./handler": {
+      "import": "./dist/handler.js",
+      "require": "./dist/handler.cjs"
+    }
+  },
+  "author": "Felt <engineering@felt.com> (https://felt.com)",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "handler.js",
+    "handler.d.ts",
+    "types-*.ts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felt/js-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/felt/js-sdk/issues"
+  },
+  "homepage": "https://developers.felt.com",
+  "type": "module",
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.16.4",
+    "@changesets/cli": "^2.27.9",
+    "@microsoft/api-extractor": "^7.47.9",
+    "@types/node": "^22.7.4",
+    "happy-dom": "^15.7.4",
+    "knip": "^5.31.0",
+    "prettier": "^3.3.3",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "tsup": "^8.3.0",
+    "typedoc": "^0.26.7",
+    "typedoc-plugin-markdown": "^4.2.9",
+    "typedoc-plugin-remark": "^1.0.3",
+    "typedoc-plugin-zod": "^1.2.1",
+    "typescript": "^5.6.2",
+    "vite-tsconfig-paths": "^5.0.1",
+    "vitest": "^2.1.2",
+    "zod": "^3.23.8"
+  },
+  "optionalDependencies": {
+    "zod": "^3.23.8"
+  },
+  "scripts": {
+    "build": "npm run build:compile && npm run build:docs",
+    "build:compile": "tsup",
+    "build:docs": "typedoc",
+    "changeset": "changeset",
+    "check": "npm run check:client-bundle && npm run check:format && npm run check:api && npm run check:unused && npm run check:types && npm run check:test && npm run check:docs",
+    "check:api": "npm run build:compile && attw --pack . && api-extractor run",
+    "check:client-bundle": "npm run build:compile && node ./scripts/check-client-bundle-contents.js",
+    "check:docs": "npm run build:docs && bash ./scripts/check-api-docs.sh",
+    "check:format": "prettier --check .",
+    "check:unused": "knip",
+    "check:test": "vitest run",
+    "check:types": "tsc",
+    "ci": "npm run build && npm run check",
+    "update-api": "npm run build:compile && api-extractor run --local",
+    "local-release": "git checkout main && git pull && npm run ci && changeset version && changeset publish && git push --follow-tags",
+    "enter-prerelease": "changeset pre enter next",
+    "exit-prerelease": "changeset pre exit",
+    "prepublishOnly": "npm run ci"
+  }
+}

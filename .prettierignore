@@ -1,0 +1,5 @@
+docs
+etc
+*.js
+*.cjs
+.changeset

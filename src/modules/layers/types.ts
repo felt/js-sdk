@@ -67,6 +67,17 @@ export interface Layer {
   shownInLegend: boolean;
 
   /**
+   * The FSL style for the layer.
+   *
+   * See the [FSL documentation](https://developers.felt.com/felt-style-language) for details
+   * on how to read and write styles.
+   *
+   * As the types of the styles are very complex, we return any here and advise that you
+   * program defensively.
+   */
+  style: object;
+
+  /**
    * The current processing status of the layer.
    */
   status: LayerProcessingStatus;

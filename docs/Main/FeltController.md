@@ -266,6 +266,51 @@ felt.setLayerVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
 
 ***
 
+### setLayerStyle()
+
+> **setLayerStyle**(`params`: \{`id`: `string`;`style`: `object`; }): `Promise`\<`void`>
+
+Set the style for a layer using FSL, the Felt Style Language.
+
+Changes are only for this session, and not persisted. This is useful to make
+temporary changes to a layer's style, such as to highlight a particular layer
+or feature.
+
+See the [FSL documentation](https://developers.felt.com/felt-style-language) for details
+on how to read and write styles.
+
+If the style you set is invalid, you will receive an error explaining the problem
+in the rejected promise value.
+
+#### Parameters
+
+| Parameter      | Type     | Description                               |
+| -------------- | -------- | ----------------------------------------- |
+| `params`       | `object` | -                                         |
+| `params.id`    | `string` | The id of the layer to set the style for. |
+| `params.style` | `object` | The style to set for the layer.           |
+
+#### Returns
+
+`Promise`\<`void`>
+
+#### Example
+
+```typescript
+// first get the current style
+const oldStyle = (await felt.getLayer("layer-1")).style;
+
+felt.setLayerStyle({ id: "layer-1", style: {
+  ...oldStyle,
+  paint: {
+    ...oldStyle.paint,
+    color: "red",
+  },
+} });
+```
+
+***
+
 ### getLayerGroup()
 
 > **getLayerGroup**(`id`: `string`): `Promise`\<`null` | [`LayerGroup`](../Layers/LayerGroup.md)>

@@ -24,6 +24,7 @@ export const layersController = (feltWindow: Window): LayersController => ({
   getLayer: method(feltWindow, "getLayer"),
   getLayers: method(feltWindow, "getLayers"),
   setLayerVisibility: method(feltWindow, "setLayerVisibility"),
+  setLayerStyle: method(feltWindow, "setLayerStyle"),
   onLayerChange: listener(feltWindow, "onLayerChange"),
 
   // groups
@@ -105,6 +106,45 @@ export interface LayersController {
    * ```
    */
   setLayerVisibility(visibility: SetVisibilityRequest): Promise<void>;
+
+  /**
+   * Set the style for a layer using FSL, the Felt Style Language.
+   *
+   * Changes are only for this session, and not persisted. This is useful to make
+   * temporary changes to a layer's style, such as to highlight a particular layer
+   * or feature.
+   *
+   * See the [FSL documentation](https://developers.felt.com/felt-style-language) for details
+   * on how to read and write styles.
+   *
+   * If the style you set is invalid, you will receive an error explaining the problem
+   * in the rejected promise value.
+   *
+   * @example
+   * ```typescript
+   * // first get the current style
+   * const oldStyle = (await felt.getLayer("layer-1")).style;
+   *
+   * felt.setLayerStyle({ id: "layer-1", style: {
+   *   ...oldStyle,
+   *   paint: {
+   *     ...oldStyle.paint,
+   *     color: "red",
+   *   },
+   * } });
+   * ```
+   */
+  setLayerStyle(params: {
+    /**
+     * The id of the layer to set the style for.
+     */
+    id: string;
+
+    /**
+     * The style to set for the layer.
+     */
+    style: object;
+  }): Promise<void>;
 
   /**
    * Adds a listener for when a layer changes.

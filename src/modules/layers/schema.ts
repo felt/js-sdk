@@ -38,6 +38,10 @@ const OnLayerChangeMessage = listenerMessageWithParams(
   "onLayerChange",
   z.object({ id: z.string() }),
 );
+const SetLayerStyleMessage = methodMessage(
+  "setLayerStyle",
+  z.object({ id: z.string(), style: z.object({}).passthrough() }),
+);
 
 // LAYER GROUPS
 const GetGroupMessage = methodMessage("getLayerGroup", z.string());
@@ -96,6 +100,7 @@ export const layersSchema = {
     GetLayerMessage,
     GetLayersMessage,
     SetLayerVisibilityMessage,
+    SetLayerStyleMessage,
 
     GetGroupMessage,
     GetGroupsMessage,
@@ -122,6 +127,7 @@ export type LayersSchema = {
     getLayer: Method<zInfer<typeof GetLayerMessage>, Layer | null>;
     getLayers: Method<zInfer<typeof GetLayersMessage>, Array<Layer | null>>;
     setLayerVisibility: Method<zInfer<typeof SetLayerVisibilityMessage>, void>;
+    setLayerStyle: Method<zInfer<typeof SetLayerStyleMessage>, void>;
 
     getLayerGroup: Method<zInfer<typeof GetGroupMessage>, LayerGroup | null>;
     getLayerGroups: Method<

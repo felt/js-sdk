@@ -62,6 +62,20 @@ Whether the layer is shown in the legend or not.
 
 ***
 
+### style
+
+> **style**: `object`
+
+The FSL style for the layer.
+
+See the [FSL documentation](https://developers.felt.com/felt-style-language) for details
+on how to read and write styles.
+
+As the types of the styles are very complex, we return `object` here and advise that you
+program defensively while reading the styles.
+
+***
+
 ### status
 
 > **status**: `"processing"` | `"completed"` | `"failed"` | `"incomplete"`

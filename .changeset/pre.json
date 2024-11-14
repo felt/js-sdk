@@ -1,0 +1,11 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@feltmaps/js-sdk": "1.0.2"
+  },
+  "changesets": [
+    "shiny-buckets-wink",
+    "thin-peas-shave"
+  ]
+}

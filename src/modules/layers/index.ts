@@ -16,6 +16,7 @@
  * @module Layers
  */
 export type {
+  AreaQuery,
   Feature,
   GetLayerGroupsConstraint,
   GetLayersConstraint,

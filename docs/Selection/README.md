@@ -2,6 +2,10 @@
 
 ## Index
 
+### Interfaces
+
+* [FeatureSelection](FeatureSelection.md)
+
 ### Controller
 
 * [SelectionController](SelectionController.md)

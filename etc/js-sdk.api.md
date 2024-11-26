@@ -99,6 +99,8 @@ export { Feature }
 
 export { FeatureNode }
 
+export { FeatureSelection }
+
 // @public
 export const Felt: {
     embed(container: HTMLElement, mapId: string, options?: FeltEmbedOptions): Promise<FeltController>;
@@ -344,6 +346,7 @@ export interface SelectionController {
             selection: EntityNode[];
         }) => void;
     }): VoidFunction;
+    selectFeature(params: FeatureSelection): Promise<void>;
 }
 
 export { SetViewportCenterZoomParams }

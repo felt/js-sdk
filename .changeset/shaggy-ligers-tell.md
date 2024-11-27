@@ -2,4 +2,4 @@
 "@feltmaps/js-sdk": minor
 ---
 
-Add AreaQuery param to getRenderedFeatures
+Add areaQuery param to getRenderedFeatures

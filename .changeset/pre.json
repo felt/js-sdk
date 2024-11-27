@@ -1,0 +1,8 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@feltmaps/js-sdk": "1.1.0"
+  },
+  "changesets": []
+}

@@ -304,12 +304,14 @@ export interface GetRenderedFeaturesConstraint
   /**
    * The area to query for rendered features. This can be specific coordinates or a {@link FeltBoundary}. If omitted, the entire viewport will be queried.
    */
-    areaQuery?: {
-      coordinates: LatLng;
-    } | {
-      boundary: FeltBoundary;
-    }
-  }
+  areaQuery?:
+    | {
+        coordinates: LatLng;
+      }
+    | {
+        boundary: FeltBoundary;
+      };
+}
 /** @ignore */
 export const GetRenderedFeaturesConstraintSchema = z.object({
   /**

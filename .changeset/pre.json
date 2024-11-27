@@ -4,5 +4,7 @@
   "initialVersions": {
     "@feltmaps/js-sdk": "1.1.0"
   },
-  "changesets": []
+  "changesets": [
+    "few-gifts-hide"
+  ]
 }

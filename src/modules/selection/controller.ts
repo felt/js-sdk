@@ -1,5 +1,5 @@
 import { listener, method } from "~/lib/interface";
-import type { EntityNode } from "./types";
+import type { EntityNode, FeatureSelection } from "./types";
 
 /**
  * @ignore
@@ -9,6 +9,7 @@ export const selectionController = (
 ): SelectionController => ({
   onSelectionChange: listener(feltWindow, "onSelectionChange"),
   getSelection: method(feltWindow, "getSelection"),
+  selectFeature: method(feltWindow, "selectFeature"),
 });
 
 /**
@@ -62,4 +63,20 @@ export interface SelectionController {
       selection: EntityNode[];
     }) => void;
   }): VoidFunction;
+
+  /**
+   * Selects a feature on a layer. This will show the feature's popup, modal or
+   * sidebar (if configured) and highlight the feature.
+   *
+   * @example
+   * ```typescript
+   * await felt.selectFeature({
+   *   id: 123,
+   *   layerId: "my-layer",
+   *   showPopup: true,
+   *   fitViewport: { maxZoom: 15 },
+   * });
+   * ```
+   */
+  selectFeature(params: FeatureSelection): Promise<void>;
 }

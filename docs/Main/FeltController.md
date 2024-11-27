@@ -577,6 +577,36 @@ const selection = await felt.getSelection();
 
 ***
 
+### selectFeature()
+
+> **selectFeature**(`params`: [`FeatureSelection`](../Selection/FeatureSelection.md)): `Promise`\<`void`>
+
+Selects a feature on a layer. This will show the feature's popup, modal or
+sidebar (if configured) and highlight the feature.
+
+#### Parameters
+
+| Parameter | Type                                                   |
+| --------- | ------------------------------------------------------ |
+| `params`  | [`FeatureSelection`](../Selection/FeatureSelection.md) |
+
+#### Returns
+
+`Promise`\<`void`>
+
+#### Example
+
+```typescript
+await felt.selectFeature({
+  id: 123,
+  layerId: "my-layer",
+  showPopup: true,
+  fitViewport: { maxZoom: 15 },
+});
+```
+
+***
+
 ### updateUiControls()
 
 > **updateUiControls**(`controls`: [`UiControlsOptions`](../UI/UiControlsOptions.md)): `void`

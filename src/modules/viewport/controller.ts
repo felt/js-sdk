@@ -14,6 +14,7 @@ export const viewportController = (feltWindow: Window): ViewportController => ({
   fitViewportToBounds: method(feltWindow, "fitViewportToBounds"),
   onViewportMove: listener(feltWindow, "onViewportMove"),
   onViewportMoveEnd: listener(feltWindow, "onViewportMoveEnd"),
+  onMapIdle: listener(feltWindow, "onMapIdle"),
 });
 
 /**
@@ -105,4 +106,24 @@ export interface ViewportController {
   onViewportMoveEnd(args: {
     handler: (viewport: ViewportState) => void;
   }): VoidFunction;
+
+  /**
+   * Adds a listener for when the map is idle, which is defined as:
+   * - No transitions are in progress
+   * - The user is not interacting with the map, e.g. by panning or zooming
+   * - All tiles for the current viewport have been loaded
+   * - Any fade transitions (e.g. for labels) have completed
+   *
+   * @returns A function to unsubscribe from the listener
+   *
+   * @event
+   * @example
+   * ```typescript
+   * const unsubscribe = felt.onMapIdle({ handler: () => console.log("map is idle") });
+   *
+   * // later on...
+   * unsubscribe();
+   * ```
+   */
+  onMapIdle(args: { handler: () => void }): VoidFunction;
 }

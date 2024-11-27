@@ -413,6 +413,9 @@ export { ViewportCenterZoom }
 export interface ViewportController {
     fitViewportToBounds(bounds: ViewportFitBoundsParams): void;
     getViewport(): Promise<ViewportState>;
+    onMapIdle(args: {
+        handler: () => void;
+    }): VoidFunction;
     onViewportMove(args: {
         handler: (viewport: ViewportState) => void;
     }): VoidFunction;

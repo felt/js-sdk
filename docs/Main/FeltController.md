@@ -1021,3 +1021,38 @@ const unsubscribe = felt.onViewportMoveEnd({
 // later on...
 unsubscribe();
 ```
+
+***
+
+### onMapIdle()
+
+> **onMapIdle**(`args`: \{`handler`: () => `void`; }): `VoidFunction`
+
+Adds a listener for when the map is idle, which is defined as:
+
+* No transitions are in progress
+* The user is not interacting with the map, e.g. by panning or zooming
+* All tiles for the current viewport have been loaded
+* Any fade transitions (e.g. for labels) have completed
+
+#### Parameters
+
+| Parameter      | Type         |
+| -------------- | ------------ |
+| `args`         | `object`     |
+| `args.handler` | () => `void` |
+
+#### Returns
+
+`VoidFunction`
+
+A function to unsubscribe from the listener
+
+#### Example
+
+```typescript
+const unsubscribe = felt.onMapIdle({ handler: () => console.log("map is idle") });
+
+// later on...
+unsubscribe();
+```

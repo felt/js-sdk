@@ -1,6 +1,6 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
-import { FeltBoundarySchema, type FeltBoundary } from "~/modules/shared/types";
+import { FeltBoundarySchema, LatLngSchema, type FeltBoundary } from "~/modules/shared/types";
 
 export type { Feature, RasterValue } from "./features/types";
 
@@ -289,27 +289,8 @@ export interface LegendItemChangeCallbackParams {
 }
 
 /**
- * Area query that can be used for the `getRenderedFeatures` method.
- *
- * @group Layers
- */
-export type AreaQuery = z.infer<typeof AreaQuerySchema>;
-/** @ignore */
-const AreaQuerySchema = z.union([
-  z.object({
-    type: z.literal("point"),
-    latitude: z.number(),
-    longitude: z.number(),
-  }),
-  z.object({
-    type: z.literal("bbox"),
-    boundary: FeltBoundarySchema,
-  }),
-]);
-
-/**
- * Constraints for the `getRenderedFeatures` method. If no constraints are
- * provided, all rendered features will be returned.
+ * Constraints for the `getRenderedFeatures` method. This can include layer constriants, spatial constraints, or both. If no constraints are
+ * provided, all rendered features will be returned. 
  *
  * @group Layers
  */
@@ -322,7 +303,14 @@ export const GetRenderedFeaturesConstraintSchema = z.object({
    */
   layerIds: z.array(z.string()).optional(),
   /**
-   * The ids of the layers to get rendered features for.
+   * The area to query for rendered features. This can be specific coordinates or a boundary. If omitted, the entire viewport will be queried.
    */
-  areaQuery: AreaQuerySchema.optional(),
+  areaQuery: z.union([
+    z.object({
+      coordinates: LatLngSchema
+    }),
+    z.object({
+      boundary: FeltBoundarySchema,
+    }),
+  ]).optional(),
 });

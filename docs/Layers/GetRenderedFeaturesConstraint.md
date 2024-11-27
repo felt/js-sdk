@@ -1,6 +1,6 @@
 ***
 
-Constraints for the `getRenderedFeatures` method. If no constraints are
+Constraints for the `getRenderedFeatures` method. This can include layer constriants, spatial constraints, or both. If no constraints are
 provided, all rendered features will be returned.
 
 ## Properties
@@ -15,6 +15,6 @@ The ids of the layers to get rendered features for.
 
 ### areaQuery?
 
-> `optional` **areaQuery**: \{`type`: `"point"`;`latitude`: `number`;`longitude`: `number`; } | \{`type`: `"bbox"`;`boundary`: `FeltBoundarySchema`; }
+> `optional` **areaQuery**: \{`coordinates`: `LatLngSchema`; } | \{`boundary`: `FeltBoundarySchema`; }
 
-The ids of the layers to get rendered features for.
+The area to query for rendered features. This can be specific coordinates or a boundary. If omitted, the entire viewport will be queried.

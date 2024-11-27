@@ -1,6 +1,10 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
-import { FeltBoundarySchema, LatLngSchema, type FeltBoundary } from "~/modules/shared/types";
+import {
+  FeltBoundarySchema,
+  LatLngSchema,
+  type FeltBoundary,
+} from "~/modules/shared/types";
 
 export type { Feature, RasterValue } from "./features/types";
 
@@ -290,7 +294,7 @@ export interface LegendItemChangeCallbackParams {
 
 /**
  * Constraints for the `getRenderedFeatures` method. This can include layer constriants, spatial constraints, or both. If no constraints are
- * provided, all rendered features will be returned. 
+ * provided, all rendered features will be returned.
  *
  * @group Layers
  */
@@ -305,12 +309,14 @@ export const GetRenderedFeaturesConstraintSchema = z.object({
   /**
    * The area to query for rendered features. This can be specific coordinates or a boundary. If omitted, the entire viewport will be queried.
    */
-  areaQuery: z.union([
-    z.object({
-      coordinates: LatLngSchema
-    }),
-    z.object({
-      boundary: FeltBoundarySchema,
-    }),
-  ]).optional(),
+  areaQuery: z
+    .union([
+      z.object({
+        coordinates: LatLngSchema,
+      }),
+      z.object({
+        boundary: FeltBoundarySchema,
+      }),
+    ])
+    .optional(),
 });

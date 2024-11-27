@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.2.0-next.0
+
+### Minor Changes
+
+- 7badd4b: Add onMapIdle event
+
 ## 1.1.0
 
 ### Minor Changes

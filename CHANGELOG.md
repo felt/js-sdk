@@ -1,5 +1,12 @@
 # @feltmaps/js-sdk
 
+## 1.2.0-next.1
+
+### Minor Changes
+
+- 41efd53: Add selectFeature method to select feature by layer and feature ID
+- 208c492: Add areaQuery param to getRenderedFeatures
+
 ## 1.2.0-next.0
 
 ### Minor Changes

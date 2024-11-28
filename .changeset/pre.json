@@ -5,6 +5,8 @@
     "@feltmaps/js-sdk": "1.1.0"
   },
   "changesets": [
-    "few-gifts-hide"
+    "few-gifts-hide",
+    "lovely-apes-brush",
+    "shaggy-ligers-tell"
   ]
 }

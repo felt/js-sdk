@@ -352,6 +352,11 @@ export interface LayersController {
      * that are currently set for the layer.
      */
     filters: Filters;
+
+    /**
+     * A note to display on the layer legend when this filter is applied.
+     */
+    note?: string;
   }): Promise<void>;
 
   /**

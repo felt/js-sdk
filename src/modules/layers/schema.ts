@@ -86,6 +86,7 @@ const SetFiltersMessage = methodMessage(
   z.object({
     layerId: z.string(),
     filters: FiltersSchema,
+    note: z.string().optional(),
   }),
 );
 

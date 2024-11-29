@@ -4,54 +4,55 @@
 
 ```ts
 
-import { E as Element_2 } from './types-BHqOjrOq.js';
-import { d as ElementChangeCallbackParams } from './types-BHqOjrOq.js';
-import { b as ElementGroup } from './types-BHqOjrOq.js';
-import { e as ElementGroupChangeCallbackParams } from './types-BHqOjrOq.js';
-import { A as ElementGroupNode } from './types-BHqOjrOq.js';
-import { B as ElementNode } from './types-BHqOjrOq.js';
-import { r as EntityNode } from './types-BHqOjrOq.js';
-import { q as Feature } from './types-BHqOjrOq.js';
-import { C as FeatureNode } from './types-BHqOjrOq.js';
-import { I as FeltBoundary } from './types-BHqOjrOq.js';
-import { J as FeltZoom } from './types-BHqOjrOq.js';
-import { w as FilterExpression } from './types-BHqOjrOq.js';
-import { x as FilterLogicGate } from './types-BHqOjrOq.js';
-import { F as Filters } from './types-BHqOjrOq.js';
-import { y as FilterTernary } from './types-BHqOjrOq.js';
-import { G as Geometry } from './types-BHqOjrOq.js';
-import { c as GetElementGroupsConstraint } from './types-BHqOjrOq.js';
-import { a as GetElementsConstraint } from './types-BHqOjrOq.js';
-import { i as GetLayerGroupsConstraint } from './types-BHqOjrOq.js';
-import { f as GetLayersConstraint } from './types-BHqOjrOq.js';
-import { p as GetRenderedFeaturesConstraint } from './types-BHqOjrOq.js';
-import { K as LatLng } from './types-BHqOjrOq.js';
-import { L as Layer } from './types-BHqOjrOq.js';
-import { g as LayerChangeCallbackParams } from './types-BHqOjrOq.js';
-import { o as LayerFilters } from './types-BHqOjrOq.js';
-import { h as LayerGroup } from './types-BHqOjrOq.js';
-import { j as LayerGroupChangeCallbackParams } from './types-BHqOjrOq.js';
-import { D as LayerGroupNode } from './types-BHqOjrOq.js';
-import { H as LayerNode } from './types-BHqOjrOq.js';
-import { v as LayerProcessingStatus } from './types-BHqOjrOq.js';
-import { l as LegendItem } from './types-BHqOjrOq.js';
-import { n as LegendItemChangeCallbackParams } from './types-BHqOjrOq.js';
-import { k as LegendItemIdentifier } from './types-BHqOjrOq.js';
-import { m as LegendItemsConstraint } from './types-BHqOjrOq.js';
-import { N as LineStringGeometry } from './types-BHqOjrOq.js';
-import { O as LngLatTuple } from './types-BHqOjrOq.js';
-import { M as MapInteractionEvent } from './types-BHqOjrOq.js';
-import { P as MultiLineStringGeometry } from './types-BHqOjrOq.js';
-import { Q as MultiPolygonGeometry } from './types-BHqOjrOq.js';
-import { T as PointGeometry } from './types-BHqOjrOq.js';
-import { U as PolygonGeometry } from './types-BHqOjrOq.js';
-import { R as RasterValue } from './types-BHqOjrOq.js';
-import { s as SetViewportCenterZoomParams } from './types-BHqOjrOq.js';
-import { S as SetVisibilityRequest } from './types-BHqOjrOq.js';
-import { u as ViewportCenterZoom } from './types-BHqOjrOq.js';
-import { t as ViewportFitBoundsParams } from './types-BHqOjrOq.js';
-import { V as ViewportState } from './types-BHqOjrOq.js';
-import { z } from './types-BHqOjrOq.js';
+import { E as Element_2 } from './types-BDviYZ-T.js';
+import { d as ElementChangeCallbackParams } from './types-BDviYZ-T.js';
+import { b as ElementGroup } from './types-BDviYZ-T.js';
+import { e as ElementGroupChangeCallbackParams } from './types-BDviYZ-T.js';
+import { B as ElementGroupNode } from './types-BDviYZ-T.js';
+import { C as ElementNode } from './types-BDviYZ-T.js';
+import { r as EntityNode } from './types-BDviYZ-T.js';
+import { q as Feature } from './types-BDviYZ-T.js';
+import { D as FeatureNode } from './types-BDviYZ-T.js';
+import { s as FeatureSelection } from './types-BDviYZ-T.js';
+import { J as FeltBoundary } from './types-BDviYZ-T.js';
+import { K as FeltZoom } from './types-BDviYZ-T.js';
+import { x as FilterExpression } from './types-BDviYZ-T.js';
+import { y as FilterLogicGate } from './types-BDviYZ-T.js';
+import { F as Filters } from './types-BDviYZ-T.js';
+import { A as FilterTernary } from './types-BDviYZ-T.js';
+import { G as Geometry } from './types-BDviYZ-T.js';
+import { c as GetElementGroupsConstraint } from './types-BDviYZ-T.js';
+import { a as GetElementsConstraint } from './types-BDviYZ-T.js';
+import { i as GetLayerGroupsConstraint } from './types-BDviYZ-T.js';
+import { f as GetLayersConstraint } from './types-BDviYZ-T.js';
+import { p as GetRenderedFeaturesConstraint } from './types-BDviYZ-T.js';
+import { N as LatLng } from './types-BDviYZ-T.js';
+import { L as Layer } from './types-BDviYZ-T.js';
+import { g as LayerChangeCallbackParams } from './types-BDviYZ-T.js';
+import { o as LayerFilters } from './types-BDviYZ-T.js';
+import { h as LayerGroup } from './types-BDviYZ-T.js';
+import { j as LayerGroupChangeCallbackParams } from './types-BDviYZ-T.js';
+import { H as LayerGroupNode } from './types-BDviYZ-T.js';
+import { I as LayerNode } from './types-BDviYZ-T.js';
+import { w as LayerProcessingStatus } from './types-BDviYZ-T.js';
+import { l as LegendItem } from './types-BDviYZ-T.js';
+import { n as LegendItemChangeCallbackParams } from './types-BDviYZ-T.js';
+import { k as LegendItemIdentifier } from './types-BDviYZ-T.js';
+import { m as LegendItemsConstraint } from './types-BDviYZ-T.js';
+import { O as LineStringGeometry } from './types-BDviYZ-T.js';
+import { P as LngLatTuple } from './types-BDviYZ-T.js';
+import { M as MapInteractionEvent } from './types-BDviYZ-T.js';
+import { Q as MultiLineStringGeometry } from './types-BDviYZ-T.js';
+import { T as MultiPolygonGeometry } from './types-BDviYZ-T.js';
+import { U as PointGeometry } from './types-BDviYZ-T.js';
+import { W as PolygonGeometry } from './types-BDviYZ-T.js';
+import { R as RasterValue } from './types-BDviYZ-T.js';
+import { t as SetViewportCenterZoomParams } from './types-BDviYZ-T.js';
+import { S as SetVisibilityRequest } from './types-BDviYZ-T.js';
+import { v as ViewportCenterZoom } from './types-BDviYZ-T.js';
+import { u as ViewportFitBoundsParams } from './types-BDviYZ-T.js';
+import { V as ViewportState } from './types-BDviYZ-T.js';
+import { z } from './types-BDviYZ-T.js';
 import { z as z_2 } from 'zod';
 
 export { Element_2 as Element }
@@ -98,6 +99,8 @@ export { EntityNode }
 export { Feature }
 
 export { FeatureNode }
+
+export { FeatureSelection }
 
 // @public
 export const Felt: {
@@ -344,6 +347,7 @@ export interface SelectionController {
             selection: EntityNode[];
         }) => void;
     }): VoidFunction;
+    selectFeature(params: FeatureSelection): Promise<void>;
 }
 
 export { SetViewportCenterZoomParams }
@@ -413,6 +417,9 @@ export { ViewportCenterZoom }
 export interface ViewportController {
     fitViewportToBounds(bounds: ViewportFitBoundsParams): void;
     getViewport(): Promise<ViewportState>;
+    onMapIdle(args: {
+        handler: () => void;
+    }): VoidFunction;
     onViewportMove(args: {
         handler: (viewport: ViewportState) => void;
     }): VoidFunction;

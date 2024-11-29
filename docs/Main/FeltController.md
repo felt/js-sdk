@@ -577,6 +577,36 @@ const selection = await felt.getSelection();
 
 ***
 
+### selectFeature()
+
+> **selectFeature**(`params`: [`FeatureSelection`](../Selection/FeatureSelection.md)): `Promise`\<`void`>
+
+Selects a feature on a layer. This will show the feature's popup, modal or
+sidebar (if configured) and highlight the feature.
+
+#### Parameters
+
+| Parameter | Type                                                   |
+| --------- | ------------------------------------------------------ |
+| `params`  | [`FeatureSelection`](../Selection/FeatureSelection.md) |
+
+#### Returns
+
+`Promise`\<`void`>
+
+#### Example
+
+```typescript
+await felt.selectFeature({
+  id: 123,
+  layerId: "my-layer",
+  showPopup: true,
+  fitViewport: { maxZoom: 15 },
+});
+```
+
+***
+
 ### updateUiControls()
 
 > **updateUiControls**(`controls`: [`UiControlsOptions`](../UI/UiControlsOptions.md)): `void`
@@ -1017,6 +1047,41 @@ A function to unsubscribe from the listener
 const unsubscribe = felt.onViewportMoveEnd({
   handler: viewport => console.log(viewport.center.latitude),
 });
+
+// later on...
+unsubscribe();
+```
+
+***
+
+### onMapIdle()
+
+> **onMapIdle**(`args`: \{`handler`: () => `void`; }): `VoidFunction`
+
+Adds a listener for when the map is idle, which is defined as:
+
+* No transitions are in progress
+* The user is not interacting with the map, e.g. by panning or zooming
+* All tiles for the current viewport have been loaded
+* Any fade transitions (e.g. for labels) have completed
+
+#### Parameters
+
+| Parameter      | Type         |
+| -------------- | ------------ |
+| `args`         | `object`     |
+| `args.handler` | () => `void` |
+
+#### Returns
+
+`VoidFunction`
+
+A function to unsubscribe from the listener
+
+#### Example
+
+```typescript
+const unsubscribe = felt.onMapIdle({ handler: () => console.log("map is idle") });
 
 // later on...
 unsubscribe();

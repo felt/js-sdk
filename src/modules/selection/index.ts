@@ -6,6 +6,7 @@ export type {
   ElementNode,
   EntityNode,
   FeatureNode,
+  FeatureSelection,
   LayerGroupNode,
   LayerNode,
 } from "./types";

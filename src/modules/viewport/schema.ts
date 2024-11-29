@@ -24,10 +24,15 @@ const ViewportFitBoundsMessage = methodMessage(
 );
 const OnViewportMoveMessage = listenerMessageNoParams("onViewportMove");
 const OnViewportMoveEndMessage = listenerMessageNoParams("onViewportMoveEnd");
+const OnMapIdleMessage = listenerMessageNoParams("onMapIdle");
 
 export const viewportSchema = {
   methods: [GotoViewportMessage, GetViewportMessage, ViewportFitBoundsMessage],
-  listeners: [OnViewportMoveMessage, OnViewportMoveEndMessage],
+  listeners: [
+    OnViewportMoveMessage,
+    OnViewportMoveEndMessage,
+    OnMapIdleMessage,
+  ],
 } satisfies ModuleSchema;
 
 export type ViewportSchema = {
@@ -39,5 +44,6 @@ export type ViewportSchema = {
   listeners: {
     onViewportMove: Listener<void, ViewportState>;
     onViewportMoveEnd: Listener<void, ViewportState>;
+    onMapIdle: Listener<void, void>;
   };
 };

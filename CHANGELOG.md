@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.3.0
+
+### Minor Changes
+
+- 4bbde62: Allow setting a note to show with layer filters
+
 ## 1.3.0-next.0
 
 ### Minor Changes

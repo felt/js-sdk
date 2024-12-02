@@ -352,6 +352,13 @@ export interface LayersController {
      * that are currently set for the layer.
      */
     filters: Filters;
+
+    /**
+     * A note to display on the layer legend when this filter is applied. When the
+     * note is shown, a reset button will also be shown, allowing the user to clear
+     * the filter.
+     */
+    note?: string;
   }): Promise<void>;
 
   /**

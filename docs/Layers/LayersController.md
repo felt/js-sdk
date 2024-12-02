@@ -332,17 +332,18 @@ console.log(filters.combined, filters.style, filters.ephemeral, filters.componen
 
 ### setLayerFilters()
 
-> **setLayerFilters**(`params`: \{`layerId`: `string`;`filters`: [`Filters`](Filters.md); }): `Promise`\<`void`>
+> **setLayerFilters**(`params`: \{`layerId`: `string`;`filters`: [`Filters`](Filters.md);`note`: `string`; }): `Promise`\<`void`>
 
 Sets the **ephemeral** filters for a layer.
 
 #### Parameters
 
-| Parameter        | Type                    | Description                                                                                                     |
-| ---------------- | ----------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `params`         | `object`                | -                                                                                                               |
-| `params.layerId` | `string`                | The layer that you want to set the filters for.                                                                 |
-| `params.filters` | [`Filters`](Filters.md) | The filters to set for the layer. This will replace any ephemeral filters that are currently set for the layer. |
+| Parameter        | Type                    | Description                                                                                                                                                          |
+| ---------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `params`         | `object`                | -                                                                                                                                                                    |
+| `params.layerId` | `string`                | The layer that you want to set the filters for.                                                                                                                      |
+| `params.filters` | [`Filters`](Filters.md) | The filters to set for the layer. This will replace any ephemeral filters that are currently set for the layer.                                                      |
+| `params.note`?   | `string`                | A note to display on the layer legend when this filter is applied. When the note is shown, a reset button will also be shown, allowing the user to clear the filter. |
 
 #### Returns
 

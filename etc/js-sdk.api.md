@@ -296,6 +296,7 @@ export interface LayersController {
     setLayerFilters(params: {
         layerId: string;
         filters: Filters;
+        note?: string;
     }): Promise<void>;
     setLayerGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
     setLayerStyle(params: {

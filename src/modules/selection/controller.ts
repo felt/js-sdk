@@ -10,6 +10,7 @@ export const selectionController = (
   onSelectionChange: listener(feltWindow, "onSelectionChange"),
   getSelection: method(feltWindow, "getSelection"),
   selectFeature: method(feltWindow, "selectFeature"),
+  clearSelection: method(feltWindow, "clearSelection"),
 });
 
 /**
@@ -70,7 +71,7 @@ export interface SelectionController {
    *
    * @example
    * ```typescript
-   * await felt.selectFeature({
+   * felt.selectFeature({
    *   id: 123,
    *   layerId: "my-layer",
    *   showPopup: true,
@@ -79,4 +80,40 @@ export interface SelectionController {
    * ```
    */
   selectFeature(params: FeatureSelection): Promise<void>;
+
+  /**
+   * Clears the current selection. This clears the selection of
+   *
+   * @example
+   * ```typescript
+   *
+   * // Removes all features and elements from the selection
+   * felt.clearSelection();
+   *
+   * // Removes only features from the selection
+   * felt.clearSelection({ features: true });
+   *
+   * // Removes only elements from the selection
+   * felt.clearSelection({ elements: true });
+   * ```
+   *
+   * @default
+   * ```typescript
+   * { features: true, elements: true }
+   * ```
+   *
+   * @param params - The parameters to clear the selection. If this is not provided,
+   * both features and elements will be cleared.
+   */
+  clearSelection(params?: {
+    /**
+     * Whether to clear the features from the selection.
+     */
+    features?: boolean;
+
+    /**
+     * Whether to clear the elements from the selection.
+     */
+    elements?: boolean;
+  }): Promise<void>;
 }

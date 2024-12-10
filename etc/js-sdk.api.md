@@ -342,6 +342,10 @@ export { RasterValue }
 
 // @public
 export interface SelectionController {
+    clearSelection(params?: {
+        features?: boolean;
+        elements?: boolean;
+    }): Promise<void>;
     getSelection(): Promise<EntityNode[]>;
     onSelectionChange(params: {
         handler: (change: {

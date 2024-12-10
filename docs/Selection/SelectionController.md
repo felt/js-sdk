@@ -46,12 +46,52 @@ sidebar (if configured) and highlight the feature.
 #### Example
 
 ```typescript
-await felt.selectFeature({
+felt.selectFeature({
   id: 123,
   layerId: "my-layer",
   showPopup: true,
   fitViewport: { maxZoom: 15 },
 });
+```
+
+***
+
+### clearSelection()
+
+> **clearSelection**(`params`?: \{`features`: `boolean`;`elements`: `boolean`; }): `Promise`\<`void`>
+
+Clears the current selection. This clears the selection of
+
+#### Parameters
+
+| Parameter          | Type      | Description                                                                                                 |
+| ------------------ | --------- | ----------------------------------------------------------------------------------------------------------- |
+| `params`?          | `object`  | The parameters to clear the selection. If this is not provided, both features and elements will be cleared. |
+| `params.features`? | `boolean` | Whether to clear the features from the selection.                                                           |
+| `params.elements`? | `boolean` | Whether to clear the elements from the selection.                                                           |
+
+#### Returns
+
+`Promise`\<`void`>
+
+#### Example
+
+```typescript
+
+// Removes all features and elements from the selection
+felt.clearSelection();
+
+// Removes only features from the selection
+felt.clearSelection({ features: true });
+
+// Removes only elements from the selection
+felt.clearSelection({ elements: true });
+```
+
+#### Default
+
+```typescript
+{ features: true, elements: true }
 ```
 
 ## Events

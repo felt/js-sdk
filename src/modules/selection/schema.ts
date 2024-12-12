@@ -17,8 +17,18 @@ const SelectFeatureMessage = methodMessage(
   FeatureSelectionSchema,
 );
 
+const ClearSelectionMessage = methodMessage(
+  "clearSelection",
+  z
+    .object({
+      features: z.boolean().optional(),
+      elements: z.boolean().optional(),
+    })
+    .optional(),
+);
+
 export const selectionSchema = {
-  methods: [GetSelectionMessage, SelectFeatureMessage],
+  methods: [GetSelectionMessage, SelectFeatureMessage, ClearSelectionMessage],
   listeners: [OnSelectionChangeMessage],
 } satisfies ModuleSchema;
 
@@ -26,6 +36,7 @@ export type SelectionSchema = {
   methods: {
     getSelection: Method<zInfer<typeof GetSelectionMessage>, Array<EntityNode>>;
     selectFeature: Method<zInfer<typeof SelectFeatureMessage>, void>;
+    clearSelection: Method<zInfer<typeof ClearSelectionMessage>, void>;
   };
   listeners: {
     onSelectionChange: Listener<void, { selection: Array<EntityNode> }>;

@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.4.0-next.0
+
+### Minor Changes
+
+- 555a25a: Add clearSelection method
+
 ## 1.3.0
 
 ### Minor Changes

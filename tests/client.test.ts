@@ -92,6 +92,7 @@ describe("Embedding an iframe with theFelt SDK", () => {
           zoom: 10,
         },
         origin: "https://example.com",
+        token: "test-token",
       };
 
       Felt.embed(container, "test-map-id", options);
@@ -103,6 +104,7 @@ describe("Embedding an iframe with theFelt SDK", () => {
       expect(url.searchParams.get("legend")).toBe("0");
       expect(url.searchParams.get("zoomControls")).toBe("0");
       expect(url.searchParams.get("loc")).toBe("40,-74,10z");
+      expect(url.searchParams.get("token")).toBe("test-token");
     });
   });
 

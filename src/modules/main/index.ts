@@ -61,28 +61,37 @@ export const Felt = {
       origin: "https://felt.com",
     };
 
-    const propToUrlParam: Record<keyof FeltEmbedOptions["uiControls"], string> =
-      {
-        showLegend: "legend",
-        cooperativeGestures: "cooperativeGestures",
-        fullScreenButton: "link",
-        geolocation: "geolocation",
-        zoomControls: "zoomControls",
-        scaleBar: "scaleBar",
-      };
+    const origin = options?.origin ?? defaultOptions.origin;
+    const url = new URL(`${origin}/embed/map/${mapId}`);
+
+    // add uiControls params to the URL
+    const propToUrlParam: Record<
+      keyof NonNullable<FeltEmbedOptions["uiControls"]>,
+      string
+    > = {
+      showLegend: "legend",
+      cooperativeGestures: "cooperativeGestures",
+      fullScreenButton: "link",
+      geolocation: "geolocation",
+      zoomControls: "zoomControls",
+      scaleBar: "scaleBar",
+    };
 
     const uiControlsOptions = {
       ...defaultOptions.uiControls,
       ...options?.uiControls,
     };
-    const origin = options?.origin ?? defaultOptions.origin;
-    const url = new URL(`${origin}/embed/map/${mapId}`);
-
     for (const [key, value] of entries(uiControlsOptions)) {
       if (value == null) continue;
       url.searchParams.set(propToUrlParam[key], value ? "1" : "0");
     }
 
+    // add auth token param to the URL
+    if (options?.token) {
+      url.searchParams.set("token", options.token);
+    }
+
+    // add initial viewport param to the URL
     if (options?.initialViewport) {
       const vp = options.initialViewport;
       url.searchParams.set(

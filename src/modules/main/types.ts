@@ -14,7 +14,7 @@ import {
  */
 export interface FeltEmbedOptions
   extends zInfer<typeof FeltEmbedOptionsSchema> {
-  uiControls: UiControlsOptions;
+  uiControls?: UiControlsOptions;
   initialViewport?: ViewportCenterZoom;
 }
 /**
@@ -26,7 +26,13 @@ const FeltEmbedOptionsSchema = z.object({
    */
   origin: z.string().optional(),
 
-  uiControls: UiControlsOptionsSchema,
+  /**
+   * An authentication token to use for showing embeds that are configured to be
+   * private.
+   */
+  token: z.string().optional(),
+
+  uiControls: UiControlsOptionsSchema.optional(),
 
   initialViewport: ViewportCenterZoomSchema.optional(),
 });

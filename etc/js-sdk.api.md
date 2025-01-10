@@ -122,13 +122,14 @@ export interface FeltEmbedOptions extends z<typeof FeltEmbedOptionsSchema> {
     // (undocumented)
     initialViewport?: ViewportCenterZoom;
     // (undocumented)
-    uiControls: UiControlsOptions;
+    uiControls?: UiControlsOptions;
 }
 
 // @internal (undocumented)
 const FeltEmbedOptionsSchema: z_2.ZodObject<{
     origin: z_2.ZodOptional<z_2.ZodString>;
-    uiControls: z_2.ZodObject<{
+    token: z_2.ZodOptional<z_2.ZodString>;
+    uiControls: z_2.ZodOptional<z_2.ZodObject<{
         showLegend: z_2.ZodOptional<z_2.ZodBoolean>;
         cooperativeGestures: z_2.ZodOptional<z_2.ZodBoolean>;
         fullScreenButton: z_2.ZodOptional<z_2.ZodBoolean>;
@@ -149,7 +150,7 @@ const FeltEmbedOptionsSchema: z_2.ZodObject<{
         geolocation?: boolean | undefined;
         zoomControls?: boolean | undefined;
         scaleBar?: boolean | undefined;
-    }>;
+    }>>;
     initialViewport: z_2.ZodOptional<z_2.ZodObject<{
         center: z_2.ZodObject<{
             latitude: z_2.ZodNumber;
@@ -176,15 +177,16 @@ const FeltEmbedOptionsSchema: z_2.ZodObject<{
         zoom: number;
     }>>;
 }, "strip", z_2.ZodTypeAny, {
-    uiControls: {
+    origin?: string | undefined;
+    token?: string | undefined;
+    uiControls?: {
         showLegend?: boolean | undefined;
         cooperativeGestures?: boolean | undefined;
         fullScreenButton?: boolean | undefined;
         geolocation?: boolean | undefined;
         zoomControls?: boolean | undefined;
         scaleBar?: boolean | undefined;
-    };
-    origin?: string | undefined;
+    } | undefined;
     initialViewport?: {
         center: {
             latitude: number;
@@ -193,15 +195,16 @@ const FeltEmbedOptionsSchema: z_2.ZodObject<{
         zoom: number;
     } | undefined;
 }, {
-    uiControls: {
+    origin?: string | undefined;
+    token?: string | undefined;
+    uiControls?: {
         showLegend?: boolean | undefined;
         cooperativeGestures?: boolean | undefined;
         fullScreenButton?: boolean | undefined;
         geolocation?: boolean | undefined;
         zoomControls?: boolean | undefined;
         scaleBar?: boolean | undefined;
-    };
-    origin?: string | undefined;
+    } | undefined;
     initialViewport?: {
         center: {
             latitude: number;

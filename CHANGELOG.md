@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.4.0-next.1
+
+### Minor Changes
+
+- 1f5d950: Add option to pass auth token when embedding
+
 ## 1.4.0-next.0
 
 ### Minor Changes

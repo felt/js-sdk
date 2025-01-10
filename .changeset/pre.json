@@ -5,6 +5,7 @@
     "@feltmaps/js-sdk": "1.3.0"
   },
   "changesets": [
-    "large-trainers-trade"
+    "large-trainers-trade",
+    "witty-masks-count"
   ]
 }

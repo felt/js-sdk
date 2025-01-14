@@ -1,5 +1,12 @@
 # @feltmaps/js-sdk
 
+## 1.4.0
+
+### Minor Changes
+
+- 555a25a: Add clearSelection method
+- 1f5d950: Add option to pass auth token when embedding
+
 ## 1.4.0-next.1
 
 ### Minor Changes

@@ -18,5 +18,5 @@
 
 > `optional` **token**: `string`
 
-An authentication token to use for showing embeds that are configured to be
+A short-lived (15 minutes) authentication token to use for showing embeds that are configured to be
 private.

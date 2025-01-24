@@ -140,19 +140,17 @@ felt.setLayerStyle({ id: "layer-1", style: {
 
 ***
 
-### setLayerDisplayedInLegend()
+### setLayerLegendVisibility()
 
-> **setLayerDisplayedInLegend**(`params`: \{`id`: `string`;`displayed`: `boolean`; }): `Promise`\<`void`>
+> **setLayerLegendVisibility**(`params`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`\<`void`>
 
-Set whether a layer is displayed in the legend.
+Hide or show layers with the given ids from the legend.
 
 #### Parameters
 
-| Parameter          | Type      | Description                                          |
-| ------------------ | --------- | ---------------------------------------------------- |
-| `params`           | `object`  | -                                                    |
-| `params.id`        | `string`  | The id of the layer to set the displayed status for. |
-| `params.displayed` | `boolean` | Whether the layer should be displayed in the legend. |
+| Parameter | Type                                                        |
+| --------- | ----------------------------------------------------------- |
+| `params`  | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) |
 
 #### Returns
 
@@ -161,7 +159,7 @@ Set whether a layer is displayed in the legend.
 #### Example
 
 ```typescript
-felt.setLayerDisplayedInLegend({ id: "layer-1", displayed: true });
+felt.setLayerLegendVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
 ```
 
 ***
@@ -239,6 +237,30 @@ Hide or show layer groups with the given ids.
 
 ```typescript
 felt.setLayerGroupVisibility({ show: ["layer-group-1", "layer-group-2"], hide: ["layer-group-3"] });
+```
+
+***
+
+### setLayerGroupLegendVisibility()
+
+> **setLayerGroupLegendVisibility**(`params`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`\<`void`>
+
+Hide or show layer groups with the given ids from the legend.
+
+#### Parameters
+
+| Parameter | Type                                                        |
+| --------- | ----------------------------------------------------------- |
+| `params`  | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) |
+
+#### Returns
+
+`Promise`\<`void`>
+
+#### Example
+
+```typescript
+felt.setLayerGroupLegendVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
 ```
 
 ***

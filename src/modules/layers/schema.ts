@@ -42,9 +42,9 @@ const SetLayerStyleMessage = methodMessage(
   "setLayerStyle",
   z.object({ id: z.string(), style: z.object({}).passthrough() }),
 );
-const SetLayerDisplayedInLegendMessage = methodMessage(
-  "setLayerDisplayedInLegend",
-  z.object({ id: z.string(), displayed: z.boolean({}) }),
+const SetLayerLegendVisibilityMessage = methodMessage(
+  "setLayerLegendVisibility",
+  SetVisibilityRequestSchema,
 );
 
 // LAYER GROUPS
@@ -55,6 +55,10 @@ const GetGroupsMessage = methodMessage(
 );
 const SetLayerGroupVisibilityMessage = methodMessage(
   "setLayerGroupVisibility",
+  SetVisibilityRequestSchema,
+);
+const SetLayerGroupLegendVisibilityMessage = methodMessage(
+  "setLayerGroupLegendVisibility",
   SetVisibilityRequestSchema,
 );
 const OnLayerGroupChangeMessage = listenerMessageWithParams(
@@ -106,7 +110,7 @@ export const layersSchema = {
     GetLayersMessage,
     SetLayerVisibilityMessage,
     SetLayerStyleMessage,
-    SetLayerDisplayedInLegendMessage,
+    SetLayerLegendVisibilityMessage,
 
     GetGroupMessage,
     GetGroupsMessage,
@@ -134,7 +138,7 @@ export type LayersSchema = {
     getLayers: Method<zInfer<typeof GetLayersMessage>, Array<Layer | null>>;
     setLayerVisibility: Method<zInfer<typeof SetLayerVisibilityMessage>, void>;
     setLayerStyle: Method<zInfer<typeof SetLayerStyleMessage>, void>;
-    setLayerDisplayedInLegend: Method<zInfer<typeof SetLayerDisplayedInLegendMessage>, void>;
+    setLayerLegendVisibility: Method<zInfer<typeof SetLayerLegendVisibilityMessage>, void>;
 
     getLayerGroup: Method<zInfer<typeof GetGroupMessage>, LayerGroup | null>;
     getLayerGroups: Method<
@@ -143,6 +147,10 @@ export type LayersSchema = {
     >;
     setLayerGroupVisibility: Method<
       zInfer<typeof SetLayerGroupVisibilityMessage>,
+      void
+    >;
+    setLayerGroupLegendVisibility: Method<
+      zInfer<typeof SetLayerGroupLegendVisibilityMessage>,
       void
     >;
 

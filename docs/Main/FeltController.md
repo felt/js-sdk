@@ -311,6 +311,32 @@ felt.setLayerStyle({ id: "layer-1", style: {
 
 ***
 
+### setLayerDisplayedInLegend()
+
+> **setLayerDisplayedInLegend**(`params`: \{`id`: `string`;`displayed`: `boolean`; }): `Promise`\<`void`>
+
+Set whether a layer is displayed in the legend.
+
+#### Parameters
+
+| Parameter          | Type      | Description                                          |
+| ------------------ | --------- | ---------------------------------------------------- |
+| `params`           | `object`  | -                                                    |
+| `params.id`        | `string`  | The id of the layer to set the displayed status for. |
+| `params.displayed` | `boolean` | Whether the layer should be displayed in the legend. |
+
+#### Returns
+
+`Promise`\<`void`>
+
+#### Example
+
+```typescript
+felt.setLayerDisplayedInLegend({ id: "layer-1", displayed: true });
+```
+
+***
+
 ### getLayerGroup()
 
 > **getLayerGroup**(`id`: `string`): `Promise`\<`null` | [`LayerGroup`](../Layers/LayerGroup.md)>

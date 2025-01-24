@@ -296,6 +296,10 @@ export interface LayersController {
         options: LegendItemIdentifier;
         handler: (change: LegendItemChangeCallbackParams) => void;
     }): VoidFunction;
+    setLayerDisplayedInLegend(params: {
+        id: string;
+        displayed: boolean;
+    }): Promise<void>;
     setLayerFilters(params: {
         layerId: string;
         filters: Filters;

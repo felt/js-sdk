@@ -25,6 +25,7 @@ export const layersController = (feltWindow: Window): LayersController => ({
   getLayers: method(feltWindow, "getLayers"),
   setLayerVisibility: method(feltWindow, "setLayerVisibility"),
   setLayerStyle: method(feltWindow, "setLayerStyle"),
+  setLayerDisplayedInLegend: method(feltWindow, "setLayerDisplayedInLegend"),
   onLayerChange: listener(feltWindow, "onLayerChange"),
 
   // groups
@@ -144,6 +145,26 @@ export interface LayersController {
      * The style to set for the layer.
      */
     style: object;
+  }): Promise<void>;
+
+  /**
+   * Set whether a layer is displayed in the legend.
+   *
+   * @example
+   * ```typescript
+   * felt.setLayerDisplayedInLegend({ id: "layer-1", displayed: true });
+   * ```
+   */
+  setLayerDisplayedInLegend(params: {
+    /**
+     * The id of the layer to set the displayed status for.
+     */
+    id: string;
+
+    /**
+     * Whether the layer should be displayed in the legend.
+     */
+    displayed: boolean;
   }): Promise<void>;
 
   /**

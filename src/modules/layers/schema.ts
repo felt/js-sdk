@@ -115,6 +115,7 @@ export const layersSchema = {
     GetGroupMessage,
     GetGroupsMessage,
     SetLayerGroupVisibilityMessage,
+    SetLayerGroupLegendVisibilityMessage,
 
     GetLegendItemMessage,
     GetLegendItemsMessage,

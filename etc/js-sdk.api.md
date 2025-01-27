@@ -296,16 +296,14 @@ export interface LayersController {
         options: LegendItemIdentifier;
         handler: (change: LegendItemChangeCallbackParams) => void;
     }): VoidFunction;
-    setLayerDisplayedInLegend(params: {
-        id: string;
-        displayed: boolean;
-    }): Promise<void>;
     setLayerFilters(params: {
         layerId: string;
         filters: Filters;
         note?: string;
     }): Promise<void>;
+    setLayerGroupLegendVisibility(params: SetVisibilityRequest): Promise<void>;
     setLayerGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
+    setLayerLegendVisibility(params: SetVisibilityRequest): Promise<void>;
     setLayerStyle(params: {
         id: string;
         style: object;

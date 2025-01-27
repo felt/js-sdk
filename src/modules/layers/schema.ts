@@ -138,7 +138,10 @@ export type LayersSchema = {
     getLayers: Method<zInfer<typeof GetLayersMessage>, Array<Layer | null>>;
     setLayerVisibility: Method<zInfer<typeof SetLayerVisibilityMessage>, void>;
     setLayerStyle: Method<zInfer<typeof SetLayerStyleMessage>, void>;
-    setLayerLegendVisibility: Method<zInfer<typeof SetLayerLegendVisibilityMessage>, void>;
+    setLayerLegendVisibility: Method<
+      zInfer<typeof SetLayerLegendVisibilityMessage>,
+      void
+    >;
 
     getLayerGroup: Method<zInfer<typeof GetGroupMessage>, LayerGroup | null>;
     getLayerGroups: Method<

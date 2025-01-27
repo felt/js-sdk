@@ -27,12 +27,15 @@ export const layersController = (feltWindow: Window): LayersController => ({
   setLayerStyle: method(feltWindow, "setLayerStyle"),
   setLayerLegendVisibility: method(feltWindow, "setLayerLegendVisibility"),
   onLayerChange: listener(feltWindow, "onLayerChange"),
-  
+
   // groups
   getLayerGroup: method(feltWindow, "getLayerGroup"),
   getLayerGroups: method(feltWindow, "getLayerGroups"),
   setLayerGroupVisibility: method(feltWindow, "setLayerGroupVisibility"),
-  setLayerGroupLegendVisibility: method(feltWindow, "setLayerGroupLegendVisibility"),
+  setLayerGroupLegendVisibility: method(
+    feltWindow,
+    "setLayerGroupLegendVisibility",
+  ),
   onLayerGroupChange: listener(feltWindow, "onLayerGroupChange"),
 
   // legend items

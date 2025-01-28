@@ -7,6 +7,7 @@ import {
   type InteractionsController,
 } from "../interactions/controller";
 import { layersController, type LayersController } from "../layers/controller";
+import { miscController, type MiscController } from "../misc/controller";
 import {
   selectionController,
   type SelectionController,
@@ -33,6 +34,7 @@ export function makeController(feltWindow: Window): FeltController {
     ...selectionController(feltWindow),
     ...interactionsController(feltWindow),
     ...toolsController(feltWindow),
+    ...miscController(feltWindow),
   };
 }
 
@@ -59,7 +61,9 @@ export interface FeltController
     ElementsController,
     SelectionController,
     InteractionsController,
-    ToolsController {
+    ToolsController,
+    InteractionsController,
+    MiscController {
   /**
    * The iframe element containing the Felt map, if it is an embedded map.
    *

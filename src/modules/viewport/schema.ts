@@ -1,15 +1,17 @@
 import { z } from "zod";
 import type { ModuleSchema } from "~/lib/ModuleSchema";
 import {
-  type Listener,
-  type Method,
   listenerMessageNoParams,
   methodMessage,
+  type Listener,
+  type Method,
 } from "~/lib/builders";
 import type { zInfer } from "~/lib/utils";
 import {
   SetViewportCenterZoomParamsSchema,
+  SetViewportConstraintsParamsSchema,
   ViewportFitBoundsParamsSchema,
+  type ViewportConstraints,
   type ViewportState,
 } from "./types";
 
@@ -18,6 +20,16 @@ const GotoViewportMessage = methodMessage(
   "setViewport",
   SetViewportCenterZoomParamsSchema,
 );
+
+const GetViewportConstraintsMessage = methodMessage(
+  "getViewportConstraints",
+  z.undefined(),
+);
+const SetViewportConstraintsMessage = methodMessage(
+  "setViewportConstraints",
+  SetViewportConstraintsParamsSchema,
+);
+
 const ViewportFitBoundsMessage = methodMessage(
   "fitViewportToBounds",
   ViewportFitBoundsParamsSchema,
@@ -27,7 +39,13 @@ const OnViewportMoveEndMessage = listenerMessageNoParams("onViewportMoveEnd");
 const OnMapIdleMessage = listenerMessageNoParams("onMapIdle");
 
 export const viewportSchema = {
-  methods: [GotoViewportMessage, GetViewportMessage, ViewportFitBoundsMessage],
+  methods: [
+    GotoViewportMessage,
+    GetViewportMessage,
+    GetViewportConstraintsMessage,
+    SetViewportConstraintsMessage,
+    ViewportFitBoundsMessage,
+  ],
   listeners: [
     OnViewportMoveMessage,
     OnViewportMoveEndMessage,
@@ -39,6 +57,16 @@ export type ViewportSchema = {
   methods: {
     getViewport: Method<zInfer<typeof GetViewportMessage>, ViewportState>;
     setViewport: Method<zInfer<typeof GotoViewportMessage>, void>;
+
+    getViewportConstraints: Method<
+      zInfer<typeof GetViewportConstraintsMessage>,
+      ViewportConstraints | null
+    >;
+    setViewportConstraints: Method<
+      zInfer<typeof SetViewportConstraintsMessage>,
+      void
+    >;
+
     fitViewportToBounds: Method<zInfer<typeof ViewportFitBoundsMessage>, void>;
   };
   listeners: {

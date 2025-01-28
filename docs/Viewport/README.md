@@ -15,6 +15,13 @@ current viewport, getting the current viewport, and being notified when the view
 
 ## Types
 
+The constraints for the viewport. Used to ensure that the viewport stays
+within certain bounds and zoom levels.
+
+* [ViewportConstraints](ViewportConstraints.md)
+
+## Types
+
 The current state of the viewport, including the derived bounds.
 
 * [ViewportState](ViewportState.md)

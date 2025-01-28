@@ -301,7 +301,9 @@ export interface LayersController {
         filters: Filters;
         note?: string;
     }): Promise<void>;
+    setLayerGroupLegendVisibility(params: SetVisibilityRequest): Promise<void>;
     setLayerGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
+    setLayerLegendVisibility(params: SetVisibilityRequest): Promise<void>;
     setLayerStyle(params: {
         id: string;
         style: object;

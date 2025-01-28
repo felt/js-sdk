@@ -25,12 +25,17 @@ export const layersController = (feltWindow: Window): LayersController => ({
   getLayers: method(feltWindow, "getLayers"),
   setLayerVisibility: method(feltWindow, "setLayerVisibility"),
   setLayerStyle: method(feltWindow, "setLayerStyle"),
+  setLayerLegendVisibility: method(feltWindow, "setLayerLegendVisibility"),
   onLayerChange: listener(feltWindow, "onLayerChange"),
 
   // groups
   getLayerGroup: method(feltWindow, "getLayerGroup"),
   getLayerGroups: method(feltWindow, "getLayerGroups"),
   setLayerGroupVisibility: method(feltWindow, "setLayerGroupVisibility"),
+  setLayerGroupLegendVisibility: method(
+    feltWindow,
+    "setLayerGroupLegendVisibility",
+  ),
   onLayerGroupChange: listener(feltWindow, "onLayerGroupChange"),
 
   // legend items
@@ -147,6 +152,16 @@ export interface LayersController {
   }): Promise<void>;
 
   /**
+   * Hide or show layers with the given ids from the legend.
+   *
+   * @example
+   * ```typescript
+   * felt.setLayerLegendVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
+   * ```
+   */
+  setLayerLegendVisibility(params: SetVisibilityRequest): Promise<void>;
+
+  /**
    * Adds a listener for when a layer changes.
    *
    * @returns A function to unsubscribe from the listener
@@ -221,6 +236,16 @@ export interface LayersController {
    * ```
    */
   setLayerGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
+
+  /**
+   * Hide or show layer groups with the given ids from the legend.
+   *
+   * @example
+   * ```typescript
+   * felt.setLayerGroupLegendVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
+   * ```
+   */
+  setLayerGroupLegendVisibility(params: SetVisibilityRequest): Promise<void>;
 
   /**
    * Adds a listener for when a layer group changes.

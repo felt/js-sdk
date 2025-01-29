@@ -114,9 +114,9 @@ Gets the settings for the current tool.
 
 #### Type Parameters
 
-| Type Parameter                                                                                                                       |
-| ------------------------------------------------------------------------------------------------------------------------------------ |
-| `T` *extends* `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"text"` |
+| Type Parameter                                              |
+| ----------------------------------------------------------- |
+| `T` *extends* keyof [`ToolSettingsMap`](ToolSettingsMap.md) |
 
 #### Parameters
 

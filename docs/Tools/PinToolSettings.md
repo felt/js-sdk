@@ -10,10 +10,10 @@
 
 ### symbol
 
-> **symbol**: `string`
+> **symbol**: [`PinSymbol`](PinSymbol.md)
 
 ***
 
 ### frame
 
-> **frame**: `null` | `string`
+> **frame**: [`PinFrame`](PinFrame.md)

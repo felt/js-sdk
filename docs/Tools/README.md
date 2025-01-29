@@ -17,8 +17,11 @@ The Tools part allows you to let users draw elements on the map.
 ## Type Aliases
 
 * [ToolType](ToolType.md)
+* [ConfigurableToolType](ConfigurableToolType.md)
 * [InputToolSettings](InputToolSettings.md)
 * [ToolSettingsMap](ToolSettingsMap.md)
+* [PinFrame](PinFrame.md)
+* [PinSymbol](PinSymbol.md)
 
 ## Controller
 

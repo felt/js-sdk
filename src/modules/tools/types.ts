@@ -24,7 +24,10 @@ const PinToolSettingsSchema = z.object({
   symbol: z.string(),
   frame: z.string().nullable(),
 });
-export interface PinToolSettings extends zInfer<typeof PinToolSettingsSchema> {}
+export interface PinToolSettings extends zInfer<typeof PinToolSettingsSchema> {
+  symbol: PinSymbol;
+  frame: PinFrame;
+}
 
 const LineToolSettingsSchema = z.object({
   tool: z.literal("line"),
@@ -115,31 +118,9 @@ export const InputToolSettingsSchema = z.discriminatedUnion("tool", [
   NoteToolSettingsSchema.partial().extend({ tool: z.literal("note") }),
 ]);
 
-export const ToolSettingsSchema = z.discriminatedUnion("tool", [
-  // GEOGRAPHIC TOOLS
-  PinToolSettingsSchema.extend({ tool: z.literal("pin") }),
-  LineToolSettingsSchema.extend({ tool: z.literal("line") }),
-  RouteToolSettingsSchema.extend({ tool: z.literal("route") }),
-  PolygonToolSettingsSchema.extend({ tool: z.literal("polygon") }),
-  CircleToolSettingsSchema.extend({ tool: z.literal("circle") }),
-
-  // ANNOTATION TOOLS
-  MarkerToolSettingsSchema.extend({ tool: z.literal("marker") }),
-  HighlighterToolSettingsSchema.extend({ tool: z.literal("highlighter") }),
-  TextToolSettingsSchema.extend({ tool: z.literal("text") }),
-  NoteToolSettingsSchema.extend({ tool: z.literal("note") }),
-]);
-
-export type InputToolSettings =
-  | (Partial<PinToolSettings> & { tool: "pin" })
-  | (Partial<LineToolSettings> & { tool: "line" })
-  | (Partial<RouteToolSettings> & { tool: "route" })
-  | (Partial<PolygonToolSettings> & { tool: "polygon" })
-  | (Partial<CircleToolSettings> & { tool: "circle" })
-  | (Partial<MarkerToolSettings> & { tool: "marker" })
-  | (Partial<HighlighterToolSettings> & { tool: "highlighter" })
-  | (Partial<TextToolSettings> & { tool: "text" })
-  | (Partial<NoteToolSettings> & { tool: "note" });
+export type InputToolSettings = {
+  [K in ConfigurableToolType]: Partial<ToolSettingsMap[K]> & { tool: K };
+}[ConfigurableToolType];
 
 export type ToolSettingsMap = {
   pin: PinToolSettings;

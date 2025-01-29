@@ -1,3 +1,3 @@
 ***
 
-> **InputToolSettings**: `Partial`\<[`PinToolSettings`](PinToolSettings.md)> & \{ `tool`: `"pin"`; } | `Partial`\<[`LineToolSettings`](LineToolSettings.md)> & \{ `tool`: `"line"`; } | `Partial`\<[`RouteToolSettings`](RouteToolSettings.md)> & \{ `tool`: `"route"`; } | `Partial`\<[`PolygonToolSettings`](PolygonToolSettings.md)> & \{ `tool`: `"polygon"`; } | `Partial`\<[`CircleToolSettings`](CircleToolSettings.md)> & \{ `tool`: `"circle"`; } | `Partial`\<[`MarkerToolSettings`](MarkerToolSettings.md)> & \{ `tool`: `"marker"`; } | `Partial`\<[`HighlighterToolSettings`](HighlighterToolSettings.md)> & \{ `tool`: `"highlighter"`; } | `Partial`\<[`TextToolSettings`](TextToolSettings.md)> & \{ `tool`: `"text"`; } | `Partial`\<[`NoteToolSettings`](NoteToolSettings.md)> & \{ `tool`: `"note"`; }
+> **InputToolSettings**: `{ [K in ConfigurableToolType]: Partial<ToolSettingsMap[K]> & { tool: K } }`\[[`ConfigurableToolType`](ConfigurableToolType.md)]

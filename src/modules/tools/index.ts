@@ -5,11 +5,14 @@
  */
 export type {
   CircleToolSettings,
+  ConfigurableToolType,
   HighlighterToolSettings,
   InputToolSettings,
   LineToolSettings,
   MarkerToolSettings,
   NoteToolSettings,
+  PinFrame,
+  PinSymbol,
   PinToolSettings,
   PolygonToolSettings,
   RouteToolSettings,

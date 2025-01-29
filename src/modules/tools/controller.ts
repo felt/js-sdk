@@ -2,6 +2,7 @@ import { listener, method } from "~/lib/interface";
 import type {
   ConfigurableToolType,
   InputToolSettings,
+  ToolSettingsChangeEvent,
   ToolSettingsMap,
   ToolType,
 } from "./types";
@@ -15,7 +16,10 @@ export const toolsController = (feltWindow: Window): ToolsController => ({
   onToolChange: listener(feltWindow, "onToolChange"),
 
   setToolSettings: method(feltWindow, "setToolSettings"),
-  getToolSettings: method(feltWindow, "getToolSettings"),
+  getToolSettings: method(
+    feltWindow,
+    "getToolSettings",
+  ) as ToolsController["getToolSettings"],
   onToolSettingsChange: listener(feltWindow, "onToolSettingsChange"),
 });
 
@@ -100,6 +104,6 @@ export interface ToolsController {
    * @returns A function to unsubscribe from the listener
    */
   onToolSettingsChange(args: {
-    handler: (settings: ToolSettingsMap[keyof ToolSettingsMap]) => void;
+    handler: (settings: ToolSettingsChangeEvent) => void;
   }): VoidFunction;
 }

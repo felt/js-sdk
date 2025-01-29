@@ -22,15 +22,13 @@ export type ConfigurableToolType = keyof ToolSettingsMap;
 const PinToolSettingsSchema = z.object({
   color: z.string(),
   symbol: z.string(),
-  frame: z.string().nullable(),
+  frame: z.enum(["frame-circle", "frame-square"]).nullable(),
 });
 export interface PinToolSettings extends zInfer<typeof PinToolSettingsSchema> {
   symbol: PinSymbol;
-  frame: PinFrame;
 }
 
 const LineToolSettingsSchema = z.object({
-  tool: z.literal("line"),
   color: z.string(),
   strokeOpacity: z.number(),
   strokeWidth: z.number(),
@@ -53,9 +51,9 @@ export interface RouteToolSettings
 
 const PolygonToolSettingsSchema = z.object({
   color: z.string(),
-  fillOpacity: z.number(),
-  strokeOpacity: z.number(),
-  strokeWidth: z.number(),
+  fillOpacity: z.number().min(0).max(1),
+  strokeOpacity: z.number().min(0).max(1),
+  strokeWidth: z.number().min(0),
   strokeStyle: z.enum(["solid", "dashed", "dotted"]),
   areaMarker: z.boolean(),
 });
@@ -63,9 +61,9 @@ export interface PolygonToolSettings
   extends zInfer<typeof PolygonToolSettingsSchema> {}
 const CircleToolSettingsSchema = z.object({
   color: z.string(),
-  fillOpacity: z.number(),
-  strokeOpacity: z.number(),
-  strokeWidth: z.number(),
+  fillOpacity: z.number().min(0).max(1),
+  strokeOpacity: z.number().min(0).max(1),
+  strokeWidth: z.number().min(0),
   strokeStyle: z.enum(["solid", "dashed", "dotted"]),
   radiusMarker: z.boolean(),
 });
@@ -73,16 +71,16 @@ export interface CircleToolSettings
   extends zInfer<typeof CircleToolSettingsSchema> {}
 const MarkerToolSettingsSchema = z.object({
   color: z.string(),
-  opacity: z.number(),
-  size: z.number(),
+  opacity: z.number().min(0).max(1),
+  size: z.number().min(0).max(100),
 });
 export interface MarkerToolSettings
   extends zInfer<typeof MarkerToolSettingsSchema> {}
 
 const HighlighterToolSettingsSchema = z.object({
   color: z.string(),
-  opacity: z.number(),
-  size: z.number(),
+  opacity: z.number().min(0).max(1),
+  size: z.number().min(0).max(200),
 });
 export interface HighlighterToolSettings
   extends zInfer<typeof HighlighterToolSettingsSchema> {}
@@ -122,6 +120,10 @@ export type InputToolSettings = {
   [K in ConfigurableToolType]: Partial<ToolSettingsMap[K]> & { tool: K };
 }[ConfigurableToolType];
 
+export type ToolSettingsChangeEvent = {
+  [K in ConfigurableToolType]: ToolSettingsMap[K] & { tool: K };
+}[ConfigurableToolType];
+
 export type ToolSettingsMap = {
   pin: PinToolSettings;
   line: LineToolSettings;
@@ -134,7 +136,7 @@ export type ToolSettingsMap = {
   note: NoteToolSettings;
 };
 
-export type PinFrame = "frame-circle" | "frame-square";
+export type PinFrame = "frame-circle" | "frame-square" | null;
 
 export type PinSymbol =
   | "dot"

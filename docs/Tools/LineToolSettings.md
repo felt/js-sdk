@@ -2,12 +2,6 @@
 
 ## Properties
 
-### tool
-
-> **tool**: `"line"`
-
-***
-
 ### color
 
 > **color**: `string`

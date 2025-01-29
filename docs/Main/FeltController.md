@@ -822,16 +822,16 @@ The settings for the current tool.
 
 ### onToolSettingsChange()
 
-> **onToolSettingsChange**(`args`: \{ `handler`: (`settings`: [`NoteToolSettings`](../Tools/NoteToolSettings.md) | [`PinToolSettings`](../Tools/PinToolSettings.md) | [`LineToolSettings`](../Tools/LineToolSettings.md) | [`RouteToolSettings`](../Tools/RouteToolSettings.md) | [`PolygonToolSettings`](../Tools/PolygonToolSettings.md) | [`CircleToolSettings`](../Tools/CircleToolSettings.md) | [`MarkerToolSettings`](../Tools/MarkerToolSettings.md) | [`HighlighterToolSettings`](../Tools/HighlighterToolSettings.md) | [`TextToolSettings`](../Tools/TextToolSettings.md)) => `void`; }): `VoidFunction`
+> **onToolSettingsChange**(`args`: \{ `handler`: (`settings`: [`ToolSettingsChangeEvent`](../Tools/ToolSettingsChangeEvent.md)) => `void`; }): `VoidFunction`
 
 Listens for changes to the settings on all tools.
 
 #### Parameters
 
-| Parameter      | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `args`         | \{ `handler`: (`settings`: [`NoteToolSettings`](../Tools/NoteToolSettings.md) \| [`PinToolSettings`](../Tools/PinToolSettings.md) \| [`LineToolSettings`](../Tools/LineToolSettings.md) \| [`RouteToolSettings`](../Tools/RouteToolSettings.md) \| [`PolygonToolSettings`](../Tools/PolygonToolSettings.md) \| [`CircleToolSettings`](../Tools/CircleToolSettings.md) \| [`MarkerToolSettings`](../Tools/MarkerToolSettings.md) \| [`HighlighterToolSettings`](../Tools/HighlighterToolSettings.md) \| [`TextToolSettings`](../Tools/TextToolSettings.md)) => `void`; } |
-| `args.handler` | (`settings`: [`NoteToolSettings`](../Tools/NoteToolSettings.md) \| [`PinToolSettings`](../Tools/PinToolSettings.md) \| [`LineToolSettings`](../Tools/LineToolSettings.md) \| [`RouteToolSettings`](../Tools/RouteToolSettings.md) \| [`PolygonToolSettings`](../Tools/PolygonToolSettings.md) \| [`CircleToolSettings`](../Tools/CircleToolSettings.md) \| [`MarkerToolSettings`](../Tools/MarkerToolSettings.md) \| [`HighlighterToolSettings`](../Tools/HighlighterToolSettings.md) \| [`TextToolSettings`](../Tools/TextToolSettings.md)) => `void`                  |
+| Parameter      | Type                                                                                                      |
+| -------------- | --------------------------------------------------------------------------------------------------------- |
+| `args`         | \{ `handler`: (`settings`: [`ToolSettingsChangeEvent`](../Tools/ToolSettingsChangeEvent.md)) => `void`; } |
+| `args.handler` | (`settings`: [`ToolSettingsChangeEvent`](../Tools/ToolSettingsChangeEvent.md)) => `void`                  |
 
 #### Returns
 

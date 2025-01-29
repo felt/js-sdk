@@ -1,3 +1,3 @@
 ***
 
-> **PinFrame**: `"frame-circle"` | `"frame-square"`
+> **PinFrame**: `"frame-circle"` | `"frame-square"` | `null`

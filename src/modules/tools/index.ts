@@ -17,6 +17,7 @@ export type {
   PolygonToolSettings,
   RouteToolSettings,
   TextToolSettings,
+  ToolSettingsChangeEvent,
   ToolSettingsMap,
   ToolType,
 } from "./types";

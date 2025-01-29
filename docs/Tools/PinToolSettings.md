@@ -8,12 +8,12 @@
 
 ***
 
-### symbol
+### frame
 
-> **symbol**: [`PinSymbol`](PinSymbol.md)
+> **frame**: `null` | `"frame-circle"` | `"frame-square"`
 
 ***
 
-### frame
+### symbol
 
-> **frame**: [`PinFrame`](PinFrame.md)
+> **symbol**: [`PinSymbol`](PinSymbol.md)

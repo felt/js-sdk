@@ -11,6 +11,7 @@ import {
   ConfigurableToolSchema,
   InputToolSettingsSchema,
   ToolSchema,
+  type ToolSettingsChangeEvent,
   type ToolSettingsMap,
   type ToolType,
 } from "./types";
@@ -48,14 +49,11 @@ export type ToolsSchema = {
     setToolSettings: Method<zInfer<typeof SetToolSettingsMessage>, void>;
     getToolSettings: Method<
       zInfer<typeof GetToolSettingsMessage>,
-      ToolSettingsMap[keyof ToolSettingsMap] | any
+      ToolSettingsMap[keyof ToolSettingsMap]
     >;
   };
   listeners: {
     onToolChange: Listener<void, ToolType | null>;
-    onToolSettingsChange: Listener<
-      void,
-      ToolSettingsMap[keyof ToolSettingsMap]
-    >;
+    onToolSettingsChange: Listener<void, ToolSettingsChangeEvent>;
   };
 };

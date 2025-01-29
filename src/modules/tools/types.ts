@@ -11,13 +11,13 @@ const configurableTools = [
   "highlighter",
   "text",
   "note",
-] as const;
+] as const satisfies Array<ConfigurableToolType>;
 
 export const ToolSchema = z.enum([...configurableTools, "link"]);
 export const ConfigurableToolSchema = z.enum(configurableTools);
 
 export type ToolType = z.infer<typeof ToolSchema>;
-export type ConfigurableToolType = z.infer<typeof ConfigurableToolSchema>;
+export type ConfigurableToolType = keyof ToolSettingsMap;
 
 const PinToolSettingsSchema = z.object({
   color: z.string(),

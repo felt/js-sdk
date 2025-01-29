@@ -2,7 +2,7 @@ import { listener, method } from "~/lib/interface";
 import type {
   ConfigurableToolType,
   InputToolSettings,
-  ToolSettings,
+  ToolSettingsMap,
   ToolType,
 } from "./types";
 
@@ -92,7 +92,7 @@ export interface ToolsController {
    */
   getToolSettings<T extends ConfigurableToolType>(
     tool: T,
-  ): Promise<Extract<ToolSettings, { tool: T }>>;
+  ): Promise<ToolSettingsMap[T]>;
 
   /**
    * Listens for changes to the settings on all tools.
@@ -100,6 +100,6 @@ export interface ToolsController {
    * @returns A function to unsubscribe from the listener
    */
   onToolSettingsChange(args: {
-    handler: (settings: ToolSettings) => void;
+    handler: (settings: ToolSettingsMap[keyof ToolSettingsMap]) => void;
   }): VoidFunction;
 }

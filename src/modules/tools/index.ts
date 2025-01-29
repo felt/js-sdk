@@ -3,6 +3,19 @@
  *
  * @module Tools
  */
-export type { InputToolSettings, ToolSettings, ToolType } from "./types";
+export type {
+  CircleToolSettings,
+  HighlighterToolSettings,
+  InputToolSettings,
+  LineToolSettings,
+  MarkerToolSettings,
+  NoteToolSettings,
+  PinToolSettings,
+  PolygonToolSettings,
+  RouteToolSettings,
+  TextToolSettings,
+  ToolSettingsMap,
+  ToolType,
+} from "./types";
 
 export type { ToolsController } from "./controller";

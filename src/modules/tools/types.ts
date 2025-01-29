@@ -1,4 +1,5 @@
 import { z } from "zod";
+import type { zInfer } from "~/lib/utils";
 
 const configurableTools = [
   "pin",
@@ -18,116 +19,139 @@ export const ConfigurableToolSchema = z.enum(configurableTools);
 export type ToolType = z.infer<typeof ToolSchema>;
 export type ConfigurableToolType = z.infer<typeof ConfigurableToolSchema>;
 
-const InputPinToolSettingsSchema = z.object({
-  tool: z.literal("pin"),
-  color: z.string().optional(),
-  symbol: z.string().optional(),
-  frame: z.string().nullable().optional(),
+const PinToolSettingsSchema = z.object({
+  color: z.string(),
+  symbol: z.string(),
+  frame: z.string().nullable(),
 });
+export interface PinToolSettings extends zInfer<typeof PinToolSettingsSchema> {}
 
-const InputLineToolSettingsSchema = z.object({
+const LineToolSettingsSchema = z.object({
   tool: z.literal("line"),
-  color: z.string().optional(),
-  strokeOpacity: z.number().optional(),
-  strokeWidth: z.number().optional(),
-  strokeStyle: z.enum(["solid", "dashed", "dotted"]).optional(),
-  distanceMarker: z.boolean().optional(),
+  color: z.string(),
+  strokeOpacity: z.number(),
+  strokeWidth: z.number(),
+  strokeStyle: z.enum(["solid", "dashed", "dotted"]),
+  distanceMarker: z.boolean(),
 });
+export interface LineToolSettings
+  extends zInfer<typeof LineToolSettingsSchema> {}
+const RouteToolSettingsSchema = z.object({
+  color: z.string(),
+  routingMode: z.enum(["driving", "cycling", "walking", "flying"]),
+  strokeOpacity: z.number(),
+  strokeWidth: z.number(),
+  strokeStyle: z.enum(["solid", "dashed", "dotted"]),
+  distanceMarker: z.boolean(),
+  endCaps: z.boolean(),
+});
+export interface RouteToolSettings
+  extends zInfer<typeof RouteToolSettingsSchema> {}
 
-const InputRouteToolSettingsSchema = z.object({
-  tool: z.literal("route"),
-  color: z.string().optional(),
-  routingMode: z.enum(["driving", "cycling", "walking", "flying"]).optional(),
-  strokeOpacity: z.number().optional(),
-  strokeWidth: z.number().optional(),
-  strokeStyle: z.enum(["solid", "dashed", "dotted"]).optional(),
-  distanceMarker: z.boolean().optional(),
-  endCaps: z.boolean().optional(),
+const PolygonToolSettingsSchema = z.object({
+  color: z.string(),
+  fillOpacity: z.number(),
+  strokeOpacity: z.number(),
+  strokeWidth: z.number(),
+  strokeStyle: z.enum(["solid", "dashed", "dotted"]),
+  areaMarker: z.boolean(),
 });
+export interface PolygonToolSettings
+  extends zInfer<typeof PolygonToolSettingsSchema> {}
+const CircleToolSettingsSchema = z.object({
+  color: z.string(),
+  fillOpacity: z.number(),
+  strokeOpacity: z.number(),
+  strokeWidth: z.number(),
+  strokeStyle: z.enum(["solid", "dashed", "dotted"]),
+  radiusMarker: z.boolean(),
+});
+export interface CircleToolSettings
+  extends zInfer<typeof CircleToolSettingsSchema> {}
+const MarkerToolSettingsSchema = z.object({
+  color: z.string(),
+  opacity: z.number(),
+  size: z.number(),
+});
+export interface MarkerToolSettings
+  extends zInfer<typeof MarkerToolSettingsSchema> {}
 
-const InputPolygonToolSettingsSchema = z.object({
-  tool: z.literal("polygon"),
-  color: z.string().optional(),
-  fillOpacity: z.number().optional(),
-  strokeOpacity: z.number().optional(),
-  strokeWidth: z.number().optional(),
-  strokeStyle: z.enum(["solid", "dashed", "dotted"]).optional(),
-  areaMarker: z.boolean().optional(),
+const HighlighterToolSettingsSchema = z.object({
+  color: z.string(),
+  opacity: z.number(),
+  size: z.number(),
 });
-
-const InputCircleToolSettingsSchema = z.object({
-  tool: z.literal("circle"),
-  color: z.string().optional(),
-  fillOpacity: z.number().optional(),
-  strokeOpacity: z.number().optional(),
-  strokeWidth: z.number().optional(),
-  strokeStyle: z.enum(["solid", "dashed", "dotted"]).optional(),
-  radiusMarker: z.boolean().optional(),
+export interface HighlighterToolSettings
+  extends zInfer<typeof HighlighterToolSettingsSchema> {}
+const TextToolSettingsSchema = z.object({
+  color: z.string(),
+  align: z.enum(["left", "center", "right"]),
+  style: z.enum(["italic", "light", "regular", "caps"]),
 });
-
-const InputMarkerToolSettingsSchema = z.object({
-  tool: z.literal("marker"),
-  color: z.string().optional(),
-  opacity: z.number().optional(),
-  size: z.number().optional(),
+export interface TextToolSettings
+  extends zInfer<typeof TextToolSettingsSchema> {}
+const NoteToolSettingsSchema = z.object({
+  color: z.string(),
+  align: z.enum(["left", "center", "right"]),
+  style: z.enum(["italic", "light", "regular", "caps"]),
 });
-
-const InputHighlighterToolSettingsSchema = z.object({
-  tool: z.literal("highlighter"),
-  color: z.string().optional(),
-  opacity: z.number().optional(),
-  size: z.number().optional(),
-});
-
-const InputTextToolSettingsSchema = z.object({
-  tool: z.literal("text"),
-  color: z.string().optional(),
-  align: z.enum(["left", "center", "right"]).optional(),
-  style: z.enum(["italic", "light", "regular", "caps"]).optional(),
-});
-
-const InputNoteToolSettingsSchema = z.object({
-  tool: z.literal("note"),
-  color: z.string().optional(),
-  align: z.enum(["left", "center", "right"]).optional(),
-  style: z.enum(["italic", "light", "regular", "caps"]).optional(),
-});
+export interface NoteToolSettings
+  extends zInfer<typeof NoteToolSettingsSchema> {}
 
 export const InputToolSettingsSchema = z.discriminatedUnion("tool", [
   // GEOGRAPHIC TOOLS
-  InputPinToolSettingsSchema,
-  InputLineToolSettingsSchema,
-  InputRouteToolSettingsSchema,
-  InputPolygonToolSettingsSchema,
-  InputCircleToolSettingsSchema,
+  PinToolSettingsSchema.partial().extend({ tool: z.literal("pin") }),
+  LineToolSettingsSchema.partial().extend({ tool: z.literal("line") }),
+  RouteToolSettingsSchema.partial().extend({ tool: z.literal("route") }),
+  PolygonToolSettingsSchema.partial().extend({ tool: z.literal("polygon") }),
+  CircleToolSettingsSchema.partial().extend({ tool: z.literal("circle") }),
 
   // ANNOTATION TOOLS
-  InputMarkerToolSettingsSchema,
-  InputHighlighterToolSettingsSchema,
-  InputTextToolSettingsSchema,
-  InputNoteToolSettingsSchema,
+  MarkerToolSettingsSchema.partial().extend({ tool: z.literal("marker") }),
+  HighlighterToolSettingsSchema.partial().extend({
+    tool: z.literal("highlighter"),
+  }),
+  TextToolSettingsSchema.partial().extend({ tool: z.literal("text") }),
+  NoteToolSettingsSchema.partial().extend({ tool: z.literal("note") }),
 ]);
 
 export const ToolSettingsSchema = z.discriminatedUnion("tool", [
   // GEOGRAPHIC TOOLS
-  InputPinToolSettingsSchema.required(),
-  InputLineToolSettingsSchema.required(),
-  InputRouteToolSettingsSchema.required(),
-  InputPolygonToolSettingsSchema.required(),
-  InputCircleToolSettingsSchema.required(),
+  PinToolSettingsSchema.extend({ tool: z.literal("pin") }),
+  LineToolSettingsSchema.extend({ tool: z.literal("line") }),
+  RouteToolSettingsSchema.extend({ tool: z.literal("route") }),
+  PolygonToolSettingsSchema.extend({ tool: z.literal("polygon") }),
+  CircleToolSettingsSchema.extend({ tool: z.literal("circle") }),
 
   // ANNOTATION TOOLS
-  InputMarkerToolSettingsSchema.required(),
-  InputHighlighterToolSettingsSchema.required(),
-  InputTextToolSettingsSchema.required(),
-  InputNoteToolSettingsSchema.required(),
+  MarkerToolSettingsSchema.extend({ tool: z.literal("marker") }),
+  HighlighterToolSettingsSchema.extend({ tool: z.literal("highlighter") }),
+  TextToolSettingsSchema.extend({ tool: z.literal("text") }),
+  NoteToolSettingsSchema.extend({ tool: z.literal("note") }),
 ]);
 
-/**
- * @useDeclaredType
- */
-export type InputToolSettings = z.infer<typeof InputToolSettingsSchema>;
-export type ToolSettings = z.infer<typeof ToolSettingsSchema>;
+export type InputToolSettings =
+  | (Partial<PinToolSettings> & { tool: "pin" })
+  | (Partial<LineToolSettings> & { tool: "line" })
+  | (Partial<RouteToolSettings> & { tool: "route" })
+  | (Partial<PolygonToolSettings> & { tool: "polygon" })
+  | (Partial<CircleToolSettings> & { tool: "circle" })
+  | (Partial<MarkerToolSettings> & { tool: "marker" })
+  | (Partial<HighlighterToolSettings> & { tool: "highlighter" })
+  | (Partial<TextToolSettings> & { tool: "text" })
+  | (Partial<NoteToolSettings> & { tool: "note" });
+
+export type ToolSettingsMap = {
+  pin: PinToolSettings;
+  line: LineToolSettings;
+  route: RouteToolSettings;
+  polygon: PolygonToolSettings;
+  circle: CircleToolSettings;
+  marker: MarkerToolSettings;
+  highlighter: HighlighterToolSettings;
+  text: TextToolSettings;
+  note: NoteToolSettings;
+};
 
 export type PinFrame = "frame-circle" | "frame-square";
 

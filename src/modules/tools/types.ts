@@ -123,6 +123,9 @@ export const ToolSettingsSchema = z.discriminatedUnion("tool", [
   InputNoteToolSettingsSchema.required(),
 ]);
 
+/**
+ * @useDeclaredType
+ */
 export type InputToolSettings = z.infer<typeof InputToolSettingsSchema>;
 export type ToolSettings = z.infer<typeof ToolSettingsSchema>;
 

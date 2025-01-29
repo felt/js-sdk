@@ -1,3 +1,4 @@
+import { z } from "zod";
 import type { ModuleSchema } from "~/lib/ModuleSchema";
 import { type Method, methodMessage } from "~/lib/builders";
 import type { zInfer } from "~/lib/utils";
@@ -16,8 +17,17 @@ const OnMapInteractionsMessage = methodMessage(
   UiOnMapInteractionsOptionsSchema,
 );
 
+const EnableToolSettingsUiMessage = methodMessage(
+  "enableToolSettingsUi",
+  z.boolean(),
+);
+
 export const uiSchema = {
-  methods: [UiControlsMessage, OnMapInteractionsMessage],
+  methods: [
+    UiControlsMessage,
+    OnMapInteractionsMessage,
+    EnableToolSettingsUiMessage,
+  ],
   listeners: null,
 } satisfies ModuleSchema;
 
@@ -26,6 +36,10 @@ export type UiSchema = {
     updateUiControls: Method<zInfer<typeof UiControlsMessage>, void>;
     setOnMapInteractionsUi: Method<
       zInfer<typeof OnMapInteractionsMessage>,
+      void
+    >;
+    enableToolSettingsUi: Method<
+      zInfer<typeof EnableToolSettingsUiMessage>,
       void
     >;
   };

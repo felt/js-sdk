@@ -7,6 +7,7 @@ import type { UiControlsOptions, UiOnMapInteractionsOptions } from "./types";
 export const uiController = (feltWindow: Window): UiController => ({
   updateUiControls: method(feltWindow, "updateUiControls"),
   setOnMapInteractionsUi: method(feltWindow, "setOnMapInteractionsUi"),
+  enableToolSettingsUi: method(feltWindow, "enableToolSettingsUi"),
 });
 
 /**
@@ -36,4 +37,12 @@ export interface UiController {
    * will still be selected when clicked.
    */
   setOnMapInteractionsUi(options: UiOnMapInteractionsOptions): void;
+
+  /**
+   * Enables or disables the tool settings UI which shows up on the right hand side
+   * when a tool is in use.
+   *
+   * @param enabled - Whether to enable the tool settings UI.
+   */
+  enableToolSettingsUi(enabled: boolean): void;
 }

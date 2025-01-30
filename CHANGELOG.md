@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.5.0-next.0
+
+### Minor Changes
+
+- c20e605: Add setLayerLegendVisibility and setLayerGroupLegendVisibility methods definition
+
 ## 1.4.0
 
 ### Minor Changes

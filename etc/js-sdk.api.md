@@ -428,7 +428,6 @@ export { ToolType }
 
 // @public
 export interface UiController {
-    enableToolSettingsUi(enabled: boolean): void;
     setOnMapInteractionsUi(options: OnMapInteractionsOptions): void;
     updateUiControls(controls: UiControlsOptions): void;
 }

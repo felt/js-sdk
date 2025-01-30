@@ -50,22 +50,3 @@ will still be selected when clicked.
 #### Returns
 
 `void`
-
-***
-
-### enableToolSettingsUi()
-
-> **enableToolSettingsUi**(`enabled`: `boolean`): `void`
-
-Enables or disables the tool settings UI which shows up on the right hand side
-when a tool is in use.
-
-#### Parameters
-
-| Parameter | Type      | Description                             |
-| --------- | --------- | --------------------------------------- |
-| `enabled` | `boolean` | Whether to enable the tool settings UI. |
-
-#### Returns
-
-`void`

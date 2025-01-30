@@ -4,60 +4,76 @@
 
 ```ts
 
-import { C } from './types-F17OM3Wt.js';
-import { E as Element_2 } from './types-F17OM3Wt.js';
-import { d as ElementChangeCallbackParams } from './types-F17OM3Wt.js';
-import { b as ElementGroup } from './types-F17OM3Wt.js';
-import { e as ElementGroupChangeCallbackParams } from './types-F17OM3Wt.js';
-import { D as ElementGroupNode } from './types-F17OM3Wt.js';
-import { H as ElementNode } from './types-F17OM3Wt.js';
-import { r as EntityNode } from './types-F17OM3Wt.js';
-import { q as Feature } from './types-F17OM3Wt.js';
-import { J as FeatureNode } from './types-F17OM3Wt.js';
-import { s as FeatureSelection } from './types-F17OM3Wt.js';
-import { O as FeltBoundary } from './types-F17OM3Wt.js';
-import { P as FeltZoom } from './types-F17OM3Wt.js';
-import { y as FilterExpression } from './types-F17OM3Wt.js';
-import { A as FilterLogicGate } from './types-F17OM3Wt.js';
-import { F as Filters } from './types-F17OM3Wt.js';
-import { B as FilterTernary } from './types-F17OM3Wt.js';
-import { G as Geometry } from './types-F17OM3Wt.js';
-import { c as GetElementGroupsConstraint } from './types-F17OM3Wt.js';
-import { a as GetElementsConstraint } from './types-F17OM3Wt.js';
-import { i as GetLayerGroupsConstraint } from './types-F17OM3Wt.js';
-import { f as GetLayersConstraint } from './types-F17OM3Wt.js';
-import { p as GetRenderedFeaturesConstraint } from './types-F17OM3Wt.js';
-import { I } from './types-F17OM3Wt.js';
-import { Q as LatLng } from './types-F17OM3Wt.js';
-import { L as Layer } from './types-F17OM3Wt.js';
-import { g as LayerChangeCallbackParams } from './types-F17OM3Wt.js';
-import { o as LayerFilters } from './types-F17OM3Wt.js';
-import { h as LayerGroup } from './types-F17OM3Wt.js';
-import { j as LayerGroupChangeCallbackParams } from './types-F17OM3Wt.js';
-import { K as LayerGroupNode } from './types-F17OM3Wt.js';
-import { N as LayerNode } from './types-F17OM3Wt.js';
-import { x as LayerProcessingStatus } from './types-F17OM3Wt.js';
-import { l as LegendItem } from './types-F17OM3Wt.js';
-import { n as LegendItemChangeCallbackParams } from './types-F17OM3Wt.js';
-import { k as LegendItemIdentifier } from './types-F17OM3Wt.js';
-import { m as LegendItemsConstraint } from './types-F17OM3Wt.js';
-import { U as LineStringGeometry } from './types-F17OM3Wt.js';
-import { W as LngLatTuple } from './types-F17OM3Wt.js';
-import { M as MapInteractionEvent } from './types-F17OM3Wt.js';
-import { X as MultiLineStringGeometry } from './types-F17OM3Wt.js';
-import { Y as MultiPolygonGeometry } from './types-F17OM3Wt.js';
-import { Z as PointGeometry } from './types-F17OM3Wt.js';
-import { _ as PolygonGeometry } from './types-F17OM3Wt.js';
-import { R as RasterValue } from './types-F17OM3Wt.js';
-import { u as SetViewportCenterZoomParams } from './types-F17OM3Wt.js';
-import { S as SetVisibilityRequest } from './types-F17OM3Wt.js';
-import { T } from './types-F17OM3Wt.js';
-import { t } from './types-F17OM3Wt.js';
-import { w as ViewportCenterZoom } from './types-F17OM3Wt.js';
-import { v as ViewportFitBoundsParams } from './types-F17OM3Wt.js';
-import { V as ViewportState } from './types-F17OM3Wt.js';
-import { z } from './types-F17OM3Wt.js';
+import { a0 as CircleToolSettings } from './types-CVxZMwC_.js';
+import { C as ConfigurableToolType } from './types-CVxZMwC_.js';
+import { E as Element_2 } from './types-CVxZMwC_.js';
+import { d as ElementChangeCallbackParams } from './types-CVxZMwC_.js';
+import { b as ElementGroup } from './types-CVxZMwC_.js';
+import { e as ElementGroupChangeCallbackParams } from './types-CVxZMwC_.js';
+import { H as ElementGroupNode } from './types-CVxZMwC_.js';
+import { J as ElementNode } from './types-CVxZMwC_.js';
+import { r as EntityNode } from './types-CVxZMwC_.js';
+import { q as Feature } from './types-CVxZMwC_.js';
+import { K as FeatureNode } from './types-CVxZMwC_.js';
+import { s as FeatureSelection } from './types-CVxZMwC_.js';
+import { P as FeltBoundary } from './types-CVxZMwC_.js';
+import { Q as FeltZoom } from './types-CVxZMwC_.js';
+import { A as FilterExpression } from './types-CVxZMwC_.js';
+import { B as FilterLogicGate } from './types-CVxZMwC_.js';
+import { F as Filters } from './types-CVxZMwC_.js';
+import { D as FilterTernary } from './types-CVxZMwC_.js';
+import { G as Geometry } from './types-CVxZMwC_.js';
+import { c as GetElementGroupsConstraint } from './types-CVxZMwC_.js';
+import { a as GetElementsConstraint } from './types-CVxZMwC_.js';
+import { i as GetLayerGroupsConstraint } from './types-CVxZMwC_.js';
+import { f as GetLayersConstraint } from './types-CVxZMwC_.js';
+import { p as GetRenderedFeaturesConstraint } from './types-CVxZMwC_.js';
+import { a1 as HighlighterToolSettings } from './types-CVxZMwC_.js';
+import { I as InputToolSettings } from './types-CVxZMwC_.js';
+import { U as LatLng } from './types-CVxZMwC_.js';
+import { L as Layer } from './types-CVxZMwC_.js';
+import { g as LayerChangeCallbackParams } from './types-CVxZMwC_.js';
+import { o as LayerFilters } from './types-CVxZMwC_.js';
+import { h as LayerGroup } from './types-CVxZMwC_.js';
+import { j as LayerGroupChangeCallbackParams } from './types-CVxZMwC_.js';
+import { N as LayerGroupNode } from './types-CVxZMwC_.js';
+import { O as LayerNode } from './types-CVxZMwC_.js';
+import { y as LayerProcessingStatus } from './types-CVxZMwC_.js';
+import { l as LegendItem } from './types-CVxZMwC_.js';
+import { n as LegendItemChangeCallbackParams } from './types-CVxZMwC_.js';
+import { k as LegendItemIdentifier } from './types-CVxZMwC_.js';
+import { m as LegendItemsConstraint } from './types-CVxZMwC_.js';
+import { W as LineStringGeometry } from './types-CVxZMwC_.js';
+import { a2 as LineToolSettings } from './types-CVxZMwC_.js';
+import { X as LngLatTuple } from './types-CVxZMwC_.js';
+import { M as MapInteractionEvent } from './types-CVxZMwC_.js';
+import { a3 as MarkerToolSettings } from './types-CVxZMwC_.js';
+import { Y as MultiLineStringGeometry } from './types-CVxZMwC_.js';
+import { Z as MultiPolygonGeometry } from './types-CVxZMwC_.js';
+import { a4 as NoteToolSettings } from './types-CVxZMwC_.js';
+import { a5 as PinFrame } from './types-CVxZMwC_.js';
+import { a6 as PinSymbol } from './types-CVxZMwC_.js';
+import { a7 as PinToolSettings } from './types-CVxZMwC_.js';
+import { _ as PointGeometry } from './types-CVxZMwC_.js';
+import { $ as PolygonGeometry } from './types-CVxZMwC_.js';
+import { a8 as PolygonToolSettings } from './types-CVxZMwC_.js';
+import { R as RasterValue } from './types-CVxZMwC_.js';
+import { a9 as RouteToolSettings } from './types-CVxZMwC_.js';
+import { v as SetViewportCenterZoomParams } from './types-CVxZMwC_.js';
+import { S as SetVisibilityRequest } from './types-CVxZMwC_.js';
+import { aa as TextToolSettings } from './types-CVxZMwC_.js';
+import { u as ToolSettingsChangeEvent } from './types-CVxZMwC_.js';
+import { t as ToolSettingsMap } from './types-CVxZMwC_.js';
+import { T as ToolType } from './types-CVxZMwC_.js';
+import { x as ViewportCenterZoom } from './types-CVxZMwC_.js';
+import { w as ViewportFitBoundsParams } from './types-CVxZMwC_.js';
+import { V as ViewportState } from './types-CVxZMwC_.js';
+import { z } from './types-CVxZMwC_.js';
 import { z as z_2 } from 'zod';
+
+export { CircleToolSettings }
+
+export { ConfigurableToolType }
 
 export { Element_2 as Element }
 
@@ -114,8 +130,6 @@ export const Felt: {
 
 export { FeltBoundary }
 
-// Warning: (ae-forgotten-export) The symbol "ToolsController" needs to be exported by the entry point client.d.ts
-//
 // @public
 export interface FeltController extends ViewportController, UiController, LayersController, ElementsController, SelectionController, InteractionsController, ToolsController {
     iframe: HTMLIFrameElement | null;
@@ -242,6 +256,10 @@ export { GetLayersConstraint }
 
 export { GetRenderedFeaturesConstraint }
 
+export { HighlighterToolSettings }
+
+export { InputToolSettings }
+
 // @public
 export interface InteractionsController {
     onPointerClick(params: {
@@ -331,13 +349,19 @@ export { LegendItemsConstraint }
 
 export { LineStringGeometry }
 
+export { LineToolSettings }
+
 export { LngLatTuple }
 
 export { MapInteractionEvent }
 
+export { MarkerToolSettings }
+
 export { MultiLineStringGeometry }
 
 export { MultiPolygonGeometry }
+
+export { NoteToolSettings }
 
 // Warning: (ae-forgotten-export) The symbol "UiOnMapInteractionsOptionsSchema" needs to be exported by the entry point client.d.ts
 //
@@ -345,11 +369,21 @@ export { MultiPolygonGeometry }
 export interface OnMapInteractionsOptions extends z<typeof UiOnMapInteractionsOptionsSchema> {
 }
 
+export { PinFrame }
+
+export { PinSymbol }
+
+export { PinToolSettings }
+
 export { PointGeometry }
 
 export { PolygonGeometry }
 
+export { PolygonToolSettings }
+
 export { RasterValue }
+
+export { RouteToolSettings }
 
 // @public
 export interface SelectionController {
@@ -370,19 +404,27 @@ export { SetViewportCenterZoomParams }
 
 export { SetVisibilityRequest }
 
+export { TextToolSettings }
+
 // @public
-interface ToolsController {
-    getTool(): Promise<T | null>;
-    getToolSettings<T extends C>(tool: T): Promise<t[T]>;
+export interface ToolsController {
+    getTool(): Promise<ToolType | null>;
+    getToolSettings<T extends ConfigurableToolType>(tool: T): Promise<ToolSettingsMap[T]>;
     onToolChange(args: {
-        handler: (tool: T | null) => void;
+        handler: (tool: ToolType | null) => void;
     }): VoidFunction;
     onToolSettingsChange(args: {
-        handler: (settings: t[keyof t]) => void;
+        handler: (settings: ToolSettingsChangeEvent) => void;
     }): VoidFunction;
-    setTool(tool: T | null): void;
-    setToolSettings(settings: I): void;
+    setTool(tool: ToolType | null): void;
+    setToolSettings(settings: InputToolSettings): void;
 }
+
+export { ToolSettingsChangeEvent }
+
+export { ToolSettingsMap }
+
+export { ToolType }
 
 // @public
 export interface UiController {

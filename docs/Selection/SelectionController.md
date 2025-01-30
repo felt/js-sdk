@@ -58,17 +58,17 @@ felt.selectFeature({
 
 ### clearSelection()
 
-> **clearSelection**(`params`?: \{`features`: `boolean`;`elements`: `boolean`; }): `Promise`\<`void`>
+> **clearSelection**(`params`?: \{ `features`: `boolean`; `elements`: `boolean`; }): `Promise`\<`void`>
 
 Clears the current selection. This clears the selection of
 
 #### Parameters
 
-| Parameter          | Type      | Description                                                                                                 |
-| ------------------ | --------- | ----------------------------------------------------------------------------------------------------------- |
-| `params`?          | `object`  | The parameters to clear the selection. If this is not provided, both features and elements will be cleared. |
-| `params.features`? | `boolean` | Whether to clear the features from the selection.                                                           |
-| `params.elements`? | `boolean` | Whether to clear the elements from the selection.                                                           |
+| Parameter          | Type                                               | Description                                                                                                 |
+| ------------------ | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `params`?          | \{ `features`: `boolean`; `elements`: `boolean`; } | The parameters to clear the selection. If this is not provided, both features and elements will be cleared. |
+| `params.features`? | `boolean`                                          | Whether to clear the features from the selection.                                                           |
+| `params.elements`? | `boolean`                                          | Whether to clear the elements from the selection.                                                           |
 
 #### Returns
 
@@ -98,16 +98,16 @@ felt.clearSelection({ elements: true });
 
 ### onSelectionChange()
 
-> **onSelectionChange**(`params`: \{`handler`: (`change`: \{`selection`: [`EntityNode`](EntityNode.md)\[]; }) => `void`; }): `VoidFunction`
+> **onSelectionChange**(`params`: \{ `handler`: (`change`: \{ `selection`: [`EntityNode`](EntityNode.md)\[]; }) => `void`; }): `VoidFunction`
 
 Adds a listener for when the selection changes.
 
 #### Parameters
 
-| Parameter        | Type                                                                     |
-| ---------------- | ------------------------------------------------------------------------ |
-| `params`         | `object`                                                                 |
-| `params.handler` | (`change`: \{`selection`: [`EntityNode`](EntityNode.md)\[]; }) => `void` |
+| Parameter        | Type                                                                                       |
+| ---------------- | ------------------------------------------------------------------------------------------ |
+| `params`         | \{ `handler`: (`change`: \{ `selection`: [`EntityNode`](EntityNode.md)\[]; }) => `void`; } |
+| `params.handler` | (`change`: \{ `selection`: [`EntityNode`](EntityNode.md)\[]; }) => `void`                  |
 
 #### Returns
 

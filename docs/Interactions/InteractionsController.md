@@ -10,16 +10,16 @@ The Interactions controller allows you to observe interactions with the map
 
 ### onPointerClick()
 
-> **onPointerClick**(`params`: \{`handler`: (`event`: [`MapInteractionEvent`](MapInteractionEvent.md)) => `void`; }): `VoidFunction`
+> **onPointerClick**(`params`: \{ `handler`: (`event`: [`MapInteractionEvent`](MapInteractionEvent.md)) => `void`; }): `VoidFunction`
 
 Allows you to be notified the user clicks on the map.
 
 #### Parameters
 
-| Parameter        | Type                                                                 |
-| ---------------- | -------------------------------------------------------------------- |
-| `params`         | `object`                                                             |
-| `params.handler` | (`event`: [`MapInteractionEvent`](MapInteractionEvent.md)) => `void` |
+| Parameter        | Type                                                                                  |
+| ---------------- | ------------------------------------------------------------------------------------- |
+| `params`         | \{ `handler`: (`event`: [`MapInteractionEvent`](MapInteractionEvent.md)) => `void`; } |
+| `params.handler` | (`event`: [`MapInteractionEvent`](MapInteractionEvent.md)) => `void`                  |
 
 #### Returns
 
@@ -42,16 +42,16 @@ unsubscribe();
 
 ### onPointerMove()
 
-> **onPointerMove**(`params`: \{`handler`: (`event`: [`MapInteractionEvent`](MapInteractionEvent.md)) => `void`; }): `VoidFunction`
+> **onPointerMove**(`params`: \{ `handler`: (`event`: [`MapInteractionEvent`](MapInteractionEvent.md)) => `void`; }): `VoidFunction`
 
 Allows you to be notified the user moves the mouse over the map.
 
 #### Parameters
 
-| Parameter        | Type                                                                 | Description             |
-| ---------------- | -------------------------------------------------------------------- | ----------------------- |
-| `params`         | `object`                                                             | Params for the listener |
-| `params.handler` | (`event`: [`MapInteractionEvent`](MapInteractionEvent.md)) => `void` | The handler function    |
+| Parameter        | Type                                                                                  | Description             |
+| ---------------- | ------------------------------------------------------------------------------------- | ----------------------- |
+| `params`         | \{ `handler`: (`event`: [`MapInteractionEvent`](MapInteractionEvent.md)) => `void`; } | Params for the listener |
+| `params.handler` | (`event`: [`MapInteractionEvent`](MapInteractionEvent.md)) => `void`                  | The handler function    |
 
 #### Returns
 

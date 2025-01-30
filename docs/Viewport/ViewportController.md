@@ -80,16 +80,16 @@ felt.fitViewportToBounds({ bounds: [west, south, east, north] });
 
 ### onViewportMove()
 
-> **onViewportMove**(`args`: \{`handler`: (`viewport`: [`ViewportState`](ViewportState.md)) => `void`; }): `VoidFunction`
+> **onViewportMove**(`args`: \{ `handler`: (`viewport`: [`ViewportState`](ViewportState.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when the viewport changes.
 
 #### Parameters
 
-| Parameter      | Type                                                        | Description                                                                            |
-| -------------- | ----------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `args`         | `object`                                                    | -                                                                                      |
-| `args.handler` | (`viewport`: [`ViewportState`](ViewportState.md)) => `void` | This callback is called with the current viewport state whenever the viewport changes. |
+| Parameter      | Type                                                                         | Description                                                                            |
+| -------------- | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `args`         | \{ `handler`: (`viewport`: [`ViewportState`](ViewportState.md)) => `void`; } | -                                                                                      |
+| `args.handler` | (`viewport`: [`ViewportState`](ViewportState.md)) => `void`                  | This callback is called with the current viewport state whenever the viewport changes. |
 
 #### Returns
 
@@ -112,7 +112,7 @@ unsubscribe();
 
 ### onViewportMoveEnd()
 
-> **onViewportMoveEnd**(`args`: \{`handler`: (`viewport`: [`ViewportState`](ViewportState.md)) => `void`; }): `VoidFunction`
+> **onViewportMoveEnd**(`args`: \{ `handler`: (`viewport`: [`ViewportState`](ViewportState.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when the viewport move ends, which is when the user
 stops dragging or zooming the map, animations have finished, or inertial
@@ -120,10 +120,10 @@ dragging ends.
 
 #### Parameters
 
-| Parameter      | Type                                                        |
-| -------------- | ----------------------------------------------------------- |
-| `args`         | `object`                                                    |
-| `args.handler` | (`viewport`: [`ViewportState`](ViewportState.md)) => `void` |
+| Parameter      | Type                                                                         |
+| -------------- | ---------------------------------------------------------------------------- |
+| `args`         | \{ `handler`: (`viewport`: [`ViewportState`](ViewportState.md)) => `void`; } |
+| `args.handler` | (`viewport`: [`ViewportState`](ViewportState.md)) => `void`                  |
 
 #### Returns
 
@@ -146,7 +146,7 @@ unsubscribe();
 
 ### onMapIdle()
 
-> **onMapIdle**(`args`: \{`handler`: () => `void`; }): `VoidFunction`
+> **onMapIdle**(`args`: \{ `handler`: () => `void`; }): `VoidFunction`
 
 Adds a listener for when the map is idle, which is defined as:
 
@@ -157,10 +157,10 @@ Adds a listener for when the map is idle, which is defined as:
 
 #### Parameters
 
-| Parameter      | Type         |
-| -------------- | ------------ |
-| `args`         | `object`     |
-| `args.handler` | () => `void` |
+| Parameter      | Type                          |
+| -------------- | ----------------------------- |
+| `args`         | \{ `handler`: () => `void`; } |
+| `args.handler` | () => `void`                  |
 
 #### Returns
 

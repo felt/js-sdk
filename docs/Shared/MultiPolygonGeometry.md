@@ -1,6 +1,6 @@
 ***
 
-> **MultiPolygonGeometry**: \{`type`: `"MultiPolygon"`;`coordinates`: [`PolygonGeometry`](PolygonGeometry.md)\[`"coordinates"`]\[]; }
+> **MultiPolygonGeometry**: \{ `type`: `"MultiPolygon"`; `coordinates`: [`PolygonGeometry`](PolygonGeometry.md)\[`"coordinates"`]\[]; }
 
 A GeoJSON-like multi-polygon geometry.
 

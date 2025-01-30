@@ -124,7 +124,11 @@ export function method<TKey extends keyof StandardMethods>(
 
     return new Promise((resolve, reject) => {
       messageChannel.port1.onmessage = (event) => {
-        if (event.data && "__error__" in event.data) {
+        if (
+          event.data &&
+          typeof event.data === "object" &&
+          "__error__" in event.data
+        ) {
           reject(new Error(event.data.__error__));
         } else {
           resolve(event.data);

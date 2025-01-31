@@ -1,6 +1,7 @@
 import { listener, method } from "~/lib/interface";
 import type {
   SetViewportCenterZoomParams,
+  ViewportConstraints,
   ViewportFitBoundsParams,
   ViewportState,
 } from "./types";
@@ -11,6 +12,8 @@ import type {
 export const viewportController = (feltWindow: Window): ViewportController => ({
   getViewport: method(feltWindow, "getViewport"),
   setViewport: method(feltWindow, "setViewport"),
+  getViewportConstraints: method(feltWindow, "getViewportConstraints"),
+  setViewportConstraints: method(feltWindow, "setViewportConstraints"),
   fitViewportToBounds: method(feltWindow, "fitViewportToBounds"),
   onViewportMove: listener(feltWindow, "onViewportMove"),
   onViewportMoveEnd: listener(feltWindow, "onViewportMoveEnd"),
@@ -44,6 +47,47 @@ export interface ViewportController {
    * ```
    */
   setViewport(viewport: SetViewportCenterZoomParams): void;
+
+  /**
+   * Gets the current state of the viewport constraints.
+   */
+  getViewportConstraints(): Promise<ViewportConstraints | null>;
+
+  /**
+   * Constrains the map viewport so it stays inside certain bounds and/or certain zoom levels.
+   *
+   * @example
+   * ```typescript
+   * felt.setViewportConstraints({
+   *   bounds: [-122.5372532, 37.6652478, -122.1927016, 37.881707],
+   *   minZoom: 1,
+   *   maxZoom: 23,
+   * });
+   * ```
+   *
+   * @example
+   * every constraint is optional
+   * ```typescript
+   * felt.setViewportConstraints({
+   *   bounds: [-122.5372532, 37.6652478, -122.1927016, 37.881707],
+   * });
+   * ```
+   *
+   * @example
+   * if a constraint is null, it will be removed but keeping the others
+   * ```typescript
+   * felt.setViewportConstraints({ bounds: null });
+   * ```
+   *
+   * @example
+   * if method receives null, it will remove the constraints
+   * ```typescript
+   * felt.setViewportConstraints(null);
+   * ```
+   */
+  setViewportConstraints(
+    constraints: Partial<ViewportConstraints> | null,
+  ): void;
 
   /**
    * Fits the map to the specified bounds.

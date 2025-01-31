@@ -4,71 +4,72 @@
 
 ```ts
 
-import { a0 as CircleToolSettings } from './types-CVxZMwC_.js';
-import { C as ConfigurableToolType } from './types-CVxZMwC_.js';
-import { E as Element_2 } from './types-CVxZMwC_.js';
-import { d as ElementChangeCallbackParams } from './types-CVxZMwC_.js';
-import { b as ElementGroup } from './types-CVxZMwC_.js';
-import { e as ElementGroupChangeCallbackParams } from './types-CVxZMwC_.js';
-import { H as ElementGroupNode } from './types-CVxZMwC_.js';
-import { J as ElementNode } from './types-CVxZMwC_.js';
-import { r as EntityNode } from './types-CVxZMwC_.js';
-import { q as Feature } from './types-CVxZMwC_.js';
-import { K as FeatureNode } from './types-CVxZMwC_.js';
-import { s as FeatureSelection } from './types-CVxZMwC_.js';
-import { P as FeltBoundary } from './types-CVxZMwC_.js';
-import { Q as FeltZoom } from './types-CVxZMwC_.js';
-import { A as FilterExpression } from './types-CVxZMwC_.js';
-import { B as FilterLogicGate } from './types-CVxZMwC_.js';
-import { F as Filters } from './types-CVxZMwC_.js';
-import { D as FilterTernary } from './types-CVxZMwC_.js';
-import { G as Geometry } from './types-CVxZMwC_.js';
-import { c as GetElementGroupsConstraint } from './types-CVxZMwC_.js';
-import { a as GetElementsConstraint } from './types-CVxZMwC_.js';
-import { i as GetLayerGroupsConstraint } from './types-CVxZMwC_.js';
-import { f as GetLayersConstraint } from './types-CVxZMwC_.js';
-import { p as GetRenderedFeaturesConstraint } from './types-CVxZMwC_.js';
-import { a1 as HighlighterToolSettings } from './types-CVxZMwC_.js';
-import { I as InputToolSettings } from './types-CVxZMwC_.js';
-import { U as LatLng } from './types-CVxZMwC_.js';
-import { L as Layer } from './types-CVxZMwC_.js';
-import { g as LayerChangeCallbackParams } from './types-CVxZMwC_.js';
-import { o as LayerFilters } from './types-CVxZMwC_.js';
-import { h as LayerGroup } from './types-CVxZMwC_.js';
-import { j as LayerGroupChangeCallbackParams } from './types-CVxZMwC_.js';
-import { N as LayerGroupNode } from './types-CVxZMwC_.js';
-import { O as LayerNode } from './types-CVxZMwC_.js';
-import { y as LayerProcessingStatus } from './types-CVxZMwC_.js';
-import { l as LegendItem } from './types-CVxZMwC_.js';
-import { n as LegendItemChangeCallbackParams } from './types-CVxZMwC_.js';
-import { k as LegendItemIdentifier } from './types-CVxZMwC_.js';
-import { m as LegendItemsConstraint } from './types-CVxZMwC_.js';
-import { W as LineStringGeometry } from './types-CVxZMwC_.js';
-import { a2 as LineToolSettings } from './types-CVxZMwC_.js';
-import { X as LngLatTuple } from './types-CVxZMwC_.js';
-import { M as MapInteractionEvent } from './types-CVxZMwC_.js';
-import { a3 as MarkerToolSettings } from './types-CVxZMwC_.js';
-import { Y as MultiLineStringGeometry } from './types-CVxZMwC_.js';
-import { Z as MultiPolygonGeometry } from './types-CVxZMwC_.js';
-import { a4 as NoteToolSettings } from './types-CVxZMwC_.js';
-import { a5 as PinFrame } from './types-CVxZMwC_.js';
-import { a6 as PinSymbol } from './types-CVxZMwC_.js';
-import { a7 as PinToolSettings } from './types-CVxZMwC_.js';
-import { _ as PointGeometry } from './types-CVxZMwC_.js';
-import { $ as PolygonGeometry } from './types-CVxZMwC_.js';
-import { a8 as PolygonToolSettings } from './types-CVxZMwC_.js';
-import { R as RasterValue } from './types-CVxZMwC_.js';
-import { a9 as RouteToolSettings } from './types-CVxZMwC_.js';
-import { v as SetViewportCenterZoomParams } from './types-CVxZMwC_.js';
-import { S as SetVisibilityRequest } from './types-CVxZMwC_.js';
-import { aa as TextToolSettings } from './types-CVxZMwC_.js';
-import { u as ToolSettingsChangeEvent } from './types-CVxZMwC_.js';
-import { t as ToolSettingsMap } from './types-CVxZMwC_.js';
-import { T as ToolType } from './types-CVxZMwC_.js';
-import { x as ViewportCenterZoom } from './types-CVxZMwC_.js';
-import { w as ViewportFitBoundsParams } from './types-CVxZMwC_.js';
-import { V as ViewportState } from './types-CVxZMwC_.js';
-import { z } from './types-CVxZMwC_.js';
+import { a1 as CircleToolSettings } from './types-BLsf5GHN.js';
+import { C as ConfigurableToolType } from './types-BLsf5GHN.js';
+import { E as Element_2 } from './types-BLsf5GHN.js';
+import { d as ElementChangeCallbackParams } from './types-BLsf5GHN.js';
+import { b as ElementGroup } from './types-BLsf5GHN.js';
+import { e as ElementGroupChangeCallbackParams } from './types-BLsf5GHN.js';
+import { J as ElementGroupNode } from './types-BLsf5GHN.js';
+import { K as ElementNode } from './types-BLsf5GHN.js';
+import { r as EntityNode } from './types-BLsf5GHN.js';
+import { q as Feature } from './types-BLsf5GHN.js';
+import { N as FeatureNode } from './types-BLsf5GHN.js';
+import { s as FeatureSelection } from './types-BLsf5GHN.js';
+import { Q as FeltBoundary } from './types-BLsf5GHN.js';
+import { U as FeltZoom } from './types-BLsf5GHN.js';
+import { B as FilterExpression } from './types-BLsf5GHN.js';
+import { D as FilterLogicGate } from './types-BLsf5GHN.js';
+import { F as Filters } from './types-BLsf5GHN.js';
+import { H as FilterTernary } from './types-BLsf5GHN.js';
+import { G as Geometry } from './types-BLsf5GHN.js';
+import { c as GetElementGroupsConstraint } from './types-BLsf5GHN.js';
+import { a as GetElementsConstraint } from './types-BLsf5GHN.js';
+import { i as GetLayerGroupsConstraint } from './types-BLsf5GHN.js';
+import { f as GetLayersConstraint } from './types-BLsf5GHN.js';
+import { p as GetRenderedFeaturesConstraint } from './types-BLsf5GHN.js';
+import { a2 as HighlighterToolSettings } from './types-BLsf5GHN.js';
+import { I as InputToolSettings } from './types-BLsf5GHN.js';
+import { W as LatLng } from './types-BLsf5GHN.js';
+import { L as Layer } from './types-BLsf5GHN.js';
+import { g as LayerChangeCallbackParams } from './types-BLsf5GHN.js';
+import { o as LayerFilters } from './types-BLsf5GHN.js';
+import { h as LayerGroup } from './types-BLsf5GHN.js';
+import { j as LayerGroupChangeCallbackParams } from './types-BLsf5GHN.js';
+import { O as LayerGroupNode } from './types-BLsf5GHN.js';
+import { P as LayerNode } from './types-BLsf5GHN.js';
+import { A as LayerProcessingStatus } from './types-BLsf5GHN.js';
+import { l as LegendItem } from './types-BLsf5GHN.js';
+import { n as LegendItemChangeCallbackParams } from './types-BLsf5GHN.js';
+import { k as LegendItemIdentifier } from './types-BLsf5GHN.js';
+import { m as LegendItemsConstraint } from './types-BLsf5GHN.js';
+import { X as LineStringGeometry } from './types-BLsf5GHN.js';
+import { a3 as LineToolSettings } from './types-BLsf5GHN.js';
+import { Y as LngLatTuple } from './types-BLsf5GHN.js';
+import { M as MapInteractionEvent } from './types-BLsf5GHN.js';
+import { a4 as MarkerToolSettings } from './types-BLsf5GHN.js';
+import { Z as MultiLineStringGeometry } from './types-BLsf5GHN.js';
+import { _ as MultiPolygonGeometry } from './types-BLsf5GHN.js';
+import { a5 as NoteToolSettings } from './types-BLsf5GHN.js';
+import { a6 as PinFrame } from './types-BLsf5GHN.js';
+import { a7 as PinSymbol } from './types-BLsf5GHN.js';
+import { a8 as PinToolSettings } from './types-BLsf5GHN.js';
+import { $ as PointGeometry } from './types-BLsf5GHN.js';
+import { a0 as PolygonGeometry } from './types-BLsf5GHN.js';
+import { a9 as PolygonToolSettings } from './types-BLsf5GHN.js';
+import { R as RasterValue } from './types-BLsf5GHN.js';
+import { aa as RouteToolSettings } from './types-BLsf5GHN.js';
+import { v as SetViewportCenterZoomParams } from './types-BLsf5GHN.js';
+import { S as SetVisibilityRequest } from './types-BLsf5GHN.js';
+import { ab as TextToolSettings } from './types-BLsf5GHN.js';
+import { u as ToolSettingsChangeEvent } from './types-BLsf5GHN.js';
+import { t as ToolSettingsMap } from './types-BLsf5GHN.js';
+import { T as ToolType } from './types-BLsf5GHN.js';
+import { y as ViewportCenterZoom } from './types-BLsf5GHN.js';
+import { w as ViewportConstraints } from './types-BLsf5GHN.js';
+import { x as ViewportFitBoundsParams } from './types-BLsf5GHN.js';
+import { V as ViewportState } from './types-BLsf5GHN.js';
+import { z } from './types-BLsf5GHN.js';
 import { z as z_2 } from 'zod';
 
 export { CircleToolSettings }
@@ -485,10 +486,13 @@ const UiOnMapInteractionsOptionsSchema: z_2.ZodObject<{
 
 export { ViewportCenterZoom }
 
+export { ViewportConstraints }
+
 // @public
 export interface ViewportController {
     fitViewportToBounds(bounds: ViewportFitBoundsParams): void;
     getViewport(): Promise<ViewportState>;
+    getViewportConstraints(): Promise<ViewportConstraints | null>;
     onMapIdle(args: {
         handler: () => void;
     }): VoidFunction;
@@ -499,6 +503,7 @@ export interface ViewportController {
         handler: (viewport: ViewportState) => void;
     }): VoidFunction;
     setViewport(viewport: SetViewportCenterZoomParams): void;
+    setViewportConstraints(constraints: Partial<ViewportConstraints> | null): void;
 }
 
 export { ViewportFitBoundsParams }

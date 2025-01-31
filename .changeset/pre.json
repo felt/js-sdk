@@ -1,0 +1,11 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@feltmaps/js-sdk": "1.4.0"
+  },
+  "changesets": [
+    "few-cats-fix",
+    "hungry-hotels-end"
+  ]
+}

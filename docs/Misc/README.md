@@ -8,6 +8,4 @@ The misc module for hard-to-categorize functionality.
 
 ## Types
 
-The details of a map.
-
 * [MapDetails](MapDetails.md)

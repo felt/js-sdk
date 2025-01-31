@@ -2,6 +2,8 @@
 
 > **MapDetails**: \{ `id`: `string`; `title`: `string`; `description`: `string` | `null`; }
 
+The details of a map.
+
 ## Type declaration
 
 ### id

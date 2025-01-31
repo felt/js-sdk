@@ -1,7 +1,7 @@
 /**
- * @group Types
- *
  * The details of a map.
+ *
+ * @group Types
  */
 export type MapDetails = {
   /**

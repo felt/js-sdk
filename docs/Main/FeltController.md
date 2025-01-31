@@ -698,7 +698,7 @@ felt.clearSelection({ elements: true });
 
 ### setTool()
 
-> **setTool**(`tool`: `null` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"` | `"text"` | `"link"`): `void`
+> **setTool**(`tool`: `null` | `"pin"` | `"line"` | `"note"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"` | `"text"` | `"link"`): `void`
 
 Sets the tool to use for drawing elements on the map.
 
@@ -706,7 +706,7 @@ Sets the tool to use for drawing elements on the map.
 
 | Parameter | Type                                                                                                                                         | Description      |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
-| `tool`    | `null` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"text"` \| `"link"` | The tool to set. |
+| `tool`    | `null` \| `"pin"` \| `"line"` \| `"note"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"text"` \| `"link"` | The tool to set. |
 
 #### Returns
 
@@ -726,13 +726,13 @@ felt.setTool(null);
 
 ### getTool()
 
-> **getTool**(): `Promise`\<`null` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"` | `"text"` | `"link"`>
+> **getTool**(): `Promise`\<`null` | `"pin"` | `"line"` | `"note"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"` | `"text"` | `"link"`>
 
 Gets the current tool, if any is in use.
 
 #### Returns
 
-`Promise`\<`null` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"` | `"text"` | `"link"`>
+`Promise`\<`null` | `"pin"` | `"line"` | `"note"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"` | `"text"` | `"link"`>
 
 The current tool, or `null` if no tool is in use.
 
@@ -746,7 +746,7 @@ const tool = await felt.getTool(); // "marker", "polygon", etc.
 
 ### onToolChange()
 
-> **onToolChange**(`args`: \{ `handler`: (`tool`: `null` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"` | `"text"` | `"link"`) => `void`; }): `VoidFunction`
+> **onToolChange**(`args`: \{ `handler`: (`tool`: `null` | `"pin"` | `"line"` | `"note"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"` | `"text"` | `"link"`) => `void`; }): `VoidFunction`
 
 Listens for changes to the current tool.
 
@@ -754,8 +754,8 @@ Listens for changes to the current tool.
 
 | Parameter      | Type                                                                                                                                                                              | Description                                                              |
 | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| `args`         | \{ `handler`: (`tool`: `null` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"text"` \| `"link"`) => `void`; } | -                                                                        |
-| `args.handler` | (`tool`: `null` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"text"` \| `"link"`) => `void`                  | This callback is called with the current tool whenever the tool changes. |
+| `args`         | \{ `handler`: (`tool`: `null` \| `"pin"` \| `"line"` \| `"note"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"text"` \| `"link"`) => `void`; } | -                                                                        |
+| `args.handler` | (`tool`: `null` \| `"pin"` \| `"line"` \| `"note"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"text"` \| `"link"`) => `void`                  | This callback is called with the current tool whenever the tool changes. |
 
 #### Returns
 

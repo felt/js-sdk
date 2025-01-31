@@ -1,5 +1,6 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
+import { LatLngSchema } from "../shared/types";
 
 /**
  * @group Elements
@@ -129,3 +130,30 @@ export interface ElementChangeCallbackParams {
 export interface ElementGroupChangeCallbackParams {
   elementGroup: ElementGroup | null;
 }
+
+const BaseFeltElementSchema = z.object({
+  id: z.string(),
+  groupId: z.string().nullable(),
+  name: z.string(),
+  description: z.string(),
+  attributes: z.record(z.string(), z.unknown()),
+  color: z.string(),
+});
+
+export const PinSchema = BaseFeltElementSchema.extend({
+  type: z.literal("pin"),
+  coordinates: LatLngSchema,
+
+  symbol: z.string(),
+  frame: z.enum(["frame-circle", "frame-square"]).nullable(),
+});
+
+export const LineSchema = BaseFeltElementSchema.extend({
+  type: z.literal("line"),
+  coordinates: z.array(z.array(LatLngSchema)),
+
+  strokeOpacity: z.number(),
+  strokeWidth: z.number(),
+  strokeStyle: z.enum(["solid", "dashed", "dotted"]),
+  distanceMarker: z.boolean(),
+});

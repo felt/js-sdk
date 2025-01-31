@@ -1,5 +1,6 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
+import { LineSchema, PinSchema } from "../elements/types";
 
 const configurableTools = [
   "pin",
@@ -19,21 +20,21 @@ export const ConfigurableToolSchema = z.enum(configurableTools);
 export type ToolType = z.infer<typeof ToolSchema>;
 export type ConfigurableToolType = keyof ToolSettingsMap;
 
-const PinToolSettingsSchema = z.object({
-  color: z.string(),
-  symbol: z.string(),
-  frame: z.enum(["frame-circle", "frame-square"]).nullable(),
+export const PinToolSettingsSchema = PinSchema.pick({
+  color: true,
+  symbol: true,
+  frame: true,
 });
 export interface PinToolSettings extends zInfer<typeof PinToolSettingsSchema> {
   symbol: PinSymbol;
 }
 
-const LineToolSettingsSchema = z.object({
-  color: z.string(),
-  strokeOpacity: z.number(),
-  strokeWidth: z.number(),
-  strokeStyle: z.enum(["solid", "dashed", "dotted"]),
-  distanceMarker: z.boolean(),
+export const LineToolSettingsSchema = LineSchema.pick({
+  color: true,
+  strokeOpacity: true,
+  strokeWidth: true,
+  strokeStyle: true,
+  distanceMarker: true,
 });
 export interface LineToolSettings
   extends zInfer<typeof LineToolSettingsSchema> {}

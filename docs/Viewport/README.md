@@ -10,18 +10,7 @@ current viewport, getting the current viewport, and being notified when the view
 ## Types
 
 * [ViewportCenterZoom](ViewportCenterZoom.md)
-* [SetViewportCenterZoomParams](SetViewportCenterZoomParams.md)
-* [ViewportFitBoundsParams](ViewportFitBoundsParams.md)
-
-## Types
-
-The constraints for the viewport. Used to ensure that the viewport stays
-within certain bounds and zoom levels.
-
-* [ViewportConstraints](ViewportConstraints.md)
-
-## Types
-
-The current state of the viewport, including the derived bounds.
-
 * [ViewportState](ViewportState.md)
+* [SetViewportCenterZoomParams](SetViewportCenterZoomParams.md)
+* [ViewportConstraints](ViewportConstraints.md)
+* [ViewportFitBoundsParams](ViewportFitBoundsParams.md)

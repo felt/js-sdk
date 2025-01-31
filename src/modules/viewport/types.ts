@@ -34,9 +34,9 @@ export const ViewportCenterZoomSchema = z.object({
 });
 
 /**
- * @group Types
- *
  * The current state of the viewport, including the derived bounds.
+ *
+ * @group Types
  */
 export interface ViewportState {
   /**
@@ -77,10 +77,10 @@ export const SetViewportCenterZoomParamsSchema = z.object({
 });
 
 /**
- * @group Types
- *
  * The constraints for the viewport. Used to ensure that the viewport stays
  * within certain bounds and zoom levels.
+ *
+ * @group Types
  */
 export interface ViewportConstraints {
   /**
@@ -107,6 +107,8 @@ export interface ViewportConstraints {
 
 /**
  * The parameters for the `setViewportConstraints` method.
+ *
+ * @group Types
  */
 export const SetViewportConstraintsParamsSchema = z
   .object({

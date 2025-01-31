@@ -1,5 +1,7 @@
 ***
 
+The current state of the viewport, including the derived bounds.
+
 ## Properties
 
 ### center

@@ -1,5 +1,8 @@
 ***
 
+The constraints for the viewport. Used to ensure that the viewport stays
+within certain bounds and zoom levels.
+
 ## Properties
 
 ### minZoom

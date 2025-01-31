@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.5.0-next.2
+
+### Minor Changes
+
+- 1f6a386: Add getViewportConstraints and setViewportConstraints methods definition
+
 ## 1.5.0-next.0
 
 ### Minor Changes

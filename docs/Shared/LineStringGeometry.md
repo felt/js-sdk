@@ -1,6 +1,6 @@
 ***
 
-> **LineStringGeometry**: \{`type`: `"LineString"`;`coordinates`: [`LngLatTuple`](LngLatTuple.md)\[]; }
+> **LineStringGeometry**: \{ `type`: `"LineString"`; `coordinates`: [`LngLatTuple`](LngLatTuple.md)\[]; }
 
 A GeoJSON-like line string geometry.
 

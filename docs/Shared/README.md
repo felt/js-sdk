@@ -2,9 +2,7 @@
 
 These are generic types that are used across multiple modules.
 
-## Index
-
-### Other
+## Other
 
 * [LatLng](LatLng.md)
 * [LngLatTuple](LngLatTuple.md)
@@ -17,6 +15,6 @@ These are generic types that are used across multiple modules.
 * [FeltZoom](FeltZoom.md)
 * [FeltBoundary](FeltBoundary.md)
 
-### Visibility
+## Visibility
 
 * [SetVisibilityRequest](SetVisibilityRequest.md)

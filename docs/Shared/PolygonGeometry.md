@@ -1,6 +1,6 @@
 ***
 
-> **PolygonGeometry**: \{`type`: `"Polygon"`;`coordinates`: [`LngLatTuple`](LngLatTuple.md)\[]\[]; }
+> **PolygonGeometry**: \{ `type`: `"Polygon"`; `coordinates`: [`LngLatTuple`](LngLatTuple.md)\[]\[]; }
 
 A GeoJSON-like polygon geometry.
 

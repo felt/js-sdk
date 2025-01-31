@@ -97,7 +97,7 @@ felt.setLayerVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
 
 ### setLayerStyle()
 
-> **setLayerStyle**(`params`: \{`id`: `string`;`style`: `object`; }): `Promise`\<`void`>
+> **setLayerStyle**(`params`: \{ `id`: `string`; `style`: `object`; }): `Promise`\<`void`>
 
 Set the style for a layer using FSL, the Felt Style Language.
 
@@ -113,11 +113,11 @@ in the rejected promise value.
 
 #### Parameters
 
-| Parameter      | Type     | Description                               |
-| -------------- | -------- | ----------------------------------------- |
-| `params`       | `object` | -                                         |
-| `params.id`    | `string` | The id of the layer to set the style for. |
-| `params.style` | `object` | The style to set for the layer.           |
+| Parameter      | Type                                    | Description                               |
+| -------------- | --------------------------------------- | ----------------------------------------- |
+| `params`       | \{ `id`: `string`; `style`: `object`; } | -                                         |
+| `params.id`    | `string`                                | The id of the layer to set the style for. |
+| `params.style` | `object`                                | The style to set for the layer.           |
 
 #### Returns
 
@@ -321,17 +321,17 @@ const legendItems = await felt.getLegendItems({layerId: "layer-1"});
 
 ### setLegendItemVisibility()
 
-> **setLegendItemVisibility**(`visibility`: \{`show`: [`LegendItemIdentifier`](LegendItemIdentifier.md)\[];`hide`: [`LegendItemIdentifier`](LegendItemIdentifier.md)\[]; }): `Promise`\<`void`>
+> **setLegendItemVisibility**(`visibility`: \{ `show`: [`LegendItemIdentifier`](LegendItemIdentifier.md)\[]; `hide`: [`LegendItemIdentifier`](LegendItemIdentifier.md)\[]; }): `Promise`\<`void`>
 
 Hide or show legend items with the given identifiers.
 
 #### Parameters
 
-| Parameter          | Type                                                 |
-| ------------------ | ---------------------------------------------------- |
-| `visibility`       | `object`                                             |
-| `visibility.show`? | [`LegendItemIdentifier`](LegendItemIdentifier.md)\[] |
-| `visibility.hide`? | [`LegendItemIdentifier`](LegendItemIdentifier.md)\[] |
+| Parameter          | Type                                                                                                                             |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
+| `visibility`       | \{ `show`: [`LegendItemIdentifier`](LegendItemIdentifier.md)\[]; `hide`: [`LegendItemIdentifier`](LegendItemIdentifier.md)\[]; } |
+| `visibility.show`? | [`LegendItemIdentifier`](LegendItemIdentifier.md)\[]                                                                             |
+| `visibility.hide`? | [`LegendItemIdentifier`](LegendItemIdentifier.md)\[]                                                                             |
 
 #### Returns
 
@@ -380,18 +380,18 @@ console.log(filters.combined, filters.style, filters.ephemeral, filters.componen
 
 ### setLayerFilters()
 
-> **setLayerFilters**(`params`: \{`layerId`: `string`;`filters`: [`Filters`](Filters.md);`note`: `string`; }): `Promise`\<`void`>
+> **setLayerFilters**(`params`: \{ `layerId`: `string`; `filters`: [`Filters`](Filters.md); `note`: `string`; }): `Promise`\<`void`>
 
 Sets the **ephemeral** filters for a layer.
 
 #### Parameters
 
-| Parameter        | Type                    | Description                                                                                                                                                          |
-| ---------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `params`         | `object`                | -                                                                                                                                                                    |
-| `params.layerId` | `string`                | The layer that you want to set the filters for.                                                                                                                      |
-| `params.filters` | [`Filters`](Filters.md) | The filters to set for the layer. This will replace any ephemeral filters that are currently set for the layer.                                                      |
-| `params.note`?   | `string`                | A note to display on the layer legend when this filter is applied. When the note is shown, a reset button will also be shown, allowing the user to clear the filter. |
+| Parameter        | Type                                                                            | Description                                                                                                                                                          |
+| ---------------- | ------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `params`         | \{ `layerId`: `string`; `filters`: [`Filters`](Filters.md); `note`: `string`; } | -                                                                                                                                                                    |
+| `params.layerId` | `string`                                                                        | The layer that you want to set the filters for.                                                                                                                      |
+| `params.filters` | [`Filters`](Filters.md)                                                         | The filters to set for the layer. This will replace any ephemeral filters that are currently set for the layer.                                                      |
+| `params.note`?   | `string`                                                                        | A note to display on the layer legend when this filter is applied. When the note is shown, a reset button will also be shown, allowing the user to clear the filter. |
 
 #### Returns
 
@@ -439,18 +439,18 @@ const features = await felt.getRenderedFeatures();
 
 ### onLayerChange()
 
-> **onLayerChange**(`args`: \{`options`: \{`id`: `string`; };`handler`: (`change`: [`LayerChangeCallbackParams`](LayerChangeCallbackParams.md)) => `void`; }): `VoidFunction`
+> **onLayerChange**(`args`: \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`LayerChangeCallbackParams`](LayerChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when a layer changes.
 
 #### Parameters
 
-| Parameter         | Type                                                                              | Description                                        |
-| ----------------- | --------------------------------------------------------------------------------- | -------------------------------------------------- |
-| `args`            | `object`                                                                          | -                                                  |
-| `args.options`    | `object`                                                                          | -                                                  |
-| `args.options.id` | `string`                                                                          | The id of the layer to listen for changes to.      |
-| `args.handler`    | (`change`: [`LayerChangeCallbackParams`](LayerChangeCallbackParams.md)) => `void` | The handler that is called when the layer changes. |
+| Parameter         | Type                                                                                                                                | Description                                        |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| `args`            | \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`LayerChangeCallbackParams`](LayerChangeCallbackParams.md)) => `void`; } | -                                                  |
+| `args.options`    | \{ `id`: `string`; }                                                                                                                | -                                                  |
+| `args.options.id` | `string`                                                                                                                            | The id of the layer to listen for changes to.      |
+| `args.handler`    | (`change`: [`LayerChangeCallbackParams`](LayerChangeCallbackParams.md)) => `void`                                                   | The handler that is called when the layer changes. |
 
 #### Returns
 
@@ -474,18 +474,18 @@ unsubscribe();
 
 ### onLayerGroupChange()
 
-> **onLayerGroupChange**(`args`: \{`options`: \{`id`: `string`; };`handler`: (`change`: [`LayerGroupChangeCallbackParams`](LayerGroupChangeCallbackParams.md)) => `void`; }): `VoidFunction`
+> **onLayerGroupChange**(`args`: \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`LayerGroupChangeCallbackParams`](LayerGroupChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when a layer group changes.
 
 #### Parameters
 
-| Parameter         | Type                                                                                        |
-| ----------------- | ------------------------------------------------------------------------------------------- |
-| `args`            | `object`                                                                                    |
-| `args.options`    | `object`                                                                                    |
-| `args.options.id` | `string`                                                                                    |
-| `args.handler`    | (`change`: [`LayerGroupChangeCallbackParams`](LayerGroupChangeCallbackParams.md)) => `void` |
+| Parameter         | Type                                                                                                                                          |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `args`            | \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`LayerGroupChangeCallbackParams`](LayerGroupChangeCallbackParams.md)) => `void`; } |
+| `args.options`    | \{ `id`: `string`; }                                                                                                                          |
+| `args.options.id` | `string`                                                                                                                                      |
+| `args.handler`    | (`change`: [`LayerGroupChangeCallbackParams`](LayerGroupChangeCallbackParams.md)) => `void`                                                   |
 
 #### Returns
 
@@ -509,17 +509,17 @@ unsubscribe();
 
 ### onLegendItemChange()
 
-> **onLegendItemChange**(`args`: \{`options`: [`LegendItemIdentifier`](LegendItemIdentifier.md);`handler`: (`change`: [`LegendItemChangeCallbackParams`](LegendItemChangeCallbackParams.md)) => `void`; }): `VoidFunction`
+> **onLegendItemChange**(`args`: \{ `options`: [`LegendItemIdentifier`](LegendItemIdentifier.md); `handler`: (`change`: [`LegendItemChangeCallbackParams`](LegendItemChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when a legend item changes.
 
 #### Parameters
 
-| Parameter      | Type                                                                                        |
-| -------------- | ------------------------------------------------------------------------------------------- |
-| `args`         | `object`                                                                                    |
-| `args.options` | [`LegendItemIdentifier`](LegendItemIdentifier.md)                                           |
-| `args.handler` | (`change`: [`LegendItemChangeCallbackParams`](LegendItemChangeCallbackParams.md)) => `void` |
+| Parameter      | Type                                                                                                                                                                       |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `args`         | \{ `options`: [`LegendItemIdentifier`](LegendItemIdentifier.md); `handler`: (`change`: [`LegendItemChangeCallbackParams`](LegendItemChangeCallbackParams.md)) => `void`; } |
+| `args.options` | [`LegendItemIdentifier`](LegendItemIdentifier.md)                                                                                                                          |
+| `args.handler` | (`change`: [`LegendItemChangeCallbackParams`](LegendItemChangeCallbackParams.md)) => `void`                                                                                |
 
 #### Returns
 

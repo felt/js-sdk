@@ -1,6 +1,6 @@
 ***
 
-> **MultiLineStringGeometry**: \{`type`: `"MultiLineString"`;`coordinates`: [`LineStringGeometry`](LineStringGeometry.md)\[`"coordinates"`]\[]; }
+> **MultiLineStringGeometry**: \{ `type`: `"MultiLineString"`; `coordinates`: [`LineStringGeometry`](LineStringGeometry.md)\[`"coordinates"`]\[]; }
 
 A GeoJSON-like multi-line string geometry.
 

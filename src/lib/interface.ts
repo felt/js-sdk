@@ -10,12 +10,17 @@ type MethodSpec = UnionToIntersection<AllModules["methods"]>;
 type ListenerSpec = UnionToIntersection<AllModules["listeners"]>;
 
 type ExtractMethodParams<
-  T extends Record<string, { request: { params?: any }; response: any }>,
+  T extends Record<
+    string,
+    AnyFunction | { request: { params?: any }; response: any }
+  >,
 > = {
-  [K in keyof T]: {
-    request: T[K]["request"]["params"];
-    response: T[K]["response"];
-  };
+  [K in keyof T]: T[K] extends { request: { params?: any }; response: any }
+    ? {
+        request: T[K]["request"]["params"];
+        response: T[K]["response"];
+      }
+    : T[K];
 };
 
 type ExtractListenerParams<
@@ -27,10 +32,16 @@ type ExtractListenerParams<
   };
 };
 
+type AnyFunction = (...args: any[]) => any;
+
 type MethodHandlers<T> = {
-  [K in keyof T]: (
-    request: T[K] extends { request: any } ? T[K]["request"] : never,
-  ) => PromiseOrNot<T[K] extends { response: any } ? T[K]["response"] : never>;
+  [K in keyof T]: T[K] extends AnyFunction
+    ? T[K]
+    : (
+        request: T[K] extends { request: any } ? T[K]["request"] : never,
+      ) => PromiseOrNot<
+        T[K] extends { response: any } ? T[K]["response"] : never
+      >;
 };
 
 type FeltMethodHandlers = MethodHandlers<ExtractMethodParams<MethodSpec>>;
@@ -83,18 +94,27 @@ export function listener<TEventName extends keyof ListenerSpec>(
   };
 }
 
-type MaybeOneMethod<K extends keyof MethodSpec> = {
+// methods where we write out the entire function signature
+type LiteralMethodKeys = {
+  [K in keyof MethodSpec]: MethodSpec[K] extends (...args: any[]) => any
+    ? K
+    : never;
+}[keyof MethodSpec];
+
+type MaybeOneMethod<K extends keyof Omit<MethodSpec, LiteralMethodKeys>> = {
   [K1 in K]: MethodSpec[K1]["request"];
 }[K]["params"];
 
-type OneMethod<K extends keyof MethodSpec> =
+type StandardMethods = Omit<MethodSpec, LiteralMethodKeys>;
+
+type OneMethod<K extends keyof StandardMethods> =
   MaybeOneMethod<K> extends undefined ? void : MaybeOneMethod<K>;
 
-type FeltMethod<TKey extends keyof MethodSpec> = (
+type FeltMethod<TKey extends keyof StandardMethods> = (
   payload: OneMethod<TKey>,
-) => Promise<MethodSpec[TKey]["response"]>;
+) => Promise<StandardMethods[TKey]["response"]>;
 
-export function method<TKey extends keyof MethodSpec>(
+export function method<TKey extends keyof StandardMethods>(
   feltWindow: Window,
   type: TKey,
 ): FeltMethod<TKey> {
@@ -104,7 +124,11 @@ export function method<TKey extends keyof MethodSpec>(
 
     return new Promise((resolve, reject) => {
       messageChannel.port1.onmessage = (event) => {
-        if (event.data && "__error__" in event.data) {
+        if (
+          event.data &&
+          typeof event.data === "object" &&
+          "__error__" in event.data
+        ) {
           reject(new Error(event.data.__error__));
         } else {
           resolve(event.data);

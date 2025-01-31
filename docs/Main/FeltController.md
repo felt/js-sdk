@@ -10,7 +10,7 @@ own to make it easier to find related methods and events.
 
 ## Extends
 
-* [`ViewportController`](../Viewport/ViewportController.md).[`UiController`](../UI/UiController.md).[`LayersController`](../Layers/LayersController.md).[`ElementsController`](../Elements/ElementsController.md).[`SelectionController`](../Selection/SelectionController.md).[`InteractionsController`](../Interactions/InteractionsController.md)
+* [`ViewportController`](../Viewport/ViewportController.md).[`UiController`](../UI/UiController.md).[`LayersController`](../Layers/LayersController.md).[`ElementsController`](../Elements/ElementsController.md).[`SelectionController`](../Selection/SelectionController.md).[`InteractionsController`](../Interactions/InteractionsController.md).[`ToolsController`](../Tools/ToolsController.md)
 
 ## Properties
 
@@ -693,6 +693,151 @@ felt.clearSelection({ elements: true });
 ```typescript
 { features: true, elements: true }
 ```
+
+***
+
+### setTool()
+
+> **setTool**(`tool`: `null` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"` | `"text"` | `"link"`): `void`
+
+Sets the tool to use for drawing elements on the map.
+
+#### Parameters
+
+| Parameter | Type                                                                                                                                         | Description      |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| `tool`    | `null` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"text"` \| `"link"` | The tool to set. |
+
+#### Returns
+
+`void`
+
+#### Example
+
+```ts
+// Set the tool to "marker"
+felt.setTool("marker");
+
+// put down the tool
+felt.setTool(null);
+```
+
+***
+
+### getTool()
+
+> **getTool**(): `Promise`\<`null` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"` | `"text"` | `"link"`>
+
+Gets the current tool, if any is in use.
+
+#### Returns
+
+`Promise`\<`null` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"` | `"text"` | `"link"`>
+
+The current tool, or `null` if no tool is in use.
+
+#### Example
+
+```ts
+const tool = await felt.getTool(); // "marker", "polygon", etc.
+```
+
+***
+
+### onToolChange()
+
+> **onToolChange**(`args`: \{ `handler`: (`tool`: `null` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"` | `"text"` | `"link"`) => `void`; }): `VoidFunction`
+
+Listens for changes to the current tool.
+
+#### Parameters
+
+| Parameter      | Type                                                                                                                                                                              | Description                                                              |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `args`         | \{ `handler`: (`tool`: `null` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"text"` \| `"link"`) => `void`; } | -                                                                        |
+| `args.handler` | (`tool`: `null` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"text"` \| `"link"`) => `void`                  | This callback is called with the current tool whenever the tool changes. |
+
+#### Returns
+
+`VoidFunction`
+
+A function to unsubscribe from the listener
+
+#### Example
+
+```ts
+const unsubscribe = felt.onToolChange({
+  handler: tool => console.log(tool),
+});
+
+// later on...
+unsubscribe();
+```
+
+***
+
+### setToolSettings()
+
+> **setToolSettings**(`settings`: [`InputToolSettings`](../Tools/InputToolSettings.md)): `void`
+
+Sets the settings for the current tool.
+
+#### Parameters
+
+| Parameter  | Type                                                 | Description          |
+| ---------- | ---------------------------------------------------- | -------------------- |
+| `settings` | [`InputToolSettings`](../Tools/InputToolSettings.md) | The settings to set. |
+
+#### Returns
+
+`void`
+
+***
+
+### getToolSettings()
+
+> **getToolSettings**\<`T`>(`tool`: `T`): `Promise`\<[`ToolSettingsMap`](../Tools/ToolSettingsMap.md)\[`T`]>
+
+Gets the settings for the current tool.
+
+#### Type Parameters
+
+| Type Parameter                                                       |
+| -------------------------------------------------------------------- |
+| `T` *extends* keyof [`ToolSettingsMap`](../Tools/ToolSettingsMap.md) |
+
+#### Parameters
+
+| Parameter | Type |
+| --------- | ---- |
+| `tool`    | `T`  |
+
+#### Returns
+
+`Promise`\<[`ToolSettingsMap`](../Tools/ToolSettingsMap.md)\[`T`]>
+
+The settings for the current tool.
+
+***
+
+### onToolSettingsChange()
+
+> **onToolSettingsChange**(`args`: \{ `handler`: (`settings`: [`ToolSettingsChangeEvent`](../Tools/ToolSettingsChangeEvent.md)) => `void`; }): `VoidFunction`
+
+Listens for changes to the settings on all tools.
+
+#### Parameters
+
+| Parameter      | Type                                                                                                      |
+| -------------- | --------------------------------------------------------------------------------------------------------- |
+| `args`         | \{ `handler`: (`settings`: [`ToolSettingsChangeEvent`](../Tools/ToolSettingsChangeEvent.md)) => `void`; } |
+| `args.handler` | (`settings`: [`ToolSettingsChangeEvent`](../Tools/ToolSettingsChangeEvent.md)) => `void`                  |
+
+#### Returns
+
+`VoidFunction`
+
+A function to unsubscribe from the listener
 
 ***
 

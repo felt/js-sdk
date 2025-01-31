@@ -5,6 +5,7 @@ import {
 } from "../interactions/schema";
 import { layersSchema, type LayersSchema } from "../layers/schema";
 import { selectionSchema, type SelectionSchema } from "../selection/schema";
+import { toolsSchema, type ToolsSchema } from "../tools/schema";
 import { uiSchema, type UiSchema } from "../ui/schema";
 import { viewportSchema, type ViewportSchema } from "../viewport/schema";
 
@@ -15,6 +16,7 @@ export const allModules = [
   elementsSchema,
   selectionSchema,
   interactionsSchema,
+  toolsSchema,
 ];
 
 export type AllModules =
@@ -23,4 +25,5 @@ export type AllModules =
   | LayersSchema
   | ElementsSchema
   | SelectionSchema
-  | InteractionsSchema;
+  | InteractionsSchema
+  | ToolsSchema;

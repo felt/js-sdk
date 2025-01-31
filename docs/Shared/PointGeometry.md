@@ -1,6 +1,6 @@
 ***
 
-> **PointGeometry**: \{`type`: `"Point"`;`coordinates`: [`LngLatTuple`](LngLatTuple.md); }
+> **PointGeometry**: \{ `type`: `"Point"`; `coordinates`: [`LngLatTuple`](LngLatTuple.md); }
 
 A GeoJSON-like point geometry.
 

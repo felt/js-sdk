@@ -26,13 +26,11 @@ await map.setViewport({
 });
 ```
 
-## Index
-
-### Controller
+## Controller
 
 * [FeltController](FeltController.md)
 
-### Instantiation
+## Instantiation
 
 * [FeltEmbedOptions](FeltEmbedOptions.md)
 * [Felt](Felt.md)

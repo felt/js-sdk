@@ -36,7 +36,7 @@ true
 
 ### fitViewport?
 
-> `optional` **fitViewport**: `boolean` | \{`maxZoom`: `number`; }
+> `optional` **fitViewport**: `boolean` | \{ `maxZoom`: `number`; }
 
 Whether to center the view on the feature after selecting it.
 

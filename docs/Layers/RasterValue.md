@@ -30,6 +30,6 @@ The name of the category that the pixel belongs to.
 
 ### color
 
-> **color**: `null` | \{`r`: `number`;`g`: `number`;`b`: `number`;`a`: `number`; }
+> **color**: `null` | \{ `r`: `number`; `g`: `number`; `b`: `number`; `a`: `number`; }
 
 The color of the pixel. Each value is between 0 and 255.

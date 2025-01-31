@@ -172,18 +172,18 @@ felt.setElementGroupVisibility({ show: ["element-group-1", "element-group-2"], h
 
 ### onElementChange()
 
-> **onElementChange**(`args`: \{`options`: \{`id`: `string`; };`handler`: (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`; }): `VoidFunction`
+> **onElementChange**(`args`: \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when an element changes.
 
 #### Parameters
 
-| Parameter         | Type                                                                                  | Description                                          |
-| ----------------- | ------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| `args`            | `object`                                                                              | -                                                    |
-| `args.options`    | `object`                                                                              | -                                                    |
-| `args.options.id` | `string`                                                                              | The id of the element to listen for changes to.      |
-| `args.handler`    | (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void` | The handler that is called when the element changes. |
+| Parameter         | Type                                                                                                                                    | Description                                          |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| `args`            | \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`; } | -                                                    |
+| `args.options`    | \{ `id`: `string`; }                                                                                                                    | -                                                    |
+| `args.options.id` | `string`                                                                                                                                | The id of the element to listen for changes to.      |
+| `args.handler`    | (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`                                                   | The handler that is called when the element changes. |
 
 #### Returns
 
@@ -207,18 +207,18 @@ unsubscribe();
 
 ### onElementGroupChange()
 
-> **onElementGroupChange**(`args`: \{`options`: \{`id`: `string`; };`handler`: (`change`: [`ElementGroupChangeCallbackParams`](ElementGroupChangeCallbackParams.md)) => `void`; }): `VoidFunction`
+> **onElementGroupChange**(`args`: \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`ElementGroupChangeCallbackParams`](ElementGroupChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when an element group changes.
 
 #### Parameters
 
-| Parameter         | Type                                                                                            |
-| ----------------- | ----------------------------------------------------------------------------------------------- |
-| `args`            | `object`                                                                                        |
-| `args.options`    | `object`                                                                                        |
-| `args.options.id` | `string`                                                                                        |
-| `args.handler`    | (`change`: [`ElementGroupChangeCallbackParams`](ElementGroupChangeCallbackParams.md)) => `void` |
+| Parameter         | Type                                                                                                                                              |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `args`            | \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`ElementGroupChangeCallbackParams`](ElementGroupChangeCallbackParams.md)) => `void`; } |
+| `args.options`    | \{ `id`: `string`; }                                                                                                                              |
+| `args.options.id` | `string`                                                                                                                                          |
+| `args.handler`    | (`change`: [`ElementGroupChangeCallbackParams`](ElementGroupChangeCallbackParams.md)) => `void`                                                   |
 
 #### Returns
 

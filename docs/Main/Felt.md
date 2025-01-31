@@ -1,6 +1,6 @@
 ***
 
-> `const` **Felt**: \{`embed`: `Promise`\<[`FeltController`](FeltController.md)>;`connect`: `Promise`\<[`FeltController`](FeltController.md)>; }
+> `const` **Felt**: \{ `embed`: `Promise`\<[`FeltController`](FeltController.md)>; `connect`: `Promise`\<[`FeltController`](FeltController.md)>; }
 
 The Felt SDK is a library for embedding Felt maps into your website,
 allowing you to control and inspect the map programmatically.

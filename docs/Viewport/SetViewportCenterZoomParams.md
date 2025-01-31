@@ -6,7 +6,7 @@ The parameters for the `setViewport` method.
 
 ### center?
 
-> `optional` **center**: \{`latitude`: `Latitude`;`longitude`: `Longitude`; }
+> `optional` **center**: \{ `latitude`: `number`; `longitude`: `number`; }
 
 | Name        | Type     | Default value |
 | ----------- | -------- | ------------- |

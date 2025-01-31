@@ -8,5 +8,6 @@
 * [Main](Main/README.md)
 * [Selection](Selection/README.md)
 * [Shared](Shared/README.md)
+* [Tools](Tools/README.md)
 * [UI](UI/README.md)
 * [Viewport](Viewport/README.md)

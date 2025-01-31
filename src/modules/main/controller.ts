@@ -11,6 +11,7 @@ import {
   selectionController,
   type SelectionController,
 } from "../selection/controller";
+import { toolsController, type ToolsController } from "../tools/controller";
 import { uiController, type UiController } from "../ui/controller";
 import {
   viewportController,
@@ -31,6 +32,7 @@ export function makeController(feltWindow: Window): FeltController {
     ...elementsController(feltWindow),
     ...selectionController(feltWindow),
     ...interactionsController(feltWindow),
+    ...toolsController(feltWindow),
   };
 }
 
@@ -56,7 +58,8 @@ export interface FeltController
     LayersController,
     ElementsController,
     SelectionController,
-    InteractionsController {
+    InteractionsController,
+    ToolsController {
   /**
    * The iframe element containing the Felt map, if it is an embedded map.
    *

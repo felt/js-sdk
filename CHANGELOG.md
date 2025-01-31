@@ -1,5 +1,12 @@
 # @feltmaps/js-sdk
 
+## 1.5.0
+
+### Minor Changes
+
+- 7094163: Adds APIs to use Felt's drawing tools on read-only maps
+- c20e605: Add setLayerLegendVisibility and setLayerGroupLegendVisibility methods definition
+
 ## 1.5.0-next.0
 
 ### Minor Changes

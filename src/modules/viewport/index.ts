@@ -7,6 +7,7 @@
 export type {
   SetViewportCenterZoomParams,
   ViewportCenterZoom,
+  ViewportConstraints,
   ViewportFitBoundsParams,
   ViewportState,
 } from "./types";

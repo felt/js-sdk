@@ -34,9 +34,9 @@ export const ViewportCenterZoomSchema = z.object({
 });
 
 /**
- * @group Types
- *
  * The current state of the viewport, including the derived bounds.
+ *
+ * @group Types
  */
 export interface ViewportState {
   /**
@@ -75,6 +75,48 @@ export const SetViewportCenterZoomParamsSchema = z.object({
   center: ViewportCenterZoomSchema.shape.center.optional(),
   zoom: ViewportCenterZoomSchema.shape.zoom.optional(),
 });
+
+/**
+ * The constraints for the viewport. Used to ensure that the viewport stays
+ * within certain bounds and zoom levels.
+ *
+ * @group Types
+ */
+export interface ViewportConstraints {
+  /**
+   * The minimum zoom level for the viewport.
+   *
+   * {@link FeltZoom}
+   */
+  minZoom: FeltZoom | null;
+
+  /**
+   * The maximum zoom level for the viewport.
+   *
+   * {@link FeltZoom}
+   */
+  maxZoom: FeltZoom | null;
+
+  /**
+   * The bounds for the viewport.
+   *
+   * {@link FeltBoundary}
+   */
+  bounds: FeltBoundary | null;
+}
+
+/**
+ * The parameters for the `setViewportConstraints` method.
+ *
+ * @group Types
+ */
+export const SetViewportConstraintsParamsSchema = z
+  .object({
+    minZoom: ViewportCenterZoomSchema.shape.zoom.nullish(),
+    maxZoom: ViewportCenterZoomSchema.shape.zoom.nullish(),
+    bounds: FeltBoundarySchema.nullish(),
+  })
+  .nullable();
 
 /**
  * The parameters for the `fitViewportToBounds` method.

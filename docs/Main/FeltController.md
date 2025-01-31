@@ -924,6 +924,66 @@ felt.setViewport({
 
 ***
 
+### getViewportConstraints()
+
+> **getViewportConstraints**(): `Promise`\<`null` | [`ViewportConstraints`](../Viewport/ViewportConstraints.md)>
+
+Gets the current state of the viewport constraints.
+
+#### Returns
+
+`Promise`\<`null` | [`ViewportConstraints`](../Viewport/ViewportConstraints.md)>
+
+***
+
+### setViewportConstraints()
+
+> **setViewportConstraints**(`constraints`: `null` | `Partial`\<[`ViewportConstraints`](../Viewport/ViewportConstraints.md)>): `void`
+
+Constrains the map viewport so it stays inside certain bounds and/or certain zoom levels.
+
+#### Parameters
+
+| Parameter     | Type                                                                              |
+| ------------- | --------------------------------------------------------------------------------- |
+| `constraints` | `null` \| `Partial`\<[`ViewportConstraints`](../Viewport/ViewportConstraints.md)> |
+
+#### Returns
+
+`void`
+
+#### Examples
+
+```typescript
+felt.setViewportConstraints({
+  bounds: [-122.5372532, 37.6652478, -122.1927016, 37.881707],
+  minZoom: 1,
+  maxZoom: 23,
+});
+```
+
+every constraint is optional
+
+```typescript
+felt.setViewportConstraints({
+  bounds: [-122.5372532, 37.6652478, -122.1927016, 37.881707],
+});
+```
+
+if a constraint is null, it will be removed but keeping the others
+
+```typescript
+felt.setViewportConstraints({ bounds: null });
+```
+
+if method receives null, it will remove the constraints
+
+```typescript
+felt.setViewportConstraints(null);
+```
+
+***
+
 ### fitViewportToBounds()
 
 > **fitViewportToBounds**(`bounds`: [`ViewportFitBoundsParams`](../Viewport/ViewportFitBoundsParams.md)): `void`

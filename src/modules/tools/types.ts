@@ -1,6 +1,16 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
-import { LineSchema, PinSchema } from "../elements/types";
+import {
+  CircleSchema,
+  HighlighterSchema,
+  LineSchema,
+  MarkerSchema,
+  NoteSchema,
+  PinSchema,
+  PolygonSchema,
+  RouteSchema,
+  TextSchema,
+} from "../elements/types";
 
 const configurableTools = [
   "pin",
@@ -38,64 +48,70 @@ export const LineToolSettingsSchema = LineSchema.pick({
 });
 export interface LineToolSettings
   extends zInfer<typeof LineToolSettingsSchema> {}
-const RouteToolSettingsSchema = z.object({
-  color: z.string(),
-  routingMode: z.enum(["driving", "cycling", "walking", "flying"]),
-  strokeOpacity: z.number(),
-  strokeWidth: z.number(),
-  strokeStyle: z.enum(["solid", "dashed", "dotted"]),
-  distanceMarker: z.boolean(),
-  endCaps: z.boolean(),
+
+const RouteToolSettingsSchema = RouteSchema.pick({
+  color: true,
+  routingMode: true,
+  strokeOpacity: true,
+  strokeWidth: true,
+  strokeStyle: true,
+  distanceMarker: true,
+  endCaps: true,
 });
 export interface RouteToolSettings
   extends zInfer<typeof RouteToolSettingsSchema> {}
 
-const PolygonToolSettingsSchema = z.object({
-  color: z.string(),
-  fillOpacity: z.number().min(0).max(1),
-  strokeOpacity: z.number().min(0).max(1),
-  strokeWidth: z.number().min(0),
-  strokeStyle: z.enum(["solid", "dashed", "dotted"]),
-  areaMarker: z.boolean(),
+const PolygonToolSettingsSchema = PolygonSchema.pick({
+  color: true,
+  fillOpacity: true,
+  strokeOpacity: true,
+  strokeWidth: true,
+  strokeStyle: true,
+  areaMarker: true,
 });
 export interface PolygonToolSettings
   extends zInfer<typeof PolygonToolSettingsSchema> {}
-const CircleToolSettingsSchema = z.object({
-  color: z.string(),
-  fillOpacity: z.number().min(0).max(1),
-  strokeOpacity: z.number().min(0).max(1),
-  strokeWidth: z.number().min(0),
-  strokeStyle: z.enum(["solid", "dashed", "dotted"]),
-  radiusMarker: z.boolean(),
+
+const CircleToolSettingsSchema = CircleSchema.pick({
+  color: true,
+  fillOpacity: true,
+  strokeOpacity: true,
+  strokeWidth: true,
+  strokeStyle: true,
+  radiusMarker: true,
 });
 export interface CircleToolSettings
   extends zInfer<typeof CircleToolSettingsSchema> {}
-const MarkerToolSettingsSchema = z.object({
-  color: z.string(),
-  opacity: z.number().min(0).max(1),
-  size: z.number().min(0).max(100),
+
+const MarkerToolSettingsSchema = MarkerSchema.pick({
+  color: true,
+  opacity: true,
+  size: true,
 });
 export interface MarkerToolSettings
   extends zInfer<typeof MarkerToolSettingsSchema> {}
 
-const HighlighterToolSettingsSchema = z.object({
-  color: z.string(),
-  opacity: z.number().min(0).max(1),
+const HighlighterToolSettingsSchema = HighlighterSchema.pick({
+  color: true,
+  opacity: true,
+}).extend({
   size: z.number().min(0).max(200),
 });
 export interface HighlighterToolSettings
   extends zInfer<typeof HighlighterToolSettingsSchema> {}
-const TextToolSettingsSchema = z.object({
-  color: z.string(),
-  align: z.enum(["left", "center", "right"]),
-  style: z.enum(["italic", "light", "regular", "caps"]),
+
+const TextToolSettingsSchema = TextSchema.pick({
+  color: true,
+  align: true,
+  style: true,
 });
 export interface TextToolSettings
   extends zInfer<typeof TextToolSettingsSchema> {}
-const NoteToolSettingsSchema = z.object({
-  color: z.string(),
-  align: z.enum(["left", "center", "right"]),
-  style: z.enum(["italic", "light", "regular", "caps"]),
+
+const NoteToolSettingsSchema = NoteSchema.pick({
+  color: true,
+  align: true,
+  style: true,
 });
 export interface NoteToolSettings
   extends zInfer<typeof NoteToolSettingsSchema> {}

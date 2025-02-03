@@ -74,7 +74,7 @@ export function createMessageHandler(
               },
             };
 
-      const unsubscribe = handlers.listeners[data.event.eventName](
+      const unsubscribe = (handlers.listeners as any)[data.event.eventName](
         payload as any,
       );
       unsubscribeMap.set(data.event.id, unsubscribe);
@@ -83,7 +83,7 @@ export function createMessageHandler(
       unsubscribeMap.delete(data.id);
     } else {
       try {
-        const handler = handlers.methods[data.type] as any;
+        const handler = (handlers.methods as any)[data.type] as any;
         const result = await handler(data.params);
         message.ports[0]?.postMessage(result);
       } catch (error) {
@@ -118,7 +118,9 @@ function errorStringFromUnknown(error: unknown): string {
 }
 
 const mergedSchemas = {
-  methods: allModules.map((schema) => schema.methods ?? []).flat(),
+  methods: (allModules as any)
+    .map((schema: any) => schema.methods ?? [])
+    .flat() as any,
   listeners: allModules.map((schema) => schema.listeners ?? []).flat(),
 } satisfies ModuleSchema;
 

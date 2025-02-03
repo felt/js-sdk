@@ -8,12 +8,6 @@
 
 ***
 
-### fillOpacity
-
-> **fillOpacity**: `number`
-
-***
-
 ### strokeOpacity
 
 > **strokeOpacity**: `number`
@@ -29,6 +23,12 @@
 ### strokeStyle
 
 > **strokeStyle**: `"solid"` | `"dashed"` | `"dotted"`
+
+***
+
+### fillOpacity
+
+> **fillOpacity**: `number`
 
 ***
 

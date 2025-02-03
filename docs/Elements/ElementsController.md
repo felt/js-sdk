@@ -168,6 +168,66 @@ Hide or show element groups with the given ids.
 felt.setElementGroupVisibility({ show: ["element-group-1", "element-group-2"], hide: ["element-group-3"] });
 ```
 
+***
+
+### createElement()
+
+> **createElement**(`element`: [`ElementInput`](ElementInput.md)): `Promise`\<`null` | [`Element`](Element.md)>
+
+Create a new element on the map.
+
+#### Parameters
+
+| Parameter | Type                              |
+| --------- | --------------------------------- |
+| `element` | [`ElementInput`](ElementInput.md) |
+
+#### Returns
+
+`Promise`\<`null` | [`Element`](Element.md)>
+
+#### Example
+
+```typescript
+const element = await felt.createElement({ type: "Pin", coordinates: [10, 10] });
+```
+
+***
+
+### updateElement()
+
+> **updateElement**(`element`: [`ElementUpdate`](ElementUpdate.md)): `Promise`\<`null` | [`Element`](Element.md)>
+
+Update an element on the map.
+
+#### Parameters
+
+| Parameter | Type                                |
+| --------- | ----------------------------------- |
+| `element` | [`ElementUpdate`](ElementUpdate.md) |
+
+#### Returns
+
+`Promise`\<`null` | [`Element`](Element.md)>
+
+***
+
+### deleteElement()
+
+> **deleteElement**(`id`: `string`): `Promise`\<`void`>
+
+Delete an element from the map.
+
+#### Parameters
+
+| Parameter | Type     |
+| --------- | -------- |
+| `id`      | `string` |
+
+#### Returns
+
+`Promise`\<`void`>
+
 ## Events
 
 ### onElementChange()

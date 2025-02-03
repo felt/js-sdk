@@ -8,12 +8,6 @@
 
 ***
 
-### routingMode
-
-> **routingMode**: `"driving"` | `"cycling"` | `"walking"` | `"flying"`
-
-***
-
 ### strokeOpacity
 
 > **strokeOpacity**: `number`
@@ -29,6 +23,12 @@
 ### strokeStyle
 
 > **strokeStyle**: `"solid"` | `"dashed"` | `"dotted"`
+
+***
+
+### routingMode
+
+> **routingMode**: `"driving"` | `"cycling"` | `"walking"` | `"flying"`
 
 ***
 

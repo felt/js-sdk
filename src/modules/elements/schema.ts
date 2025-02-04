@@ -16,7 +16,7 @@ import {
   type ElementChangeCallbackParams,
   type ElementGroup,
   type ElementGroupChangeCallbackParams,
-  ElementInputSchema,
+  ElementCreateSchema,
   ElementUpdateSchema,
   GetElementGroupsConstraintSchema,
   GetElementsConstraintSchema,
@@ -51,7 +51,7 @@ const OnElementGroupChangeMessage = listenerMessageWithParams(
   z.object({ id: z.string() }),
 );
 
-const CreateElementMessage = methodMessage("createElement", ElementInputSchema);
+const CreateElementMessage = methodMessage("createElement", ElementCreateSchema);
 const UpdateElementMessage = methodMessage(
   "updateElement",
   ElementUpdateSchema,

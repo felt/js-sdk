@@ -74,12 +74,18 @@
 
 ***
 
-### routingMode?
-
-> `optional` **routingMode**: `undefined`
-
-***
-
 ### distanceMarker?
 
 > `optional` **distanceMarker**: `boolean`
+
+***
+
+### endCaps?
+
+> `optional` **endCaps**: `boolean`
+
+***
+
+### routingMode?
+
+> `optional` **routingMode**: `"driving"` | `"cycling"` | `"walking"` | `"flying"`

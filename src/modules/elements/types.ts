@@ -1,13 +1,13 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
-import { LatLngSchema } from "../shared/types";
+import { LatLngSchema, MultiLineStringGeometrySchema, PointGeometrySchema } from "../shared/types";
 
 /**
  * @group Elements
  */
 export type Element =
   | ReadPinElement
-  | ReadLineElement
+  | ReadPathElement
   | ReadPolygonElement
   | ReadCircleElement
   | ReadMarkerElement
@@ -18,7 +18,7 @@ export type Element =
   | ReadLinkElement;
 
 export type ReadPinElement = Omit<PinElement, "coordinates">;
-export type ReadLineElement = Omit<PathElement, "coordinates">;
+export type ReadPathElement = Omit<PathElement, "coordinates">;
 export type ReadPolygonElement = Omit<PolygonElement, "coordinates">;
 export type ReadCircleElement = Omit<CircleElement, "coordinates">;
 export type ReadMarkerElement = Omit<MarkerElement, "coordinates">;
@@ -141,7 +141,7 @@ const DistanceUnit = z.enum(["meter", "kilometer", "foot", "mile"]);
 
 export const PinSchema = BaseFeltElementSchema.extend(Geographic.shape).extend({
   type: z.literal("Pin"),
-  coordinates: LatLngSchema,
+  coordinates: PointGeometrySchema.shape.coordinates,
 
   symbol: z.string(),
   frame: z.enum(["frame-circle", "frame-square"]).nullable(),
@@ -149,30 +149,17 @@ export const PinSchema = BaseFeltElementSchema.extend(Geographic.shape).extend({
 });
 export interface PinElement extends z.infer<typeof PinSchema> {}
 
-export const LineSchema = BaseFeltElementSchema.extend(Geographic.shape)
-  .extend(Strokable.shape)
-  .extend({
-    type: z.literal("Path"),
-    coordinates: z.array(z.array(LatLngSchema)),
-    routingMode: z.never().optional(),
-    distanceMarker: z.boolean(),
-  });
 
-export const RouteSchema = BaseFeltElementSchema.extend(Geographic.shape)
-  .extend(Strokable.shape)
-  .extend({
-    type: z.literal("Path"),
-    coordinates: z.array(z.array(LatLngSchema)),
+export const PathSchema = BaseFeltElementSchema.extend(Geographic.shape)
+.extend(Strokable.shape)
+.extend({
+  type: z.literal("Path"),
+  coordinates: MultiLineStringGeometrySchema.shape.coordinates,
+  distanceMarker: z.boolean(),
+  endCaps: z.boolean(),
+  routingMode: z.enum(["driving", "cycling", "walking", "flying"]).optional(),
+});
 
-    routingMode: z.enum(["driving", "cycling", "walking", "flying"]),
-    distanceMarker: z.boolean(),
-    endCaps: z.boolean(),
-  });
-
-export const PathSchema = z.discriminatedUnion("routingMode", [
-  LineSchema,
-  RouteSchema,
-]);
 export type PathElement = z.infer<typeof PathSchema>;
 
 export const PolygonSchema = BaseFeltElementSchema.extend(Geographic.shape)
@@ -261,71 +248,99 @@ export const LinkSchema = BaseFeltElementSchema.extend({
 });
 export interface LinkElement extends z.infer<typeof LinkSchema> {}
 
-export const ElementInputSchema = z.discriminatedUnion("type", [
-  PinSchema,
-  LineSchema,
-  RouteSchema,
-  PolygonSchema,
-  CircleSchema,
 
-  MarkerSchema,
-  HighlighterSchema,
+const requiredCreateProps = { type: true, coordinates: true } as const;
+const omitCreateProps = { id: true } as const;
 
-  ImageSchema,
+const PinCreateSchema = PinSchema.partial().required(requiredCreateProps).omit(omitCreateProps);
+export interface PinCreate extends z.infer<typeof PinCreateSchema> {}
 
-  TextSchema.omit({ coordinates: true }),
-  NoteSchema.omit({ coordinates: true }),
-]);
+const PathCreateSchema = PathSchema.partial().required(requiredCreateProps).omit(omitCreateProps);
+export interface PathCreate extends z.infer<typeof PathCreateSchema> {}
 
-export type ElementInput =
-  | PinElement
-  | PathElement
-  | PolygonElement
-  | CircleElement
-  | MarkerElement
-  | HighlighterElement
-  | ImageElement
-  | Omit<TextElement, "coordinates">
-  | Omit<NoteElement, "coordinates">;
+const PolygonCreateSchema = PolygonSchema.partial().required(requiredCreateProps).omit(omitCreateProps);
+export interface PolygonCreate extends z.infer<typeof PolygonCreateSchema> {}
 
-const requiredProps = { type: true, id: true } as const;
+const CircleCreateSchema = CircleSchema.partial().required(requiredCreateProps).omit(omitCreateProps);
+export interface CircleCreate extends z.infer<typeof CircleCreateSchema> {}
 
-const PinUpdateSchema = PinSchema.partial().required(requiredProps);
+const MarkerCreateSchema = MarkerSchema.partial().required(requiredCreateProps).omit(omitCreateProps);
+export interface MarkerCreate extends z.infer<typeof MarkerCreateSchema> {}
+
+const HighlighterCreateSchema =
+  HighlighterSchema.partial().required(requiredCreateProps).omit(omitCreateProps);
+export interface HighlighterCreate
+  extends z.infer<typeof HighlighterCreateSchema> {}
+
+const TextCreateSchema = TextSchema.partial().required(requiredCreateProps).omit(omitCreateProps);
+export interface TextCreate extends z.infer<typeof TextCreateSchema> {}
+
+const NoteCreateSchema = NoteSchema.partial().required(requiredCreateProps).omit(omitCreateProps);
+export interface NoteCreate extends z.infer<typeof NoteCreateSchema> {}
+
+const ImageCreateSchema = ImageSchema.partial().required(requiredCreateProps).omit(omitCreateProps);
+export interface ImageCreate extends z.infer<typeof ImageCreateSchema> {}
+
+export type ElementCreate =
+  | PinCreate
+  | PathCreate
+  | PolygonCreate
+  | CircleCreate
+  | MarkerCreate
+  | HighlighterCreate
+  | ImageCreate
+  | Omit<TextCreate, "coordinates">
+  | Omit<NoteCreate, "coordinates">;
+
+  export const ElementCreateSchema = z.discriminatedUnion("type", [
+    PinCreateSchema,
+    PathCreateSchema,
+    PolygonCreateSchema,
+    CircleCreateSchema,
+  
+    MarkerCreateSchema,
+    HighlighterCreateSchema,
+  
+    ImageCreateSchema,
+  
+    TextCreateSchema.omit({ coordinates: true }),
+    NoteCreateSchema.omit({ coordinates: true }),
+  ]);
+
+const requiredUpdateProps = { type: true, id: true } as const;
+
+const PinUpdateSchema = PinSchema.partial().required(requiredUpdateProps);
 export interface PinUpdate extends z.infer<typeof PinUpdateSchema> {}
 
-const LineUpdateSchema = LineSchema.partial().required(requiredProps);
-export interface LineUpdate extends z.infer<typeof LineUpdateSchema> {}
+const PathUpdateSchema = PathSchema.partial().required(requiredUpdateProps);
+export interface PathUpdate extends z.infer<typeof PathUpdateSchema> {}
 
-const RouteUpdateSchema = RouteSchema.partial().required(requiredProps);
-export interface RouteUpdate extends z.infer<typeof RouteUpdateSchema> {}
-
-const PolygonUpdateSchema = PolygonSchema.partial().required(requiredProps);
+const PolygonUpdateSchema = PolygonSchema.partial().required(requiredUpdateProps);
 export interface PolygonUpdate extends z.infer<typeof PolygonUpdateSchema> {}
 
-const CircleUpdateSchema = CircleSchema.partial().required(requiredProps);
+const CircleUpdateSchema = CircleSchema.partial().required(requiredUpdateProps);
 export interface CircleUpdate extends z.infer<typeof CircleUpdateSchema> {}
 
-const MarkerUpdateSchema = MarkerSchema.partial().required(requiredProps);
+const MarkerUpdateSchema = MarkerSchema.partial().required(requiredUpdateProps);
 export interface MarkerUpdate extends z.infer<typeof MarkerUpdateSchema> {}
 
 const HighlighterUpdateSchema =
-  HighlighterSchema.partial().required(requiredProps);
+  HighlighterSchema.partial().required(requiredUpdateProps);
 export interface HighlighterUpdate
   extends z.infer<typeof HighlighterUpdateSchema> {}
 
-const TextUpdateSchema = TextSchema.partial().required(requiredProps);
+const TextUpdateSchema = TextSchema.partial().required(requiredUpdateProps);
 export interface TextUpdate extends z.infer<typeof TextUpdateSchema> {}
 
-const NoteUpdateSchema = NoteSchema.partial().required(requiredProps);
+const NoteUpdateSchema = NoteSchema.partial().required(requiredUpdateProps);
 export interface NoteUpdate extends z.infer<typeof NoteUpdateSchema> {}
 
-const ImageUpdateSchema = ImageSchema.partial().required(requiredProps);
+const ImageUpdateSchema = ImageSchema.partial().required(requiredUpdateProps);
 export interface ImageUpdate extends z.infer<typeof ImageUpdateSchema> {}
 
 export const ElementUpdateSchema = z.discriminatedUnion("type", [
   PinUpdateSchema,
-  LineUpdateSchema,
-  RouteUpdateSchema,
+  PathUpdateSchema,
   PolygonUpdateSchema,
   CircleUpdateSchema,
   MarkerUpdateSchema,
@@ -337,8 +352,7 @@ export const ElementUpdateSchema = z.discriminatedUnion("type", [
 
 export type ElementUpdate =
   | PinUpdate
-  | LineUpdate
-  | RouteUpdate
+  | PathUpdate
   | PolygonUpdate
   | CircleUpdate
   | MarkerUpdate

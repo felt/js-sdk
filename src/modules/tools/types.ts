@@ -3,12 +3,11 @@ import type { zInfer } from "~/lib/utils";
 import {
   CircleSchema,
   HighlighterSchema,
-  LineSchema,
   MarkerSchema,
   NoteSchema,
   PinSchema,
   PolygonSchema,
-  RouteSchema,
+  PathSchema,
   TextSchema,
 } from "../elements/types";
 
@@ -39,7 +38,7 @@ export interface PinToolSettings extends zInfer<typeof PinToolSettingsSchema> {
   symbol: PinSymbol;
 }
 
-export const LineToolSettingsSchema = LineSchema.pick({
+export const LineToolSettingsSchema = PathSchema.pick({
   color: true,
   strokeOpacity: true,
   strokeWidth: true,
@@ -49,7 +48,7 @@ export const LineToolSettingsSchema = LineSchema.pick({
 export interface LineToolSettings
   extends zInfer<typeof LineToolSettingsSchema> {}
 
-const RouteToolSettingsSchema = RouteSchema.pick({
+const RouteToolSettingsSchema = PathSchema.pick({
   color: true,
   routingMode: true,
   strokeOpacity: true,

@@ -6,7 +6,7 @@ import type {
   ElementChangeCallbackParams,
   ElementGroup,
   ElementGroupChangeCallbackParams,
-  ElementInput,
+  ElementCreate,
   ElementUpdate,
   GetElementGroupsConstraint,
   GetElementsConstraint,
@@ -197,7 +197,7 @@ export interface ElementsController {
    * const element = await felt.createElement({ type: "Pin", coordinates: [10, 10] });
    * ```
    */
-  createElement(element: ElementInput): Promise<Element | null>;
+  createElement(element: ElementCreate): Promise<Element | null>;
 
   /**
    * Update an element on the map.

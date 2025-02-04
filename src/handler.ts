@@ -46,6 +46,7 @@ export function createMessageHandler(
     // next we check the message fully
     const result = AllMessagesSchema.safeParse(message.data);
     if (!result.success) {
+      console.log({message, result});
       options?.onInvalidMessage?.(message.data);
       return;
     }

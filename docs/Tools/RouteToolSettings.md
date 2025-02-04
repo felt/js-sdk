@@ -26,12 +26,6 @@
 
 ***
 
-### routingMode
-
-> **routingMode**: `"driving"` | `"cycling"` | `"walking"` | `"flying"`
-
-***
-
 ### distanceMarker
 
 > **distanceMarker**: `boolean`
@@ -41,3 +35,9 @@
 ### endCaps
 
 > **endCaps**: `boolean`
+
+***
+
+### routingMode?
+
+> `optional` **routingMode**: `"driving"` | `"cycling"` | `"walking"` | `"flying"`

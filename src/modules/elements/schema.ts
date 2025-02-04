@@ -51,7 +51,10 @@ const OnElementGroupChangeMessage = listenerMessageWithParams(
   z.object({ id: z.string() }),
 );
 
-const CreateElementMessage = methodMessage("createElement", ElementCreateSchema);
+const CreateElementMessage = methodMessage(
+  "createElement",
+  ElementCreateSchema,
+);
 const UpdateElementMessage = methodMessage(
   "updateElement",
   ElementUpdateSchema,

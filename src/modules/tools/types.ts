@@ -29,7 +29,7 @@ export const ConfigurableToolSchema = z.enum(configurableTools);
 export type ToolType = z.infer<typeof ToolSchema>;
 export type ConfigurableToolType = keyof ToolSettingsMap;
 
-export const PinToolSettingsSchema = PinCreateSchema.pick({
+const PinToolSettingsSchema = PinCreateSchema.pick({
   color: true,
   symbol: true,
   frame: true,
@@ -38,7 +38,7 @@ export interface PinToolSettings extends zInfer<typeof PinToolSettingsSchema> {
   symbol: PinSymbol;
 }
 
-export const LineToolSettingsSchema = PathCreateSchema.pick({
+const LineToolSettingsSchema = PathCreateSchema.pick({
   color: true,
   strokeOpacity: true,
   strokeWidth: true,

@@ -80,6 +80,6 @@
 
 ***
 
-### routingMode?
+### routingMode
 
-> `optional` **routingMode**: `"driving"` | `"cycling"` | `"walking"` | `"flying"`
+> **routingMode**: `null` | `"driving"` | `"cycling"` | `"walking"` | `"flying"`

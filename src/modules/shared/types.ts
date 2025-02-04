@@ -60,7 +60,7 @@ export type LineStringGeometry = {
   coordinates: LngLatTuple[];
 };
 
-export const LineStringGeometrySchema = z.object({
+const LineStringGeometrySchema = z.object({
   type: z.literal("LineString"),
   coordinates: z.array(z.tuple([Longitude, Latitude])),
 });

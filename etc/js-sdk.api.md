@@ -4,73 +4,109 @@
 
 ```ts
 
-import { a1 as CircleToolSettings } from './types-BLsf5GHN.js';
-import { C as ConfigurableToolType } from './types-BLsf5GHN.js';
-import { E as Element_2 } from './types-BLsf5GHN.js';
-import { d as ElementChangeCallbackParams } from './types-BLsf5GHN.js';
-import { b as ElementGroup } from './types-BLsf5GHN.js';
-import { e as ElementGroupChangeCallbackParams } from './types-BLsf5GHN.js';
-import { J as ElementGroupNode } from './types-BLsf5GHN.js';
-import { K as ElementNode } from './types-BLsf5GHN.js';
-import { r as EntityNode } from './types-BLsf5GHN.js';
-import { q as Feature } from './types-BLsf5GHN.js';
-import { N as FeatureNode } from './types-BLsf5GHN.js';
-import { s as FeatureSelection } from './types-BLsf5GHN.js';
-import { Q as FeltBoundary } from './types-BLsf5GHN.js';
-import { U as FeltZoom } from './types-BLsf5GHN.js';
-import { B as FilterExpression } from './types-BLsf5GHN.js';
-import { D as FilterLogicGate } from './types-BLsf5GHN.js';
-import { F as Filters } from './types-BLsf5GHN.js';
-import { H as FilterTernary } from './types-BLsf5GHN.js';
-import { G as Geometry } from './types-BLsf5GHN.js';
-import { c as GetElementGroupsConstraint } from './types-BLsf5GHN.js';
-import { a as GetElementsConstraint } from './types-BLsf5GHN.js';
-import { i as GetLayerGroupsConstraint } from './types-BLsf5GHN.js';
-import { f as GetLayersConstraint } from './types-BLsf5GHN.js';
-import { p as GetRenderedFeaturesConstraint } from './types-BLsf5GHN.js';
-import { a2 as HighlighterToolSettings } from './types-BLsf5GHN.js';
-import { I as InputToolSettings } from './types-BLsf5GHN.js';
-import { W as LatLng } from './types-BLsf5GHN.js';
-import { L as Layer } from './types-BLsf5GHN.js';
-import { g as LayerChangeCallbackParams } from './types-BLsf5GHN.js';
-import { o as LayerFilters } from './types-BLsf5GHN.js';
-import { h as LayerGroup } from './types-BLsf5GHN.js';
-import { j as LayerGroupChangeCallbackParams } from './types-BLsf5GHN.js';
-import { O as LayerGroupNode } from './types-BLsf5GHN.js';
-import { P as LayerNode } from './types-BLsf5GHN.js';
-import { A as LayerProcessingStatus } from './types-BLsf5GHN.js';
-import { l as LegendItem } from './types-BLsf5GHN.js';
-import { n as LegendItemChangeCallbackParams } from './types-BLsf5GHN.js';
-import { k as LegendItemIdentifier } from './types-BLsf5GHN.js';
-import { m as LegendItemsConstraint } from './types-BLsf5GHN.js';
-import { X as LineStringGeometry } from './types-BLsf5GHN.js';
-import { a3 as LineToolSettings } from './types-BLsf5GHN.js';
-import { Y as LngLatTuple } from './types-BLsf5GHN.js';
-import { M as MapInteractionEvent } from './types-BLsf5GHN.js';
-import { a4 as MarkerToolSettings } from './types-BLsf5GHN.js';
-import { Z as MultiLineStringGeometry } from './types-BLsf5GHN.js';
-import { _ as MultiPolygonGeometry } from './types-BLsf5GHN.js';
-import { a5 as NoteToolSettings } from './types-BLsf5GHN.js';
-import { a6 as PinFrame } from './types-BLsf5GHN.js';
-import { a7 as PinSymbol } from './types-BLsf5GHN.js';
-import { a8 as PinToolSettings } from './types-BLsf5GHN.js';
-import { $ as PointGeometry } from './types-BLsf5GHN.js';
-import { a0 as PolygonGeometry } from './types-BLsf5GHN.js';
-import { a9 as PolygonToolSettings } from './types-BLsf5GHN.js';
-import { R as RasterValue } from './types-BLsf5GHN.js';
-import { aa as RouteToolSettings } from './types-BLsf5GHN.js';
-import { v as SetViewportCenterZoomParams } from './types-BLsf5GHN.js';
-import { S as SetVisibilityRequest } from './types-BLsf5GHN.js';
-import { ab as TextToolSettings } from './types-BLsf5GHN.js';
-import { u as ToolSettingsChangeEvent } from './types-BLsf5GHN.js';
-import { t as ToolSettingsMap } from './types-BLsf5GHN.js';
-import { T as ToolType } from './types-BLsf5GHN.js';
-import { y as ViewportCenterZoom } from './types-BLsf5GHN.js';
-import { w as ViewportConstraints } from './types-BLsf5GHN.js';
-import { x as ViewportFitBoundsParams } from './types-BLsf5GHN.js';
-import { V as ViewportState } from './types-BLsf5GHN.js';
-import { z } from './types-BLsf5GHN.js';
+import { D as CircleElementCreate } from './types-EDnHqA7A.js';
+import { H as CircleElementRead } from './types-EDnHqA7A.js';
+import { J as CircleElementUpdate } from './types-EDnHqA7A.js';
+import { av as CircleToolSettings } from './types-EDnHqA7A.js';
+import { C as ConfigurableToolType } from './types-EDnHqA7A.js';
+import { E as Element_2 } from './types-EDnHqA7A.js';
+import { d as ElementChangeCallbackParams } from './types-EDnHqA7A.js';
+import { f as ElementCreate } from './types-EDnHqA7A.js';
+import { b as ElementGroup } from './types-EDnHqA7A.js';
+import { e as ElementGroupChangeCallbackParams } from './types-EDnHqA7A.js';
+import { ah as ElementGroupNode } from './types-EDnHqA7A.js';
+import { ai as ElementNode } from './types-EDnHqA7A.js';
+import { g as ElementUpdate } from './types-EDnHqA7A.js';
+import { t as EntityNode } from './types-EDnHqA7A.js';
+import { s as Feature } from './types-EDnHqA7A.js';
+import { aj as FeatureNode } from './types-EDnHqA7A.js';
+import { u as FeatureSelection } from './types-EDnHqA7A.js';
+import { am as FeltBoundary } from './types-EDnHqA7A.js';
+import { an as FeltZoom } from './types-EDnHqA7A.js';
+import { ae as FilterExpression } from './types-EDnHqA7A.js';
+import { af as FilterLogicGate } from './types-EDnHqA7A.js';
+import { F as Filters } from './types-EDnHqA7A.js';
+import { ag as FilterTernary } from './types-EDnHqA7A.js';
+import { G as Geometry } from './types-EDnHqA7A.js';
+import { c as GetElementGroupsConstraint } from './types-EDnHqA7A.js';
+import { a as GetElementsConstraint } from './types-EDnHqA7A.js';
+import { k as GetLayerGroupsConstraint } from './types-EDnHqA7A.js';
+import { h as GetLayersConstraint } from './types-EDnHqA7A.js';
+import { r as GetRenderedFeaturesConstraint } from './types-EDnHqA7A.js';
+import { K as HighlighterElementCreate } from './types-EDnHqA7A.js';
+import { N as HighlighterElementRead } from './types-EDnHqA7A.js';
+import { O as HighlighterElementUpdate } from './types-EDnHqA7A.js';
+import { aw as HighlighterToolSettings } from './types-EDnHqA7A.js';
+import { P as ImageElementCreate } from './types-EDnHqA7A.js';
+import { Q as ImageElementRead } from './types-EDnHqA7A.js';
+import { R as ImageElementUpdate } from './types-EDnHqA7A.js';
+import { I as InputToolSettings } from './types-EDnHqA7A.js';
+import { ao as LatLng } from './types-EDnHqA7A.js';
+import { L as Layer } from './types-EDnHqA7A.js';
+import { i as LayerChangeCallbackParams } from './types-EDnHqA7A.js';
+import { q as LayerFilters } from './types-EDnHqA7A.js';
+import { j as LayerGroup } from './types-EDnHqA7A.js';
+import { l as LayerGroupChangeCallbackParams } from './types-EDnHqA7A.js';
+import { ak as LayerGroupNode } from './types-EDnHqA7A.js';
+import { al as LayerNode } from './types-EDnHqA7A.js';
+import { ac as LayerProcessingStatus } from './types-EDnHqA7A.js';
+import { n as LegendItem } from './types-EDnHqA7A.js';
+import { p as LegendItemChangeCallbackParams } from './types-EDnHqA7A.js';
+import { m as LegendItemIdentifier } from './types-EDnHqA7A.js';
+import { o as LegendItemsConstraint } from './types-EDnHqA7A.js';
+import { ap as LineStringGeometry } from './types-EDnHqA7A.js';
+import { ax as LineToolSettings } from './types-EDnHqA7A.js';
+import { U as LinkElementRead } from './types-EDnHqA7A.js';
+import { aq as LngLatTuple } from './types-EDnHqA7A.js';
+import { M as MapInteractionEvent } from './types-EDnHqA7A.js';
+import { W as MarkerElementCreate } from './types-EDnHqA7A.js';
+import { X as MarkerElementRead } from './types-EDnHqA7A.js';
+import { Y as MarkerElementUpdate } from './types-EDnHqA7A.js';
+import { ay as MarkerToolSettings } from './types-EDnHqA7A.js';
+import { ar as MultiLineStringGeometry } from './types-EDnHqA7A.js';
+import { as as MultiPolygonGeometry } from './types-EDnHqA7A.js';
+import { Z as NoteElementCreate } from './types-EDnHqA7A.js';
+import { _ as NoteElementRead } from './types-EDnHqA7A.js';
+import { $ as NoteElementUpdate } from './types-EDnHqA7A.js';
+import { az as NoteToolSettings } from './types-EDnHqA7A.js';
+import { a0 as PathElementCreate } from './types-EDnHqA7A.js';
+import { a1 as PathElementRead } from './types-EDnHqA7A.js';
+import { a2 as PathElementUpdate } from './types-EDnHqA7A.js';
+import { a3 as PinElementCreate } from './types-EDnHqA7A.js';
+import { a4 as PinElementRead } from './types-EDnHqA7A.js';
+import { a5 as PinElementUpdate } from './types-EDnHqA7A.js';
+import { aA as PinFrame } from './types-EDnHqA7A.js';
+import { aB as PinSymbol } from './types-EDnHqA7A.js';
+import { aC as PinToolSettings } from './types-EDnHqA7A.js';
+import { at as PointGeometry } from './types-EDnHqA7A.js';
+import { a6 as PolygonElementCreate } from './types-EDnHqA7A.js';
+import { a7 as PolygonElementRead } from './types-EDnHqA7A.js';
+import { a8 as PolygonElementUpdate } from './types-EDnHqA7A.js';
+import { au as PolygonGeometry } from './types-EDnHqA7A.js';
+import { aD as PolygonToolSettings } from './types-EDnHqA7A.js';
+import { ad as RasterValue } from './types-EDnHqA7A.js';
+import { aE as RouteToolSettings } from './types-EDnHqA7A.js';
+import { x as SetViewportCenterZoomParams } from './types-EDnHqA7A.js';
+import { S as SetVisibilityRequest } from './types-EDnHqA7A.js';
+import { a9 as TextElementCreate } from './types-EDnHqA7A.js';
+import { aa as TextElementRead } from './types-EDnHqA7A.js';
+import { ab as TextElementUpdate } from './types-EDnHqA7A.js';
+import { aF as TextToolSettings } from './types-EDnHqA7A.js';
+import { w as ToolSettingsChangeEvent } from './types-EDnHqA7A.js';
+import { v as ToolSettingsMap } from './types-EDnHqA7A.js';
+import { T as ToolType } from './types-EDnHqA7A.js';
+import { B as ViewportCenterZoom } from './types-EDnHqA7A.js';
+import { y as ViewportConstraints } from './types-EDnHqA7A.js';
+import { A as ViewportFitBoundsParams } from './types-EDnHqA7A.js';
+import { V as ViewportState } from './types-EDnHqA7A.js';
+import { z } from './types-EDnHqA7A.js';
 import { z as z_2 } from 'zod';
+
+export { CircleElementCreate }
+
+export { CircleElementRead }
+
+export { CircleElementUpdate }
 
 export { CircleToolSettings }
 
@@ -79,6 +115,8 @@ export { ConfigurableToolType }
 export { Element_2 as Element }
 
 export { ElementChangeCallbackParams }
+
+export { ElementCreate }
 
 export { ElementGroup }
 
@@ -90,6 +128,8 @@ export { ElementNode }
 
 // @public
 export interface ElementsController {
+    createElement(element: ElementCreate): Promise<Element_2 | null>;
+    deleteElement(id: string): Promise<void>;
     getElement(
     id: string): Promise<Element_2 | null>;
     getElementGeometry(
@@ -113,7 +153,10 @@ export interface ElementsController {
         handler: (change: ElementGroupChangeCallbackParams) => void;
     }): VoidFunction;
     setElementGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
+    updateElement(element: ElementUpdate): Promise<Element_2 | null>;
 }
+
+export { ElementUpdate }
 
 export { EntityNode }
 
@@ -257,7 +300,19 @@ export { GetLayersConstraint }
 
 export { GetRenderedFeaturesConstraint }
 
+export { HighlighterElementCreate }
+
+export { HighlighterElementRead }
+
+export { HighlighterElementUpdate }
+
 export { HighlighterToolSettings }
+
+export { ImageElementCreate }
+
+export { ImageElementRead }
+
+export { ImageElementUpdate }
 
 export { InputToolSettings }
 
@@ -352,15 +407,29 @@ export { LineStringGeometry }
 
 export { LineToolSettings }
 
+export { LinkElementRead }
+
 export { LngLatTuple }
 
 export { MapInteractionEvent }
+
+export { MarkerElementCreate }
+
+export { MarkerElementRead }
+
+export { MarkerElementUpdate }
 
 export { MarkerToolSettings }
 
 export { MultiLineStringGeometry }
 
 export { MultiPolygonGeometry }
+
+export { NoteElementCreate }
+
+export { NoteElementRead }
+
+export { NoteElementUpdate }
 
 export { NoteToolSettings }
 
@@ -370,6 +439,18 @@ export { NoteToolSettings }
 export interface OnMapInteractionsOptions extends z<typeof UiOnMapInteractionsOptionsSchema> {
 }
 
+export { PathElementCreate }
+
+export { PathElementRead }
+
+export { PathElementUpdate }
+
+export { PinElementCreate }
+
+export { PinElementRead }
+
+export { PinElementUpdate }
+
 export { PinFrame }
 
 export { PinSymbol }
@@ -377,6 +458,12 @@ export { PinSymbol }
 export { PinToolSettings }
 
 export { PointGeometry }
+
+export { PolygonElementCreate }
+
+export { PolygonElementRead }
+
+export { PolygonElementUpdate }
 
 export { PolygonGeometry }
 
@@ -404,6 +491,12 @@ export interface SelectionController {
 export { SetViewportCenterZoomParams }
 
 export { SetVisibilityRequest }
+
+export { TextElementCreate }
+
+export { TextElementRead }
+
+export { TextElementUpdate }
 
 export { TextToolSettings }
 

@@ -88,4 +88,4 @@
 
 ### routingMode?
 
-> `optional` **routingMode**: `"driving"` | `"cycling"` | `"walking"` | `"flying"`
+> `optional` **routingMode**: `null` | `"driving"` | `"cycling"` | `"walking"` | `"flying"`

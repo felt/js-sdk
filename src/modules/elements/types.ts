@@ -35,7 +35,6 @@ const PinElementSchema = BaseFeltElementSchema.extend(Geographic.shape).extend({
   frame: z.enum(["frame-circle", "frame-square"]).nullable(),
   hideLabel: z.boolean(),
 });
-const PinReadSchema = PinElementSchema.omit({ coordinates: true });
 
 const PathElementSchema = BaseFeltElementSchema.extend(Geographic.shape)
   .extend(Strokable.shape)
@@ -44,10 +43,8 @@ const PathElementSchema = BaseFeltElementSchema.extend(Geographic.shape)
     coordinates: MultiLineStringGeometrySchema.shape.coordinates,
     distanceMarker: z.boolean(),
     endCaps: z.boolean(),
-    routingMode: z.enum(["driving", "cycling", "walking", "flying"]).optional(),
+    routingMode: z.enum(["driving", "cycling", "walking", "flying"]).nullable(),
   });
-
-const PathReadSchema = PathElementSchema.omit({ coordinates: true });
 
 const PolygonElementSchema = BaseFeltElementSchema.extend(Geographic.shape)
   .extend(Strokable.shape)
@@ -58,9 +55,6 @@ const PolygonElementSchema = BaseFeltElementSchema.extend(Geographic.shape)
     fillOpacity: z.number().min(0).max(1),
     areaMarker: z.boolean(),
   });
-const PolygonReadSchema = PolygonElementSchema.omit({
-  coordinates: true,
-});
 
 const CircleElementSchema = BaseFeltElementSchema.extend(Geographic.shape)
   .extend(Strokable.shape)
@@ -74,7 +68,6 @@ const CircleElementSchema = BaseFeltElementSchema.extend(Geographic.shape)
     fillOpacity: z.number().min(0).max(1),
     radiusMarker: z.boolean(),
   });
-const CircleReadSchema = CircleElementSchema.omit({ coordinates: true });
 
 const MarkerElementSchema = BaseFeltElementSchema.extend({
   type: z.literal("Marker"),
@@ -83,16 +76,12 @@ const MarkerElementSchema = BaseFeltElementSchema.extend({
   opacity: z.number().min(0).max(1),
   size: z.number().min(0).max(100),
 });
-const MarkerReadSchema = MarkerElementSchema.omit({ coordinates: true });
 
 const HighlighterElementSchema = BaseFeltElementSchema.extend({
   type: z.literal("Highlighter"),
   coordinates: z.array(z.array(LatLngSchema)),
 
   opacity: z.number().min(0).max(1),
-});
-const HighlighterReadSchema = HighlighterElementSchema.omit({
-  coordinates: true,
 });
 
 const DerivedCoords = z.object({
@@ -114,7 +103,6 @@ const TextElementSchema = BaseFeltElementSchema.extend(DerivedCoords.shape)
   .extend({
     type: z.literal("Text"),
   });
-const TextReadSchema = TextElementSchema.omit({ coordinates: true });
 
 const NoteElementSchema = BaseFeltElementSchema.extend(DerivedCoords.shape)
   .extend(Textual.shape)
@@ -122,7 +110,6 @@ const NoteElementSchema = BaseFeltElementSchema.extend(DerivedCoords.shape)
     type: z.literal("Note"),
     widthMultiplier: z.number().min(0),
   });
-const NoteReadSchema = NoteElementSchema.omit({ coordinates: true });
 
 const ImageElementSchema = BaseFeltElementSchema.extend({
   type: z.literal("Image"),
@@ -130,14 +117,12 @@ const ImageElementSchema = BaseFeltElementSchema.extend({
   imageUrl: z.string(),
   opacity: z.number().min(0).max(1),
 });
-const ImageReadSchema = ImageElementSchema.omit({ coordinates: true });
 
 const LinkElementSchema = BaseFeltElementSchema.extend({
   type: z.literal("Link"),
   coordinates: z.array(z.array(LatLngSchema)),
   url: z.string(),
 });
-const LinkReadSchema = LinkElementSchema.omit({ coordinates: true });
 
 const requiredCreateProps = { type: true, coordinates: true } as const;
 const omitCreateProps = { id: true } as const;
@@ -174,7 +159,7 @@ export const NoteCreateSchema = NoteElementSchema.partial()
   .required(requiredCreateProps)
   .omit({ ...omitCreateProps, coordinates: true });
 
-export const ImageCreateSchema = ImageElementSchema.partial()
+const ImageCreateSchema = ImageElementSchema.partial()
   .required(requiredCreateProps)
   .omit(omitCreateProps);
 
@@ -192,6 +177,21 @@ export const ElementCreateSchema = z.discriminatedUnion("type", [
   TextCreateSchema,
   NoteCreateSchema,
 ]);
+
+const PinReadSchema = PinElementSchema.omit({ coordinates: true });
+const PathReadSchema = PathElementSchema.omit({ coordinates: true });
+const PolygonReadSchema = PolygonElementSchema.omit({
+  coordinates: true,
+});
+const CircleReadSchema = CircleElementSchema.omit({ coordinates: true });
+const MarkerReadSchema = MarkerElementSchema.omit({ coordinates: true });
+const HighlighterReadSchema = HighlighterElementSchema.omit({
+  coordinates: true,
+});
+const TextReadSchema = TextElementSchema.omit({ coordinates: true });
+const NoteReadSchema = NoteElementSchema.omit({ coordinates: true });
+const ImageReadSchema = ImageElementSchema.omit({ coordinates: true });
+const LinkReadSchema = LinkElementSchema.omit({ coordinates: true });
 
 const requiredUpdateProps = { type: true, id: true } as const;
 

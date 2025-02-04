@@ -16,12 +16,7 @@
 
 ### coordinates?
 
-> `optional` **coordinates**: \{ `latitude`: `number`; `longitude`: `number`; }
-
-| Name        | Type     | Default value |
-| ----------- | -------- | ------------- |
-| `latitude`  | `number` | Latitude      |
-| `longitude` | `number` | Longitude     |
+> `optional` **coordinates**: \[`number`, `number`]
 
 ***
 

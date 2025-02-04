@@ -2,6 +2,7 @@ import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
   LatLngSchema,
+  LatLngTupleSchema,
   MultiLineStringGeometrySchema,
   PointGeometrySchema,
 } from "../shared/types";
@@ -50,7 +51,7 @@ const PolygonElementSchema = BaseFeltElementSchema.extend(Geographic.shape)
   .extend(Strokable.shape)
   .extend({
     type: z.literal("Polygon"),
-    coordinates: z.array(z.array(LatLngSchema)),
+    coordinates: MultiLineStringGeometrySchema.shape.coordinates,
 
     fillOpacity: z.number().min(0).max(1),
     areaMarker: z.boolean(),
@@ -60,7 +61,7 @@ const CircleElementSchema = BaseFeltElementSchema.extend(Geographic.shape)
   .extend(Strokable.shape)
   .extend({
     type: z.literal("Circle"),
-    coordinates: LatLngSchema,
+    coordinates: LatLngTupleSchema,
     radius: z.number(),
     radiusDisplayAngle: z.number(),
     radiusDisplayUnit: DistanceUnit.nullable(),
@@ -71,7 +72,7 @@ const CircleElementSchema = BaseFeltElementSchema.extend(Geographic.shape)
 
 const MarkerElementSchema = BaseFeltElementSchema.extend({
   type: z.literal("Marker"),
-  coordinates: z.array(z.array(LatLngSchema)),
+  coordinates: MultiLineStringGeometrySchema.shape.coordinates,
 
   opacity: z.number().min(0).max(1),
   size: z.number().min(0).max(100),
@@ -79,7 +80,7 @@ const MarkerElementSchema = BaseFeltElementSchema.extend({
 
 const HighlighterElementSchema = BaseFeltElementSchema.extend({
   type: z.literal("Highlighter"),
-  coordinates: z.array(z.array(LatLngSchema)),
+  coordinates: MultiLineStringGeometrySchema.shape.coordinates,
 
   opacity: z.number().min(0).max(1),
 });
@@ -89,7 +90,7 @@ const DerivedCoords = z.object({
   rotation: z.number(),
   scale: z.number(),
 
-  coordinates: z.array(z.array(LatLngSchema)),
+  coordinates: MultiLineStringGeometrySchema.shape.coordinates,
 });
 
 const Textual = z.object({
@@ -113,14 +114,14 @@ const NoteElementSchema = BaseFeltElementSchema.extend(DerivedCoords.shape)
 
 const ImageElementSchema = BaseFeltElementSchema.extend({
   type: z.literal("Image"),
-  coordinates: z.array(z.array(LatLngSchema)),
+  coordinates: MultiLineStringGeometrySchema.shape.coordinates,
   imageUrl: z.string(),
   opacity: z.number().min(0).max(1),
 });
 
 const LinkElementSchema = BaseFeltElementSchema.extend({
   type: z.literal("Link"),
-  coordinates: z.array(z.array(LatLngSchema)),
+  coordinates: MultiLineStringGeometrySchema.shape.coordinates,
   url: z.string(),
 });
 

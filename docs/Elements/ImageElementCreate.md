@@ -10,7 +10,7 @@
 
 ### coordinates
 
-> **coordinates**: \{ `latitude`: `number`; `longitude`: `number`; }\[]\[]
+> **coordinates**: \[`number`, `number`]\[]\[]
 
 ***
 

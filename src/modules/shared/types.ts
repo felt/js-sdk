@@ -15,6 +15,8 @@ export const LatLngSchema = z.object({
   longitude: Longitude,
 });
 
+export const LatLngTupleSchema = z.tuple([Longitude, Latitude]);
+
 /**
  * A tuple representing a longitude and latitude coordinate.
  *
@@ -33,7 +35,7 @@ export type PointGeometry = {
 
 export const PointGeometrySchema = z.object({
   type: z.literal("Point"),
-  coordinates: z.tuple([Longitude, Latitude]),
+  coordinates: LatLngTupleSchema,
 });
 
 /**
@@ -62,7 +64,7 @@ export type LineStringGeometry = {
 
 const LineStringGeometrySchema = z.object({
   type: z.literal("LineString"),
-  coordinates: z.array(z.tuple([Longitude, Latitude])),
+  coordinates: z.array(LatLngTupleSchema),
 });
 
 /**

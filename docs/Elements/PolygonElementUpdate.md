@@ -16,7 +16,7 @@
 
 ### coordinates?
 
-> `optional` **coordinates**: \{ `latitude`: `number`; `longitude`: `number`; }\[]\[]
+> `optional` **coordinates**: \[`number`, `number`]\[]\[]
 
 ***
 

@@ -14,6 +14,12 @@
 
 ***
 
+### radius
+
+> **radius**: `number`
+
+***
+
 ### groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -71,12 +77,6 @@
 ### fillOpacity?
 
 > `optional` **fillOpacity**: `number`
-
-***
-
-### radius?
-
-> `optional` **radius**: `number`
 
 ***
 

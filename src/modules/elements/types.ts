@@ -141,7 +141,7 @@ export const PolygonCreateSchema = PolygonElementSchema.partial()
   .omit(omitCreateProps);
 
 export const CircleCreateSchema = CircleElementSchema.partial()
-  .required(requiredCreateProps)
+  .required({ ...requiredCreateProps, radius: true })
   .omit(omitCreateProps);
 
 export const MarkerCreateSchema = MarkerElementSchema.partial()

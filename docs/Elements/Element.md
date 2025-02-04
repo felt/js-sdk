@@ -1,3 +1,3 @@
 ***
 
-> **Element**: [`ReadPinElement`](ReadPinElement.md) | [`ReadLineElement`](ReadLineElement.md) | [`ReadPolygonElement`](ReadPolygonElement.md) | [`ReadCircleElement`](ReadCircleElement.md) | [`ReadMarkerElement`](ReadMarkerElement.md) | [`ReadHighlighterElement`](ReadHighlighterElement.md) | [`ReadTextElement`](ReadTextElement.md) | [`ReadNoteElement`](ReadNoteElement.md) | [`ReadImageElement`](ReadImageElement.md) | [`ReadLinkElement`](ReadLinkElement.md)
+> **Element**: [`PinElementRead`](PinElementRead.md) | [`PathElementRead`](PathElementRead.md) | [`PolygonElementRead`](PolygonElementRead.md) | [`CircleElementRead`](CircleElementRead.md) | [`MarkerElementRead`](MarkerElementRead.md) | [`HighlighterElementRead`](HighlighterElementRead.md) | [`TextElementRead`](TextElementRead.md) | [`NoteElementRead`](NoteElementRead.md) | [`ImageElementRead`](ImageElementRead.md) | [`LinkElementRead`](LinkElementRead.md)

@@ -4,19 +4,7 @@
 
 ### type
 
-> **type**: `"Pin"`
-
-***
-
-### id
-
-> **id**: `string`
-
-***
-
-### symbol?
-
-> `optional` **symbol**: `string`
+> **type**: `"Note"`
 
 ***
 
@@ -34,7 +22,7 @@
 
 ### name?
 
-> `optional` **name**: `null` | `string`
+> `optional` **name**: `string`
 
 ***
 
@@ -50,15 +38,9 @@
 
 ***
 
-### imageUrl?
+### position?
 
-> `optional` **imageUrl**: `null` | `string`
-
-***
-
-### coordinates?
-
-> `optional` **coordinates**: \{ `latitude`: `number`; `longitude`: `number`; }
+> `optional` **position**: \{ `latitude`: `number`; `longitude`: `number`; }
 
 | Name        | Type     | Default value |
 | ----------- | -------- | ------------- |
@@ -67,12 +49,30 @@
 
 ***
 
-### frame?
+### rotation?
 
-> `optional` **frame**: `null` | `"frame-circle"` | `"frame-square"`
+> `optional` **rotation**: `number`
 
 ***
 
-### hideLabel?
+### scale?
 
-> `optional` **hideLabel**: `boolean`
+> `optional` **scale**: `number`
+
+***
+
+### align?
+
+> `optional` **align**: `"left"` | `"center"` | `"right"`
+
+***
+
+### style?
+
+> `optional` **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`
+
+***
+
+### widthMultiplier?
+
+> `optional` **widthMultiplier**: `number`

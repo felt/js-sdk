@@ -1,14 +1,14 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
-  CircleSchema,
-  HighlighterSchema,
-  MarkerSchema,
-  NoteSchema,
-  PinSchema,
-  PolygonSchema,
-  PathSchema,
-  TextSchema,
+  CircleCreateSchema,
+  HighlighterCreateSchema,
+  MarkerCreateSchema,
+  NoteCreateSchema,
+  PathCreateSchema,
+  PinCreateSchema,
+  PolygonCreateSchema,
+  TextCreateSchema,
 } from "../elements/types";
 
 const configurableTools = [
@@ -29,7 +29,7 @@ export const ConfigurableToolSchema = z.enum(configurableTools);
 export type ToolType = z.infer<typeof ToolSchema>;
 export type ConfigurableToolType = keyof ToolSettingsMap;
 
-export const PinToolSettingsSchema = PinSchema.pick({
+export const PinToolSettingsSchema = PinCreateSchema.pick({
   color: true,
   symbol: true,
   frame: true,
@@ -38,7 +38,7 @@ export interface PinToolSettings extends zInfer<typeof PinToolSettingsSchema> {
   symbol: PinSymbol;
 }
 
-export const LineToolSettingsSchema = PathSchema.pick({
+export const LineToolSettingsSchema = PathCreateSchema.pick({
   color: true,
   strokeOpacity: true,
   strokeWidth: true,
@@ -48,7 +48,7 @@ export const LineToolSettingsSchema = PathSchema.pick({
 export interface LineToolSettings
   extends zInfer<typeof LineToolSettingsSchema> {}
 
-const RouteToolSettingsSchema = PathSchema.pick({
+const RouteToolSettingsSchema = PathCreateSchema.pick({
   color: true,
   routingMode: true,
   strokeOpacity: true,
@@ -60,7 +60,7 @@ const RouteToolSettingsSchema = PathSchema.pick({
 export interface RouteToolSettings
   extends zInfer<typeof RouteToolSettingsSchema> {}
 
-const PolygonToolSettingsSchema = PolygonSchema.pick({
+const PolygonToolSettingsSchema = PolygonCreateSchema.pick({
   color: true,
   fillOpacity: true,
   strokeOpacity: true,
@@ -71,7 +71,7 @@ const PolygonToolSettingsSchema = PolygonSchema.pick({
 export interface PolygonToolSettings
   extends zInfer<typeof PolygonToolSettingsSchema> {}
 
-const CircleToolSettingsSchema = CircleSchema.pick({
+const CircleToolSettingsSchema = CircleCreateSchema.pick({
   color: true,
   fillOpacity: true,
   strokeOpacity: true,
@@ -82,7 +82,7 @@ const CircleToolSettingsSchema = CircleSchema.pick({
 export interface CircleToolSettings
   extends zInfer<typeof CircleToolSettingsSchema> {}
 
-const MarkerToolSettingsSchema = MarkerSchema.pick({
+const MarkerToolSettingsSchema = MarkerCreateSchema.pick({
   color: true,
   opacity: true,
   size: true,
@@ -90,7 +90,7 @@ const MarkerToolSettingsSchema = MarkerSchema.pick({
 export interface MarkerToolSettings
   extends zInfer<typeof MarkerToolSettingsSchema> {}
 
-const HighlighterToolSettingsSchema = HighlighterSchema.pick({
+const HighlighterToolSettingsSchema = HighlighterCreateSchema.pick({
   color: true,
   opacity: true,
 }).extend({
@@ -99,7 +99,7 @@ const HighlighterToolSettingsSchema = HighlighterSchema.pick({
 export interface HighlighterToolSettings
   extends zInfer<typeof HighlighterToolSettingsSchema> {}
 
-const TextToolSettingsSchema = TextSchema.pick({
+const TextToolSettingsSchema = TextCreateSchema.pick({
   color: true,
   align: true,
   style: true,
@@ -107,7 +107,7 @@ const TextToolSettingsSchema = TextSchema.pick({
 export interface TextToolSettings
   extends zInfer<typeof TextToolSettingsSchema> {}
 
-const NoteToolSettingsSchema = NoteSchema.pick({
+const NoteToolSettingsSchema = NoteCreateSchema.pick({
   color: true,
   align: true,
   style: true,

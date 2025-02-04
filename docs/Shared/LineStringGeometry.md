@@ -2,7 +2,7 @@
 
 > **LineStringGeometry**: \{ `type`: `"LineString"`; `coordinates`: [`LngLatTuple`](LngLatTuple.md)\[]; }
 
-A GeoJSON-like line string geometry.
+A GeoJSON line string geometry.
 
 ## Type declaration
 

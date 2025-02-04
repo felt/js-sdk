@@ -14,6 +14,12 @@
 
 ***
 
+### coordinates?
+
+> `optional` **coordinates**: \[`number`, `number`]\[]\[]
+
+***
+
 ### groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -65,12 +71,6 @@
 ### strokeStyle?
 
 > `optional` **strokeStyle**: `"solid"` | `"dashed"` | `"dotted"`
-
-***
-
-### coordinates?
-
-> `optional` **coordinates**: \{ `latitude`: `number`; `longitude`: `number`; }\[]\[]
 
 ***
 

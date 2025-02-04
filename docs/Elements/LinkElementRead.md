@@ -40,22 +40,10 @@
 
 ### type
 
-> **type**: `"Marker"`
+> **type**: `"Link"`
 
 ***
 
-### coordinates
+### url
 
-> **coordinates**: \{ `latitude`: `number`; `longitude`: `number`; }\[]\[]
-
-***
-
-### opacity
-
-> **opacity**: `number`
-
-***
-
-### size
-
-> **size**: `number`
+> **url**: `string`

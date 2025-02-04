@@ -2,15 +2,15 @@
 
 ## Properties
 
-### color
+### color?
 
-> **color**: `string`
+> `optional` **color**: `string`
 
 ***
 
-### frame
+### frame?
 
-> **frame**: `null` | `"frame-circle"` | `"frame-square"`
+> `optional` **frame**: `null` | `"frame-circle"` | `"frame-square"`
 
 ***
 

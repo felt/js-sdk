@@ -4,13 +4,19 @@
 
 ### type
 
-> **type**: `"Marker"`
+> **type**: `"Highlighter"`
 
 ***
 
 ### id
 
 > **id**: `string`
+
+***
+
+### coordinates?
+
+> `optional` **coordinates**: \{ `latitude`: `number`; `longitude`: `number`; }\[]\[]
 
 ***
 
@@ -44,18 +50,6 @@
 
 ***
 
-### coordinates?
-
-> `optional` **coordinates**: \{ `latitude`: `number`; `longitude`: `number`; }\[]\[]
-
-***
-
 ### opacity?
 
 > `optional` **opacity**: `number`
-
-***
-
-### size?
-
-> `optional` **size**: `number`

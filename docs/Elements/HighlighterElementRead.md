@@ -44,12 +44,6 @@
 
 ***
 
-### coordinates
-
-> **coordinates**: \{ `latitude`: `number`; `longitude`: `number`; }\[]\[]
-
-***
-
 ### opacity
 
 > **opacity**: `number`

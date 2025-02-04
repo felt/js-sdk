@@ -2,7 +2,7 @@
 
 > **MultiLineStringGeometry**: \{ `type`: `"MultiLineString"`; `coordinates`: [`LineStringGeometry`](LineStringGeometry.md)\[`"coordinates"`]\[]; }
 
-A GeoJSON-like multi-line string geometry.
+A GeoJSON multi-line string geometry.
 
 ## Type declaration
 

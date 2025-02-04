@@ -55,12 +55,6 @@
 
 ***
 
-### coordinates
-
-> **coordinates**: \{ `latitude`: `number`; `longitude`: `number`; }\[]\[]
-
-***
-
 ### align
 
 > **align**: `"left"` | `"center"` | `"right"`

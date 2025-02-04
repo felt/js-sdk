@@ -4,13 +4,13 @@
 
 ### type
 
-> **type**: `"Circle"`
+> **type**: `"Polygon"`
 
 ***
 
-### id
+### coordinates
 
-> **id**: `string`
+> **coordinates**: \{ `latitude`: `number`; `longitude`: `number`; }\[]\[]
 
 ***
 
@@ -68,41 +68,12 @@
 
 ***
 
-### coordinates?
-
-> `optional` **coordinates**: \{ `latitude`: `number`; `longitude`: `number`; }
-
-| Name        | Type     | Default value |
-| ----------- | -------- | ------------- |
-| `latitude`  | `number` | Latitude      |
-| `longitude` | `number` | Longitude     |
-
-***
-
 ### fillOpacity?
 
 > `optional` **fillOpacity**: `number`
 
 ***
 
-### radius?
+### areaMarker?
 
-> `optional` **radius**: `number`
-
-***
-
-### radiusDisplayAngle?
-
-> `optional` **radiusDisplayAngle**: `number`
-
-***
-
-### radiusDisplayUnit?
-
-> `optional` **radiusDisplayUnit**: `null` | `"meter"` | `"kilometer"` | `"foot"` | `"mile"`
-
-***
-
-### radiusMarker?
-
-> `optional` **radiusMarker**: `boolean`
+> `optional` **areaMarker**: `boolean`

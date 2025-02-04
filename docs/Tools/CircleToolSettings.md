@@ -2,36 +2,36 @@
 
 ## Properties
 
-### color
+### color?
 
-> **color**: `string`
-
-***
-
-### strokeOpacity
-
-> **strokeOpacity**: `number`
+> `optional` **color**: `string`
 
 ***
 
-### strokeWidth
+### strokeOpacity?
 
-> **strokeWidth**: `number`
-
-***
-
-### strokeStyle
-
-> **strokeStyle**: `"solid"` | `"dashed"` | `"dotted"`
+> `optional` **strokeOpacity**: `number`
 
 ***
 
-### fillOpacity
+### strokeWidth?
 
-> **fillOpacity**: `number`
+> `optional` **strokeWidth**: `number`
 
 ***
 
-### radiusMarker
+### strokeStyle?
 
-> **radiusMarker**: `boolean`
+> `optional` **strokeStyle**: `"solid"` | `"dashed"` | `"dotted"`
+
+***
+
+### fillOpacity?
+
+> `optional` **fillOpacity**: `number`
+
+***
+
+### radiusMarker?
+
+> `optional` **radiusMarker**: `boolean`

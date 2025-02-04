@@ -64,36 +64,7 @@
 
 ### type
 
-> **type**: `"Circle"`
-
-***
-
-### coordinates
-
-> **coordinates**: \{ `latitude`: `number`; `longitude`: `number`; } = `LatLngSchema`
-
-| Name        | Type     | Default value |
-| ----------- | -------- | ------------- |
-| `latitude`  | `number` | Latitude      |
-| `longitude` | `number` | Longitude     |
-
-***
-
-### radius
-
-> **radius**: `number`
-
-***
-
-### radiusDisplayAngle
-
-> **radiusDisplayAngle**: `number`
-
-***
-
-### radiusDisplayUnit
-
-> **radiusDisplayUnit**: `null` | `"meter"` | `"kilometer"` | `"foot"` | `"mile"`
+> **type**: `"Polygon"`
 
 ***
 
@@ -103,6 +74,6 @@
 
 ***
 
-### radiusMarker
+### areaMarker
 
-> **radiusMarker**: `boolean`
+> **areaMarker**: `boolean`

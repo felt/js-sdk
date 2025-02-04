@@ -4,13 +4,19 @@
 
 ### type
 
-> **type**: `"Highlighter"`
+> **type**: `"Image"`
 
 ***
 
 ### id
 
 > **id**: `string`
+
+***
+
+### coordinates?
+
+> `optional` **coordinates**: \{ `latitude`: `number`; `longitude`: `number`; }\[]\[]
 
 ***
 
@@ -44,9 +50,9 @@
 
 ***
 
-### coordinates?
+### imageUrl?
 
-> `optional` **coordinates**: \{ `latitude`: `number`; `longitude`: `number`; }\[]\[]
+> `optional` **imageUrl**: `string`
 
 ***
 

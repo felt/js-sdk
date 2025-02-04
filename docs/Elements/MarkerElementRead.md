@@ -40,22 +40,16 @@
 
 ### type
 
-> **type**: `"Image"`
-
-***
-
-### coordinates
-
-> **coordinates**: \{ `latitude`: `number`; `longitude`: `number`; }\[]\[]
-
-***
-
-### imageUrl
-
-> **imageUrl**: `string`
+> **type**: `"Marker"`
 
 ***
 
 ### opacity
 
 > **opacity**: `number`
+
+***
+
+### size
+
+> **size**: `number`

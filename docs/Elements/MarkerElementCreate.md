@@ -4,13 +4,13 @@
 
 ### type
 
-> **type**: `"Image"`
+> **type**: `"Marker"`
 
 ***
 
-### id
+### coordinates
 
-> **id**: `string`
+> **coordinates**: \{ `latitude`: `number`; `longitude`: `number`; }\[]\[]
 
 ***
 
@@ -44,18 +44,12 @@
 
 ***
 
-### imageUrl?
-
-> `optional` **imageUrl**: `string`
-
-***
-
-### coordinates?
-
-> `optional` **coordinates**: \{ `latitude`: `number`; `longitude`: `number`; }\[]\[]
-
-***
-
 ### opacity?
 
 > `optional` **opacity**: `number`
+
+***
+
+### size?
+
+> `optional` **size**: `number`

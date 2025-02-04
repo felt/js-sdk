@@ -2,18 +2,18 @@
 
 ## Properties
 
-### color
+### color?
 
-> **color**: `string`
-
-***
-
-### opacity
-
-> **opacity**: `number`
+> `optional` **color**: `string`
 
 ***
 
-### size
+### opacity?
 
-> **size**: `number`
+> `optional` **opacity**: `number`
+
+***
+
+### size?
+
+> `optional` **size**: `number`

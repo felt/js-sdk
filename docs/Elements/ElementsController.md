@@ -172,15 +172,15 @@ felt.setElementGroupVisibility({ show: ["element-group-1", "element-group-2"], h
 
 ### createElement()
 
-> **createElement**(`element`: [`ElementInput`](ElementInput.md)): `Promise`\<`null` | [`Element`](Element.md)>
+> **createElement**(`element`: [`ElementCreate`](ElementCreate.md)): `Promise`\<`null` | [`Element`](Element.md)>
 
 Create a new element on the map.
 
 #### Parameters
 
-| Parameter | Type                              |
-| --------- | --------------------------------- |
-| `element` | [`ElementInput`](ElementInput.md) |
+| Parameter | Type                                |
+| --------- | ----------------------------------- |
+| `element` | [`ElementCreate`](ElementCreate.md) |
 
 #### Returns
 

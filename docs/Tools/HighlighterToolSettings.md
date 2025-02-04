@@ -2,15 +2,15 @@
 
 ## Properties
 
-### color
+### color?
 
-> **color**: `string`
+> `optional` **color**: `string`
 
 ***
 
-### opacity
+### opacity?
 
-> **opacity**: `number`
+> `optional` **opacity**: `number`
 
 ***
 

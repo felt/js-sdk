@@ -14,6 +14,12 @@
 
 ***
 
+### coordinates?
+
+> `optional` **coordinates**: \{ `latitude`: `number`; `longitude`: `number`; }\[]\[]
+
+***
+
 ### groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -41,12 +47,6 @@
 ### attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`>
-
-***
-
-### coordinates?
-
-> `optional` **coordinates**: \{ `latitude`: `number`; `longitude`: `number`; }\[]\[]
 
 ***
 

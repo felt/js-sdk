@@ -50,17 +50,6 @@
 
 ***
 
-### coordinates
-
-> **coordinates**: \{ `latitude`: `number`; `longitude`: `number`; } = `LatLngSchema`
-
-| Name        | Type     | Default value |
-| ----------- | -------- | ------------- |
-| `latitude`  | `number` | Latitude      |
-| `longitude` | `number` | Longitude     |
-
-***
-
 ### symbol
 
 > **symbol**: `string`

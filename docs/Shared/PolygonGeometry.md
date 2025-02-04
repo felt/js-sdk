@@ -2,7 +2,7 @@
 
 > **PolygonGeometry**: \{ `type`: `"Polygon"`; `coordinates`: [`LngLatTuple`](LngLatTuple.md)\[]\[]; }
 
-A GeoJSON-like polygon geometry.
+A GeoJSON polygon geometry.
 
 ## Type declaration
 

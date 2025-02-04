@@ -64,22 +64,22 @@
 
 ### type
 
-> **type**: `"Polygon"`
+> **type**: `"Path"`
 
 ***
 
-### coordinates
+### distanceMarker
 
-> **coordinates**: \{ `latitude`: `number`; `longitude`: `number`; }\[]\[]
-
-***
-
-### fillOpacity
-
-> **fillOpacity**: `number`
+> **distanceMarker**: `boolean`
 
 ***
 
-### areaMarker
+### endCaps
 
-> **areaMarker**: `boolean`
+> **endCaps**: `boolean`
+
+***
+
+### routingMode?
+
+> `optional` **routingMode**: `"driving"` | `"cycling"` | `"walking"` | `"flying"`

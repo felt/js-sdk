@@ -1,3 +1,3 @@
 ***
 
-> **ElementUpdate**: [`PinUpdate`](PinUpdate.md) | [`PathUpdate`](PathUpdate.md) | [`PolygonUpdate`](PolygonUpdate.md) | [`CircleUpdate`](CircleUpdate.md) | [`MarkerUpdate`](MarkerUpdate.md) | [`HighlighterUpdate`](HighlighterUpdate.md) | [`TextUpdate`](TextUpdate.md) | [`NoteUpdate`](NoteUpdate.md) | [`ImageUpdate`](ImageUpdate.md)
+> **ElementUpdate**: [`PinElementUpdate`](PinElementUpdate.md) | [`PathElementUpdate`](PathElementUpdate.md) | [`PolygonElementUpdate`](PolygonElementUpdate.md) | [`CircleElementUpdate`](CircleElementUpdate.md) | [`MarkerElementUpdate`](MarkerElementUpdate.md) | [`HighlighterElementUpdate`](HighlighterElementUpdate.md) | [`TextElementUpdate`](TextElementUpdate.md) | [`NoteElementUpdate`](NoteElementUpdate.md) | [`ImageElementUpdate`](ImageElementUpdate.md)

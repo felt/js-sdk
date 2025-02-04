@@ -40,16 +40,16 @@
 
 ### type
 
-> **type**: `"Link"`
+> **type**: `"Image"`
 
 ***
 
-### coordinates
+### imageUrl
 
-> **coordinates**: \{ `latitude`: `number`; `longitude`: `number`; }\[]\[]
+> **imageUrl**: `string`
 
 ***
 
-### url
+### opacity
 
-> **url**: `string`
+> **opacity**: `number`

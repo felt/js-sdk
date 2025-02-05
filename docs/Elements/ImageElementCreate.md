@@ -14,6 +14,12 @@
 
 ***
 
+### imageUrl
+
+> **imageUrl**: `string`
+
+***
+
 ### groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -41,12 +47,6 @@
 ### attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`>
-
-***
-
-### imageUrl?
-
-> `optional` **imageUrl**: `string`
 
 ***
 

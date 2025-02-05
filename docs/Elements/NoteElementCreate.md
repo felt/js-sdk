@@ -8,6 +8,12 @@
 
 ***
 
+### text
+
+> **text**: `string`
+
+***
+
 ### groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -17,12 +23,6 @@
 ### color?
 
 > `optional` **color**: `string`
-
-***
-
-### name?
-
-> `optional` **name**: `string`
 
 ***
 

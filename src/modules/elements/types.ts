@@ -94,6 +94,7 @@ const DerivedCoords = z.object({
 });
 
 const Textual = z.object({
+  text: z.string(),
   align: z.enum(["left", "center", "right"]),
   style: z.enum(["italic", "light", "regular", "caps"]),
   name: z.string(),
@@ -141,7 +142,8 @@ export const PolygonCreateSchema = PolygonElementSchema.partial()
   .omit(omitCreateProps);
 
 export const CircleCreateSchema = CircleElementSchema.partial()
-  .required({ ...requiredCreateProps, radius: true })
+  .required(requiredCreateProps)
+  .required({ radius: true })
   .omit(omitCreateProps);
 
 export const MarkerCreateSchema = MarkerElementSchema.partial()
@@ -154,14 +156,19 @@ export const HighlighterCreateSchema = HighlighterElementSchema.partial()
 
 export const TextCreateSchema = TextElementSchema.partial()
   .required(requiredCreateProps)
-  .omit({ ...omitCreateProps, coordinates: true });
+  .required({ text: true })
+  .omit(omitCreateProps)
+  .omit({ coordinates: true, name: true });
 
 export const NoteCreateSchema = NoteElementSchema.partial()
   .required(requiredCreateProps)
-  .omit({ ...omitCreateProps, coordinates: true });
+  .required({ text: true })
+  .omit(omitCreateProps)
+  .omit({ coordinates: true, name: true });
 
 const ImageCreateSchema = ImageElementSchema.partial()
   .required(requiredCreateProps)
+  .required({ imageUrl: true })
   .omit(omitCreateProps);
 
 export const ElementCreateSchema = z.discriminatedUnion("type", [

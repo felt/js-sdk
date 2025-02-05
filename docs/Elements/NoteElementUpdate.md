@@ -73,6 +73,12 @@
 
 ***
 
+### text?
+
+> `optional` **text**: `string`
+
+***
+
 ### align?
 
 > `optional` **align**: `"left"` | `"center"` | `"right"`

@@ -55,6 +55,12 @@
 
 ***
 
+### text
+
+> **text**: `string`
+
+***
+
 ### align
 
 > **align**: `"left"` | `"center"` | `"right"`

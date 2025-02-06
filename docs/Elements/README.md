@@ -3,6 +3,42 @@
 The Felt SDK lets you get information about the elements in the map, and the
 groups that they belong to.
 
+## Interfaces
+
+* [PlaceElementCreate](PlaceElementCreate.md)
+* [PathElementCreate](PathElementCreate.md)
+* [PolygonElementCreate](PolygonElementCreate.md)
+* [CircleElementCreate](CircleElementCreate.md)
+* [MarkerElementCreate](MarkerElementCreate.md)
+* [HighlighterElementCreate](HighlighterElementCreate.md)
+* [TextElementCreate](TextElementCreate.md)
+* [NoteElementCreate](NoteElementCreate.md)
+* [ImageElementCreate](ImageElementCreate.md)
+* [PlaceElementRead](PlaceElementRead.md)
+* [PathElementRead](PathElementRead.md)
+* [PolygonElementRead](PolygonElementRead.md)
+* [CircleElementRead](CircleElementRead.md)
+* [MarkerElementRead](MarkerElementRead.md)
+* [HighlighterElementRead](HighlighterElementRead.md)
+* [TextElementRead](TextElementRead.md)
+* [NoteElementRead](NoteElementRead.md)
+* [ImageElementRead](ImageElementRead.md)
+* [LinkElementRead](LinkElementRead.md)
+* [PlaceElementUpdate](PlaceElementUpdate.md)
+* [PathElementUpdate](PathElementUpdate.md)
+* [PolygonElementUpdate](PolygonElementUpdate.md)
+* [CircleElementUpdate](CircleElementUpdate.md)
+* [MarkerElementUpdate](MarkerElementUpdate.md)
+* [HighlighterElementUpdate](HighlighterElementUpdate.md)
+* [TextElementUpdate](TextElementUpdate.md)
+* [NoteElementUpdate](NoteElementUpdate.md)
+* [ImageElementUpdate](ImageElementUpdate.md)
+
+## Type Aliases
+
+* [ElementCreate](ElementCreate.md)
+* [ElementUpdate](ElementUpdate.md)
+
 ## Controller
 
 * [ElementsController](ElementsController.md)
@@ -15,6 +51,6 @@ groups that they belong to.
 
 ## Elements
 
-* [Element](Element.md)
 * [GetElementsConstraint](GetElementsConstraint.md)
 * [ElementChangeCallbackParams](ElementChangeCallbackParams.md)
+* [Element](Element.md)

@@ -15,6 +15,8 @@ export const LatLngSchema = z.object({
   longitude: Longitude,
 });
 
+export const LatLngTupleSchema = z.tuple([Longitude, Latitude]);
+
 /**
  * A tuple representing a longitude and latitude coordinate.
  *
@@ -24,15 +26,20 @@ export const LatLngSchema = z.object({
 export type LngLatTuple = [longitude: number, latitude: number];
 
 /**
- * A GeoJSON-like point geometry.
+ * A GeoJSON point geometry.
  */
 export type PointGeometry = {
   type: "Point";
   coordinates: LngLatTuple;
 };
 
+export const PointGeometrySchema = z.object({
+  type: z.literal("Point"),
+  coordinates: LatLngTupleSchema,
+});
+
 /**
- * A GeoJSON-like polygon geometry.
+ * A GeoJSON polygon geometry.
  */
 export type PolygonGeometry = {
   type: "Polygon";
@@ -40,7 +47,7 @@ export type PolygonGeometry = {
 };
 
 /**
- * A GeoJSON-like multi-polygon geometry.
+ * A GeoJSON multi-polygon geometry.
  */
 export type MultiPolygonGeometry = {
   type: "MultiPolygon";
@@ -48,23 +55,33 @@ export type MultiPolygonGeometry = {
 };
 
 /**
- * A GeoJSON-like line string geometry.
+ * A GeoJSON line string geometry.
  */
 export type LineStringGeometry = {
   type: "LineString";
   coordinates: LngLatTuple[];
 };
 
+const LineStringGeometrySchema = z.object({
+  type: z.literal("LineString"),
+  coordinates: z.array(LatLngTupleSchema),
+});
+
 /**
- * A GeoJSON-like multi-line string geometry.
+ * A GeoJSON multi-line string geometry.
  */
 export type MultiLineStringGeometry = {
   type: "MultiLineString";
   coordinates: LineStringGeometry["coordinates"][];
 };
 
+export const MultiLineStringGeometrySchema = z.object({
+  type: z.literal("MultiLineString"),
+  coordinates: z.array(LineStringGeometrySchema.shape.coordinates),
+});
+
 /**
- * A GeoJSON-like geometry of any type
+ * A GeoJSON geometry of any type
  */
 export type Geometry =
   | PointGeometry

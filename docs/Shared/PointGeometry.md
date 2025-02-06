@@ -2,7 +2,7 @@
 
 > **PointGeometry**: \{ `type`: `"Point"`; `coordinates`: [`LngLatTuple`](LngLatTuple.md); }
 
-A GeoJSON-like point geometry.
+A GeoJSON point geometry.
 
 ## Type declaration
 

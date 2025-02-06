@@ -4,8 +4,10 @@ import type { Geometry, SetVisibilityRequest } from "~/modules/shared/types";
 import type {
   Element,
   ElementChangeCallbackParams,
+  ElementCreate,
   ElementGroup,
   ElementGroupChangeCallbackParams,
+  ElementUpdate,
   GetElementGroupsConstraint,
   GetElementsConstraint,
 } from "./types";
@@ -22,6 +24,10 @@ export const elementsController = (feltWindow: Window): ElementsController => ({
   getElementGroups: method(feltWindow, "getElementGroups"),
   onElementChange: listener(feltWindow, "onElementChange"),
   onElementGroupChange: listener(feltWindow, "onElementGroupChange"),
+
+  createElement: method(feltWindow, "createElement"),
+  updateElement: method(feltWindow, "updateElement"),
+  deleteElement: method(feltWindow, "deleteElement"),
 });
 
 /**
@@ -182,4 +188,24 @@ export interface ElementsController {
     };
     handler: (change: ElementGroupChangeCallbackParams) => void;
   }): VoidFunction;
+
+  /**
+   * Create a new element on the map.
+   *
+   * @example
+   * ```typescript
+   * const element = await felt.createElement({ type: "Place", coordinates: [10, 10] });
+   * ```
+   */
+  createElement(element: ElementCreate): Promise<Element | null>;
+
+  /**
+   * Update an element on the map.
+   */
+  updateElement(element: ElementUpdate): Promise<Element | null>;
+
+  /**
+   * Delete an element from the map.
+   */
+  deleteElement(id: string): Promise<void>;
 }

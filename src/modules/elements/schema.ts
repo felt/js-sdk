@@ -16,6 +16,8 @@ import {
   type ElementChangeCallbackParams,
   type ElementGroup,
   type ElementGroupChangeCallbackParams,
+  ElementCreateSchema,
+  ElementUpdateSchema,
   GetElementGroupsConstraintSchema,
   GetElementsConstraintSchema,
 } from "./types";
@@ -49,6 +51,16 @@ const OnElementGroupChangeMessage = listenerMessageWithParams(
   z.object({ id: z.string() }),
 );
 
+const CreateElementMessage = methodMessage(
+  "createElement",
+  ElementCreateSchema,
+);
+const UpdateElementMessage = methodMessage(
+  "updateElement",
+  ElementUpdateSchema,
+);
+const DeleteElementMessage = methodMessage("deleteElement", z.string());
+
 export const elementsSchema = {
   methods: [
     GetElementMessage,
@@ -57,6 +69,9 @@ export const elementsSchema = {
     GetGroupMessage,
     GetGroupsMessage,
     SetElementGroupVisibilityMessage,
+    CreateElementMessage,
+    UpdateElementMessage,
+    DeleteElementMessage,
   ],
   listeners: [OnElementChangeMessage, OnElementGroupChangeMessage],
 } satisfies ModuleSchema;
@@ -84,6 +99,10 @@ export type ElementsSchema = {
       zInfer<typeof SetElementGroupVisibilityMessage>,
       void
     >;
+
+    createElement: Method<zInfer<typeof CreateElementMessage>, Element | null>;
+    updateElement: Method<zInfer<typeof UpdateElementMessage>, Element | null>;
+    deleteElement: Method<zInfer<typeof DeleteElementMessage>, void>;
   };
   listeners: {
     onElementChange: Listener<

@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.5.0-next.3
+
+### Minor Changes
+
+- 4c83c60: Add programmatic element creation, editing and deletion
+
 ## 1.5.0-next.2
 
 ### Minor Changes

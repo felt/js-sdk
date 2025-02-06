@@ -5,6 +5,7 @@
     "@feltmaps/js-sdk": "1.4.0"
   },
   "changesets": [
+    "dull-games-rest",
     "few-cats-fix",
     "gold-apricots-carry",
     "hungry-hotels-end"

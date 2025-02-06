@@ -5,7 +5,7 @@ groups that they belong to.
 
 ## Interfaces
 
-* [PinElementCreate](PinElementCreate.md)
+* [PlaceElementCreate](PlaceElementCreate.md)
 * [PathElementCreate](PathElementCreate.md)
 * [PolygonElementCreate](PolygonElementCreate.md)
 * [CircleElementCreate](CircleElementCreate.md)
@@ -14,7 +14,7 @@ groups that they belong to.
 * [TextElementCreate](TextElementCreate.md)
 * [NoteElementCreate](NoteElementCreate.md)
 * [ImageElementCreate](ImageElementCreate.md)
-* [PinElementRead](PinElementRead.md)
+* [PlaceElementRead](PlaceElementRead.md)
 * [PathElementRead](PathElementRead.md)
 * [PolygonElementRead](PolygonElementRead.md)
 * [CircleElementRead](CircleElementRead.md)
@@ -24,7 +24,7 @@ groups that they belong to.
 * [NoteElementRead](NoteElementRead.md)
 * [ImageElementRead](ImageElementRead.md)
 * [LinkElementRead](LinkElementRead.md)
-* [PinElementUpdate](PinElementUpdate.md)
+* [PlaceElementUpdate](PlaceElementUpdate.md)
 * [PathElementUpdate](PathElementUpdate.md)
 * [PolygonElementUpdate](PolygonElementUpdate.md)
 * [CircleElementUpdate](CircleElementUpdate.md)

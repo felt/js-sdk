@@ -1,7 +1,6 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
-  LatLngSchema,
   LatLngTupleSchema,
   MultiLineStringGeometrySchema,
   PointGeometrySchema,
@@ -28,8 +27,10 @@ const Strokable = z.object({
 
 const DistanceUnit = z.enum(["meter", "kilometer", "foot", "mile"]);
 
-const PinElementSchema = BaseFeltElementSchema.extend(Geographic.shape).extend({
-  type: z.literal("Pin"),
+const PlaceElementSchema = BaseFeltElementSchema.extend(
+  Geographic.shape,
+).extend({
+  type: z.literal("Place"),
   coordinates: PointGeometrySchema.shape.coordinates,
 
   symbol: z.string(),
@@ -86,7 +87,7 @@ const HighlighterElementSchema = BaseFeltElementSchema.extend({
 });
 
 const DerivedCoords = z.object({
-  position: LatLngSchema,
+  position: LatLngTupleSchema,
   rotation: z.number(),
   scale: z.number(),
 
@@ -129,7 +130,7 @@ const LinkElementSchema = BaseFeltElementSchema.extend({
 const requiredCreateProps = { type: true, coordinates: true } as const;
 const omitCreateProps = { id: true } as const;
 
-export const PinCreateSchema = PinElementSchema.partial()
+export const PlaceCreateSchema = PlaceElementSchema.partial()
   .required(requiredCreateProps)
   .omit(omitCreateProps);
 
@@ -172,7 +173,7 @@ const ImageCreateSchema = ImageElementSchema.partial()
   .omit(omitCreateProps);
 
 export const ElementCreateSchema = z.discriminatedUnion("type", [
-  PinCreateSchema,
+  PlaceCreateSchema,
   PathCreateSchema,
   PolygonCreateSchema,
   CircleCreateSchema,
@@ -186,7 +187,7 @@ export const ElementCreateSchema = z.discriminatedUnion("type", [
   NoteCreateSchema,
 ]);
 
-const PinReadSchema = PinElementSchema.omit({ coordinates: true });
+const PlaceReadSchema = PlaceElementSchema.omit({ coordinates: true });
 const PathReadSchema = PathElementSchema.omit({ coordinates: true });
 const PolygonReadSchema = PolygonElementSchema.omit({
   coordinates: true,
@@ -203,8 +204,8 @@ const LinkReadSchema = LinkElementSchema.omit({ coordinates: true });
 
 const requiredUpdateProps = { type: true, id: true } as const;
 
-const PinUpdateSchema =
-  PinElementSchema.partial().required(requiredUpdateProps);
+const PlaceUpdateSchema =
+  PlaceElementSchema.partial().required(requiredUpdateProps);
 
 const PathUpdateSchema =
   PathElementSchema.partial().required(requiredUpdateProps);
@@ -231,7 +232,7 @@ const ImageUpdateSchema =
   ImageElementSchema.partial().required(requiredUpdateProps);
 
 export const ElementUpdateSchema = z.discriminatedUnion("type", [
-  PinUpdateSchema,
+  PlaceUpdateSchema,
   PathUpdateSchema,
   PolygonUpdateSchema,
   CircleUpdateSchema,
@@ -242,7 +243,7 @@ export const ElementUpdateSchema = z.discriminatedUnion("type", [
   ImageUpdateSchema,
 ]);
 
-export interface PinElementCreate extends zInfer<typeof PinCreateSchema> {}
+export interface PlaceElementCreate extends zInfer<typeof PlaceCreateSchema> {}
 export interface PathElementCreate extends zInfer<typeof PathCreateSchema> {}
 export interface PolygonElementCreate
   extends zInfer<typeof PolygonCreateSchema> {}
@@ -256,7 +257,7 @@ export interface TextElementCreate extends zInfer<typeof TextCreateSchema> {}
 export interface NoteElementCreate extends zInfer<typeof NoteCreateSchema> {}
 export interface ImageElementCreate extends zInfer<typeof ImageCreateSchema> {}
 
-export interface PinElementRead extends zInfer<typeof PinReadSchema> {}
+export interface PlaceElementRead extends zInfer<typeof PlaceReadSchema> {}
 export interface PathElementRead extends zInfer<typeof PathReadSchema> {}
 export interface PolygonElementRead extends zInfer<typeof PolygonReadSchema> {}
 export interface CircleElementRead extends zInfer<typeof CircleReadSchema> {}
@@ -268,7 +269,7 @@ export interface NoteElementRead extends zInfer<typeof NoteReadSchema> {}
 export interface ImageElementRead extends zInfer<typeof ImageReadSchema> {}
 export interface LinkElementRead extends zInfer<typeof LinkReadSchema> {}
 
-export interface PinElementUpdate extends zInfer<typeof PinUpdateSchema> {}
+export interface PlaceElementUpdate extends zInfer<typeof PlaceUpdateSchema> {}
 export interface PathElementUpdate extends zInfer<typeof PathUpdateSchema> {}
 export interface PolygonElementUpdate
   extends zInfer<typeof PolygonUpdateSchema> {}
@@ -283,7 +284,7 @@ export interface NoteElementUpdate extends zInfer<typeof NoteUpdateSchema> {}
 export interface ImageElementUpdate extends zInfer<typeof ImageUpdateSchema> {}
 
 export type ElementCreate =
-  | PinElementCreate
+  | PlaceElementCreate
   | PathElementCreate
   | PolygonElementCreate
   | CircleElementCreate
@@ -294,7 +295,7 @@ export type ElementCreate =
   | NoteElementCreate;
 
 export type ElementUpdate =
-  | PinElementUpdate
+  | PlaceElementUpdate
   | PathElementUpdate
   | PolygonElementUpdate
   | CircleElementUpdate
@@ -308,7 +309,7 @@ export type ElementUpdate =
  * @group Elements
  */
 export type Element =
-  | PinElementRead
+  | PlaceElementRead
   | PathElementRead
   | PolygonElementRead
   | CircleElementRead

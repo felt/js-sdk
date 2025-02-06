@@ -4,19 +4,25 @@
 
 ### type
 
-> **type**: `"Pin"`
+> **type**: `"Place"`
 
 ***
 
-### coordinates
+### id
 
-> **coordinates**: \[`number`, `number`]
+> **id**: `string`
 
 ***
 
 ### symbol?
 
 > `optional` **symbol**: `string`
+
+***
+
+### coordinates?
+
+> `optional` **coordinates**: \[`number`, `number`]
 
 ***
 

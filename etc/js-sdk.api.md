@@ -4,102 +4,102 @@
 
 ```ts
 
-import { D as CircleElementCreate } from './types-BUl0kTlg.js';
-import { H as CircleElementRead } from './types-BUl0kTlg.js';
-import { J as CircleElementUpdate } from './types-BUl0kTlg.js';
-import { av as CircleToolSettings } from './types-BUl0kTlg.js';
-import { C as ConfigurableToolType } from './types-BUl0kTlg.js';
-import { E as Element_2 } from './types-BUl0kTlg.js';
-import { d as ElementChangeCallbackParams } from './types-BUl0kTlg.js';
-import { f as ElementCreate } from './types-BUl0kTlg.js';
-import { b as ElementGroup } from './types-BUl0kTlg.js';
-import { e as ElementGroupChangeCallbackParams } from './types-BUl0kTlg.js';
-import { ah as ElementGroupNode } from './types-BUl0kTlg.js';
-import { ai as ElementNode } from './types-BUl0kTlg.js';
-import { g as ElementUpdate } from './types-BUl0kTlg.js';
-import { t as EntityNode } from './types-BUl0kTlg.js';
-import { s as Feature } from './types-BUl0kTlg.js';
-import { aj as FeatureNode } from './types-BUl0kTlg.js';
-import { u as FeatureSelection } from './types-BUl0kTlg.js';
-import { am as FeltBoundary } from './types-BUl0kTlg.js';
-import { an as FeltZoom } from './types-BUl0kTlg.js';
-import { ae as FilterExpression } from './types-BUl0kTlg.js';
-import { af as FilterLogicGate } from './types-BUl0kTlg.js';
-import { F as Filters } from './types-BUl0kTlg.js';
-import { ag as FilterTernary } from './types-BUl0kTlg.js';
-import { G as Geometry } from './types-BUl0kTlg.js';
-import { c as GetElementGroupsConstraint } from './types-BUl0kTlg.js';
-import { a as GetElementsConstraint } from './types-BUl0kTlg.js';
-import { k as GetLayerGroupsConstraint } from './types-BUl0kTlg.js';
-import { h as GetLayersConstraint } from './types-BUl0kTlg.js';
-import { r as GetRenderedFeaturesConstraint } from './types-BUl0kTlg.js';
-import { K as HighlighterElementCreate } from './types-BUl0kTlg.js';
-import { N as HighlighterElementRead } from './types-BUl0kTlg.js';
-import { O as HighlighterElementUpdate } from './types-BUl0kTlg.js';
-import { aw as HighlighterToolSettings } from './types-BUl0kTlg.js';
-import { P as ImageElementCreate } from './types-BUl0kTlg.js';
-import { Q as ImageElementRead } from './types-BUl0kTlg.js';
-import { R as ImageElementUpdate } from './types-BUl0kTlg.js';
-import { I as InputToolSettings } from './types-BUl0kTlg.js';
-import { ao as LatLng } from './types-BUl0kTlg.js';
-import { L as Layer } from './types-BUl0kTlg.js';
-import { i as LayerChangeCallbackParams } from './types-BUl0kTlg.js';
-import { q as LayerFilters } from './types-BUl0kTlg.js';
-import { j as LayerGroup } from './types-BUl0kTlg.js';
-import { l as LayerGroupChangeCallbackParams } from './types-BUl0kTlg.js';
-import { ak as LayerGroupNode } from './types-BUl0kTlg.js';
-import { al as LayerNode } from './types-BUl0kTlg.js';
-import { ac as LayerProcessingStatus } from './types-BUl0kTlg.js';
-import { n as LegendItem } from './types-BUl0kTlg.js';
-import { p as LegendItemChangeCallbackParams } from './types-BUl0kTlg.js';
-import { m as LegendItemIdentifier } from './types-BUl0kTlg.js';
-import { o as LegendItemsConstraint } from './types-BUl0kTlg.js';
-import { ap as LineStringGeometry } from './types-BUl0kTlg.js';
-import { ax as LineToolSettings } from './types-BUl0kTlg.js';
-import { U as LinkElementRead } from './types-BUl0kTlg.js';
-import { aq as LngLatTuple } from './types-BUl0kTlg.js';
-import { M as MapInteractionEvent } from './types-BUl0kTlg.js';
-import { W as MarkerElementCreate } from './types-BUl0kTlg.js';
-import { X as MarkerElementRead } from './types-BUl0kTlg.js';
-import { Y as MarkerElementUpdate } from './types-BUl0kTlg.js';
-import { ay as MarkerToolSettings } from './types-BUl0kTlg.js';
-import { ar as MultiLineStringGeometry } from './types-BUl0kTlg.js';
-import { as as MultiPolygonGeometry } from './types-BUl0kTlg.js';
-import { Z as NoteElementCreate } from './types-BUl0kTlg.js';
-import { _ as NoteElementRead } from './types-BUl0kTlg.js';
-import { $ as NoteElementUpdate } from './types-BUl0kTlg.js';
-import { az as NoteToolSettings } from './types-BUl0kTlg.js';
-import { a0 as PathElementCreate } from './types-BUl0kTlg.js';
-import { a1 as PathElementRead } from './types-BUl0kTlg.js';
-import { a2 as PathElementUpdate } from './types-BUl0kTlg.js';
-import { a3 as PinElementCreate } from './types-BUl0kTlg.js';
-import { a4 as PinElementRead } from './types-BUl0kTlg.js';
-import { a5 as PinElementUpdate } from './types-BUl0kTlg.js';
-import { aA as PinFrame } from './types-BUl0kTlg.js';
-import { aB as PinSymbol } from './types-BUl0kTlg.js';
-import { aC as PinToolSettings } from './types-BUl0kTlg.js';
-import { at as PointGeometry } from './types-BUl0kTlg.js';
-import { a6 as PolygonElementCreate } from './types-BUl0kTlg.js';
-import { a7 as PolygonElementRead } from './types-BUl0kTlg.js';
-import { a8 as PolygonElementUpdate } from './types-BUl0kTlg.js';
-import { au as PolygonGeometry } from './types-BUl0kTlg.js';
-import { aD as PolygonToolSettings } from './types-BUl0kTlg.js';
-import { ad as RasterValue } from './types-BUl0kTlg.js';
-import { aE as RouteToolSettings } from './types-BUl0kTlg.js';
-import { x as SetViewportCenterZoomParams } from './types-BUl0kTlg.js';
-import { S as SetVisibilityRequest } from './types-BUl0kTlg.js';
-import { a9 as TextElementCreate } from './types-BUl0kTlg.js';
-import { aa as TextElementRead } from './types-BUl0kTlg.js';
-import { ab as TextElementUpdate } from './types-BUl0kTlg.js';
-import { aF as TextToolSettings } from './types-BUl0kTlg.js';
-import { w as ToolSettingsChangeEvent } from './types-BUl0kTlg.js';
-import { v as ToolSettingsMap } from './types-BUl0kTlg.js';
-import { T as ToolType } from './types-BUl0kTlg.js';
-import { B as ViewportCenterZoom } from './types-BUl0kTlg.js';
-import { y as ViewportConstraints } from './types-BUl0kTlg.js';
-import { A as ViewportFitBoundsParams } from './types-BUl0kTlg.js';
-import { V as ViewportState } from './types-BUl0kTlg.js';
-import { z } from './types-BUl0kTlg.js';
+import { D as CircleElementCreate } from './types-BJmH_n-c.js';
+import { H as CircleElementRead } from './types-BJmH_n-c.js';
+import { J as CircleElementUpdate } from './types-BJmH_n-c.js';
+import { av as CircleToolSettings } from './types-BJmH_n-c.js';
+import { C as ConfigurableToolType } from './types-BJmH_n-c.js';
+import { E as Element_2 } from './types-BJmH_n-c.js';
+import { d as ElementChangeCallbackParams } from './types-BJmH_n-c.js';
+import { f as ElementCreate } from './types-BJmH_n-c.js';
+import { b as ElementGroup } from './types-BJmH_n-c.js';
+import { e as ElementGroupChangeCallbackParams } from './types-BJmH_n-c.js';
+import { ah as ElementGroupNode } from './types-BJmH_n-c.js';
+import { ai as ElementNode } from './types-BJmH_n-c.js';
+import { g as ElementUpdate } from './types-BJmH_n-c.js';
+import { t as EntityNode } from './types-BJmH_n-c.js';
+import { s as Feature } from './types-BJmH_n-c.js';
+import { aj as FeatureNode } from './types-BJmH_n-c.js';
+import { u as FeatureSelection } from './types-BJmH_n-c.js';
+import { am as FeltBoundary } from './types-BJmH_n-c.js';
+import { an as FeltZoom } from './types-BJmH_n-c.js';
+import { ae as FilterExpression } from './types-BJmH_n-c.js';
+import { af as FilterLogicGate } from './types-BJmH_n-c.js';
+import { F as Filters } from './types-BJmH_n-c.js';
+import { ag as FilterTernary } from './types-BJmH_n-c.js';
+import { G as Geometry } from './types-BJmH_n-c.js';
+import { c as GetElementGroupsConstraint } from './types-BJmH_n-c.js';
+import { a as GetElementsConstraint } from './types-BJmH_n-c.js';
+import { k as GetLayerGroupsConstraint } from './types-BJmH_n-c.js';
+import { h as GetLayersConstraint } from './types-BJmH_n-c.js';
+import { r as GetRenderedFeaturesConstraint } from './types-BJmH_n-c.js';
+import { K as HighlighterElementCreate } from './types-BJmH_n-c.js';
+import { N as HighlighterElementRead } from './types-BJmH_n-c.js';
+import { O as HighlighterElementUpdate } from './types-BJmH_n-c.js';
+import { aw as HighlighterToolSettings } from './types-BJmH_n-c.js';
+import { P as ImageElementCreate } from './types-BJmH_n-c.js';
+import { Q as ImageElementRead } from './types-BJmH_n-c.js';
+import { R as ImageElementUpdate } from './types-BJmH_n-c.js';
+import { I as InputToolSettings } from './types-BJmH_n-c.js';
+import { ao as LatLng } from './types-BJmH_n-c.js';
+import { L as Layer } from './types-BJmH_n-c.js';
+import { i as LayerChangeCallbackParams } from './types-BJmH_n-c.js';
+import { q as LayerFilters } from './types-BJmH_n-c.js';
+import { j as LayerGroup } from './types-BJmH_n-c.js';
+import { l as LayerGroupChangeCallbackParams } from './types-BJmH_n-c.js';
+import { ak as LayerGroupNode } from './types-BJmH_n-c.js';
+import { al as LayerNode } from './types-BJmH_n-c.js';
+import { ac as LayerProcessingStatus } from './types-BJmH_n-c.js';
+import { n as LegendItem } from './types-BJmH_n-c.js';
+import { p as LegendItemChangeCallbackParams } from './types-BJmH_n-c.js';
+import { m as LegendItemIdentifier } from './types-BJmH_n-c.js';
+import { o as LegendItemsConstraint } from './types-BJmH_n-c.js';
+import { ap as LineStringGeometry } from './types-BJmH_n-c.js';
+import { ax as LineToolSettings } from './types-BJmH_n-c.js';
+import { U as LinkElementRead } from './types-BJmH_n-c.js';
+import { aq as LngLatTuple } from './types-BJmH_n-c.js';
+import { M as MapInteractionEvent } from './types-BJmH_n-c.js';
+import { W as MarkerElementCreate } from './types-BJmH_n-c.js';
+import { X as MarkerElementRead } from './types-BJmH_n-c.js';
+import { Y as MarkerElementUpdate } from './types-BJmH_n-c.js';
+import { ay as MarkerToolSettings } from './types-BJmH_n-c.js';
+import { ar as MultiLineStringGeometry } from './types-BJmH_n-c.js';
+import { as as MultiPolygonGeometry } from './types-BJmH_n-c.js';
+import { Z as NoteElementCreate } from './types-BJmH_n-c.js';
+import { _ as NoteElementRead } from './types-BJmH_n-c.js';
+import { $ as NoteElementUpdate } from './types-BJmH_n-c.js';
+import { az as NoteToolSettings } from './types-BJmH_n-c.js';
+import { a0 as PathElementCreate } from './types-BJmH_n-c.js';
+import { a1 as PathElementRead } from './types-BJmH_n-c.js';
+import { a2 as PathElementUpdate } from './types-BJmH_n-c.js';
+import { aA as PinToolSettings } from './types-BJmH_n-c.js';
+import { a3 as PlaceElementCreate } from './types-BJmH_n-c.js';
+import { a4 as PlaceElementRead } from './types-BJmH_n-c.js';
+import { a5 as PlaceElementUpdate } from './types-BJmH_n-c.js';
+import { aB as PlaceFrame } from './types-BJmH_n-c.js';
+import { aC as PlaceSymbol } from './types-BJmH_n-c.js';
+import { at as PointGeometry } from './types-BJmH_n-c.js';
+import { a6 as PolygonElementCreate } from './types-BJmH_n-c.js';
+import { a7 as PolygonElementRead } from './types-BJmH_n-c.js';
+import { a8 as PolygonElementUpdate } from './types-BJmH_n-c.js';
+import { au as PolygonGeometry } from './types-BJmH_n-c.js';
+import { aD as PolygonToolSettings } from './types-BJmH_n-c.js';
+import { ad as RasterValue } from './types-BJmH_n-c.js';
+import { aE as RouteToolSettings } from './types-BJmH_n-c.js';
+import { x as SetViewportCenterZoomParams } from './types-BJmH_n-c.js';
+import { S as SetVisibilityRequest } from './types-BJmH_n-c.js';
+import { a9 as TextElementCreate } from './types-BJmH_n-c.js';
+import { aa as TextElementRead } from './types-BJmH_n-c.js';
+import { ab as TextElementUpdate } from './types-BJmH_n-c.js';
+import { aF as TextToolSettings } from './types-BJmH_n-c.js';
+import { w as ToolSettingsChangeEvent } from './types-BJmH_n-c.js';
+import { v as ToolSettingsMap } from './types-BJmH_n-c.js';
+import { T as ToolType } from './types-BJmH_n-c.js';
+import { B as ViewportCenterZoom } from './types-BJmH_n-c.js';
+import { y as ViewportConstraints } from './types-BJmH_n-c.js';
+import { A as ViewportFitBoundsParams } from './types-BJmH_n-c.js';
+import { V as ViewportState } from './types-BJmH_n-c.js';
+import { z } from './types-BJmH_n-c.js';
 import { z as z_2 } from 'zod';
 
 export { CircleElementCreate }
@@ -445,17 +445,17 @@ export { PathElementRead }
 
 export { PathElementUpdate }
 
-export { PinElementCreate }
-
-export { PinElementRead }
-
-export { PinElementUpdate }
-
-export { PinFrame }
-
-export { PinSymbol }
-
 export { PinToolSettings }
+
+export { PlaceElementCreate }
+
+export { PlaceElementRead }
+
+export { PlaceElementUpdate }
+
+export { PlaceFrame }
+
+export { PlaceSymbol }
 
 export { PointGeometry }
 

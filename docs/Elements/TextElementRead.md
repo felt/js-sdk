@@ -34,12 +34,7 @@
 
 ### position
 
-> **position**: \{ `latitude`: `number`; `longitude`: `number`; } = `LatLngSchema`
-
-| Name        | Type     | Default value |
-| ----------- | -------- | ------------- |
-| `latitude`  | `number` | Latitude      |
-| `longitude` | `number` | Longitude     |
+> **position**: \[`number`, `number`] = `LatLngTupleSchema`
 
 ***
 

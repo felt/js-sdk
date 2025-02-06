@@ -46,7 +46,7 @@
 
 ### type
 
-> **type**: `"Pin"`
+> **type**: `"Place"`
 
 ***
 

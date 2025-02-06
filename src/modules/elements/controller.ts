@@ -194,7 +194,7 @@ export interface ElementsController {
    *
    * @example
    * ```typescript
-   * const element = await felt.createElement({ type: "Pin", coordinates: [10, 10] });
+   * const element = await felt.createElement({ type: "Place", coordinates: [10, 10] });
    * ```
    */
   createElement(element: ElementCreate): Promise<Element | null>;

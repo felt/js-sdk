@@ -38,8 +38,8 @@ felt.setTool(null);
 * [InputToolSettings](InputToolSettings.md)
 * [ToolSettingsChangeEvent](ToolSettingsChangeEvent.md)
 * [ToolSettingsMap](ToolSettingsMap.md)
-* [PinFrame](PinFrame.md)
-* [PinSymbol](PinSymbol.md)
+* [PlaceFrame](PlaceFrame.md)
+* [PlaceSymbol](PlaceSymbol.md)
 
 ## Controller
 

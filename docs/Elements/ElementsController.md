@@ -189,7 +189,7 @@ Create a new element on the map.
 #### Example
 
 ```typescript
-const element = await felt.createElement({ type: "Pin", coordinates: [10, 10] });
+const element = await felt.createElement({ type: "Place", coordinates: [10, 10] });
 ```
 
 ***

@@ -16,4 +16,4 @@
 
 ### symbol
 
-> **symbol**: [`PinSymbol`](PinSymbol.md)
+> **symbol**: [`PlaceSymbol`](PlaceSymbol.md)

@@ -6,7 +6,7 @@ import {
   MarkerCreateSchema,
   NoteCreateSchema,
   PathCreateSchema,
-  PinCreateSchema,
+  PlaceCreateSchema,
   PolygonCreateSchema,
   TextCreateSchema,
 } from "../elements/types";
@@ -29,13 +29,13 @@ export const ConfigurableToolSchema = z.enum(configurableTools);
 export type ToolType = z.infer<typeof ToolSchema>;
 export type ConfigurableToolType = keyof ToolSettingsMap;
 
-const PinToolSettingsSchema = PinCreateSchema.pick({
+const PinToolSettingsSchema = PlaceCreateSchema.pick({
   color: true,
   symbol: true,
   frame: true,
 });
 export interface PinToolSettings extends zInfer<typeof PinToolSettingsSchema> {
-  symbol: PinSymbol;
+  symbol: PlaceSymbol;
 }
 
 const LineToolSettingsSchema = PathCreateSchema.pick({
@@ -152,9 +152,9 @@ export type ToolSettingsMap = {
   note: NoteToolSettings;
 };
 
-export type PinFrame = "frame-circle" | "frame-square" | null;
+export type PlaceFrame = "frame-circle" | "frame-square" | null;
 
-export type PinSymbol =
+export type PlaceSymbol =
   | "dot"
   | "square"
   | "diamond"

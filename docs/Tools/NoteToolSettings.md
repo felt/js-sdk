@@ -2,18 +2,18 @@
 
 ## Properties
 
-### color?
+### color
 
-> `optional` **color**: `string`
-
-***
-
-### align?
-
-> `optional` **align**: `"left"` | `"center"` | `"right"`
+> **color**: `string`
 
 ***
 
-### style?
+### align
 
-> `optional` **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`
+> **align**: `"left"` | `"center"` | `"right"`
+
+***
+
+### style
+
+> **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`

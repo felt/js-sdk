@@ -2,42 +2,42 @@
 
 ## Properties
 
-### color?
+### color
 
-> `optional` **color**: `string`
-
-***
-
-### strokeOpacity?
-
-> `optional` **strokeOpacity**: `number`
+> **color**: `string`
 
 ***
 
-### strokeWidth?
+### strokeOpacity
 
-> `optional` **strokeWidth**: `number`
-
-***
-
-### strokeStyle?
-
-> `optional` **strokeStyle**: `"solid"` | `"dashed"` | `"dotted"`
+> **strokeOpacity**: `number`
 
 ***
 
-### distanceMarker?
+### strokeWidth
 
-> `optional` **distanceMarker**: `boolean`
-
-***
-
-### endCaps?
-
-> `optional` **endCaps**: `boolean`
+> **strokeWidth**: `number`
 
 ***
 
-### routingMode?
+### strokeStyle
 
-> `optional` **routingMode**: `null` | `"driving"` | `"cycling"` | `"walking"` | `"flying"`
+> **strokeStyle**: `"solid"` | `"dashed"` | `"dotted"`
+
+***
+
+### distanceMarker
+
+> **distanceMarker**: `boolean`
+
+***
+
+### endCaps
+
+> **endCaps**: `boolean`
+
+***
+
+### routingMode
+
+> **routingMode**: `null` | `"driving"` | `"cycling"` | `"walking"` | `"flying"`

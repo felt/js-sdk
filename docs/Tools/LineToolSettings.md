@@ -2,30 +2,30 @@
 
 ## Properties
 
-### color?
+### color
 
-> `optional` **color**: `string`
-
-***
-
-### strokeOpacity?
-
-> `optional` **strokeOpacity**: `number`
+> **color**: `string`
 
 ***
 
-### strokeWidth?
+### strokeOpacity
 
-> `optional` **strokeWidth**: `number`
-
-***
-
-### strokeStyle?
-
-> `optional` **strokeStyle**: `"solid"` | `"dashed"` | `"dotted"`
+> **strokeOpacity**: `number`
 
 ***
 
-### distanceMarker?
+### strokeWidth
 
-> `optional` **distanceMarker**: `boolean`
+> **strokeWidth**: `number`
+
+***
+
+### strokeStyle
+
+> **strokeStyle**: `"solid"` | `"dashed"` | `"dotted"`
+
+***
+
+### distanceMarker
+
+> **distanceMarker**: `boolean`

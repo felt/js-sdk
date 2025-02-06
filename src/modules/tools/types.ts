@@ -33,7 +33,7 @@ const PinToolSettingsSchema = PlaceCreateSchema.pick({
   color: true,
   symbol: true,
   frame: true,
-});
+}).required();
 export interface PinToolSettings extends zInfer<typeof PinToolSettingsSchema> {
   symbol: PlaceSymbol;
 }
@@ -44,7 +44,7 @@ const LineToolSettingsSchema = PathCreateSchema.pick({
   strokeWidth: true,
   strokeStyle: true,
   distanceMarker: true,
-});
+}).required();
 export interface LineToolSettings
   extends zInfer<typeof LineToolSettingsSchema> {}
 
@@ -56,7 +56,7 @@ const RouteToolSettingsSchema = PathCreateSchema.pick({
   strokeStyle: true,
   distanceMarker: true,
   endCaps: true,
-});
+}).required();
 export interface RouteToolSettings
   extends zInfer<typeof RouteToolSettingsSchema> {}
 
@@ -67,7 +67,7 @@ const PolygonToolSettingsSchema = PolygonCreateSchema.pick({
   strokeWidth: true,
   strokeStyle: true,
   areaMarker: true,
-});
+}).required();
 export interface PolygonToolSettings
   extends zInfer<typeof PolygonToolSettingsSchema> {}
 
@@ -78,7 +78,7 @@ const CircleToolSettingsSchema = CircleCreateSchema.pick({
   strokeWidth: true,
   strokeStyle: true,
   radiusMarker: true,
-});
+}).required();
 export interface CircleToolSettings
   extends zInfer<typeof CircleToolSettingsSchema> {}
 
@@ -86,16 +86,18 @@ const MarkerToolSettingsSchema = MarkerCreateSchema.pick({
   color: true,
   opacity: true,
   size: true,
-});
+}).required();
 export interface MarkerToolSettings
   extends zInfer<typeof MarkerToolSettingsSchema> {}
 
 const HighlighterToolSettingsSchema = HighlighterCreateSchema.pick({
   color: true,
   opacity: true,
-}).extend({
-  size: z.number().min(0).max(200),
-});
+})
+  .extend({
+    size: z.number().min(0).max(200),
+  })
+  .required();
 export interface HighlighterToolSettings
   extends zInfer<typeof HighlighterToolSettingsSchema> {}
 
@@ -103,7 +105,7 @@ const TextToolSettingsSchema = TextCreateSchema.pick({
   color: true,
   align: true,
   style: true,
-});
+}).required();
 export interface TextToolSettings
   extends zInfer<typeof TextToolSettingsSchema> {}
 
@@ -111,7 +113,7 @@ const NoteToolSettingsSchema = NoteCreateSchema.pick({
   color: true,
   align: true,
   style: true,
-});
+}).required();
 export interface NoteToolSettings
   extends zInfer<typeof NoteToolSettingsSchema> {}
 

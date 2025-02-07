@@ -3,6 +3,7 @@ import type { ModuleSchema } from "~/lib/ModuleSchema";
 import {
   type Listener,
   type Method,
+  listenerMessageNoParams,
   listenerMessageWithParams,
   methodMessage,
 } from "~/lib/builders";
@@ -46,6 +47,13 @@ const OnElementChangeMessage = listenerMessageWithParams(
   z.object({ id: z.string() }),
 );
 
+const OnElementCreateMessage = listenerMessageNoParams("onElementCreate");
+
+const OnElementDeleteMessage = listenerMessageWithParams(
+  "onElementDelete",
+  z.object({ id: z.string() }),
+);
+
 const OnElementGroupChangeMessage = listenerMessageWithParams(
   "onElementGroupChange",
   z.object({ id: z.string() }),
@@ -73,7 +81,12 @@ export const elementsSchema = {
     UpdateElementMessage,
     DeleteElementMessage,
   ],
-  listeners: [OnElementChangeMessage, OnElementGroupChangeMessage],
+  listeners: [
+    OnElementChangeMessage,
+    OnElementCreateMessage,
+    OnElementDeleteMessage,
+    OnElementGroupChangeMessage,
+  ],
 } satisfies ModuleSchema;
 
 export type ElementsSchema = {
@@ -112,6 +125,11 @@ export type ElementsSchema = {
     onElementGroupChange: Listener<
       zInfer<typeof OnElementGroupChangeMessage.shape.options>,
       ElementGroupChangeCallbackParams
+    >;
+    onElementCreate: Listener<void, ElementChangeCallbackParams>;
+    onElementDelete: Listener<
+      zInfer<typeof OnElementDeleteMessage.shape.options>,
+      ElementChangeCallbackParams
     >;
   };
 };

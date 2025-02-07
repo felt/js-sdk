@@ -2,6 +2,7 @@ import { z } from "zod";
 import type { ModuleSchema } from "~/lib/ModuleSchema";
 import {
   type Listener,
+  type ListenerNoOptions,
   type Method,
   listenerMessageNoParams,
   listenerMessageWithParams,
@@ -126,10 +127,10 @@ export type ElementsSchema = {
       zInfer<typeof OnElementGroupChangeMessage.shape.options>,
       ElementGroupChangeCallbackParams
     >;
-    onElementCreate: Listener<void, ElementChangeCallbackParams>;
+    onElementCreate: ListenerNoOptions<ElementChangeCallbackParams>;
     onElementDelete: Listener<
       zInfer<typeof OnElementDeleteMessage.shape.options>,
-      ElementChangeCallbackParams
+      void
     >;
   };
 };

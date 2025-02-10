@@ -128,7 +128,7 @@ export { ElementNode }
 
 // @public
 export interface ElementsController {
-    createElement(element: ElementCreate): Promise<Element_2 | null>;
+    createElement(element: ElementCreate): Promise<Element_2>;
     deleteElement(id: string): Promise<void>;
     getElement(
     id: string): Promise<Element_2 | null>;
@@ -162,7 +162,7 @@ export interface ElementsController {
         handler: (change: ElementGroupChangeCallbackParams) => void;
     }): VoidFunction;
     setElementGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
-    updateElement(element: ElementUpdate): Promise<Element_2 | null>;
+    updateElement(element: ElementUpdate): Promise<Element_2>;
 }
 
 export { ElementUpdate }

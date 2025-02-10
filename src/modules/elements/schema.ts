@@ -114,8 +114,8 @@ export type ElementsSchema = {
       void
     >;
 
-    createElement: Method<zInfer<typeof CreateElementMessage>, Element | null>;
-    updateElement: Method<zInfer<typeof UpdateElementMessage>, Element | null>;
+    createElement: Method<zInfer<typeof CreateElementMessage>, Element>;
+    updateElement: Method<zInfer<typeof UpdateElementMessage>, Element>;
     deleteElement: Method<zInfer<typeof DeleteElementMessage>, void>;
   };
   listeners: {

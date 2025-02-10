@@ -257,12 +257,12 @@ export interface ElementsController {
    * const element = await felt.createElement({ type: "Place", coordinates: [10, 10] });
    * ```
    */
-  createElement(element: ElementCreate): Promise<Element | null>;
+  createElement(element: ElementCreate): Promise<Element>;
 
   /**
    * Update an element on the map.
    */
-  updateElement(element: ElementUpdate): Promise<Element | null>;
+  updateElement(element: ElementUpdate): Promise<Element>;
 
   /**
    * Delete an element from the map.

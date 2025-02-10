@@ -185,7 +185,7 @@ felt.setElementGroupVisibility({ show: ["element-group-1", "element-group-2"], h
 
 ### createElement()
 
-> **createElement**(`element`: [`ElementCreate`](../Elements/ElementCreate.md)): `Promise`\<`null` | [`Element`](../Elements/Element.md)>
+> **createElement**(`element`: [`ElementCreate`](../Elements/ElementCreate.md)): `Promise`\<[`Element`](../Elements/Element.md)>
 
 Create a new element on the map.
 
@@ -197,7 +197,7 @@ Create a new element on the map.
 
 #### Returns
 
-`Promise`\<`null` | [`Element`](../Elements/Element.md)>
+`Promise`\<[`Element`](../Elements/Element.md)>
 
 #### Example
 
@@ -209,7 +209,7 @@ const element = await felt.createElement({ type: "Place", coordinates: [10, 10] 
 
 ### updateElement()
 
-> **updateElement**(`element`: [`ElementUpdate`](../Elements/ElementUpdate.md)): `Promise`\<`null` | [`Element`](../Elements/Element.md)>
+> **updateElement**(`element`: [`ElementUpdate`](../Elements/ElementUpdate.md)): `Promise`\<[`Element`](../Elements/Element.md)>
 
 Update an element on the map.
 
@@ -221,7 +221,7 @@ Update an element on the map.
 
 #### Returns
 
-`Promise`\<`null` | [`Element`](../Elements/Element.md)>
+`Promise`\<[`Element`](../Elements/Element.md)>
 
 ***
 

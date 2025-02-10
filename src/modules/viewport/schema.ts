@@ -3,7 +3,7 @@ import type { ModuleSchema } from "~/lib/ModuleSchema";
 import {
   listenerMessageNoParams,
   methodMessage,
-  type Listener,
+  type ListenerNoOptions,
   type Method,
 } from "~/lib/builders";
 import type { zInfer } from "~/lib/utils";
@@ -70,8 +70,8 @@ export type ViewportSchema = {
     fitViewportToBounds: Method<zInfer<typeof ViewportFitBoundsMessage>, void>;
   };
   listeners: {
-    onViewportMove: Listener<void, ViewportState>;
-    onViewportMoveEnd: Listener<void, ViewportState>;
-    onMapIdle: Listener<void, void>;
+    onViewportMove: ListenerNoOptions<ViewportState>;
+    onViewportMoveEnd: ListenerNoOptions<ViewportState>;
+    onMapIdle: ListenerNoOptions<void>;
   };
 };

@@ -1,8 +1,8 @@
 import { z } from "zod";
 import type { ModuleSchema } from "~/lib/ModuleSchema";
 import {
-  type Listener,
   listenerMessageNoParams,
+  type ListenerNoOptions,
   type Method,
   methodMessage,
 } from "~/lib/builders";
@@ -53,7 +53,7 @@ export type ToolsSchema = {
     >;
   };
   listeners: {
-    onToolChange: Listener<void, ToolType | null>;
-    onToolSettingsChange: Listener<void, ToolSettingsChangeEvent>;
+    onToolChange: ListenerNoOptions<ToolType | null>;
+    onToolSettingsChange: ListenerNoOptions<ToolSettingsChangeEvent>;
   };
 };

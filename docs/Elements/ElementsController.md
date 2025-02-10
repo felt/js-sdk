@@ -230,6 +230,38 @@ Delete an element from the map.
 
 ## Events
 
+### onElementCreate()
+
+> **onElementCreate**(`args`: \{ `handler`: (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`; }): `VoidFunction`
+
+Adds a listener for when an element is created.
+
+#### Parameters
+
+| Parameter      | Type                                                                                                   | Description                                            |
+| -------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------ |
+| `args`         | \{ `handler`: (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`; } | -                                                      |
+| `args.handler` | (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`                  | The handler that is called when an element is created. |
+
+#### Returns
+
+`VoidFunction`
+
+A function to unsubscribe from the listener
+
+#### Example
+
+```typescript
+const unsubscribe = felt.onElementCreate({
+  handler: (element) => console.log(element.id),
+});
+
+// later on...
+unsubscribe();
+```
+
+***
+
 ### onElementChange()
 
 > **onElementChange**(`args`: \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`; }): `VoidFunction`
@@ -257,6 +289,41 @@ A function to unsubscribe from the listener
 const unsubscribe = felt.onElementChange({
   options: { id: "element-1" },
   handler: ({element}) => console.log(element.id),
+});
+
+// later on...
+unsubscribe();
+```
+
+***
+
+### onElementDelete()
+
+> **onElementDelete**(`args`: \{ `options`: \{ `id`: `string`; }; `handler`: () => `void`; }): `VoidFunction`
+
+Adds a listener for when an element is deleted.
+
+#### Parameters
+
+| Parameter         | Type                                                           | Description                                             |
+| ----------------- | -------------------------------------------------------------- | ------------------------------------------------------- |
+| `args`            | \{ `options`: \{ `id`: `string`; }; `handler`: () => `void`; } | -                                                       |
+| `args.options`    | \{ `id`: `string`; }                                           | -                                                       |
+| `args.options.id` | `string`                                                       | The id of the element to listen for deletions of.       |
+| `args.handler`    | () => `void`                                                   | The handler that is called when the element is deleted. |
+
+#### Returns
+
+`VoidFunction`
+
+A function to unsubscribe from the listener
+
+#### Example
+
+```typescript
+const unsubscribe = felt.onElementDelete({
+  options: { id: "element-1" },
+  handler: (element) => console.log(element.id),
 });
 
 // later on...

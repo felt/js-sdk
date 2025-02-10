@@ -26,12 +26,6 @@
 
 ***
 
-### color?
-
-> `optional` **color**: `string`
-
-***
-
 ### name?
 
 > `optional` **name**: `null` | `string`

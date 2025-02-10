@@ -38,6 +38,12 @@
 
 ***
 
+### zoom?
+
+> `optional` **zoom**: `number`
+
+***
+
 ### position?
 
 > `optional` **position**: \[`number`, `number`]
@@ -68,6 +74,6 @@
 
 ***
 
-### widthMultiplier?
+### widthScale?
 
-> `optional` **widthMultiplier**: `number`
+> `optional` **widthScale**: `number`

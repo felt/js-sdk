@@ -53,3 +53,9 @@
 ### size
 
 > **size**: `number`
+
+***
+
+### zoom
+
+> **zoom**: `number`

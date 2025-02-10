@@ -14,12 +14,6 @@
 
 ***
 
-### color
-
-> **color**: `string`
-
-***
-
 ### name
 
 > **name**: `null` | `string`

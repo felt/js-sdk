@@ -45,3 +45,7 @@ export type Listener<TOptions, TParams> = {
   options: TOptions;
   eventParams: TParams;
 };
+
+export type ListenerNoOptions<TParams> = {
+  eventParams: TParams;
+};

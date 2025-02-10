@@ -146,6 +146,15 @@ export interface ElementsController {
         handler: (
         change: ElementChangeCallbackParams) => void;
     }): VoidFunction;
+    onElementCreate(args: {
+        handler: (change: ElementChangeCallbackParams) => void;
+    }): VoidFunction;
+    onElementDelete(args: {
+        options: {
+            id: string;
+        };
+        handler: () => void;
+    }): VoidFunction;
     onElementGroupChange(args: {
         options: {
             id: string;

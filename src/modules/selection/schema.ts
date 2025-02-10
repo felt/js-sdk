@@ -3,7 +3,7 @@ import type { ModuleSchema } from "~/lib/ModuleSchema";
 import {
   listenerMessageNoParams,
   methodMessage,
-  type Listener,
+  type ListenerNoOptions,
   type Method,
 } from "~/lib/builders";
 import type { zInfer } from "~/lib/utils";
@@ -39,6 +39,6 @@ export type SelectionSchema = {
     clearSelection: Method<zInfer<typeof ClearSelectionMessage>, void>;
   };
   listeners: {
-    onSelectionChange: Listener<void, { selection: Array<EntityNode> }>;
+    onSelectionChange: ListenerNoOptions<{ selection: Array<EntityNode> }>;
   };
 };

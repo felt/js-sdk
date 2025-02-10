@@ -22,7 +22,11 @@ export const elementsController = (feltWindow: Window): ElementsController => ({
   setElementGroupVisibility: method(feltWindow, "setElementGroupVisibility"),
   getElementGroup: method(feltWindow, "getElementGroup"),
   getElementGroups: method(feltWindow, "getElementGroups"),
+
   onElementChange: listener(feltWindow, "onElementChange"),
+  onElementCreate: listener(feltWindow, "onElementCreate"),
+  onElementDelete: listener(feltWindow, "onElementDelete"),
+
   onElementGroupChange: listener(feltWindow, "onElementGroupChange"),
 
   createElement: method(feltWindow, "createElement"),
@@ -130,6 +134,31 @@ export interface ElementsController {
   setElementGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
 
   /**
+   * Adds a listener for when an element is created.
+   *
+   * @returns A function to unsubscribe from the listener
+   *
+   * @event
+   * @example
+   * ```typescript
+   * const unsubscribe = felt.onElementCreate({
+   *   handler: (element) => console.log(element.id),
+   * });
+   *
+   * // later on...
+   * unsubscribe();
+   * ```
+   */
+  onElementCreate(args: {
+    /**
+     * The handler that is called when an element is created.
+     *
+     * @param change - An object describing the change that occurred.
+     */
+    handler: (change: ElementChangeCallbackParams) => void;
+  }): VoidFunction;
+
+  /**
    * Adds a listener for when an element changes.
    *
    * @returns A function to unsubscribe from the listener
@@ -163,6 +192,37 @@ export interface ElementsController {
        */
       change: ElementChangeCallbackParams,
     ) => void;
+  }): VoidFunction;
+
+  /**
+   * Adds a listener for when an element is deleted.
+   *
+   * @returns A function to unsubscribe from the listener
+   *
+   * @event
+   * @example
+   * ```typescript
+   * const unsubscribe = felt.onElementDelete({
+   *   options: { id: "element-1" },
+   *   handler: (element) => console.log(element.id),
+   * });
+   *
+   * // later on...
+   * unsubscribe();
+   * ```
+   */
+  onElementDelete(args: {
+    options: {
+      /**
+       * The id of the element to listen for deletions of.
+       */
+      id: string;
+    };
+
+    /**
+     * The handler that is called when the element is deleted.
+     */
+    handler: () => void;
   }): VoidFunction;
 
   /**

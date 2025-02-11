@@ -50,6 +50,12 @@
 
 ***
 
+### zoom
+
+> **zoom**: `number`
+
+***
+
 ### text
 
 > **text**: `string`
@@ -80,6 +86,6 @@
 
 ***
 
-### widthMultiplier
+### widthScale
 
-> **widthMultiplier**: `number`
+> **widthScale**: `number`

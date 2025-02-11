@@ -50,6 +50,12 @@
 
 ***
 
+### zoom
+
+> **zoom**: `number`
+
+***
+
 ### text
 
 > **text**: `string`

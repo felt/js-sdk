@@ -77,6 +77,7 @@ const MarkerElementSchema = BaseFeltElementSchema.extend({
 
   opacity: z.number().min(0).max(1),
   size: z.number().min(0).max(100),
+  zoom: z.number().min(0).max(23),
 });
 
 const HighlighterElementSchema = BaseFeltElementSchema.extend({
@@ -90,6 +91,7 @@ const DerivedCoords = z.object({
   position: LatLngTupleSchema,
   rotation: z.number(),
   scale: z.number(),
+  zoom: z.number().min(0).max(23),
 
   coordinates: MultiLineStringGeometrySchema.shape.coordinates,
 });
@@ -111,7 +113,7 @@ const NoteElementSchema = BaseFeltElementSchema.extend(DerivedCoords.shape)
   .extend(Textual.shape)
   .extend({
     type: z.literal("Note"),
-    widthMultiplier: z.number().min(0),
+    widthScale: z.number().min(0),
   });
 
 const ImageElementSchema = BaseFeltElementSchema.extend({
@@ -119,7 +121,7 @@ const ImageElementSchema = BaseFeltElementSchema.extend({
   coordinates: MultiLineStringGeometrySchema.shape.coordinates,
   imageUrl: z.string(),
   opacity: z.number().min(0).max(1),
-});
+}).omit({ color: true });
 
 const LinkElementSchema = BaseFeltElementSchema.extend({
   type: z.literal("Link"),
@@ -222,11 +224,19 @@ const MarkerUpdateSchema =
 const HighlighterUpdateSchema =
   HighlighterElementSchema.partial().required(requiredUpdateProps);
 
-const TextUpdateSchema =
-  TextElementSchema.partial().required(requiredUpdateProps);
+const TextUpdateSchema = TextElementSchema.partial()
+  .required(requiredUpdateProps)
+  .omit({
+    coordinates: true,
+    name: true,
+  });
 
-const NoteUpdateSchema =
-  NoteElementSchema.partial().required(requiredUpdateProps);
+const NoteUpdateSchema = NoteElementSchema.partial()
+  .required(requiredUpdateProps)
+  .omit({
+    coordinates: true,
+    name: true,
+  });
 
 const ImageUpdateSchema =
   ImageElementSchema.partial().required(requiredUpdateProps);

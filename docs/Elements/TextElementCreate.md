@@ -38,6 +38,12 @@
 
 ***
 
+### zoom?
+
+> `optional` **zoom**: `number`
+
+***
+
 ### position?
 
 > `optional` **position**: \[`number`, `number`]

@@ -4,102 +4,102 @@
 
 ```ts
 
-import { D as CircleElementCreate } from './types-C1KBpQWi.js';
-import { H as CircleElementRead } from './types-C1KBpQWi.js';
-import { J as CircleElementUpdate } from './types-C1KBpQWi.js';
-import { av as CircleToolSettings } from './types-C1KBpQWi.js';
-import { C as ConfigurableToolType } from './types-C1KBpQWi.js';
-import { E as Element_2 } from './types-C1KBpQWi.js';
-import { d as ElementChangeCallbackParams } from './types-C1KBpQWi.js';
-import { f as ElementCreate } from './types-C1KBpQWi.js';
-import { b as ElementGroup } from './types-C1KBpQWi.js';
-import { e as ElementGroupChangeCallbackParams } from './types-C1KBpQWi.js';
-import { ah as ElementGroupNode } from './types-C1KBpQWi.js';
-import { ai as ElementNode } from './types-C1KBpQWi.js';
-import { g as ElementUpdate } from './types-C1KBpQWi.js';
-import { t as EntityNode } from './types-C1KBpQWi.js';
-import { s as Feature } from './types-C1KBpQWi.js';
-import { aj as FeatureNode } from './types-C1KBpQWi.js';
-import { u as FeatureSelection } from './types-C1KBpQWi.js';
-import { am as FeltBoundary } from './types-C1KBpQWi.js';
-import { an as FeltZoom } from './types-C1KBpQWi.js';
-import { ae as FilterExpression } from './types-C1KBpQWi.js';
-import { af as FilterLogicGate } from './types-C1KBpQWi.js';
-import { F as Filters } from './types-C1KBpQWi.js';
-import { ag as FilterTernary } from './types-C1KBpQWi.js';
-import { G as Geometry } from './types-C1KBpQWi.js';
-import { c as GetElementGroupsConstraint } from './types-C1KBpQWi.js';
-import { a as GetElementsConstraint } from './types-C1KBpQWi.js';
-import { k as GetLayerGroupsConstraint } from './types-C1KBpQWi.js';
-import { h as GetLayersConstraint } from './types-C1KBpQWi.js';
-import { r as GetRenderedFeaturesConstraint } from './types-C1KBpQWi.js';
-import { K as HighlighterElementCreate } from './types-C1KBpQWi.js';
-import { N as HighlighterElementRead } from './types-C1KBpQWi.js';
-import { O as HighlighterElementUpdate } from './types-C1KBpQWi.js';
-import { aw as HighlighterToolSettings } from './types-C1KBpQWi.js';
-import { P as ImageElementCreate } from './types-C1KBpQWi.js';
-import { Q as ImageElementRead } from './types-C1KBpQWi.js';
-import { R as ImageElementUpdate } from './types-C1KBpQWi.js';
-import { I as InputToolSettings } from './types-C1KBpQWi.js';
-import { ao as LatLng } from './types-C1KBpQWi.js';
-import { L as Layer } from './types-C1KBpQWi.js';
-import { i as LayerChangeCallbackParams } from './types-C1KBpQWi.js';
-import { q as LayerFilters } from './types-C1KBpQWi.js';
-import { j as LayerGroup } from './types-C1KBpQWi.js';
-import { l as LayerGroupChangeCallbackParams } from './types-C1KBpQWi.js';
-import { ak as LayerGroupNode } from './types-C1KBpQWi.js';
-import { al as LayerNode } from './types-C1KBpQWi.js';
-import { ac as LayerProcessingStatus } from './types-C1KBpQWi.js';
-import { n as LegendItem } from './types-C1KBpQWi.js';
-import { p as LegendItemChangeCallbackParams } from './types-C1KBpQWi.js';
-import { m as LegendItemIdentifier } from './types-C1KBpQWi.js';
-import { o as LegendItemsConstraint } from './types-C1KBpQWi.js';
-import { ap as LineStringGeometry } from './types-C1KBpQWi.js';
-import { ax as LineToolSettings } from './types-C1KBpQWi.js';
-import { U as LinkElementRead } from './types-C1KBpQWi.js';
-import { aq as LngLatTuple } from './types-C1KBpQWi.js';
-import { M as MapInteractionEvent } from './types-C1KBpQWi.js';
-import { W as MarkerElementCreate } from './types-C1KBpQWi.js';
-import { X as MarkerElementRead } from './types-C1KBpQWi.js';
-import { Y as MarkerElementUpdate } from './types-C1KBpQWi.js';
-import { ay as MarkerToolSettings } from './types-C1KBpQWi.js';
-import { ar as MultiLineStringGeometry } from './types-C1KBpQWi.js';
-import { as as MultiPolygonGeometry } from './types-C1KBpQWi.js';
-import { Z as NoteElementCreate } from './types-C1KBpQWi.js';
-import { _ as NoteElementRead } from './types-C1KBpQWi.js';
-import { $ as NoteElementUpdate } from './types-C1KBpQWi.js';
-import { az as NoteToolSettings } from './types-C1KBpQWi.js';
-import { a0 as PathElementCreate } from './types-C1KBpQWi.js';
-import { a1 as PathElementRead } from './types-C1KBpQWi.js';
-import { a2 as PathElementUpdate } from './types-C1KBpQWi.js';
-import { aA as PinToolSettings } from './types-C1KBpQWi.js';
-import { a3 as PlaceElementCreate } from './types-C1KBpQWi.js';
-import { a4 as PlaceElementRead } from './types-C1KBpQWi.js';
-import { a5 as PlaceElementUpdate } from './types-C1KBpQWi.js';
-import { aB as PlaceFrame } from './types-C1KBpQWi.js';
-import { aC as PlaceSymbol } from './types-C1KBpQWi.js';
-import { at as PointGeometry } from './types-C1KBpQWi.js';
-import { a6 as PolygonElementCreate } from './types-C1KBpQWi.js';
-import { a7 as PolygonElementRead } from './types-C1KBpQWi.js';
-import { a8 as PolygonElementUpdate } from './types-C1KBpQWi.js';
-import { au as PolygonGeometry } from './types-C1KBpQWi.js';
-import { aD as PolygonToolSettings } from './types-C1KBpQWi.js';
-import { ad as RasterValue } from './types-C1KBpQWi.js';
-import { aE as RouteToolSettings } from './types-C1KBpQWi.js';
-import { x as SetViewportCenterZoomParams } from './types-C1KBpQWi.js';
-import { S as SetVisibilityRequest } from './types-C1KBpQWi.js';
-import { a9 as TextElementCreate } from './types-C1KBpQWi.js';
-import { aa as TextElementRead } from './types-C1KBpQWi.js';
-import { ab as TextElementUpdate } from './types-C1KBpQWi.js';
-import { aF as TextToolSettings } from './types-C1KBpQWi.js';
-import { w as ToolSettingsChangeEvent } from './types-C1KBpQWi.js';
-import { v as ToolSettingsMap } from './types-C1KBpQWi.js';
-import { T as ToolType } from './types-C1KBpQWi.js';
-import { B as ViewportCenterZoom } from './types-C1KBpQWi.js';
-import { y as ViewportConstraints } from './types-C1KBpQWi.js';
-import { A as ViewportFitBoundsParams } from './types-C1KBpQWi.js';
-import { V as ViewportState } from './types-C1KBpQWi.js';
-import { z } from './types-C1KBpQWi.js';
+import { D as CircleElementCreate } from './types-CPZlLnbg.js';
+import { H as CircleElementRead } from './types-CPZlLnbg.js';
+import { J as CircleElementUpdate } from './types-CPZlLnbg.js';
+import { av as CircleToolSettings } from './types-CPZlLnbg.js';
+import { C as ConfigurableToolType } from './types-CPZlLnbg.js';
+import { E as Element_2 } from './types-CPZlLnbg.js';
+import { d as ElementChangeCallbackParams } from './types-CPZlLnbg.js';
+import { f as ElementCreate } from './types-CPZlLnbg.js';
+import { b as ElementGroup } from './types-CPZlLnbg.js';
+import { e as ElementGroupChangeCallbackParams } from './types-CPZlLnbg.js';
+import { ah as ElementGroupNode } from './types-CPZlLnbg.js';
+import { ai as ElementNode } from './types-CPZlLnbg.js';
+import { g as ElementUpdate } from './types-CPZlLnbg.js';
+import { t as EntityNode } from './types-CPZlLnbg.js';
+import { s as Feature } from './types-CPZlLnbg.js';
+import { aj as FeatureNode } from './types-CPZlLnbg.js';
+import { u as FeatureSelection } from './types-CPZlLnbg.js';
+import { am as FeltBoundary } from './types-CPZlLnbg.js';
+import { an as FeltZoom } from './types-CPZlLnbg.js';
+import { ae as FilterExpression } from './types-CPZlLnbg.js';
+import { af as FilterLogicGate } from './types-CPZlLnbg.js';
+import { F as Filters } from './types-CPZlLnbg.js';
+import { ag as FilterTernary } from './types-CPZlLnbg.js';
+import { G as Geometry } from './types-CPZlLnbg.js';
+import { c as GetElementGroupsConstraint } from './types-CPZlLnbg.js';
+import { a as GetElementsConstraint } from './types-CPZlLnbg.js';
+import { k as GetLayerGroupsConstraint } from './types-CPZlLnbg.js';
+import { h as GetLayersConstraint } from './types-CPZlLnbg.js';
+import { r as GetRenderedFeaturesConstraint } from './types-CPZlLnbg.js';
+import { K as HighlighterElementCreate } from './types-CPZlLnbg.js';
+import { N as HighlighterElementRead } from './types-CPZlLnbg.js';
+import { O as HighlighterElementUpdate } from './types-CPZlLnbg.js';
+import { aw as HighlighterToolSettings } from './types-CPZlLnbg.js';
+import { P as ImageElementCreate } from './types-CPZlLnbg.js';
+import { Q as ImageElementRead } from './types-CPZlLnbg.js';
+import { R as ImageElementUpdate } from './types-CPZlLnbg.js';
+import { I as InputToolSettings } from './types-CPZlLnbg.js';
+import { ao as LatLng } from './types-CPZlLnbg.js';
+import { L as Layer } from './types-CPZlLnbg.js';
+import { i as LayerChangeCallbackParams } from './types-CPZlLnbg.js';
+import { q as LayerFilters } from './types-CPZlLnbg.js';
+import { j as LayerGroup } from './types-CPZlLnbg.js';
+import { l as LayerGroupChangeCallbackParams } from './types-CPZlLnbg.js';
+import { ak as LayerGroupNode } from './types-CPZlLnbg.js';
+import { al as LayerNode } from './types-CPZlLnbg.js';
+import { ac as LayerProcessingStatus } from './types-CPZlLnbg.js';
+import { n as LegendItem } from './types-CPZlLnbg.js';
+import { p as LegendItemChangeCallbackParams } from './types-CPZlLnbg.js';
+import { m as LegendItemIdentifier } from './types-CPZlLnbg.js';
+import { o as LegendItemsConstraint } from './types-CPZlLnbg.js';
+import { ap as LineStringGeometry } from './types-CPZlLnbg.js';
+import { ax as LineToolSettings } from './types-CPZlLnbg.js';
+import { U as LinkElementRead } from './types-CPZlLnbg.js';
+import { aq as LngLatTuple } from './types-CPZlLnbg.js';
+import { M as MapInteractionEvent } from './types-CPZlLnbg.js';
+import { W as MarkerElementCreate } from './types-CPZlLnbg.js';
+import { X as MarkerElementRead } from './types-CPZlLnbg.js';
+import { Y as MarkerElementUpdate } from './types-CPZlLnbg.js';
+import { ay as MarkerToolSettings } from './types-CPZlLnbg.js';
+import { ar as MultiLineStringGeometry } from './types-CPZlLnbg.js';
+import { as as MultiPolygonGeometry } from './types-CPZlLnbg.js';
+import { Z as NoteElementCreate } from './types-CPZlLnbg.js';
+import { _ as NoteElementRead } from './types-CPZlLnbg.js';
+import { $ as NoteElementUpdate } from './types-CPZlLnbg.js';
+import { az as NoteToolSettings } from './types-CPZlLnbg.js';
+import { a0 as PathElementCreate } from './types-CPZlLnbg.js';
+import { a1 as PathElementRead } from './types-CPZlLnbg.js';
+import { a2 as PathElementUpdate } from './types-CPZlLnbg.js';
+import { aA as PinToolSettings } from './types-CPZlLnbg.js';
+import { a3 as PlaceElementCreate } from './types-CPZlLnbg.js';
+import { a4 as PlaceElementRead } from './types-CPZlLnbg.js';
+import { a5 as PlaceElementUpdate } from './types-CPZlLnbg.js';
+import { aB as PlaceFrame } from './types-CPZlLnbg.js';
+import { aC as PlaceSymbol } from './types-CPZlLnbg.js';
+import { at as PointGeometry } from './types-CPZlLnbg.js';
+import { a6 as PolygonElementCreate } from './types-CPZlLnbg.js';
+import { a7 as PolygonElementRead } from './types-CPZlLnbg.js';
+import { a8 as PolygonElementUpdate } from './types-CPZlLnbg.js';
+import { au as PolygonGeometry } from './types-CPZlLnbg.js';
+import { aD as PolygonToolSettings } from './types-CPZlLnbg.js';
+import { ad as RasterValue } from './types-CPZlLnbg.js';
+import { aE as RouteToolSettings } from './types-CPZlLnbg.js';
+import { x as SetViewportCenterZoomParams } from './types-CPZlLnbg.js';
+import { S as SetVisibilityRequest } from './types-CPZlLnbg.js';
+import { a9 as TextElementCreate } from './types-CPZlLnbg.js';
+import { aa as TextElementRead } from './types-CPZlLnbg.js';
+import { ab as TextElementUpdate } from './types-CPZlLnbg.js';
+import { aF as TextToolSettings } from './types-CPZlLnbg.js';
+import { w as ToolSettingsChangeEvent } from './types-CPZlLnbg.js';
+import { v as ToolSettingsMap } from './types-CPZlLnbg.js';
+import { T as ToolType } from './types-CPZlLnbg.js';
+import { B as ViewportCenterZoom } from './types-CPZlLnbg.js';
+import { y as ViewportConstraints } from './types-CPZlLnbg.js';
+import { A as ViewportFitBoundsParams } from './types-CPZlLnbg.js';
+import { V as ViewportState } from './types-CPZlLnbg.js';
+import { z } from './types-CPZlLnbg.js';
 import { z as z_2 } from 'zod';
 
 export { CircleElementCreate }
@@ -128,7 +128,7 @@ export { ElementNode }
 
 // @public
 export interface ElementsController {
-    createElement(element: ElementCreate): Promise<Element_2 | null>;
+    createElement(element: ElementCreate): Promise<Element_2>;
     deleteElement(id: string): Promise<void>;
     getElement(
     id: string): Promise<Element_2 | null>;
@@ -162,7 +162,7 @@ export interface ElementsController {
         handler: (change: ElementGroupChangeCallbackParams) => void;
     }): VoidFunction;
     setElementGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
-    updateElement(element: ElementUpdate): Promise<Element_2 | null>;
+    updateElement(element: ElementUpdate): Promise<Element_2>;
 }
 
 export { ElementUpdate }
@@ -237,17 +237,17 @@ const FeltEmbedOptionsSchema: z_2.ZodObject<{
         }>;
         zoom: z_2.ZodNumber;
     }, "strip", z_2.ZodTypeAny, {
+        zoom: number;
         center: {
             latitude: number;
             longitude: number;
         };
-        zoom: number;
     }, {
+        zoom: number;
         center: {
             latitude: number;
             longitude: number;
         };
-        zoom: number;
     }>>;
 }, "strip", z_2.ZodTypeAny, {
     origin?: string | undefined;
@@ -261,11 +261,11 @@ const FeltEmbedOptionsSchema: z_2.ZodObject<{
         scaleBar?: boolean | undefined;
     } | undefined;
     initialViewport?: {
+        zoom: number;
         center: {
             latitude: number;
             longitude: number;
         };
-        zoom: number;
     } | undefined;
 }, {
     origin?: string | undefined;
@@ -279,11 +279,11 @@ const FeltEmbedOptionsSchema: z_2.ZodObject<{
         scaleBar?: boolean | undefined;
     } | undefined;
     initialViewport?: {
+        zoom: number;
         center: {
             latitude: number;
             longitude: number;
         };
-        zoom: number;
     } | undefined;
 }>;
 

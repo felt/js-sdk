@@ -59,3 +59,9 @@
 ### size?
 
 > `optional` **size**: `number`
+
+***
+
+### zoom?
+
+> `optional` **zoom**: `number`

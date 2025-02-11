@@ -14,12 +14,6 @@
 
 ***
 
-### coordinates?
-
-> `optional` **coordinates**: \[`number`, `number`]\[]\[]
-
-***
-
 ### groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -32,12 +26,6 @@
 
 ***
 
-### name?
-
-> `optional` **name**: `string`
-
-***
-
 ### description?
 
 > `optional` **description**: `null` | `string`
@@ -47,6 +35,12 @@
 ### attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`>
+
+***
+
+### zoom?
+
+> `optional` **zoom**: `number`
 
 ***
 

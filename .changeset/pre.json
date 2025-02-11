@@ -5,7 +5,9 @@
     "@feltmaps/js-sdk": "1.4.0"
   },
   "changesets": [
+    "dry-elephants-hide",
     "dull-games-rest",
+    "eleven-dogs-smoke",
     "few-cats-fix",
     "gold-apricots-carry",
     "hungry-hotels-end"

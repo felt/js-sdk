@@ -1,5 +1,12 @@
 # @feltmaps/js-sdk
 
+## 1.5.0-next.4
+
+### Minor Changes
+
+- cf6711e: Make programmatic element CRUD types more accurate
+- 46e8ddc: Add onElementChange and onElementDelete
+
 ## 1.5.0-next.3
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.5.0-next.5
+
+### Minor Changes
+
+- 4bd0ae9: Add getMapDetails method definition
+
 ## 1.5.0-next.4
 
 ### Minor Changes

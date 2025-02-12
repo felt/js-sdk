@@ -10,7 +10,7 @@ own to make it easier to find related methods and events.
 
 ## Extends
 
-* [`ViewportController`](../Viewport/ViewportController.md).[`UiController`](../UI/UiController.md).[`LayersController`](../Layers/LayersController.md).[`ElementsController`](../Elements/ElementsController.md).[`SelectionController`](../Selection/SelectionController.md).[`InteractionsController`](../Interactions/InteractionsController.md).[`ToolsController`](../Tools/ToolsController.md)
+* [`ViewportController`](../Viewport/ViewportController.md).[`UiController`](../UI/UiController.md).[`LayersController`](../Layers/LayersController.md).[`ElementsController`](../Elements/ElementsController.md).[`SelectionController`](../Selection/SelectionController.md).[`InteractionsController`](../Interactions/InteractionsController.md).[`ToolsController`](../Tools/ToolsController.md).[`MiscController`](../Misc/MiscController.md)
 
 ## Properties
 
@@ -665,6 +665,18 @@ features are omitted from what is rendered on the screen.
 ```typescript
 const features = await felt.getRenderedFeatures();
 ```
+
+***
+
+### getMapDetails()
+
+> **getMapDetails**(): `Promise`\<[`MapDetails`](../Misc/MapDetails.md)>
+
+Gets the details of the map.
+
+#### Returns
+
+`Promise`\<[`MapDetails`](../Misc/MapDetails.md)>
 
 ***
 

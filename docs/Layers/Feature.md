@@ -23,7 +23,7 @@ The identifier of the layer that the feature belongs to.
 
 ### geometryType
 
-> **geometryType**: `"Point"` | `"LineString"` | `"Polygon"` | `"MultiPolygon"` | `string` & \{}
+> **geometryType**: `"Point"` | `"Polygon"` | `"LineString"` | `"MultiPolygon"` | `string` & \{}
 
 The type of geometry of the feature.
 

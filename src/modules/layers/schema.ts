@@ -10,6 +10,7 @@ import type { zInfer } from "~/lib/utils";
 import { SetVisibilityRequestSchema } from "~/modules/shared/types";
 import { FiltersSchema, type LayerFilters } from "./filter.types";
 import {
+  type AggregationMethod,
   GetLayerCalculationParamsSchema,
   type GetLayerCategoriesGroup,
   GetLayerCategoriesParamsSchema,
@@ -220,7 +221,7 @@ export type LayersSchema = {
     >;
     getLayerCalculation: Method<
       zInfer<typeof GetLayerCalculationMessage>,
-      number
+      Record<AggregationMethod | "count", number>
     >;
   };
   listeners: {

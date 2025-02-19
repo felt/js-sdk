@@ -29,7 +29,7 @@ all possible categories or bin ranges in the results.
 
 ### aggregation?
 
-> `optional` **aggregation**: [`Aggregation`](Aggregation.md)
+> `optional` **aggregation**: [`AggregationConfig`](AggregationConfig.md)
 
 Specifies how to aggregate values within each category or bin. When omitted,
 features are counted. When specified, the chosen calculation (avg, sum, etc.)

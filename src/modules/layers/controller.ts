@@ -2,6 +2,7 @@ import { listener, method } from "~/lib/interface";
 import type { SetVisibilityRequest } from "~/modules/shared/types";
 import type { Filters, LayerFilters } from "./filter.types";
 import type {
+  AggregationMethod,
   GetLayerCalculationParams,
   GetLayerCategoriesGroup,
   GetLayerCategoriesParams,
@@ -575,5 +576,7 @@ export interface LayersController {
    * });
    * ```
    */
-  getLayerCalculation(params: GetLayerCalculationParams): Promise<number>;
+  getLayerCalculation<T extends AggregationMethod | "count">(
+    params: GetLayerCalculationParams<T>,
+  ): Promise<Record<T, number>>;
 }

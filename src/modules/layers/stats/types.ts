@@ -13,7 +13,7 @@ import { FiltersSchema, type Filters } from "../filter.types";
 
 const AggregateMethodSchema = z.enum(["avg", "max", "min", "sum", "median"]);
 
-const AggregationSchema = z.object({
+const AggregationConfigSchema = z.object({
   /**
    * The operation to use on the values from the features in the layer
    */
@@ -25,10 +25,42 @@ const AggregationSchema = z.object({
   attribute: z.string(),
 });
 
+const MutliAggregationConfigSchema = z.object({
+  /**
+   * The operations to use on the values from the features in the layer
+   */
+  methods: z.array(z.union([AggregateMethodSchema, z.literal("count")])),
+
+  /**
+   * The attribute to use for the aggregation. This must be a numeric attribute.
+   */
+  attribute: z.string(),
+});
+
 /**
  * Defines how to aggregate a value across features in a layer.
  */
-export interface Aggregation extends zInfer<typeof AggregationSchema> {}
+export interface AggregationConfig
+  extends zInfer<typeof AggregationConfigSchema> {
+  /**
+   * The method to use for the aggregation.
+   */
+  method: AggregationMethod;
+}
+
+/**
+ * The method to use for the aggregation.
+ */
+export type AggregationMethod = z.infer<typeof AggregateMethodSchema>;
+
+/**
+ * Defines how to aggregate a value across features in a layer with multiple aggregations
+ * returned at once.
+ */
+export interface MultiAggregationConfig<T extends AggregationMethod | "count">
+  extends zInfer<typeof MutliAggregationConfigSchema> {
+  methods: T[];
+}
 
 const GeometryFilterSchema = z.union([
   FeltBoundarySchema,
@@ -39,7 +71,7 @@ const GeometryFilterSchema = z.union([
 const ValueConfigurationSchema = z.object({
   boundary: GeometryFilterSchema.optional(),
   filters: FiltersSchema.optional(),
-  aggregation: AggregationSchema.optional(),
+  aggregation: AggregationConfigSchema.optional(),
 });
 
 /**
@@ -72,7 +104,7 @@ export interface ValueConfiguration
    * For example, instead of counting buildings in each category, you might want
    * to sum their square footage or average their assessed values.
    */
-  aggregation?: Aggregation;
+  aggregation?: AggregationConfig;
 }
 
 export const GetLayerCategoriesParamsSchema = z.object({
@@ -236,15 +268,16 @@ export const GetLayerCalculationParamsSchema = z.object({
 
   filters: FiltersSchema.optional(),
 
-  aggregation: AggregationSchema.optional(),
+  aggregation: MutliAggregationConfigSchema,
 });
 
 /**
  * The parameters for calculating a single aggregate value for a layer, passed to
  * the {@link LayersController.getLayerCalculation} method.
  */
-export interface GetLayerCalculationParams
-  extends z.infer<typeof GetLayerCalculationParamsSchema> {
+export interface GetLayerCalculationParams<
+  T extends AggregationMethod | "count",
+> extends z.infer<typeof GetLayerCalculationParamsSchema> {
   /**
    * Attribute filters to determine what gets counted or aggregated.
    */
@@ -262,5 +295,5 @@ export interface GetLayerCalculationParams
    * features are counted. When specified, the chosen calculation (avg, sum, etc.)
    * is performed on the specified attribute.
    */
-  aggregation?: Aggregation;
+  aggregation: MultiAggregationConfig<T>;
 }

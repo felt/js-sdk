@@ -3,6 +3,12 @@
 The parameters for calculating a single aggregate value for a layer, passed to
 the [LayersController.getLayerCalculation](LayersController.md#getlayercalculation) method.
 
+## Type Parameters
+
+| Type Parameter                                                         |
+| ---------------------------------------------------------------------- |
+| `T` *extends* [`AggregationMethod`](AggregationMethod.md) \| `"count"` |
+
 ## Properties
 
 ### layerId
@@ -31,9 +37,9 @@ that form a polyline.
 
 ***
 
-### aggregation?
+### aggregation
 
-> `optional` **aggregation**: [`Aggregation`](Aggregation.md)
+> **aggregation**: [`MultiAggregationConfig`](MultiAggregationConfig.md)\<`T`>
 
 Specifies how to aggregate values within each category or bin. When omitted,
 features are counted. When specified, the chosen calculation (avg, sum, etc.)

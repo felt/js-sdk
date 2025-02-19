@@ -814,19 +814,25 @@ const newBuildingHeights = await felt.getLayerHistogram({
 
 ### getLayerCalculation()
 
-> **getLayerCalculation**(`params`: [`GetLayerCalculationParams`](../Layers/GetLayerCalculationParams.md)): `Promise`\<`number`>
+> **getLayerCalculation**\<`T`>(`params`: [`GetLayerCalculationParams`](../Layers/GetLayerCalculationParams.md)\<`T`>): `Promise`\<`Record`\<`T`, `number`>>
 
 Calculates a single aggregate value for a layer based on the provided configuration.
 
+#### Type Parameters
+
+| Type Parameter                                                                    |
+| --------------------------------------------------------------------------------- |
+| `T` *extends* `"avg"` \| `"max"` \| `"min"` \| `"sum"` \| `"median"` \| `"count"` |
+
 #### Parameters
 
-| Parameter | Type                                                                  |
-| --------- | --------------------------------------------------------------------- |
-| `params`  | [`GetLayerCalculationParams`](../Layers/GetLayerCalculationParams.md) |
+| Parameter | Type                                                                        |
+| --------- | --------------------------------------------------------------------------- |
+| `params`  | [`GetLayerCalculationParams`](../Layers/GetLayerCalculationParams.md)\<`T`> |
 
 #### Returns
 
-`Promise`\<`number`>
+`Promise`\<`Record`\<`T`, `number`>>
 
 #### Remarks
 

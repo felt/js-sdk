@@ -41,12 +41,14 @@ export type {
 } from "./filter.types";
 
 export type {
-  Aggregation,
+  AggregationConfig,
+  AggregationMethod,
   GetLayerCalculationParams,
   GetLayerCategoriesGroup,
   GetLayerCategoriesParams,
   GetLayerHistogramBin,
   GetLayerHistogramParams,
+  MultiAggregationConfig,
   ValueConfiguration,
 } from "./stats/types";
 

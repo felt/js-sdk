@@ -34,7 +34,7 @@
 
 ### position
 
-> **position**: \[`number`, `number`] = `LatLngTupleSchema`
+> **position**: \[`number`, `number`] = `LngLatTupleSchema`
 
 ***
 

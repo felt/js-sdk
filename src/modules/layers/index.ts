@@ -40,4 +40,16 @@ export type {
   LayerFilters,
 } from "./filter.types";
 
+export type {
+  AggregationConfig,
+  AggregationMethod,
+  GetLayerCalculationParams,
+  GetLayerCategoriesGroup,
+  GetLayerCategoriesParams,
+  GetLayerHistogramBin,
+  GetLayerHistogramParams,
+  MultiAggregationConfig,
+  ValueConfiguration,
+} from "./stats/types";
+
 export type { LayersController } from "./controller";

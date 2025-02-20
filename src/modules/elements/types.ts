@@ -1,7 +1,7 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
-  LatLngTupleSchema,
+  LngLatTupleSchema,
   MultiLineStringGeometrySchema,
   PointGeometrySchema,
 } from "../shared/types";
@@ -62,7 +62,7 @@ const CircleElementSchema = BaseFeltElementSchema.extend(Geographic.shape)
   .extend(Strokable.shape)
   .extend({
     type: z.literal("Circle"),
-    coordinates: LatLngTupleSchema,
+    coordinates: LngLatTupleSchema,
     radius: z.number(),
     radiusDisplayAngle: z.number(),
     radiusDisplayUnit: DistanceUnit.nullable(),
@@ -88,7 +88,7 @@ const HighlighterElementSchema = BaseFeltElementSchema.extend({
 });
 
 const DerivedCoords = z.object({
-  position: LatLngTupleSchema,
+  position: LngLatTupleSchema,
   rotation: z.number(),
   scale: z.number(),
   zoom: z.number().min(0).max(23),

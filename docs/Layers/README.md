@@ -18,6 +18,18 @@ independently of the Layer, so you can turn on and off each category or class in
 
 * [Feature](Feature.md)
 * [RasterValue](RasterValue.md)
+* [AggregationConfig](AggregationConfig.md)
+* [MultiAggregationConfig](MultiAggregationConfig.md)
+* [ValueConfiguration](ValueConfiguration.md)
+* [GetLayerCategoriesParams](GetLayerCategoriesParams.md)
+* [GetLayerCategoriesGroup](GetLayerCategoriesGroup.md)
+* [GetLayerHistogramParams](GetLayerHistogramParams.md)
+* [GetLayerHistogramBin](GetLayerHistogramBin.md)
+* [GetLayerCalculationParams](GetLayerCalculationParams.md)
+
+## Type Aliases
+
+* [AggregationMethod](AggregationMethod.md)
 
 ## Controller
 

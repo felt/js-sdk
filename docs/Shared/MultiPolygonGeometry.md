@@ -1,15 +1,15 @@
 ***
 
-> **MultiPolygonGeometry**: \{ `type`: `"MultiPolygon"`; `coordinates`: [`PolygonGeometry`](PolygonGeometry.md)\[`"coordinates"`]\[]; }
-
 A GeoJSON multi-polygon geometry.
 
-## Type declaration
+## Properties
 
 ### type
 
 > **type**: `"MultiPolygon"`
 
+***
+
 ### coordinates
 
-> **coordinates**: [`PolygonGeometry`](PolygonGeometry.md)\[`"coordinates"`]\[]
+> **coordinates**: \[`number`, `number`]\[]\[]\[]

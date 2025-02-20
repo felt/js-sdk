@@ -10,6 +10,14 @@ import type { zInfer } from "~/lib/utils";
 import { SetVisibilityRequestSchema } from "~/modules/shared/types";
 import { FiltersSchema, type LayerFilters } from "./filter.types";
 import {
+  type AggregationMethod,
+  GetLayerCalculationParamsSchema,
+  type GetLayerCategoriesGroup,
+  GetLayerCategoriesParamsSchema,
+  type GetLayerHistogramBin,
+  GetLayerHistogramParamsSchema,
+} from "./stats/types";
+import {
   type Feature,
   GetLayerGroupsFilterSchema,
   GetLayersConstraintSchema,
@@ -104,6 +112,22 @@ const GetRenderedFeaturesMessage = methodMessage(
   GetRenderedFeaturesConstraintSchema.optional(),
 );
 
+// STATS
+const GetLayerCategoriesMessage = methodMessage(
+  "getCategoryData",
+  GetLayerCategoriesParamsSchema,
+);
+
+const GetLayerHistogramMessage = methodMessage(
+  "getHistogramData",
+  GetLayerHistogramParamsSchema,
+);
+
+const GetLayerCalculationMessage = methodMessage(
+  "getAggregates",
+  GetLayerCalculationParamsSchema,
+);
+
 export const layersSchema = {
   methods: [
     GetLayerMessage,
@@ -125,6 +149,10 @@ export const layersSchema = {
     SetFiltersMessage,
 
     GetRenderedFeaturesMessage,
+
+    GetLayerCategoriesMessage,
+    GetLayerHistogramMessage,
+    GetLayerCalculationMessage,
   ],
   listeners: [
     OnLayerChangeMessage,
@@ -181,6 +209,19 @@ export type LayersSchema = {
     getRenderedFeatures: Method<
       zInfer<typeof GetRenderedFeaturesMessage>,
       Array<Feature>
+    >;
+
+    getCategoryData: Method<
+      zInfer<typeof GetLayerCategoriesMessage>,
+      Array<GetLayerCategoriesGroup>
+    >;
+    getHistogramData: Method<
+      zInfer<typeof GetLayerHistogramMessage>,
+      Array<GetLayerHistogramBin>
+    >;
+    getAggregates: Method<
+      zInfer<typeof GetLayerCalculationMessage>,
+      Record<AggregationMethod | "count", number | null>
     >;
   };
   listeners: {

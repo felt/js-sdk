@@ -2,6 +2,14 @@ import { listener, method } from "~/lib/interface";
 import type { SetVisibilityRequest } from "~/modules/shared/types";
 import type { Filters, LayerFilters } from "./filter.types";
 import type {
+  AggregationMethod,
+  GetLayerCalculationParams,
+  GetLayerCategoriesGroup,
+  GetLayerCategoriesParams,
+  GetLayerHistogramBin,
+  GetLayerHistogramParams,
+} from "./stats/types";
+import type {
   Feature,
   GetLayerGroupsConstraint,
   GetLayersConstraint,
@@ -50,6 +58,11 @@ export const layersController = (feltWindow: Window): LayersController => ({
 
   // rendered features
   getRenderedFeatures: method(feltWindow, "getRenderedFeatures"),
+
+  // stats
+  getCategoryData: method(feltWindow, "getCategoryData"),
+  getHistogramData: method(feltWindow, "getHistogramData"),
+  getAggregates: method(feltWindow, "getAggregates"),
 });
 
 /**
@@ -405,4 +418,165 @@ export interface LayersController {
      */
     params?: GetRenderedFeaturesConstraint,
   ): Promise<Array<Feature>>;
+
+  // STATS
+  /**
+   * Gets values from a layer grouped by a given attribute.
+   *
+   * @remarks
+   * Groups features in your layer by unique values in the specified attribute and calculates
+   * a value for each group. By default, this value is the count of features in each group.
+   *
+   * You can apply filters in two ways:
+   * 1. At the top level (using `boundary` and `filters`), which affects both what categories
+   *    are included and how values are calculated
+   * 2. In the `values` configuration, which only affects the values but keeps all categories
+   *
+   * This two-level filtering is particularly useful when you want to compare subsets of data
+   * while maintaining consistent categories. For example, you might want to show the distribution
+   * of all building types in a city, but only count buildings built after 2000 in each category.
+   *
+   * @example
+   * ```typescript
+   * // Basic grouping: Count of buildings by type
+   * const buildingsByType = await felt.getCategoryData({
+   *   layerId: "buildings",
+   *   attribute: "type"
+   * });
+   *
+   * // Filtered grouping: Only count buildings in downtown
+   * const downtownBuildingsByType = await felt.getCategoryData({
+   *   layerId: "buildings",
+   *   attribute: "type",
+   *   boundary: [-122.43, 47.60, -122.33, 47.62]  // downtown boundary
+   * });
+   *
+   * // Advanced: Show all building types, but only sum floor area of recent buildings
+   * const recentBuildingAreaByType = await felt.getCategoryData({
+   *   layerId: "buildings",
+   *   attribute: "type",
+   *   values: {
+   *     filters: ["year_built", "gte", 2000],
+   *     aggregation: {
+   *       method: "sum",
+   *       attribute: "floor_area"
+   *     }
+   *   }
+   * });
+   *
+   * // Compare residential density across neighborhoods while only counting recent buildings
+   * const newBuildingDensityByNeighborhood = await felt.getCategoryData({
+   *   layerId: "buildings",
+   *   attribute: "neighborhood",
+   *   values: {
+   *     filters: ["year_built", "gte", 2000],
+   *     aggregation: {
+   *       method: "avg",
+   *       attribute: "units_per_acre"
+   *     }
+   *   }
+   * });
+   * ```
+   */
+  getCategoryData(
+    params: GetLayerCategoriesParams,
+  ): Promise<Array<GetLayerCategoriesGroup>>;
+
+  /**
+   * Gets a histogram of values from a layer for a given attribute.
+   *
+   * @remarks
+   * Creates bins (ranges) for numeric data and counts how many features fall into each bin,
+   * or returns aggregated values for each bin.
+   *
+   * You can control how the bins are created using the `steps` parameter, choosing from
+   * several methods like equal intervals, quantiles, or natural breaks (Jenks), or passing
+   * in the step values directly if you know how you want to bin the data.
+   *
+   * Like getCategoryData, you can apply filters in two ways:
+   * 1. At the top level (using `boundary` and `filters`), which affects both how the bins
+   *    are calculated and what features are counted in each bin
+   * 2. In the `values` configuration, which only affects what gets counted but keeps the
+   *    bin ranges the same
+   *
+   * This is particularly useful when you want to compare distributions while keeping
+   * consistent bin ranges. For example, you might want to compare the distribution of
+   * building heights in different years while using the same height ranges.
+   *
+   * @example
+   * ```typescript
+   * // Basic histogram: Building heights in 5 natural break bins
+   * const buildingHeights = await felt.getHistogramData({
+   *   layerId: "buildings",
+   *   attribute: "height",
+   *   steps: { type: "jenks", count: 5 }
+   * });
+   *
+   * // Compare old vs new buildings using the same height ranges
+   * const oldBuildingHeights = await felt.getHistogramData({
+   *   layerId: "buildings",
+   *   attribute: "height",
+   *   steps: [0, 20, 50, 100, 200, 500],
+   *   values: {
+   *     filters: ["year_built", "lt", 1950]
+   *   }
+   * });
+   *
+   * const newBuildingHeights = await felt.getHistogramData({
+   *   layerId: "buildings",
+   *   attribute: "height",
+   *   steps: [0, 20, 50, 100, 200, 500],  // Same ranges as above
+   *   values: {
+   *     filters: ["year_built", "gte", 1950]
+   *   }
+   * });
+   * ```
+   */
+  getHistogramData(
+    params: GetLayerHistogramParams,
+  ): Promise<Array<GetLayerHistogramBin>>;
+
+  /**
+   * Calculates a single aggregate value for a layer based on the provided configuration.
+   *
+   * @remarks
+   * Performs statistical calculations on your data, like counting features or computing
+   * averages, sums, etc. You can focus your calculation on specific areas or subsets
+   * of your data using boundaries and filters.
+   *
+   * When no aggregation is specified, it counts features. When an aggregation is provided,
+   * it performs that calculation (average, sum, etc.) on the specified attribute.
+   *
+   * @example
+   * ```typescript
+   * // Count all residential buildings
+   * const residentialCount = await felt.getAggregates({
+   *   layerId: "buildings",
+   *   filters: ["type", "eq", "residential"]
+   * });
+   *
+   * // Calculate average home value in a specific neighborhood
+   * const avgHomeValue = await felt.getAggregates({
+   *   layerId: "buildings",
+   *   boundary: [-122.43, 47.60, -122.33, 47.62],  // neighborhood boundary
+   *   aggregation: {
+   *     method: "avg",
+   *     attribute: "assessed_value"
+   *   }
+   * });
+   *
+   * // Find the maximum building height for buildings built after 2000
+   * const maxNewBuildingHeight = await felt.getAggregates({
+   *   layerId: "buildings",
+   *   filters: ["year_built", "gte", 2000],
+   *   aggregation: {
+   *     method: "max",
+   *     attribute: "height"
+   *   }
+   * });
+   * ```
+   */
+  getAggregates<T extends AggregationMethod | "count">(
+    params: GetLayerCalculationParams<T>,
+  ): Promise<Record<T, number | null>>;
 }

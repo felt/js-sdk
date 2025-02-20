@@ -34,7 +34,7 @@ const MutliAggregationConfigSchema = z.object({
   /**
    * The attribute to use for the aggregation. This must be a numeric attribute.
    */
-  attribute: z.string(),
+  attribute: z.string().optional(),
 });
 
 /**
@@ -60,6 +60,14 @@ export type AggregationMethod = z.infer<typeof AggregateMethodSchema>;
 export interface MultiAggregationConfig<T extends AggregationMethod | "count">
   extends zInfer<typeof MutliAggregationConfigSchema> {
   methods: T[];
+
+  /**
+   * The attribute to use for the aggregation when aggregations other than "count" are used.
+   *
+   * This can be omitted if the only aggregation is "count", but must be a numeric attribute
+   * otherwise.
+   */
+  attribute?: string;
 }
 
 const GeometryFilterSchema = z.union([
@@ -171,8 +179,11 @@ const GetLayerCategoriesGroupSchema = z.object({
 
   /**
    * The value calculated for the category, whether a count, sum, average, etc.
+   *
+   * `null` is returned if there are no features in the category as opposed to zero,
+   * so as not to confuse with a real zero value from some aggregation.
    */
-  value: z.number(),
+  value: z.number().nullable(),
 });
 
 /**
@@ -181,36 +192,28 @@ const GetLayerCategoriesGroupSchema = z.object({
 export interface GetLayerCategoriesGroup
   extends zInfer<typeof GetLayerCategoriesGroupSchema> {}
 
-const ContinuousShortcutSchema = z.object({
-  type: z.literal("continuous"),
-});
-
-const AutomaticBreaksShortcutSchema = z.object({
-  type: z.enum([
-    "jenks",
-    "quantiles",
-    "equal-intervals",
-    "stddev",
-    "geo-intervals",
-  ]),
+const EqualIntervalShortcutSchema = z.object({
+  type: z.literal("equal-intervals"),
   count: z.number(),
 });
 
 const TimeSeriesIntervalSchema = z.object({
   type: z.literal("time-interval"),
-  value: z.string(),
+  interval: z.enum(["hour", "day", "week", "month", "year"]),
 });
-
-const StepsFSLShortcutSchema = z.discriminatedUnion("type", [
-  ContinuousShortcutSchema,
-  AutomaticBreaksShortcutSchema,
-  TimeSeriesIntervalSchema,
-]);
 
 export const GetLayerHistogramParamsSchema = z.object({
   layerId: z.string(),
   attribute: z.string(),
-  steps: StepsFSLShortcutSchema.or(z.array(z.number())),
+  steps: z.union([
+    EqualIntervalShortcutSchema,
+    TimeSeriesIntervalSchema,
+    z.array(z.number()),
+  ]),
+
+  boundary: GeometryFilterSchema.optional(),
+
+  filters: FiltersSchema.optional(),
 
   /**
    * Configuration for filtering and aggregating values while preserving the full set of
@@ -233,7 +236,19 @@ export const GetLayerHistogramParamsSchema = z.object({
  * the {@link LayersController.getLayerHistogram} method.
  */
 export interface GetLayerHistogramParams
-  extends zInfer<typeof GetLayerHistogramParamsSchema> {}
+  extends zInfer<typeof GetLayerHistogramParamsSchema> {
+  /**
+   * Attribute filters to determine what gets counted or aggregated.
+   */
+  filters?: Filters;
+
+  /**
+   * A spatial boundary to filter what gets counted or aggregated. This can be either
+   * a [w, s, e, n] bounding box, a GeoJSON Polygon geometry, or a list of coordinates
+   * that form a polyline.
+   */
+  boundary?: PolygonGeometry | LngLatTuple[] | FeltBoundary;
+}
 
 const GetLayerHistogramBinSchema = z.object({
   /**

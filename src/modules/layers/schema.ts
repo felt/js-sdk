@@ -221,7 +221,7 @@ export type LayersSchema = {
     >;
     getLayerCalculation: Method<
       zInfer<typeof GetLayerCalculationMessage>,
-      Record<AggregationMethod | "count", number>
+      Record<AggregationMethod | "count", number | null>
     >;
   };
   listeners: {

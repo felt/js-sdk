@@ -19,7 +19,7 @@ the [LayersController.getLayerHistogram](LayersController.md#getlayerhistogram) 
 
 ### steps
 
-> **steps**: `number`\[] | \{ `type`: `"continuous"`; } | \{ `type`: `"jenks"` | `"quantiles"` | `"equal-intervals"` | `"stddev"` | `"geo-intervals"`; `count`: `number`; } | \{ `type`: `"time-interval"`; `value`: `string`; }
+> **steps**: `number`\[] | \{ `type`: `"equal-intervals"`; `count`: `number`; } | \{ `type`: `"time-interval"`; `interval`: `"hour"` | `"day"` | `"week"` | `"month"` | `"year"`; }
 
 ***
 
@@ -46,3 +46,21 @@ ranges in the results.
 | `aggregation`?          | \{ `method`: `"avg"` \| `"max"` \| `"min"` \| `"sum"` \| `"median"`; `attribute`: `string`; }                                                                                                                                                                                                                                               | -                     | -                                                                           |
 | `aggregation.method`    | `"avg"` \| `"max"` \| `"min"` \| `"sum"` \| `"median"`                                                                                                                                                                                                                                                                                      | AggregateMethodSchema | The operation to use on the values from the features in the layer           |
 | `aggregation.attribute` | `string`                                                                                                                                                                                                                                                                                                                                    | -                     | The attribute to use for the aggregation. This must be a numeric attribute. |
+
+***
+
+### filters?
+
+> `optional` **filters**: [`Filters`](Filters.md)
+
+Attribute filters to determine what gets counted or aggregated.
+
+***
+
+### boundary?
+
+> `optional` **boundary**: \[`number`, `number`, `number`, `number`] | [`PolygonGeometry`](../Shared/PolygonGeometry.md) | [`LngLatTuple`](../Shared/LngLatTuple.md)\[]
+
+A spatial boundary to filter what gets counted or aggregated. This can be either
+a \[w, s, e, n] bounding box, a GeoJSON Polygon geometry, or a list of coordinates
+that form a polyline.

@@ -578,5 +578,5 @@ export interface LayersController {
    */
   getLayerCalculation<T extends AggregationMethod | "count">(
     params: GetLayerCalculationParams<T>,
-  ): Promise<Record<T, number>>;
+  ): Promise<Record<T, number | null>>;
 }

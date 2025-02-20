@@ -1,6 +1,6 @@
 ***
 
-One bin from the response from the [LayersController.getLayerHistogram](LayersController.md#getlayerhistogram) method.
+One bin from the response from the [LayersController.getHistogramData](LayersController.md#gethistogramdata) method.
 
 ## Properties
 

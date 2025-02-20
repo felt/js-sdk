@@ -1,7 +1,7 @@
 ***
 
 The parameters for getting categories from a layer, passed to
-the [LayersController.getLayerCategories](LayersController.md#getlayercategories) method.
+the [LayersController.getCategoryData](LayersController.md#getcategorydata) method.
 
 ## Properties
 

@@ -437,9 +437,9 @@ const features = await felt.getRenderedFeatures();
 
 ***
 
-### getLayerCategories()
+### getCategoryData()
 
-> **getLayerCategories**(`params`: [`GetLayerCategoriesParams`](GetLayerCategoriesParams.md)): `Promise`\<[`GetLayerCategoriesGroup`](GetLayerCategoriesGroup.md)\[]>
+> **getCategoryData**(`params`: [`GetLayerCategoriesParams`](GetLayerCategoriesParams.md)): `Promise`\<[`GetLayerCategoriesGroup`](GetLayerCategoriesGroup.md)\[]>
 
 Gets values from a layer grouped by a given attribute.
 
@@ -472,20 +472,20 @@ of all building types in a city, but only count buildings built after 2000 in ea
 
 ```typescript
 // Basic grouping: Count of buildings by type
-const buildingsByType = await felt.getLayerCategories({
+const buildingsByType = await felt.getCategoryData({
   layerId: "buildings",
   attribute: "type"
 });
 
 // Filtered grouping: Only count buildings in downtown
-const downtownBuildingsByType = await felt.getLayerCategories({
+const downtownBuildingsByType = await felt.getCategoryData({
   layerId: "buildings",
   attribute: "type",
   boundary: [-122.43, 47.60, -122.33, 47.62]  // downtown boundary
 });
 
 // Advanced: Show all building types, but only sum floor area of recent buildings
-const recentBuildingAreaByType = await felt.getLayerCategories({
+const recentBuildingAreaByType = await felt.getCategoryData({
   layerId: "buildings",
   attribute: "type",
   values: {
@@ -498,7 +498,7 @@ const recentBuildingAreaByType = await felt.getLayerCategories({
 });
 
 // Compare residential density across neighborhoods while only counting recent buildings
-const newBuildingDensityByNeighborhood = await felt.getLayerCategories({
+const newBuildingDensityByNeighborhood = await felt.getCategoryData({
   layerId: "buildings",
   attribute: "neighborhood",
   values: {
@@ -513,9 +513,9 @@ const newBuildingDensityByNeighborhood = await felt.getLayerCategories({
 
 ***
 
-### getLayerHistogram()
+### getHistogramData()
 
-> **getLayerHistogram**(`params`: [`GetLayerHistogramParams`](GetLayerHistogramParams.md)): `Promise`\<[`GetLayerHistogramBin`](GetLayerHistogramBin.md)\[]>
+> **getHistogramData**(`params`: [`GetLayerHistogramParams`](GetLayerHistogramParams.md)): `Promise`\<[`GetLayerHistogramBin`](GetLayerHistogramBin.md)\[]>
 
 Gets a histogram of values from a layer for a given attribute.
 
@@ -538,7 +538,7 @@ You can control how the bins are created using the `steps` parameter, choosing f
 several methods like equal intervals, quantiles, or natural breaks (Jenks), or passing
 in the step values directly if you know how you want to bin the data.
 
-Like getLayerCategories, you can apply filters in two ways:
+Like getCategoryData, you can apply filters in two ways:
 
 1. At the top level (using `boundary` and `filters`), which affects both how the bins
    are calculated and what features are counted in each bin
@@ -553,14 +553,14 @@ building heights in different years while using the same height ranges.
 
 ```typescript
 // Basic histogram: Building heights in 5 natural break bins
-const buildingHeights = await felt.getLayerHistogram({
+const buildingHeights = await felt.getHistogramData({
   layerId: "buildings",
   attribute: "height",
   steps: { type: "jenks", count: 5 }
 });
 
 // Compare old vs new buildings using the same height ranges
-const oldBuildingHeights = await felt.getLayerHistogram({
+const oldBuildingHeights = await felt.getHistogramData({
   layerId: "buildings",
   attribute: "height",
   steps: [0, 20, 50, 100, 200, 500],
@@ -569,7 +569,7 @@ const oldBuildingHeights = await felt.getLayerHistogram({
   }
 });
 
-const newBuildingHeights = await felt.getLayerHistogram({
+const newBuildingHeights = await felt.getHistogramData({
   layerId: "buildings",
   attribute: "height",
   steps: [0, 20, 50, 100, 200, 500],  // Same ranges as above
@@ -581,9 +581,9 @@ const newBuildingHeights = await felt.getLayerHistogram({
 
 ***
 
-### getLayerCalculation()
+### getAggregates()
 
-> **getLayerCalculation**\<`T`>(`params`: [`GetLayerCalculationParams`](GetLayerCalculationParams.md)\<`T`>): `Promise`\<`Record`\<`T`, `null` | `number`>>
+> **getAggregates**\<`T`>(`params`: [`GetLayerCalculationParams`](GetLayerCalculationParams.md)\<`T`>): `Promise`\<`Record`\<`T`, `null` | `number`>>
 
 Calculates a single aggregate value for a layer based on the provided configuration.
 
@@ -616,13 +616,13 @@ it performs that calculation (average, sum, etc.) on the specified attribute.
 
 ```typescript
 // Count all residential buildings
-const residentialCount = await felt.getLayerCalculation({
+const residentialCount = await felt.getAggregates({
   layerId: "buildings",
   filters: ["type", "eq", "residential"]
 });
 
 // Calculate average home value in a specific neighborhood
-const avgHomeValue = await felt.getLayerCalculation({
+const avgHomeValue = await felt.getAggregates({
   layerId: "buildings",
   boundary: [-122.43, 47.60, -122.33, 47.62],  // neighborhood boundary
   aggregation: {
@@ -632,7 +632,7 @@ const avgHomeValue = await felt.getLayerCalculation({
 });
 
 // Find the maximum building height for buildings built after 2000
-const maxNewBuildingHeight = await felt.getLayerCalculation({
+const maxNewBuildingHeight = await felt.getAggregates({
   layerId: "buildings",
   filters: ["year_built", "gte", 2000],
   aggregation: {

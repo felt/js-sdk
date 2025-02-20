@@ -60,9 +60,9 @@ export const layersController = (feltWindow: Window): LayersController => ({
   getRenderedFeatures: method(feltWindow, "getRenderedFeatures"),
 
   // stats
-  getLayerCategories: method(feltWindow, "getLayerCategories"),
-  getLayerHistogram: method(feltWindow, "getLayerHistogram"),
-  getLayerCalculation: method(feltWindow, "getLayerCalculation"),
+  getCategoryData: method(feltWindow, "getCategoryData"),
+  getHistogramData: method(feltWindow, "getHistogramData"),
+  getAggregates: method(feltWindow, "getAggregates"),
 });
 
 /**
@@ -439,20 +439,20 @@ export interface LayersController {
    * @example
    * ```typescript
    * // Basic grouping: Count of buildings by type
-   * const buildingsByType = await felt.getLayerCategories({
+   * const buildingsByType = await felt.getCategoryData({
    *   layerId: "buildings",
    *   attribute: "type"
    * });
    *
    * // Filtered grouping: Only count buildings in downtown
-   * const downtownBuildingsByType = await felt.getLayerCategories({
+   * const downtownBuildingsByType = await felt.getCategoryData({
    *   layerId: "buildings",
    *   attribute: "type",
    *   boundary: [-122.43, 47.60, -122.33, 47.62]  // downtown boundary
    * });
    *
    * // Advanced: Show all building types, but only sum floor area of recent buildings
-   * const recentBuildingAreaByType = await felt.getLayerCategories({
+   * const recentBuildingAreaByType = await felt.getCategoryData({
    *   layerId: "buildings",
    *   attribute: "type",
    *   values: {
@@ -465,7 +465,7 @@ export interface LayersController {
    * });
    *
    * // Compare residential density across neighborhoods while only counting recent buildings
-   * const newBuildingDensityByNeighborhood = await felt.getLayerCategories({
+   * const newBuildingDensityByNeighborhood = await felt.getCategoryData({
    *   layerId: "buildings",
    *   attribute: "neighborhood",
    *   values: {
@@ -478,7 +478,7 @@ export interface LayersController {
    * });
    * ```
    */
-  getLayerCategories(
+  getCategoryData(
     params: GetLayerCategoriesParams,
   ): Promise<Array<GetLayerCategoriesGroup>>;
 
@@ -493,7 +493,7 @@ export interface LayersController {
    * several methods like equal intervals, quantiles, or natural breaks (Jenks), or passing
    * in the step values directly if you know how you want to bin the data.
    *
-   * Like getLayerCategories, you can apply filters in two ways:
+   * Like getCategoryData, you can apply filters in two ways:
    * 1. At the top level (using `boundary` and `filters`), which affects both how the bins
    *    are calculated and what features are counted in each bin
    * 2. In the `values` configuration, which only affects what gets counted but keeps the
@@ -506,14 +506,14 @@ export interface LayersController {
    * @example
    * ```typescript
    * // Basic histogram: Building heights in 5 natural break bins
-   * const buildingHeights = await felt.getLayerHistogram({
+   * const buildingHeights = await felt.getHistogramData({
    *   layerId: "buildings",
    *   attribute: "height",
    *   steps: { type: "jenks", count: 5 }
    * });
    *
    * // Compare old vs new buildings using the same height ranges
-   * const oldBuildingHeights = await felt.getLayerHistogram({
+   * const oldBuildingHeights = await felt.getHistogramData({
    *   layerId: "buildings",
    *   attribute: "height",
    *   steps: [0, 20, 50, 100, 200, 500],
@@ -522,7 +522,7 @@ export interface LayersController {
    *   }
    * });
    *
-   * const newBuildingHeights = await felt.getLayerHistogram({
+   * const newBuildingHeights = await felt.getHistogramData({
    *   layerId: "buildings",
    *   attribute: "height",
    *   steps: [0, 20, 50, 100, 200, 500],  // Same ranges as above
@@ -532,7 +532,7 @@ export interface LayersController {
    * });
    * ```
    */
-  getLayerHistogram(
+  getHistogramData(
     params: GetLayerHistogramParams,
   ): Promise<Array<GetLayerHistogramBin>>;
 
@@ -550,13 +550,13 @@ export interface LayersController {
    * @example
    * ```typescript
    * // Count all residential buildings
-   * const residentialCount = await felt.getLayerCalculation({
+   * const residentialCount = await felt.getAggregates({
    *   layerId: "buildings",
    *   filters: ["type", "eq", "residential"]
    * });
    *
    * // Calculate average home value in a specific neighborhood
-   * const avgHomeValue = await felt.getLayerCalculation({
+   * const avgHomeValue = await felt.getAggregates({
    *   layerId: "buildings",
    *   boundary: [-122.43, 47.60, -122.33, 47.62],  // neighborhood boundary
    *   aggregation: {
@@ -566,7 +566,7 @@ export interface LayersController {
    * });
    *
    * // Find the maximum building height for buildings built after 2000
-   * const maxNewBuildingHeight = await felt.getLayerCalculation({
+   * const maxNewBuildingHeight = await felt.getAggregates({
    *   layerId: "buildings",
    *   filters: ["year_built", "gte", 2000],
    *   aggregation: {
@@ -576,7 +576,7 @@ export interface LayersController {
    * });
    * ```
    */
-  getLayerCalculation<T extends AggregationMethod | "count">(
+  getAggregates<T extends AggregationMethod | "count">(
     params: GetLayerCalculationParams<T>,
   ): Promise<Record<T, number | null>>;
 }

@@ -138,7 +138,7 @@ export const GetLayerCategoriesParamsSchema = z.object({
 
 /**
  * The parameters for getting categories from a layer, passed to
- * the {@link LayersController.getLayerCategories} method.
+ * the {@link LayersController.getCategoryData} method.
  */
 export interface GetLayerCategoriesParams
   extends zInfer<typeof GetLayerCategoriesParamsSchema> {
@@ -187,7 +187,7 @@ const GetLayerCategoriesGroupSchema = z.object({
 });
 
 /**
- * A single category from the response from the {@link LayersController.getLayerCategories} method.
+ * A single category from the response from the {@link LayersController.getCategoryData} method.
  */
 export interface GetLayerCategoriesGroup
   extends zInfer<typeof GetLayerCategoriesGroupSchema> {}
@@ -233,7 +233,7 @@ export const GetLayerHistogramParamsSchema = z.object({
 
 /**
  * The params used to request a histogram of values from a layer, passed to
- * the {@link LayersController.getLayerHistogram} method.
+ * the {@link LayersController.getHistogramData} method.
  */
 export interface GetLayerHistogramParams
   extends zInfer<typeof GetLayerHistogramParamsSchema> {
@@ -268,7 +268,7 @@ const GetLayerHistogramBinSchema = z.object({
 });
 
 /**
- * One bin from the response from the {@link LayersController.getLayerHistogram} method.
+ * One bin from the response from the {@link LayersController.getHistogramData} method.
  */
 export interface GetLayerHistogramBin
   extends zInfer<typeof GetLayerHistogramBinSchema> {}
@@ -288,7 +288,7 @@ export const GetLayerCalculationParamsSchema = z.object({
 
 /**
  * The parameters for calculating a single aggregate value for a layer, passed to
- * the {@link LayersController.getLayerCalculation} method.
+ * the {@link LayersController.getAggregates} method.
  */
 export interface GetLayerCalculationParams<
   T extends AggregationMethod | "count",

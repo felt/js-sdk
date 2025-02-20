@@ -114,17 +114,17 @@ const GetRenderedFeaturesMessage = methodMessage(
 
 // STATS
 const GetLayerCategoriesMessage = methodMessage(
-  "getLayerCategories",
+  "getCategoryData",
   GetLayerCategoriesParamsSchema,
 );
 
 const GetLayerHistogramMessage = methodMessage(
-  "getLayerHistogram",
+  "getHistogramData",
   GetLayerHistogramParamsSchema,
 );
 
 const GetLayerCalculationMessage = methodMessage(
-  "getLayerCalculation",
+  "getAggregates",
   GetLayerCalculationParamsSchema,
 );
 
@@ -211,15 +211,15 @@ export type LayersSchema = {
       Array<Feature>
     >;
 
-    getLayerCategories: Method<
+    getCategoryData: Method<
       zInfer<typeof GetLayerCategoriesMessage>,
       Array<GetLayerCategoriesGroup>
     >;
-    getLayerHistogram: Method<
+    getHistogramData: Method<
       zInfer<typeof GetLayerHistogramMessage>,
       Array<GetLayerHistogramBin>
     >;
-    getLayerCalculation: Method<
+    getAggregates: Method<
       zInfer<typeof GetLayerCalculationMessage>,
       Record<AggregationMethod | "count", number | null>
     >;

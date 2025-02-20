@@ -1,6 +1,6 @@
 ***
 
-A single category from the response from the [LayersController.getLayerCategories](LayersController.md#getlayercategories) method.
+A single category from the response from the [LayersController.getCategoryData](LayersController.md#getcategorydata) method.
 
 ## Properties
 

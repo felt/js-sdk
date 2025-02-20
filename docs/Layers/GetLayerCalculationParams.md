@@ -1,7 +1,7 @@
 ***
 
 The parameters for calculating a single aggregate value for a layer, passed to
-the [LayersController.getLayerCalculation](LayersController.md#getlayercalculation) method.
+the [LayersController.getAggregates](LayersController.md#getaggregates) method.
 
 ## Type Parameters
 

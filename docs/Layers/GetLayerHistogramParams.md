@@ -1,7 +1,7 @@
 ***
 
 The params used to request a histogram of values from a layer, passed to
-the [LayersController.getLayerHistogram](LayersController.md#getlayerhistogram) method.
+the [LayersController.getHistogramData](LayersController.md#gethistogramdata) method.
 
 ## Properties
 

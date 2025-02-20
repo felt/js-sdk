@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.5.0-next.6
+
+### Minor Changes
+
+- f2f4289: Add layer stats methods
+
 ## 1.5.0-next.5
 
 ### Minor Changes

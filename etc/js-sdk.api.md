@@ -397,6 +397,7 @@ export interface LayersController {
     getLegendItems(constraint?: LegendItemsConstraint): Promise<Array<LegendItem | null>>;
     getRenderedFeatures(
     params?: GetRenderedFeaturesConstraint): Promise<Array<Feature>>;
+    hideLayerDataTable(): Promise<void>;
     onLayerChange(args: {
         options: {
             id: string;

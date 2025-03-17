@@ -139,6 +139,11 @@ const ShowLayerDataTableMessage = methodMessage(
   }),
 );
 
+const HideLayerDataTableMessage = methodMessage(
+  "hideLayerDataTable",
+  z.undefined(),
+);
+
 export const layersSchema = {
   methods: [
     GetLayerMessage,
@@ -166,6 +171,7 @@ export const layersSchema = {
     GetLayerCalculationMessage,
 
     ShowLayerDataTableMessage,
+    HideLayerDataTableMessage,
   ],
   listeners: [
     OnLayerChangeMessage,
@@ -238,6 +244,7 @@ export type LayersSchema = {
     >;
 
     showLayerDataTable: Method<zInfer<typeof ShowLayerDataTableMessage>, void>;
+    hideLayerDataTable: Method<zInfer<typeof HideLayerDataTableMessage>, void>;
   };
   listeners: {
     onLayerChange: Listener<

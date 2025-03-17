@@ -667,17 +667,35 @@ Shows a data table view for the specified layer, optionally sorted by a given at
 ```typescript
 // Show data table with default sorting
 await felt.showLayerDataTable({
-  layerId: "buildingsLayerId"
+  layerId: "layer-1",
 });
 
 // Show data table sorted by height in descending order
 await felt.showLayerDataTable({
-  layerId: "buildingsLayerId",
+  layerId: "layer-1",
   sorting: {
     attribute: "height",
-    direction: "desc"
-  }
+    direction: "desc",
+  },
 });
+```
+
+***
+
+## hideLayerDataTable()
+
+> **hideLayerDataTable**(): `Promise`\<`void`>
+
+Hides the data table.
+
+### Returns
+
+`Promise`\<`void`>
+
+### Example
+
+```typescript
+await felt.hideLayerDataTable();
 ```
 
 # Events

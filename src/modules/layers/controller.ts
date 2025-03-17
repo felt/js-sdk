@@ -66,6 +66,7 @@ export const layersController = (feltWindow: Window): LayersController => ({
 
   // new method
   showLayerDataTable: method(feltWindow, "showLayerDataTable"),
+  hideLayerDataTable: method(feltWindow, "hideLayerDataTable"),
 });
 
 /**
@@ -590,16 +591,16 @@ export interface LayersController {
    * ```typescript
    * // Show data table with default sorting
    * await felt.showLayerDataTable({
-   *   layerId: "buildingsLayerId"
+   *   layerId: "layer-1",
    * });
    *
    * // Show data table sorted by height in descending order
    * await felt.showLayerDataTable({
-   *   layerId: "buildingsLayerId",
+   *   layerId: "layer-1",
    *   sorting: {
    *     attribute: "height",
-   *     direction: "desc"
-   *   }
+   *     direction: "desc",
+   *   },
    * });
    * ```
    */
@@ -607,4 +608,14 @@ export interface LayersController {
     layerId: string;
     sorting?: SortConfig;
   }): Promise<void>;
+
+  /**
+   * Hides the data table.
+   *
+   * @example
+   * ```typescript
+   * await felt.hideLayerDataTable();
+   * ```
+   */
+  hideLayerDataTable(): Promise<void>;
 }

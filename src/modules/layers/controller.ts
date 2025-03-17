@@ -1,5 +1,5 @@
 import { listener, method } from "~/lib/interface";
-import type { SetVisibilityRequest } from "~/modules/shared/types";
+import type { SetVisibilityRequest, SortConfig } from "~/modules/shared/types";
 import type { Filters, LayerFilters } from "./filters/types";
 import type {
   AggregationMethod,
@@ -63,6 +63,9 @@ export const layersController = (feltWindow: Window): LayersController => ({
   getCategoryData: method(feltWindow, "getCategoryData"),
   getHistogramData: method(feltWindow, "getHistogramData"),
   getAggregates: method(feltWindow, "getAggregates"),
+
+  // new method
+  showLayerDataTable: method(feltWindow, "showLayerDataTable"),
 });
 
 /**
@@ -579,4 +582,29 @@ export interface LayersController {
   getAggregates<T extends AggregationMethod | "count">(
     params: GetLayerCalculationParams<T>,
   ): Promise<Record<T, number | null>>;
+
+  /**
+   * Shows a data table view for the specified layer, optionally sorted by a given attribute.
+   *
+   * @example
+   * ```typescript
+   * // Show data table with default sorting
+   * await felt.showLayerDataTable({
+   *   layerId: "buildingsLayerId"
+   * });
+   *
+   * // Show data table sorted by height in descending order
+   * await felt.showLayerDataTable({
+   *   layerId: "buildingsLayerId",
+   *   sorting: {
+   *     attribute: "height",
+   *     direction: "desc"
+   *   }
+   * });
+   * ```
+   */
+  showLayerDataTable(params: {
+    layerId: string;
+    sorting?: SortConfig;
+  }): Promise<void>;
 }

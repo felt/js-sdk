@@ -7,7 +7,10 @@ import {
   methodMessage,
 } from "~/lib/builders";
 import type { zInfer } from "~/lib/utils";
-import { SetVisibilityRequestSchema } from "~/modules/shared/types";
+import {
+  SetVisibilityRequestSchema,
+  SortConfigSchema,
+} from "~/modules/shared/types";
 import { FiltersSchema, type LayerFilters } from "./filters/types";
 import {
   type AggregationMethod,
@@ -128,6 +131,14 @@ const GetLayerCalculationMessage = methodMessage(
   GetLayerCalculationParamsSchema,
 );
 
+const ShowLayerDataTableMessage = methodMessage(
+  "showLayerDataTable",
+  z.object({
+    layerId: z.string(),
+    sorting: SortConfigSchema.optional(),
+  }),
+);
+
 export const layersSchema = {
   methods: [
     GetLayerMessage,
@@ -153,6 +164,8 @@ export const layersSchema = {
     GetLayerCategoriesMessage,
     GetLayerHistogramMessage,
     GetLayerCalculationMessage,
+
+    ShowLayerDataTableMessage,
   ],
   listeners: [
     OnLayerChangeMessage,
@@ -223,6 +236,8 @@ export type LayersSchema = {
       zInfer<typeof GetLayerCalculationMessage>,
       Record<AggregationMethod | "count", number | null>
     >;
+
+    showLayerDataTable: Method<zInfer<typeof ShowLayerDataTableMessage>, void>;
   };
   listeners: {
     onLayerChange: Listener<

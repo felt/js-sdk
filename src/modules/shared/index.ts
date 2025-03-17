@@ -15,4 +15,6 @@ export type {
   PointGeometry,
   PolygonGeometry,
   SetVisibilityRequest,
+  SortConfig,
+  SortDirection,
 } from "./types";

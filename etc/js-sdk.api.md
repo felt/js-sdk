@@ -4,112 +4,114 @@
 
 ```ts
 
-import { ao as AggregationConfig } from './types-NOlNQi4k.js';
-import { A as AggregationMethod } from './types-NOlNQi4k.js';
-import { Q as CircleElementCreate } from './types-NOlNQi4k.js';
-import { R as CircleElementRead } from './types-NOlNQi4k.js';
-import { U as CircleElementUpdate } from './types-NOlNQi4k.js';
-import { aF as CircleToolSettings } from './types-NOlNQi4k.js';
-import { C as ConfigurableToolType } from './types-NOlNQi4k.js';
-import { E as Element_2 } from './types-NOlNQi4k.js';
-import { d as ElementChangeCallbackParams } from './types-NOlNQi4k.js';
-import { f as ElementCreate } from './types-NOlNQi4k.js';
-import { b as ElementGroup } from './types-NOlNQi4k.js';
-import { e as ElementGroupChangeCallbackParams } from './types-NOlNQi4k.js';
-import { ar as ElementGroupNode } from './types-NOlNQi4k.js';
-import { as as ElementNode } from './types-NOlNQi4k.js';
-import { g as ElementUpdate } from './types-NOlNQi4k.js';
-import { z as EntityNode } from './types-NOlNQi4k.js';
-import { s as Feature } from './types-NOlNQi4k.js';
-import { at as FeatureNode } from './types-NOlNQi4k.js';
-import { B as FeatureSelection } from './types-NOlNQi4k.js';
-import { aw as FeltBoundary } from './types-NOlNQi4k.js';
-import { ax as FeltZoom } from './types-NOlNQi4k.js';
-import { al as FilterExpression } from './types-NOlNQi4k.js';
-import { am as FilterLogicGate } from './types-NOlNQi4k.js';
-import { F as Filters } from './types-NOlNQi4k.js';
-import { an as FilterTernary } from './types-NOlNQi4k.js';
-import { G as Geometry } from './types-NOlNQi4k.js';
-import { c as GetElementGroupsConstraint } from './types-NOlNQi4k.js';
-import { a as GetElementsConstraint } from './types-NOlNQi4k.js';
-import { x as GetLayerCalculationParams } from './types-NOlNQi4k.js';
-import { u as GetLayerCategoriesGroup } from './types-NOlNQi4k.js';
-import { t as GetLayerCategoriesParams } from './types-NOlNQi4k.js';
-import { k as GetLayerGroupsConstraint } from './types-NOlNQi4k.js';
-import { w as GetLayerHistogramBin } from './types-NOlNQi4k.js';
-import { v as GetLayerHistogramParams } from './types-NOlNQi4k.js';
-import { h as GetLayersConstraint } from './types-NOlNQi4k.js';
-import { r as GetRenderedFeaturesConstraint } from './types-NOlNQi4k.js';
-import { W as HighlighterElementCreate } from './types-NOlNQi4k.js';
-import { X as HighlighterElementRead } from './types-NOlNQi4k.js';
-import { Y as HighlighterElementUpdate } from './types-NOlNQi4k.js';
-import { aG as HighlighterToolSettings } from './types-NOlNQi4k.js';
-import { Z as ImageElementCreate } from './types-NOlNQi4k.js';
-import { _ as ImageElementRead } from './types-NOlNQi4k.js';
-import { $ as ImageElementUpdate } from './types-NOlNQi4k.js';
-import { I as InputToolSettings } from './types-NOlNQi4k.js';
-import { J } from './types-NOlNQi4k.js';
-import { ay as LatLng } from './types-NOlNQi4k.js';
-import { L as Layer } from './types-NOlNQi4k.js';
-import { i as LayerChangeCallbackParams } from './types-NOlNQi4k.js';
-import { q as LayerFilters } from './types-NOlNQi4k.js';
-import { j as LayerGroup } from './types-NOlNQi4k.js';
-import { l as LayerGroupChangeCallbackParams } from './types-NOlNQi4k.js';
-import { au as LayerGroupNode } from './types-NOlNQi4k.js';
-import { av as LayerNode } from './types-NOlNQi4k.js';
-import { aj as LayerProcessingStatus } from './types-NOlNQi4k.js';
-import { n as LegendItem } from './types-NOlNQi4k.js';
-import { p as LegendItemChangeCallbackParams } from './types-NOlNQi4k.js';
-import { m as LegendItemIdentifier } from './types-NOlNQi4k.js';
-import { o as LegendItemsConstraint } from './types-NOlNQi4k.js';
-import { az as LineStringGeometry } from './types-NOlNQi4k.js';
-import { aH as LineToolSettings } from './types-NOlNQi4k.js';
-import { a0 as LinkElementRead } from './types-NOlNQi4k.js';
-import { aA as LngLatTuple } from './types-NOlNQi4k.js';
-import { y as MapDetails } from './types-NOlNQi4k.js';
-import { M as MapInteractionEvent } from './types-NOlNQi4k.js';
-import { a1 as MarkerElementCreate } from './types-NOlNQi4k.js';
-import { a2 as MarkerElementRead } from './types-NOlNQi4k.js';
-import { a3 as MarkerElementUpdate } from './types-NOlNQi4k.js';
-import { aI as MarkerToolSettings } from './types-NOlNQi4k.js';
-import { ap as MultiAggregationConfig } from './types-NOlNQi4k.js';
-import { aB as MultiLineStringGeometry } from './types-NOlNQi4k.js';
-import { aC as MultiPolygonGeometry } from './types-NOlNQi4k.js';
-import { a4 as NoteElementCreate } from './types-NOlNQi4k.js';
-import { a5 as NoteElementRead } from './types-NOlNQi4k.js';
-import { a6 as NoteElementUpdate } from './types-NOlNQi4k.js';
-import { aJ as NoteToolSettings } from './types-NOlNQi4k.js';
-import { a7 as PathElementCreate } from './types-NOlNQi4k.js';
-import { a8 as PathElementRead } from './types-NOlNQi4k.js';
-import { a9 as PathElementUpdate } from './types-NOlNQi4k.js';
-import { aK as PinToolSettings } from './types-NOlNQi4k.js';
-import { aa as PlaceElementCreate } from './types-NOlNQi4k.js';
-import { ab as PlaceElementRead } from './types-NOlNQi4k.js';
-import { ac as PlaceElementUpdate } from './types-NOlNQi4k.js';
-import { aL as PlaceFrame } from './types-NOlNQi4k.js';
-import { aM as PlaceSymbol } from './types-NOlNQi4k.js';
-import { aD as PointGeometry } from './types-NOlNQi4k.js';
-import { ad as PolygonElementCreate } from './types-NOlNQi4k.js';
-import { ae as PolygonElementRead } from './types-NOlNQi4k.js';
-import { af as PolygonElementUpdate } from './types-NOlNQi4k.js';
-import { aE as PolygonGeometry } from './types-NOlNQi4k.js';
-import { aN as PolygonToolSettings } from './types-NOlNQi4k.js';
-import { ak as RasterValue } from './types-NOlNQi4k.js';
-import { aO as RouteToolSettings } from './types-NOlNQi4k.js';
-import { K as SetViewportCenterZoomParams } from './types-NOlNQi4k.js';
-import { S as SetVisibilityRequest } from './types-NOlNQi4k.js';
-import { ag as TextElementCreate } from './types-NOlNQi4k.js';
-import { ah as TextElementRead } from './types-NOlNQi4k.js';
-import { ai as TextElementUpdate } from './types-NOlNQi4k.js';
-import { aP as TextToolSettings } from './types-NOlNQi4k.js';
-import { H as ToolSettingsChangeEvent } from './types-NOlNQi4k.js';
-import { D as ToolSettingsMap } from './types-NOlNQi4k.js';
-import { T as ToolType } from './types-NOlNQi4k.js';
-import { aq as ValueConfiguration } from './types-NOlNQi4k.js';
-import { P as ViewportCenterZoom } from './types-NOlNQi4k.js';
-import { N as ViewportConstraints } from './types-NOlNQi4k.js';
-import { O as ViewportFitBoundsParams } from './types-NOlNQi4k.js';
-import { V as ViewportState } from './types-NOlNQi4k.js';
+import { ap as AggregationConfig } from './types-Bw55doND.js';
+import { A as AggregationMethod } from './types-Bw55doND.js';
+import { R as CircleElementCreate } from './types-Bw55doND.js';
+import { U as CircleElementRead } from './types-Bw55doND.js';
+import { W as CircleElementUpdate } from './types-Bw55doND.js';
+import { aH as CircleToolSettings } from './types-Bw55doND.js';
+import { D as ConfigurableToolType } from './types-Bw55doND.js';
+import { E as Element_2 } from './types-Bw55doND.js';
+import { d as ElementChangeCallbackParams } from './types-Bw55doND.js';
+import { f as ElementCreate } from './types-Bw55doND.js';
+import { b as ElementGroup } from './types-Bw55doND.js';
+import { e as ElementGroupChangeCallbackParams } from './types-Bw55doND.js';
+import { as as ElementGroupNode } from './types-Bw55doND.js';
+import { at as ElementNode } from './types-Bw55doND.js';
+import { g as ElementUpdate } from './types-Bw55doND.js';
+import { B as EntityNode } from './types-Bw55doND.js';
+import { s as Feature } from './types-Bw55doND.js';
+import { au as FeatureNode } from './types-Bw55doND.js';
+import { C as FeatureSelection } from './types-Bw55doND.js';
+import { ax as FeltBoundary } from './types-Bw55doND.js';
+import { ay as FeltZoom } from './types-Bw55doND.js';
+import { am as FilterExpression } from './types-Bw55doND.js';
+import { an as FilterLogicGate } from './types-Bw55doND.js';
+import { F as Filters } from './types-Bw55doND.js';
+import { ao as FilterTernary } from './types-Bw55doND.js';
+import { G as Geometry } from './types-Bw55doND.js';
+import { c as GetElementGroupsConstraint } from './types-Bw55doND.js';
+import { a as GetElementsConstraint } from './types-Bw55doND.js';
+import { x as GetLayerCalculationParams } from './types-Bw55doND.js';
+import { u as GetLayerCategoriesGroup } from './types-Bw55doND.js';
+import { t as GetLayerCategoriesParams } from './types-Bw55doND.js';
+import { k as GetLayerGroupsConstraint } from './types-Bw55doND.js';
+import { w as GetLayerHistogramBin } from './types-Bw55doND.js';
+import { v as GetLayerHistogramParams } from './types-Bw55doND.js';
+import { h as GetLayersConstraint } from './types-Bw55doND.js';
+import { r as GetRenderedFeaturesConstraint } from './types-Bw55doND.js';
+import { X as HighlighterElementCreate } from './types-Bw55doND.js';
+import { Y as HighlighterElementRead } from './types-Bw55doND.js';
+import { Z as HighlighterElementUpdate } from './types-Bw55doND.js';
+import { aI as HighlighterToolSettings } from './types-Bw55doND.js';
+import { _ as ImageElementCreate } from './types-Bw55doND.js';
+import { $ as ImageElementRead } from './types-Bw55doND.js';
+import { a0 as ImageElementUpdate } from './types-Bw55doND.js';
+import { I as InputToolSettings } from './types-Bw55doND.js';
+import { K } from './types-Bw55doND.js';
+import { az as LatLng } from './types-Bw55doND.js';
+import { L as Layer } from './types-Bw55doND.js';
+import { i as LayerChangeCallbackParams } from './types-Bw55doND.js';
+import { q as LayerFilters } from './types-Bw55doND.js';
+import { j as LayerGroup } from './types-Bw55doND.js';
+import { l as LayerGroupChangeCallbackParams } from './types-Bw55doND.js';
+import { av as LayerGroupNode } from './types-Bw55doND.js';
+import { aw as LayerNode } from './types-Bw55doND.js';
+import { ak as LayerProcessingStatus } from './types-Bw55doND.js';
+import { n as LegendItem } from './types-Bw55doND.js';
+import { p as LegendItemChangeCallbackParams } from './types-Bw55doND.js';
+import { m as LegendItemIdentifier } from './types-Bw55doND.js';
+import { o as LegendItemsConstraint } from './types-Bw55doND.js';
+import { aA as LineStringGeometry } from './types-Bw55doND.js';
+import { aJ as LineToolSettings } from './types-Bw55doND.js';
+import { a1 as LinkElementRead } from './types-Bw55doND.js';
+import { aB as LngLatTuple } from './types-Bw55doND.js';
+import { z as MapDetails } from './types-Bw55doND.js';
+import { M as MapInteractionEvent } from './types-Bw55doND.js';
+import { a2 as MarkerElementCreate } from './types-Bw55doND.js';
+import { a3 as MarkerElementRead } from './types-Bw55doND.js';
+import { a4 as MarkerElementUpdate } from './types-Bw55doND.js';
+import { aK as MarkerToolSettings } from './types-Bw55doND.js';
+import { aq as MultiAggregationConfig } from './types-Bw55doND.js';
+import { aC as MultiLineStringGeometry } from './types-Bw55doND.js';
+import { aD as MultiPolygonGeometry } from './types-Bw55doND.js';
+import { a5 as NoteElementCreate } from './types-Bw55doND.js';
+import { a6 as NoteElementRead } from './types-Bw55doND.js';
+import { a7 as NoteElementUpdate } from './types-Bw55doND.js';
+import { aL as NoteToolSettings } from './types-Bw55doND.js';
+import { a8 as PathElementCreate } from './types-Bw55doND.js';
+import { a9 as PathElementRead } from './types-Bw55doND.js';
+import { aa as PathElementUpdate } from './types-Bw55doND.js';
+import { aM as PinToolSettings } from './types-Bw55doND.js';
+import { ab as PlaceElementCreate } from './types-Bw55doND.js';
+import { ac as PlaceElementRead } from './types-Bw55doND.js';
+import { ad as PlaceElementUpdate } from './types-Bw55doND.js';
+import { aN as PlaceFrame } from './types-Bw55doND.js';
+import { aO as PlaceSymbol } from './types-Bw55doND.js';
+import { aE as PointGeometry } from './types-Bw55doND.js';
+import { ae as PolygonElementCreate } from './types-Bw55doND.js';
+import { af as PolygonElementRead } from './types-Bw55doND.js';
+import { ag as PolygonElementUpdate } from './types-Bw55doND.js';
+import { aF as PolygonGeometry } from './types-Bw55doND.js';
+import { aP as PolygonToolSettings } from './types-Bw55doND.js';
+import { al as RasterValue } from './types-Bw55doND.js';
+import { aQ as RouteToolSettings } from './types-Bw55doND.js';
+import { N as SetViewportCenterZoomParams } from './types-Bw55doND.js';
+import { S as SetVisibilityRequest } from './types-Bw55doND.js';
+import { y as SortConfig } from './types-Bw55doND.js';
+import { aG as SortDirection } from './types-Bw55doND.js';
+import { ah as TextElementCreate } from './types-Bw55doND.js';
+import { ai as TextElementRead } from './types-Bw55doND.js';
+import { aj as TextElementUpdate } from './types-Bw55doND.js';
+import { aR as TextToolSettings } from './types-Bw55doND.js';
+import { J as ToolSettingsChangeEvent } from './types-Bw55doND.js';
+import { H as ToolSettingsMap } from './types-Bw55doND.js';
+import { T as ToolType } from './types-Bw55doND.js';
+import { ar as ValueConfiguration } from './types-Bw55doND.js';
+import { Q as ViewportCenterZoom } from './types-Bw55doND.js';
+import { O as ViewportConstraints } from './types-Bw55doND.js';
+import { P as ViewportFitBoundsParams } from './types-Bw55doND.js';
+import { V as ViewportState } from './types-Bw55doND.js';
 import { z } from 'zod';
 
 export { AggregationConfig }
@@ -205,7 +207,7 @@ export interface FeltController extends ViewportController, UiController, Layers
 // Warning: (ae-forgotten-export) The symbol "FeltEmbedOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public
-export interface FeltEmbedOptions extends J<typeof FeltEmbedOptionsSchema> {
+export interface FeltEmbedOptions extends K<typeof FeltEmbedOptionsSchema> {
     // (undocumented)
     initialViewport?: ViewportCenterZoom;
     // (undocumented)
@@ -429,6 +431,10 @@ export interface LayersController {
         show?: Array<LegendItemIdentifier>;
         hide?: Array<LegendItemIdentifier>;
     }): Promise<void>;
+    showLayerDataTable(params: {
+        layerId: string;
+        sorting?: SortConfig;
+    }): Promise<void>;
 }
 
 export { LegendItem }
@@ -481,7 +487,7 @@ export { NoteToolSettings }
 // Warning: (ae-forgotten-export) The symbol "UiOnMapInteractionsOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public
-export interface OnMapInteractionsOptions extends J<typeof UiOnMapInteractionsOptionsSchema> {
+export interface OnMapInteractionsOptions extends K<typeof UiOnMapInteractionsOptionsSchema> {
 }
 
 export { PathElementCreate }
@@ -537,6 +543,10 @@ export { SetViewportCenterZoomParams }
 
 export { SetVisibilityRequest }
 
+export { SortConfig }
+
+export { SortDirection }
+
 export { TextElementCreate }
 
 export { TextElementRead }
@@ -574,7 +584,7 @@ export interface UiController {
 // Warning: (ae-forgotten-export) The symbol "UiControlsOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public (undocumented)
-export interface UiControlsOptions extends J<typeof UiControlsOptionsSchema> {
+export interface UiControlsOptions extends K<typeof UiControlsOptionsSchema> {
 }
 
 // @internal (undocumented)

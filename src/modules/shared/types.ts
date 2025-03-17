@@ -151,3 +151,33 @@ export const SetVisibilityRequestSchema = z.object({
   show: z.array(z.string()).optional(),
   hide: z.array(z.string()).optional(),
 });
+
+/**
+ * Specifies the direction to sort data in
+ *
+ * @group Types
+ */
+export type SortDirection = z.infer<typeof SortDirectionSchema>;
+/** @ignore */
+const SortDirectionSchema = z.enum(["asc", "desc"]);
+
+/**
+ * Configuration for sorting data by a specific attribute
+ *
+ * @group Types
+ */
+export interface SortConfig extends zInfer<typeof SortConfigSchema> {}
+/** @ignore */
+export const SortConfigSchema = z.object({
+  /**
+   * The attribute to sort by. What this represents depends on the context.
+   * For instance, when sorting features in a data table, the attribute is
+   * the column to sort by.
+   */
+  attribute: z.string(),
+
+  /**
+   * The direction to sort in
+   */
+  direction: SortDirectionSchema,
+});

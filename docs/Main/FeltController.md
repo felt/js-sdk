@@ -875,62 +875,6 @@ const maxNewBuildingHeight = await felt.getAggregates({
 
 ***
 
-## showLayerDataTable()
-
-> **showLayerDataTable**(`params`: \{ `layerId`: `string`; `sorting`: [`SortConfig`](../Shared/SortConfig.md); }): `Promise`\<`void`>
-
-Shows a data table view for the specified layer, optionally sorted by a given attribute.
-
-### Parameters
-
-| Parameter         | Type                                                                          |
-| ----------------- | ----------------------------------------------------------------------------- |
-| `params`          | \{ `layerId`: `string`; `sorting`: [`SortConfig`](../Shared/SortConfig.md); } |
-| `params.layerId`  | `string`                                                                      |
-| `params.sorting`? | [`SortConfig`](../Shared/SortConfig.md)                                       |
-
-### Returns
-
-`Promise`\<`void`>
-
-### Example
-
-```typescript
-// Show data table with default sorting
-await felt.showLayerDataTable({
-  layerId: "layer-1",
-});
-
-// Show data table sorted by height in descending order
-await felt.showLayerDataTable({
-  layerId: "layer-1",
-  sorting: {
-    attribute: "height",
-    direction: "desc",
-  },
-});
-```
-
-***
-
-## hideLayerDataTable()
-
-> **hideLayerDataTable**(): `Promise`\<`void`>
-
-Hides the data table.
-
-### Returns
-
-`Promise`\<`void`>
-
-### Example
-
-```typescript
-await felt.hideLayerDataTable();
-```
-
-***
-
 ## getMapDetails()
 
 > **getMapDetails**(): `Promise`\<[`MapDetails`](../Misc/MapDetails.md)>
@@ -1217,6 +1161,62 @@ will still be selected when clicked.
 ### Returns
 
 `void`
+
+***
+
+## showLayerDataTable()
+
+> **showLayerDataTable**(`params`: \{ `layerId`: `string`; `sorting`: [`SortConfig`](../Shared/SortConfig.md); }): `Promise`\<`void`>
+
+Shows a data table view for the specified layer, optionally sorted by a given attribute.
+
+### Parameters
+
+| Parameter         | Type                                                                          |
+| ----------------- | ----------------------------------------------------------------------------- |
+| `params`          | \{ `layerId`: `string`; `sorting`: [`SortConfig`](../Shared/SortConfig.md); } |
+| `params.layerId`  | `string`                                                                      |
+| `params.sorting`? | [`SortConfig`](../Shared/SortConfig.md)                                       |
+
+### Returns
+
+`Promise`\<`void`>
+
+### Example
+
+```typescript
+// Show data table with default sorting
+await felt.showLayerDataTable({
+  layerId: "layer-1",
+});
+
+// Show data table sorted by height in descending order
+await felt.showLayerDataTable({
+  layerId: "layer-1",
+  sorting: {
+    attribute: "height",
+    direction: "desc",
+  },
+});
+```
+
+***
+
+## hideLayerDataTable()
+
+> **hideLayerDataTable**(): `Promise`\<`void`>
+
+Hides the data table.
+
+### Returns
+
+`Promise`\<`void`>
+
+### Example
+
+```typescript
+await felt.hideLayerDataTable();
+```
 
 ***
 

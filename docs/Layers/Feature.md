@@ -3,9 +3,9 @@
 A feature is a single geographical item in a layer.
 The unique ID for a feature is a compound key made up of the layer ID and the feature ID.
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string` | `number`
 
@@ -13,7 +13,7 @@ The identifier of the feature, unique within the layer.
 
 ***
 
-### layerId
+## layerId
 
 > **layerId**: `string`
 
@@ -21,7 +21,7 @@ The identifier of the layer that the feature belongs to.
 
 ***
 
-### geometryType
+## geometryType
 
 > **geometryType**: `"Point"` | `"Polygon"` | `"LineString"` | `"MultiPolygon"` | `string` & \{}
 
@@ -29,7 +29,7 @@ The type of geometry of the feature.
 
 ***
 
-### properties
+## properties
 
 > **properties**: `Record`\<`string`, `unknown`>
 

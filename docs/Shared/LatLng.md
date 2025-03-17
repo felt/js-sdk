@@ -2,14 +2,14 @@
 
 Represents a point in world coordinates.
 
-## Properties
+# Properties
 
-### latitude
+## latitude
 
 > **latitude**: `number`
 
 ***
 
-### longitude
+## longitude
 
 > **longitude**: `number`

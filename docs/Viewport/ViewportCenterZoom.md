@@ -2,9 +2,9 @@
 
 The input type for setting the viewport to a particular center and zoom.
 
-## Properties
+# Properties
 
-### center
+## center
 
 > **center**: [`LatLng`](../Shared/LatLng.md)
 
@@ -12,7 +12,7 @@ The center of the viewport in latitude and longitude.
 
 ***
 
-### zoom
+## zoom
 
 > **zoom**: `number`
 

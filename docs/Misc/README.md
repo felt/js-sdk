@@ -2,10 +2,10 @@
 
 The misc module for hard-to-categorize functionality.
 
-## Controller
+# Controller
 
 * [MiscController](MiscController.md)
 
-## Types
+# Types
 
 * [MapDetails](MapDetails.md)

@@ -1,17 +1,17 @@
 ***
 
-## Extended by
+# Extended by
 
 * [`FeltController`](../Main/FeltController.md)
 
-## Methods
+# Methods
 
-### getMapDetails()
+## getMapDetails()
 
 > **getMapDetails**(): `Promise`\<[`MapDetails`](MapDetails.md)>
 
 Gets the details of the map.
 
-#### Returns
+### Returns
 
 `Promise`\<[`MapDetails`](MapDetails.md)>

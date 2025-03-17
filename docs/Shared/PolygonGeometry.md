@@ -1,13 +1,13 @@
 ***
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Polygon"`
 
 ***
 
-### coordinates
+## coordinates
 
 > **coordinates**: \[`number`, `number`]\[]\[]

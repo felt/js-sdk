@@ -3,27 +3,27 @@
 The params used to request a histogram of values from a layer, passed to
 the [LayersController.getHistogramData](LayersController.md#gethistogramdata) method.
 
-## Properties
+# Properties
 
-### layerId
+## layerId
 
 > **layerId**: `string`
 
 ***
 
-### attribute
+## attribute
 
 > **attribute**: `string`
 
 ***
 
-### steps
+## steps
 
 > **steps**: `number`\[] | \{ `type`: `"equal-intervals"`; `count`: `number`; } | \{ `type`: `"time-interval"`; `interval`: `"hour"` | `"day"` | `"week"` | `"month"` | `"year"`; }
 
 ***
 
-### values?
+## values?
 
 > `optional` **values**: \{ `boundary`: \[`number`, `number`]\[] | \[`number`, `number`, `number`, `number`] | \{ `type`: `"Polygon"`; `coordinates`: \[`number`, `number`]\[]\[]; }; `filters`: `null` | `boolean` | \[`null` | `string`, `"in"` | `"ni"`, `null` | (`null` | `string` | `number` | `boolean`)\[]] | \[`null` | `string`, `"lt"` | `"gt"` | `"le"` | `"ge"` | `"eq"` | `"ne"` | `"cn"` | `"nc"` | `"is"` | `"isnt"`, `null` | `string` | `number` | `boolean`] | [`FilterTernary`](FilterTernary.md); `aggregation`: \{ `method`: `"avg"` | `"max"` | `"min"` | `"sum"` | `"median"`; `attribute`: `string`; }; }
 
@@ -49,7 +49,7 @@ ranges in the results.
 
 ***
 
-### filters?
+## filters?
 
 > `optional` **filters**: [`Filters`](Filters.md)
 
@@ -57,7 +57,7 @@ Attribute filters to determine what gets counted or aggregated.
 
 ***
 
-### boundary?
+## boundary?
 
 > `optional` **boundary**: \[`number`, `number`, `number`, `number`] | [`PolygonGeometry`](../Shared/PolygonGeometry.md) | [`LngLatTuple`](../Shared/LngLatTuple.md)\[]
 

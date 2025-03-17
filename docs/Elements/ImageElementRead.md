@@ -1,49 +1,49 @@
 ***
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string`
 
 ***
 
-### groupId
+## groupId
 
 > **groupId**: `null` | `string`
 
 ***
 
-### name
+## name
 
 > **name**: `null` | `string`
 
 ***
 
-### description
+## description
 
 > **description**: `null` | `string`
 
 ***
 
-### attributes
+## attributes
 
 > **attributes**: `Record`\<`string`, `unknown`>
 
 ***
 
-### type
+## type
 
 > **type**: `"Image"`
 
 ***
 
-### imageUrl
+## imageUrl
 
 > **imageUrl**: `string`
 
 ***
 
-### opacity
+## opacity
 
 > **opacity**: `number`

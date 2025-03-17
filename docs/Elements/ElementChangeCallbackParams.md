@@ -2,9 +2,9 @@
 
 The parameters for the `onElementChange` listener.
 
-## Properties
+# Properties
 
-### element
+## element
 
 > **element**: `null` | [`Element`](Element.md)
 

@@ -1,85 +1,85 @@
 ***
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string`
 
 ***
 
-### groupId
+## groupId
 
 > **groupId**: `null` | `string`
 
 ***
 
-### color
+## color
 
 > **color**: `string`
 
 ***
 
-### description
+## description
 
 > **description**: `null` | `string`
 
 ***
 
-### attributes
+## attributes
 
 > **attributes**: `Record`\<`string`, `unknown`>
 
 ***
 
-### position
+## position
 
 > **position**: \[`number`, `number`] = `LngLatTupleSchema`
 
 ***
 
-### rotation
+## rotation
 
 > **rotation**: `number`
 
 ***
 
-### scale
+## scale
 
 > **scale**: `number`
 
 ***
 
-### zoom
+## zoom
 
 > **zoom**: `number`
 
 ***
 
-### text
+## text
 
 > **text**: `string`
 
 ***
 
-### align
+## align
 
 > **align**: `"left"` | `"center"` | `"right"`
 
 ***
 
-### style
+## style
 
 > **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`
 
 ***
 
-### name
+## name
 
 > **name**: `string`
 
 ***
 
-### type
+## type
 
 > **type**: `"Text"`

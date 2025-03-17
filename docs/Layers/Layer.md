@@ -1,8 +1,8 @@
 ***
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string`
 
@@ -10,7 +10,7 @@ The string identifying the layer
 
 ***
 
-### groupId
+## groupId
 
 > **groupId**: `null` | `string`
 
@@ -20,7 +20,7 @@ Layers that appear at the root level in Felt will not have a group ID.
 
 ***
 
-### name
+## name
 
 > **name**: `string`
 
@@ -29,7 +29,7 @@ on how the layer's legend is configured in its style.
 
 ***
 
-### caption
+## caption
 
 > **caption**: `null` | `string`
 
@@ -37,7 +37,7 @@ The layer's caption is shown in the legend.
 
 ***
 
-### description
+## description
 
 > **description**: `null` | `string`
 
@@ -46,7 +46,7 @@ to users via the layer info button in the legend.
 
 ***
 
-### visible
+## visible
 
 > **visible**: `boolean`
 
@@ -54,7 +54,7 @@ Whether the layer is visible or not.
 
 ***
 
-### shownInLegend
+## shownInLegend
 
 > **shownInLegend**: `boolean`
 
@@ -62,7 +62,7 @@ Whether the layer is shown in the legend or not.
 
 ***
 
-### style
+## style
 
 > **style**: `object`
 
@@ -76,7 +76,7 @@ program defensively while reading the styles.
 
 ***
 
-### status
+## status
 
 > **status**: `"processing"` | `"completed"` | `"failed"` | `"incomplete"`
 
@@ -84,13 +84,13 @@ The current processing status of the layer.
 
 ***
 
-### geometryType
+## geometryType
 
 > **geometryType**: `null` | `string`
 
 The geometry type of the layer.
 
-#### Remarks
+### Remarks
 
 This will generally be one of:
 
@@ -106,7 +106,7 @@ in the future.
 
 ***
 
-### bounds
+## bounds
 
 > **bounds**: `null` | \[`number`, `number`, `number`, `number`]
 

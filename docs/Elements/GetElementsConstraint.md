@@ -2,9 +2,9 @@
 
 The constraints to apply when getting elements.
 
-## Properties
+# Properties
 
-### ids?
+## ids?
 
 > `optional` **ids**: `string`\[]
 

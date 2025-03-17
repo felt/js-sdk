@@ -2,9 +2,9 @@
 
 The parameters for the `onLegendItemChange` listener.
 
-## Properties
+# Properties
 
-### legendItem
+## legendItem
 
 > **legendItem**: `null` | [`LegendItem`](LegendItem.md)
 

@@ -1,43 +1,43 @@
 ***
 
-## Properties
+# Properties
 
-### color
+## color
 
 > **color**: `string`
 
 ***
 
-### strokeOpacity
+## strokeOpacity
 
 > **strokeOpacity**: `number`
 
 ***
 
-### strokeWidth
+## strokeWidth
 
 > **strokeWidth**: `number`
 
 ***
 
-### strokeStyle
+## strokeStyle
 
 > **strokeStyle**: `"solid"` | `"dashed"` | `"dotted"`
 
 ***
 
-### distanceMarker
+## distanceMarker
 
 > **distanceMarker**: `boolean`
 
 ***
 
-### endCaps
+## endCaps
 
 > **endCaps**: `boolean`
 
 ***
 
-### routingMode
+## routingMode
 
 > **routingMode**: `null` | `"driving"` | `"cycling"` | `"walking"` | `"flying"`

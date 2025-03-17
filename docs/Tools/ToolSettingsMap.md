@@ -2,40 +2,40 @@
 
 > **ToolSettingsMap**: \{ `pin`: [`PinToolSettings`](PinToolSettings.md); `line`: [`LineToolSettings`](LineToolSettings.md); `route`: [`RouteToolSettings`](RouteToolSettings.md); `polygon`: [`PolygonToolSettings`](PolygonToolSettings.md); `circle`: [`CircleToolSettings`](CircleToolSettings.md); `marker`: [`MarkerToolSettings`](MarkerToolSettings.md); `highlighter`: [`HighlighterToolSettings`](HighlighterToolSettings.md); `text`: [`TextToolSettings`](TextToolSettings.md); `note`: [`NoteToolSettings`](NoteToolSettings.md); }
 
-## Type declaration
+# Type declaration
 
-### pin
+## pin
 
 > **pin**: [`PinToolSettings`](PinToolSettings.md)
 
-### line
+## line
 
 > **line**: [`LineToolSettings`](LineToolSettings.md)
 
-### route
+## route
 
 > **route**: [`RouteToolSettings`](RouteToolSettings.md)
 
-### polygon
+## polygon
 
 > **polygon**: [`PolygonToolSettings`](PolygonToolSettings.md)
 
-### circle
+## circle
 
 > **circle**: [`CircleToolSettings`](CircleToolSettings.md)
 
-### marker
+## marker
 
 > **marker**: [`MarkerToolSettings`](MarkerToolSettings.md)
 
-### highlighter
+## highlighter
 
 > **highlighter**: [`HighlighterToolSettings`](HighlighterToolSettings.md)
 
-### text
+## text
 
 > **text**: [`TextToolSettings`](TextToolSettings.md)
 
-### note
+## note
 
 > **note**: [`NoteToolSettings`](NoteToolSettings.md)

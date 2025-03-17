@@ -5,13 +5,13 @@
 The Felt SDK is a library for embedding Felt maps into your website,
 allowing you to control and inspect the map programmatically.
 
-## Type declaration
+# Type declaration
 
-### embed()
+## embed()
 
 Embeds a Felt map into the provided container.
 
-#### Parameters
+### Parameters
 
 | Parameter   | Type                                      | Description                                  |
 | ----------- | ----------------------------------------- | -------------------------------------------- |
@@ -19,20 +19,20 @@ Embeds a Felt map into the provided container.
 | `mapId`     | `string`                                  | The ID of the map to embed.                  |
 | `options`?  | [`FeltEmbedOptions`](FeltEmbedOptions.md) | The options to configure the map.            |
 
-#### Returns
+### Returns
 
 `Promise`\<[`FeltController`](FeltController.md)>
 
-### connect()
+## connect()
 
 Binds to an existing Felt map iframe.
 
-#### Parameters
+### Parameters
 
 | Parameter    | Type     | Description                                 |
 | ------------ | -------- | ------------------------------------------- |
 | `feltWindow` | `Window` | The iframe element containing the Felt map. |
 
-#### Returns
+### Returns
 
 `Promise`\<[`FeltController`](FeltController.md)>

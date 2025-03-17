@@ -1,73 +1,73 @@
 ***
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Place"`
 
 ***
 
-### id
+## id
 
 > **id**: `string`
 
 ***
 
-### symbol?
+## symbol?
 
 > `optional` **symbol**: `string`
 
 ***
 
-### coordinates?
+## coordinates?
 
 > `optional` **coordinates**: \[`number`, `number`]
 
 ***
 
-### groupId?
+## groupId?
 
 > `optional` **groupId**: `null` | `string`
 
 ***
 
-### color?
+## color?
 
 > `optional` **color**: `string`
 
 ***
 
-### name?
+## name?
 
 > `optional` **name**: `null` | `string`
 
 ***
 
-### description?
+## description?
 
 > `optional` **description**: `null` | `string`
 
 ***
 
-### attributes?
+## attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`>
 
 ***
 
-### imageUrl?
+## imageUrl?
 
 > `optional` **imageUrl**: `null` | `string`
 
 ***
 
-### frame?
+## frame?
 
 > `optional` **frame**: `null` | `"frame-circle"` | `"frame-square"`
 
 ***
 
-### hideLabel?
+## hideLabel?
 
 > `optional` **hideLabel**: `boolean`

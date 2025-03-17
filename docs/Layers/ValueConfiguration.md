@@ -7,9 +7,9 @@ and `filters` properties.
 
 It can also be used to specify how to aggregate the values via the `aggregation` property.
 
-## Properties
+# Properties
 
-### boundary?
+## boundary?
 
 > `optional` **boundary**: \[`number`, `number`, `number`, `number`] | [`PolygonGeometry`](../Shared/PolygonGeometry.md) | [`LngLatTuple`](../Shared/LngLatTuple.md)\[]
 
@@ -18,7 +18,7 @@ all possible categories or bin ranges in the results.
 
 ***
 
-### filters?
+## filters?
 
 > `optional` **filters**: [`Filters`](Filters.md)
 
@@ -27,7 +27,7 @@ all possible categories or bin ranges in the results.
 
 ***
 
-### aggregation?
+## aggregation?
 
 > `optional` **aggregation**: [`AggregationConfig`](AggregationConfig.md)
 

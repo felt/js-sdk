@@ -3,9 +3,9 @@
 A legend item, which often represents a sub-class of features in a
 layer in the case of categorical or classed layers.
 
-## Properties
+# Properties
 
-### title
+## title
 
 > **title**: `string` | `string`\[]
 
@@ -13,7 +13,7 @@ The title of the legend item.
 
 ***
 
-### titleDependsOnZoom
+## titleDependsOnZoom
 
 > **titleDependsOnZoom**: `boolean`
 
@@ -25,7 +25,7 @@ will not be called, so you need to call `getLegendItem` yourself.
 
 ***
 
-### visible
+## visible
 
 > **visible**: `boolean`
 
@@ -33,7 +33,7 @@ Whether the legend item is visible or not.
 
 ***
 
-### id
+## id
 
 > **id**: `string`
 
@@ -41,7 +41,7 @@ The id of the legend item.
 
 ***
 
-### layerId
+## layerId
 
 > **layerId**: `string`
 

@@ -2,9 +2,9 @@
 
 A raster pixel value for a specific layer.
 
-## Properties
+# Properties
 
-### value
+## value
 
 > **value**: `number`
 
@@ -12,7 +12,7 @@ The value of the pixel.
 
 ***
 
-### layerId
+## layerId
 
 > **layerId**: `string`
 
@@ -20,7 +20,7 @@ The ID of the layer that the pixel belongs to.
 
 ***
 
-### categoryName
+## categoryName
 
 > **categoryName**: `null` | `string`
 
@@ -28,7 +28,7 @@ The name of the category that the pixel belongs to.
 
 ***
 
-### color
+## color
 
 > **color**: `null` | \{ `r`: `number`; `g`: `number`; `b`: `number`; `a`: `number`; }
 

@@ -3,7 +3,7 @@
 The Felt SDK lets you get information about the elements in the map, and the
 groups that they belong to.
 
-## Interfaces
+# Interfaces
 
 * [PlaceElementCreate](PlaceElementCreate.md)
 * [PathElementCreate](PathElementCreate.md)
@@ -34,22 +34,22 @@ groups that they belong to.
 * [NoteElementUpdate](NoteElementUpdate.md)
 * [ImageElementUpdate](ImageElementUpdate.md)
 
-## Type Aliases
+# Type Aliases
 
 * [ElementCreate](ElementCreate.md)
 * [ElementUpdate](ElementUpdate.md)
 
-## Controller
+# Controller
 
 * [ElementsController](ElementsController.md)
 
-## Element Groups
+# Element Groups
 
 * [ElementGroup](ElementGroup.md)
 * [GetElementGroupsConstraint](GetElementGroupsConstraint.md)
 * [ElementGroupChangeCallbackParams](ElementGroupChangeCallbackParams.md)
 
-## Elements
+# Elements
 
 * [GetElementsConstraint](GetElementsConstraint.md)
 * [ElementChangeCallbackParams](ElementChangeCallbackParams.md)

@@ -2,14 +2,14 @@
 
 References a feature on the map.
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"feature"`
 
 ***
 
-### entity
+## entity
 
 > **entity**: [`Feature`](../Layers/Feature.md)

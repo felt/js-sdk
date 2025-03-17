@@ -2,9 +2,9 @@
 
 The current state of the viewport, including the derived bounds.
 
-## Properties
+# Properties
 
-### center
+## center
 
 > **center**: [`LatLng`](../Shared/LatLng.md)
 
@@ -14,7 +14,7 @@ The center of the viewport in latitude and longitude.
 
 ***
 
-### zoom
+## zoom
 
 > **zoom**: `number`
 
@@ -24,7 +24,7 @@ The zoom level of the viewport.
 
 ***
 
-### bounds
+## bounds
 
 > **bounds**: \[`number`, `number`, `number`, `number`]
 

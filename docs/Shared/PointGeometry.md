@@ -1,13 +1,13 @@
 ***
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Point"`
 
 ***
 
-### coordinates
+## coordinates
 
 > **coordinates**: \[`number`, `number`] = `LngLatTupleSchema`

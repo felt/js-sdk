@@ -2,9 +2,9 @@
 
 The parameters for the `setViewport` method.
 
-## Properties
+# Properties
 
-### center?
+## center?
 
 > `optional` **center**: \{ `latitude`: `number`; `longitude`: `number`; }
 
@@ -15,6 +15,6 @@ The parameters for the `setViewport` method.
 
 ***
 
-### zoom?
+## zoom?
 
 > `optional` **zoom**: `number`

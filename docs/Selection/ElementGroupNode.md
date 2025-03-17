@@ -2,14 +2,14 @@
 
 References an element group.
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"elementGroup"`
 
 ***
 
-### entity
+## entity
 
 > **entity**: [`ElementGroup`](../Elements/ElementGroup.md)

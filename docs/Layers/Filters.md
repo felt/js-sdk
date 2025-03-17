@@ -5,7 +5,7 @@
 Filters can be used to change which features in a layer are rendered. Filters can be
 applied to a layer by the `setLayerFilters` method on the Felt controller.
 
-## Remarks
+# Remarks
 
 The possible operators are:
 
@@ -23,7 +23,7 @@ The allowed boolean operators are:
 * `and`: Logical AND
 * `or`: Logical OR
 
-## Example
+# Example
 
 ```typescript
 // a simple filter

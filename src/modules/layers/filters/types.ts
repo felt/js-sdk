@@ -83,8 +83,10 @@ const FilterTernarySchema: z.ZodType<FilterTernary> = z.tuple([
  * Filters can be used to change which features in a layer are rendered. Filters can be
  * applied to a layer by the `setLayerFilters` method on the Felt controller.
  *
- * Filters use a tree structure for combining multiple conditions with logical operators.
- * When combining three or more conditions, you must use proper nesting rather than a flat list.
+ * Filters use a tree structure for combining expressions with logical operators, called a
+ * {@link FilterTernary}. When combining three or more conditions, you must use proper nesting
+ * rather than a flat list.
+ *
  * See the examples below for the correct structure to use when building complex filters.
  *
  * @remarks

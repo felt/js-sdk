@@ -1,5 +1,9 @@
 # API Reference
 
+# Documents
+
+* [CHANGELOG](CHANGELOG.md)
+
 # Modules
 
 * [Elements](Elements/README.md)

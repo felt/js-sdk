@@ -6,7 +6,7 @@ A `FilterTernary` is a tree structure for combining expressions with logical ope
 
 When combining three or more conditions, you must use proper nesting rather than a flat list.
 
-## Example
+# Example
 
 ```typescript
 // A simple filter with a single condition

@@ -38,7 +38,7 @@ export type {
   FilterTernary,
   Filters,
   LayerFilters,
-} from "./filter.types";
+} from "./filters/types";
 
 export type {
   AggregationConfig,

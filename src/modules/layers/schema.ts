@@ -8,7 +8,7 @@ import {
 } from "~/lib/builders";
 import type { zInfer } from "~/lib/utils";
 import { SetVisibilityRequestSchema } from "~/modules/shared/types";
-import { FiltersSchema, type LayerFilters } from "./filter.types";
+import { FiltersSchema, type LayerFilters } from "./filters/types";
 import {
   type AggregationMethod,
   GetLayerCalculationParamsSchema,

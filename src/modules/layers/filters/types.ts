@@ -83,6 +83,10 @@ const FilterTernarySchema: z.ZodType<FilterTernary> = z.tuple([
  * Filters can be used to change which features in a layer are rendered. Filters can be
  * applied to a layer by the `setLayerFilters` method on the Felt controller.
  *
+ * Filters use a tree structure for combining multiple conditions with logical operators.
+ * When combining three or more conditions, you must use proper nesting rather than a flat list.
+ * See the examples below for the correct structure to use when building complex filters.
+ *
  * @remarks
  * The possible operators are:
  * - `lt`: Less than
@@ -100,17 +104,82 @@ const FilterTernarySchema: z.ZodType<FilterTernary> = z.tuple([
  *
  * @example
  * ```typescript
- * // a simple filter
+ * // 1. Simple filter: single condition
  * felt.setLayerFilters({
  *   layerId: "layer-1",
  *   filters: ["AREA", "gt", 30_000],
  * });
  *
- * // compound filters can be constructed using boolean logic:
+ * // 2. Basic compound filter: two conditions with AND
  * felt.setLayerFilters({
  *   layerId: "layer-1",
- *   filters: [["AREA", "gt", 30_000], "and", ["COLOR", "eq", "red"]]
- * })
+ *   filters: [
+ *     ["AREA", "gt", 30_000],  // First condition
+ *     "and",                   // Logic operator
+ *     ["COLOR", "eq", "red"]   // Second condition
+ *   ]
+ * });
+ *
+ * // 3. Complex filter: three or more conditions require nesting
+ * // ⚠️ IMPORTANT: Filters use a tree structure, not a flat list
+ * felt.setLayerFilters({
+ *   layerId: "layer-1",
+ *   filters: [
+ *     ["AREA", "gt", 30_000],                // First condition
+ *     "and",                                 // First logic operator
+ *     [                                      // Nested group starts
+ *       ["COLOR", "eq", "red"],              //   Second condition
+ *       "and",                               //   Second logic operator
+ *       ["TYPE", "eq", "residential"]        //   Third condition
+ *     ]                                      // Nested group ends
+ *   ]
+ * });
+ *
+ * // 4. Even more complex: four conditions with proper nesting
+ * // Visual structure:
+ * //          AND
+ * //         /   \
+ * //    condition  AND
+ * //              /   \
+ * //        condition  AND
+ * //                  /   \
+ * //            condition  condition
+ * felt.setLayerFilters({
+ *   layerId: "layer-1",
+ *   filters: [
+ *     ["AREA", "gt", 30_000],                // First condition
+ *     "and",
+ *     [
+ *       ["COLOR", "eq", "red"],              // Second condition
+ *       "and",
+ *       [
+ *         ["TYPE", "eq", "residential"],     // Third condition
+ *         "and",
+ *         ["YEAR", "gt", 2000]               // Fourth condition
+ *       ]
+ *     ]
+ *   ]
+ * });
+ *
+ * // 5. Mixed operators: combining AND and OR
+ * // Visual structure:
+ * //          AND
+ * //         /   \
+ * //    condition  OR
+ * //              /  \
+ * //        condition condition
+ * felt.setLayerFilters({
+ *   layerId: "layer-1",
+ *   filters: [
+ *     ["AREA", "gt", 30_000],                // Must have large area
+ *     "and",
+ *     [
+ *       ["COLOR", "eq", "red"],              // Must be either red
+ *       "or",
+ *       ["TYPE", "eq", "residential"]        // OR residential type
+ *     ]
+ *   ]
+ * });
  * ```
  *
  * @group Filters

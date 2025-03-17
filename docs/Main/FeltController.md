@@ -127,7 +127,7 @@ The requested element group.
 ### Example
 
 ```typescript
-felt.getElementGroup("element-group-1");
+const elementGroup = await felt.getElementGroup("element-group-1");
 ```
 
 ***
@@ -264,7 +264,7 @@ The requested layer.
 ### Example
 
 ```typescript
-const layers = await felt.getLayer({ ids: ["layer-1", "layer-2"] });
+const layer = await felt.getLayer("layer-1");
 ```
 
 ***
@@ -416,7 +416,7 @@ The requested layer group.
 ### Example
 
 ```typescript
-felt.getLayerGroup("layer-group-1");
+const layerGroup = await felt.getLayerGroup("layer-group-1");
 ```
 
 ***
@@ -993,7 +993,7 @@ Sets the tool to use for drawing elements on the map.
 
 ### Example
 
-```ts
+```typescript
 // Set the tool to "marker"
 felt.setTool("marker");
 
@@ -1017,7 +1017,7 @@ The current tool, or `null` if no tool is in use.
 
 ### Example
 
-```ts
+```typescript
 const tool = await felt.getTool(); // "marker", "polygon", etc.
 ```
 
@@ -1044,7 +1044,7 @@ A function to unsubscribe from the listener
 
 ### Example
 
-```ts
+```typescript
 const unsubscribe = felt.onToolChange({
   handler: tool => console.log(tool),
 });

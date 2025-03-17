@@ -9,7 +9,7 @@ import {
   type PolygonGeometry,
 } from "~/modules/shared/types";
 import type { LayersController } from "../controller";
-import { FiltersSchema, type Filters } from "../filter.types";
+import { FiltersSchema, type Filters } from "../filters/types";
 
 const AggregateMethodSchema = z.enum(["avg", "max", "min", "sum", "median"]);
 

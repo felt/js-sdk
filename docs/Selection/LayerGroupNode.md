@@ -2,14 +2,14 @@
 
 References a layer group on the map.
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"layerGroup"`
 
 ***
 
-### entity
+## entity
 
 > **entity**: [`LayerGroup`](../Layers/LayerGroup.md)

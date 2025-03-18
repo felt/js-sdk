@@ -3,15 +3,15 @@
 The parameters for calculating a single aggregate value for a layer, passed to
 the [LayersController.getAggregates](LayersController.md#getaggregates) method.
 
-## Type Parameters
+# Type Parameters
 
 | Type Parameter                                                         |
 | ---------------------------------------------------------------------- |
 | `T` *extends* [`AggregationMethod`](AggregationMethod.md) \| `"count"` |
 
-## Properties
+# Properties
 
-### layerId
+## layerId
 
 > **layerId**: `string`
 
@@ -19,7 +19,7 @@ The ID of the layer to calculate an aggregate value for.
 
 ***
 
-### filters?
+## filters?
 
 > `optional` **filters**: [`Filters`](Filters.md)
 
@@ -27,7 +27,7 @@ Attribute filters to determine what gets counted or aggregated.
 
 ***
 
-### boundary?
+## boundary?
 
 > `optional` **boundary**: \[`number`, `number`, `number`, `number`] | [`PolygonGeometry`](../Shared/PolygonGeometry.md) | [`LngLatTuple`](../Shared/LngLatTuple.md)\[]
 
@@ -37,7 +37,7 @@ that form a polyline.
 
 ***
 
-### aggregation
+## aggregation
 
 > **aggregation**: [`MultiAggregationConfig`](MultiAggregationConfig.md)\<`T`>
 

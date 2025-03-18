@@ -1,67 +1,67 @@
 ***
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string`
 
 ***
 
-### groupId
+## groupId
 
 > **groupId**: `null` | `string`
 
 ***
 
-### color
+## color
 
 > **color**: `string`
 
 ***
 
-### name
+## name
 
 > **name**: `null` | `string`
 
 ***
 
-### description
+## description
 
 > **description**: `null` | `string`
 
 ***
 
-### attributes
+## attributes
 
 > **attributes**: `Record`\<`string`, `unknown`>
 
 ***
 
-### imageUrl
+## imageUrl
 
 > **imageUrl**: `null` | `string`
 
 ***
 
-### type
+## type
 
 > **type**: `"Place"`
 
 ***
 
-### symbol
+## symbol
 
 > **symbol**: `string`
 
 ***
 
-### frame
+## frame
 
 > **frame**: `null` | `"frame-circle"` | `"frame-square"`
 
 ***
 
-### hideLabel
+## hideLabel
 
 > **hideLabel**: `boolean`

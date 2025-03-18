@@ -14,7 +14,7 @@ When a Layer is styled to as categorical data or "classed" numeric data, there w
 a LegendItem for each category or class. Each LegendItem can be controlled for visibility
 independently of the Layer, so you can turn on and off each category or class individually.
 
-## Interfaces
+# Interfaces
 
 * [Feature](Feature.md)
 * [RasterValue](RasterValue.md)
@@ -27,15 +27,15 @@ independently of the Layer, so you can turn on and off each category or class in
 * [GetLayerHistogramBin](GetLayerHistogramBin.md)
 * [GetLayerCalculationParams](GetLayerCalculationParams.md)
 
-## Type Aliases
+# Type Aliases
 
 * [AggregationMethod](AggregationMethod.md)
 
-## Controller
+# Controller
 
 * [LayersController](LayersController.md)
 
-## Filters
+# Filters
 
 * [LayerFilters](LayerFilters.md)
 * [FilterLogicGate](FilterLogicGate.md)
@@ -43,13 +43,13 @@ independently of the Layer, so you can turn on and off each category or class in
 * [FilterTernary](FilterTernary.md)
 * [Filters](Filters.md)
 
-## Layer Groups
+# Layer Groups
 
 * [LayerGroup](LayerGroup.md)
 * [GetLayerGroupsConstraint](GetLayerGroupsConstraint.md)
 * [LayerGroupChangeCallbackParams](LayerGroupChangeCallbackParams.md)
 
-## Layers
+# Layers
 
 * [Layer](Layer.md)
 * [GetLayersConstraint](GetLayersConstraint.md)
@@ -57,7 +57,7 @@ independently of the Layer, so you can turn on and off each category or class in
 * [GetRenderedFeaturesConstraint](GetRenderedFeaturesConstraint.md)
 * [LayerProcessingStatus](LayerProcessingStatus.md)
 
-## Legend Items
+# Legend Items
 
 * [LegendItem](LegendItem.md)
 * [LegendItemIdentifier](LegendItemIdentifier.md)

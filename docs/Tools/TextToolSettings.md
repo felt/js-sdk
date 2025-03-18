@@ -1,19 +1,19 @@
 ***
 
-## Properties
+# Properties
 
-### color
+## color
 
 > **color**: `string`
 
 ***
 
-### align
+## align
 
 > **align**: `"left"` | `"center"` | `"right"`
 
 ***
 
-### style
+## style
 
 > **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`

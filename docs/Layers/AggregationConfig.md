@@ -2,9 +2,9 @@
 
 Defines how to aggregate a value across features in a layer.
 
-## Properties
+# Properties
 
-### attribute
+## attribute
 
 > **attribute**: `string`
 
@@ -12,7 +12,7 @@ The attribute to use for the aggregation. This must be a numeric attribute.
 
 ***
 
-### method
+## method
 
 > **method**: `"avg"` | `"max"` | `"min"` | `"sum"` | `"median"`
 

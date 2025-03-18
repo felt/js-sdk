@@ -1,8 +1,8 @@
 ***
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string`
 
@@ -10,7 +10,7 @@ A string identifying the layer group.
 
 ***
 
-### name
+## name
 
 > **name**: `string`
 
@@ -18,7 +18,7 @@ The name of the layer group. This is shown in the legend.
 
 ***
 
-### caption
+## caption
 
 > **caption**: `null` | `string`
 
@@ -26,19 +26,19 @@ The caption of the layer group. This is shown in the legend.
 
 ***
 
-### layerIds
+## layerIds
 
 > **layerIds**: `string`\[]
 
 The ids of the layers in the layer group.
 
-#### Remarks
+### Remarks
 
 You can use these ids to get the full layer objects via the `getLayers` method.
 
 ***
 
-### visible
+## visible
 
 > **visible**: `boolean`
 
@@ -46,7 +46,7 @@ Whether the layer group is visible or not.
 
 ***
 
-### shownInLegend
+## shownInLegend
 
 > **shownInLegend**: `boolean`
 
@@ -54,7 +54,7 @@ Whether the layer group is shown in the legend or not.
 
 ***
 
-### bounds
+## bounds
 
 > **bounds**: `null` | \[`number`, `number`, `number`, `number`]
 

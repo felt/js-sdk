@@ -5,9 +5,9 @@ The filters that are currently set on a layer.
 A layer's filters are the combination of various different places
 in which filters can be applied.
 
-## Properties
+# Properties
 
-### style
+## style
 
 > **style**: [`Filters`](Filters.md)
 
@@ -16,7 +16,7 @@ of filters, and can only be set by editing the map.
 
 ***
 
-### components
+## components
 
 > **components**: [`Filters`](Filters.md)
 
@@ -26,7 +26,7 @@ but their default value can be set by the map creator.
 
 ***
 
-### ephemeral
+## ephemeral
 
 > **ephemeral**: [`Filters`](Filters.md)
 
@@ -38,7 +38,7 @@ set using the SDK.
 
 ***
 
-### combined
+## combined
 
 > **combined**: [`Filters`](Filters.md)
 

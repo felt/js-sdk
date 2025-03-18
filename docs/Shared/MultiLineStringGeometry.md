@@ -2,14 +2,14 @@
 
 A GeoJSON multi-line string geometry.
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"MultiLineString"`
 
 ***
 
-### coordinates
+## coordinates
 
 > **coordinates**: [`LngLatTuple`](LngLatTuple.md)\[]\[]

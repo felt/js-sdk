@@ -3,9 +3,9 @@
 The constraints for the viewport. Used to ensure that the viewport stays
 within certain bounds and zoom levels.
 
-## Properties
+# Properties
 
-### minZoom
+## minZoom
 
 > **minZoom**: `null` | `number`
 
@@ -15,7 +15,7 @@ The minimum zoom level for the viewport.
 
 ***
 
-### maxZoom
+## maxZoom
 
 > **maxZoom**: `null` | `number`
 
@@ -25,7 +25,7 @@ The maximum zoom level for the viewport.
 
 ***
 
-### bounds
+## bounds
 
 > **bounds**: `null` | \[`number`, `number`, `number`, `number`]
 

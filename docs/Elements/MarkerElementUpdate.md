@@ -1,67 +1,67 @@
 ***
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Marker"`
 
 ***
 
-### id
+## id
 
 > **id**: `string`
 
 ***
 
-### coordinates?
+## coordinates?
 
 > `optional` **coordinates**: \[`number`, `number`]\[]\[]
 
 ***
 
-### groupId?
+## groupId?
 
 > `optional` **groupId**: `null` | `string`
 
 ***
 
-### color?
+## color?
 
 > `optional` **color**: `string`
 
 ***
 
-### name?
+## name?
 
 > `optional` **name**: `null` | `string`
 
 ***
 
-### description?
+## description?
 
 > `optional` **description**: `null` | `string`
 
 ***
 
-### attributes?
+## attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`>
 
 ***
 
-### opacity?
+## opacity?
 
 > `optional` **opacity**: `number`
 
 ***
 
-### size?
+## size?
 
 > `optional` **size**: `number`
 
 ***
 
-### zoom?
+## zoom?
 
 > `optional` **zoom**: `number`

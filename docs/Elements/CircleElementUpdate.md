@@ -1,103 +1,103 @@
 ***
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Circle"`
 
 ***
 
-### id
+## id
 
 > **id**: `string`
 
 ***
 
-### coordinates?
+## coordinates?
 
 > `optional` **coordinates**: \[`number`, `number`]
 
 ***
 
-### groupId?
+## groupId?
 
 > `optional` **groupId**: `null` | `string`
 
 ***
 
-### color?
+## color?
 
 > `optional` **color**: `string`
 
 ***
 
-### name?
+## name?
 
 > `optional` **name**: `null` | `string`
 
 ***
 
-### description?
+## description?
 
 > `optional` **description**: `null` | `string`
 
 ***
 
-### attributes?
+## attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`>
 
 ***
 
-### imageUrl?
+## imageUrl?
 
 > `optional` **imageUrl**: `null` | `string`
 
 ***
 
-### strokeOpacity?
+## strokeOpacity?
 
 > `optional` **strokeOpacity**: `number`
 
 ***
 
-### strokeWidth?
+## strokeWidth?
 
 > `optional` **strokeWidth**: `number`
 
 ***
 
-### strokeStyle?
+## strokeStyle?
 
 > `optional` **strokeStyle**: `"solid"` | `"dashed"` | `"dotted"`
 
 ***
 
-### fillOpacity?
+## fillOpacity?
 
 > `optional` **fillOpacity**: `number`
 
 ***
 
-### radius?
+## radius?
 
 > `optional` **radius**: `number`
 
 ***
 
-### radiusDisplayAngle?
+## radiusDisplayAngle?
 
 > `optional` **radiusDisplayAngle**: `number`
 
 ***
 
-### radiusDisplayUnit?
+## radiusDisplayUnit?
 
 > `optional` **radiusDisplayUnit**: `null` | `"meter"` | `"kilometer"` | `"foot"` | `"mile"`
 
 ***
 
-### radiusMarker?
+## radiusMarker?
 
 > `optional` **radiusMarker**: `boolean`

@@ -3,9 +3,9 @@
 The parameters for getting categories from a layer, passed to
 the [LayersController.getCategoryData](LayersController.md#getcategorydata) method.
 
-## Properties
+# Properties
 
-### layerId
+## layerId
 
 > **layerId**: `string`
 
@@ -13,7 +13,7 @@ The ID of the layer to get categories from.
 
 ***
 
-### attribute
+## attribute
 
 > **attribute**: `string`
 
@@ -21,7 +21,7 @@ The attribute to use for categorization.
 
 ***
 
-### limit?
+## limit?
 
 > `optional` **limit**: `number`
 
@@ -29,7 +29,7 @@ The maximum number of categories to return.
 
 ***
 
-### filters?
+## filters?
 
 > `optional` **filters**: [`Filters`](Filters.md)
 
@@ -37,7 +37,7 @@ Attribute filters to determine what gets counted or aggregated.
 
 ***
 
-### boundary?
+## boundary?
 
 > `optional` **boundary**: \[`number`, `number`, `number`, `number`] | [`PolygonGeometry`](../Shared/PolygonGeometry.md) | [`LngLatTuple`](../Shared/LngLatTuple.md)\[]
 
@@ -47,7 +47,7 @@ that form a polyline.
 
 ***
 
-### values?
+## values?
 
 > `optional` **values**: [`ValueConfiguration`](ValueConfiguration.md)
 

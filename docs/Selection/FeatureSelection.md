@@ -2,9 +2,9 @@
 
 The options for selecting a feature in a layer.
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string` | `number`
 
@@ -12,7 +12,7 @@ The id of the feature to select.
 
 ***
 
-### layerId
+## layerId
 
 > **layerId**: `string`
 
@@ -20,13 +20,13 @@ The id of the layer that the feature belongs to.
 
 ***
 
-### showPopup?
+## showPopup?
 
 > `optional` **showPopup**: `boolean`
 
 Whether to show the feature's popup, if it is configured in the layer's style.
 
-#### Default
+### Default
 
 ```ts
 true
@@ -34,7 +34,7 @@ true
 
 ***
 
-### fitViewport?
+## fitViewport?
 
 > `optional` **fitViewport**: `boolean` | \{ `maxZoom`: `number`; }
 
@@ -47,7 +47,7 @@ far, you can pass an object with a `maxZoom` property.
 This is useful for avoiding zooming in too far on point features, or if you want
 to maintain the current zoom level.
 
-#### Default
+### Default
 
 ```ts
 true

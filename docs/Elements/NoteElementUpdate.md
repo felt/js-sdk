@@ -1,85 +1,85 @@
 ***
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Note"`
 
 ***
 
-### id
+## id
 
 > **id**: `string`
 
 ***
 
-### groupId?
+## groupId?
 
 > `optional` **groupId**: `null` | `string`
 
 ***
 
-### color?
+## color?
 
 > `optional` **color**: `string`
 
 ***
 
-### description?
+## description?
 
 > `optional` **description**: `null` | `string`
 
 ***
 
-### attributes?
+## attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`>
 
 ***
 
-### zoom?
+## zoom?
 
 > `optional` **zoom**: `number`
 
 ***
 
-### position?
+## position?
 
 > `optional` **position**: \[`number`, `number`]
 
 ***
 
-### rotation?
+## rotation?
 
 > `optional` **rotation**: `number`
 
 ***
 
-### scale?
+## scale?
 
 > `optional` **scale**: `number`
 
 ***
 
-### text?
+## text?
 
 > `optional` **text**: `string`
 
 ***
 
-### align?
+## align?
 
 > `optional` **align**: `"left"` | `"center"` | `"right"`
 
 ***
 
-### style?
+## style?
 
 > `optional` **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`
 
 ***
 
-### widthScale?
+## widthScale?
 
 > `optional` **widthScale**: `number`

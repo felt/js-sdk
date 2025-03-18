@@ -2,29 +2,29 @@
 
 The Tools controller allows you to let users draw elements on the map.
 
-## Extended by
+# Extended by
 
 * [`FeltController`](../Main/FeltController.md)
 
-## Methods
+# Methods
 
-### setTool()
+## setTool()
 
 > **setTool**(`tool`: `null` | `"text"` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"` | `"link"`): `void`
 
 Sets the tool to use for drawing elements on the map.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type                                                                                                                                         | Description      |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
 | `tool`    | `null` \| `"text"` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"link"` | The tool to set. |
 
-#### Returns
+### Returns
 
 `void`
 
-#### Example
+### Example
 
 ```ts
 // Set the tool to "marker"
@@ -36,19 +36,19 @@ felt.setTool(null);
 
 ***
 
-### getTool()
+## getTool()
 
 > **getTool**(): `Promise`\<`null` | `"text"` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"` | `"link"`>
 
 Gets the current tool, if any is in use.
 
-#### Returns
+### Returns
 
 `Promise`\<`null` | `"text"` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"` | `"link"`>
 
 The current tool, or `null` if no tool is in use.
 
-#### Example
+### Example
 
 ```ts
 const tool = await felt.getTool(); // "marker", "polygon", etc.
@@ -56,26 +56,26 @@ const tool = await felt.getTool(); // "marker", "polygon", etc.
 
 ***
 
-### onToolChange()
+## onToolChange()
 
 > **onToolChange**(`args`: \{ `handler`: (`tool`: `null` | `"text"` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"` | `"link"`) => `void`; }): `VoidFunction`
 
 Listens for changes to the current tool.
 
-#### Parameters
+### Parameters
 
 | Parameter      | Type                                                                                                                                                                              | Description                                                              |
 | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
 | `args`         | \{ `handler`: (`tool`: `null` \| `"text"` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"link"`) => `void`; } | -                                                                        |
 | `args.handler` | (`tool`: `null` \| `"text"` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"link"`) => `void`                  | This callback is called with the current tool whenever the tool changes. |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```ts
 const unsubscribe = felt.onToolChange({
@@ -88,43 +88,43 @@ unsubscribe();
 
 ***
 
-### setToolSettings()
+## setToolSettings()
 
 > **setToolSettings**(`settings`: [`InputToolSettings`](InputToolSettings.md)): `void`
 
 Sets the settings for the current tool.
 
-#### Parameters
+### Parameters
 
 | Parameter  | Type                                        | Description          |
 | ---------- | ------------------------------------------- | -------------------- |
 | `settings` | [`InputToolSettings`](InputToolSettings.md) | The settings to set. |
 
-#### Returns
+### Returns
 
 `void`
 
 ***
 
-### getToolSettings()
+## getToolSettings()
 
 > **getToolSettings**\<`T`>(`tool`: `T`): `Promise`\<[`ToolSettingsMap`](ToolSettingsMap.md)\[`T`]>
 
 Gets the settings for the current tool.
 
-#### Type Parameters
+### Type Parameters
 
 | Type Parameter                                              |
 | ----------------------------------------------------------- |
 | `T` *extends* keyof [`ToolSettingsMap`](ToolSettingsMap.md) |
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | --------- | ---- |
 | `tool`    | `T`  |
 
-#### Returns
+### Returns
 
 `Promise`\<[`ToolSettingsMap`](ToolSettingsMap.md)\[`T`]>
 
@@ -132,20 +132,20 @@ The settings for the current tool.
 
 ***
 
-### onToolSettingsChange()
+## onToolSettingsChange()
 
 > **onToolSettingsChange**(`args`: \{ `handler`: (`settings`: [`ToolSettingsChangeEvent`](ToolSettingsChangeEvent.md)) => `void`; }): `VoidFunction`
 
 Listens for changes to the settings on all tools.
 
-#### Parameters
+### Parameters
 
 | Parameter      | Type                                                                                             |
 | -------------- | ------------------------------------------------------------------------------------------------ |
 | `args`         | \{ `handler`: (`settings`: [`ToolSettingsChangeEvent`](ToolSettingsChangeEvent.md)) => `void`; } |
 | `args.handler` | (`settings`: [`ToolSettingsChangeEvent`](ToolSettingsChangeEvent.md)) => `void`                  |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 

@@ -2,14 +2,14 @@
 
 References an element on the map.
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"element"`
 
 ***
 
-### entity
+## entity
 
 > **entity**: [`Element`](../Elements/Element.md)

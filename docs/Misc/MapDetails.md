@@ -4,21 +4,21 @@
 
 The details of a map.
 
-## Type declaration
+# Type declaration
 
-### id
+## id
 
 > **id**: `string`
 
 The id of the map.
 
-### title
+## title
 
 > **title**: `string`
 
 The title of the map.
 
-### description
+## description
 
 > **description**: `string` | `null`
 

@@ -9,7 +9,7 @@ iframe), you can use the [FeltController](FeltController.md) object to control t
 To see what you can do with the map, see the documentation for the [FeltController](FeltController.md)
 interface and its constituent controllers.
 
-## Example
+# Example
 
 ```typescript
 // embed the map
@@ -26,11 +26,11 @@ await map.setViewport({
 });
 ```
 
-## Controller
+# Controller
 
 * [FeltController](FeltController.md)
 
-## Instantiation
+# Instantiation
 
 * [FeltEmbedOptions](FeltEmbedOptions.md)
 * [Felt](Felt.md)

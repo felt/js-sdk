@@ -2,9 +2,9 @@
 
 The constraints to apply when getting layer groups.
 
-## Properties
+# Properties
 
-### ids?
+## ids?
 
 > `optional` **ids**: `string`\[]
 

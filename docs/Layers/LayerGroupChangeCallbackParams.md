@@ -2,8 +2,8 @@
 
 The parameters for the `onLayerGroupChange` listener.
 
-## Properties
+# Properties
 
-### layerGroup
+## layerGroup
 
 > **layerGroup**: `null` | [`LayerGroup`](LayerGroup.md)

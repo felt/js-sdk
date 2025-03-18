@@ -3,31 +3,31 @@
 The UI controller allows you to enable and disable UI controls on the
 embedded map.
 
-## Extended by
+# Extended by
 
 * [`FeltController`](../Main/FeltController.md)
 
-## Methods
+# Methods
 
-### updateUiControls()
+## updateUiControls()
 
 > **updateUiControls**(`controls`: [`UiControlsOptions`](UiControlsOptions.md)): `void`
 
 Updates the UI controls on the embedded map.
 
-#### Parameters
+### Parameters
 
 | Parameter  | Type                                        | Description             |
 | ---------- | ------------------------------------------- | ----------------------- |
 | `controls` | [`UiControlsOptions`](UiControlsOptions.md) | The controls to update. |
 
-#### Returns
+### Returns
 
 `void`
 
 ***
 
-### setOnMapInteractionsUi()
+## setOnMapInteractionsUi()
 
 > **setOnMapInteractionsUi**(`options`: [`OnMapInteractionsOptions`](OnMapInteractionsOptions.md)): `void`
 
@@ -41,12 +41,12 @@ on things.
 This does not affect selection. That means that selectable features and elements
 will still be selected when clicked.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type                                                      |
 | --------- | --------------------------------------------------------- |
 | `options` | [`OnMapInteractionsOptions`](OnMapInteractionsOptions.md) |
 
-#### Returns
+### Returns
 
 `void`

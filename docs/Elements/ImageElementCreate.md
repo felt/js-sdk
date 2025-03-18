@@ -1,49 +1,49 @@
 ***
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Image"`
 
 ***
 
-### coordinates
+## coordinates
 
 > **coordinates**: \[`number`, `number`]\[]\[]
 
 ***
 
-### imageUrl
+## imageUrl
 
 > **imageUrl**: `string`
 
 ***
 
-### groupId?
+## groupId?
 
 > `optional` **groupId**: `null` | `string`
 
 ***
 
-### name?
+## name?
 
 > `optional` **name**: `null` | `string`
 
 ***
 
-### description?
+## description?
 
 > `optional` **description**: `null` | `string`
 
 ***
 
-### attributes?
+## attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`>
 
 ***
 
-### opacity?
+## opacity?
 
 > `optional` **opacity**: `number`

@@ -6,9 +6,9 @@ features and elements on the map.
 Switching these off can be useful if you add your own click, selection or hover
 handlers for features and elements.
 
-## Properties
+# Properties
 
-### featureSelectPanel?
+## featureSelectPanel?
 
 > `optional` **featureSelectPanel**: `boolean`
 
@@ -17,7 +17,7 @@ feature from being shown.
 
 ***
 
-### featureHoverPanel?
+## featureHoverPanel?
 
 > `optional` **featureHoverPanel**: `boolean`
 
@@ -26,7 +26,7 @@ feature from being shown.
 
 ***
 
-### elementSelectPanel?
+## elementSelectPanel?
 
 > `optional` **elementSelectPanel**: `boolean`
 
@@ -35,7 +35,7 @@ element from being shown.
 
 ***
 
-### linkClickOpen?
+## linkClickOpen?
 
 > `optional` **linkClickOpen**: `boolean`
 
@@ -44,7 +44,7 @@ in a new tab or window.
 
 ***
 
-### imageLightboxOpen?
+## imageLightboxOpen?
 
 > `optional` **imageLightboxOpen**: `boolean`
 

@@ -2,23 +2,23 @@
 
 The Selection controller allows you to listen for changes to the selection on the map.
 
-## Extended by
+# Extended by
 
 * [`FeltController`](../Main/FeltController.md)
 
-## Methods
+# Methods
 
-### getSelection()
+## getSelection()
 
 > **getSelection**(): `Promise`\<[`EntityNode`](EntityNode.md)\[]>
 
 Gets the current selection as a list of entity identifiers.
 
-#### Returns
+### Returns
 
 `Promise`\<[`EntityNode`](EntityNode.md)\[]>
 
-#### Example
+### Example
 
 ```typescript
 const selection = await felt.getSelection();
@@ -26,24 +26,24 @@ const selection = await felt.getSelection();
 
 ***
 
-### selectFeature()
+## selectFeature()
 
 > **selectFeature**(`params`: [`FeatureSelection`](FeatureSelection.md)): `Promise`\<`void`>
 
 Selects a feature on a layer. This will show the feature's popup, modal or
 sidebar (if configured) and highlight the feature.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type                                      |
 | --------- | ----------------------------------------- |
 | `params`  | [`FeatureSelection`](FeatureSelection.md) |
 
-#### Returns
+### Returns
 
 `Promise`\<`void`>
 
-#### Example
+### Example
 
 ```typescript
 felt.selectFeature({
@@ -56,13 +56,13 @@ felt.selectFeature({
 
 ***
 
-### clearSelection()
+## clearSelection()
 
 > **clearSelection**(`params`?: \{ `features`: `boolean`; `elements`: `boolean`; }): `Promise`\<`void`>
 
 Clears the current selection. This clears the selection of
 
-#### Parameters
+### Parameters
 
 | Parameter          | Type                                               | Description                                                                                                 |
 | ------------------ | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
@@ -70,11 +70,11 @@ Clears the current selection. This clears the selection of
 | `params.features`? | `boolean`                                          | Whether to clear the features from the selection.                                                           |
 | `params.elements`? | `boolean`                                          | Whether to clear the elements from the selection.                                                           |
 
-#### Returns
+### Returns
 
 `Promise`\<`void`>
 
-#### Example
+### Example
 
 ```typescript
 
@@ -88,34 +88,34 @@ felt.clearSelection({ features: true });
 felt.clearSelection({ elements: true });
 ```
 
-#### Default
+### Default
 
 ```typescript
 { features: true, elements: true }
 ```
 
-## Events
+# Events
 
-### onSelectionChange()
+## onSelectionChange()
 
 > **onSelectionChange**(`params`: \{ `handler`: (`change`: \{ `selection`: [`EntityNode`](EntityNode.md)\[]; }) => `void`; }): `VoidFunction`
 
 Adds a listener for when the selection changes.
 
-#### Parameters
+### Parameters
 
 | Parameter        | Type                                                                                       |
 | ---------------- | ------------------------------------------------------------------------------------------ |
 | `params`         | \{ `handler`: (`change`: \{ `selection`: [`EntityNode`](EntityNode.md)\[]; }) => `void`; } |
 | `params.handler` | (`change`: \{ `selection`: [`EntityNode`](EntityNode.md)\[]; }) => `void`                  |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onSelectionChange({

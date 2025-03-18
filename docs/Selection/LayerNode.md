@@ -2,14 +2,14 @@
 
 References a layer on the map.
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"layer"`
 
 ***
 
-### entity
+## entity
 
 > **entity**: [`Layer`](../Layers/Layer.md)

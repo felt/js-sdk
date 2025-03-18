@@ -1,19 +1,19 @@
 ***
 
-## Properties
+# Properties
 
-### color
+## color
 
 > **color**: `string`
 
 ***
 
-### frame
+## frame
 
 > **frame**: `null` | `"frame-circle"` | `"frame-square"`
 
 ***
 
-### symbol
+## symbol
 
 > **symbol**: [`PlaceSymbol`](PlaceSymbol.md)

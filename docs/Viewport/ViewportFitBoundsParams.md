@@ -2,9 +2,9 @@
 
 The parameters for the `fitViewportToBounds` method.
 
-## Properties
+# Properties
 
-### bounds
+## bounds
 
 > **bounds**: \[`number`, `number`, `number`, `number`]
 

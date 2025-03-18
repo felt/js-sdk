@@ -1,19 +1,19 @@
 ***
 
-## Properties
+# Properties
 
-### color
+## color
 
 > **color**: `string`
 
 ***
 
-### opacity
+## opacity
 
 > **opacity**: `number`
 
 ***
 
-### size
+## size
 
 > **size**: `number`

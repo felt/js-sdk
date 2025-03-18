@@ -2,9 +2,9 @@
 
 Constraints for legend items. If nothing is passed, all legend items will be returned.
 
-## Properties
+# Properties
 
-### ids?
+## ids?
 
 > `optional` **ids**: \{ `id`: `string`; `layerId`: `string`; }\[]
 
@@ -17,7 +17,7 @@ Array of legend item identifiers to constrain by.
 
 ***
 
-### layerIds?
+## layerIds?
 
 > `optional` **layerIds**: `string`\[]
 

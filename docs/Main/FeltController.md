@@ -8,39 +8,39 @@ different area of responsibility.
 All the methods are listed here, but each controller is documented on its
 own to make it easier to find related methods and events.
 
-## Extends
+# Extends
 
 * [`ViewportController`](../Viewport/ViewportController.md).[`UiController`](../UI/UiController.md).[`LayersController`](../Layers/LayersController.md).[`ElementsController`](../Elements/ElementsController.md).[`SelectionController`](../Selection/SelectionController.md).[`InteractionsController`](../Interactions/InteractionsController.md).[`ToolsController`](../Tools/ToolsController.md).[`MiscController`](../Misc/MiscController.md)
 
-## Properties
+# Properties
 
-### iframe
+## iframe
 
 > `readonly` **iframe**: `null` | `HTMLIFrameElement`
 
 The iframe element containing the Felt map, if it is an embedded map.
 
-## Methods
+# Methods
 
-### getElement()
+## getElement()
 
 > **getElement**(`id`: `string`): `Promise`\<`null` | [`Element`](../Elements/Element.md)>
 
 Get a single element from the map by its id.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type     | Description                            |
 | --------- | -------- | -------------------------------------- |
 | `id`      | `string` | The id of the element you want to get. |
 
-#### Returns
+### Returns
 
 `Promise`\<`null` | [`Element`](../Elements/Element.md)>
 
 The requested element.
 
-#### Example
+### Example
 
 ```typescript
 const element = await felt.getElement("element-1");
@@ -48,23 +48,23 @@ const element = await felt.getElement("element-1");
 
 ***
 
-### getElementGeometry()
+## getElementGeometry()
 
 > **getElementGeometry**(`id`: `string`): `Promise`\<`null` | [`Geometry`](../Shared/Geometry.md)>
 
 Get the geometry of an element.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type     | Description                                            |
 | --------- | -------- | ------------------------------------------------------ |
 | `id`      | `string` | The id of the element you want to get the geometry of. |
 
-#### Returns
+### Returns
 
 `Promise`\<`null` | [`Geometry`](../Shared/Geometry.md)>
 
-#### Example
+### Example
 
 ```typescript
 const geometry = await felt.getElementGeometry("element-1");
@@ -73,32 +73,32 @@ console.log(geometry?.type, geometry?.coordinates);
 
 ***
 
-### getElements()
+## getElements()
 
 > **getElements**(`constraint`?: [`GetElementsConstraint`](../Elements/GetElementsConstraint.md)): `Promise`\<(`null` | [`Element`](../Elements/Element.md))\[]>
 
 Gets elements from the map, according to the constraints supplied. If no
 constraints are supplied, all elements will be returned.
 
-#### Parameters
+### Parameters
 
 | Parameter     | Type                                                            | Description                                                     |
 | ------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
 | `constraint`? | [`GetElementsConstraint`](../Elements/GetElementsConstraint.md) | The constraints to apply to the elements returned from the map. |
 
-#### Returns
+### Returns
 
 `Promise`\<(`null` | [`Element`](../Elements/Element.md))\[]>
 
 All elements on the map.
 
-#### Remarks
+### Remarks
 
 The elements in the map, ordered by the order specified in Felt. This is not
 necessarily the order that they are drawn in, as Felt draws points above
 lines and lines above polygons, for instance.
 
-#### Example
+### Example
 
 ```typescript
 const elements = await felt.getElements();
@@ -106,25 +106,25 @@ const elements = await felt.getElements();
 
 ***
 
-### getElementGroup()
+## getElementGroup()
 
 > **getElementGroup**(`id`: `string`): `Promise`\<`null` | [`ElementGroup`](../Elements/ElementGroup.md)>
 
 Get an element group from the map by its id.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type     |
 | --------- | -------- |
 | `id`      | `string` |
 
-#### Returns
+### Returns
 
 `Promise`\<`null` | [`ElementGroup`](../Elements/ElementGroup.md)>
 
 The requested element group.
 
-#### Example
+### Example
 
 ```typescript
 felt.getElementGroup("element-group-1");
@@ -132,26 +132,26 @@ felt.getElementGroup("element-group-1");
 
 ***
 
-### getElementGroups()
+## getElementGroups()
 
 > **getElementGroups**(`constraint`?: [`GetElementGroupsConstraint`](../Elements/GetElementGroupsConstraint.md)): `Promise`\<(`null` | [`ElementGroup`](../Elements/ElementGroup.md))\[]>
 
 Gets element groups from the map, according to the filters supplied. If no
 constraints are supplied, all element groups will be returned in rendering order.
 
-#### Parameters
+### Parameters
 
 | Parameter     | Type                                                                      | Description                                                           |
 | ------------- | ------------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `constraint`? | [`GetElementGroupsConstraint`](../Elements/GetElementGroupsConstraint.md) | The constraints to apply to the element groups returned from the map. |
 
-#### Returns
+### Returns
 
 `Promise`\<(`null` | [`ElementGroup`](../Elements/ElementGroup.md))\[]>
 
 The requested element groups.
 
-#### Example
+### Example
 
 ```typescript
 const elementGroups = await felt.getElementGroups({ ids: ["element-group-1", "element-group-2"] });
@@ -159,23 +159,23 @@ const elementGroups = await felt.getElementGroups({ ids: ["element-group-1", "el
 
 ***
 
-### setElementGroupVisibility()
+## setElementGroupVisibility()
 
 > **setElementGroupVisibility**(`visibility`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`\<`void`>
 
 Hide or show element groups with the given ids.
 
-#### Parameters
+### Parameters
 
 | Parameter    | Type                                                        |
 | ------------ | ----------------------------------------------------------- |
 | `visibility` | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) |
 
-#### Returns
+### Returns
 
 `Promise`\<`void`>
 
-#### Example
+### Example
 
 ```typescript
 felt.setElementGroupVisibility({ show: ["element-group-1", "element-group-2"], hide: ["element-group-3"] });
@@ -183,23 +183,23 @@ felt.setElementGroupVisibility({ show: ["element-group-1", "element-group-2"], h
 
 ***
 
-### createElement()
+## createElement()
 
 > **createElement**(`element`: [`ElementCreate`](../Elements/ElementCreate.md)): `Promise`\<[`Element`](../Elements/Element.md)>
 
 Create a new element on the map.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type                                            |
 | --------- | ----------------------------------------------- |
 | `element` | [`ElementCreate`](../Elements/ElementCreate.md) |
 
-#### Returns
+### Returns
 
 `Promise`\<[`Element`](../Elements/Element.md)>
 
-#### Example
+### Example
 
 ```typescript
 const element = await felt.createElement({ type: "Place", coordinates: [10, 10] });
@@ -207,61 +207,61 @@ const element = await felt.createElement({ type: "Place", coordinates: [10, 10] 
 
 ***
 
-### updateElement()
+## updateElement()
 
 > **updateElement**(`element`: [`ElementUpdate`](../Elements/ElementUpdate.md)): `Promise`\<[`Element`](../Elements/Element.md)>
 
 Update an element on the map.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type                                            |
 | --------- | ----------------------------------------------- |
 | `element` | [`ElementUpdate`](../Elements/ElementUpdate.md) |
 
-#### Returns
+### Returns
 
 `Promise`\<[`Element`](../Elements/Element.md)>
 
 ***
 
-### deleteElement()
+## deleteElement()
 
 > **deleteElement**(`id`: `string`): `Promise`\<`void`>
 
 Delete an element from the map.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type     |
 | --------- | -------- |
 | `id`      | `string` |
 
-#### Returns
+### Returns
 
 `Promise`\<`void`>
 
 ***
 
-### getLayer()
+## getLayer()
 
 > **getLayer**(`id`: `string`): `Promise`\<`null` | [`Layer`](../Layers/Layer.md)>
 
 Get a single layer from the map by its id.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type     | Description                          |
 | --------- | -------- | ------------------------------------ |
 | `id`      | `string` | The id of the layer you want to get. |
 
-#### Returns
+### Returns
 
 `Promise`\<`null` | [`Layer`](../Layers/Layer.md)>
 
 The requested layer.
 
-#### Example
+### Example
 
 ```typescript
 const layers = await felt.getLayer({ ids: ["layer-1", "layer-2"] });
@@ -269,32 +269,32 @@ const layers = await felt.getLayer({ ids: ["layer-1", "layer-2"] });
 
 ***
 
-### getLayers()
+## getLayers()
 
 > **getLayers**(`constraint`?: [`GetLayersConstraint`](../Layers/GetLayersConstraint.md)): `Promise`\<(`null` | [`Layer`](../Layers/Layer.md))\[]>
 
 Gets layers from the map, according to the constraints supplied. If no
 constraints are supplied, all layers will be returned.
 
-#### Parameters
+### Parameters
 
 | Parameter     | Type                                                      | Description                                                   |
 | ------------- | --------------------------------------------------------- | ------------------------------------------------------------- |
 | `constraint`? | [`GetLayersConstraint`](../Layers/GetLayersConstraint.md) | The constraints to apply to the layers returned from the map. |
 
-#### Returns
+### Returns
 
 `Promise`\<(`null` | [`Layer`](../Layers/Layer.md))\[]>
 
 All layers on the map.
 
-#### Remarks
+### Remarks
 
 The layers in the map, ordered by the order specified in Felt. This is not
 necessarily the order that they are drawn in, as Felt draws points above
 lines and lines above polygons, for instance.
 
-#### Example
+### Example
 
 ```typescript
 const layers = await felt.getLayers();
@@ -302,23 +302,23 @@ const layers = await felt.getLayers();
 
 ***
 
-### setLayerVisibility()
+## setLayerVisibility()
 
 > **setLayerVisibility**(`visibility`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`\<`void`>
 
 Hide or show layers with the given ids.
 
-#### Parameters
+### Parameters
 
 | Parameter    | Type                                                        |
 | ------------ | ----------------------------------------------------------- |
 | `visibility` | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) |
 
-#### Returns
+### Returns
 
 `Promise`\<`void`>
 
-#### Example
+### Example
 
 ```typescript
 felt.setLayerVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
@@ -326,7 +326,7 @@ felt.setLayerVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
 
 ***
 
-### setLayerStyle()
+## setLayerStyle()
 
 > **setLayerStyle**(`params`: \{ `id`: `string`; `style`: `object`; }): `Promise`\<`void`>
 
@@ -342,7 +342,7 @@ on how to read and write styles.
 If the style you set is invalid, you will receive an error explaining the problem
 in the rejected promise value.
 
-#### Parameters
+### Parameters
 
 | Parameter      | Type                                    | Description                               |
 | -------------- | --------------------------------------- | ----------------------------------------- |
@@ -350,11 +350,11 @@ in the rejected promise value.
 | `params.id`    | `string`                                | The id of the layer to set the style for. |
 | `params.style` | `object`                                | The style to set for the layer.           |
 
-#### Returns
+### Returns
 
 `Promise`\<`void`>
 
-#### Example
+### Example
 
 ```typescript
 // first get the current style
@@ -371,23 +371,23 @@ felt.setLayerStyle({ id: "layer-1", style: {
 
 ***
 
-### setLayerLegendVisibility()
+## setLayerLegendVisibility()
 
 > **setLayerLegendVisibility**(`params`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`\<`void`>
 
 Hide or show layers with the given ids from the legend.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type                                                        |
 | --------- | ----------------------------------------------------------- |
 | `params`  | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) |
 
-#### Returns
+### Returns
 
 `Promise`\<`void`>
 
-#### Example
+### Example
 
 ```typescript
 felt.setLayerLegendVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
@@ -395,25 +395,25 @@ felt.setLayerLegendVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] 
 
 ***
 
-### getLayerGroup()
+## getLayerGroup()
 
 > **getLayerGroup**(`id`: `string`): `Promise`\<`null` | [`LayerGroup`](../Layers/LayerGroup.md)>
 
 Get a layer group from the map by its id.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type     |
 | --------- | -------- |
 | `id`      | `string` |
 
-#### Returns
+### Returns
 
 `Promise`\<`null` | [`LayerGroup`](../Layers/LayerGroup.md)>
 
 The requested layer group.
 
-#### Example
+### Example
 
 ```typescript
 felt.getLayerGroup("layer-group-1");
@@ -421,26 +421,26 @@ felt.getLayerGroup("layer-group-1");
 
 ***
 
-### getLayerGroups()
+## getLayerGroups()
 
 > **getLayerGroups**(`constraint`?: [`GetLayerGroupsConstraint`](../Layers/GetLayerGroupsConstraint.md)): `Promise`\<(`null` | [`LayerGroup`](../Layers/LayerGroup.md))\[]>
 
 Gets layer groups from the map, according to the constraints supplied. If no
 constraints are supplied, all layer groups will be returned in rendering order.
 
-#### Parameters
+### Parameters
 
 | Parameter     | Type                                                                | Description                                                         |
 | ------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `constraint`? | [`GetLayerGroupsConstraint`](../Layers/GetLayerGroupsConstraint.md) | The constraints to apply to the layer groups returned from the map. |
 
-#### Returns
+### Returns
 
 `Promise`\<(`null` | [`LayerGroup`](../Layers/LayerGroup.md))\[]>
 
 The requested layer groups.
 
-#### Example
+### Example
 
 ```typescript
 const layerGroups = await felt.getLayerGroups({ ids: ["layer-group-1", "layer-group-2"] });
@@ -448,23 +448,23 @@ const layerGroups = await felt.getLayerGroups({ ids: ["layer-group-1", "layer-gr
 
 ***
 
-### setLayerGroupVisibility()
+## setLayerGroupVisibility()
 
 > **setLayerGroupVisibility**(`visibility`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`\<`void`>
 
 Hide or show layer groups with the given ids.
 
-#### Parameters
+### Parameters
 
 | Parameter    | Type                                                        |
 | ------------ | ----------------------------------------------------------- |
 | `visibility` | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) |
 
-#### Returns
+### Returns
 
 `Promise`\<`void`>
 
-#### Example
+### Example
 
 ```typescript
 felt.setLayerGroupVisibility({ show: ["layer-group-1", "layer-group-2"], hide: ["layer-group-3"] });
@@ -472,23 +472,23 @@ felt.setLayerGroupVisibility({ show: ["layer-group-1", "layer-group-2"], hide: [
 
 ***
 
-### setLayerGroupLegendVisibility()
+## setLayerGroupLegendVisibility()
 
 > **setLayerGroupLegendVisibility**(`params`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`\<`void`>
 
 Hide or show layer groups with the given ids from the legend.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type                                                        |
 | --------- | ----------------------------------------------------------- |
 | `params`  | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) |
 
-#### Returns
+### Returns
 
 `Promise`\<`void`>
 
-#### Example
+### Example
 
 ```typescript
 felt.setLayerGroupLegendVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
@@ -496,23 +496,23 @@ felt.setLayerGroupLegendVisibility({ show: ["layer-1", "layer-2"], hide: ["layer
 
 ***
 
-### getLegendItem()
+## getLegendItem()
 
 > **getLegendItem**(`id`: [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)): `Promise`\<`null` | [`LegendItem`](../Layers/LegendItem.md)>
 
 Allows you to get the state of a single legend item.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type                                                        |
 | --------- | ----------------------------------------------------------- |
 | `id`      | [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md) |
 
-#### Returns
+### Returns
 
 `Promise`\<`null` | [`LegendItem`](../Layers/LegendItem.md)>
 
-#### Example
+### Example
 
 ```typescript
 const legendItem = await felt.getLegendItem({
@@ -523,7 +523,7 @@ const legendItem = await felt.getLegendItem({
 
 ***
 
-### getLegendItems()
+## getLegendItems()
 
 > **getLegendItems**(`constraint`?: [`LegendItemsConstraint`](../Layers/LegendItemsConstraint.md)): `Promise`\<(`null` | [`LegendItem`](../Layers/LegendItem.md))\[]>
 
@@ -532,17 +532,17 @@ constraints describing which legend items you want.
 
 If you do not pass any constraints, you will receive all legend items.
 
-#### Parameters
+### Parameters
 
 | Parameter     | Type                                                          |
 | ------------- | ------------------------------------------------------------- |
 | `constraint`? | [`LegendItemsConstraint`](../Layers/LegendItemsConstraint.md) |
 
-#### Returns
+### Returns
 
 `Promise`\<(`null` | [`LegendItem`](../Layers/LegendItem.md))\[]>
 
-#### Example
+### Example
 
 ```typescript
 const legendItems = await felt.getLegendItems({layerId: "layer-1"});
@@ -550,13 +550,13 @@ const legendItems = await felt.getLegendItems({layerId: "layer-1"});
 
 ***
 
-### setLegendItemVisibility()
+## setLegendItemVisibility()
 
 > **setLegendItemVisibility**(`visibility`: \{ `show`: [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)\[]; `hide`: [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)\[]; }): `Promise`\<`void`>
 
 Hide or show legend items with the given identifiers.
 
-#### Parameters
+### Parameters
 
 | Parameter          | Type                                                                                                                                                 |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -564,11 +564,11 @@ Hide or show legend items with the given identifiers.
 | `visibility.show`? | [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)\[]                                                                                       |
 | `visibility.hide`? | [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)\[]                                                                                       |
 
-#### Returns
+### Returns
 
 `Promise`\<`void`>
 
-#### Example
+### Example
 
 ```typescript
 felt.setLegendItemVisibility({
@@ -579,28 +579,28 @@ felt.setLegendItemVisibility({
 
 ***
 
-### getLayerFilters()
+## getLayerFilters()
 
 > **getLayerFilters**(`layerId`: `string`): `Promise`\<`null` | [`LayerFilters`](../Layers/LayerFilters.md)>
 
 Get the filters for a layer.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type     |
 | --------- | -------- |
 | `layerId` | `string` |
 
-#### Returns
+### Returns
 
 `Promise`\<`null` | [`LayerFilters`](../Layers/LayerFilters.md)>
 
-#### Remarks
+### Remarks
 
 The return type gives you the filters split up into the various sources
 that make up the overall filters for a layer.
 
-#### Example
+### Example
 
 ```typescript
 const filters = await felt.getLayerFilters("layer-1");
@@ -609,13 +609,13 @@ console.log(filters.combined, filters.style, filters.ephemeral, filters.componen
 
 ***
 
-### setLayerFilters()
+## setLayerFilters()
 
 > **setLayerFilters**(`params`: \{ `layerId`: `string`; `filters`: [`Filters`](../Layers/Filters.md); `note`: `string`; }): `Promise`\<`void`>
 
 Sets the **ephemeral** filters for a layer.
 
-#### Parameters
+### Parameters
 
 | Parameter        | Type                                                                                      | Description                                                                                                                                                          |
 | ---------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -624,11 +624,11 @@ Sets the **ephemeral** filters for a layer.
 | `params.filters` | [`Filters`](../Layers/Filters.md)                                                         | The filters to set for the layer. This will replace any ephemeral filters that are currently set for the layer.                                                      |
 | `params.note`?   | `string`                                                                                  | A note to display on the layer legend when this filter is applied. When the note is shown, a reset button will also be shown, allowing the user to clear the filter. |
 
-#### Returns
+### Returns
 
 `Promise`\<`void`>
 
-#### Example
+### Example
 
 ```typescript
 felt.setLayerFilters({
@@ -639,7 +639,7 @@ felt.setLayerFilters({
 
 ***
 
-### getRenderedFeatures()
+## getRenderedFeatures()
 
 > **getRenderedFeatures**(`params`?: [`GetRenderedFeaturesConstraint`](../Layers/GetRenderedFeaturesConstraint.md)): `Promise`\<[`Feature`](../Layers/Feature.md)\[]>
 
@@ -650,17 +650,17 @@ necessarily a complete list of all the features in the viewport. This is because
 of the way features are tiled: at low zoom levels or high feature densities, many
 features are omitted from what is rendered on the screen.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type                                                                          | Description                                                     |
 | --------- | ----------------------------------------------------------------------------- | --------------------------------------------------------------- |
 | `params`? | [`GetRenderedFeaturesConstraint`](../Layers/GetRenderedFeaturesConstraint.md) | The constraints to apply to the features returned from the map. |
 
-#### Returns
+### Returns
 
 `Promise`\<[`Feature`](../Layers/Feature.md)\[]>
 
-#### Example
+### Example
 
 ```typescript
 const features = await felt.getRenderedFeatures();
@@ -668,23 +668,23 @@ const features = await felt.getRenderedFeatures();
 
 ***
 
-### getCategoryData()
+## getCategoryData()
 
 > **getCategoryData**(`params`: [`GetLayerCategoriesParams`](../Layers/GetLayerCategoriesParams.md)): `Promise`\<[`GetLayerCategoriesGroup`](../Layers/GetLayerCategoriesGroup.md)\[]>
 
 Gets values from a layer grouped by a given attribute.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type                                                                |
 | --------- | ------------------------------------------------------------------- |
 | `params`  | [`GetLayerCategoriesParams`](../Layers/GetLayerCategoriesParams.md) |
 
-#### Returns
+### Returns
 
 `Promise`\<[`GetLayerCategoriesGroup`](../Layers/GetLayerCategoriesGroup.md)\[]>
 
-#### Remarks
+### Remarks
 
 Groups features in your layer by unique values in the specified attribute and calculates
 a value for each group. By default, this value is the count of features in each group.
@@ -699,7 +699,7 @@ This two-level filtering is particularly useful when you want to compare subsets
 while maintaining consistent categories. For example, you might want to show the distribution
 of all building types in a city, but only count buildings built after 2000 in each category.
 
-#### Example
+### Example
 
 ```typescript
 // Basic grouping: Count of buildings by type
@@ -744,23 +744,23 @@ const newBuildingDensityByNeighborhood = await felt.getCategoryData({
 
 ***
 
-### getHistogramData()
+## getHistogramData()
 
 > **getHistogramData**(`params`: [`GetLayerHistogramParams`](../Layers/GetLayerHistogramParams.md)): `Promise`\<[`GetLayerHistogramBin`](../Layers/GetLayerHistogramBin.md)\[]>
 
 Gets a histogram of values from a layer for a given attribute.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type                                                              |
 | --------- | ----------------------------------------------------------------- |
 | `params`  | [`GetLayerHistogramParams`](../Layers/GetLayerHistogramParams.md) |
 
-#### Returns
+### Returns
 
 `Promise`\<[`GetLayerHistogramBin`](../Layers/GetLayerHistogramBin.md)\[]>
 
-#### Remarks
+### Remarks
 
 Creates bins (ranges) for numeric data and counts how many features fall into each bin,
 or returns aggregated values for each bin.
@@ -780,7 +780,7 @@ This is particularly useful when you want to compare distributions while keeping
 consistent bin ranges. For example, you might want to compare the distribution of
 building heights in different years while using the same height ranges.
 
-#### Example
+### Example
 
 ```typescript
 // Basic histogram: Building heights in 5 natural break bins
@@ -812,29 +812,29 @@ const newBuildingHeights = await felt.getHistogramData({
 
 ***
 
-### getAggregates()
+## getAggregates()
 
 > **getAggregates**\<`T`>(`params`: [`GetLayerCalculationParams`](../Layers/GetLayerCalculationParams.md)\<`T`>): `Promise`\<`Record`\<`T`, `null` | `number`>>
 
 Calculates a single aggregate value for a layer based on the provided configuration.
 
-#### Type Parameters
+### Type Parameters
 
 | Type Parameter                                                                    |
 | --------------------------------------------------------------------------------- |
 | `T` *extends* `"avg"` \| `"max"` \| `"min"` \| `"sum"` \| `"median"` \| `"count"` |
 
-#### Parameters
+### Parameters
 
 | Parameter | Type                                                                        |
 | --------- | --------------------------------------------------------------------------- |
 | `params`  | [`GetLayerCalculationParams`](../Layers/GetLayerCalculationParams.md)\<`T`> |
 
-#### Returns
+### Returns
 
 `Promise`\<`Record`\<`T`, `null` | `number`>>
 
-#### Remarks
+### Remarks
 
 Performs statistical calculations on your data, like counting features or computing
 averages, sums, etc. You can focus your calculation on specific areas or subsets
@@ -843,7 +843,7 @@ of your data using boundaries and filters.
 When no aggregation is specified, it counts features. When an aggregation is provided,
 it performs that calculation (average, sum, etc.) on the specified attribute.
 
-#### Example
+### Example
 
 ```typescript
 // Count all residential buildings
@@ -875,29 +875,29 @@ const maxNewBuildingHeight = await felt.getAggregates({
 
 ***
 
-### getMapDetails()
+## getMapDetails()
 
 > **getMapDetails**(): `Promise`\<[`MapDetails`](../Misc/MapDetails.md)>
 
 Gets the details of the map.
 
-#### Returns
+### Returns
 
 `Promise`\<[`MapDetails`](../Misc/MapDetails.md)>
 
 ***
 
-### getSelection()
+## getSelection()
 
 > **getSelection**(): `Promise`\<[`EntityNode`](../Selection/EntityNode.md)\[]>
 
 Gets the current selection as a list of entity identifiers.
 
-#### Returns
+### Returns
 
 `Promise`\<[`EntityNode`](../Selection/EntityNode.md)\[]>
 
-#### Example
+### Example
 
 ```typescript
 const selection = await felt.getSelection();
@@ -905,24 +905,24 @@ const selection = await felt.getSelection();
 
 ***
 
-### selectFeature()
+## selectFeature()
 
 > **selectFeature**(`params`: [`FeatureSelection`](../Selection/FeatureSelection.md)): `Promise`\<`void`>
 
 Selects a feature on a layer. This will show the feature's popup, modal or
 sidebar (if configured) and highlight the feature.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type                                                   |
 | --------- | ------------------------------------------------------ |
 | `params`  | [`FeatureSelection`](../Selection/FeatureSelection.md) |
 
-#### Returns
+### Returns
 
 `Promise`\<`void`>
 
-#### Example
+### Example
 
 ```typescript
 felt.selectFeature({
@@ -935,13 +935,13 @@ felt.selectFeature({
 
 ***
 
-### clearSelection()
+## clearSelection()
 
 > **clearSelection**(`params`?: \{ `features`: `boolean`; `elements`: `boolean`; }): `Promise`\<`void`>
 
 Clears the current selection. This clears the selection of
 
-#### Parameters
+### Parameters
 
 | Parameter          | Type                                               | Description                                                                                                 |
 | ------------------ | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
@@ -949,11 +949,11 @@ Clears the current selection. This clears the selection of
 | `params.features`? | `boolean`                                          | Whether to clear the features from the selection.                                                           |
 | `params.elements`? | `boolean`                                          | Whether to clear the elements from the selection.                                                           |
 
-#### Returns
+### Returns
 
 `Promise`\<`void`>
 
-#### Example
+### Example
 
 ```typescript
 
@@ -967,7 +967,7 @@ felt.clearSelection({ features: true });
 felt.clearSelection({ elements: true });
 ```
 
-#### Default
+### Default
 
 ```typescript
 { features: true, elements: true }
@@ -975,23 +975,23 @@ felt.clearSelection({ elements: true });
 
 ***
 
-### setTool()
+## setTool()
 
 > **setTool**(`tool`: `null` | `"text"` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"` | `"link"`): `void`
 
 Sets the tool to use for drawing elements on the map.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type                                                                                                                                         | Description      |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
 | `tool`    | `null` \| `"text"` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"link"` | The tool to set. |
 
-#### Returns
+### Returns
 
 `void`
 
-#### Example
+### Example
 
 ```ts
 // Set the tool to "marker"
@@ -1003,19 +1003,19 @@ felt.setTool(null);
 
 ***
 
-### getTool()
+## getTool()
 
 > **getTool**(): `Promise`\<`null` | `"text"` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"` | `"link"`>
 
 Gets the current tool, if any is in use.
 
-#### Returns
+### Returns
 
 `Promise`\<`null` | `"text"` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"` | `"link"`>
 
 The current tool, or `null` if no tool is in use.
 
-#### Example
+### Example
 
 ```ts
 const tool = await felt.getTool(); // "marker", "polygon", etc.
@@ -1023,26 +1023,26 @@ const tool = await felt.getTool(); // "marker", "polygon", etc.
 
 ***
 
-### onToolChange()
+## onToolChange()
 
 > **onToolChange**(`args`: \{ `handler`: (`tool`: `null` | `"text"` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"` | `"link"`) => `void`; }): `VoidFunction`
 
 Listens for changes to the current tool.
 
-#### Parameters
+### Parameters
 
 | Parameter      | Type                                                                                                                                                                              | Description                                                              |
 | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
 | `args`         | \{ `handler`: (`tool`: `null` \| `"text"` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"link"`) => `void`; } | -                                                                        |
 | `args.handler` | (`tool`: `null` \| `"text"` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"link"`) => `void`                  | This callback is called with the current tool whenever the tool changes. |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```ts
 const unsubscribe = felt.onToolChange({
@@ -1055,43 +1055,43 @@ unsubscribe();
 
 ***
 
-### setToolSettings()
+## setToolSettings()
 
 > **setToolSettings**(`settings`: [`InputToolSettings`](../Tools/InputToolSettings.md)): `void`
 
 Sets the settings for the current tool.
 
-#### Parameters
+### Parameters
 
 | Parameter  | Type                                                 | Description          |
 | ---------- | ---------------------------------------------------- | -------------------- |
 | `settings` | [`InputToolSettings`](../Tools/InputToolSettings.md) | The settings to set. |
 
-#### Returns
+### Returns
 
 `void`
 
 ***
 
-### getToolSettings()
+## getToolSettings()
 
 > **getToolSettings**\<`T`>(`tool`: `T`): `Promise`\<[`ToolSettingsMap`](../Tools/ToolSettingsMap.md)\[`T`]>
 
 Gets the settings for the current tool.
 
-#### Type Parameters
+### Type Parameters
 
 | Type Parameter                                                       |
 | -------------------------------------------------------------------- |
 | `T` *extends* keyof [`ToolSettingsMap`](../Tools/ToolSettingsMap.md) |
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | --------- | ---- |
 | `tool`    | `T`  |
 
-#### Returns
+### Returns
 
 `Promise`\<[`ToolSettingsMap`](../Tools/ToolSettingsMap.md)\[`T`]>
 
@@ -1099,20 +1099,20 @@ The settings for the current tool.
 
 ***
 
-### onToolSettingsChange()
+## onToolSettingsChange()
 
 > **onToolSettingsChange**(`args`: \{ `handler`: (`settings`: [`ToolSettingsChangeEvent`](../Tools/ToolSettingsChangeEvent.md)) => `void`; }): `VoidFunction`
 
 Listens for changes to the settings on all tools.
 
-#### Parameters
+### Parameters
 
 | Parameter      | Type                                                                                                      |
 | -------------- | --------------------------------------------------------------------------------------------------------- |
 | `args`         | \{ `handler`: (`settings`: [`ToolSettingsChangeEvent`](../Tools/ToolSettingsChangeEvent.md)) => `void`; } |
 | `args.handler` | (`settings`: [`ToolSettingsChangeEvent`](../Tools/ToolSettingsChangeEvent.md)) => `void`                  |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
@@ -1120,25 +1120,25 @@ A function to unsubscribe from the listener
 
 ***
 
-### updateUiControls()
+## updateUiControls()
 
 > **updateUiControls**(`controls`: [`UiControlsOptions`](../UI/UiControlsOptions.md)): `void`
 
 Updates the UI controls on the embedded map.
 
-#### Parameters
+### Parameters
 
 | Parameter  | Type                                              | Description             |
 | ---------- | ------------------------------------------------- | ----------------------- |
 | `controls` | [`UiControlsOptions`](../UI/UiControlsOptions.md) | The controls to update. |
 
-#### Returns
+### Returns
 
 `void`
 
 ***
 
-### setOnMapInteractionsUi()
+## setOnMapInteractionsUi()
 
 > **setOnMapInteractionsUi**(`options`: [`OnMapInteractionsOptions`](../UI/OnMapInteractionsOptions.md)): `void`
 
@@ -1152,47 +1152,47 @@ on things.
 This does not affect selection. That means that selectable features and elements
 will still be selected when clicked.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type                                                            |
 | --------- | --------------------------------------------------------------- |
 | `options` | [`OnMapInteractionsOptions`](../UI/OnMapInteractionsOptions.md) |
 
-#### Returns
+### Returns
 
 `void`
 
 ***
 
-### getViewport()
+## getViewport()
 
 > **getViewport**(): `Promise`\<[`ViewportState`](../Viewport/ViewportState.md)>
 
 Gets the current state of the viewport.
 
-#### Returns
+### Returns
 
 `Promise`\<[`ViewportState`](../Viewport/ViewportState.md)>
 
 ***
 
-### setViewport()
+## setViewport()
 
 > **setViewport**(`viewport`: [`SetViewportCenterZoomParams`](../Viewport/SetViewportCenterZoomParams.md)): `void`
 
 Moves the map to the specified location.
 
-#### Parameters
+### Parameters
 
 | Parameter  | Type                                                                        |
 | ---------- | --------------------------------------------------------------------------- |
 | `viewport` | [`SetViewportCenterZoomParams`](../Viewport/SetViewportCenterZoomParams.md) |
 
-#### Returns
+### Returns
 
 `void`
 
-#### Example
+### Example
 
 ```typescript
 felt.setViewport({
@@ -1203,35 +1203,35 @@ felt.setViewport({
 
 ***
 
-### getViewportConstraints()
+## getViewportConstraints()
 
 > **getViewportConstraints**(): `Promise`\<`null` | [`ViewportConstraints`](../Viewport/ViewportConstraints.md)>
 
 Gets the current state of the viewport constraints.
 
-#### Returns
+### Returns
 
 `Promise`\<`null` | [`ViewportConstraints`](../Viewport/ViewportConstraints.md)>
 
 ***
 
-### setViewportConstraints()
+## setViewportConstraints()
 
 > **setViewportConstraints**(`constraints`: `null` | `Partial`\<[`ViewportConstraints`](../Viewport/ViewportConstraints.md)>): `void`
 
 Constrains the map viewport so it stays inside certain bounds and/or certain zoom levels.
 
-#### Parameters
+### Parameters
 
 | Parameter     | Type                                                                              |
 | ------------- | --------------------------------------------------------------------------------- |
 | `constraints` | `null` \| `Partial`\<[`ViewportConstraints`](../Viewport/ViewportConstraints.md)> |
 
-#### Returns
+### Returns
 
 `void`
 
-#### Examples
+### Examples
 
 ```typescript
 felt.setViewportConstraints({
@@ -1263,23 +1263,23 @@ felt.setViewportConstraints(null);
 
 ***
 
-### fitViewportToBounds()
+## fitViewportToBounds()
 
 > **fitViewportToBounds**(`bounds`: [`ViewportFitBoundsParams`](../Viewport/ViewportFitBoundsParams.md)): `void`
 
 Fits the map to the specified bounds.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type                                                                |
 | --------- | ------------------------------------------------------------------- |
 | `bounds`  | [`ViewportFitBoundsParams`](../Viewport/ViewportFitBoundsParams.md) |
 
-#### Returns
+### Returns
 
 `void`
 
-#### Example
+### Example
 
 ```typescript
 const west = -122.4194;
@@ -1289,28 +1289,28 @@ const north = 37.7749;
 felt.fitViewportToBounds({ bounds: [west, south, east, north] });
 ```
 
-## Events
+# Events
 
-### onElementCreate()
+## onElementCreate()
 
 > **onElementCreate**(`args`: \{ `handler`: (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when an element is created.
 
-#### Parameters
+### Parameters
 
 | Parameter      | Type                                                                                                               | Description                                            |
 | -------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------ |
 | `args`         | \{ `handler`: (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`; } | -                                                      |
 | `args.handler` | (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`                  | The handler that is called when an element is created. |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onElementCreate({
@@ -1323,13 +1323,13 @@ unsubscribe();
 
 ***
 
-### onElementChange()
+## onElementChange()
 
 > **onElementChange**(`args`: \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when an element changes.
 
-#### Parameters
+### Parameters
 
 | Parameter         | Type                                                                                                                                                | Description                                          |
 | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
@@ -1338,13 +1338,13 @@ Adds a listener for when an element changes.
 | `args.options.id` | `string`                                                                                                                                            | The id of the element to listen for changes to.      |
 | `args.handler`    | (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`                                                   | The handler that is called when the element changes. |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onElementChange({
@@ -1358,13 +1358,13 @@ unsubscribe();
 
 ***
 
-### onElementDelete()
+## onElementDelete()
 
 > **onElementDelete**(`args`: \{ `options`: \{ `id`: `string`; }; `handler`: () => `void`; }): `VoidFunction`
 
 Adds a listener for when an element is deleted.
 
-#### Parameters
+### Parameters
 
 | Parameter         | Type                                                           | Description                                             |
 | ----------------- | -------------------------------------------------------------- | ------------------------------------------------------- |
@@ -1373,13 +1373,13 @@ Adds a listener for when an element is deleted.
 | `args.options.id` | `string`                                                       | The id of the element to listen for deletions of.       |
 | `args.handler`    | () => `void`                                                   | The handler that is called when the element is deleted. |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onElementDelete({
@@ -1393,13 +1393,13 @@ unsubscribe();
 
 ***
 
-### onElementGroupChange()
+## onElementGroupChange()
 
 > **onElementGroupChange**(`args`: \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`ElementGroupChangeCallbackParams`](../Elements/ElementGroupChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when an element group changes.
 
-#### Parameters
+### Parameters
 
 | Parameter         | Type                                                                                                                                                          |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1408,13 +1408,13 @@ Adds a listener for when an element group changes.
 | `args.options.id` | `string`                                                                                                                                                      |
 | `args.handler`    | (`change`: [`ElementGroupChangeCallbackParams`](../Elements/ElementGroupChangeCallbackParams.md)) => `void`                                                   |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onElementGroupChange({
@@ -1428,26 +1428,26 @@ unsubscribe();
 
 ***
 
-### onPointerClick()
+## onPointerClick()
 
 > **onPointerClick**(`params`: \{ `handler`: (`event`: [`MapInteractionEvent`](../Interactions/MapInteractionEvent.md)) => `void`; }): `VoidFunction`
 
 Allows you to be notified the user clicks on the map.
 
-#### Parameters
+### Parameters
 
 | Parameter        | Type                                                                                                  |
 | ---------------- | ----------------------------------------------------------------------------------------------------- |
 | `params`         | \{ `handler`: (`event`: [`MapInteractionEvent`](../Interactions/MapInteractionEvent.md)) => `void`; } |
 | `params.handler` | (`event`: [`MapInteractionEvent`](../Interactions/MapInteractionEvent.md)) => `void`                  |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onPointerClick({
@@ -1460,26 +1460,26 @@ unsubscribe();
 
 ***
 
-### onPointerMove()
+## onPointerMove()
 
 > **onPointerMove**(`params`: \{ `handler`: (`event`: [`MapInteractionEvent`](../Interactions/MapInteractionEvent.md)) => `void`; }): `VoidFunction`
 
 Allows you to be notified the user moves the mouse over the map.
 
-#### Parameters
+### Parameters
 
 | Parameter        | Type                                                                                                  | Description             |
 | ---------------- | ----------------------------------------------------------------------------------------------------- | ----------------------- |
 | `params`         | \{ `handler`: (`event`: [`MapInteractionEvent`](../Interactions/MapInteractionEvent.md)) => `void`; } | Params for the listener |
 | `params.handler` | (`event`: [`MapInteractionEvent`](../Interactions/MapInteractionEvent.md)) => `void`                  | The handler function    |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onPointerMove({
@@ -1492,13 +1492,13 @@ unsubscribe();
 
 ***
 
-### onLayerChange()
+## onLayerChange()
 
 > **onLayerChange**(`args`: \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`LayerChangeCallbackParams`](../Layers/LayerChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when a layer changes.
 
-#### Parameters
+### Parameters
 
 | Parameter         | Type                                                                                                                                          | Description                                        |
 | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
@@ -1507,13 +1507,13 @@ Adds a listener for when a layer changes.
 | `args.options.id` | `string`                                                                                                                                      | The id of the layer to listen for changes to.      |
 | `args.handler`    | (`change`: [`LayerChangeCallbackParams`](../Layers/LayerChangeCallbackParams.md)) => `void`                                                   | The handler that is called when the layer changes. |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onLayerChange({
@@ -1527,13 +1527,13 @@ unsubscribe();
 
 ***
 
-### onLayerGroupChange()
+## onLayerGroupChange()
 
 > **onLayerGroupChange**(`args`: \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`LayerGroupChangeCallbackParams`](../Layers/LayerGroupChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when a layer group changes.
 
-#### Parameters
+### Parameters
 
 | Parameter         | Type                                                                                                                                                    |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1542,13 +1542,13 @@ Adds a listener for when a layer group changes.
 | `args.options.id` | `string`                                                                                                                                                |
 | `args.handler`    | (`change`: [`LayerGroupChangeCallbackParams`](../Layers/LayerGroupChangeCallbackParams.md)) => `void`                                                   |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onLayerGroupChange({
@@ -1562,13 +1562,13 @@ unsubscribe();
 
 ***
 
-### onLegendItemChange()
+## onLegendItemChange()
 
 > **onLegendItemChange**(`args`: \{ `options`: [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md); `handler`: (`change`: [`LegendItemChangeCallbackParams`](../Layers/LegendItemChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when a legend item changes.
 
-#### Parameters
+### Parameters
 
 | Parameter      | Type                                                                                                                                                                                           |
 | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1576,13 +1576,13 @@ Adds a listener for when a legend item changes.
 | `args.options` | [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)                                                                                                                                    |
 | `args.handler` | (`change`: [`LegendItemChangeCallbackParams`](../Layers/LegendItemChangeCallbackParams.md)) => `void`                                                                                          |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onLegendItemChange({
@@ -1596,26 +1596,26 @@ unsubscribe();
 
 ***
 
-### onSelectionChange()
+## onSelectionChange()
 
 > **onSelectionChange**(`params`: \{ `handler`: (`change`: \{ `selection`: [`EntityNode`](../Selection/EntityNode.md)\[]; }) => `void`; }): `VoidFunction`
 
 Adds a listener for when the selection changes.
 
-#### Parameters
+### Parameters
 
 | Parameter        | Type                                                                                                    |
 | ---------------- | ------------------------------------------------------------------------------------------------------- |
 | `params`         | \{ `handler`: (`change`: \{ `selection`: [`EntityNode`](../Selection/EntityNode.md)\[]; }) => `void`; } |
 | `params.handler` | (`change`: \{ `selection`: [`EntityNode`](../Selection/EntityNode.md)\[]; }) => `void`                  |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onSelectionChange({
@@ -1628,26 +1628,26 @@ unsubscribe();
 
 ***
 
-### onViewportMove()
+## onViewportMove()
 
 > **onViewportMove**(`args`: \{ `handler`: (`viewport`: [`ViewportState`](../Viewport/ViewportState.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when the viewport changes.
 
-#### Parameters
+### Parameters
 
 | Parameter      | Type                                                                                     | Description                                                                            |
 | -------------- | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | `args`         | \{ `handler`: (`viewport`: [`ViewportState`](../Viewport/ViewportState.md)) => `void`; } | -                                                                                      |
 | `args.handler` | (`viewport`: [`ViewportState`](../Viewport/ViewportState.md)) => `void`                  | This callback is called with the current viewport state whenever the viewport changes. |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onViewportMove({
@@ -1660,7 +1660,7 @@ unsubscribe();
 
 ***
 
-### onViewportMoveEnd()
+## onViewportMoveEnd()
 
 > **onViewportMoveEnd**(`args`: \{ `handler`: (`viewport`: [`ViewportState`](../Viewport/ViewportState.md)) => `void`; }): `VoidFunction`
 
@@ -1668,20 +1668,20 @@ Adds a listener for when the viewport move ends, which is when the user
 stops dragging or zooming the map, animations have finished, or inertial
 dragging ends.
 
-#### Parameters
+### Parameters
 
 | Parameter      | Type                                                                                     |
 | -------------- | ---------------------------------------------------------------------------------------- |
 | `args`         | \{ `handler`: (`viewport`: [`ViewportState`](../Viewport/ViewportState.md)) => `void`; } |
 | `args.handler` | (`viewport`: [`ViewportState`](../Viewport/ViewportState.md)) => `void`                  |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onViewportMoveEnd({
@@ -1694,7 +1694,7 @@ unsubscribe();
 
 ***
 
-### onMapIdle()
+## onMapIdle()
 
 > **onMapIdle**(`args`: \{ `handler`: () => `void`; }): `VoidFunction`
 
@@ -1705,20 +1705,20 @@ Adds a listener for when the map is idle, which is defined as:
 * All tiles for the current viewport have been loaded
 * Any fade transitions (e.g. for labels) have completed
 
-#### Parameters
+### Parameters
 
 | Parameter      | Type                          |
 | -------------- | ----------------------------- |
 | `args`         | \{ `handler`: () => `void`; } |
 | `args.handler` | () => `void`                  |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onMapIdle({ handler: () => console.log("map is idle") });

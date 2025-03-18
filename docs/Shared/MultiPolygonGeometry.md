@@ -2,14 +2,14 @@
 
 A GeoJSON multi-polygon geometry.
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"MultiPolygon"`
 
 ***
 
-### coordinates
+## coordinates
 
 > **coordinates**: \[`number`, `number`]\[]\[]\[]

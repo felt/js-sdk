@@ -2,9 +2,9 @@
 
 A single category from the response from the [LayersController.getCategoryData](LayersController.md#getcategorydata) method.
 
-## Properties
+# Properties
 
-### key
+## key
 
 > **key**: `string` | `number` | `boolean`
 
@@ -12,7 +12,7 @@ The category for which the value was calculated.
 
 ***
 
-### value
+## value
 
 > **value**: `null` | `number`
 

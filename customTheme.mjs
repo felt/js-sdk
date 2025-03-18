@@ -18,6 +18,10 @@ export function load(app) {
 }
 
 class MyMarkdownTheme extends MarkdownTheme {
+  render(page, template) {
+    return super.render(page, template).replace(/^##/gm, "#");
+  }
+
   getRenderContext(page) {
     return new MyMarkdownThemeContext(this, page, this.application.options);
   }

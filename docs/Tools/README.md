@@ -2,7 +2,7 @@
 
 The Tools part allows you to let users draw elements on the map.
 
-## Example
+# Example
 
 ```ts
 // Change the settings for the line tool
@@ -19,7 +19,7 @@ felt.setTool("line");
 felt.setTool(null);
 ```
 
-## Interfaces
+# Interfaces
 
 * [PinToolSettings](PinToolSettings.md)
 * [LineToolSettings](LineToolSettings.md)
@@ -31,7 +31,7 @@ felt.setTool(null);
 * [TextToolSettings](TextToolSettings.md)
 * [NoteToolSettings](NoteToolSettings.md)
 
-## Type Aliases
+# Type Aliases
 
 * [ToolType](ToolType.md)
 * [ConfigurableToolType](ConfigurableToolType.md)
@@ -41,6 +41,6 @@ felt.setTool(null);
 * [PlaceFrame](PlaceFrame.md)
 * [PlaceSymbol](PlaceSymbol.md)
 
-## Controller
+# Controller
 
 * [ToolsController](ToolsController.md)

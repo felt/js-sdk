@@ -2,9 +2,9 @@
 
 The parameters for the `onLayerChange` listener.
 
-## Properties
+# Properties
 
-### layer
+## layer
 
 > **layer**: `null` | [`Layer`](Layer.md)
 

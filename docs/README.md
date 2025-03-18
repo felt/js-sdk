@@ -1,6 +1,6 @@
 # API Reference
 
-## Modules
+# Modules
 
 * [Elements](Elements/README.md)
 * [Interactions](Interactions/README.md)

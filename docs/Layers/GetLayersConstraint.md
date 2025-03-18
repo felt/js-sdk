@@ -2,9 +2,9 @@
 
 The constraints to apply when getting layers.
 
-## Properties
+# Properties
 
-### ids?
+## ids?
 
 > `optional` **ids**: `string`\[]
 

@@ -2,9 +2,9 @@
 
 The event object passed to the interaction listeners.
 
-## Properties
+# Properties
 
-### coordinate
+## coordinate
 
 > **coordinate**: [`LatLng`](../Shared/LatLng.md)
 
@@ -12,7 +12,7 @@ The cursor position in world coordinates.
 
 ***
 
-### features
+## features
 
 > **features**: [`Feature`](../Layers/Feature.md)\[]
 
@@ -20,7 +20,7 @@ The vector features that are under the cursor.
 
 ***
 
-### rasterValues
+## rasterValues
 
 > **rasterValues**: [`RasterValue`](../Layers/RasterValue.md)\[]
 

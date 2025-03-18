@@ -1,97 +1,97 @@
 ***
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string`
 
 ***
 
-### groupId
+## groupId
 
 > **groupId**: `null` | `string`
 
 ***
 
-### color
+## color
 
 > **color**: `string`
 
 ***
 
-### name
+## name
 
 > **name**: `null` | `string`
 
 ***
 
-### description
+## description
 
 > **description**: `null` | `string`
 
 ***
 
-### attributes
+## attributes
 
 > **attributes**: `Record`\<`string`, `unknown`>
 
 ***
 
-### imageUrl
+## imageUrl
 
 > **imageUrl**: `null` | `string`
 
 ***
 
-### strokeOpacity
+## strokeOpacity
 
 > **strokeOpacity**: `number`
 
 ***
 
-### strokeWidth
+## strokeWidth
 
 > **strokeWidth**: `number`
 
 ***
 
-### strokeStyle
+## strokeStyle
 
 > **strokeStyle**: `"solid"` | `"dashed"` | `"dotted"`
 
 ***
 
-### type
+## type
 
 > **type**: `"Circle"`
 
 ***
 
-### radius
+## radius
 
 > **radius**: `number`
 
 ***
 
-### radiusDisplayAngle
+## radiusDisplayAngle
 
 > **radiusDisplayAngle**: `number`
 
 ***
 
-### radiusDisplayUnit
+## radiusDisplayUnit
 
 > **radiusDisplayUnit**: `null` | `"meter"` | `"kilometer"` | `"foot"` | `"mile"`
 
 ***
 
-### fillOpacity
+## fillOpacity
 
 > **fillOpacity**: `number`
 
 ***
 
-### radiusMarker
+## radiusMarker
 
 > **radiusMarker**: `boolean`

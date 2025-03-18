@@ -2,9 +2,9 @@
 
 The parameters for the methods that change the visibility of entities.
 
-## Properties
+# Properties
 
-### show?
+## show?
 
 > `optional` **show**: `string`\[]
 
@@ -12,6 +12,6 @@ The ids of the entities you want to change the visibility of.
 
 ***
 
-### hide?
+## hide?
 
 > `optional` **hide**: `string`\[]

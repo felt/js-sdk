@@ -1,10 +1,10 @@
 # API Reference
 
-# Documents
+## Documents
 
 * [CHANGELOG](CHANGELOG.md)
 
-# Modules
+## Modules
 
 * [Elements](Elements/README.md)
 * [Interactions](Interactions/README.md)

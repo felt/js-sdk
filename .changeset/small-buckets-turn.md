@@ -2,4 +2,4 @@
 "@feltmaps/js-sdk": minor
 ---
 
-Add coordinates to circle
+Return coordinates on Circle and Place elements as they are only a single point.

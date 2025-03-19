@@ -19,4 +19,8 @@ const layers = await map.getLayers();
 
 ```
 
-View {@link Main} for a complete list of available functions. 
+## View {@link Main} for a complete list of available functions. 
+
+---
+
+

@@ -18,7 +18,9 @@ const layers = await map.getLayers();
 
 ```
 
-View [Main](Main.md) for a complete list of available functions.
+## View [Main](Main.md) for a complete list of available functions. 
+
+---
 
 ## Documents
 

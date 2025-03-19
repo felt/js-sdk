@@ -32,6 +32,12 @@
 
 ***
 
+## locked
+
+> **locked**: `boolean`
+
+***
+
 ## type
 
 > **type**: `"Image"`

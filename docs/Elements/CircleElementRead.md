@@ -38,6 +38,12 @@
 
 ***
 
+## locked
+
+> **locked**: `boolean`
+
+***
+
 ## imageUrl
 
 > **imageUrl**: `null` | `string`

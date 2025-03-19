@@ -56,6 +56,12 @@
 
 ***
 
+## locked?
+
+> `optional` **locked**: `boolean`
+
+***
+
 ## imageUrl?
 
 > `optional` **imageUrl**: `null` | `string`

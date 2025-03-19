@@ -32,6 +32,12 @@
 
 ***
 
+## locked
+
+> **locked**: `boolean`
+
+***
+
 ## position
 
 > **position**: \[`number`, `number`] = `LngLatTupleSchema`

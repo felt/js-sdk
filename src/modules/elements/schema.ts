@@ -50,6 +50,8 @@ const OnElementChangeMessage = listenerMessageWithParams(
 
 const OnElementCreateMessage = listenerMessageNoParams("onElementCreate");
 
+const OnElementCreateEndMessage = listenerMessageNoParams("onElementCreateEnd");
+
 const OnElementDeleteMessage = listenerMessageWithParams(
   "onElementDelete",
   z.object({ id: z.string() }),
@@ -85,6 +87,7 @@ export const elementsSchema = {
   listeners: [
     OnElementChangeMessage,
     OnElementCreateMessage,
+    OnElementCreateEndMessage,
     OnElementDeleteMessage,
     OnElementGroupChangeMessage,
   ],
@@ -128,6 +131,7 @@ export type ElementsSchema = {
       ElementGroupChangeCallbackParams
     >;
     onElementCreate: ListenerNoOptions<ElementChangeCallbackParams>;
+    onElementCreateEnd: ListenerNoOptions<{ element: Element }>;
     onElementDelete: Listener<
       zInfer<typeof OnElementDeleteMessage.shape.options>,
       void

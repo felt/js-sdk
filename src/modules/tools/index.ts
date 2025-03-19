@@ -1,5 +1,9 @@
 /**
- * The Tools part allows you to let users draw elements on the map.
+ * The Tools part of the Felt SDK allows you to let users draw elements on the map
+ * by programatically selecting a tool for them.
+ *
+ * You can also set the settings for individual tools, to allow you to change the
+ * styling of the resulting element.
  *
  * @example
  * ```ts

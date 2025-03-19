@@ -253,6 +253,18 @@ export const ElementUpdateSchema = z.discriminatedUnion("type", [
   ImageUpdateSchema,
 ]);
 
+export const ElementReadSchema = z.discriminatedUnion("type", [
+  PlaceReadSchema,
+  PathReadSchema,
+  PolygonReadSchema,
+  CircleReadSchema,
+  MarkerReadSchema,
+  HighlighterReadSchema,
+  TextReadSchema,
+  NoteReadSchema,
+  ImageReadSchema,
+]);
+
 export interface PlaceElementCreate extends zInfer<typeof PlaceCreateSchema> {}
 export interface PathElementCreate extends zInfer<typeof PathCreateSchema> {}
 export interface PolygonElementCreate

@@ -50,6 +50,12 @@
 
 ***
 
+## locked?
+
+> `optional` **locked**: `boolean`
+
+***
+
 ## opacity?
 
 > `optional` **opacity**: `number`

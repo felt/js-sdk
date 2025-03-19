@@ -38,6 +38,12 @@
 
 ***
 
+## locked?
+
+> `optional` **locked**: `boolean`
+
+***
+
 ## zoom?
 
 > `optional` **zoom**: `number`

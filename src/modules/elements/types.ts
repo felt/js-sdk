@@ -13,6 +13,7 @@ const BaseFeltElementSchema = z.object({
   name: z.union([z.string(), z.null()]),
   description: z.union([z.string(), z.null()]),
   attributes: z.record(z.string(), z.unknown()),
+  locked: z.boolean(),
 });
 
 const Geographic = z.object({
@@ -35,7 +36,7 @@ const PlaceElementSchema = BaseFeltElementSchema.extend(
 
   symbol: z.string(),
   frame: z.enum(["frame-circle", "frame-square"]).nullable(),
-  hideLabel: z.boolean(),
+  hideLabel: z.boolean().optional(),
 });
 
 const PathElementSchema = BaseFeltElementSchema.extend(Geographic.shape)

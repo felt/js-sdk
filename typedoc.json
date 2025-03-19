@@ -11,6 +11,7 @@
     "./customTheme.mjs"
   ],
   "projectDocuments": ["./CHANGELOG.md"],
+  "router": "module",
   "cleanOutputDir": true,
   "indexFormat": "list",
   "parametersFormat": "table",
@@ -41,9 +42,10 @@
     "hideDefaults": false
   },
 
-  "outputFileStrategy": "members",
+  // "outputFileStrategy": "members",
   "flattenOutputFiles": false,
   "theme": "customTheme",
-  "readme": "./src/docs_api_readme_prepend.md",
-  "mergeReadme": true
+  // "readme": "./src/docs_api_readme_prepend.md",
+  "mergeReadme": true,
+  "name": "Felt API"
 }

@@ -36,7 +36,7 @@ export interface ToolsController {
    * @param tool - The tool to set.
    *
    * @example
-   * ```ts
+   * ```typescript
    * // Set the tool to "marker"
    * felt.setTool("marker");
    *
@@ -52,7 +52,7 @@ export interface ToolsController {
    * @returns The current tool, or `null` if no tool is in use.
    *
    * @example
-   * ```ts
+   * ```typescript
    * const tool = await felt.getTool(); // "marker", "polygon", etc.
    * ```
    */
@@ -64,7 +64,7 @@ export interface ToolsController {
    * @returns A function to unsubscribe from the listener
    *
    * @example
-   * ```ts
+   * ```typescript
    * const unsubscribe = felt.onToolChange({
    *   handler: tool => console.log(tool),
    * });

@@ -100,7 +100,7 @@ export interface ElementsController {
    *
    * @example
    * ```typescript
-   * felt.getElementGroup("element-group-1");
+   * const elementGroup = await felt.getElementGroup("element-group-1");
    * ```
    * @returns The requested element group.
    */

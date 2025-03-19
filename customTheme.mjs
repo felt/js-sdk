@@ -19,7 +19,15 @@ export function load(app) {
 
 class MyMarkdownTheme extends MarkdownTheme {
   render(page, template) {
-    return super.render(page, template).replace(/^##/gm, "#");
+    const defaultValue = super.render(page, template);
+    if (
+      page.filename.endsWith("CHANGELOG.md") ||
+      page.filename.endsWith("docs/README.md")
+    ) {
+      return defaultValue;
+    } else {
+      return defaultValue.replace(/^##/gm, "#");
+    }
   }
 
   getRenderContext(page) {

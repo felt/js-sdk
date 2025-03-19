@@ -26,7 +26,7 @@ Sets the tool to use for drawing elements on the map.
 
 ### Example
 
-```ts
+```typescript
 // Set the tool to "marker"
 felt.setTool("marker");
 
@@ -50,7 +50,7 @@ The current tool, or `null` if no tool is in use.
 
 ### Example
 
-```ts
+```typescript
 const tool = await felt.getTool(); // "marker", "polygon", etc.
 ```
 
@@ -77,7 +77,7 @@ A function to unsubscribe from the listener
 
 ### Example
 
-```ts
+```typescript
 const unsubscribe = felt.onToolChange({
   handler: tool => console.log(tool),
 });

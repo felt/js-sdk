@@ -1,6 +1,6 @@
 import { listener, method } from "~/lib/interface";
 import type { SetVisibilityRequest } from "~/modules/shared/types";
-import type { Filters, LayerFilters } from "./filter.types";
+import type { Filters, LayerFilters } from "./filters/types";
 import type {
   AggregationMethod,
   GetLayerCalculationParams,
@@ -83,7 +83,7 @@ export interface LayersController {
    *
    * @example
    * ```typescript
-   * const layers = await felt.getLayer({ ids: ["layer-1", "layer-2"] });
+   * const layer = await felt.getLayer("layer-1");
    * ```
    * @returns The requested layer.
    */
@@ -217,7 +217,7 @@ export interface LayersController {
    *
    * @example
    * ```typescript
-   * felt.getLayerGroup("layer-group-1");
+   * const layerGroup = await felt.getLayerGroup("layer-group-1");
    * ```
    * @returns The requested layer group.
    */

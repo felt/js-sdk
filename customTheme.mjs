@@ -26,7 +26,7 @@ class MyMarkdownTheme extends MarkdownTheme {
     ) {
       return defaultValue;
     } else {
-      return defaultValue.replace(/^##/gm, "#");
+      return defaultValue.replace(/^##/gm, "#").replace(/^##/gm, "#");
     }
   }
 
@@ -35,13 +35,13 @@ class MyMarkdownTheme extends MarkdownTheme {
   }
 
   // this puts all the docs just inside their module directory, not nested for types, interfaces, etc.
-  getTemplateMapping(kind) {
-    const prev = super.getTemplateMapping(kind);
-    if (!prev) return prev;
-    prev.directory = ".";
+  // getTemplateMapping(kind) {
+  //   const prev = super.getTemplateMapping(kind);
+  //   if (!prev) return prev;
+  //   prev.directory = ".";
 
-    return prev;
-  }
+  //   return prev;
+  // }
 }
 
 class MyMarkdownThemeContext extends MarkdownThemeContext {

@@ -5,28 +5,28 @@ UI features such as the legend and the full screen button.
 
 # UiControlsOptions
 
-## Properties
+# Properties
 
-### showLegend?
+## showLegend?
 
 > `optional` **showLegend**: `boolean`
 
 Whether or not the legend is shown.
 
-#### Default Value
+### Default Value
 
 ```ts
 true
 ```
 
-### cooperativeGestures?
+## cooperativeGestures?
 
 > `optional` **cooperativeGestures**: `boolean`
 
 When co-operative gestures are enabled, the pan and zoom gestures are
 adjusted to work better when the map is embedded in another page.
 
-#### Remarks
+### Remarks
 
 On mobile devices, enabling co-operative gestures will allow the user to
 pan past the embedded map with a single finger drag. To pan the map, they
@@ -37,69 +37,69 @@ scroll past the embedded map using their scroll wheel or trackpad. To
 zoom the map, they must hold the Ctrl (Windows) or Command key (Mac) while
 scrolling.
 
-#### Default Value
+### Default Value
 
 ```ts
 true
 ```
 
-### fullScreenButton?
+## fullScreenButton?
 
 > `optional` **fullScreenButton**: `boolean`
 
 Whether or not the full screen button is shown in an embedded map.
 
-#### Remarks
+### Remarks
 
 When clicked, this will open the map in a new tab or window.
 
-#### Default Value
+### Default Value
 
 ```ts
 true
 ```
 
-### geolocation?
+## geolocation?
 
 > `optional` **geolocation**: `boolean`
 
 Whether or not the geolocation button is shown in an embedded map.
 
-#### Remarks
+### Remarks
 
 The geolocation feature will plot your position on the map. If you
 click the button again, it will start tracking your position.
 
-#### Default Value
+### Default Value
 
 ```ts
 false
 ```
 
-### zoomControls?
+## zoomControls?
 
 > `optional` **zoomControls**: `boolean`
 
 Whether or not the zoom controls are shown in an embedded map.
 
-#### Remarks
+### Remarks
 
 This does not affect whether or not the map can be zoomed, just
 the display of the zoom controls in the bottom right corner of the map.
 
-#### Default Value
+### Default Value
 
 ```ts
 true
 ```
 
-### scaleBar?
+## scaleBar?
 
 > `optional` **scaleBar**: `boolean`
 
 Whether or not the scale bar is shown in an embedded map.
 
-#### Default Value
+### Default Value
 
 ```ts
 true
@@ -115,37 +115,37 @@ features and elements on the map.
 Switching these off can be useful if you add your own click, selection or hover
 handlers for features and elements.
 
-## Properties
+# Properties
 
-### featureSelectPanel?
+## featureSelectPanel?
 
 > `optional` **featureSelectPanel**: `boolean`
 
 Set this to `false` to prevent the panel that shows information about a selected
 feature from being shown.
 
-### featureHoverPanel?
+## featureHoverPanel?
 
 > `optional` **featureHoverPanel**: `boolean`
 
 Set this to `false` to prevent the panel that shows information about a hovered
 feature from being shown.
 
-### elementSelectPanel?
+## elementSelectPanel?
 
 > `optional` **elementSelectPanel**: `boolean`
 
 Set this to `false` to prevent the panel that shows information about a selected
 element from being shown.
 
-### linkClickOpen?
+## linkClickOpen?
 
 > `optional` **linkClickOpen**: `boolean`
 
 Set this to `false` to prevent clicking on a map link element from opening that link
 in a new tab or window.
 
-### imageLightboxOpen?
+## imageLightboxOpen?
 
 > `optional` **imageLightboxOpen**: `boolean`
 
@@ -159,29 +159,29 @@ in a lightbox.
 The UI controller allows you to enable and disable UI controls on the
 embedded map.
 
-## Extended by
+# Extended by
 
 - [`FeltController`](Main.md#feltcontroller)
 
-## Methods
+# Methods
 
-### updateUiControls()
+## updateUiControls()
 
 > **updateUiControls**(`controls`: [`UiControlsOptions`](#uicontrolsoptions)): `void`
 
 Updates the UI controls on the embedded map.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `controls` | [`UiControlsOptions`](#uicontrolsoptions) | The controls to update. |
 
-#### Returns
+### Returns
 
 `void`
 
-### setOnMapInteractionsUi()
+## setOnMapInteractionsUi()
 
 > **setOnMapInteractionsUi**(`options`: [`OnMapInteractionsOptions`](#onmapinteractionsoptions)): `void`
 
@@ -195,12 +195,12 @@ on things.
 This does not affect selection. That means that selectable features and elements
 will still be selected when clicked.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `options` | [`OnMapInteractionsOptions`](#onmapinteractionsoptions) |
 
-#### Returns
+### Returns
 
 `void`

@@ -21,17 +21,17 @@ felt.setTool(null);
 
 # PinToolSettings
 
-## Properties
+# Properties
 
-### color
+## color
 
 > **color**: `string`
 
-### frame
+## frame
 
 > **frame**: `null` \| `"frame-circle"` \| `"frame-square"`
 
-### symbol
+## symbol
 
 > **symbol**: [`PlaceSymbol`](#placesymbol)
 
@@ -39,25 +39,25 @@ felt.setTool(null);
 
 # LineToolSettings
 
-## Properties
+# Properties
 
-### color
+## color
 
 > **color**: `string`
 
-### strokeOpacity
+## strokeOpacity
 
 > **strokeOpacity**: `number`
 
-### strokeWidth
+## strokeWidth
 
 > **strokeWidth**: `number`
 
-### strokeStyle
+## strokeStyle
 
 > **strokeStyle**: `"solid"` \| `"dashed"` \| `"dotted"`
 
-### distanceMarker
+## distanceMarker
 
 > **distanceMarker**: `boolean`
 
@@ -65,33 +65,33 @@ felt.setTool(null);
 
 # RouteToolSettings
 
-## Properties
+# Properties
 
-### color
+## color
 
 > **color**: `string`
 
-### strokeOpacity
+## strokeOpacity
 
 > **strokeOpacity**: `number`
 
-### strokeWidth
+## strokeWidth
 
 > **strokeWidth**: `number`
 
-### strokeStyle
+## strokeStyle
 
 > **strokeStyle**: `"solid"` \| `"dashed"` \| `"dotted"`
 
-### distanceMarker
+## distanceMarker
 
 > **distanceMarker**: `boolean`
 
-### endCaps
+## endCaps
 
 > **endCaps**: `boolean`
 
-### routingMode
+## routingMode
 
 > **routingMode**: `null` \| `"driving"` \| `"cycling"` \| `"walking"` \| `"flying"`
 
@@ -99,29 +99,29 @@ felt.setTool(null);
 
 # PolygonToolSettings
 
-## Properties
+# Properties
 
-### color
+## color
 
 > **color**: `string`
 
-### strokeOpacity
+## strokeOpacity
 
 > **strokeOpacity**: `number`
 
-### strokeWidth
+## strokeWidth
 
 > **strokeWidth**: `number`
 
-### strokeStyle
+## strokeStyle
 
 > **strokeStyle**: `"solid"` \| `"dashed"` \| `"dotted"`
 
-### fillOpacity
+## fillOpacity
 
 > **fillOpacity**: `number`
 
-### areaMarker
+## areaMarker
 
 > **areaMarker**: `boolean`
 
@@ -129,29 +129,29 @@ felt.setTool(null);
 
 # CircleToolSettings
 
-## Properties
+# Properties
 
-### color
+## color
 
 > **color**: `string`
 
-### strokeOpacity
+## strokeOpacity
 
 > **strokeOpacity**: `number`
 
-### strokeWidth
+## strokeWidth
 
 > **strokeWidth**: `number`
 
-### strokeStyle
+## strokeStyle
 
 > **strokeStyle**: `"solid"` \| `"dashed"` \| `"dotted"`
 
-### fillOpacity
+## fillOpacity
 
 > **fillOpacity**: `number`
 
-### radiusMarker
+## radiusMarker
 
 > **radiusMarker**: `boolean`
 
@@ -159,17 +159,17 @@ felt.setTool(null);
 
 # MarkerToolSettings
 
-## Properties
+# Properties
 
-### color
+## color
 
 > **color**: `string`
 
-### opacity
+## opacity
 
 > **opacity**: `number`
 
-### size
+## size
 
 > **size**: `number`
 
@@ -177,17 +177,17 @@ felt.setTool(null);
 
 # HighlighterToolSettings
 
-## Properties
+# Properties
 
-### color
+## color
 
 > **color**: `string`
 
-### opacity
+## opacity
 
 > **opacity**: `number`
 
-### size
+## size
 
 > **size**: `number`
 
@@ -195,17 +195,17 @@ felt.setTool(null);
 
 # TextToolSettings
 
-## Properties
+# Properties
 
-### color
+## color
 
 > **color**: `string`
 
-### align
+## align
 
 > **align**: `"left"` \| `"center"` \| `"right"`
 
-### style
+## style
 
 > **style**: `"italic"` \| `"light"` \| `"regular"` \| `"caps"`
 
@@ -213,17 +213,17 @@ felt.setTool(null);
 
 # NoteToolSettings
 
-## Properties
+# Properties
 
-### color
+## color
 
 > **color**: `string`
 
-### align
+## align
 
 > **align**: `"left"` \| `"center"` \| `"right"`
 
-### style
+## style
 
 > **style**: `"italic"` \| `"light"` \| `"regular"` \| `"caps"`
 
@@ -257,41 +257,41 @@ felt.setTool(null);
 
 > **ToolSettingsMap** = \{ `pin`: [`PinToolSettings`](#pintoolsettings); `line`: [`LineToolSettings`](#linetoolsettings); `route`: [`RouteToolSettings`](#routetoolsettings); `polygon`: [`PolygonToolSettings`](#polygontoolsettings); `circle`: [`CircleToolSettings`](#circletoolsettings); `marker`: [`MarkerToolSettings`](#markertoolsettings); `highlighter`: [`HighlighterToolSettings`](#highlightertoolsettings); `text`: [`TextToolSettings`](#texttoolsettings); `note`: [`NoteToolSettings`](#notetoolsettings); \}
 
-## Properties
+# Properties
 
-### pin
+## pin
 
 > **pin**: [`PinToolSettings`](#pintoolsettings)
 
-### line
+## line
 
 > **line**: [`LineToolSettings`](#linetoolsettings)
 
-### route
+## route
 
 > **route**: [`RouteToolSettings`](#routetoolsettings)
 
-### polygon
+## polygon
 
 > **polygon**: [`PolygonToolSettings`](#polygontoolsettings)
 
-### circle
+## circle
 
 > **circle**: [`CircleToolSettings`](#circletoolsettings)
 
-### marker
+## marker
 
 > **marker**: [`MarkerToolSettings`](#markertoolsettings)
 
-### highlighter
+## highlighter
 
 > **highlighter**: [`HighlighterToolSettings`](#highlightertoolsettings)
 
-### text
+## text
 
 > **text**: [`TextToolSettings`](#texttoolsettings)
 
-### note
+## note
 
 > **note**: [`NoteToolSettings`](#notetoolsettings)
 
@@ -313,29 +313,29 @@ felt.setTool(null);
 
 The Tools controller allows you to let users draw elements on the map.
 
-## Extended by
+# Extended by
 
 - [`FeltController`](Main.md#feltcontroller)
 
-## Methods
+# Methods
 
-### setTool()
+## setTool()
 
 > **setTool**(`tool`: `null` \| `"text"` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"link"`): `void`
 
 Sets the tool to use for drawing elements on the map.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `tool` | `null` \| `"text"` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"link"` | The tool to set. |
 
-#### Returns
+### Returns
 
 `void`
 
-#### Example
+### Example
 
 ```ts
 // Set the tool to "marker"
@@ -345,44 +345,44 @@ felt.setTool("marker");
 felt.setTool(null);
 ```
 
-### getTool()
+## getTool()
 
 > **getTool**(): `Promise`\<`null` \| `"text"` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"link"`\>
 
 Gets the current tool, if any is in use.
 
-#### Returns
+### Returns
 
 `Promise`\<`null` \| `"text"` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"link"`\>
 
 The current tool, or `null` if no tool is in use.
 
-#### Example
+### Example
 
 ```ts
 const tool = await felt.getTool(); // "marker", "polygon", etc.
 ```
 
-### onToolChange()
+## onToolChange()
 
 > **onToolChange**(`args`: \{ `handler`: (`tool`: `null` \| `"text"` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"link"`) => `void`; \}): `VoidFunction`
 
 Listens for changes to the current tool.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `args` | \{ `handler`: (`tool`: `null` \| `"text"` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"link"`) => `void`; \} | - |
 | `args.handler` | (`tool`: `null` \| `"text"` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"link"`) => `void` | This callback is called with the current tool whenever the tool changes. |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```ts
 const unsubscribe = felt.onToolChange({
@@ -393,60 +393,60 @@ const unsubscribe = felt.onToolChange({
 unsubscribe();
 ```
 
-### setToolSettings()
+## setToolSettings()
 
 > **setToolSettings**(`settings`: [`InputToolSettings`](#inputtoolsettings)): `void`
 
 Sets the settings for the current tool.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `settings` | [`InputToolSettings`](#inputtoolsettings) | The settings to set. |
 
-#### Returns
+### Returns
 
 `void`
 
-### getToolSettings()
+## getToolSettings()
 
 > **getToolSettings**\<`T`\>(`tool`: `T`): `Promise`\<[`ToolSettingsMap`](#toolsettingsmap)\[`T`\]\>
 
 Gets the settings for the current tool.
 
-#### Type Parameters
+### Type Parameters
 
 | Type Parameter |
 | ------ |
 | `T` *extends* keyof [`ToolSettingsMap`](#toolsettingsmap) |
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `tool` | `T` |
 
-#### Returns
+### Returns
 
 `Promise`\<[`ToolSettingsMap`](#toolsettingsmap)\[`T`\]\>
 
 The settings for the current tool.
 
-### onToolSettingsChange()
+## onToolSettingsChange()
 
 > **onToolSettingsChange**(`args`: \{ `handler`: (`settings`: [`ToolSettingsChangeEvent`](#toolsettingschangeevent)) => `void`; \}): `VoidFunction`
 
 Listens for changes to the settings on all tools.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `args` | \{ `handler`: (`settings`: [`ToolSettingsChangeEvent`](#toolsettingschangeevent)) => `void`; \} |
 | `args.handler` | (`settings`: [`ToolSettingsChangeEvent`](#toolsettingschangeevent)) => `void` |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 

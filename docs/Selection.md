@@ -4,33 +4,33 @@
 
 The options for selecting a feature in a layer.
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string` \| `number`
 
 The id of the feature to select.
 
-### layerId
+## layerId
 
 > **layerId**: `string`
 
 The id of the layer that the feature belongs to.
 
-### showPopup?
+## showPopup?
 
 > `optional` **showPopup**: `boolean`
 
 Whether to show the feature's popup, if it is configured in the layer's style.
 
-#### Default
+### Default
 
 ```ts
 true
 ```
 
-### fitViewport?
+## fitViewport?
 
 > `optional` **fitViewport**: `boolean` \| \{ `maxZoom`: `number`; \}
 
@@ -43,7 +43,7 @@ far, you can pass an object with a `maxZoom` property.
 This is useful for avoiding zooming in too far on point features, or if you want
 to maintain the current zoom level.
 
-#### Default
+### Default
 
 ```ts
 true
@@ -55,46 +55,46 @@ true
 
 The Selection controller allows you to listen for changes to the selection on the map.
 
-## Extended by
+# Extended by
 
 - [`FeltController`](Main.md#feltcontroller)
 
-## Methods
+# Methods
 
-### getSelection()
+## getSelection()
 
 > **getSelection**(): `Promise`\<[`EntityNode`](#entitynode)[]\>
 
 Gets the current selection as a list of entity identifiers.
 
-#### Returns
+### Returns
 
 `Promise`\<[`EntityNode`](#entitynode)[]\>
 
-#### Example
+### Example
 
 ```typescript
 const selection = await felt.getSelection();
 ```
 
-### selectFeature()
+## selectFeature()
 
 > **selectFeature**(`params`: [`FeatureSelection`](#featureselection)): `Promise`\<`void`\>
 
 Selects a feature on a layer. This will show the feature's popup, modal or
 sidebar (if configured) and highlight the feature.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `params` | [`FeatureSelection`](#featureselection) |
 
-#### Returns
+### Returns
 
 `Promise`\<`void`\>
 
-#### Example
+### Example
 
 ```typescript
 felt.selectFeature({
@@ -105,13 +105,13 @@ felt.selectFeature({
 });
 ```
 
-### clearSelection()
+## clearSelection()
 
 > **clearSelection**(`params`?: \{ `features`: `boolean`; `elements`: `boolean`; \}): `Promise`\<`void`\>
 
 Clears the current selection. This clears the selection of
 
-#### Parameters
+### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
@@ -119,11 +119,11 @@ Clears the current selection. This clears the selection of
 | `params.features`? | `boolean` | Whether to clear the features from the selection. |
 | `params.elements`? | `boolean` | Whether to clear the elements from the selection. |
 
-#### Returns
+### Returns
 
 `Promise`\<`void`\>
 
-#### Example
+### Example
 
 ```typescript
 
@@ -137,34 +137,34 @@ felt.clearSelection({ features: true });
 felt.clearSelection({ elements: true });
 ```
 
-#### Default
+### Default
 
 ```typescript
 { features: true, elements: true }
 ```
 
-## Events
+# Events
 
-### onSelectionChange()
+## onSelectionChange()
 
 > **onSelectionChange**(`params`: \{ `handler`: (`change`: \{ `selection`: [`EntityNode`](#entitynode)[]; \}) => `void`; \}): `VoidFunction`
 
 Adds a listener for when the selection changes.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `params` | \{ `handler`: (`change`: \{ `selection`: [`EntityNode`](#entitynode)[]; \}) => `void`; \} |
 | `params.handler` | (`change`: \{ `selection`: [`EntityNode`](#entitynode)[]; \}) => `void` |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onSelectionChange({
@@ -183,7 +183,7 @@ unsubscribe();
 
 A reference to any kind of entity in the map.
 
-## Remarks
+# Remarks
 
 EntityNodes are used when you have some collection of entities and you need to
 
@@ -193,13 +193,13 @@ EntityNodes are used when you have some collection of entities and you need to
 
 References an element on the map.
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"element"`
 
-### entity
+## entity
 
 > **entity**: [`Element`](Elements.md#element-1)
 
@@ -209,13 +209,13 @@ References an element on the map.
 
 References an element group.
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"elementGroup"`
 
-### entity
+## entity
 
 > **entity**: [`ElementGroup`](Elements.md#elementgroup)
 
@@ -225,13 +225,13 @@ References an element group.
 
 References a layer on the map.
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"layer"`
 
-### entity
+## entity
 
 > **entity**: [`Layer`](Layers.md#layer)
 
@@ -241,13 +241,13 @@ References a layer on the map.
 
 References a layer group on the map.
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"layerGroup"`
 
-### entity
+## entity
 
 > **entity**: [`LayerGroup`](Layers.md#layergroup)
 
@@ -257,12 +257,12 @@ References a layer group on the map.
 
 References a feature on the map.
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"feature"`
 
-### entity
+## entity
 
 > **entity**: [`Feature`](Layers.md#feature)

@@ -4,19 +4,19 @@ The misc module for hard-to-categorize functionality.
 
 # MiscController
 
-## Extended by
+# Extended by
 
 - [`FeltController`](Main.md#feltcontroller)
 
-## Methods
+# Methods
 
-### getMapDetails()
+## getMapDetails()
 
 > **getMapDetails**(): `Promise`\<[`MapDetails`](#mapdetails)\>
 
 Gets the details of the map.
 
-#### Returns
+### Returns
 
 `Promise`\<[`MapDetails`](#mapdetails)\>
 
@@ -28,21 +28,21 @@ Gets the details of the map.
 
 The details of a map.
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string`
 
 The id of the map.
 
-### title
+## title
 
 > **title**: `string`
 
 The title of the map.
 
-### description
+## description
 
 > **description**: `string` \| `null`
 

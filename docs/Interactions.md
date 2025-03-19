@@ -8,21 +8,21 @@ Interactions include clicking and hovering on points and features.
 
 The event object passed to the interaction listeners.
 
-## Properties
+# Properties
 
-### coordinate
+## coordinate
 
 > **coordinate**: [`LatLng`](Shared.md#latlng)
 
 The cursor position in world coordinates.
 
-### features
+## features
 
 > **features**: [`Feature`](Layers.md#feature)[]
 
 The vector features that are under the cursor.
 
-### rasterValues
+## rasterValues
 
 > **rasterValues**: [`RasterValue`](Layers.md#rastervalue)[]
 
@@ -34,32 +34,32 @@ The raster pixel values that are under the cursor.
 
 The Interactions controller allows you to observe interactions with the map
 
-## Extended by
+# Extended by
 
 - [`FeltController`](Main.md#feltcontroller)
 
-## Events
+# Events
 
-### onPointerClick()
+## onPointerClick()
 
 > **onPointerClick**(`params`: \{ `handler`: (`event`: [`MapInteractionEvent`](#mapinteractionevent)) => `void`; \}): `VoidFunction`
 
 Allows you to be notified the user clicks on the map.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `params` | \{ `handler`: (`event`: [`MapInteractionEvent`](#mapinteractionevent)) => `void`; \} |
 | `params.handler` | (`event`: [`MapInteractionEvent`](#mapinteractionevent)) => `void` |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onPointerClick({
@@ -70,26 +70,26 @@ const unsubscribe = felt.onPointerClick({
 unsubscribe();
 ```
 
-### onPointerMove()
+## onPointerMove()
 
 > **onPointerMove**(`params`: \{ `handler`: (`event`: [`MapInteractionEvent`](#mapinteractionevent)) => `void`; \}): `VoidFunction`
 
 Allows you to be notified the user moves the mouse over the map.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `params` | \{ `handler`: (`event`: [`MapInteractionEvent`](#mapinteractionevent)) => `void`; \} | Params for the listener |
 | `params.handler` | (`event`: [`MapInteractionEvent`](#mapinteractionevent)) => `void` | The handler function |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onPointerMove({

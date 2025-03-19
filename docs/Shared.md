@@ -4,99 +4,99 @@ These are generic types that are used across multiple modules.
 
 # Other
 
-## LatLng
+# LatLng
 
 Represents a point in world coordinates.
 
-### Properties
+## Properties
 
-#### latitude
+### latitude
 
 > **latitude**: `number`
 
-#### longitude
+### longitude
 
 > **longitude**: `number`
 
 ***
 
-## PointGeometry
+# PointGeometry
 
-### Properties
+## Properties
 
-#### type
+### type
 
 > **type**: `"Point"`
 
-#### coordinates
+### coordinates
 
 > **coordinates**: \[`number`, `number`\] = `LngLatTupleSchema`
 
 ***
 
-## PolygonGeometry
+# PolygonGeometry
 
-### Properties
+## Properties
 
-#### type
+### type
 
 > **type**: `"Polygon"`
 
-#### coordinates
+### coordinates
 
 > **coordinates**: \[`number`, `number`\][][]
 
 ***
 
-## MultiPolygonGeometry
+# MultiPolygonGeometry
 
 A GeoJSON multi-polygon geometry.
 
-### Properties
+## Properties
 
-#### type
+### type
 
 > **type**: `"MultiPolygon"`
 
-#### coordinates
+### coordinates
 
 > **coordinates**: \[`number`, `number`\][][][]
 
 ***
 
-## LineStringGeometry
+# LineStringGeometry
 
 A GeoJSON line string geometry.
 
-### Properties
+## Properties
 
-#### type
+### type
 
 > **type**: `"LineString"`
 
-#### coordinates
+### coordinates
 
 > **coordinates**: [`LngLatTuple`](#lnglattuple)[]
 
 ***
 
-## MultiLineStringGeometry
+# MultiLineStringGeometry
 
 A GeoJSON multi-line string geometry.
 
-### Properties
+## Properties
 
-#### type
+### type
 
 > **type**: `"MultiLineString"`
 
-#### coordinates
+### coordinates
 
 > **coordinates**: [`LngLatTuple`](#lnglattuple)[][]
 
 ***
 
-## LngLatTuple
+# LngLatTuple
 
 > **LngLatTuple** = \[`number`, `number`\]
 
@@ -107,7 +107,7 @@ GeoJSON.
 
 ***
 
-## Geometry
+# Geometry
 
 > **Geometry** = [`PointGeometry`](#pointgeometry) \| [`PolygonGeometry`](#polygongeometry) \| [`LineStringGeometry`](#linestringgeometry) \| [`MultiLineStringGeometry`](#multilinestringgeometry) \| [`MultiPolygonGeometry`](#multipolygongeometry)
 
@@ -115,7 +115,7 @@ A GeoJSON geometry of any type
 
 ***
 
-## FeltZoom
+# FeltZoom
 
 > **FeltZoom** = `z.infer`\<*typeof* `FeltZoomSchema`\>
 
@@ -126,7 +126,7 @@ zoomed out and 23 is the most zoomed in.
 
 ***
 
-## FeltBoundary
+# FeltBoundary
 
 > **FeltBoundary** = `z.infer`\<*typeof* `FeltBoundarySchema`\>
 
@@ -136,18 +136,18 @@ The boundary is a tuple of the form `[west, south, east, north]`.
 
 # Visibility
 
-## SetVisibilityRequest
+# SetVisibilityRequest
 
 The parameters for the methods that change the visibility of entities.
 
-### Properties
+## Properties
 
-#### show?
+### show?
 
 > `optional` **show**: `string`[]
 
 The ids of the entities you want to change the visibility of.
 
-#### hide?
+### hide?
 
 > `optional` **hide**: `string`[]

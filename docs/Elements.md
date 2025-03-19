@@ -5,49 +5,49 @@ groups that they belong to.
 
 # PlaceElementCreate
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Place"`
 
-### coordinates
+## coordinates
 
 > **coordinates**: \[`number`, `number`\]
 
-### symbol?
+## symbol?
 
 > `optional` **symbol**: `string`
 
-### groupId?
+## groupId?
 
 > `optional` **groupId**: `null` \| `string`
 
-### color?
+## color?
 
 > `optional` **color**: `string`
 
-### name?
+## name?
 
 > `optional` **name**: `null` \| `string`
 
-### description?
+## description?
 
 > `optional` **description**: `null` \| `string`
 
-### attributes?
+## attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`\>
 
-### imageUrl?
+## imageUrl?
 
 > `optional` **imageUrl**: `null` \| `string`
 
-### frame?
+## frame?
 
 > `optional` **frame**: `null` \| `"frame-circle"` \| `"frame-square"`
 
-### hideLabel?
+## hideLabel?
 
 > `optional` **hideLabel**: `boolean`
 
@@ -55,61 +55,61 @@ groups that they belong to.
 
 # PathElementCreate
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Path"`
 
-### coordinates
+## coordinates
 
 > **coordinates**: \[`number`, `number`\][][]
 
-### groupId?
+## groupId?
 
 > `optional` **groupId**: `null` \| `string`
 
-### color?
+## color?
 
 > `optional` **color**: `string`
 
-### name?
+## name?
 
 > `optional` **name**: `null` \| `string`
 
-### description?
+## description?
 
 > `optional` **description**: `null` \| `string`
 
-### attributes?
+## attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`\>
 
-### imageUrl?
+## imageUrl?
 
 > `optional` **imageUrl**: `null` \| `string`
 
-### strokeOpacity?
+## strokeOpacity?
 
 > `optional` **strokeOpacity**: `number`
 
-### strokeWidth?
+## strokeWidth?
 
 > `optional` **strokeWidth**: `number`
 
-### strokeStyle?
+## strokeStyle?
 
 > `optional` **strokeStyle**: `"solid"` \| `"dashed"` \| `"dotted"`
 
-### distanceMarker?
+## distanceMarker?
 
 > `optional` **distanceMarker**: `boolean`
 
-### endCaps?
+## endCaps?
 
 > `optional` **endCaps**: `boolean`
 
-### routingMode?
+## routingMode?
 
 > `optional` **routingMode**: `null` \| `"driving"` \| `"cycling"` \| `"walking"` \| `"flying"`
 
@@ -117,57 +117,57 @@ groups that they belong to.
 
 # PolygonElementCreate
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Polygon"`
 
-### coordinates
+## coordinates
 
 > **coordinates**: \[`number`, `number`\][][]
 
-### groupId?
+## groupId?
 
 > `optional` **groupId**: `null` \| `string`
 
-### color?
+## color?
 
 > `optional` **color**: `string`
 
-### name?
+## name?
 
 > `optional` **name**: `null` \| `string`
 
-### description?
+## description?
 
 > `optional` **description**: `null` \| `string`
 
-### attributes?
+## attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`\>
 
-### imageUrl?
+## imageUrl?
 
 > `optional` **imageUrl**: `null` \| `string`
 
-### strokeOpacity?
+## strokeOpacity?
 
 > `optional` **strokeOpacity**: `number`
 
-### strokeWidth?
+## strokeWidth?
 
 > `optional` **strokeWidth**: `number`
 
-### strokeStyle?
+## strokeStyle?
 
 > `optional` **strokeStyle**: `"solid"` \| `"dashed"` \| `"dotted"`
 
-### fillOpacity?
+## fillOpacity?
 
 > `optional` **fillOpacity**: `number`
 
-### areaMarker?
+## areaMarker?
 
 > `optional` **areaMarker**: `boolean`
 
@@ -175,69 +175,69 @@ groups that they belong to.
 
 # CircleElementCreate
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Circle"`
 
-### coordinates
+## coordinates
 
 > **coordinates**: \[`number`, `number`\]
 
-### radius
+## radius
 
 > **radius**: `number`
 
-### groupId?
+## groupId?
 
 > `optional` **groupId**: `null` \| `string`
 
-### color?
+## color?
 
 > `optional` **color**: `string`
 
-### name?
+## name?
 
 > `optional` **name**: `null` \| `string`
 
-### description?
+## description?
 
 > `optional` **description**: `null` \| `string`
 
-### attributes?
+## attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`\>
 
-### imageUrl?
+## imageUrl?
 
 > `optional` **imageUrl**: `null` \| `string`
 
-### strokeOpacity?
+## strokeOpacity?
 
 > `optional` **strokeOpacity**: `number`
 
-### strokeWidth?
+## strokeWidth?
 
 > `optional` **strokeWidth**: `number`
 
-### strokeStyle?
+## strokeStyle?
 
 > `optional` **strokeStyle**: `"solid"` \| `"dashed"` \| `"dotted"`
 
-### fillOpacity?
+## fillOpacity?
 
 > `optional` **fillOpacity**: `number`
 
-### radiusDisplayAngle?
+## radiusDisplayAngle?
 
 > `optional` **radiusDisplayAngle**: `number`
 
-### radiusDisplayUnit?
+## radiusDisplayUnit?
 
 > `optional` **radiusDisplayUnit**: `null` \| `"meter"` \| `"kilometer"` \| `"foot"` \| `"mile"`
 
-### radiusMarker?
+## radiusMarker?
 
 > `optional` **radiusMarker**: `boolean`
 
@@ -245,45 +245,45 @@ groups that they belong to.
 
 # MarkerElementCreate
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Marker"`
 
-### coordinates
+## coordinates
 
 > **coordinates**: \[`number`, `number`\][][]
 
-### groupId?
+## groupId?
 
 > `optional` **groupId**: `null` \| `string`
 
-### color?
+## color?
 
 > `optional` **color**: `string`
 
-### name?
+## name?
 
 > `optional` **name**: `null` \| `string`
 
-### description?
+## description?
 
 > `optional` **description**: `null` \| `string`
 
-### attributes?
+## attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`\>
 
-### opacity?
+## opacity?
 
 > `optional` **opacity**: `number`
 
-### size?
+## size?
 
 > `optional` **size**: `number`
 
-### zoom?
+## zoom?
 
 > `optional` **zoom**: `number`
 
@@ -291,37 +291,37 @@ groups that they belong to.
 
 # HighlighterElementCreate
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Highlighter"`
 
-### coordinates
+## coordinates
 
 > **coordinates**: \[`number`, `number`\][][]
 
-### groupId?
+## groupId?
 
 > `optional` **groupId**: `null` \| `string`
 
-### color?
+## color?
 
 > `optional` **color**: `string`
 
-### name?
+## name?
 
 > `optional` **name**: `null` \| `string`
 
-### description?
+## description?
 
 > `optional` **description**: `null` \| `string`
 
-### attributes?
+## attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`\>
 
-### opacity?
+## opacity?
 
 > `optional` **opacity**: `number`
 
@@ -329,53 +329,53 @@ groups that they belong to.
 
 # TextElementCreate
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Text"`
 
-### text
+## text
 
 > **text**: `string`
 
-### groupId?
+## groupId?
 
 > `optional` **groupId**: `null` \| `string`
 
-### color?
+## color?
 
 > `optional` **color**: `string`
 
-### description?
+## description?
 
 > `optional` **description**: `null` \| `string`
 
-### attributes?
+## attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`\>
 
-### zoom?
+## zoom?
 
 > `optional` **zoom**: `number`
 
-### position?
+## position?
 
 > `optional` **position**: \[`number`, `number`\]
 
-### rotation?
+## rotation?
 
 > `optional` **rotation**: `number`
 
-### scale?
+## scale?
 
 > `optional` **scale**: `number`
 
-### align?
+## align?
 
 > `optional` **align**: `"left"` \| `"center"` \| `"right"`
 
-### style?
+## style?
 
 > `optional` **style**: `"italic"` \| `"light"` \| `"regular"` \| `"caps"`
 
@@ -383,57 +383,57 @@ groups that they belong to.
 
 # NoteElementCreate
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Note"`
 
-### text
+## text
 
 > **text**: `string`
 
-### groupId?
+## groupId?
 
 > `optional` **groupId**: `null` \| `string`
 
-### color?
+## color?
 
 > `optional` **color**: `string`
 
-### description?
+## description?
 
 > `optional` **description**: `null` \| `string`
 
-### attributes?
+## attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`\>
 
-### zoom?
+## zoom?
 
 > `optional` **zoom**: `number`
 
-### position?
+## position?
 
 > `optional` **position**: \[`number`, `number`\]
 
-### rotation?
+## rotation?
 
 > `optional` **rotation**: `number`
 
-### scale?
+## scale?
 
 > `optional` **scale**: `number`
 
-### align?
+## align?
 
 > `optional` **align**: `"left"` \| `"center"` \| `"right"`
 
-### style?
+## style?
 
 > `optional` **style**: `"italic"` \| `"light"` \| `"regular"` \| `"caps"`
 
-### widthScale?
+## widthScale?
 
 > `optional` **widthScale**: `number`
 
@@ -441,37 +441,37 @@ groups that they belong to.
 
 # ImageElementCreate
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Image"`
 
-### coordinates
+## coordinates
 
 > **coordinates**: \[`number`, `number`\][][]
 
-### imageUrl
+## imageUrl
 
 > **imageUrl**: `string`
 
-### groupId?
+## groupId?
 
 > `optional` **groupId**: `null` \| `string`
 
-### name?
+## name?
 
 > `optional` **name**: `null` \| `string`
 
-### description?
+## description?
 
 > `optional` **description**: `null` \| `string`
 
-### attributes?
+## attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`\>
 
-### opacity?
+## opacity?
 
 > `optional` **opacity**: `number`
 
@@ -479,49 +479,49 @@ groups that they belong to.
 
 # PlaceElementRead
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string`
 
-### groupId
+## groupId
 
 > **groupId**: `null` \| `string`
 
-### color
+## color
 
 > **color**: `string`
 
-### name
+## name
 
 > **name**: `null` \| `string`
 
-### description
+## description
 
 > **description**: `null` \| `string`
 
-### attributes
+## attributes
 
 > **attributes**: `Record`\<`string`, `unknown`\>
 
-### imageUrl
+## imageUrl
 
 > **imageUrl**: `null` \| `string`
 
-### type
+## type
 
 > **type**: `"Place"`
 
-### symbol
+## symbol
 
 > **symbol**: `string`
 
-### frame
+## frame
 
 > **frame**: `null` \| `"frame-circle"` \| `"frame-square"`
 
-### hideLabel
+## hideLabel
 
 > **hideLabel**: `boolean`
 
@@ -529,61 +529,61 @@ groups that they belong to.
 
 # PathElementRead
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string`
 
-### groupId
+## groupId
 
 > **groupId**: `null` \| `string`
 
-### color
+## color
 
 > **color**: `string`
 
-### name
+## name
 
 > **name**: `null` \| `string`
 
-### description
+## description
 
 > **description**: `null` \| `string`
 
-### attributes
+## attributes
 
 > **attributes**: `Record`\<`string`, `unknown`\>
 
-### imageUrl
+## imageUrl
 
 > **imageUrl**: `null` \| `string`
 
-### strokeOpacity
+## strokeOpacity
 
 > **strokeOpacity**: `number`
 
-### strokeWidth
+## strokeWidth
 
 > **strokeWidth**: `number`
 
-### strokeStyle
+## strokeStyle
 
 > **strokeStyle**: `"solid"` \| `"dashed"` \| `"dotted"`
 
-### type
+## type
 
 > **type**: `"Path"`
 
-### distanceMarker
+## distanceMarker
 
 > **distanceMarker**: `boolean`
 
-### endCaps
+## endCaps
 
 > **endCaps**: `boolean`
 
-### routingMode
+## routingMode
 
 > **routingMode**: `null` \| `"driving"` \| `"cycling"` \| `"walking"` \| `"flying"`
 
@@ -591,57 +591,57 @@ groups that they belong to.
 
 # PolygonElementRead
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string`
 
-### groupId
+## groupId
 
 > **groupId**: `null` \| `string`
 
-### color
+## color
 
 > **color**: `string`
 
-### name
+## name
 
 > **name**: `null` \| `string`
 
-### description
+## description
 
 > **description**: `null` \| `string`
 
-### attributes
+## attributes
 
 > **attributes**: `Record`\<`string`, `unknown`\>
 
-### imageUrl
+## imageUrl
 
 > **imageUrl**: `null` \| `string`
 
-### strokeOpacity
+## strokeOpacity
 
 > **strokeOpacity**: `number`
 
-### strokeWidth
+## strokeWidth
 
 > **strokeWidth**: `number`
 
-### strokeStyle
+## strokeStyle
 
 > **strokeStyle**: `"solid"` \| `"dashed"` \| `"dotted"`
 
-### type
+## type
 
 > **type**: `"Polygon"`
 
-### fillOpacity
+## fillOpacity
 
 > **fillOpacity**: `number`
 
-### areaMarker
+## areaMarker
 
 > **areaMarker**: `boolean`
 
@@ -649,69 +649,69 @@ groups that they belong to.
 
 # CircleElementRead
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string`
 
-### groupId
+## groupId
 
 > **groupId**: `null` \| `string`
 
-### color
+## color
 
 > **color**: `string`
 
-### name
+## name
 
 > **name**: `null` \| `string`
 
-### description
+## description
 
 > **description**: `null` \| `string`
 
-### attributes
+## attributes
 
 > **attributes**: `Record`\<`string`, `unknown`\>
 
-### imageUrl
+## imageUrl
 
 > **imageUrl**: `null` \| `string`
 
-### strokeOpacity
+## strokeOpacity
 
 > **strokeOpacity**: `number`
 
-### strokeWidth
+## strokeWidth
 
 > **strokeWidth**: `number`
 
-### strokeStyle
+## strokeStyle
 
 > **strokeStyle**: `"solid"` \| `"dashed"` \| `"dotted"`
 
-### type
+## type
 
 > **type**: `"Circle"`
 
-### radius
+## radius
 
 > **radius**: `number`
 
-### radiusDisplayAngle
+## radiusDisplayAngle
 
 > **radiusDisplayAngle**: `number`
 
-### radiusDisplayUnit
+## radiusDisplayUnit
 
 > **radiusDisplayUnit**: `null` \| `"meter"` \| `"kilometer"` \| `"foot"` \| `"mile"`
 
-### fillOpacity
+## fillOpacity
 
 > **fillOpacity**: `number`
 
-### radiusMarker
+## radiusMarker
 
 > **radiusMarker**: `boolean`
 
@@ -719,45 +719,45 @@ groups that they belong to.
 
 # MarkerElementRead
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string`
 
-### groupId
+## groupId
 
 > **groupId**: `null` \| `string`
 
-### color
+## color
 
 > **color**: `string`
 
-### name
+## name
 
 > **name**: `null` \| `string`
 
-### description
+## description
 
 > **description**: `null` \| `string`
 
-### attributes
+## attributes
 
 > **attributes**: `Record`\<`string`, `unknown`\>
 
-### type
+## type
 
 > **type**: `"Marker"`
 
-### opacity
+## opacity
 
 > **opacity**: `number`
 
-### size
+## size
 
 > **size**: `number`
 
-### zoom
+## zoom
 
 > **zoom**: `number`
 
@@ -765,37 +765,37 @@ groups that they belong to.
 
 # HighlighterElementRead
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string`
 
-### groupId
+## groupId
 
 > **groupId**: `null` \| `string`
 
-### color
+## color
 
 > **color**: `string`
 
-### name
+## name
 
 > **name**: `null` \| `string`
 
-### description
+## description
 
 > **description**: `null` \| `string`
 
-### attributes
+## attributes
 
 > **attributes**: `Record`\<`string`, `unknown`\>
 
-### type
+## type
 
 > **type**: `"Highlighter"`
 
-### opacity
+## opacity
 
 > **opacity**: `number`
 
@@ -803,61 +803,61 @@ groups that they belong to.
 
 # TextElementRead
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string`
 
-### groupId
+## groupId
 
 > **groupId**: `null` \| `string`
 
-### color
+## color
 
 > **color**: `string`
 
-### description
+## description
 
 > **description**: `null` \| `string`
 
-### attributes
+## attributes
 
 > **attributes**: `Record`\<`string`, `unknown`\>
 
-### position
+## position
 
 > **position**: \[`number`, `number`\] = `LngLatTupleSchema`
 
-### rotation
+## rotation
 
 > **rotation**: `number`
 
-### scale
+## scale
 
 > **scale**: `number`
 
-### zoom
+## zoom
 
 > **zoom**: `number`
 
-### text
+## text
 
 > **text**: `string`
 
-### align
+## align
 
 > **align**: `"left"` \| `"center"` \| `"right"`
 
-### style
+## style
 
 > **style**: `"italic"` \| `"light"` \| `"regular"` \| `"caps"`
 
-### name
+## name
 
 > **name**: `string`
 
-### type
+## type
 
 > **type**: `"Text"`
 
@@ -865,65 +865,65 @@ groups that they belong to.
 
 # NoteElementRead
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string`
 
-### groupId
+## groupId
 
 > **groupId**: `null` \| `string`
 
-### color
+## color
 
 > **color**: `string`
 
-### description
+## description
 
 > **description**: `null` \| `string`
 
-### attributes
+## attributes
 
 > **attributes**: `Record`\<`string`, `unknown`\>
 
-### position
+## position
 
 > **position**: \[`number`, `number`\] = `LngLatTupleSchema`
 
-### rotation
+## rotation
 
 > **rotation**: `number`
 
-### scale
+## scale
 
 > **scale**: `number`
 
-### zoom
+## zoom
 
 > **zoom**: `number`
 
-### text
+## text
 
 > **text**: `string`
 
-### align
+## align
 
 > **align**: `"left"` \| `"center"` \| `"right"`
 
-### style
+## style
 
 > **style**: `"italic"` \| `"light"` \| `"regular"` \| `"caps"`
 
-### name
+## name
 
 > **name**: `string`
 
-### type
+## type
 
 > **type**: `"Note"`
 
-### widthScale
+## widthScale
 
 > **widthScale**: `number`
 
@@ -931,37 +931,37 @@ groups that they belong to.
 
 # ImageElementRead
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string`
 
-### groupId
+## groupId
 
 > **groupId**: `null` \| `string`
 
-### name
+## name
 
 > **name**: `null` \| `string`
 
-### description
+## description
 
 > **description**: `null` \| `string`
 
-### attributes
+## attributes
 
 > **attributes**: `Record`\<`string`, `unknown`\>
 
-### type
+## type
 
 > **type**: `"Image"`
 
-### imageUrl
+## imageUrl
 
 > **imageUrl**: `string`
 
-### opacity
+## opacity
 
 > **opacity**: `number`
 
@@ -969,37 +969,37 @@ groups that they belong to.
 
 # LinkElementRead
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string`
 
-### groupId
+## groupId
 
 > **groupId**: `null` \| `string`
 
-### color
+## color
 
 > **color**: `string`
 
-### name
+## name
 
 > **name**: `null` \| `string`
 
-### description
+## description
 
 > **description**: `null` \| `string`
 
-### attributes
+## attributes
 
 > **attributes**: `Record`\<`string`, `unknown`\>
 
-### type
+## type
 
 > **type**: `"Link"`
 
-### url
+## url
 
 > **url**: `string`
 
@@ -1007,53 +1007,53 @@ groups that they belong to.
 
 # PlaceElementUpdate
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Place"`
 
-### id
+## id
 
 > **id**: `string`
 
-### symbol?
+## symbol?
 
 > `optional` **symbol**: `string`
 
-### coordinates?
+## coordinates?
 
 > `optional` **coordinates**: \[`number`, `number`\]
 
-### groupId?
+## groupId?
 
 > `optional` **groupId**: `null` \| `string`
 
-### color?
+## color?
 
 > `optional` **color**: `string`
 
-### name?
+## name?
 
 > `optional` **name**: `null` \| `string`
 
-### description?
+## description?
 
 > `optional` **description**: `null` \| `string`
 
-### attributes?
+## attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`\>
 
-### imageUrl?
+## imageUrl?
 
 > `optional` **imageUrl**: `null` \| `string`
 
-### frame?
+## frame?
 
 > `optional` **frame**: `null` \| `"frame-circle"` \| `"frame-square"`
 
-### hideLabel?
+## hideLabel?
 
 > `optional` **hideLabel**: `boolean`
 
@@ -1061,65 +1061,65 @@ groups that they belong to.
 
 # PathElementUpdate
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Path"`
 
-### id
+## id
 
 > **id**: `string`
 
-### coordinates?
+## coordinates?
 
 > `optional` **coordinates**: \[`number`, `number`\][][]
 
-### groupId?
+## groupId?
 
 > `optional` **groupId**: `null` \| `string`
 
-### color?
+## color?
 
 > `optional` **color**: `string`
 
-### name?
+## name?
 
 > `optional` **name**: `null` \| `string`
 
-### description?
+## description?
 
 > `optional` **description**: `null` \| `string`
 
-### attributes?
+## attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`\>
 
-### imageUrl?
+## imageUrl?
 
 > `optional` **imageUrl**: `null` \| `string`
 
-### strokeOpacity?
+## strokeOpacity?
 
 > `optional` **strokeOpacity**: `number`
 
-### strokeWidth?
+## strokeWidth?
 
 > `optional` **strokeWidth**: `number`
 
-### strokeStyle?
+## strokeStyle?
 
 > `optional` **strokeStyle**: `"solid"` \| `"dashed"` \| `"dotted"`
 
-### distanceMarker?
+## distanceMarker?
 
 > `optional` **distanceMarker**: `boolean`
 
-### endCaps?
+## endCaps?
 
 > `optional` **endCaps**: `boolean`
 
-### routingMode?
+## routingMode?
 
 > `optional` **routingMode**: `null` \| `"driving"` \| `"cycling"` \| `"walking"` \| `"flying"`
 
@@ -1127,61 +1127,61 @@ groups that they belong to.
 
 # PolygonElementUpdate
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Polygon"`
 
-### id
+## id
 
 > **id**: `string`
 
-### coordinates?
+## coordinates?
 
 > `optional` **coordinates**: \[`number`, `number`\][][]
 
-### groupId?
+## groupId?
 
 > `optional` **groupId**: `null` \| `string`
 
-### color?
+## color?
 
 > `optional` **color**: `string`
 
-### name?
+## name?
 
 > `optional` **name**: `null` \| `string`
 
-### description?
+## description?
 
 > `optional` **description**: `null` \| `string`
 
-### attributes?
+## attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`\>
 
-### imageUrl?
+## imageUrl?
 
 > `optional` **imageUrl**: `null` \| `string`
 
-### strokeOpacity?
+## strokeOpacity?
 
 > `optional` **strokeOpacity**: `number`
 
-### strokeWidth?
+## strokeWidth?
 
 > `optional` **strokeWidth**: `number`
 
-### strokeStyle?
+## strokeStyle?
 
 > `optional` **strokeStyle**: `"solid"` \| `"dashed"` \| `"dotted"`
 
-### fillOpacity?
+## fillOpacity?
 
 > `optional` **fillOpacity**: `number`
 
-### areaMarker?
+## areaMarker?
 
 > `optional` **areaMarker**: `boolean`
 
@@ -1189,73 +1189,73 @@ groups that they belong to.
 
 # CircleElementUpdate
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Circle"`
 
-### id
+## id
 
 > **id**: `string`
 
-### coordinates?
+## coordinates?
 
 > `optional` **coordinates**: \[`number`, `number`\]
 
-### groupId?
+## groupId?
 
 > `optional` **groupId**: `null` \| `string`
 
-### color?
+## color?
 
 > `optional` **color**: `string`
 
-### name?
+## name?
 
 > `optional` **name**: `null` \| `string`
 
-### description?
+## description?
 
 > `optional` **description**: `null` \| `string`
 
-### attributes?
+## attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`\>
 
-### imageUrl?
+## imageUrl?
 
 > `optional` **imageUrl**: `null` \| `string`
 
-### strokeOpacity?
+## strokeOpacity?
 
 > `optional` **strokeOpacity**: `number`
 
-### strokeWidth?
+## strokeWidth?
 
 > `optional` **strokeWidth**: `number`
 
-### strokeStyle?
+## strokeStyle?
 
 > `optional` **strokeStyle**: `"solid"` \| `"dashed"` \| `"dotted"`
 
-### fillOpacity?
+## fillOpacity?
 
 > `optional` **fillOpacity**: `number`
 
-### radius?
+## radius?
 
 > `optional` **radius**: `number`
 
-### radiusDisplayAngle?
+## radiusDisplayAngle?
 
 > `optional` **radiusDisplayAngle**: `number`
 
-### radiusDisplayUnit?
+## radiusDisplayUnit?
 
 > `optional` **radiusDisplayUnit**: `null` \| `"meter"` \| `"kilometer"` \| `"foot"` \| `"mile"`
 
-### radiusMarker?
+## radiusMarker?
 
 > `optional` **radiusMarker**: `boolean`
 
@@ -1263,49 +1263,49 @@ groups that they belong to.
 
 # MarkerElementUpdate
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Marker"`
 
-### id
+## id
 
 > **id**: `string`
 
-### coordinates?
+## coordinates?
 
 > `optional` **coordinates**: \[`number`, `number`\][][]
 
-### groupId?
+## groupId?
 
 > `optional` **groupId**: `null` \| `string`
 
-### color?
+## color?
 
 > `optional` **color**: `string`
 
-### name?
+## name?
 
 > `optional` **name**: `null` \| `string`
 
-### description?
+## description?
 
 > `optional` **description**: `null` \| `string`
 
-### attributes?
+## attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`\>
 
-### opacity?
+## opacity?
 
 > `optional` **opacity**: `number`
 
-### size?
+## size?
 
 > `optional` **size**: `number`
 
-### zoom?
+## zoom?
 
 > `optional` **zoom**: `number`
 
@@ -1313,41 +1313,41 @@ groups that they belong to.
 
 # HighlighterElementUpdate
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Highlighter"`
 
-### id
+## id
 
 > **id**: `string`
 
-### coordinates?
+## coordinates?
 
 > `optional` **coordinates**: \[`number`, `number`\][][]
 
-### groupId?
+## groupId?
 
 > `optional` **groupId**: `null` \| `string`
 
-### color?
+## color?
 
 > `optional` **color**: `string`
 
-### name?
+## name?
 
 > `optional` **name**: `null` \| `string`
 
-### description?
+## description?
 
 > `optional` **description**: `null` \| `string`
 
-### attributes?
+## attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`\>
 
-### opacity?
+## opacity?
 
 > `optional` **opacity**: `number`
 
@@ -1355,57 +1355,57 @@ groups that they belong to.
 
 # TextElementUpdate
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Text"`
 
-### id
+## id
 
 > **id**: `string`
 
-### groupId?
+## groupId?
 
 > `optional` **groupId**: `null` \| `string`
 
-### color?
+## color?
 
 > `optional` **color**: `string`
 
-### description?
+## description?
 
 > `optional` **description**: `null` \| `string`
 
-### attributes?
+## attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`\>
 
-### zoom?
+## zoom?
 
 > `optional` **zoom**: `number`
 
-### position?
+## position?
 
 > `optional` **position**: \[`number`, `number`\]
 
-### rotation?
+## rotation?
 
 > `optional` **rotation**: `number`
 
-### scale?
+## scale?
 
 > `optional` **scale**: `number`
 
-### text?
+## text?
 
 > `optional` **text**: `string`
 
-### align?
+## align?
 
 > `optional` **align**: `"left"` \| `"center"` \| `"right"`
 
-### style?
+## style?
 
 > `optional` **style**: `"italic"` \| `"light"` \| `"regular"` \| `"caps"`
 
@@ -1413,61 +1413,61 @@ groups that they belong to.
 
 # NoteElementUpdate
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Note"`
 
-### id
+## id
 
 > **id**: `string`
 
-### groupId?
+## groupId?
 
 > `optional` **groupId**: `null` \| `string`
 
-### color?
+## color?
 
 > `optional` **color**: `string`
 
-### description?
+## description?
 
 > `optional` **description**: `null` \| `string`
 
-### attributes?
+## attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`\>
 
-### zoom?
+## zoom?
 
 > `optional` **zoom**: `number`
 
-### position?
+## position?
 
 > `optional` **position**: \[`number`, `number`\]
 
-### rotation?
+## rotation?
 
 > `optional` **rotation**: `number`
 
-### scale?
+## scale?
 
 > `optional` **scale**: `number`
 
-### text?
+## text?
 
 > `optional` **text**: `string`
 
-### align?
+## align?
 
 > `optional` **align**: `"left"` \| `"center"` \| `"right"`
 
-### style?
+## style?
 
 > `optional` **style**: `"italic"` \| `"light"` \| `"regular"` \| `"caps"`
 
-### widthScale?
+## widthScale?
 
 > `optional` **widthScale**: `number`
 
@@ -1475,41 +1475,41 @@ groups that they belong to.
 
 # ImageElementUpdate
 
-## Properties
+# Properties
 
-### type
+## type
 
 > **type**: `"Image"`
 
-### id
+## id
 
 > **id**: `string`
 
-### coordinates?
+## coordinates?
 
 > `optional` **coordinates**: \[`number`, `number`\][][]
 
-### groupId?
+## groupId?
 
 > `optional` **groupId**: `null` \| `string`
 
-### name?
+## name?
 
 > `optional` **name**: `null` \| `string`
 
-### description?
+## description?
 
 > `optional` **description**: `null` \| `string`
 
-### attributes?
+## attributes?
 
 > `optional` **attributes**: `Record`\<`string`, `unknown`\>
 
-### imageUrl?
+## imageUrl?
 
 > `optional` **imageUrl**: `string`
 
-### opacity?
+## opacity?
 
 > `optional` **opacity**: `number`
 
@@ -1532,237 +1532,237 @@ groups that they belong to.
 The Elements controller allows you to get information about the elements on the
 map, and make changes to their visibility.
 
-## Extended by
+# Extended by
 
 - [`FeltController`](Main.md#feltcontroller)
 
-## Methods
+# Methods
 
-### getElement()
+## getElement()
 
 > **getElement**(`id`: `string`): `Promise`\<`null` \| [`Element`](#element-1)\>
 
 Get a single element from the map by its id.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `id` | `string` | The id of the element you want to get. |
 
-#### Returns
+### Returns
 
 `Promise`\<`null` \| [`Element`](#element-1)\>
 
 The requested element.
 
-#### Example
+### Example
 
 ```typescript
 const element = await felt.getElement("element-1");
 ```
 
-### getElementGeometry()
+## getElementGeometry()
 
 > **getElementGeometry**(`id`: `string`): `Promise`\<`null` \| [`Geometry`](Shared.md#geometry)\>
 
 Get the geometry of an element.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `id` | `string` | The id of the element you want to get the geometry of. |
 
-#### Returns
+### Returns
 
 `Promise`\<`null` \| [`Geometry`](Shared.md#geometry)\>
 
-#### Example
+### Example
 
 ```typescript
 const geometry = await felt.getElementGeometry("element-1");
 console.log(geometry?.type, geometry?.coordinates);
 ```
 
-### getElements()
+## getElements()
 
 > **getElements**(`constraint`?: [`GetElementsConstraint`](#getelementsconstraint)): `Promise`\<(`null` \| [`Element`](#element-1))[]\>
 
 Gets elements from the map, according to the constraints supplied. If no
 constraints are supplied, all elements will be returned.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `constraint`? | [`GetElementsConstraint`](#getelementsconstraint) | The constraints to apply to the elements returned from the map. |
 
-#### Returns
+### Returns
 
 `Promise`\<(`null` \| [`Element`](#element-1))[]\>
 
 All elements on the map.
 
-#### Remarks
+### Remarks
 
 The elements in the map, ordered by the order specified in Felt. This is not
 necessarily the order that they are drawn in, as Felt draws points above
 lines and lines above polygons, for instance.
 
-#### Example
+### Example
 
 ```typescript
 const elements = await felt.getElements();
 ```
 
-### getElementGroup()
+## getElementGroup()
 
 > **getElementGroup**(`id`: `string`): `Promise`\<`null` \| [`ElementGroup`](#elementgroup)\>
 
 Get an element group from the map by its id.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `id` | `string` |
 
-#### Returns
+### Returns
 
 `Promise`\<`null` \| [`ElementGroup`](#elementgroup)\>
 
 The requested element group.
 
-#### Example
+### Example
 
 ```typescript
 felt.getElementGroup("element-group-1");
 ```
 
-### getElementGroups()
+## getElementGroups()
 
 > **getElementGroups**(`constraint`?: [`GetElementGroupsConstraint`](#getelementgroupsconstraint)): `Promise`\<(`null` \| [`ElementGroup`](#elementgroup))[]\>
 
 Gets element groups from the map, according to the filters supplied. If no
 constraints are supplied, all element groups will be returned in rendering order.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `constraint`? | [`GetElementGroupsConstraint`](#getelementgroupsconstraint) | The constraints to apply to the element groups returned from the map. |
 
-#### Returns
+### Returns
 
 `Promise`\<(`null` \| [`ElementGroup`](#elementgroup))[]\>
 
 The requested element groups.
 
-#### Example
+### Example
 
 ```typescript
 const elementGroups = await felt.getElementGroups({ ids: ["element-group-1", "element-group-2"] });
 ```
 
-### setElementGroupVisibility()
+## setElementGroupVisibility()
 
 > **setElementGroupVisibility**(`visibility`: [`SetVisibilityRequest`](Shared.md#setvisibilityrequest)): `Promise`\<`void`\>
 
 Hide or show element groups with the given ids.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `visibility` | [`SetVisibilityRequest`](Shared.md#setvisibilityrequest) |
 
-#### Returns
+### Returns
 
 `Promise`\<`void`\>
 
-#### Example
+### Example
 
 ```typescript
 felt.setElementGroupVisibility({ show: ["element-group-1", "element-group-2"], hide: ["element-group-3"] });
 ```
 
-### createElement()
+## createElement()
 
 > **createElement**(`element`: [`ElementCreate`](#elementcreate)): `Promise`\<[`Element`](#element-1)\>
 
 Create a new element on the map.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `element` | [`ElementCreate`](#elementcreate) |
 
-#### Returns
+### Returns
 
 `Promise`\<[`Element`](#element-1)\>
 
-#### Example
+### Example
 
 ```typescript
 const element = await felt.createElement({ type: "Place", coordinates: [10, 10] });
 ```
 
-### updateElement()
+## updateElement()
 
 > **updateElement**(`element`: [`ElementUpdate`](#elementupdate)): `Promise`\<[`Element`](#element-1)\>
 
 Update an element on the map.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `element` | [`ElementUpdate`](#elementupdate) |
 
-#### Returns
+### Returns
 
 `Promise`\<[`Element`](#element-1)\>
 
-### deleteElement()
+## deleteElement()
 
 > **deleteElement**(`id`: `string`): `Promise`\<`void`\>
 
 Delete an element from the map.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `id` | `string` |
 
-#### Returns
+### Returns
 
 `Promise`\<`void`\>
 
-## Events
+# Events
 
-### onElementCreate()
+## onElementCreate()
 
 > **onElementCreate**(`args`: \{ `handler`: (`change`: [`ElementChangeCallbackParams`](#elementchangecallbackparams)) => `void`; \}): `VoidFunction`
 
 Adds a listener for when an element is created.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `args` | \{ `handler`: (`change`: [`ElementChangeCallbackParams`](#elementchangecallbackparams)) => `void`; \} | - |
 | `args.handler` | (`change`: [`ElementChangeCallbackParams`](#elementchangecallbackparams)) => `void` | The handler that is called when an element is created. |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onElementCreate({
@@ -1773,13 +1773,13 @@ const unsubscribe = felt.onElementCreate({
 unsubscribe();
 ```
 
-### onElementChange()
+## onElementChange()
 
 > **onElementChange**(`args`: \{ `options`: \{ `id`: `string`; \}; `handler`: (`change`: [`ElementChangeCallbackParams`](#elementchangecallbackparams)) => `void`; \}): `VoidFunction`
 
 Adds a listener for when an element changes.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
@@ -1788,13 +1788,13 @@ Adds a listener for when an element changes.
 | `args.options.id` | `string` | The id of the element to listen for changes to. |
 | `args.handler` | (`change`: [`ElementChangeCallbackParams`](#elementchangecallbackparams)) => `void` | The handler that is called when the element changes. |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onElementChange({
@@ -1806,13 +1806,13 @@ const unsubscribe = felt.onElementChange({
 unsubscribe();
 ```
 
-### onElementDelete()
+## onElementDelete()
 
 > **onElementDelete**(`args`: \{ `options`: \{ `id`: `string`; \}; `handler`: () => `void`; \}): `VoidFunction`
 
 Adds a listener for when an element is deleted.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
@@ -1821,13 +1821,13 @@ Adds a listener for when an element is deleted.
 | `args.options.id` | `string` | The id of the element to listen for deletions of. |
 | `args.handler` | () => `void` | The handler that is called when the element is deleted. |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onElementDelete({
@@ -1839,13 +1839,13 @@ const unsubscribe = felt.onElementDelete({
 unsubscribe();
 ```
 
-### onElementGroupChange()
+## onElementGroupChange()
 
 > **onElementGroupChange**(`args`: \{ `options`: \{ `id`: `string`; \}; `handler`: (`change`: [`ElementGroupChangeCallbackParams`](#elementgroupchangecallbackparams)) => `void`; \}): `VoidFunction`
 
 Adds a listener for when an element group changes.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
@@ -1854,13 +1854,13 @@ Adds a listener for when an element group changes.
 | `args.options.id` | `string` |
 | `args.handler` | (`change`: [`ElementGroupChangeCallbackParams`](#elementgroupchangecallbackparams)) => `void` |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onElementGroupChange({
@@ -1876,43 +1876,43 @@ unsubscribe();
 
 # ElementGroup
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string`
 
 A string identifying the element group.
 
-### name
+## name
 
 > **name**: `string`
 
 The name of the element group. This is shown in the legend.
 
-### caption
+## caption
 
 > **caption**: `null` \| `string`
 
 The caption of the element group. This is shown in the legend.
 
-### elementIds
+## elementIds
 
 > **elementIds**: `string`[]
 
 The ids of the elements in the element group.
 
-#### Remarks
+### Remarks
 
 You can use these ids to get the full element objects via the `getElements` method.
 
-### visible
+## visible
 
 > **visible**: `boolean`
 
 Whether the element group is visible or not.
 
-### shownInLegend
+## shownInLegend
 
 > **shownInLegend**: `boolean`
 
@@ -1924,9 +1924,9 @@ Whether the element group is shown in the legend or not.
 
 The constraints to apply when getting element groups.
 
-## Properties
+# Properties
 
-### ids?
+## ids?
 
 > `optional` **ids**: `string`[]
 
@@ -1938,9 +1938,9 @@ The ids of the element groups to get.
 
 The parameters for the `onElementGroupChange` listener.
 
-## Properties
+# Properties
 
-### elementGroup
+## elementGroup
 
 > **elementGroup**: `null` \| [`ElementGroup`](#elementgroup)
 
@@ -1950,9 +1950,9 @@ The parameters for the `onElementGroupChange` listener.
 
 The constraints to apply when getting elements.
 
-## Properties
+# Properties
 
-### ids?
+## ids?
 
 > `optional` **ids**: `string`[]
 
@@ -1964,9 +1964,9 @@ The ids of the elements to get.
 
 The parameters for the `onElementChange` listener.
 
-## Properties
+# Properties
 
-### element
+## element
 
 > **element**: `null` \| [`Element`](#element-1)
 

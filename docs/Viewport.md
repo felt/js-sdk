@@ -10,39 +10,39 @@ The viewport controller allows you to control the viewport of the map.
 You can get the current viewport, move the viewport, and be notified when
 the viewport changes.
 
-## Extended by
+# Extended by
 
 - [`FeltController`](Main.md#feltcontroller)
 
-## Methods
+# Methods
 
-### getViewport()
+## getViewport()
 
 > **getViewport**(): `Promise`\<[`ViewportState`](#viewportstate)\>
 
 Gets the current state of the viewport.
 
-#### Returns
+### Returns
 
 `Promise`\<[`ViewportState`](#viewportstate)\>
 
-### setViewport()
+## setViewport()
 
 > **setViewport**(`viewport`: [`SetViewportCenterZoomParams`](#setviewportcenterzoomparams)): `void`
 
 Moves the map to the specified location.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `viewport` | [`SetViewportCenterZoomParams`](#setviewportcenterzoomparams) |
 
-#### Returns
+### Returns
 
 `void`
 
-#### Example
+### Example
 
 ```typescript
 felt.setViewport({
@@ -51,33 +51,33 @@ felt.setViewport({
 });
 ```
 
-### getViewportConstraints()
+## getViewportConstraints()
 
 > **getViewportConstraints**(): `Promise`\<`null` \| [`ViewportConstraints`](#viewportconstraints)\>
 
 Gets the current state of the viewport constraints.
 
-#### Returns
+### Returns
 
 `Promise`\<`null` \| [`ViewportConstraints`](#viewportconstraints)\>
 
-### setViewportConstraints()
+## setViewportConstraints()
 
 > **setViewportConstraints**(`constraints`: `null` \| `Partial`\<[`ViewportConstraints`](#viewportconstraints)\>): `void`
 
 Constrains the map viewport so it stays inside certain bounds and/or certain zoom levels.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `constraints` | `null` \| `Partial`\<[`ViewportConstraints`](#viewportconstraints)\> |
 
-#### Returns
+### Returns
 
 `void`
 
-#### Examples
+### Examples
 
 ```typescript
 felt.setViewportConstraints({
@@ -104,23 +104,23 @@ if method receives null, it will remove the constraints
 felt.setViewportConstraints(null);
 ```
 
-### fitViewportToBounds()
+## fitViewportToBounds()
 
 > **fitViewportToBounds**(`bounds`: [`ViewportFitBoundsParams`](#viewportfitboundsparams)): `void`
 
 Fits the map to the specified bounds.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `bounds` | [`ViewportFitBoundsParams`](#viewportfitboundsparams) |
 
-#### Returns
+### Returns
 
 `void`
 
-#### Example
+### Example
 
 ```typescript
 const west = -122.4194;
@@ -130,28 +130,28 @@ const north = 37.7749;
 felt.fitViewportToBounds({ bounds: [west, south, east, north] });
 ```
 
-## Events
+# Events
 
-### onViewportMove()
+## onViewportMove()
 
 > **onViewportMove**(`args`: \{ `handler`: (`viewport`: [`ViewportState`](#viewportstate)) => `void`; \}): `VoidFunction`
 
 Adds a listener for when the viewport changes.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `args` | \{ `handler`: (`viewport`: [`ViewportState`](#viewportstate)) => `void`; \} | - |
 | `args.handler` | (`viewport`: [`ViewportState`](#viewportstate)) => `void` | This callback is called with the current viewport state whenever the viewport changes. |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onViewportMove({
@@ -162,7 +162,7 @@ const unsubscribe = felt.onViewportMove({
 unsubscribe();
 ```
 
-### onViewportMoveEnd()
+## onViewportMoveEnd()
 
 > **onViewportMoveEnd**(`args`: \{ `handler`: (`viewport`: [`ViewportState`](#viewportstate)) => `void`; \}): `VoidFunction`
 
@@ -170,20 +170,20 @@ Adds a listener for when the viewport move ends, which is when the user
 stops dragging or zooming the map, animations have finished, or inertial
 dragging ends.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `args` | \{ `handler`: (`viewport`: [`ViewportState`](#viewportstate)) => `void`; \} |
 | `args.handler` | (`viewport`: [`ViewportState`](#viewportstate)) => `void` |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onViewportMoveEnd({
@@ -194,7 +194,7 @@ const unsubscribe = felt.onViewportMoveEnd({
 unsubscribe();
 ```
 
-### onMapIdle()
+## onMapIdle()
 
 > **onMapIdle**(`args`: \{ `handler`: () => `void`; \}): `VoidFunction`
 
@@ -204,20 +204,20 @@ Adds a listener for when the map is idle, which is defined as:
 - All tiles for the current viewport have been loaded
 - Any fade transitions (e.g. for labels) have completed
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `args` | \{ `handler`: () => `void`; \} |
 | `args.handler` | () => `void` |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onMapIdle({ handler: () => console.log("map is idle") });
@@ -232,15 +232,15 @@ unsubscribe();
 
 The input type for setting the viewport to a particular center and zoom.
 
-## Properties
+# Properties
 
-### center
+## center
 
 > **center**: [`LatLng`](Shared.md#latlng)
 
 The center of the viewport in latitude and longitude.
 
-### zoom
+## zoom
 
 > **zoom**: `number`
 
@@ -252,9 +252,9 @@ The zoom level of the viewport.
 
 The current state of the viewport, including the derived bounds.
 
-## Properties
+# Properties
 
-### center
+## center
 
 > **center**: [`LatLng`](Shared.md#latlng)
 
@@ -262,7 +262,7 @@ The center of the viewport in latitude and longitude.
 
 [LatLng](Shared.md#latlng)
 
-### zoom
+## zoom
 
 > **zoom**: `number`
 
@@ -270,7 +270,7 @@ The zoom level of the viewport.
 
 [FeltZoom](Shared.md#feltzoom)
 
-### bounds
+## bounds
 
 > **bounds**: \[`number`, `number`, `number`, `number`\]
 
@@ -287,9 +287,9 @@ well as its size.
 
 The parameters for the `setViewport` method.
 
-## Properties
+# Properties
 
-### center?
+## center?
 
 > `optional` **center**: \{ `latitude`: `number`; `longitude`: `number`; \}
 
@@ -298,7 +298,7 @@ The parameters for the `setViewport` method.
 | `latitude` | `number` | Latitude |
 | `longitude` | `number` | Longitude |
 
-### zoom?
+## zoom?
 
 > `optional` **zoom**: `number`
 
@@ -309,9 +309,9 @@ The parameters for the `setViewport` method.
 The constraints for the viewport. Used to ensure that the viewport stays
 within certain bounds and zoom levels.
 
-## Properties
+# Properties
 
-### minZoom
+## minZoom
 
 > **minZoom**: `null` \| `number`
 
@@ -319,7 +319,7 @@ The minimum zoom level for the viewport.
 
 [FeltZoom](Shared.md#feltzoom)
 
-### maxZoom
+## maxZoom
 
 > **maxZoom**: `null` \| `number`
 
@@ -327,7 +327,7 @@ The maximum zoom level for the viewport.
 
 [FeltZoom](Shared.md#feltzoom)
 
-### bounds
+## bounds
 
 > **bounds**: `null` \| \[`number`, `number`, `number`, `number`\]
 
@@ -341,9 +341,9 @@ The bounds for the viewport.
 
 The parameters for the `fitViewportToBounds` method.
 
-## Properties
+# Properties
 
-### bounds
+## bounds
 
 > **bounds**: \[`number`, `number`, `number`, `number`\]
 

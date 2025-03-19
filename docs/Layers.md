@@ -19,27 +19,27 @@ independently of the Layer, so you can turn on and off each category or class in
 A feature is a single geographical item in a layer.
 The unique ID for a feature is a compound key made up of the layer ID and the feature ID.
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string` \| `number`
 
 The identifier of the feature, unique within the layer.
 
-### layerId
+## layerId
 
 > **layerId**: `string`
 
 The identifier of the layer that the feature belongs to.
 
-### geometryType
+## geometryType
 
 > **geometryType**: `"Point"` \| `"Polygon"` \| `"LineString"` \| `"MultiPolygon"` \| `string` & \{\}
 
 The type of geometry of the feature.
 
-### properties
+## properties
 
 > **properties**: `Record`\<`string`, `unknown`\>
 
@@ -51,27 +51,27 @@ The properties of the feature, as a bag of attributes.
 
 A raster pixel value for a specific layer.
 
-## Properties
+# Properties
 
-### value
+## value
 
 > **value**: `number`
 
 The value of the pixel.
 
-### layerId
+## layerId
 
 > **layerId**: `string`
 
 The ID of the layer that the pixel belongs to.
 
-### categoryName
+## categoryName
 
 > **categoryName**: `null` \| `string`
 
 The name of the category that the pixel belongs to.
 
-### color
+## color
 
 > **color**: `null` \| \{ `r`: `number`; `g`: `number`; `b`: `number`; `a`: `number`; \}
 
@@ -83,15 +83,15 @@ The color of the pixel. Each value is between 0 and 255.
 
 Defines how to aggregate a value across features in a layer.
 
-## Properties
+# Properties
 
-### attribute
+## attribute
 
 > **attribute**: `string`
 
 The attribute to use for the aggregation. This must be a numeric attribute.
 
-### method
+## method
 
 > **method**: `"avg"` \| `"max"` \| `"min"` \| `"sum"` \| `"median"`
 
@@ -104,21 +104,21 @@ The method to use for the aggregation.
 Defines how to aggregate a value across features in a layer with multiple aggregations
 returned at once.
 
-## Type Parameters
+# Type Parameters
 
 | Type Parameter |
 | ------ |
 | `T` *extends* [`AggregationMethod`](#aggregationmethod) \| `"count"` |
 
-## Properties
+# Properties
 
-### methods
+## methods
 
 > **methods**: `T`[]
 
 The operations to use on the values from the features in the layer
 
-### attribute?
+## attribute?
 
 > `optional` **attribute**: `string`
 
@@ -138,23 +138,23 @@ and `filters` properties.
 
 It can also be used to specify how to aggregate the values via the `aggregation` property.
 
-## Properties
+# Properties
 
-### boundary?
+## boundary?
 
 > `optional` **boundary**: \[`number`, `number`, `number`, `number`\] \| [`PolygonGeometry`](Shared.md#polygongeometry) \| [`LngLatTuple`](Shared.md#lnglattuple)[]
 
 A spatial boundary to filter what gets counted or aggregated, while still including
 all possible categories or bin ranges in the results.
 
-### filters?
+## filters?
 
 > `optional` **filters**: [`Filters`](#filters-4)
 
 Attribute filters to determine what gets counted or aggregated, while still including
 all possible categories or bin ranges in the results.
 
-### aggregation?
+## aggregation?
 
 > `optional` **aggregation**: [`AggregationConfig`](#aggregationconfig)
 
@@ -172,33 +172,33 @@ to sum their square footage or average their assessed values.
 The parameters for getting categories from a layer, passed to
 the [LayersController.getCategoryData](#getcategorydata) method.
 
-## Properties
+# Properties
 
-### layerId
+## layerId
 
 > **layerId**: `string`
 
 The ID of the layer to get categories from.
 
-### attribute
+## attribute
 
 > **attribute**: `string`
 
 The attribute to use for categorization.
 
-### limit?
+## limit?
 
 > `optional` **limit**: `number`
 
 The maximum number of categories to return.
 
-### filters?
+## filters?
 
 > `optional` **filters**: [`Filters`](#filters-4)
 
 Attribute filters to determine what gets counted or aggregated.
 
-### boundary?
+## boundary?
 
 > `optional` **boundary**: \[`number`, `number`, `number`, `number`\] \| [`PolygonGeometry`](Shared.md#polygongeometry) \| [`LngLatTuple`](Shared.md#lnglattuple)[]
 
@@ -206,7 +206,7 @@ A spatial boundary to filter what gets counted or aggregated. This can be either
 a [w, s, e, n] bounding box, a GeoJSON Polygon geometry, or a list of coordinates
 that form a polyline.
 
-### values?
+## values?
 
 > `optional` **values**: [`ValueConfiguration`](#valueconfiguration)
 
@@ -229,15 +229,15 @@ categories in the results.
 
 A single category from the response from the [LayersController.getCategoryData](#getcategorydata) method.
 
-## Properties
+# Properties
 
-### key
+## key
 
 > **key**: `string` \| `number` \| `boolean`
 
 The category for which the value was calculated.
 
-### value
+## value
 
 > **value**: `null` \| `number`
 
@@ -253,21 +253,21 @@ so as not to confuse with a real zero value from some aggregation.
 The params used to request a histogram of values from a layer, passed to
 the [LayersController.getHistogramData](#gethistogramdata) method.
 
-## Properties
+# Properties
 
-### layerId
+## layerId
 
 > **layerId**: `string`
 
-### attribute
+## attribute
 
 > **attribute**: `string`
 
-### steps
+## steps
 
 > **steps**: `number`[] \| \{ `type`: `"equal-intervals"`; `count`: `number`; \} \| \{ `type`: `"time-interval"`; `interval`: `"hour"` \| `"day"` \| `"week"` \| `"month"` \| `"year"`; \}
 
-### values?
+## values?
 
 > `optional` **values**: \{ `boundary`: \[`number`, `number`\][] \| \[`number`, `number`, `number`, `number`\] \| \{ `type`: `"Polygon"`; `coordinates`: \[`number`, `number`\][][]; \}; `filters`: `null` \| `boolean` \| \[`null` \| `string`, `"in"` \| `"ni"`, `null` \| (`null` \| `string` \| `number` \| `boolean`)[]\] \| \[`null` \| `string`, `"lt"` \| `"gt"` \| `"le"` \| `"ge"` \| `"eq"` \| `"ne"` \| `"cn"` \| `"nc"` \| `"is"` \| `"isnt"`, `null` \| `string` \| `number` \| `boolean`\] \| [`FilterTernary`](#filterternary); `aggregation`: \{ `method`: `"avg"` \| `"max"` \| `"min"` \| `"sum"` \| `"median"`; `attribute`: `string`; \}; \}
 
@@ -291,13 +291,13 @@ ranges in the results.
 | `aggregation.method` | `"avg"` \| `"max"` \| `"min"` \| `"sum"` \| `"median"` | AggregateMethodSchema | The operation to use on the values from the features in the layer |
 | `aggregation.attribute` | `string` | - | The attribute to use for the aggregation. This must be a numeric attribute. |
 
-### filters?
+## filters?
 
 > `optional` **filters**: [`Filters`](#filters-4)
 
 Attribute filters to determine what gets counted or aggregated.
 
-### boundary?
+## boundary?
 
 > `optional` **boundary**: \[`number`, `number`, `number`, `number`\] \| [`PolygonGeometry`](Shared.md#polygongeometry) \| [`LngLatTuple`](Shared.md#lnglattuple)[]
 
@@ -311,21 +311,21 @@ that form a polyline.
 
 One bin from the response from the [LayersController.getHistogramData](#gethistogramdata) method.
 
-## Properties
+# Properties
 
-### min
+## min
 
 > **min**: `number`
 
 The left edge of the bin.
 
-### max
+## max
 
 > **max**: `number`
 
 The right edge of the bin.
 
-### value
+## value
 
 > **value**: `number`
 
@@ -338,27 +338,27 @@ The number of features in the bin.
 The parameters for calculating a single aggregate value for a layer, passed to
 the [LayersController.getAggregates](#getaggregates) method.
 
-## Type Parameters
+# Type Parameters
 
 | Type Parameter |
 | ------ |
 | `T` *extends* [`AggregationMethod`](#aggregationmethod) \| `"count"` |
 
-## Properties
+# Properties
 
-### layerId
+## layerId
 
 > **layerId**: `string`
 
 The ID of the layer to calculate an aggregate value for.
 
-### filters?
+## filters?
 
 > `optional` **filters**: [`Filters`](#filters-4)
 
 Attribute filters to determine what gets counted or aggregated.
 
-### boundary?
+## boundary?
 
 > `optional` **boundary**: \[`number`, `number`, `number`, `number`\] \| [`PolygonGeometry`](Shared.md#polygongeometry) \| [`LngLatTuple`](Shared.md#lnglattuple)[]
 
@@ -366,7 +366,7 @@ A spatial boundary to filter what gets counted or aggregated. This can be either
 a [w, s, e, n] bounding box, a GeoJSON Polygon geometry, or a list of coordinates
 that form a polyline.
 
-### aggregation
+## aggregation
 
 > **aggregation**: [`MultiAggregationConfig`](#multiaggregationconfig)\<`T`\>
 
@@ -392,90 +392,90 @@ map, and make changes to their visibility.
 Layers can be organised into groups, and their groups can also have their
 visibility toggled.
 
-## Extended by
+# Extended by
 
 - [`FeltController`](Main.md#feltcontroller)
 
-## Methods
+# Methods
 
-### getLayer()
+## getLayer()
 
 > **getLayer**(`id`: `string`): `Promise`\<`null` \| [`Layer`](#layer)\>
 
 Get a single layer from the map by its id.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `id` | `string` | The id of the layer you want to get. |
 
-#### Returns
+### Returns
 
 `Promise`\<`null` \| [`Layer`](#layer)\>
 
 The requested layer.
 
-#### Example
+### Example
 
 ```typescript
 const layers = await felt.getLayer({ ids: ["layer-1", "layer-2"] });
 ```
 
-### getLayers()
+## getLayers()
 
 > **getLayers**(`constraint`?: [`GetLayersConstraint`](#getlayersconstraint)): `Promise`\<(`null` \| [`Layer`](#layer))[]\>
 
 Gets layers from the map, according to the constraints supplied. If no
 constraints are supplied, all layers will be returned.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `constraint`? | [`GetLayersConstraint`](#getlayersconstraint) | The constraints to apply to the layers returned from the map. |
 
-#### Returns
+### Returns
 
 `Promise`\<(`null` \| [`Layer`](#layer))[]\>
 
 All layers on the map.
 
-#### Remarks
+### Remarks
 
 The layers in the map, ordered by the order specified in Felt. This is not
 necessarily the order that they are drawn in, as Felt draws points above
 lines and lines above polygons, for instance.
 
-#### Example
+### Example
 
 ```typescript
 const layers = await felt.getLayers();
 ```
 
-### setLayerVisibility()
+## setLayerVisibility()
 
 > **setLayerVisibility**(`visibility`: [`SetVisibilityRequest`](Shared.md#setvisibilityrequest)): `Promise`\<`void`\>
 
 Hide or show layers with the given ids.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `visibility` | [`SetVisibilityRequest`](Shared.md#setvisibilityrequest) |
 
-#### Returns
+### Returns
 
 `Promise`\<`void`\>
 
-#### Example
+### Example
 
 ```typescript
 felt.setLayerVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
 ```
 
-### setLayerStyle()
+## setLayerStyle()
 
 > **setLayerStyle**(`params`: \{ `id`: `string`; `style`: `object`; \}): `Promise`\<`void`\>
 
@@ -491,7 +491,7 @@ on how to read and write styles.
 If the style you set is invalid, you will receive an error explaining the problem
 in the rejected promise value.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
@@ -499,11 +499,11 @@ in the rejected promise value.
 | `params.id` | `string` | The id of the layer to set the style for. |
 | `params.style` | `object` | The style to set for the layer. |
 
-#### Returns
+### Returns
 
 `Promise`\<`void`\>
 
-#### Example
+### Example
 
 ```typescript
 // first get the current style
@@ -518,138 +518,138 @@ felt.setLayerStyle({ id: "layer-1", style: {
 } });
 ```
 
-### setLayerLegendVisibility()
+## setLayerLegendVisibility()
 
 > **setLayerLegendVisibility**(`params`: [`SetVisibilityRequest`](Shared.md#setvisibilityrequest)): `Promise`\<`void`\>
 
 Hide or show layers with the given ids from the legend.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `params` | [`SetVisibilityRequest`](Shared.md#setvisibilityrequest) |
 
-#### Returns
+### Returns
 
 `Promise`\<`void`\>
 
-#### Example
+### Example
 
 ```typescript
 felt.setLayerLegendVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
 ```
 
-### getLayerGroup()
+## getLayerGroup()
 
 > **getLayerGroup**(`id`: `string`): `Promise`\<`null` \| [`LayerGroup`](#layergroup)\>
 
 Get a layer group from the map by its id.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `id` | `string` |
 
-#### Returns
+### Returns
 
 `Promise`\<`null` \| [`LayerGroup`](#layergroup)\>
 
 The requested layer group.
 
-#### Example
+### Example
 
 ```typescript
 felt.getLayerGroup("layer-group-1");
 ```
 
-### getLayerGroups()
+## getLayerGroups()
 
 > **getLayerGroups**(`constraint`?: [`GetLayerGroupsConstraint`](#getlayergroupsconstraint)): `Promise`\<(`null` \| [`LayerGroup`](#layergroup))[]\>
 
 Gets layer groups from the map, according to the constraints supplied. If no
 constraints are supplied, all layer groups will be returned in rendering order.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `constraint`? | [`GetLayerGroupsConstraint`](#getlayergroupsconstraint) | The constraints to apply to the layer groups returned from the map. |
 
-#### Returns
+### Returns
 
 `Promise`\<(`null` \| [`LayerGroup`](#layergroup))[]\>
 
 The requested layer groups.
 
-#### Example
+### Example
 
 ```typescript
 const layerGroups = await felt.getLayerGroups({ ids: ["layer-group-1", "layer-group-2"] });
 ```
 
-### setLayerGroupVisibility()
+## setLayerGroupVisibility()
 
 > **setLayerGroupVisibility**(`visibility`: [`SetVisibilityRequest`](Shared.md#setvisibilityrequest)): `Promise`\<`void`\>
 
 Hide or show layer groups with the given ids.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `visibility` | [`SetVisibilityRequest`](Shared.md#setvisibilityrequest) |
 
-#### Returns
+### Returns
 
 `Promise`\<`void`\>
 
-#### Example
+### Example
 
 ```typescript
 felt.setLayerGroupVisibility({ show: ["layer-group-1", "layer-group-2"], hide: ["layer-group-3"] });
 ```
 
-### setLayerGroupLegendVisibility()
+## setLayerGroupLegendVisibility()
 
 > **setLayerGroupLegendVisibility**(`params`: [`SetVisibilityRequest`](Shared.md#setvisibilityrequest)): `Promise`\<`void`\>
 
 Hide or show layer groups with the given ids from the legend.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `params` | [`SetVisibilityRequest`](Shared.md#setvisibilityrequest) |
 
-#### Returns
+### Returns
 
 `Promise`\<`void`\>
 
-#### Example
+### Example
 
 ```typescript
 felt.setLayerGroupLegendVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
 ```
 
-### getLegendItem()
+## getLegendItem()
 
 > **getLegendItem**(`id`: [`LegendItemIdentifier`](#legenditemidentifier)): `Promise`\<`null` \| [`LegendItem`](#legenditem)\>
 
 Allows you to get the state of a single legend item.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `id` | [`LegendItemIdentifier`](#legenditemidentifier) |
 
-#### Returns
+### Returns
 
 `Promise`\<`null` \| [`LegendItem`](#legenditem)\>
 
-#### Example
+### Example
 
 ```typescript
 const legendItem = await felt.getLegendItem({
@@ -658,7 +658,7 @@ const legendItem = await felt.getLegendItem({
 })
 ```
 
-### getLegendItems()
+## getLegendItems()
 
 > **getLegendItems**(`constraint`?: [`LegendItemsConstraint`](#legenditemsconstraint)): `Promise`\<(`null` \| [`LegendItem`](#legenditem))[]\>
 
@@ -667,29 +667,29 @@ constraints describing which legend items you want.
 
 If you do not pass any constraints, you will receive all legend items.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `constraint`? | [`LegendItemsConstraint`](#legenditemsconstraint) |
 
-#### Returns
+### Returns
 
 `Promise`\<(`null` \| [`LegendItem`](#legenditem))[]\>
 
-#### Example
+### Example
 
 ```typescript
 const legendItems = await felt.getLegendItems({layerId: "layer-1"});
 ```
 
-### setLegendItemVisibility()
+## setLegendItemVisibility()
 
 > **setLegendItemVisibility**(`visibility`: \{ `show`: [`LegendItemIdentifier`](#legenditemidentifier)[]; `hide`: [`LegendItemIdentifier`](#legenditemidentifier)[]; \}): `Promise`\<`void`\>
 
 Hide or show legend items with the given identifiers.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
@@ -697,11 +697,11 @@ Hide or show legend items with the given identifiers.
 | `visibility.show`? | [`LegendItemIdentifier`](#legenditemidentifier)[] |
 | `visibility.hide`? | [`LegendItemIdentifier`](#legenditemidentifier)[] |
 
-#### Returns
+### Returns
 
 `Promise`\<`void`\>
 
-#### Example
+### Example
 
 ```typescript
 felt.setLegendItemVisibility({
@@ -710,41 +710,41 @@ felt.setLegendItemVisibility({
 })
 ```
 
-### getLayerFilters()
+## getLayerFilters()
 
 > **getLayerFilters**(`layerId`: `string`): `Promise`\<`null` \| [`LayerFilters`](#layerfilters)\>
 
 Get the filters for a layer.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `layerId` | `string` |
 
-#### Returns
+### Returns
 
 `Promise`\<`null` \| [`LayerFilters`](#layerfilters)\>
 
-#### Remarks
+### Remarks
 
 The return type gives you the filters split up into the various sources
 that make up the overall filters for a layer.
 
-#### Example
+### Example
 
 ```typescript
 const filters = await felt.getLayerFilters("layer-1");
 console.log(filters.combined, filters.style, filters.ephemeral, filters.components);
 ```
 
-### setLayerFilters()
+## setLayerFilters()
 
 > **setLayerFilters**(`params`: \{ `layerId`: `string`; `filters`: [`Filters`](#filters-4); `note`: `string`; \}): `Promise`\<`void`\>
 
 Sets the **ephemeral** filters for a layer.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
@@ -753,11 +753,11 @@ Sets the **ephemeral** filters for a layer.
 | `params.filters` | [`Filters`](#filters-4) | The filters to set for the layer. This will replace any ephemeral filters that are currently set for the layer. |
 | `params.note`? | `string` | A note to display on the layer legend when this filter is applied. When the note is shown, a reset button will also be shown, allowing the user to clear the filter. |
 
-#### Returns
+### Returns
 
 `Promise`\<`void`\>
 
-#### Example
+### Example
 
 ```typescript
 felt.setLayerFilters({
@@ -766,7 +766,7 @@ felt.setLayerFilters({
 });
 ```
 
-### getRenderedFeatures()
+## getRenderedFeatures()
 
 > **getRenderedFeatures**(`params`?: [`GetRenderedFeaturesConstraint`](#getrenderedfeaturesconstraint)): `Promise`\<[`Feature`](#feature)[]\>
 
@@ -777,39 +777,39 @@ necessarily a complete list of all the features in the viewport. This is because
 of the way features are tiled: at low zoom levels or high feature densities, many
 features are omitted from what is rendered on the screen.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `params`? | [`GetRenderedFeaturesConstraint`](#getrenderedfeaturesconstraint) | The constraints to apply to the features returned from the map. |
 
-#### Returns
+### Returns
 
 `Promise`\<[`Feature`](#feature)[]\>
 
-#### Example
+### Example
 
 ```typescript
 const features = await felt.getRenderedFeatures();
 ```
 
-### getCategoryData()
+## getCategoryData()
 
 > **getCategoryData**(`params`: [`GetLayerCategoriesParams`](#getlayercategoriesparams)): `Promise`\<[`GetLayerCategoriesGroup`](#getlayercategoriesgroup)[]\>
 
 Gets values from a layer grouped by a given attribute.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `params` | [`GetLayerCategoriesParams`](#getlayercategoriesparams) |
 
-#### Returns
+### Returns
 
 `Promise`\<[`GetLayerCategoriesGroup`](#getlayercategoriesgroup)[]\>
 
-#### Remarks
+### Remarks
 
 Groups features in your layer by unique values in the specified attribute and calculates
 a value for each group. By default, this value is the count of features in each group.
@@ -823,7 +823,7 @@ This two-level filtering is particularly useful when you want to compare subsets
 while maintaining consistent categories. For example, you might want to show the distribution
 of all building types in a city, but only count buildings built after 2000 in each category.
 
-#### Example
+### Example
 
 ```typescript
 // Basic grouping: Count of buildings by type
@@ -866,23 +866,23 @@ const newBuildingDensityByNeighborhood = await felt.getCategoryData({
 });
 ```
 
-### getHistogramData()
+## getHistogramData()
 
 > **getHistogramData**(`params`: [`GetLayerHistogramParams`](#getlayerhistogramparams)): `Promise`\<[`GetLayerHistogramBin`](#getlayerhistogrambin)[]\>
 
 Gets a histogram of values from a layer for a given attribute.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `params` | [`GetLayerHistogramParams`](#getlayerhistogramparams) |
 
-#### Returns
+### Returns
 
 `Promise`\<[`GetLayerHistogramBin`](#getlayerhistogrambin)[]\>
 
-#### Remarks
+### Remarks
 
 Creates bins (ranges) for numeric data and counts how many features fall into each bin,
 or returns aggregated values for each bin.
@@ -901,7 +901,7 @@ This is particularly useful when you want to compare distributions while keeping
 consistent bin ranges. For example, you might want to compare the distribution of
 building heights in different years while using the same height ranges.
 
-#### Example
+### Example
 
 ```typescript
 // Basic histogram: Building heights in 5 natural break bins
@@ -931,29 +931,29 @@ const newBuildingHeights = await felt.getHistogramData({
 });
 ```
 
-### getAggregates()
+## getAggregates()
 
 > **getAggregates**\<`T`\>(`params`: [`GetLayerCalculationParams`](#getlayercalculationparams)\<`T`\>): `Promise`\<`Record`\<`T`, `null` \| `number`\>\>
 
 Calculates a single aggregate value for a layer based on the provided configuration.
 
-#### Type Parameters
+### Type Parameters
 
 | Type Parameter |
 | ------ |
 | `T` *extends* `"avg"` \| `"max"` \| `"min"` \| `"sum"` \| `"median"` \| `"count"` |
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `params` | [`GetLayerCalculationParams`](#getlayercalculationparams)\<`T`\> |
 
-#### Returns
+### Returns
 
 `Promise`\<`Record`\<`T`, `null` \| `number`\>\>
 
-#### Remarks
+### Remarks
 
 Performs statistical calculations on your data, like counting features or computing
 averages, sums, etc. You can focus your calculation on specific areas or subsets
@@ -962,7 +962,7 @@ of your data using boundaries and filters.
 When no aggregation is specified, it counts features. When an aggregation is provided,
 it performs that calculation (average, sum, etc.) on the specified attribute.
 
-#### Example
+### Example
 
 ```typescript
 // Count all residential buildings
@@ -992,15 +992,15 @@ const maxNewBuildingHeight = await felt.getAggregates({
 });
 ```
 
-## Events
+# Events
 
-### onLayerChange()
+## onLayerChange()
 
 > **onLayerChange**(`args`: \{ `options`: \{ `id`: `string`; \}; `handler`: (`change`: [`LayerChangeCallbackParams`](#layerchangecallbackparams)) => `void`; \}): `VoidFunction`
 
 Adds a listener for when a layer changes.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
@@ -1009,13 +1009,13 @@ Adds a listener for when a layer changes.
 | `args.options.id` | `string` | The id of the layer to listen for changes to. |
 | `args.handler` | (`change`: [`LayerChangeCallbackParams`](#layerchangecallbackparams)) => `void` | The handler that is called when the layer changes. |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onLayerChange({
@@ -1027,13 +1027,13 @@ const unsubscribe = felt.onLayerChange({
 unsubscribe();
 ```
 
-### onLayerGroupChange()
+## onLayerGroupChange()
 
 > **onLayerGroupChange**(`args`: \{ `options`: \{ `id`: `string`; \}; `handler`: (`change`: [`LayerGroupChangeCallbackParams`](#layergroupchangecallbackparams)) => `void`; \}): `VoidFunction`
 
 Adds a listener for when a layer group changes.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
@@ -1042,13 +1042,13 @@ Adds a listener for when a layer group changes.
 | `args.options.id` | `string` |
 | `args.handler` | (`change`: [`LayerGroupChangeCallbackParams`](#layergroupchangecallbackparams)) => `void` |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onLayerGroupChange({
@@ -1060,13 +1060,13 @@ const unsubscribe = felt.onLayerGroupChange({
 unsubscribe();
 ```
 
-### onLegendItemChange()
+## onLegendItemChange()
 
 > **onLegendItemChange**(`args`: \{ `options`: [`LegendItemIdentifier`](#legenditemidentifier); `handler`: (`change`: [`LegendItemChangeCallbackParams`](#legenditemchangecallbackparams)) => `void`; \}): `VoidFunction`
 
 Adds a listener for when a legend item changes.
 
-#### Parameters
+### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
@@ -1074,13 +1074,13 @@ Adds a listener for when a legend item changes.
 | `args.options` | [`LegendItemIdentifier`](#legenditemidentifier) |
 | `args.handler` | (`change`: [`LegendItemChangeCallbackParams`](#legenditemchangecallbackparams)) => `void` |
 
-#### Returns
+### Returns
 
 `VoidFunction`
 
 A function to unsubscribe from the listener
 
-#### Example
+### Example
 
 ```typescript
 const unsubscribe = felt.onLegendItemChange({
@@ -1101,16 +1101,16 @@ The filters that are currently set on a layer.
 A layer's filters are the combination of various different places
 in which filters can be applied.
 
-## Properties
+# Properties
 
-### style
+## style
 
 > **style**: [`Filters`](#filters-4)
 
 Filters that are set in the layer's style. These are the lowest level
 of filters, and can only be set by editing the map.
 
-### components
+## components
 
 > **components**: [`Filters`](#filters-4)
 
@@ -1118,7 +1118,7 @@ Filters that are set in the layer's components, which are interactive
 elements in the legend. These can be set by viewers for their own session,
 but their default value can be set by the map creator.
 
-### ephemeral
+## ephemeral
 
 > **ephemeral**: [`Filters`](#filters-4)
 
@@ -1128,7 +1128,7 @@ These are the filters that are set when the `setLayerFilters` method is
 called. There is no way to set these in the Felt UI - they can only be
 set using the SDK.
 
-### combined
+## combined
 
 > **combined**: [`Filters`](#filters-4)
 
@@ -1161,7 +1161,7 @@ The combined result of all the filters set on the layer.
 Filters can be used to change which features in a layer are rendered. Filters can be
 applied to a layer by the `setLayerFilters` method on the Felt controller.
 
-## Remarks
+# Remarks
 
 The possible operators are:
 - `lt`: Less than
@@ -1177,7 +1177,7 @@ The allowed boolean operators are:
 - `and`: Logical AND
 - `or`: Logical OR
 
-## Example
+# Example
 
 ```typescript
 // a simple filter
@@ -1197,49 +1197,49 @@ felt.setLayerFilters({
 
 # LayerGroup
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string`
 
 A string identifying the layer group.
 
-### name
+## name
 
 > **name**: `string`
 
 The name of the layer group. This is shown in the legend.
 
-### caption
+## caption
 
 > **caption**: `null` \| `string`
 
 The caption of the layer group. This is shown in the legend.
 
-### layerIds
+## layerIds
 
 > **layerIds**: `string`[]
 
 The ids of the layers in the layer group.
 
-#### Remarks
+### Remarks
 
 You can use these ids to get the full layer objects via the `getLayers` method.
 
-### visible
+## visible
 
 > **visible**: `boolean`
 
 Whether the layer group is visible or not.
 
-### shownInLegend
+## shownInLegend
 
 > **shownInLegend**: `boolean`
 
 Whether the layer group is shown in the legend or not.
 
-### bounds
+## bounds
 
 > **bounds**: `null` \| \[`number`, `number`, `number`, `number`\]
 
@@ -1253,9 +1253,9 @@ The bounding box of the layer group.
 
 The constraints to apply when getting layer groups.
 
-## Properties
+# Properties
 
-### ids?
+## ids?
 
 > `optional` **ids**: `string`[]
 
@@ -1267,9 +1267,9 @@ The ids of the layer groups to get.
 
 The parameters for the `onLayerGroupChange` listener.
 
-## Properties
+# Properties
 
-### layerGroup
+## layerGroup
 
 > **layerGroup**: `null` \| [`LayerGroup`](#layergroup)
 
@@ -1277,15 +1277,15 @@ The parameters for the `onLayerGroupChange` listener.
 
 # Layer
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string`
 
 The string identifying the layer
 
-### groupId
+## groupId
 
 > **groupId**: `null` \| `string`
 
@@ -1293,39 +1293,39 @@ The ID of the layer group that the layer belongs to.
 
 Layers that appear at the root level in Felt will not have a group ID.
 
-### name
+## name
 
 > **name**: `string`
 
 The name of the layer can be displayed in the Legend, depending
 on how the layer's legend is configured in its style.
 
-### caption
+## caption
 
 > **caption**: `null` \| `string`
 
 The layer's caption is shown in the legend.
 
-### description
+## description
 
 > **description**: `null` \| `string`
 
 The layer description forms part of the layer's metadata. This is visible
 to users via the layer info button in the legend.
 
-### visible
+## visible
 
 > **visible**: `boolean`
 
 Whether the layer is visible or not.
 
-### shownInLegend
+## shownInLegend
 
 > **shownInLegend**: `boolean`
 
 Whether the layer is shown in the legend or not.
 
-### style
+## style
 
 > **style**: `object`
 
@@ -1337,19 +1337,19 @@ on how to read and write styles.
 As the types of the styles are very complex, we return `object` here and advise that you
 program defensively while reading the styles.
 
-### status
+## status
 
 > **status**: `"processing"` \| `"completed"` \| `"failed"` \| `"incomplete"`
 
 The current processing status of the layer.
 
-### geometryType
+## geometryType
 
 > **geometryType**: `null` \| `string`
 
 The geometry type of the layer.
 
-#### Remarks
+### Remarks
 
 This will generally be one of:
 - `"Point"`
@@ -1362,7 +1362,7 @@ When the layer is processing, or it is a data-only layer, it will be null. You s
 expect this to be able to be any string, however, as more geometry types can be added
 in the future.
 
-### bounds
+## bounds
 
 > **bounds**: `null` \| \[`number`, `number`, `number`, `number`\]
 
@@ -1377,9 +1377,9 @@ not been calculated or are not available, this will be `null`.
 
 The constraints to apply when getting layers.
 
-## Properties
+# Properties
 
-### ids?
+## ids?
 
 > `optional` **ids**: `string`[]
 
@@ -1391,9 +1391,9 @@ The ids of the layers to get.
 
 The parameters for the `onLayerChange` listener.
 
-## Properties
+# Properties
 
-### layer
+## layer
 
 > **layer**: `null` \| [`Layer`](#layer)
 
@@ -1406,15 +1406,15 @@ The new data for the layer or null if the layer was removed.
 Constraints for the `getRenderedFeatures` method. This can include layer constriants, spatial constraints, or both. If no constraints are
 provided, all rendered features will be returned.
 
-## Properties
+# Properties
 
-### areaQuery?
+## areaQuery?
 
 > `optional` **areaQuery**: \{ `coordinates`: [`LatLng`](Shared.md#latlng); \} \| \{ `boundary`: \[`number`, `number`, `number`, `number`\]; \}
 
 The area to query for rendered features. This can be specific coordinates or a [FeltBoundary](Shared.md#feltboundary). If omitted, the entire viewport will be queried.
 
-### layerIds?
+## layerIds?
 
 > `optional` **layerIds**: `string`[]
 
@@ -1441,15 +1441,15 @@ The various values are:
 A legend item, which often represents a sub-class of features in a
 layer in the case of categorical or classed layers.
 
-## Properties
+# Properties
 
-### title
+## title
 
 > **title**: `string` \| `string`[]
 
 The title of the legend item.
 
-### titleDependsOnZoom
+## titleDependsOnZoom
 
 > **titleDependsOnZoom**: `boolean`
 
@@ -1459,19 +1459,19 @@ need to call `getLegendItem` when the zoom level changes.
 Note that as the zoom level changes, the `onLegendItemChange` handler
 will not be called, so you need to call `getLegendItem` yourself.
 
-### visible
+## visible
 
 > **visible**: `boolean`
 
 Whether the legend item is visible or not.
 
-### id
+## id
 
 > **id**: `string`
 
 The id of the legend item.
 
-### layerId
+## layerId
 
 > **layerId**: `string`
 
@@ -1484,15 +1484,15 @@ The id of the layer the legend item belongs to.
 The identifier for a legend item. It is a compound key of the layer to
 which the legend item belongs and the legend item's own id.
 
-## Properties
+# Properties
 
-### id
+## id
 
 > **id**: `string`
 
 The id of the legend item.
 
-### layerId
+## layerId
 
 > **layerId**: `string`
 
@@ -1504,9 +1504,9 @@ The id of the layer the legend item belongs to.
 
 Constraints for legend items. If nothing is passed, all legend items will be returned.
 
-## Properties
+# Properties
 
-### ids?
+## ids?
 
 > `optional` **ids**: \{ `id`: `string`; `layerId`: `string`; \}[]
 
@@ -1517,7 +1517,7 @@ Array of legend item identifiers to constrain by.
 | `id` | `string` | The id of the legend item. |
 | `layerId` | `string` | The id of the layer the legend item belongs to. |
 
-### layerIds?
+## layerIds?
 
 > `optional` **layerIds**: `string`[]
 
@@ -1529,9 +1529,9 @@ Array of layer ids to constrain legend items by.
 
 The parameters for the `onLegendItemChange` listener.
 
-## Properties
+# Properties
 
-### legendItem
+## legendItem
 
 > **legendItem**: `null` \| [`LegendItem`](#legenditem)
 

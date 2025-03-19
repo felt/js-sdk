@@ -1,18 +1,38 @@
 # API Reference
 
+To get started, 
+```
+const felt = await Felt.embed(
+  document.querySelector("#container"),
+  "FELT_MAP_ID",
+  {
+    uiControls: {
+      cooperativeGestures: false,
+      fullScreenButton: false,
+      showLegend: false,
+    },
+  }
+);
+
+const layers = await map.getLayers();
+
+```
+
+View [Main](Main.md) for a complete list of available functions.
+
 ## Documents
 
-* [CHANGELOG](CHANGELOG.md)
+- [CHANGELOG](documents/CHANGELOG.md)
 
 ## Modules
 
-* [Elements](Elements/README.md)
-* [Interactions](Interactions/README.md)
-* [Layers](Layers/README.md)
-* [Main](Main/README.md)
-* [Misc](Misc/README.md)
-* [Selection](Selection/README.md)
-* [Shared](Shared/README.md)
-* [Tools](Tools/README.md)
-* [UI](UI/README.md)
-* [Viewport](Viewport/README.md)
+- [Elements](Elements.md)
+- [Interactions](Interactions.md)
+- [Layers](Layers.md)
+- [Main](Main.md)
+- [Misc](Misc.md)
+- [Selection](Selection.md)
+- [Shared](Shared.md)
+- [Tools](Tools.md)
+- [UI](UI.md)
+- [Viewport](Viewport.md)

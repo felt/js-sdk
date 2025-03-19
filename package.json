@@ -60,7 +60,7 @@
   "scripts": {
     "build": "npm run build:compile && npm run build:docs",
     "build:compile": "tsup",
-    "build:docs": "typedoc && rm ./docs/README.md && mv ./docs/Main.md ./docs/README.md",
+    "build:docs": "typedoc",
     "changeset": "changeset",
     "check": "npm run check:client-bundle && npm run check:format && npm run check:api && npm run check:unused && npm run check:types && npm run check:test && npm run check:docs",
     "check:api": "npm run build:compile && attw --pack . && api-extractor run",

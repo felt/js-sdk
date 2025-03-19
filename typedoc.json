@@ -10,6 +10,7 @@
     "typedoc-plugin-remark",
     "./customTheme.mjs"
   ],
+  "projectDocuments": ["./CHANGELOG.md"],
   "cleanOutputDir": true,
   "indexFormat": "list",
   "parametersFormat": "table",

@@ -114,7 +114,7 @@ The requested element group.
 ### Example
 
 ```typescript
-felt.getElementGroup("element-group-1");
+const elementGroup = await felt.getElementGroup("element-group-1");
 ```
 
 ***

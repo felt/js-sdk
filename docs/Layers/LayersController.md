@@ -33,7 +33,7 @@ The requested layer.
 ### Example
 
 ```typescript
-const layers = await felt.getLayer({ ids: ["layer-1", "layer-2"] });
+const layer = await felt.getLayer("layer-1");
 ```
 
 ***
@@ -185,7 +185,7 @@ The requested layer group.
 ### Example
 
 ```typescript
-felt.getLayerGroup("layer-group-1");
+const layerGroup = await felt.getLayerGroup("layer-group-1");
 ```
 
 ***

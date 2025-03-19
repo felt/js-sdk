@@ -1,5 +1,43 @@
 # @feltmaps/js-sdk
 
+## 1.5.0-next.6
+
+### Minor Changes
+
+* f2f4289: Add layer stats methods
+
+## 1.5.0-next.5
+
+### Minor Changes
+
+* 4bd0ae9: Add getMapDetails method definition
+
+## 1.5.0-next.4
+
+### Minor Changes
+
+* cf6711e: Make programmatic element CRUD types more accurate
+* 46e8ddc: Add onElementChange and onElementDelete
+
+## 1.5.0-next.3
+
+### Minor Changes
+
+* 4c83c60: Add programmatic element creation, editing and deletion
+
+## 1.5.0-next.2
+
+### Minor Changes
+
+* 1f6a386: Add getViewportConstraints and setViewportConstraints methods definition
+
+## 1.5.0-next.0
+
+### Minor Changes
+
+* 3e87812: Adds APIs to use Felt's drawing tools on read-only maps
+* c20e605: Add setLayerLegendVisibility and setLayerGroupLegendVisibility methods definition
+
 ## 1.4.0
 
 ### Minor Changes

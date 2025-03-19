@@ -45,6 +45,7 @@
     "prettier": "^3.3.3",
     "prettier-plugin-organize-imports": "^4.1.0",
     "tsup": "^8.3.0",
+    "tsx": "^4.19.3",
     "typedoc": "^0.27.6",
     "typedoc-plugin-markdown": "^4.4.1",
     "typedoc-plugin-remark": "^1.2.4",
@@ -52,7 +53,8 @@
     "typescript": "^5.6.2",
     "vite-tsconfig-paths": "^5.0.1",
     "vitest": "^2.1.2",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zod-to-json-schema": "^3.24.4"
   },
   "optionalDependencies": {
     "zod": "^3.23.8"
@@ -60,7 +62,8 @@
   "scripts": {
     "build:compile": "tsup",
     "build:docs": "typedoc",
-    "build": "npm run build:compile && npm run build:docs",
+    "build:export-jsonschema": "tsx ./scripts/export-jsonschema.ts --outDir dist/schemas --clean",
+    "build": "npm run build:compile && npm run build:export-jsonschema && npm run build:docs",
     "changeset": "changeset",
     "check:api": "npm run build:compile && attw --pack . && api-extractor run",
     "check:client-bundle": "npm run build:compile && node ./scripts/check-client-bundle-contents.js",

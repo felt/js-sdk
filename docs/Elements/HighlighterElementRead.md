@@ -38,6 +38,12 @@
 
 ***
 
+## locked
+
+> **locked**: `boolean`
+
+***
+
 ## type
 
 > **type**: `"Highlighter"`

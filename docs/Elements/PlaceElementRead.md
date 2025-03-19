@@ -38,6 +38,12 @@
 
 ***
 
+## locked
+
+> **locked**: `boolean`
+
+***
+
 ## imageUrl
 
 > **imageUrl**: `null` | `string`
@@ -62,6 +68,6 @@
 
 ***
 
-## hideLabel
+## hideLabel?
 
-> **hideLabel**: `boolean`
+> `optional` **hideLabel**: `boolean`

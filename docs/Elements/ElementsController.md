@@ -170,6 +170,46 @@ felt.setElementGroupVisibility({ show: ["element-group-1", "element-group-2"], h
 
 ***
 
+## onElementCreateEnd()
+
+> **onElementCreateEnd**(`args`: \{ `handler`: (`params`: \{ `element`: [`Element`](Element.md); }) => `void`; }): `VoidFunction`
+
+Listens for when a new element is finished being created by a drawing tool.
+
+This differs from the `onElementCreate` listener, which fires whenever an
+element is first created. This fires when the user finishes creating an element
+which could be after a series of interactions.
+
+For example, when creating a polygon, the user places a series of points then
+finishes by pressing Enter or Escape. Or when creating a Place element, they
+add the marker, type a label, then finally deselect the element.
+
+### Parameters
+
+| Parameter      | Type                                                                            | Description                                    |
+| -------------- | ------------------------------------------------------------------------------- | ---------------------------------------------- |
+| `args`         | \{ `handler`: (`params`: \{ `element`: [`Element`](Element.md); }) => `void`; } | -                                              |
+| `args.handler` | (`params`: \{ `element`: [`Element`](Element.md); }) => `void`                  | The handler to call whenever this event fires. |
+
+### Returns
+
+`VoidFunction`
+
+A function to unsubscribe from the listener
+
+### Example
+
+```typescript
+const unsubscribe = felt.onToolCreatedElement({
+  handler: (params) => console.log(params),
+});
+
+// later on...
+unsubscribe();
+```
+
+***
+
 ## createElement()
 
 > **createElement**(`element`: [`ElementCreate`](ElementCreate.md)): `Promise`\<[`Element`](Element.md)>
@@ -238,10 +278,10 @@ Adds a listener for when an element is created.
 
 ### Parameters
 
-| Parameter      | Type                                                                                                   | Description                                            |
-| -------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------ |
-| `args`         | \{ `handler`: (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`; } | -                                                      |
-| `args.handler` | (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`                  | The handler that is called when an element is created. |
+| Parameter      | Type                                                                                                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| -------------- | ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `args`         | \{ `handler`: (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`; } | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `args.handler` | (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`                  | The handler that is called when an element is created. This will fire when elements are created programatically, or when the user starts creating an element with a drawing tool. When the user creates an element with a drawing tool, it can begin in an invalid state, such as if you've just placed a single point in a polygon. You can use the `isBeingCreated` property to determine if the element is still being created by a drawing tool. If you want to know when the element is finished being created, you can use the `onToolCreateElementEnd` listener. |
 
 ### Returns
 
@@ -267,6 +307,15 @@ unsubscribe();
 > **onElementChange**(`args`: \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when an element changes.
+
+This will fire when an element is being edited, either on the map by the user
+or programatically.
+
+Like the `onElementCreate` listener, this will fire when an element is
+still being created by a drawing tool.
+
+You can check the `isBeingCreated` property to determine if the element is
+still being created by a drawing tool.
 
 ### Parameters
 

@@ -1,7 +1,9 @@
 ***
 
-The UI controller allows you to enable and disable UI controls on the
-embedded map.
+The UI controller allows you to control various aspects of the Felt UI in your embedded map.
+
+This includes enabling/disabling UI controls, managing on-map interactions, and controlling
+the visibility of UI components like the data table.
 
 # Extended by
 
@@ -50,3 +52,62 @@ will still be selected when clicked.
 ### Returns
 
 `void`
+
+***
+
+## showLayerDataTable()
+
+> **showLayerDataTable**(`params`?: \{ `layerId`: `string`; `sorting`: [`SortConfig`](../Shared/SortConfig.md); }): `Promise`\<`void`>
+
+Shows a data table view for the specified layer, optionally sorted by a given attribute.
+
+### Parameters
+
+| Parameter         | Type                                                                          |
+| ----------------- | ----------------------------------------------------------------------------- |
+| `params`?         | \{ `layerId`: `string`; `sorting`: [`SortConfig`](../Shared/SortConfig.md); } |
+| `params.layerId`? | `string`                                                                      |
+| `params.sorting`? | [`SortConfig`](../Shared/SortConfig.md)                                       |
+
+### Returns
+
+`Promise`\<`void`>
+
+### Example
+
+```typescript
+// Show data table with default sorting
+await felt.showLayerDataTable({
+  layerId: "layer-1",
+});
+
+// Show data table sorted by height in descending order
+await felt.showLayerDataTable({
+  layerId: "layer-1",
+  sorting: {
+    attribute: "height",
+    direction: "desc",
+  },
+});
+
+// Show the data table pane with no table visible
+await felt.showLayerDataTable();
+```
+
+***
+
+## hideLayerDataTable()
+
+> **hideLayerDataTable**(): `Promise`\<`void`>
+
+Hides the data table.
+
+### Returns
+
+`Promise`\<`void`>
+
+### Example
+
+```typescript
+await felt.hideLayerDataTable();
+```

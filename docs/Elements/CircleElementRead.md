@@ -68,6 +68,12 @@
 
 ***
 
+## coordinates
+
+> **coordinates**: \[`number`, `number`] = `LngLatTupleSchema`
+
+***
+
 ## radius
 
 > **radius**: `number`

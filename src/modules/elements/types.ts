@@ -189,12 +189,12 @@ export const ElementCreateSchema = z.discriminatedUnion("type", [
   NoteCreateSchema,
 ]);
 
-const PlaceReadSchema = PlaceElementSchema.omit({ coordinates: true });
+const PlaceReadSchema = PlaceElementSchema;
 const PathReadSchema = PathElementSchema.omit({ coordinates: true });
 const PolygonReadSchema = PolygonElementSchema.omit({
   coordinates: true,
 });
-const CircleReadSchema = CircleElementSchema.omit({ coordinates: true });
+const CircleReadSchema = CircleElementSchema;
 const MarkerReadSchema = MarkerElementSchema.omit({ coordinates: true });
 const HighlighterReadSchema = HighlighterElementSchema.omit({
   coordinates: true,

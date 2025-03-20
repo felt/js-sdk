@@ -50,6 +50,12 @@
 
 ***
 
+## coordinates
+
+> **coordinates**: \[`number`, `number`] = `PointGeometrySchema.shape.coordinates`
+
+***
+
 ## symbol
 
 > **symbol**: `string`

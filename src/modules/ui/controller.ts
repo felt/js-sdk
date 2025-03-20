@@ -61,9 +61,12 @@ export interface UiController {
    *     direction: "desc",
    *   },
    * });
+   *
+   * // Show the data table pane with no table visible
+   * await felt.showLayerDataTable();
    * ```
    */
-  showLayerDataTable(params: {
+  showLayerDataTable(params?: {
     layerId: string;
     sorting?: SortConfig;
   }): Promise<void>;

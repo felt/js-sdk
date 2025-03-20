@@ -20,10 +20,12 @@ const OnMapInteractionsMessage = methodMessage(
 
 const ShowLayerDataTableMessage = methodMessage(
   "showLayerDataTable",
-  z.object({
-    layerId: z.string(),
-    sorting: SortConfigSchema.optional(),
-  }),
+  z
+    .object({
+      layerId: z.string(),
+      sorting: SortConfigSchema.optional(),
+    })
+    .optional(),
 );
 
 const HideLayerDataTableMessage = methodMessage(

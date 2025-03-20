@@ -575,7 +575,7 @@ export { ToolType }
 export interface UiController {
     hideLayerDataTable(): Promise<void>;
     setOnMapInteractionsUi(options: OnMapInteractionsOptions): void;
-    showLayerDataTable(params: {
+    showLayerDataTable(params?: {
         layerId: string;
         sorting?: SortConfig;
     }): Promise<void>;

@@ -1166,7 +1166,7 @@ will still be selected when clicked.
 
 ## showLayerDataTable()
 
-> **showLayerDataTable**(`params`: \{ `layerId`: `string`; `sorting`: [`SortConfig`](../Shared/SortConfig.md); }): `Promise`\<`void`>
+> **showLayerDataTable**(`params`?: \{ `layerId`: `string`; `sorting`: [`SortConfig`](../Shared/SortConfig.md); }): `Promise`\<`void`>
 
 Shows a data table view for the specified layer, optionally sorted by a given attribute.
 
@@ -1174,8 +1174,8 @@ Shows a data table view for the specified layer, optionally sorted by a given at
 
 | Parameter         | Type                                                                          |
 | ----------------- | ----------------------------------------------------------------------------- |
-| `params`          | \{ `layerId`: `string`; `sorting`: [`SortConfig`](../Shared/SortConfig.md); } |
-| `params.layerId`  | `string`                                                                      |
+| `params`?         | \{ `layerId`: `string`; `sorting`: [`SortConfig`](../Shared/SortConfig.md); } |
+| `params.layerId`? | `string`                                                                      |
 | `params.sorting`? | [`SortConfig`](../Shared/SortConfig.md)                                       |
 
 ### Returns
@@ -1198,6 +1198,9 @@ await felt.showLayerDataTable({
     direction: "desc",
   },
 });
+
+// Show the data table pane with no table visible
+await felt.showLayerDataTable();
 ```
 
 ***

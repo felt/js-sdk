@@ -79,5 +79,8 @@
     "enter-prerelease": "git checkout prerelease && git pull && changeset pre enter next",
     "exit-prerelease": "git checkout prerelease && git pull && changeset pre exit",
     "prepublishOnly": "npm run ci"
+  },
+  "dependencies": {
+    "@asteasolutions/zod-to-openapi": "^7.3.0"
   }
 }

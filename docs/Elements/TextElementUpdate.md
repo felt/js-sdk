@@ -14,6 +14,18 @@
 
 ***
 
+## description?
+
+> `optional` **description**: `null` | `string`
+
+***
+
+## style?
+
+> `optional` **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`
+
+***
+
 ## groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -23,12 +35,6 @@
 ## color?
 
 > `optional` **color**: `string`
-
-***
-
-## description?
-
-> `optional` **description**: `null` | `string`
 
 ***
 
@@ -77,9 +83,3 @@
 ## align?
 
 > `optional` **align**: `"left"` | `"center"` | `"right"`
-
-***
-
-## style?
-
-> `optional` **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`

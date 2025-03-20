@@ -1,14 +1,20 @@
 #!/usr/bin/env tsx
 
+import {
+  extendZodWithOpenApi,
+  OpenApiGeneratorV3,
+} from "@asteasolutions/zod-to-openapi";
 import { mkdir, readdir, unlink, writeFile } from "fs/promises";
 import { join } from "path";
 import { parseArgs } from "util";
-import { zodToJsonSchema } from "zod-to-json-schema";
+import { z } from "zod";
 import {
   ElementCreateSchema,
   ElementReadSchema,
   ElementUpdateSchema,
 } from "../src/modules/elements/types";
+
+extendZodWithOpenApi(z);
 
 /**
  * Add any additional schemas here that will form part of the OpenAPI components/schemas
@@ -50,20 +56,16 @@ async function main() {
   }
 
   // Create OpenAPI-style schema structure
-  const openApiSchema = {
-    components: {
-      schemas: Object.fromEntries(
-        Object.entries(schemas).map(([key, schema]) => [
-          key,
-          zodToJsonSchema(schema, { target: "openApi3" }),
-        ]),
-      ),
-    },
-  };
+  const openApiSchema = Object.entries(schemas).map(([key, schema]) =>
+    schema.openapi(key),
+  );
+  const generator = new OpenApiGeneratorV3(openApiSchema);
+
+  const components = generator.generateComponents();
 
   // Write the combined schema to a single file
   const filePath = join(outputDir, "schemas.json");
-  await writeFile(filePath, JSON.stringify(openApiSchema, null, 2));
+  await writeFile(filePath, JSON.stringify(components, null, 2));
   console.log(`Wrote schemas to ${filePath}`);
 }
 

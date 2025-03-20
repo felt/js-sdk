@@ -14,6 +14,18 @@
 
 ***
 
+## description?
+
+> `optional` **description**: `null` | `string`
+
+***
+
+## name?
+
+> `optional` **name**: `null` | `string`
+
+***
+
 ## coordinates?
 
 > `optional` **coordinates**: \[`number`, `number`]
@@ -29,18 +41,6 @@
 ## color?
 
 > `optional` **color**: `string`
-
-***
-
-## name?
-
-> `optional` **name**: `null` | `string`
-
-***
-
-## description?
-
-> `optional` **description**: `null` | `string`
 
 ***
 

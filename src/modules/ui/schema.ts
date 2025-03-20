@@ -1,6 +1,8 @@
+import { z } from "zod";
 import type { ModuleSchema } from "~/lib/ModuleSchema";
 import { type Method, methodMessage } from "~/lib/builders";
 import type { zInfer } from "~/lib/utils";
+import { SortConfigSchema } from "../shared/types";
 import {
   UiControlsOptionsSchema,
   UiOnMapInteractionsOptionsSchema,
@@ -16,8 +18,29 @@ const OnMapInteractionsMessage = methodMessage(
   UiOnMapInteractionsOptionsSchema,
 );
 
+const ShowLayerDataTableMessage = methodMessage(
+  "showLayerDataTable",
+  z
+    .object({
+      layerId: z.string(),
+      sorting: SortConfigSchema.optional(),
+    })
+    .optional(),
+);
+
+const HideLayerDataTableMessage = methodMessage(
+  "hideLayerDataTable",
+  z.undefined(),
+);
+
 export const uiSchema = {
-  methods: [UiControlsMessage, OnMapInteractionsMessage],
+  methods: [
+    UiControlsMessage,
+    OnMapInteractionsMessage,
+
+    ShowLayerDataTableMessage,
+    HideLayerDataTableMessage,
+  ],
   listeners: null,
 } satisfies ModuleSchema;
 
@@ -28,6 +51,9 @@ export type UiSchema = {
       zInfer<typeof OnMapInteractionsMessage>,
       void
     >;
+
+    showLayerDataTable: Method<zInfer<typeof ShowLayerDataTableMessage>, void>;
+    hideLayerDataTable: Method<zInfer<typeof HideLayerDataTableMessage>, void>;
   };
   listeners: {};
 };

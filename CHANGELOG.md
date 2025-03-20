@@ -1,5 +1,12 @@
 # @feltmaps/js-sdk
 
+## 1.5.0-next.7
+
+### Minor Changes
+
+- 0915f48: Add showLayerDataTable and hideLayerDataTable methods
+- 597a8d6: Return coordinates on Circle and Place elements as they are only a single point.
+
 ## 1.5.0-next.6
 
 ### Minor Changes

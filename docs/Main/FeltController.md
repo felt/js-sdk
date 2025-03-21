@@ -1704,6 +1704,54 @@ unsubscribe();
 
 ***
 
+## onLayerFiltersChange()
+
+> **onLayerFiltersChange**(`params`: \{ `options`: \{ `layerId`: `string`; }; `handler`: (`change`: [`LayerFilters`](../Layers/LayerFilters.md)) => `void`; }): `VoidFunction`
+
+Adds a listener for when a layer's filters change.
+
+### Parameters
+
+| Parameter                | Type                                                                                                                     |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `params`                 | \{ `options`: \{ `layerId`: `string`; }; `handler`: (`change`: [`LayerFilters`](../Layers/LayerFilters.md)) => `void`; } |
+| `params.options`         | \{ `layerId`: `string`; }                                                                                                |
+| `params.options.layerId` | `string`                                                                                                                 |
+| `params.handler`         | (`change`: [`LayerFilters`](../Layers/LayerFilters.md)) => `void`                                                        |
+
+### Returns
+
+`VoidFunction`
+
+A function to unsubscribe from the listener
+
+### Remarks
+
+This event fires whenever any type of filter changes on the layer, including
+ephemeral filters set via the SDK, style-based filters, or filters set through
+the Felt UI via Components.
+
+### Example
+
+```typescript
+const unsubscribe = felt.onLayerFiltersChange({
+  options: { layerId: "layer-1" },
+  handler: ({combined, ephemeral, style, components}) => {
+    console.log("Layer filters updated:", {
+      combined,  // All filters combined
+      ephemeral, // Filters set via SDK
+      style,     // Filters from layer style
+      components // Filters from UI components
+    });
+  },
+});
+
+// later on...
+unsubscribe();
+```
+
+***
+
 ## onSelectionChange()
 
 > **onSelectionChange**(`params`: \{ `handler`: (`change`: \{ `selection`: [`EntityNode`](../Selection/EntityNode.md)\[]; }) => `void`; }): `VoidFunction`

@@ -50,7 +50,7 @@ const element = await felt.getElement("element-1");
 
 ## getElementGeometry()
 
-> **getElementGeometry**(`id`: `string`): `Promise`\<`null` | [`Geometry`](../Shared/Geometry.md)>
+> **getElementGeometry**(`id`: `string`): `Promise`\<`null` | [`GeoJsonGeometry`](../Shared/GeoJsonGeometry.md)>
 
 Get the geometry of an element.
 
@@ -62,7 +62,7 @@ Get the geometry of an element.
 
 ### Returns
 
-`Promise`\<`null` | [`Geometry`](../Shared/Geometry.md)>
+`Promise`\<`null` | [`GeoJsonGeometry`](../Shared/GeoJsonGeometry.md)>
 
 ### Example
 
@@ -681,7 +681,7 @@ felt.setLayerFilters({
 
 ## getRenderedFeatures()
 
-> **getRenderedFeatures**(`params`?: [`GetRenderedFeaturesConstraint`](../Layers/GetRenderedFeaturesConstraint.md)): `Promise`\<[`Feature`](../Layers/Feature.md)\[]>
+> **getRenderedFeatures**(`params`?: [`GetRenderedFeaturesConstraint`](../Layers/GetRenderedFeaturesConstraint.md)): `Promise`\<[`RenderedFeature`](../Layers/RenderedFeature.md)\[]>
 
 Get the features that are currently **rendered** on the map in the viewport.
 
@@ -698,12 +698,41 @@ features are omitted from what is rendered on the screen.
 
 ### Returns
 
-`Promise`\<[`Feature`](../Layers/Feature.md)\[]>
+`Promise`\<[`RenderedFeature`](../Layers/RenderedFeature.md)\[]>
 
 ### Example
 
 ```typescript
 const features = await felt.getRenderedFeatures();
+```
+
+***
+
+## getFeature()
+
+> **getFeature**(`params`: \{ `id`: `string` | `number`; `layerId`: `string`; }): `Promise`\<`null` | [`GeoJsonFeature`](../Shared/GeoJsonFeature.md)>
+
+Get a feature from the map by its ID and layer ID.
+
+The response is a GeoJSON Feature object with the complete geometry of the
+feature.
+
+### Parameters
+
+| Parameter        | Type                                                  |
+| ---------------- | ----------------------------------------------------- |
+| `params`         | \{ `id`: `string` \| `number`; `layerId`: `string`; } |
+| `params.id`      | `string` \| `number`                                  |
+| `params.layerId` | `string`                                              |
+
+### Returns
+
+`Promise`\<`null` | [`GeoJsonFeature`](../Shared/GeoJsonFeature.md)>
+
+### Example
+
+```typescript
+const feature = await felt.getFeature({ layerId: "layer-1", featureId: 123 });
 ```
 
 ***

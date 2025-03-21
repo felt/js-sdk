@@ -1,8 +1,11 @@
+import type { GeoJsonGeometry } from "~/modules/shared";
+import type { GeoJsonProperties } from "~/modules/shared/types";
+
 /**
  * A feature is a single geographical item in a layer.
  * The unique ID for a feature is a compound key made up of the layer ID and the feature ID.
  */
-export interface Feature {
+export interface RenderedFeature {
   /**
    * The identifier of the feature, unique within the layer.
    */
@@ -16,17 +19,12 @@ export interface Feature {
   /**
    * The type of geometry of the feature.
    */
-  geometryType:
-    | "Point"
-    | "LineString"
-    | "Polygon"
-    | "MultiPolygon"
-    | (string & {});
+  geometryType: GeoJsonGeometry["type"] | (string & {});
 
   /**
    * The properties of the feature, as a bag of attributes.
    */
-  properties: Record<string, unknown>;
+  properties: GeoJsonProperties;
 }
 
 /**

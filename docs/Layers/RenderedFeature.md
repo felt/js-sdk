@@ -23,7 +23,7 @@ The identifier of the layer that the feature belongs to.
 
 ## geometryType
 
-> **geometryType**: `"Point"` | `"Polygon"` | `"LineString"` | `"MultiPolygon"` | `string` & \{}
+> **geometryType**: `"Point"` | `"Polygon"` | `"LineString"` | `"MultiLineString"` | `"MultiPoint"` | `"MultiPolygon"` | `string` & \{}
 
 The type of geometry of the feature.
 
@@ -31,6 +31,6 @@ The type of geometry of the feature.
 
 ## properties
 
-> **properties**: `Record`\<`string`, `unknown`>
+> **properties**: [`GeoJsonProperties`](../Shared/GeoJsonProperties.md)
 
 The properties of the feature, as a bag of attributes.

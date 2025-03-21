@@ -1,5 +1,8 @@
 import { listener, method } from "~/lib/interface";
-import type { Geometry, SetVisibilityRequest } from "~/modules/shared/types";
+import type {
+  GeoJsonGeometry,
+  SetVisibilityRequest,
+} from "~/modules/shared/types";
 
 import type {
   Element,
@@ -73,7 +76,7 @@ export interface ElementsController {
      * The id of the element you want to get the geometry of.
      */
     id: string,
-  ): Promise<Geometry | null>;
+  ): Promise<GeoJsonGeometry | null>;
 
   /**
    * Gets elements from the map, according to the constraints supplied. If no

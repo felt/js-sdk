@@ -33,9 +33,24 @@ const PinToolSettingsSchema = PlaceCreateSchema.pick({
   color: true,
   symbol: true,
   frame: true,
-}).required();
+})
+  .extend({
+    afterCreation: z.enum(["enter name", "add another", "select"]),
+  })
+  .required();
 export interface PinToolSettings extends zInfer<typeof PinToolSettingsSchema> {
   symbol: PlaceSymbol;
+
+  /**
+   * What to do after creating the Place element.
+   *
+   * - `"enter name"`: Enter a name for the Place, focusing the name input.
+   * - `"add another"`: Add another Place, leaving the tool still selected.
+   * - `"none"`: Puts the tool down and selects the new Place element.
+   *
+   * @defaultValue `"enter name"`
+   */
+  afterCreation: "enter name" | "add another" | "select";
 }
 
 const LineToolSettingsSchema = PathCreateSchema.pick({

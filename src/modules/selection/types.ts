@@ -1,7 +1,7 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import type { Element, ElementGroup } from "../elements/types";
-import type { Feature } from "../layers/features/types";
+import type { LayerFeature } from "../layers/features/types";
 import type { Layer, LayerGroup } from "../layers/types";
 
 /**
@@ -71,7 +71,7 @@ export type LayerGroupNode = {
  */
 export type FeatureNode = {
   type: "feature";
-  entity: Feature;
+  entity: LayerFeature;
 };
 
 /**

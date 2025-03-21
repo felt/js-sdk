@@ -1,8 +1,23 @@
+import type { FeltController } from "~/client";
+import type { SelectionController } from "~/modules/selection";
+import type {
+  GeoJsonFeature,
+  GeoJsonGeometry,
+  GeoJsonProperties,
+} from "~/modules/shared";
+
 /**
- * A feature is a single geographical item in a layer.
- * The unique ID for a feature is a compound key made up of the layer ID and the feature ID.
+ * A LayerFeature is a single geographical item in a layer.
+ *
+ * It is intended to be a lightweight object that contains the properties of a
+ * feature, but not the geometry. It is returned by methods like
+ * {@link FeltController.getRenderedFeatures} and {@link FeltController.getFeature},
+ * and as part of the methods in the {@link SelectionController}
+ *
+ * The geometry can be obtained via the {@link FeltController.getGeoJsonFeature}
+ * method, which returns a {@link GeoJsonFeature} object.
  */
-export interface Feature {
+export interface LayerFeature {
   /**
    * The identifier of the feature, unique within the layer.
    */
@@ -16,17 +31,12 @@ export interface Feature {
   /**
    * The type of geometry of the feature.
    */
-  geometryType:
-    | "Point"
-    | "LineString"
-    | "Polygon"
-    | "MultiPolygon"
-    | (string & {});
+  geometryType: GeoJsonGeometry["type"] | (string & {});
 
   /**
    * The properties of the feature, as a bag of attributes.
    */
-  properties: Record<string, unknown>;
+  properties: GeoJsonProperties;
 }
 
 /**

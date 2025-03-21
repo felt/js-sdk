@@ -1,0 +1,43 @@
+***
+
+A LayerFeature is a single geographical item in a layer.
+
+It is intended to be a lightweight object that contains the properties of a
+feature, but not the geometry. It is returned by methods like
+[FeltController.getRenderedFeatures](LayersController.md#getrenderedfeatures) and [FeltController.getFeature](LayersController.md#getfeature),
+and as part of the methods in the [SelectionController](../Selection/SelectionController.md)
+
+The geometry can be obtained via the [FeltController.getGeoJsonFeature](LayersController.md#getgeojsonfeature)
+method, which returns a [GeoJsonFeature](../Shared/GeoJsonFeature.md) object.
+
+# Properties
+
+## id
+
+> **id**: `string` | `number`
+
+The identifier of the feature, unique within the layer.
+
+***
+
+## layerId
+
+> **layerId**: `string`
+
+The identifier of the layer that the feature belongs to.
+
+***
+
+## geometryType
+
+> **geometryType**: `"Point"` | `"Polygon"` | `"LineString"` | `"MultiLineString"` | `"MultiPoint"` | `"MultiPolygon"` | `string` & \{}
+
+The type of geometry of the feature.
+
+***
+
+## properties
+
+> **properties**: [`GeoJsonProperties`](../Shared/GeoJsonProperties.md)
+
+The properties of the feature, as a bag of attributes.

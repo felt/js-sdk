@@ -1,5 +1,8 @@
 import { listener, method } from "~/lib/interface";
-import type { SetVisibilityRequest } from "~/modules/shared/types";
+import type {
+  GeoJsonFeature,
+  SetVisibilityRequest,
+} from "~/modules/shared/types";
 import type { Filters, LayerFilters } from "./filters/types";
 import type {
   AggregationMethod,
@@ -10,12 +13,12 @@ import type {
   GetLayerHistogramParams,
 } from "./stats/types";
 import type {
-  Feature,
   GetLayerGroupsConstraint,
   GetLayersConstraint,
   GetRenderedFeaturesConstraint,
   Layer,
   LayerChangeCallbackParams,
+  LayerFeature,
   LayerGroup,
   LayerGroupChangeCallbackParams,
   LegendItem,
@@ -57,8 +60,10 @@ export const layersController = (feltWindow: Window): LayersController => ({
   setLayerFilters: method(feltWindow, "setLayerFilters"),
   onLayerFiltersChange: listener(feltWindow, "onLayerFiltersChange"),
 
-  // rendered features
+  // features
   getRenderedFeatures: method(feltWindow, "getRenderedFeatures"),
+  getFeature: method(feltWindow, "getFeature"),
+  getGeoJsonFeature: method(feltWindow, "getGeoJsonFeature"),
 
   // stats
   getCategoryData: method(feltWindow, "getCategoryData"),
@@ -454,7 +459,41 @@ export interface LayersController {
      * The constraints to apply to the features returned from the map.
      */
     params?: GetRenderedFeaturesConstraint,
-  ): Promise<Array<Feature>>;
+  ): Promise<Array<LayerFeature>>;
+
+  /**
+   * Get a feature from the map by its ID and layer ID.
+   *
+   * The response is a {@link LayerFeature} object, which does not include the
+   * geometry of the feature.
+   *
+   * You may want to use this when you don't need the geometry of a feature,
+   * but you know the ID of the feature you need.
+   *
+   * @example
+   * ```typescript
+   * const feature = await felt.getFeature({ layerId: "layer-1", id: 123 });
+   * ```
+   */
+  getFeature(params: {
+    id: string | number;
+    layerId: string;
+  }): Promise<LayerFeature | null>;
+
+  /**
+   * Get a feature in GeoJSON format from the map by its ID and layer ID.
+   *
+   * The response is a GeoJSON Feature object with the complete geometry of the
+   *
+   * @example
+   * ```typescript
+   * const feature = await felt.getGeoJsonFeature({ layerId: "layer-1", id: 123 });
+   * ```
+   */
+  getGeoJsonFeature(params: {
+    id: string | number;
+    layerId: string;
+  }): Promise<GeoJsonFeature | null>;
 
   // STATS
   /**

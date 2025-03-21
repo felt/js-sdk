@@ -16,7 +16,7 @@ independently of the Layer, so you can turn on and off each category or class in
 
 # Interfaces
 
-* [Feature](Feature.md)
+* [LayerFeature](LayerFeature.md)
 * [RasterValue](RasterValue.md)
 * [AggregationConfig](AggregationConfig.md)
 * [MultiAggregationConfig](MultiAggregationConfig.md)

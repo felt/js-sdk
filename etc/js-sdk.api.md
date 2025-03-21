@@ -4,114 +4,117 @@
 
 ```ts
 
-import { ap as AggregationConfig } from './types-BJ-ZcukB.js';
-import { A as AggregationMethod } from './types-BJ-ZcukB.js';
-import { R as CircleElementCreate } from './types-BJ-ZcukB.js';
-import { U as CircleElementRead } from './types-BJ-ZcukB.js';
-import { W as CircleElementUpdate } from './types-BJ-ZcukB.js';
-import { aH as CircleToolSettings } from './types-BJ-ZcukB.js';
-import { C as ConfigurableToolType } from './types-BJ-ZcukB.js';
-import { E as Element_2 } from './types-BJ-ZcukB.js';
-import { d as ElementChangeCallbackParams } from './types-BJ-ZcukB.js';
-import { f as ElementCreate } from './types-BJ-ZcukB.js';
-import { b as ElementGroup } from './types-BJ-ZcukB.js';
-import { e as ElementGroupChangeCallbackParams } from './types-BJ-ZcukB.js';
-import { as as ElementGroupNode } from './types-BJ-ZcukB.js';
-import { at as ElementNode } from './types-BJ-ZcukB.js';
-import { g as ElementUpdate } from './types-BJ-ZcukB.js';
-import { z as EntityNode } from './types-BJ-ZcukB.js';
-import { s as Feature } from './types-BJ-ZcukB.js';
-import { au as FeatureNode } from './types-BJ-ZcukB.js';
-import { B as FeatureSelection } from './types-BJ-ZcukB.js';
-import { ax as FeltBoundary } from './types-BJ-ZcukB.js';
-import { ay as FeltZoom } from './types-BJ-ZcukB.js';
-import { am as FilterExpression } from './types-BJ-ZcukB.js';
-import { an as FilterLogicGate } from './types-BJ-ZcukB.js';
-import { F as Filters } from './types-BJ-ZcukB.js';
-import { ao as FilterTernary } from './types-BJ-ZcukB.js';
-import { G as Geometry } from './types-BJ-ZcukB.js';
-import { c as GetElementGroupsConstraint } from './types-BJ-ZcukB.js';
-import { a as GetElementsConstraint } from './types-BJ-ZcukB.js';
-import { x as GetLayerCalculationParams } from './types-BJ-ZcukB.js';
-import { u as GetLayerCategoriesGroup } from './types-BJ-ZcukB.js';
-import { t as GetLayerCategoriesParams } from './types-BJ-ZcukB.js';
-import { k as GetLayerGroupsConstraint } from './types-BJ-ZcukB.js';
-import { w as GetLayerHistogramBin } from './types-BJ-ZcukB.js';
-import { v as GetLayerHistogramParams } from './types-BJ-ZcukB.js';
-import { h as GetLayersConstraint } from './types-BJ-ZcukB.js';
-import { r as GetRenderedFeaturesConstraint } from './types-BJ-ZcukB.js';
-import { X as HighlighterElementCreate } from './types-BJ-ZcukB.js';
-import { Y as HighlighterElementRead } from './types-BJ-ZcukB.js';
-import { Z as HighlighterElementUpdate } from './types-BJ-ZcukB.js';
-import { aI as HighlighterToolSettings } from './types-BJ-ZcukB.js';
-import { _ as ImageElementCreate } from './types-BJ-ZcukB.js';
-import { $ as ImageElementRead } from './types-BJ-ZcukB.js';
-import { a0 as ImageElementUpdate } from './types-BJ-ZcukB.js';
-import { I as InputToolSettings } from './types-BJ-ZcukB.js';
-import { J } from './types-BJ-ZcukB.js';
-import { az as LatLng } from './types-BJ-ZcukB.js';
-import { L as Layer } from './types-BJ-ZcukB.js';
-import { i as LayerChangeCallbackParams } from './types-BJ-ZcukB.js';
-import { q as LayerFilters } from './types-BJ-ZcukB.js';
-import { j as LayerGroup } from './types-BJ-ZcukB.js';
-import { l as LayerGroupChangeCallbackParams } from './types-BJ-ZcukB.js';
-import { av as LayerGroupNode } from './types-BJ-ZcukB.js';
-import { aw as LayerNode } from './types-BJ-ZcukB.js';
-import { ak as LayerProcessingStatus } from './types-BJ-ZcukB.js';
-import { n as LegendItem } from './types-BJ-ZcukB.js';
-import { p as LegendItemChangeCallbackParams } from './types-BJ-ZcukB.js';
-import { m as LegendItemIdentifier } from './types-BJ-ZcukB.js';
-import { o as LegendItemsConstraint } from './types-BJ-ZcukB.js';
-import { aA as LineStringGeometry } from './types-BJ-ZcukB.js';
-import { aJ as LineToolSettings } from './types-BJ-ZcukB.js';
-import { a1 as LinkElementRead } from './types-BJ-ZcukB.js';
-import { aB as LngLatTuple } from './types-BJ-ZcukB.js';
-import { y as MapDetails } from './types-BJ-ZcukB.js';
-import { M as MapInteractionEvent } from './types-BJ-ZcukB.js';
-import { a2 as MarkerElementCreate } from './types-BJ-ZcukB.js';
-import { a3 as MarkerElementRead } from './types-BJ-ZcukB.js';
-import { a4 as MarkerElementUpdate } from './types-BJ-ZcukB.js';
-import { aK as MarkerToolSettings } from './types-BJ-ZcukB.js';
-import { aq as MultiAggregationConfig } from './types-BJ-ZcukB.js';
-import { aC as MultiLineStringGeometry } from './types-BJ-ZcukB.js';
-import { aD as MultiPolygonGeometry } from './types-BJ-ZcukB.js';
-import { a5 as NoteElementCreate } from './types-BJ-ZcukB.js';
-import { a6 as NoteElementRead } from './types-BJ-ZcukB.js';
-import { a7 as NoteElementUpdate } from './types-BJ-ZcukB.js';
-import { aL as NoteToolSettings } from './types-BJ-ZcukB.js';
-import { a8 as PathElementCreate } from './types-BJ-ZcukB.js';
-import { a9 as PathElementRead } from './types-BJ-ZcukB.js';
-import { aa as PathElementUpdate } from './types-BJ-ZcukB.js';
-import { aM as PinToolSettings } from './types-BJ-ZcukB.js';
-import { ab as PlaceElementCreate } from './types-BJ-ZcukB.js';
-import { ac as PlaceElementRead } from './types-BJ-ZcukB.js';
-import { ad as PlaceElementUpdate } from './types-BJ-ZcukB.js';
-import { aN as PlaceFrame } from './types-BJ-ZcukB.js';
-import { aO as PlaceSymbol } from './types-BJ-ZcukB.js';
-import { aE as PointGeometry } from './types-BJ-ZcukB.js';
-import { ae as PolygonElementCreate } from './types-BJ-ZcukB.js';
-import { af as PolygonElementRead } from './types-BJ-ZcukB.js';
-import { ag as PolygonElementUpdate } from './types-BJ-ZcukB.js';
-import { aF as PolygonGeometry } from './types-BJ-ZcukB.js';
-import { aP as PolygonToolSettings } from './types-BJ-ZcukB.js';
-import { al as RasterValue } from './types-BJ-ZcukB.js';
-import { aQ as RouteToolSettings } from './types-BJ-ZcukB.js';
-import { N as SetViewportCenterZoomParams } from './types-BJ-ZcukB.js';
-import { S as SetVisibilityRequest } from './types-BJ-ZcukB.js';
-import { K as SortConfig } from './types-BJ-ZcukB.js';
-import { aG as SortDirection } from './types-BJ-ZcukB.js';
-import { ah as TextElementCreate } from './types-BJ-ZcukB.js';
-import { ai as TextElementRead } from './types-BJ-ZcukB.js';
-import { aj as TextElementUpdate } from './types-BJ-ZcukB.js';
-import { aR as TextToolSettings } from './types-BJ-ZcukB.js';
-import { H as ToolSettingsChangeEvent } from './types-BJ-ZcukB.js';
-import { D as ToolSettingsMap } from './types-BJ-ZcukB.js';
-import { T as ToolType } from './types-BJ-ZcukB.js';
-import { ar as ValueConfiguration } from './types-BJ-ZcukB.js';
-import { Q as ViewportCenterZoom } from './types-BJ-ZcukB.js';
-import { O as ViewportConstraints } from './types-BJ-ZcukB.js';
-import { P as ViewportFitBoundsParams } from './types-BJ-ZcukB.js';
-import { V as ViewportState } from './types-BJ-ZcukB.js';
+import { aq as AggregationConfig } from './types-BS6sEkxM.js';
+import { A as AggregationMethod } from './types-BS6sEkxM.js';
+import { U as CircleElementCreate } from './types-BS6sEkxM.js';
+import { W as CircleElementRead } from './types-BS6sEkxM.js';
+import { X as CircleElementUpdate } from './types-BS6sEkxM.js';
+import { aK as CircleToolSettings } from './types-BS6sEkxM.js';
+import { D as ConfigurableToolType } from './types-BS6sEkxM.js';
+import { E as Element_2 } from './types-BS6sEkxM.js';
+import { d as ElementChangeCallbackParams } from './types-BS6sEkxM.js';
+import { f as ElementCreate } from './types-BS6sEkxM.js';
+import { b as ElementGroup } from './types-BS6sEkxM.js';
+import { e as ElementGroupChangeCallbackParams } from './types-BS6sEkxM.js';
+import { at as ElementGroupNode } from './types-BS6sEkxM.js';
+import { au as ElementNode } from './types-BS6sEkxM.js';
+import { g as ElementUpdate } from './types-BS6sEkxM.js';
+import { B as EntityNode } from './types-BS6sEkxM.js';
+import { av as FeatureNode } from './types-BS6sEkxM.js';
+import { C as FeatureSelection } from './types-BS6sEkxM.js';
+import { ay as FeltBoundary } from './types-BS6sEkxM.js';
+import { az as FeltZoom } from './types-BS6sEkxM.js';
+import { an as FilterExpression } from './types-BS6sEkxM.js';
+import { ao as FilterLogicGate } from './types-BS6sEkxM.js';
+import { F as Filters } from './types-BS6sEkxM.js';
+import { ap as FilterTernary } from './types-BS6sEkxM.js';
+import { t as GeoJsonFeature } from './types-BS6sEkxM.js';
+import { G as GeoJsonGeometry } from './types-BS6sEkxM.js';
+import { aA as GeoJsonProperties } from './types-BS6sEkxM.js';
+import { c as GetElementGroupsConstraint } from './types-BS6sEkxM.js';
+import { a as GetElementsConstraint } from './types-BS6sEkxM.js';
+import { y as GetLayerCalculationParams } from './types-BS6sEkxM.js';
+import { v as GetLayerCategoriesGroup } from './types-BS6sEkxM.js';
+import { u as GetLayerCategoriesParams } from './types-BS6sEkxM.js';
+import { k as GetLayerGroupsConstraint } from './types-BS6sEkxM.js';
+import { x as GetLayerHistogramBin } from './types-BS6sEkxM.js';
+import { w as GetLayerHistogramParams } from './types-BS6sEkxM.js';
+import { h as GetLayersConstraint } from './types-BS6sEkxM.js';
+import { r as GetRenderedFeaturesConstraint } from './types-BS6sEkxM.js';
+import { Y as HighlighterElementCreate } from './types-BS6sEkxM.js';
+import { Z as HighlighterElementRead } from './types-BS6sEkxM.js';
+import { _ as HighlighterElementUpdate } from './types-BS6sEkxM.js';
+import { aL as HighlighterToolSettings } from './types-BS6sEkxM.js';
+import { $ as ImageElementCreate } from './types-BS6sEkxM.js';
+import { a0 as ImageElementRead } from './types-BS6sEkxM.js';
+import { a1 as ImageElementUpdate } from './types-BS6sEkxM.js';
+import { I as InputToolSettings } from './types-BS6sEkxM.js';
+import { K } from './types-BS6sEkxM.js';
+import { aB as LatLng } from './types-BS6sEkxM.js';
+import { L as Layer } from './types-BS6sEkxM.js';
+import { i as LayerChangeCallbackParams } from './types-BS6sEkxM.js';
+import { s as LayerFeature } from './types-BS6sEkxM.js';
+import { q as LayerFilters } from './types-BS6sEkxM.js';
+import { j as LayerGroup } from './types-BS6sEkxM.js';
+import { l as LayerGroupChangeCallbackParams } from './types-BS6sEkxM.js';
+import { aw as LayerGroupNode } from './types-BS6sEkxM.js';
+import { ax as LayerNode } from './types-BS6sEkxM.js';
+import { al as LayerProcessingStatus } from './types-BS6sEkxM.js';
+import { n as LegendItem } from './types-BS6sEkxM.js';
+import { p as LegendItemChangeCallbackParams } from './types-BS6sEkxM.js';
+import { m as LegendItemIdentifier } from './types-BS6sEkxM.js';
+import { o as LegendItemsConstraint } from './types-BS6sEkxM.js';
+import { aC as LineStringGeometry } from './types-BS6sEkxM.js';
+import { aM as LineToolSettings } from './types-BS6sEkxM.js';
+import { a2 as LinkElementRead } from './types-BS6sEkxM.js';
+import { aD as LngLatTuple } from './types-BS6sEkxM.js';
+import { z as MapDetails } from './types-BS6sEkxM.js';
+import { M as MapInteractionEvent } from './types-BS6sEkxM.js';
+import { a3 as MarkerElementCreate } from './types-BS6sEkxM.js';
+import { a4 as MarkerElementRead } from './types-BS6sEkxM.js';
+import { a5 as MarkerElementUpdate } from './types-BS6sEkxM.js';
+import { aN as MarkerToolSettings } from './types-BS6sEkxM.js';
+import { ar as MultiAggregationConfig } from './types-BS6sEkxM.js';
+import { aE as MultiLineStringGeometry } from './types-BS6sEkxM.js';
+import { aF as MultiPointGeometry } from './types-BS6sEkxM.js';
+import { aG as MultiPolygonGeometry } from './types-BS6sEkxM.js';
+import { a6 as NoteElementCreate } from './types-BS6sEkxM.js';
+import { a7 as NoteElementRead } from './types-BS6sEkxM.js';
+import { a8 as NoteElementUpdate } from './types-BS6sEkxM.js';
+import { aO as NoteToolSettings } from './types-BS6sEkxM.js';
+import { a9 as PathElementCreate } from './types-BS6sEkxM.js';
+import { aa as PathElementRead } from './types-BS6sEkxM.js';
+import { ab as PathElementUpdate } from './types-BS6sEkxM.js';
+import { aP as PinToolSettings } from './types-BS6sEkxM.js';
+import { ac as PlaceElementCreate } from './types-BS6sEkxM.js';
+import { ad as PlaceElementRead } from './types-BS6sEkxM.js';
+import { ae as PlaceElementUpdate } from './types-BS6sEkxM.js';
+import { aQ as PlaceFrame } from './types-BS6sEkxM.js';
+import { aR as PlaceSymbol } from './types-BS6sEkxM.js';
+import { aH as PointGeometry } from './types-BS6sEkxM.js';
+import { af as PolygonElementCreate } from './types-BS6sEkxM.js';
+import { ag as PolygonElementRead } from './types-BS6sEkxM.js';
+import { ah as PolygonElementUpdate } from './types-BS6sEkxM.js';
+import { aI as PolygonGeometry } from './types-BS6sEkxM.js';
+import { aS as PolygonToolSettings } from './types-BS6sEkxM.js';
+import { am as RasterValue } from './types-BS6sEkxM.js';
+import { aT as RouteToolSettings } from './types-BS6sEkxM.js';
+import { O as SetViewportCenterZoomParams } from './types-BS6sEkxM.js';
+import { S as SetVisibilityRequest } from './types-BS6sEkxM.js';
+import { N as SortConfig } from './types-BS6sEkxM.js';
+import { aJ as SortDirection } from './types-BS6sEkxM.js';
+import { ai as TextElementCreate } from './types-BS6sEkxM.js';
+import { aj as TextElementRead } from './types-BS6sEkxM.js';
+import { ak as TextElementUpdate } from './types-BS6sEkxM.js';
+import { aU as TextToolSettings } from './types-BS6sEkxM.js';
+import { J as ToolSettingsChangeEvent } from './types-BS6sEkxM.js';
+import { H as ToolSettingsMap } from './types-BS6sEkxM.js';
+import { T as ToolType } from './types-BS6sEkxM.js';
+import { as as ValueConfiguration } from './types-BS6sEkxM.js';
+import { R as ViewportCenterZoom } from './types-BS6sEkxM.js';
+import { P as ViewportConstraints } from './types-BS6sEkxM.js';
+import { Q as ViewportFitBoundsParams } from './types-BS6sEkxM.js';
+import { V as ViewportState } from './types-BS6sEkxM.js';
 import { z } from 'zod';
 
 export { AggregationConfig }
@@ -149,7 +152,7 @@ export interface ElementsController {
     getElement(
     id: string): Promise<Element_2 | null>;
     getElementGeometry(
-    id: string): Promise<Geometry | null>;
+    id: string): Promise<GeoJsonGeometry | null>;
     getElementGroup(id: string): Promise<ElementGroup | null>;
     getElementGroups(
     constraint?: GetElementGroupsConstraint): Promise<Array<ElementGroup | null>>;
@@ -190,8 +193,6 @@ export { ElementUpdate }
 
 export { EntityNode }
 
-export { Feature }
-
 export { FeatureNode }
 
 export { FeatureSelection }
@@ -212,7 +213,7 @@ export interface FeltController extends ViewportController, UiController, Layers
 // Warning: (ae-forgotten-export) The symbol "FeltEmbedOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public
-export interface FeltEmbedOptions extends J<typeof FeltEmbedOptionsSchema> {
+export interface FeltEmbedOptions extends K<typeof FeltEmbedOptionsSchema> {
     // (undocumented)
     initialViewport?: ViewportCenterZoom;
     // (undocumented)
@@ -318,7 +319,11 @@ export { Filters }
 
 export { FilterTernary }
 
-export { Geometry }
+export { GeoJsonFeature }
+
+export { GeoJsonGeometry }
+
+export { GeoJsonProperties }
 
 export { GetElementGroupsConstraint }
 
@@ -373,6 +378,8 @@ export { Layer }
 
 export { LayerChangeCallbackParams }
 
+export { LayerFeature }
+
 export { LayerFilters }
 
 export { LayerGroup }
@@ -389,6 +396,14 @@ export { LayerProcessingStatus }
 export interface LayersController {
     getAggregates<T extends AggregationMethod | "count">(params: GetLayerCalculationParams<T>): Promise<Record<T, number | null>>;
     getCategoryData(params: GetLayerCategoriesParams): Promise<Array<GetLayerCategoriesGroup>>;
+    getFeature(params: {
+        id: string | number;
+        layerId: string;
+    }): Promise<LayerFeature | null>;
+    getGeoJsonFeature(params: {
+        id: string | number;
+        layerId: string;
+    }): Promise<GeoJsonFeature | null>;
     getHistogramData(params: GetLayerHistogramParams): Promise<Array<GetLayerHistogramBin>>;
     getLayer(
     id: string): Promise<Layer | null>;
@@ -401,7 +416,7 @@ export interface LayersController {
     getLegendItem(id: LegendItemIdentifier): Promise<LegendItem | null>;
     getLegendItems(constraint?: LegendItemsConstraint): Promise<Array<LegendItem | null>>;
     getRenderedFeatures(
-    params?: GetRenderedFeaturesConstraint): Promise<Array<Feature>>;
+    params?: GetRenderedFeaturesConstraint): Promise<Array<LayerFeature>>;
     onLayerChange(args: {
         options: {
             id: string;
@@ -481,6 +496,8 @@ export { MultiAggregationConfig }
 
 export { MultiLineStringGeometry }
 
+export { MultiPointGeometry }
+
 export { MultiPolygonGeometry }
 
 export { NoteElementCreate }
@@ -494,7 +511,7 @@ export { NoteToolSettings }
 // Warning: (ae-forgotten-export) The symbol "UiOnMapInteractionsOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public
-export interface OnMapInteractionsOptions extends J<typeof UiOnMapInteractionsOptionsSchema> {
+export interface OnMapInteractionsOptions extends K<typeof UiOnMapInteractionsOptionsSchema> {
 }
 
 export { PathElementCreate }
@@ -596,7 +613,7 @@ export interface UiController {
 // Warning: (ae-forgotten-export) The symbol "UiControlsOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public (undocumented)
-export interface UiControlsOptions extends J<typeof UiControlsOptionsSchema> {
+export interface UiControlsOptions extends K<typeof UiControlsOptionsSchema> {
 }
 
 // @internal (undocumented)

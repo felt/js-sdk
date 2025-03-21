@@ -25,6 +25,42 @@ export const LngLatTupleSchema = z.tuple([Longitude, Latitude]);
  */
 export type LngLatTuple = [longitude: number, latitude: number];
 
+/**
+ * A GeoJSON properties object.
+ */
+export type GeoJsonProperties = Record<string, unknown>;
+
+/**
+ * A GeoJSON feature object, compliant with:
+ * https://datatracker.ietf.org/doc/html/rfc7946#section-3.2
+ *
+ * @interface
+ */
+export type GeoJsonFeature = {
+  type: "Feature";
+
+  /**
+   * The bounding box of the feature.
+   */
+  bbox?: FeltBoundary;
+
+  /**
+   * The feature's geometry
+   */
+  geometry: GeoJsonGeometry;
+
+  /**
+   * A value that uniquely identifies this feature in a
+   * https://tools.ietf.org/html/rfc7946#section-3.2.
+   */
+  id?: string | number | undefined;
+
+  /**
+   * Properties associated with this feature.
+   */
+  properties: GeoJsonProperties;
+};
+
 export interface PointGeometry extends zInfer<typeof PointGeometrySchema> {}
 
 /**
@@ -34,6 +70,18 @@ export const PointGeometrySchema = z.object({
   type: z.literal("Point"),
   coordinates: LngLatTupleSchema,
 });
+
+/**
+ * A GeoJSON multi-point geometry.
+ *
+ * @remarks
+ * You shouldn't expect this to come from Felt - it is here for completeness
+ * of the GeoJSON spec.
+ */
+export interface MultiPointGeometry {
+  type: "MultiPoint";
+  coordinates: PointGeometry["coordinates"][];
+}
 
 export interface PolygonGeometry extends zInfer<typeof PolygonGeometrySchema> {}
 
@@ -88,12 +136,13 @@ export const MultiLineStringGeometrySchema = z.object({
 /**
  * A GeoJSON geometry of any type
  */
-export type Geometry =
+export type GeoJsonGeometry =
   | PointGeometry
   | PolygonGeometry
   | LineStringGeometry
   | MultiLineStringGeometry
-  | MultiPolygonGeometry;
+  | MultiPolygonGeometry
+  | MultiPointGeometry;
 
 /**
  * @ignore

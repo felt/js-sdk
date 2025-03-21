@@ -409,6 +409,12 @@ export interface LayersController {
         handler: (
         change: LayerChangeCallbackParams) => void;
     }): VoidFunction;
+    onLayerFiltersChange(params: {
+        options: {
+            layerId: string;
+        };
+        handler: (change: LayerFilters) => void;
+    }): VoidFunction;
     onLayerGroupChange(args: {
         options: {
             id: string;

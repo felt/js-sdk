@@ -105,6 +105,10 @@ const SetFiltersMessage = methodMessage(
     note: z.string().optional(),
   }),
 );
+const OnLayerFiltersChangeMessage = listenerMessageWithParams(
+  "onLayerFiltersChange",
+  z.object({ layerId: z.string() }),
+);
 
 // RENDERED FEATURES
 const GetRenderedFeaturesMessage = methodMessage(
@@ -158,6 +162,7 @@ export const layersSchema = {
     OnLayerChangeMessage,
     OnLayerGroupChangeMessage,
     OnLegendItemChangeMessage,
+    OnLayerFiltersChangeMessage,
   ],
 } satisfies ModuleSchema;
 
@@ -236,6 +241,10 @@ export type LayersSchema = {
     onLegendItemChange: Listener<
       zInfer<typeof OnLegendItemChangeMessage.shape.options>,
       LegendItemChangeCallbackParams
+    >;
+    onLayerFiltersChange: Listener<
+      zInfer<typeof OnLayerFiltersChangeMessage.shape.options>,
+      LayerFilters
     >;
   };
 };

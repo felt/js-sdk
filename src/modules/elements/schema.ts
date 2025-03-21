@@ -10,7 +10,7 @@ import {
 } from "~/lib/builders";
 import type { zInfer } from "~/lib/utils";
 import {
-  type Geometry,
+  type GeoJsonGeometry,
   SetVisibilityRequestSchema,
 } from "~/modules/shared/types";
 import {
@@ -98,7 +98,7 @@ export type ElementsSchema = {
     getElement: Method<zInfer<typeof GetElementMessage>, Element | null>;
     getElementGeometry: Method<
       zInfer<typeof GetElementGeometryMessage>,
-      Geometry | null
+      GeoJsonGeometry | null
     >;
     getElements: Method<
       zInfer<typeof GetElementsMessage>,

@@ -1,5 +1,8 @@
 import { listener, method } from "~/lib/interface";
-import type { SetVisibilityRequest } from "~/modules/shared/types";
+import type {
+  GeoJsonFeature,
+  SetVisibilityRequest,
+} from "~/modules/shared/types";
 import type { Filters, LayerFilters } from "./filters/types";
 import type {
   AggregationMethod,
@@ -10,7 +13,6 @@ import type {
   GetLayerHistogramParams,
 } from "./stats/types";
 import type {
-  Feature,
   GetLayerGroupsConstraint,
   GetLayersConstraint,
   GetRenderedFeaturesConstraint,
@@ -22,6 +24,7 @@ import type {
   LegendItemChangeCallbackParams,
   LegendItemIdentifier,
   LegendItemsConstraint,
+  RenderedFeature,
 } from "./types";
 
 /**
@@ -58,6 +61,7 @@ export const layersController = (feltWindow: Window): LayersController => ({
 
   // rendered features
   getRenderedFeatures: method(feltWindow, "getRenderedFeatures"),
+  getFeature: method(feltWindow, "getFeature"),
 
   // stats
   getCategoryData: method(feltWindow, "getCategoryData"),
@@ -417,7 +421,23 @@ export interface LayersController {
      * The constraints to apply to the features returned from the map.
      */
     params?: GetRenderedFeaturesConstraint,
-  ): Promise<Array<Feature>>;
+  ): Promise<Array<RenderedFeature>>;
+
+  /**
+   * Get a feature from the map by its ID and layer ID.
+   *
+   * The response is a GeoJSON Feature object with the complete geometry of the
+   * feature.
+   *
+   * @example
+   * ```typescript
+   * const feature = await felt.getFeature({ layerId: "layer-1", featureId: 123 });
+   * ```
+   */
+  getFeature(params: {
+    id: string | number;
+    layerId: string;
+  }): Promise<GeoJsonFeature | null>;
 
   // STATS
   /**

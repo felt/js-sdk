@@ -14,7 +14,7 @@ The cursor position in world coordinates.
 
 ## features
 
-> **features**: [`Feature`](../Layers/Feature.md)\[]
+> **features**: [`RenderedFeature`](../Layers/RenderedFeature.md)\[]
 
 The vector features that are under the cursor.
 

@@ -16,7 +16,6 @@
  * @module Layers
  */
 export type {
-  Feature,
   GetLayerGroupsConstraint,
   GetLayersConstraint,
   GetRenderedFeaturesConstraint,
@@ -30,6 +29,7 @@ export type {
   LegendItemIdentifier,
   LegendItemsConstraint,
   RasterValue,
+  RenderedFeature,
 } from "./types";
 
 export type {

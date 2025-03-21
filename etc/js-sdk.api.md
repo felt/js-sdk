@@ -4,114 +4,117 @@
 
 ```ts
 
-import { ap as AggregationConfig } from './types-XLCA2cX-.js';
-import { A as AggregationMethod } from './types-XLCA2cX-.js';
-import { R as CircleElementCreate } from './types-XLCA2cX-.js';
-import { U as CircleElementRead } from './types-XLCA2cX-.js';
-import { W as CircleElementUpdate } from './types-XLCA2cX-.js';
-import { aH as CircleToolSettings } from './types-XLCA2cX-.js';
-import { C as ConfigurableToolType } from './types-XLCA2cX-.js';
-import { E as Element_2 } from './types-XLCA2cX-.js';
-import { d as ElementChangeCallbackParams } from './types-XLCA2cX-.js';
-import { f as ElementCreate } from './types-XLCA2cX-.js';
-import { b as ElementGroup } from './types-XLCA2cX-.js';
-import { e as ElementGroupChangeCallbackParams } from './types-XLCA2cX-.js';
-import { as as ElementGroupNode } from './types-XLCA2cX-.js';
-import { at as ElementNode } from './types-XLCA2cX-.js';
-import { g as ElementUpdate } from './types-XLCA2cX-.js';
-import { z as EntityNode } from './types-XLCA2cX-.js';
-import { s as Feature } from './types-XLCA2cX-.js';
-import { au as FeatureNode } from './types-XLCA2cX-.js';
-import { B as FeatureSelection } from './types-XLCA2cX-.js';
-import { ax as FeltBoundary } from './types-XLCA2cX-.js';
-import { ay as FeltZoom } from './types-XLCA2cX-.js';
-import { am as FilterExpression } from './types-XLCA2cX-.js';
-import { an as FilterLogicGate } from './types-XLCA2cX-.js';
-import { F as Filters } from './types-XLCA2cX-.js';
-import { ao as FilterTernary } from './types-XLCA2cX-.js';
-import { G as Geometry } from './types-XLCA2cX-.js';
-import { c as GetElementGroupsConstraint } from './types-XLCA2cX-.js';
-import { a as GetElementsConstraint } from './types-XLCA2cX-.js';
-import { x as GetLayerCalculationParams } from './types-XLCA2cX-.js';
-import { u as GetLayerCategoriesGroup } from './types-XLCA2cX-.js';
-import { t as GetLayerCategoriesParams } from './types-XLCA2cX-.js';
-import { k as GetLayerGroupsConstraint } from './types-XLCA2cX-.js';
-import { w as GetLayerHistogramBin } from './types-XLCA2cX-.js';
-import { v as GetLayerHistogramParams } from './types-XLCA2cX-.js';
-import { h as GetLayersConstraint } from './types-XLCA2cX-.js';
-import { r as GetRenderedFeaturesConstraint } from './types-XLCA2cX-.js';
-import { X as HighlighterElementCreate } from './types-XLCA2cX-.js';
-import { Y as HighlighterElementRead } from './types-XLCA2cX-.js';
-import { Z as HighlighterElementUpdate } from './types-XLCA2cX-.js';
-import { aI as HighlighterToolSettings } from './types-XLCA2cX-.js';
-import { _ as ImageElementCreate } from './types-XLCA2cX-.js';
-import { $ as ImageElementRead } from './types-XLCA2cX-.js';
-import { a0 as ImageElementUpdate } from './types-XLCA2cX-.js';
-import { I as InputToolSettings } from './types-XLCA2cX-.js';
-import { J } from './types-XLCA2cX-.js';
-import { az as LatLng } from './types-XLCA2cX-.js';
-import { L as Layer } from './types-XLCA2cX-.js';
-import { i as LayerChangeCallbackParams } from './types-XLCA2cX-.js';
-import { q as LayerFilters } from './types-XLCA2cX-.js';
-import { j as LayerGroup } from './types-XLCA2cX-.js';
-import { l as LayerGroupChangeCallbackParams } from './types-XLCA2cX-.js';
-import { av as LayerGroupNode } from './types-XLCA2cX-.js';
-import { aw as LayerNode } from './types-XLCA2cX-.js';
-import { ak as LayerProcessingStatus } from './types-XLCA2cX-.js';
-import { n as LegendItem } from './types-XLCA2cX-.js';
-import { p as LegendItemChangeCallbackParams } from './types-XLCA2cX-.js';
-import { m as LegendItemIdentifier } from './types-XLCA2cX-.js';
-import { o as LegendItemsConstraint } from './types-XLCA2cX-.js';
-import { aA as LineStringGeometry } from './types-XLCA2cX-.js';
-import { aJ as LineToolSettings } from './types-XLCA2cX-.js';
-import { a1 as LinkElementRead } from './types-XLCA2cX-.js';
-import { aB as LngLatTuple } from './types-XLCA2cX-.js';
-import { y as MapDetails } from './types-XLCA2cX-.js';
-import { M as MapInteractionEvent } from './types-XLCA2cX-.js';
-import { a2 as MarkerElementCreate } from './types-XLCA2cX-.js';
-import { a3 as MarkerElementRead } from './types-XLCA2cX-.js';
-import { a4 as MarkerElementUpdate } from './types-XLCA2cX-.js';
-import { aK as MarkerToolSettings } from './types-XLCA2cX-.js';
-import { aq as MultiAggregationConfig } from './types-XLCA2cX-.js';
-import { aC as MultiLineStringGeometry } from './types-XLCA2cX-.js';
-import { aD as MultiPolygonGeometry } from './types-XLCA2cX-.js';
-import { a5 as NoteElementCreate } from './types-XLCA2cX-.js';
-import { a6 as NoteElementRead } from './types-XLCA2cX-.js';
-import { a7 as NoteElementUpdate } from './types-XLCA2cX-.js';
-import { aL as NoteToolSettings } from './types-XLCA2cX-.js';
-import { a8 as PathElementCreate } from './types-XLCA2cX-.js';
-import { a9 as PathElementRead } from './types-XLCA2cX-.js';
-import { aa as PathElementUpdate } from './types-XLCA2cX-.js';
-import { aM as PinToolSettings } from './types-XLCA2cX-.js';
-import { ab as PlaceElementCreate } from './types-XLCA2cX-.js';
-import { ac as PlaceElementRead } from './types-XLCA2cX-.js';
-import { ad as PlaceElementUpdate } from './types-XLCA2cX-.js';
-import { aN as PlaceFrame } from './types-XLCA2cX-.js';
-import { aO as PlaceSymbol } from './types-XLCA2cX-.js';
-import { aE as PointGeometry } from './types-XLCA2cX-.js';
-import { ae as PolygonElementCreate } from './types-XLCA2cX-.js';
-import { af as PolygonElementRead } from './types-XLCA2cX-.js';
-import { ag as PolygonElementUpdate } from './types-XLCA2cX-.js';
-import { aF as PolygonGeometry } from './types-XLCA2cX-.js';
-import { aP as PolygonToolSettings } from './types-XLCA2cX-.js';
-import { al as RasterValue } from './types-XLCA2cX-.js';
-import { aQ as RouteToolSettings } from './types-XLCA2cX-.js';
-import { N as SetViewportCenterZoomParams } from './types-XLCA2cX-.js';
-import { S as SetVisibilityRequest } from './types-XLCA2cX-.js';
-import { K as SortConfig } from './types-XLCA2cX-.js';
-import { aG as SortDirection } from './types-XLCA2cX-.js';
-import { ah as TextElementCreate } from './types-XLCA2cX-.js';
-import { ai as TextElementRead } from './types-XLCA2cX-.js';
-import { aj as TextElementUpdate } from './types-XLCA2cX-.js';
-import { aR as TextToolSettings } from './types-XLCA2cX-.js';
-import { H as ToolSettingsChangeEvent } from './types-XLCA2cX-.js';
-import { D as ToolSettingsMap } from './types-XLCA2cX-.js';
-import { T as ToolType } from './types-XLCA2cX-.js';
-import { ar as ValueConfiguration } from './types-XLCA2cX-.js';
-import { Q as ViewportCenterZoom } from './types-XLCA2cX-.js';
-import { O as ViewportConstraints } from './types-XLCA2cX-.js';
-import { P as ViewportFitBoundsParams } from './types-XLCA2cX-.js';
-import { V as ViewportState } from './types-XLCA2cX-.js';
+import { aq as AggregationConfig } from './types-DVnDHZFQ.js';
+import { A as AggregationMethod } from './types-DVnDHZFQ.js';
+import { U as CircleElementCreate } from './types-DVnDHZFQ.js';
+import { W as CircleElementRead } from './types-DVnDHZFQ.js';
+import { X as CircleElementUpdate } from './types-DVnDHZFQ.js';
+import { aK as CircleToolSettings } from './types-DVnDHZFQ.js';
+import { C as ConfigurableToolType } from './types-DVnDHZFQ.js';
+import { E as Element_2 } from './types-DVnDHZFQ.js';
+import { d as ElementChangeCallbackParams } from './types-DVnDHZFQ.js';
+import { f as ElementCreate } from './types-DVnDHZFQ.js';
+import { b as ElementGroup } from './types-DVnDHZFQ.js';
+import { e as ElementGroupChangeCallbackParams } from './types-DVnDHZFQ.js';
+import { at as ElementGroupNode } from './types-DVnDHZFQ.js';
+import { au as ElementNode } from './types-DVnDHZFQ.js';
+import { g as ElementUpdate } from './types-DVnDHZFQ.js';
+import { z as EntityNode } from './types-DVnDHZFQ.js';
+import { av as FeatureNode } from './types-DVnDHZFQ.js';
+import { B as FeatureSelection } from './types-DVnDHZFQ.js';
+import { ay as FeltBoundary } from './types-DVnDHZFQ.js';
+import { az as FeltZoom } from './types-DVnDHZFQ.js';
+import { an as FilterExpression } from './types-DVnDHZFQ.js';
+import { ao as FilterLogicGate } from './types-DVnDHZFQ.js';
+import { F as Filters } from './types-DVnDHZFQ.js';
+import { ap as FilterTernary } from './types-DVnDHZFQ.js';
+import { s as GeoJsonFeature } from './types-DVnDHZFQ.js';
+import { G as GeoJsonGeometry } from './types-DVnDHZFQ.js';
+import { aA as GeoJsonProperties } from './types-DVnDHZFQ.js';
+import { c as GetElementGroupsConstraint } from './types-DVnDHZFQ.js';
+import { a as GetElementsConstraint } from './types-DVnDHZFQ.js';
+import { x as GetLayerCalculationParams } from './types-DVnDHZFQ.js';
+import { u as GetLayerCategoriesGroup } from './types-DVnDHZFQ.js';
+import { t as GetLayerCategoriesParams } from './types-DVnDHZFQ.js';
+import { k as GetLayerGroupsConstraint } from './types-DVnDHZFQ.js';
+import { w as GetLayerHistogramBin } from './types-DVnDHZFQ.js';
+import { v as GetLayerHistogramParams } from './types-DVnDHZFQ.js';
+import { h as GetLayersConstraint } from './types-DVnDHZFQ.js';
+import { r as GetRenderedFeaturesConstraint } from './types-DVnDHZFQ.js';
+import { Y as HighlighterElementCreate } from './types-DVnDHZFQ.js';
+import { Z as HighlighterElementRead } from './types-DVnDHZFQ.js';
+import { _ as HighlighterElementUpdate } from './types-DVnDHZFQ.js';
+import { aL as HighlighterToolSettings } from './types-DVnDHZFQ.js';
+import { $ as ImageElementCreate } from './types-DVnDHZFQ.js';
+import { a0 as ImageElementRead } from './types-DVnDHZFQ.js';
+import { a1 as ImageElementUpdate } from './types-DVnDHZFQ.js';
+import { I as InputToolSettings } from './types-DVnDHZFQ.js';
+import { J } from './types-DVnDHZFQ.js';
+import { aB as LatLng } from './types-DVnDHZFQ.js';
+import { L as Layer } from './types-DVnDHZFQ.js';
+import { i as LayerChangeCallbackParams } from './types-DVnDHZFQ.js';
+import { q as LayerFilters } from './types-DVnDHZFQ.js';
+import { j as LayerGroup } from './types-DVnDHZFQ.js';
+import { l as LayerGroupChangeCallbackParams } from './types-DVnDHZFQ.js';
+import { aw as LayerGroupNode } from './types-DVnDHZFQ.js';
+import { ax as LayerNode } from './types-DVnDHZFQ.js';
+import { al as LayerProcessingStatus } from './types-DVnDHZFQ.js';
+import { n as LegendItem } from './types-DVnDHZFQ.js';
+import { p as LegendItemChangeCallbackParams } from './types-DVnDHZFQ.js';
+import { m as LegendItemIdentifier } from './types-DVnDHZFQ.js';
+import { o as LegendItemsConstraint } from './types-DVnDHZFQ.js';
+import { aC as LineStringGeometry } from './types-DVnDHZFQ.js';
+import { aM as LineToolSettings } from './types-DVnDHZFQ.js';
+import { a2 as LinkElementRead } from './types-DVnDHZFQ.js';
+import { aD as LngLatTuple } from './types-DVnDHZFQ.js';
+import { y as MapDetails } from './types-DVnDHZFQ.js';
+import { M as MapInteractionEvent } from './types-DVnDHZFQ.js';
+import { a3 as MarkerElementCreate } from './types-DVnDHZFQ.js';
+import { a4 as MarkerElementRead } from './types-DVnDHZFQ.js';
+import { a5 as MarkerElementUpdate } from './types-DVnDHZFQ.js';
+import { aN as MarkerToolSettings } from './types-DVnDHZFQ.js';
+import { ar as MultiAggregationConfig } from './types-DVnDHZFQ.js';
+import { aE as MultiLineStringGeometry } from './types-DVnDHZFQ.js';
+import { aF as MultiPointGeometry } from './types-DVnDHZFQ.js';
+import { aG as MultiPolygonGeometry } from './types-DVnDHZFQ.js';
+import { a6 as NoteElementCreate } from './types-DVnDHZFQ.js';
+import { a7 as NoteElementRead } from './types-DVnDHZFQ.js';
+import { a8 as NoteElementUpdate } from './types-DVnDHZFQ.js';
+import { aO as NoteToolSettings } from './types-DVnDHZFQ.js';
+import { a9 as PathElementCreate } from './types-DVnDHZFQ.js';
+import { aa as PathElementRead } from './types-DVnDHZFQ.js';
+import { ab as PathElementUpdate } from './types-DVnDHZFQ.js';
+import { aP as PinToolSettings } from './types-DVnDHZFQ.js';
+import { ac as PlaceElementCreate } from './types-DVnDHZFQ.js';
+import { ad as PlaceElementRead } from './types-DVnDHZFQ.js';
+import { ae as PlaceElementUpdate } from './types-DVnDHZFQ.js';
+import { aQ as PlaceFrame } from './types-DVnDHZFQ.js';
+import { aR as PlaceSymbol } from './types-DVnDHZFQ.js';
+import { aH as PointGeometry } from './types-DVnDHZFQ.js';
+import { af as PolygonElementCreate } from './types-DVnDHZFQ.js';
+import { ag as PolygonElementRead } from './types-DVnDHZFQ.js';
+import { ah as PolygonElementUpdate } from './types-DVnDHZFQ.js';
+import { aI as PolygonGeometry } from './types-DVnDHZFQ.js';
+import { aS as PolygonToolSettings } from './types-DVnDHZFQ.js';
+import { am as RasterValue } from './types-DVnDHZFQ.js';
+import { R as RenderedFeature } from './types-DVnDHZFQ.js';
+import { aT as RouteToolSettings } from './types-DVnDHZFQ.js';
+import { N as SetViewportCenterZoomParams } from './types-DVnDHZFQ.js';
+import { S as SetVisibilityRequest } from './types-DVnDHZFQ.js';
+import { K as SortConfig } from './types-DVnDHZFQ.js';
+import { aJ as SortDirection } from './types-DVnDHZFQ.js';
+import { ai as TextElementCreate } from './types-DVnDHZFQ.js';
+import { aj as TextElementRead } from './types-DVnDHZFQ.js';
+import { ak as TextElementUpdate } from './types-DVnDHZFQ.js';
+import { aU as TextToolSettings } from './types-DVnDHZFQ.js';
+import { H as ToolSettingsChangeEvent } from './types-DVnDHZFQ.js';
+import { D as ToolSettingsMap } from './types-DVnDHZFQ.js';
+import { T as ToolType } from './types-DVnDHZFQ.js';
+import { as as ValueConfiguration } from './types-DVnDHZFQ.js';
+import { Q as ViewportCenterZoom } from './types-DVnDHZFQ.js';
+import { O as ViewportConstraints } from './types-DVnDHZFQ.js';
+import { P as ViewportFitBoundsParams } from './types-DVnDHZFQ.js';
+import { V as ViewportState } from './types-DVnDHZFQ.js';
 import { z } from 'zod';
 
 export { AggregationConfig }
@@ -149,7 +152,7 @@ export interface ElementsController {
     getElement(
     id: string): Promise<Element_2 | null>;
     getElementGeometry(
-    id: string): Promise<Geometry | null>;
+    id: string): Promise<GeoJsonGeometry | null>;
     getElementGroup(id: string): Promise<ElementGroup | null>;
     getElementGroups(
     constraint?: GetElementGroupsConstraint): Promise<Array<ElementGroup | null>>;
@@ -189,8 +192,6 @@ export interface ElementsController {
 export { ElementUpdate }
 
 export { EntityNode }
-
-export { Feature }
 
 export { FeatureNode }
 
@@ -318,7 +319,11 @@ export { Filters }
 
 export { FilterTernary }
 
-export { Geometry }
+export { GeoJsonFeature }
+
+export { GeoJsonGeometry }
+
+export { GeoJsonProperties }
 
 export { GetElementGroupsConstraint }
 
@@ -389,6 +394,10 @@ export { LayerProcessingStatus }
 export interface LayersController {
     getAggregates<T extends AggregationMethod | "count">(params: GetLayerCalculationParams<T>): Promise<Record<T, number | null>>;
     getCategoryData(params: GetLayerCategoriesParams): Promise<Array<GetLayerCategoriesGroup>>;
+    getFeature(params: {
+        id: string | number;
+        layerId: string;
+    }): Promise<GeoJsonFeature | null>;
     getHistogramData(params: GetLayerHistogramParams): Promise<Array<GetLayerHistogramBin>>;
     getLayer(
     id: string): Promise<Layer | null>;
@@ -401,7 +410,7 @@ export interface LayersController {
     getLegendItem(id: LegendItemIdentifier): Promise<LegendItem | null>;
     getLegendItems(constraint?: LegendItemsConstraint): Promise<Array<LegendItem | null>>;
     getRenderedFeatures(
-    params?: GetRenderedFeaturesConstraint): Promise<Array<Feature>>;
+    params?: GetRenderedFeaturesConstraint): Promise<Array<RenderedFeature>>;
     onLayerChange(args: {
         options: {
             id: string;
@@ -475,6 +484,8 @@ export { MultiAggregationConfig }
 
 export { MultiLineStringGeometry }
 
+export { MultiPointGeometry }
+
 export { MultiPolygonGeometry }
 
 export { NoteElementCreate }
@@ -522,6 +533,8 @@ export { PolygonGeometry }
 export { PolygonToolSettings }
 
 export { RasterValue }
+
+export { RenderedFeature }
 
 export { RouteToolSettings }
 

@@ -7,7 +7,10 @@ import {
   methodMessage,
 } from "~/lib/builders";
 import type { zInfer } from "~/lib/utils";
-import { SetVisibilityRequestSchema } from "~/modules/shared/types";
+import {
+  type GeoJsonFeature,
+  SetVisibilityRequestSchema,
+} from "~/modules/shared/types";
 import { FiltersSchema, type LayerFilters } from "./filters/types";
 import {
   type AggregationMethod,
@@ -18,7 +21,6 @@ import {
   GetLayerHistogramParamsSchema,
 } from "./stats/types";
 import {
-  type Feature,
   GetLayerGroupsFilterSchema,
   GetLayersConstraintSchema,
   GetRenderedFeaturesConstraintSchema,
@@ -30,6 +32,7 @@ import {
   type LegendItemChangeCallbackParams,
   LegendItemIdentifierSchema,
   LegendItemsConstraintSchema,
+  type RenderedFeature,
 } from "./types";
 
 // LAYERS
@@ -112,6 +115,14 @@ const GetRenderedFeaturesMessage = methodMessage(
   GetRenderedFeaturesConstraintSchema.optional(),
 );
 
+const GetFeatureMessage = methodMessage(
+  "getFeature",
+  z.object({
+    layerId: z.string(),
+    id: z.string().or(z.number()),
+  }),
+);
+
 // STATS
 const GetLayerCategoriesMessage = methodMessage(
   "getCategoryData",
@@ -149,6 +160,7 @@ export const layersSchema = {
     SetFiltersMessage,
 
     GetRenderedFeaturesMessage,
+    GetFeatureMessage,
 
     GetLayerCategoriesMessage,
     GetLayerHistogramMessage,
@@ -208,8 +220,9 @@ export type LayersSchema = {
 
     getRenderedFeatures: Method<
       zInfer<typeof GetRenderedFeaturesMessage>,
-      Array<Feature>
+      Array<RenderedFeature>
     >;
+    getFeature: Method<zInfer<typeof GetFeatureMessage>, GeoJsonFeature | null>;
 
     getCategoryData: Method<
       zInfer<typeof GetLayerCategoriesMessage>,

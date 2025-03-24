@@ -400,7 +400,7 @@ Sets the **ephemeral** filters for a layer.
 ### Example
 
 ```typescript
-felt.setLayerFilters({
+await felt.setLayerFilters({
   layerId: "layer-1",
   filters: ["AREA", "gt", 30_000],
 });

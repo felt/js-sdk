@@ -21,6 +21,17 @@ Gets the current state of the viewport.
 
 `Promise`\<[`ViewportState`](ViewportState.md)>
 
+### Example
+
+```typescript
+// Get current viewport state
+const viewport = await felt.getViewport();
+console.log({
+  center: viewport.center,
+  zoom: viewport.zoom,
+});
+```
+
 ***
 
 ## setViewport()
@@ -59,6 +70,22 @@ Gets the current state of the viewport constraints.
 ### Returns
 
 `Promise`\<`null` | [`ViewportConstraints`](ViewportConstraints.md)>
+
+### Example
+
+```typescript
+// Get current viewport constraints
+const constraints = await felt.getViewportConstraints();
+if (constraints) {
+  console.log({
+    bounds: constraints.bounds,
+    minZoom: constraints.minZoom,
+    maxZoom: constraints.maxZoom
+  });
+} else {
+  console.log("No viewport constraints set");
+}
+```
 
 ***
 

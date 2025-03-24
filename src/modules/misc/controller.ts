@@ -12,6 +12,16 @@ export const miscController = (feltWindow: Window): MiscController => ({
 export interface MiscController {
   /**
    * Gets the details of the map.
+   *
+   * @example
+   * ```typescript
+   * const details = await felt.getMapDetails();
+   * console.log({
+   *   id: details.id,
+   *   title: details.title,
+   *   description: details.description,
+   * });
+   * ```
    */
   getMapDetails(): Promise<MapDetails>;
 }

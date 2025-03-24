@@ -38,9 +38,9 @@
 
 ***
 
-## locked
+## interaction?
 
-> **locked**: `boolean`
+> `optional` **interaction**: `"default"` | `"locked"`
 
 ***
 
@@ -74,6 +74,6 @@
 
 ***
 
-## hideLabel?
+## hideLabel
 
-> `optional` **hideLabel**: `boolean`
+> **hideLabel**: `boolean`

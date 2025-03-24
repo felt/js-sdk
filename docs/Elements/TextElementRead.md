@@ -32,9 +32,9 @@
 
 ***
 
-## locked
+## interaction?
 
-> **locked**: `boolean`
+> `optional` **interaction**: `"default"` | `"locked"`
 
 ***
 

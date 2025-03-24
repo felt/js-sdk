@@ -2,4 +2,4 @@
 "@feltmaps/js-sdk": minor
 ---
 
-Add "locked" to element schema
+Add "interaction" to element schema

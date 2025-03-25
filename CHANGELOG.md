@@ -1,5 +1,12 @@
 # @feltmaps/js-sdk
 
+## 1.5.0-next.8
+
+### Minor Changes
+
+- d327b46: Add `afterCreation` option in pin tool settings to control what happens after creating a Place
+- b059b70: Add onLayerFiltersChange to allow listening to changes to layer filters, be it ephemeral, style or widget filters that changed.
+
 ## 1.5.0-next.7
 
 ### Minor Changes

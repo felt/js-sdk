@@ -56,6 +56,12 @@
 
 ***
 
+## interaction?
+
+> `optional` **interaction**: `"default"` | `"locked"`
+
+***
+
 ## imageUrl?
 
 > `optional` **imageUrl**: `null` | `string`

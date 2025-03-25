@@ -13,6 +13,7 @@ const BaseFeltElementSchema = z.object({
   name: z.union([z.string(), z.null()]),
   description: z.union([z.string(), z.null()]),
   attributes: z.record(z.string(), z.unknown()),
+  interaction: z.enum(["default", "locked"]).optional(),
 });
 
 const Geographic = z.object({

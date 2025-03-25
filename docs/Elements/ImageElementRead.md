@@ -32,6 +32,12 @@
 
 ***
 
+## interaction?
+
+> `optional` **interaction**: `"default"` | `"locked"`
+
+***
+
 ## type
 
 > **type**: `"Image"`

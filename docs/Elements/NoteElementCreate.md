@@ -38,6 +38,12 @@
 
 ***
 
+## interaction?
+
+> `optional` **interaction**: `"default"` | `"locked"`
+
+***
+
 ## zoom?
 
 > `optional` **zoom**: `number`

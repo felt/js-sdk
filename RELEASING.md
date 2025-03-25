@@ -38,23 +38,19 @@ the prerelease onto NPM:
 
 1. `npm run enter-prerelease` - ensure the tooling is in prerelease mode. This might fail if
    you are already in `pre` mode (i.e. we're adding more to the prerelease) but that's ok.
-2. `git cherry-pick <commit from main that you want to include>` - bring the change you want
+2. Run `npm run list-changes` to see what changes from `main` can be cherry-picked.
+3. `git cherry-pick <commit from main that you want to include>` - bring the changes you want
    to publish into the prerelease branch.
-3. `npm run build:docs` - this will update the `CHANGELOG.md` file to include the prerelease
-   changes.
-4. `git commit -m "Update prerelease changelog"` - If you don't do this, the tests will fail
-   because they check that the docs are up to date and committed.
-5. `npm run local-release` - builds, checks and publishes the prerelease on NPM - you have to
+4. `npm run local-release` - builds, checks and publishes the prerelease on NPM - you have to
    be an authorised publisher on NPM, and to enter an OTP from an Authenticator app to proceed.
-6. `git add .changeset/pre.json && git commit -m  "Update prerelease file" && git push` - makes
-   sure that the file that tracks included changesets is committed and pushed
+   This script will automatically handle building docs and committing any necessary changes.
 
 Now, everything will be on the git origin server and NPM, published as `1.N.0-next.M` where `N`
 and `M` are some version number.
 
 ### Public release
 
-One we're at a point where we want to make our prerelease public, we need to:
+Once we're at a point where we want to make our prerelease public, we need to:
 
 - exit prerelease mode
 - ensure our code is exactly as we want to publish
@@ -69,12 +65,12 @@ We do this by:
 2. Check the contents of the repo. We _might_ need to manually update the CHANGELOG.md here to
    remove prerelease notes. If so, change, commit and push.
 3. `npm run local-release` - publishes the current state to NPM
-4. Check again for any metadata changes made by the release process (e.g. `pre.json` like in step 6
-   in the Prerelease section above), commit and push.
-5. Raise a PR from `prerelease -> main` to incorporate changset removals and metadata changes.
-6. `git ch release && git reset --hard prerelease && git push --force` - transfer all changes from
+4. Check again for any metadata changes made by the release process (e.g. `pre.json` like in step
+   6 in the Prerelease section above), commit and push.
+5. `git ch release && git reset --hard prerelease && git push --force` - transfer all changes from
    `prerelease` to `release`, which is effectively just publishing the docs.
-7. Merge the `prerelease -> main` PR.
+6. Raise and merge a PR from `prerelease -> main` to incorporate changeset removals and metadata
+   changes.
 
 Now, what we have is:
 

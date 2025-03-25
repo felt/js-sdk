@@ -55,6 +55,7 @@ export const layersController = (feltWindow: Window): LayersController => ({
   // filters
   getLayerFilters: method(feltWindow, "getLayerFilters"),
   setLayerFilters: method(feltWindow, "setLayerFilters"),
+  onLayerFiltersChange: listener(feltWindow, "onLayerFiltersChange"),
 
   // rendered features
   getRenderedFeatures: method(feltWindow, "getRenderedFeatures"),
@@ -398,6 +399,42 @@ export interface LayersController {
      */
     note?: string;
   }): Promise<void>;
+
+  /**
+   * Adds a listener for when a layer's filters change.
+   *
+   * @returns A function to unsubscribe from the listener
+   *
+   * @remarks
+   * This event fires whenever any type of filter changes on the layer, including
+   * ephemeral filters set via the SDK, style-based filters, or filters set through
+   * the Felt UI via Components.
+   *
+   * @event
+   * @example
+   * ```typescript
+   * const unsubscribe = felt.onLayerFiltersChange({
+   *   options: { layerId: "layer-1" },
+   *   handler: ({combined, ephemeral, style, components}) => {
+   *     console.log("Layer filters updated:", {
+   *       combined,  // All filters combined
+   *       ephemeral, // Filters set via SDK
+   *       style,     // Filters from layer style
+   *       components // Filters from UI components
+   *     });
+   *   },
+   * });
+   *
+   * // later on...
+   * unsubscribe();
+   * ```
+   */
+  onLayerFiltersChange(params: {
+    options: {
+      layerId: string;
+    };
+    handler: (change: LayerFilters) => void;
+  }): VoidFunction;
 
   /**
    * Get the features that are currently **rendered** on the map in the viewport.

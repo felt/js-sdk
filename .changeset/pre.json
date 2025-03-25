@@ -5,11 +5,13 @@
     "@feltmaps/js-sdk": "1.4.0"
   },
   "changesets": [
+    "big-carpets-melt",
     "dry-elephants-hide",
     "dull-games-rest",
     "eleven-dogs-smoke",
     "few-cats-fix",
     "gold-apricots-carry",
+    "great-elephants-cry",
     "hungry-hotels-end",
     "little-apples-dream",
     "shy-bugs-reflect",

@@ -19,7 +19,7 @@ const felt = await Felt.embed(
 const layers = await map.getLayers();
 ```
 
-### View [FeltController](Main/FeltController.md) for a complete list of available functions. [FeltEmbedOptions](Main/FeltEmbedOptions.md) enumerates initialization options.
+**View [FeltController](Main/FeltController.md) for a complete list of available functions. [FeltEmbedOptions](Main/FeltEmbedOptions.md) enumerates initialization options.**
 
 ## Documents
 

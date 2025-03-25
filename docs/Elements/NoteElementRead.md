@@ -32,6 +32,12 @@
 
 ***
 
+## interaction?
+
+> `optional` **interaction**: `"default"` | `"locked"`
+
+***
+
 ## position
 
 > **position**: \[`number`, `number`] = `LngLatTupleSchema`

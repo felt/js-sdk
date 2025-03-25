@@ -44,6 +44,12 @@
 
 ***
 
+## interaction?
+
+> `optional` **interaction**: `"default"` | `"locked"`
+
+***
+
 ## opacity?
 
 > `optional` **opacity**: `number`

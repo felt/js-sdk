@@ -172,6 +172,7 @@ export const layersSchema = {
     SetFiltersMessage,
 
     GetRenderedFeaturesMessage,
+    GetFeatureMessage,
     GetGeoJsonFeatureMessage,
 
     GetLayerCategoriesMessage,

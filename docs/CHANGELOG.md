@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.5.0-next.9
+
+### Minor Changes
+
+* 7f1d6aa: Add "interaction" to element schema
+
 ## 1.5.0-next.8
 
 ### Minor Changes

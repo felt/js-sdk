@@ -33,6 +33,8 @@ We use three long-lived branches for our work:
 
 ### Prerelease
 
+Before doing this, make sure you're logged into the `npm` cli with `npm login --auth-type=web`.
+
 Assuming you have merged your SDK PR into `main`, you need to do the following to publish
 the prerelease onto NPM:
 

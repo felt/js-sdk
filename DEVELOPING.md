@@ -108,39 +108,12 @@ methods or listeners added to the client.
 TypeScript should force you to do this, so run `npx tsc --noEmit --watch` in the Felt app repo
 to be guided around the codebase.
 
-### Releasing
+### Adding your changes to the SDK and merging your Felt changes
 
-#### Prerelease
+Once your SDK and Felt PRs are ready, you need to merge your SDK PR into `main`. This makes
+it possible to bring this piece of work into a release.
 
-Once you've added support in Felt, you will need to release a prerelease version of the SDK, in
-order that the Felt app can pick up the new version.
+Once you've done that, you need to wait until the change is published in NPM, then point your
+Felt PR at that prerelease version in `package.json` before it will be able to pass CI.
 
-Back in this repo:
-
-1. Add a changeset for your SDK changes with `npm run changeset` - choose a patch, minor or major
-   depending on your change.
-2. Open a PR against `main` for your changes and merge it once the checks pass.
-3. Once it is merged, the prerelease docs will be updated.
-
-Now your changes are in `main` which is where the prerelease will be published from.
-
-To publish the prerelease package:
-
-1. Ensure we are in prerelease mode with `npm run enter-prerelease`
-2. Run `npm run local-release` which will build the package and publish it to `@feltmaps/js-sdk`
-   with the `next` tag. This will print out the version it created, something like `0.0.1-next.0`.
-
-To use the prerelease package in Felt:
-
-1. In the Felt app, update the version in `package.json` to match the version you just published,
-   like: `"@feltmaps/js-sdk": "0.0.1-next.0"` and install with `yarn install`.
-2. Open a PR in the Felt repo and merge it.
-
-#### Public release
-
-Once `main` is in a state to promote to a public release, you can do the following on `main`:
-
-1. Run `npm run exit-prerelease` to remove the prerelease tag and bump the version number.
-2. Run `npm run local-release` to publish the package to the `@feltmaps/js-sdk` npm package.
-3. Merge the change into the `release` branch with `git checkout release && git merge main --ff-only && git push`.
-   This will publish the API reference docs to the public docs site.
+To see how changes are published in NPM, read `RELEASING.md`

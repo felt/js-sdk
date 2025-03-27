@@ -49,6 +49,17 @@ independently of the Layer, so you can turn on and off each category or class in
 * [GetLayerGroupsConstraint](GetLayerGroupsConstraint.md)
 * [LayerGroupChangeCallbackParams](LayerGroupChangeCallbackParams.md)
 
+# Layer Schema
+
+* [LayerSchema](LayerSchema.md)
+* [LayerSchemaCommmonAttribute](LayerSchemaCommmonAttribute.md)
+* [LayerSchemaNumericAttribute](LayerSchemaNumericAttribute.md)
+* [LayerSchemaTextAttribute](LayerSchemaTextAttribute.md)
+* [LayerSchemaBooleanAttribute](LayerSchemaBooleanAttribute.md)
+* [LayerSchemaDateAttribute](LayerSchemaDateAttribute.md)
+* [LayerSchemaDateTimeAttribute](LayerSchemaDateTimeAttribute.md)
+* [LayerSchemaAttribute](LayerSchemaAttribute.md)
+
 # Layers
 
 * [Layer](Layer.md)

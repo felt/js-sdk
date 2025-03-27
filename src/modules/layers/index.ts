@@ -33,6 +33,17 @@ export type {
 } from "./types";
 
 export type {
+  LayerSchema,
+  LayerSchemaAttribute,
+  LayerSchemaBooleanAttribute,
+  LayerSchemaCommmonAttribute,
+  LayerSchemaDateAttribute,
+  LayerSchemaDateTimeAttribute,
+  LayerSchemaNumericAttribute,
+  LayerSchemaTextAttribute,
+} from "./types";
+
+export type {
   FilterExpression,
   FilterLogicGate,
   FilterTernary,

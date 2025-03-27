@@ -21,6 +21,7 @@ import type {
   LayerFeature,
   LayerGroup,
   LayerGroupChangeCallbackParams,
+  LayerSchema,
   LegendItem,
   LegendItemChangeCallbackParams,
   LegendItemIdentifier,
@@ -69,6 +70,9 @@ export const layersController = (feltWindow: Window): LayersController => ({
   getCategoryData: method(feltWindow, "getCategoryData"),
   getHistogramData: method(feltWindow, "getHistogramData"),
   getAggregates: method(feltWindow, "getAggregates"),
+
+  // schema
+  getLayerSchema: method(feltWindow, "getLayerSchema"),
 });
 
 /**
@@ -655,4 +659,22 @@ export interface LayersController {
   getAggregates<T extends AggregationMethod | "count">(
     params: GetLayerCalculationParams<T>,
   ): Promise<Record<T, number | null>>;
+
+  /**
+   * Get the schema for a layer.
+   *
+   * @remarks
+   * The schema describes the structure of the data in a layer, including the attributes
+   * that are available on the features in the layer.
+   *
+   * This can be useful to build generic UIs that need to know the structure of the data in
+   * a layer, such as a dropdown to choose an attribute.
+   *
+   * @example
+   * ```typescript
+   * const schema = await felt.getLayerSchema({ layerId: "layer-1" });
+   * const attributeIds = schema.attributes.map((attr) => attr.id);
+   * ```
+   */
+  getLayerSchema(layerId: string): Promise<LayerSchema>;
 }

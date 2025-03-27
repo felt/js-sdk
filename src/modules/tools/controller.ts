@@ -38,10 +38,10 @@ export interface ToolsController {
    * @example
    * ```typescript
    * // Set the tool to "marker"
-   * felt.setTool("marker");
+   * await felt.setTool("marker");
    *
    * // put down the tool
-   * felt.setTool(null);
+   * await felt.setTool(null);
    * ```
    */
   setTool(tool: ToolType | null): void;
@@ -85,14 +85,28 @@ export interface ToolsController {
   /**
    * Sets the settings for the current tool.
    *
+   * @example
+   * ```typescript
+   * // Set the settings for the marker tool
+   * await felt.setToolSettings({
+   *   tool: "marker",
+   *   color: "#FE17",
+   * });
+   * ```
+   *
    * @param settings - The settings to set.
    */
   setToolSettings(settings: InputToolSettings): void;
 
   /**
-   * Gets the settings for the current tool.
+   * Gets the settings for the chosen tool
    *
-   * @returns The settings for the current tool.
+   * @example
+   * ```typescript
+   * const settings = await felt.getToolSettings("marker");
+   * ```
+   *
+   * @returns The settings for the chosen tool.
    */
   getToolSettings<T extends ConfigurableToolType>(
     tool: T,
@@ -101,6 +115,15 @@ export interface ToolsController {
   /**
    * Listens for changes to the settings on all tools.
    *
+   * @example
+   * ```typescript
+   * const unsubscribe = felt.onToolSettingsChange({
+   *   handler: settings => console.log(settings),
+   * });
+   *
+   * // later on...
+   * unsubscribe();
+   * ```
    * @returns A function to unsubscribe from the listener
    */
   onToolSettingsChange(args: {

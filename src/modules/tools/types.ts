@@ -149,13 +149,69 @@ export const InputToolSettingsSchema = z.discriminatedUnion("tool", [
   NoteToolSettingsSchema.partial().extend({ tool: z.literal("note") }),
 ]);
 
-export type InputToolSettings = {
-  [K in ConfigurableToolType]: Partial<ToolSettingsMap[K]> & { tool: K };
-}[ConfigurableToolType];
+/**
+ * The parameters for changing the settings of each tool.
+ */
+export type InputToolSettings =
+  | ({
+      tool: "pin";
+    } & Partial<PinToolSettings>)
+  | ({
+      tool: "line";
+    } & Partial<LineToolSettings>)
+  | ({
+      tool: "route";
+    } & Partial<RouteToolSettings>)
+  | ({
+      tool: "polygon";
+    } & Partial<PolygonToolSettings>)
+  | ({
+      tool: "circle";
+    } & Partial<CircleToolSettings>)
+  | ({
+      tool: "marker";
+    } & Partial<MarkerToolSettings>)
+  | ({
+      tool: "highlighter";
+    } & Partial<HighlighterToolSettings>)
+  | ({
+      tool: "text";
+    } & Partial<TextToolSettings>)
+  | ({
+      tool: "note";
+    } & Partial<NoteToolSettings>);
 
-export type ToolSettingsChangeEvent = {
-  [K in ConfigurableToolType]: ToolSettingsMap[K] & { tool: K };
-}[ConfigurableToolType];
+/**
+ * The result of listening for changes to the settings of each tool.
+ */
+export type ToolSettingsChangeEvent =
+  | ({
+      tool: "pin";
+    } & PinToolSettings)
+  | ({
+      tool: "line";
+    } & LineToolSettings)
+  | ({
+      tool: "route";
+    } & RouteToolSettings)
+  | ({
+      tool: "polygon";
+    } & PolygonToolSettings)
+  | ({
+      tool: "circle";
+    } & CircleToolSettings)
+  | ({
+      tool: "marker";
+    } & MarkerToolSettings)
+  | ({
+      tool: "highlighter";
+    } & HighlighterToolSettings)
+  | ({
+      tool: "text";
+    } & TextToolSettings)
+  | ({
+      tool: "note";
+    } & NoteToolSettings);
 
 export type ToolSettingsMap = {
   pin: PinToolSettings;

@@ -62,8 +62,12 @@ A function to unsubscribe from the listener
 ### Example
 
 ```typescript
+// Track mouse movement and features under cursor
 const unsubscribe = felt.onPointerMove({
-  handler: (event) => console.log(event.center, event.features),
+  handler: (event) => {
+    console.log("Mouse position:", event.center);
+    console.log("Features under cursor:", event.features);
+  }
 });
 
 // later on...

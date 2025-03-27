@@ -32,6 +32,16 @@ export const viewportController = (feltWindow: Window): ViewportController => ({
 export interface ViewportController {
   /**
    * Gets the current state of the viewport.
+   *
+   * @example
+   * ```typescript
+   * // Get current viewport state
+   * const viewport = await felt.getViewport();
+   * console.log({
+   *   center: viewport.center,
+   *   zoom: viewport.zoom,
+   * });
+   * ```
    */
   getViewport(): Promise<ViewportState>;
 
@@ -50,6 +60,21 @@ export interface ViewportController {
 
   /**
    * Gets the current state of the viewport constraints.
+   *
+   * @example
+   * ```typescript
+   * // Get current viewport constraints
+   * const constraints = await felt.getViewportConstraints();
+   * if (constraints) {
+   *   console.log({
+   *     bounds: constraints.bounds,
+   *     minZoom: constraints.minZoom,
+   *     maxZoom: constraints.maxZoom
+   *   });
+   * } else {
+   *   console.log("No viewport constraints set");
+   * }
+   * ```
    */
   getViewportConstraints(): Promise<ViewportConstraints | null>;
 

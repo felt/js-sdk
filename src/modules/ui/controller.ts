@@ -26,6 +26,21 @@ export interface UiController {
   /**
    * Updates the UI controls on the embedded map.
    *
+   * @example
+   * ```typescript
+   * // Show some UI controls
+   * await felt.updateUiControls({
+   *   showLegend: true,
+   *   fullScreenButton: true,
+   * });
+   *
+   * // Disable some UI options
+   * await felt.updateUiControls({
+   *   cooperativeGestures: false,
+   *   geolocation: false,
+   * });
+   * ```
+   *
    * @param controls - The controls to update.
    */
   updateUiControls(controls: UiControlsOptions): void;
@@ -40,6 +55,15 @@ export interface UiController {
    *
    * This does not affect selection. That means that selectable features and elements
    * will still be selected when clicked.
+   *
+   * @example
+   * ```typescript
+   * // Disable UI when hovering or selecting features
+   * await felt.setOnMapInteractionsUi({
+   *   featureSelectPanel: false,
+   *   featureHoverPanel: false,
+   * });
+   * ```
    */
   setOnMapInteractionsUi(options: UiOnMapInteractionsOptions): void;
 

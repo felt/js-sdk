@@ -315,11 +315,32 @@ export interface ElementsController {
 
   /**
    * Update an element on the map.
+   *
+   * @example
+   * ```typescript
+   * // Update a place element's coordinates
+   * await felt.updateElement({
+   *   id: "element-1",
+   *   coordinates: [10, 20]
+   * });
+   *
+   * // Update a polygon's style
+   * await felt.updateElement({
+   *   id: "element-2",
+   *   color: "#FF0000",
+   *   fillOpacity: 0.5
+   * });
+   * ```
    */
   updateElement(element: ElementUpdate): Promise<Element>;
 
   /**
    * Delete an element from the map.
+   *
+   * @example
+   * ```typescript
+   * await felt.deleteElement("element-1");
+   * ```
    */
   deleteElement(id: string): Promise<void>;
 }

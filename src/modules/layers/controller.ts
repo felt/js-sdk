@@ -374,7 +374,7 @@ export interface LayersController {
    *
    * @example
    * ```typescript
-   * felt.setLayerFilters({
+   * await felt.setLayerFilters({
    *   layerId: "layer-1",
    *   filters: ["AREA", "gt", 30_000],
    * });

@@ -263,6 +263,23 @@ Update an element on the map.
 
 `Promise`\<[`Element`](../Elements/Element.md)>
 
+### Example
+
+```typescript
+// Update a place element's coordinates
+await felt.updateElement({
+  id: "element-1",
+  coordinates: [10, 20]
+});
+
+// Update a polygon's style
+await felt.updateElement({
+  id: "element-2",
+  color: "#FF0000",
+  fillOpacity: 0.5
+});
+```
+
 ***
 
 ## deleteElement()
@@ -280,6 +297,12 @@ Delete an element from the map.
 ### Returns
 
 `Promise`\<`void`>
+
+### Example
+
+```typescript
+await felt.deleteElement("element-1");
+```
 
 ***
 
@@ -671,7 +694,7 @@ Sets the **ephemeral** filters for a layer.
 ### Example
 
 ```typescript
-felt.setLayerFilters({
+await felt.setLayerFilters({
   layerId: "layer-1",
   filters: ["AREA", "gt", 30_000],
 });
@@ -925,6 +948,17 @@ Gets the details of the map.
 
 `Promise`\<[`MapDetails`](../Misc/MapDetails.md)>
 
+### Example
+
+```typescript
+const details = await felt.getMapDetails();
+console.log({
+  id: details.id,
+  title: details.title,
+  description: details.description,
+});
+```
+
 ***
 
 ## getSelection()
@@ -1035,10 +1069,10 @@ Sets the tool to use for drawing elements on the map.
 
 ```typescript
 // Set the tool to "marker"
-felt.setTool("marker");
+await felt.setTool("marker");
 
 // put down the tool
-felt.setTool(null);
+await felt.setTool(null);
 ```
 
 ***
@@ -1111,13 +1145,23 @@ Sets the settings for the current tool.
 
 `void`
 
+### Example
+
+```typescript
+// Set the settings for the marker tool
+await felt.setToolSettings({
+  tool: "marker",
+  color: "#FE17",
+});
+```
+
 ***
 
 ## getToolSettings()
 
 > **getToolSettings**\<`T`>(`tool`: `T`): `Promise`\<[`ToolSettingsMap`](../Tools/ToolSettingsMap.md)\[`T`]>
 
-Gets the settings for the current tool.
+Gets the settings for the chosen tool
 
 ### Type Parameters
 
@@ -1135,7 +1179,13 @@ Gets the settings for the current tool.
 
 `Promise`\<[`ToolSettingsMap`](../Tools/ToolSettingsMap.md)\[`T`]>
 
-The settings for the current tool.
+The settings for the chosen tool.
+
+### Example
+
+```typescript
+const settings = await felt.getToolSettings("marker");
+```
 
 ***
 
@@ -1158,6 +1208,17 @@ Listens for changes to the settings on all tools.
 
 A function to unsubscribe from the listener
 
+### Example
+
+```typescript
+const unsubscribe = felt.onToolSettingsChange({
+  handler: settings => console.log(settings),
+});
+
+// later on...
+unsubscribe();
+```
+
 ***
 
 ## updateUiControls()
@@ -1175,6 +1236,22 @@ Updates the UI controls on the embedded map.
 ### Returns
 
 `void`
+
+### Example
+
+```typescript
+// Show some UI controls
+await felt.updateUiControls({
+  showLegend: true,
+  fullScreenButton: true,
+});
+
+// Disable some UI options
+await felt.updateUiControls({
+  cooperativeGestures: false,
+  geolocation: false,
+});
+```
 
 ***
 
@@ -1201,6 +1278,16 @@ will still be selected when clicked.
 ### Returns
 
 `void`
+
+### Example
+
+```typescript
+// Disable UI when hovering or selecting features
+await felt.setOnMapInteractionsUi({
+  featureSelectPanel: false,
+  featureHoverPanel: false,
+});
+```
 
 ***
 
@@ -1273,6 +1360,17 @@ Gets the current state of the viewport.
 
 `Promise`\<[`ViewportState`](../Viewport/ViewportState.md)>
 
+### Example
+
+```typescript
+// Get current viewport state
+const viewport = await felt.getViewport();
+console.log({
+  center: viewport.center,
+  zoom: viewport.zoom,
+});
+```
+
 ***
 
 ## setViewport()
@@ -1311,6 +1409,22 @@ Gets the current state of the viewport constraints.
 ### Returns
 
 `Promise`\<`null` | [`ViewportConstraints`](../Viewport/ViewportConstraints.md)>
+
+### Example
+
+```typescript
+// Get current viewport constraints
+const constraints = await felt.getViewportConstraints();
+if (constraints) {
+  console.log({
+    bounds: constraints.bounds,
+    minZoom: constraints.minZoom,
+    maxZoom: constraints.maxZoom
+  });
+} else {
+  console.log("No viewport constraints set");
+}
+```
 
 ***
 
@@ -1590,8 +1704,12 @@ A function to unsubscribe from the listener
 ### Example
 
 ```typescript
+// Track mouse movement and features under cursor
 const unsubscribe = felt.onPointerMove({
-  handler: (event) => console.log(event.center, event.features),
+  handler: (event) => {
+    console.log("Mouse position:", event.center);
+    console.log("Features under cursor:", event.features);
+  }
 });
 
 // later on...

@@ -28,10 +28,10 @@ Sets the tool to use for drawing elements on the map.
 
 ```typescript
 // Set the tool to "marker"
-felt.setTool("marker");
+await felt.setTool("marker");
 
 // put down the tool
-felt.setTool(null);
+await felt.setTool(null);
 ```
 
 ***
@@ -104,13 +104,23 @@ Sets the settings for the current tool.
 
 `void`
 
+### Example
+
+```typescript
+// Set the settings for the marker tool
+await felt.setToolSettings({
+  tool: "marker",
+  color: "#FE17",
+});
+```
+
 ***
 
 ## getToolSettings()
 
 > **getToolSettings**\<`T`>(`tool`: `T`): `Promise`\<[`ToolSettingsMap`](ToolSettingsMap.md)\[`T`]>
 
-Gets the settings for the current tool.
+Gets the settings for the chosen tool
 
 ### Type Parameters
 
@@ -128,7 +138,13 @@ Gets the settings for the current tool.
 
 `Promise`\<[`ToolSettingsMap`](ToolSettingsMap.md)\[`T`]>
 
-The settings for the current tool.
+The settings for the chosen tool.
+
+### Example
+
+```typescript
+const settings = await felt.getToolSettings("marker");
+```
 
 ***
 
@@ -150,3 +166,14 @@ Listens for changes to the settings on all tools.
 `VoidFunction`
 
 A function to unsubscribe from the listener
+
+### Example
+
+```typescript
+const unsubscribe = felt.onToolSettingsChange({
+  handler: settings => console.log(settings),
+});
+
+// later on...
+unsubscribe();
+```

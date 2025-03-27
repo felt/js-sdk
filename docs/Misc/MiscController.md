@@ -15,3 +15,14 @@ Gets the details of the map.
 ### Returns
 
 `Promise`\<[`MapDetails`](MapDetails.md)>
+
+### Example
+
+```typescript
+const details = await felt.getMapDetails();
+console.log({
+  id: details.id,
+  title: details.title,
+  description: details.description,
+});
+```

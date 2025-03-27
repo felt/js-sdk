@@ -13,6 +13,9 @@ import type {
   GetLayerHistogramParams,
 } from "./stats/types";
 import type {
+  GeoJsonArrayBufferSource,
+  GeoJsonFileSource,
+  GeoJsonUrlSource,
   GetLayerGroupsConstraint,
   GetLayersConstraint,
   GetRenderedFeaturesConstraint,
@@ -39,6 +42,28 @@ export const layersController = (feltWindow: Window): LayersController => ({
   setLayerStyle: method(feltWindow, "setLayerStyle"),
   setLayerLegendVisibility: method(feltWindow, "setLayerLegendVisibility"),
   onLayerChange: listener(feltWindow, "onLayerChange"),
+  createEphemeralLayers: method(
+    feltWindow,
+    "createEphemeralLayers",
+    async (params) => {
+      const filesConvertedToArrayBuffers = await Promise.all(
+        params.sources.map(async (source) => {
+          if ("url" in source || "arrayBuffer" in source) return source;
+
+          return {
+            type: "application/geo+json",
+            name: source.name,
+            arrayBuffer: await source.file.arrayBuffer(),
+          };
+        }),
+      );
+
+      return {
+        ...params,
+        sources: filesConvertedToArrayBuffers,
+      };
+    },
+  ),
 
   // groups
   getLayerGroup: method(feltWindow, "getLayerGroup"),
@@ -219,6 +244,34 @@ export interface LayersController {
       change: LayerChangeCallbackParams,
     ) => void;
   }): VoidFunction;
+
+  /**
+   * Adds layers to the map from file or URL sources.
+   *
+   * @remarks This allows you to add temporary layers to the map that don't depend on
+   * any processing by Felt. This is useful for viewing data from external sources or
+   * remote files.
+   *
+   * @returns The layer groups that were created.
+   *
+   * @example
+   * ```typescript
+   * const layerGroups = await felt.createEphemeralLayers({
+   *   sources: [
+   *     { type: "application/geo+json", name: "Parcels", file: someFile},
+   *     { type: "application/geo+json", name: "Buildings", url: "https://example.com/buildings.geojson" },
+   *   ],
+   * });
+   * ```
+   */
+  createEphemeralLayers(params: {
+    /**
+     * The sources that you want to add to the map. These can be GeoJSON files or URLs.
+     */
+    sources: Array<
+      GeoJsonArrayBufferSource | GeoJsonFileSource | GeoJsonUrlSource
+    >;
+  }): Promise<Array<LayerGroup | null>>;
 
   // GROUPS
 

@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z, ZodError } from "zod";
 import type { FeltHandlers } from "./lib/interface";
 import type { ModuleSchema } from "./lib/ModuleSchema";
 import { allModules } from "./modules/main/schema";
@@ -30,7 +30,7 @@ export function createMessageHandler(
      *
      * @param message
      */
-    onInvalidMessage?: (message: unknown) => void;
+    onInvalidMessage?: (message: unknown, error: ZodError) => void;
   },
 ): VoidFunction {
   const unsubscribeMap = new Map<string, VoidFunction>();
@@ -46,7 +46,7 @@ export function createMessageHandler(
     // next we check the message fully
     const result = AllMessagesSchema.safeParse(message.data);
     if (!result.success) {
-      options?.onInvalidMessage?.(message.data);
+      options?.onInvalidMessage?.(message.data, result.error);
       return;
     }
 

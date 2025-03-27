@@ -458,6 +458,44 @@ felt.setLayerLegendVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] 
 
 ***
 
+## createEphemeralLayers()
+
+> **createEphemeralLayers**(`params`: \{ `sources`: ([`GeoJsonFileSource`](../Layers/GeoJsonFileSource.md) | [`GeoJsonUrlSource`](../Layers/GeoJsonUrlSource.md) | [`GeoJsonArrayBufferSource`](../Layers/GeoJsonArrayBufferSource.md))\[]; }): `Promise`\<(`null` | [`LayerGroup`](../Layers/LayerGroup.md))\[]>
+
+Adds layers to the map from file or URL sources.
+
+### Parameters
+
+| Parameter        | Type                                                                                                                                                                                                      | Description                                                                      |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `params`         | \{ `sources`: ([`GeoJsonFileSource`](../Layers/GeoJsonFileSource.md) \| [`GeoJsonUrlSource`](../Layers/GeoJsonUrlSource.md) \| [`GeoJsonArrayBufferSource`](../Layers/GeoJsonArrayBufferSource.md))\[]; } | -                                                                                |
+| `params.sources` | ([`GeoJsonFileSource`](../Layers/GeoJsonFileSource.md) \| [`GeoJsonUrlSource`](../Layers/GeoJsonUrlSource.md) \| [`GeoJsonArrayBufferSource`](../Layers/GeoJsonArrayBufferSource.md))\[]                  | The sources that you want to add to the map. These can be GeoJSON files or URLs. |
+
+### Returns
+
+`Promise`\<(`null` | [`LayerGroup`](../Layers/LayerGroup.md))\[]>
+
+The layer groups that were created.
+
+### Remarks
+
+This allows you to add temporary layers to the map that don't depend on
+any processing by Felt. This is useful for viewing data from external sources or
+remote files.
+
+### Example
+
+```typescript
+const layerGroups = await felt.createEphemeralLayers({
+  sources: [
+    { type: "application/geo+json", name: "Parcels", file: someFile},
+    { type: "application/geo+json", name: "Buildings", url: "https://example.com/buildings.geojson" },
+  ],
+});
+```
+
+***
+
 ## getLayerGroup()
 
 > **getLayerGroup**(`id`: `string`): `Promise`\<`null` | [`LayerGroup`](../Layers/LayerGroup.md)>

@@ -16,6 +16,10 @@
  * @module Layers
  */
 export type {
+  EphemeralLayerSource,
+  GeoJsonArrayBufferSource,
+  GeoJsonFileSource,
+  GeoJsonUrlSource,
   GetLayerGroupsConstraint,
   GetLayersConstraint,
   GetRenderedFeaturesConstraint,

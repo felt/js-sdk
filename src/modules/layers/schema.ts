@@ -21,6 +21,7 @@ import {
   GetLayerHistogramParamsSchema,
 } from "./stats/types";
 import {
+  CreateEphemeralLayerSourcesSchema,
   GetLayerGroupsFilterSchema,
   GetLayersConstraintSchema,
   GetRenderedFeaturesConstraintSchema,
@@ -57,6 +58,11 @@ const SetLayerStyleMessage = methodMessage(
 const SetLayerLegendVisibilityMessage = methodMessage(
   "setLayerLegendVisibility",
   SetVisibilityRequestSchema,
+);
+
+const CreateEphemeralLayersMessage = methodMessage(
+  "createEphemeralLayers",
+  z.object({ sources: CreateEphemeralLayerSourcesSchema }),
 );
 
 // LAYER GROUPS
@@ -163,6 +169,8 @@ export const layersSchema = {
     SetLayerStyleMessage,
     SetLayerLegendVisibilityMessage,
 
+    CreateEphemeralLayersMessage,
+
     GetGroupMessage,
     GetGroupsMessage,
     SetLayerGroupVisibilityMessage,
@@ -202,6 +210,10 @@ export type LayersSchema = {
     setLayerLegendVisibility: Method<
       zInfer<typeof SetLayerLegendVisibilityMessage>,
       void
+    >;
+    createEphemeralLayers: Method<
+      zInfer<typeof CreateEphemeralLayersMessage>,
+      Array<LayerGroup | null>
     >;
 
     getLayerGroup: Method<zInfer<typeof GetGroupMessage>, LayerGroup | null>;

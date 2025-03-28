@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.5.0-next.12
+
+### Minor Changes
+
+* 69cc0a9: Fix spelling mistake in types
+
 ## 1.5.0-next.11
 
 ### Minor Changes

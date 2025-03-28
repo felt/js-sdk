@@ -37,7 +37,7 @@ const element = await felt.getElement("element-1");
 
 ## getElementGeometry()
 
-> **getElementGeometry**(`id`: `string`): `Promise`\<`null` | [`Geometry`](../Shared/Geometry.md)>
+> **getElementGeometry**(`id`: `string`): `Promise`\<`null` | [`GeoJsonGeometry`](../Shared/GeoJsonGeometry.md)>
 
 Get the geometry of an element.
 
@@ -49,7 +49,7 @@ Get the geometry of an element.
 
 ### Returns
 
-`Promise`\<`null` | [`Geometry`](../Shared/Geometry.md)>
+`Promise`\<`null` | [`GeoJsonGeometry`](../Shared/GeoJsonGeometry.md)>
 
 ### Example
 

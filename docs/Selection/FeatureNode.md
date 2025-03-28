@@ -12,4 +12,4 @@ References a feature on the map.
 
 ## entity
 
-> **entity**: [`Feature`](../Layers/Feature.md)
+> **entity**: [`LayerFeature`](../Layers/LayerFeature.md)

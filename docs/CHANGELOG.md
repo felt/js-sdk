@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.5.0-next.11
+
+### Minor Changes
+
+* 63c3042: Add getLayerSchema method
+
 ## 1.5.0-next.10
 
 ### Minor Changes

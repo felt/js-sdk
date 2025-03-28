@@ -430,9 +430,10 @@ export { LayerSchemaTextAttribute }
 
 // @public
 export interface LayersController {
-    createEphemeralLayers(params: {
-        sources: Array<GeoJsonArrayBufferSource | GeoJsonFileSource | GeoJsonUrlSource>;
-    }): Promise<Array<LayerGroup | null>>;
+    createEphemeralLayer(params: {
+        source: GeoJsonArrayBufferSource | GeoJsonFileSource | GeoJsonUrlSource;
+    }): Promise<LayerGroup | null>;
+    deleteLayer(id: string): Promise<void>;
     getAggregates<T extends AggregationMethod | "count">(params: GetLayerCalculationParams<T>): Promise<Record<T, number | null>>;
     getCategoryData(params: GetLayerCategoriesParams): Promise<Array<GetLayerCategoriesGroup>>;
     getFeature(params: {

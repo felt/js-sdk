@@ -29,6 +29,7 @@ import {
   type LayerFeature,
   type LayerGroup,
   type LayerGroupChangeCallbackParams,
+  type LayerSchema,
   type LegendItem,
   type LegendItemChangeCallbackParams,
   LegendItemIdentifierSchema,
@@ -151,6 +152,9 @@ const GetLayerCalculationMessage = methodMessage(
   GetLayerCalculationParamsSchema,
 );
 
+// SCHEMA
+const GetLayerSchemaMessage = methodMessage("getLayerSchema", z.string());
+
 export const layersSchema = {
   methods: [
     GetLayerMessage,
@@ -178,6 +182,8 @@ export const layersSchema = {
     GetLayerCategoriesMessage,
     GetLayerHistogramMessage,
     GetLayerCalculationMessage,
+
+    GetLayerSchemaMessage,
   ],
   listeners: [
     OnLayerChangeMessage,
@@ -254,6 +260,8 @@ export type LayersSchema = {
       zInfer<typeof GetLayerCalculationMessage>,
       Record<AggregationMethod | "count", number | null>
     >;
+
+    getLayerSchema: Method<zInfer<typeof GetLayerSchemaMessage>, LayerSchema>;
   };
   listeners: {
     onLayerChange: Listener<

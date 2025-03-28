@@ -4,117 +4,125 @@
 
 ```ts
 
-import { aq as AggregationConfig } from './types-CWwhAtt1.js';
-import { A as AggregationMethod } from './types-CWwhAtt1.js';
-import { U as CircleElementCreate } from './types-CWwhAtt1.js';
-import { W as CircleElementRead } from './types-CWwhAtt1.js';
-import { X as CircleElementUpdate } from './types-CWwhAtt1.js';
-import { aK as CircleToolSettings } from './types-CWwhAtt1.js';
-import { D as ConfigurableToolType } from './types-CWwhAtt1.js';
-import { E as Element_2 } from './types-CWwhAtt1.js';
-import { d as ElementChangeCallbackParams } from './types-CWwhAtt1.js';
-import { f as ElementCreate } from './types-CWwhAtt1.js';
-import { b as ElementGroup } from './types-CWwhAtt1.js';
-import { e as ElementGroupChangeCallbackParams } from './types-CWwhAtt1.js';
-import { at as ElementGroupNode } from './types-CWwhAtt1.js';
-import { au as ElementNode } from './types-CWwhAtt1.js';
-import { g as ElementUpdate } from './types-CWwhAtt1.js';
-import { B as EntityNode } from './types-CWwhAtt1.js';
-import { av as FeatureNode } from './types-CWwhAtt1.js';
-import { C as FeatureSelection } from './types-CWwhAtt1.js';
-import { ay as FeltBoundary } from './types-CWwhAtt1.js';
-import { az as FeltZoom } from './types-CWwhAtt1.js';
-import { an as FilterExpression } from './types-CWwhAtt1.js';
-import { ao as FilterLogicGate } from './types-CWwhAtt1.js';
-import { F as Filters } from './types-CWwhAtt1.js';
-import { ap as FilterTernary } from './types-CWwhAtt1.js';
-import { t as GeoJsonFeature } from './types-CWwhAtt1.js';
-import { G as GeoJsonGeometry } from './types-CWwhAtt1.js';
-import { aA as GeoJsonProperties } from './types-CWwhAtt1.js';
-import { c as GetElementGroupsConstraint } from './types-CWwhAtt1.js';
-import { a as GetElementsConstraint } from './types-CWwhAtt1.js';
-import { y as GetLayerCalculationParams } from './types-CWwhAtt1.js';
-import { v as GetLayerCategoriesGroup } from './types-CWwhAtt1.js';
-import { u as GetLayerCategoriesParams } from './types-CWwhAtt1.js';
-import { k as GetLayerGroupsConstraint } from './types-CWwhAtt1.js';
-import { x as GetLayerHistogramBin } from './types-CWwhAtt1.js';
-import { w as GetLayerHistogramParams } from './types-CWwhAtt1.js';
-import { h as GetLayersConstraint } from './types-CWwhAtt1.js';
-import { r as GetRenderedFeaturesConstraint } from './types-CWwhAtt1.js';
-import { Y as HighlighterElementCreate } from './types-CWwhAtt1.js';
-import { Z as HighlighterElementRead } from './types-CWwhAtt1.js';
-import { _ as HighlighterElementUpdate } from './types-CWwhAtt1.js';
-import { aL as HighlighterToolSettings } from './types-CWwhAtt1.js';
-import { $ as ImageElementCreate } from './types-CWwhAtt1.js';
-import { a0 as ImageElementRead } from './types-CWwhAtt1.js';
-import { a1 as ImageElementUpdate } from './types-CWwhAtt1.js';
-import { I as InputToolSettings } from './types-CWwhAtt1.js';
-import { K } from './types-CWwhAtt1.js';
-import { aB as LatLng } from './types-CWwhAtt1.js';
-import { L as Layer } from './types-CWwhAtt1.js';
-import { i as LayerChangeCallbackParams } from './types-CWwhAtt1.js';
-import { s as LayerFeature } from './types-CWwhAtt1.js';
-import { q as LayerFilters } from './types-CWwhAtt1.js';
-import { j as LayerGroup } from './types-CWwhAtt1.js';
-import { l as LayerGroupChangeCallbackParams } from './types-CWwhAtt1.js';
-import { aw as LayerGroupNode } from './types-CWwhAtt1.js';
-import { ax as LayerNode } from './types-CWwhAtt1.js';
-import { al as LayerProcessingStatus } from './types-CWwhAtt1.js';
-import { n as LegendItem } from './types-CWwhAtt1.js';
-import { p as LegendItemChangeCallbackParams } from './types-CWwhAtt1.js';
-import { m as LegendItemIdentifier } from './types-CWwhAtt1.js';
-import { o as LegendItemsConstraint } from './types-CWwhAtt1.js';
-import { aC as LineStringGeometry } from './types-CWwhAtt1.js';
-import { aM as LineToolSettings } from './types-CWwhAtt1.js';
-import { a2 as LinkElementRead } from './types-CWwhAtt1.js';
-import { aD as LngLatTuple } from './types-CWwhAtt1.js';
-import { z as MapDetails } from './types-CWwhAtt1.js';
-import { M as MapInteractionEvent } from './types-CWwhAtt1.js';
-import { a3 as MarkerElementCreate } from './types-CWwhAtt1.js';
-import { a4 as MarkerElementRead } from './types-CWwhAtt1.js';
-import { a5 as MarkerElementUpdate } from './types-CWwhAtt1.js';
-import { aN as MarkerToolSettings } from './types-CWwhAtt1.js';
-import { ar as MultiAggregationConfig } from './types-CWwhAtt1.js';
-import { aE as MultiLineStringGeometry } from './types-CWwhAtt1.js';
-import { aF as MultiPointGeometry } from './types-CWwhAtt1.js';
-import { aG as MultiPolygonGeometry } from './types-CWwhAtt1.js';
-import { a6 as NoteElementCreate } from './types-CWwhAtt1.js';
-import { a7 as NoteElementRead } from './types-CWwhAtt1.js';
-import { a8 as NoteElementUpdate } from './types-CWwhAtt1.js';
-import { aO as NoteToolSettings } from './types-CWwhAtt1.js';
-import { a9 as PathElementCreate } from './types-CWwhAtt1.js';
-import { aa as PathElementRead } from './types-CWwhAtt1.js';
-import { ab as PathElementUpdate } from './types-CWwhAtt1.js';
-import { aP as PinToolSettings } from './types-CWwhAtt1.js';
-import { ac as PlaceElementCreate } from './types-CWwhAtt1.js';
-import { ad as PlaceElementRead } from './types-CWwhAtt1.js';
-import { ae as PlaceElementUpdate } from './types-CWwhAtt1.js';
-import { aQ as PlaceFrame } from './types-CWwhAtt1.js';
-import { aR as PlaceSymbol } from './types-CWwhAtt1.js';
-import { aH as PointGeometry } from './types-CWwhAtt1.js';
-import { af as PolygonElementCreate } from './types-CWwhAtt1.js';
-import { ag as PolygonElementRead } from './types-CWwhAtt1.js';
-import { ah as PolygonElementUpdate } from './types-CWwhAtt1.js';
-import { aI as PolygonGeometry } from './types-CWwhAtt1.js';
-import { aS as PolygonToolSettings } from './types-CWwhAtt1.js';
-import { am as RasterValue } from './types-CWwhAtt1.js';
-import { aT as RouteToolSettings } from './types-CWwhAtt1.js';
-import { O as SetViewportCenterZoomParams } from './types-CWwhAtt1.js';
-import { S as SetVisibilityRequest } from './types-CWwhAtt1.js';
-import { N as SortConfig } from './types-CWwhAtt1.js';
-import { aJ as SortDirection } from './types-CWwhAtt1.js';
-import { ai as TextElementCreate } from './types-CWwhAtt1.js';
-import { aj as TextElementRead } from './types-CWwhAtt1.js';
-import { ak as TextElementUpdate } from './types-CWwhAtt1.js';
-import { aU as TextToolSettings } from './types-CWwhAtt1.js';
-import { J as ToolSettingsChangeEvent } from './types-CWwhAtt1.js';
-import { H as ToolSettingsMap } from './types-CWwhAtt1.js';
-import { T as ToolType } from './types-CWwhAtt1.js';
-import { as as ValueConfiguration } from './types-CWwhAtt1.js';
-import { R as ViewportCenterZoom } from './types-CWwhAtt1.js';
-import { P as ViewportConstraints } from './types-CWwhAtt1.js';
-import { Q as ViewportFitBoundsParams } from './types-CWwhAtt1.js';
-import { V as ViewportState } from './types-CWwhAtt1.js';
+import { ay as AggregationConfig } from './types-CI-GVo6N.js';
+import { A as AggregationMethod } from './types-CI-GVo6N.js';
+import { W as CircleElementCreate } from './types-CI-GVo6N.js';
+import { X as CircleElementRead } from './types-CI-GVo6N.js';
+import { Y as CircleElementUpdate } from './types-CI-GVo6N.js';
+import { aS as CircleToolSettings } from './types-CI-GVo6N.js';
+import { H as ConfigurableToolType } from './types-CI-GVo6N.js';
+import { E as Element_2 } from './types-CI-GVo6N.js';
+import { d as ElementChangeCallbackParams } from './types-CI-GVo6N.js';
+import { f as ElementCreate } from './types-CI-GVo6N.js';
+import { b as ElementGroup } from './types-CI-GVo6N.js';
+import { e as ElementGroupChangeCallbackParams } from './types-CI-GVo6N.js';
+import { aB as ElementGroupNode } from './types-CI-GVo6N.js';
+import { aC as ElementNode } from './types-CI-GVo6N.js';
+import { g as ElementUpdate } from './types-CI-GVo6N.js';
+import { C as EntityNode } from './types-CI-GVo6N.js';
+import { aD as FeatureNode } from './types-CI-GVo6N.js';
+import { D as FeatureSelection } from './types-CI-GVo6N.js';
+import { aG as FeltBoundary } from './types-CI-GVo6N.js';
+import { aH as FeltZoom } from './types-CI-GVo6N.js';
+import { av as FilterExpression } from './types-CI-GVo6N.js';
+import { aw as FilterLogicGate } from './types-CI-GVo6N.js';
+import { F as Filters } from './types-CI-GVo6N.js';
+import { ax as FilterTernary } from './types-CI-GVo6N.js';
+import { t as GeoJsonFeature } from './types-CI-GVo6N.js';
+import { G as GeoJsonGeometry } from './types-CI-GVo6N.js';
+import { aI as GeoJsonProperties } from './types-CI-GVo6N.js';
+import { c as GetElementGroupsConstraint } from './types-CI-GVo6N.js';
+import { a as GetElementsConstraint } from './types-CI-GVo6N.js';
+import { y as GetLayerCalculationParams } from './types-CI-GVo6N.js';
+import { v as GetLayerCategoriesGroup } from './types-CI-GVo6N.js';
+import { u as GetLayerCategoriesParams } from './types-CI-GVo6N.js';
+import { k as GetLayerGroupsConstraint } from './types-CI-GVo6N.js';
+import { x as GetLayerHistogramBin } from './types-CI-GVo6N.js';
+import { w as GetLayerHistogramParams } from './types-CI-GVo6N.js';
+import { h as GetLayersConstraint } from './types-CI-GVo6N.js';
+import { r as GetRenderedFeaturesConstraint } from './types-CI-GVo6N.js';
+import { Z as HighlighterElementCreate } from './types-CI-GVo6N.js';
+import { _ as HighlighterElementRead } from './types-CI-GVo6N.js';
+import { $ as HighlighterElementUpdate } from './types-CI-GVo6N.js';
+import { aT as HighlighterToolSettings } from './types-CI-GVo6N.js';
+import { a0 as ImageElementCreate } from './types-CI-GVo6N.js';
+import { a1 as ImageElementRead } from './types-CI-GVo6N.js';
+import { a2 as ImageElementUpdate } from './types-CI-GVo6N.js';
+import { I as InputToolSettings } from './types-CI-GVo6N.js';
+import { aJ as LatLng } from './types-CI-GVo6N.js';
+import { L as Layer } from './types-CI-GVo6N.js';
+import { i as LayerChangeCallbackParams } from './types-CI-GVo6N.js';
+import { s as LayerFeature } from './types-CI-GVo6N.js';
+import { q as LayerFilters } from './types-CI-GVo6N.js';
+import { j as LayerGroup } from './types-CI-GVo6N.js';
+import { l as LayerGroupChangeCallbackParams } from './types-CI-GVo6N.js';
+import { aE as LayerGroupNode } from './types-CI-GVo6N.js';
+import { aF as LayerNode } from './types-CI-GVo6N.js';
+import { am as LayerProcessingStatus } from './types-CI-GVo6N.js';
+import { z as LayerSchema } from './types-CI-GVo6N.js';
+import { ao as LayerSchemaAttribute } from './types-CI-GVo6N.js';
+import { ap as LayerSchemaBooleanAttribute } from './types-CI-GVo6N.js';
+import { aq as LayerSchemaCommmonAttribute } from './types-CI-GVo6N.js';
+import { ar as LayerSchemaDateAttribute } from './types-CI-GVo6N.js';
+import { as as LayerSchemaDateTimeAttribute } from './types-CI-GVo6N.js';
+import { at as LayerSchemaNumericAttribute } from './types-CI-GVo6N.js';
+import { au as LayerSchemaTextAttribute } from './types-CI-GVo6N.js';
+import { n as LegendItem } from './types-CI-GVo6N.js';
+import { p as LegendItemChangeCallbackParams } from './types-CI-GVo6N.js';
+import { m as LegendItemIdentifier } from './types-CI-GVo6N.js';
+import { o as LegendItemsConstraint } from './types-CI-GVo6N.js';
+import { aK as LineStringGeometry } from './types-CI-GVo6N.js';
+import { aU as LineToolSettings } from './types-CI-GVo6N.js';
+import { a3 as LinkElementRead } from './types-CI-GVo6N.js';
+import { aL as LngLatTuple } from './types-CI-GVo6N.js';
+import { B as MapDetails } from './types-CI-GVo6N.js';
+import { M as MapInteractionEvent } from './types-CI-GVo6N.js';
+import { a4 as MarkerElementCreate } from './types-CI-GVo6N.js';
+import { a5 as MarkerElementRead } from './types-CI-GVo6N.js';
+import { a6 as MarkerElementUpdate } from './types-CI-GVo6N.js';
+import { aV as MarkerToolSettings } from './types-CI-GVo6N.js';
+import { az as MultiAggregationConfig } from './types-CI-GVo6N.js';
+import { aM as MultiLineStringGeometry } from './types-CI-GVo6N.js';
+import { aN as MultiPointGeometry } from './types-CI-GVo6N.js';
+import { aO as MultiPolygonGeometry } from './types-CI-GVo6N.js';
+import { N } from './types-CI-GVo6N.js';
+import { a7 as NoteElementCreate } from './types-CI-GVo6N.js';
+import { a8 as NoteElementRead } from './types-CI-GVo6N.js';
+import { a9 as NoteElementUpdate } from './types-CI-GVo6N.js';
+import { aW as NoteToolSettings } from './types-CI-GVo6N.js';
+import { aa as PathElementCreate } from './types-CI-GVo6N.js';
+import { ab as PathElementRead } from './types-CI-GVo6N.js';
+import { ac as PathElementUpdate } from './types-CI-GVo6N.js';
+import { aX as PinToolSettings } from './types-CI-GVo6N.js';
+import { ad as PlaceElementCreate } from './types-CI-GVo6N.js';
+import { ae as PlaceElementRead } from './types-CI-GVo6N.js';
+import { af as PlaceElementUpdate } from './types-CI-GVo6N.js';
+import { aY as PlaceFrame } from './types-CI-GVo6N.js';
+import { aZ as PlaceSymbol } from './types-CI-GVo6N.js';
+import { aP as PointGeometry } from './types-CI-GVo6N.js';
+import { ag as PolygonElementCreate } from './types-CI-GVo6N.js';
+import { ah as PolygonElementRead } from './types-CI-GVo6N.js';
+import { ai as PolygonElementUpdate } from './types-CI-GVo6N.js';
+import { aQ as PolygonGeometry } from './types-CI-GVo6N.js';
+import { a_ as PolygonToolSettings } from './types-CI-GVo6N.js';
+import { an as RasterValue } from './types-CI-GVo6N.js';
+import { a$ as RouteToolSettings } from './types-CI-GVo6N.js';
+import { P as SetViewportCenterZoomParams } from './types-CI-GVo6N.js';
+import { S as SetVisibilityRequest } from './types-CI-GVo6N.js';
+import { O as SortConfig } from './types-CI-GVo6N.js';
+import { aR as SortDirection } from './types-CI-GVo6N.js';
+import { aj as TextElementCreate } from './types-CI-GVo6N.js';
+import { ak as TextElementRead } from './types-CI-GVo6N.js';
+import { al as TextElementUpdate } from './types-CI-GVo6N.js';
+import { b0 as TextToolSettings } from './types-CI-GVo6N.js';
+import { K as ToolSettingsChangeEvent } from './types-CI-GVo6N.js';
+import { J as ToolSettingsMap } from './types-CI-GVo6N.js';
+import { T as ToolType } from './types-CI-GVo6N.js';
+import { aA as ValueConfiguration } from './types-CI-GVo6N.js';
+import { U as ViewportCenterZoom } from './types-CI-GVo6N.js';
+import { Q as ViewportConstraints } from './types-CI-GVo6N.js';
+import { R as ViewportFitBoundsParams } from './types-CI-GVo6N.js';
+import { V as ViewportState } from './types-CI-GVo6N.js';
 import { z } from 'zod';
 
 export { AggregationConfig }
@@ -213,7 +221,7 @@ export interface FeltController extends ViewportController, UiController, Layers
 // Warning: (ae-forgotten-export) The symbol "FeltEmbedOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public
-export interface FeltEmbedOptions extends K<typeof FeltEmbedOptionsSchema> {
+export interface FeltEmbedOptions extends N<typeof FeltEmbedOptionsSchema> {
     // (undocumented)
     initialViewport?: ViewportCenterZoom;
     // (undocumented)
@@ -392,6 +400,22 @@ export { LayerNode }
 
 export { LayerProcessingStatus }
 
+export { LayerSchema }
+
+export { LayerSchemaAttribute }
+
+export { LayerSchemaBooleanAttribute }
+
+export { LayerSchemaCommmonAttribute }
+
+export { LayerSchemaDateAttribute }
+
+export { LayerSchemaDateTimeAttribute }
+
+export { LayerSchemaNumericAttribute }
+
+export { LayerSchemaTextAttribute }
+
 // @public
 export interface LayersController {
     getAggregates<T extends AggregationMethod | "count">(params: GetLayerCalculationParams<T>): Promise<Record<T, number | null>>;
@@ -413,6 +437,7 @@ export interface LayersController {
     constraint?: GetLayerGroupsConstraint): Promise<Array<LayerGroup | null>>;
     getLayers(
     constraint?: GetLayersConstraint): Promise<Array<Layer | null>>;
+    getLayerSchema(layerId: string): Promise<LayerSchema>;
     getLegendItem(id: LegendItemIdentifier): Promise<LegendItem | null>;
     getLegendItems(constraint?: LegendItemsConstraint): Promise<Array<LegendItem | null>>;
     getRenderedFeatures(
@@ -511,7 +536,7 @@ export { NoteToolSettings }
 // Warning: (ae-forgotten-export) The symbol "UiOnMapInteractionsOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public
-export interface OnMapInteractionsOptions extends K<typeof UiOnMapInteractionsOptionsSchema> {
+export interface OnMapInteractionsOptions extends N<typeof UiOnMapInteractionsOptionsSchema> {
 }
 
 export { PathElementCreate }
@@ -613,7 +638,7 @@ export interface UiController {
 // Warning: (ae-forgotten-export) The symbol "UiControlsOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public (undocumented)
-export interface UiControlsOptions extends K<typeof UiControlsOptionsSchema> {
+export interface UiControlsOptions extends N<typeof UiControlsOptionsSchema> {
 }
 
 // @internal (undocumented)

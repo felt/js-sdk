@@ -6,6 +6,7 @@ import {
   type FeltBoundary,
   type LatLng,
 } from "~/modules/shared/types";
+import type { LayersController } from "./controller";
 
 export type { LayerFeature, RasterValue } from "./features/types";
 
@@ -329,3 +330,189 @@ export const GetRenderedFeaturesConstraintSchema = z.object({
     ])
     .optional(),
 });
+
+/**
+ * The schema that describes the structure of the features in a layer.
+ *
+ * @remarks This can be useful to build generic UIs that need to know the structure of the data in
+ * a layer, such as a dropdown to choose an attribute.
+ *
+ * @group Layer Schema
+ */
+export interface LayerSchema {
+  /**
+   * The total number of features in the layer.
+   */
+  featureCount: number;
+
+  /**
+   * Array of attribute schemas describing the properties available on features in this layer.
+   */
+  attributes: Array<LayerSchemaAttribute>;
+}
+
+/**
+ * A single attribute from the layer schema.
+ *
+ * @remarks Each feature in a layer has a set of attributes, and these types describe the
+ * structure of a single attribute, including things like id, display name, type, and sample values.
+ *
+ * @group Layer Schema
+ */
+export type LayerSchemaAttribute =
+  | LayerSchemaNumericAttribute
+  | LayerSchemaTextAttribute
+  | LayerSchemaBooleanAttribute
+  | LayerSchemaDateAttribute
+  | LayerSchemaDateTimeAttribute;
+
+/**
+ * The common schema for all attributes.
+ *
+ * @group Layer Schema
+ */
+export interface LayerSchemaCommmonAttribute {
+  /**
+   * The unique identifier for this attribute.
+   *
+   * This can be used to fetch statistics, categories, histograms etc. for this attribute
+   * via the {@link LayersController.getCategoryData}, {@link LayersController.getHistogramData},
+   * and {@link LayersController.getAggregates} methods.
+   */
+  id: string;
+
+  /**
+   * The human-readable name of this attribute.
+   */
+  displayName: string;
+
+  /**
+   * The specific data type of this attribute, providing more detail than the basic type.
+   *
+   * For instance, a numeric attribute might be "INTEGER", "FLOAT, etc.
+   */
+  detailedType: string;
+
+  /**
+   * The number of distinct values present for this attribute across all features.
+   */
+  distinctCount: number;
+}
+
+/**
+ * The schema for a numeric attribute on a layer.
+ *
+ * @group Layer Schema
+ */
+export interface LayerSchemaNumericAttribute
+  extends LayerSchemaCommmonAttribute {
+  /**
+   * Indicates this is a numeric attribute.
+   */
+  type: "numeric";
+
+  /**
+   * A small sample of values for this attribute and their frequency.
+   */
+  sampleValues: Array<{ value: number; count: number }>;
+
+  /**
+   * The minimum value present for this attribute across all features.
+   */
+  min: number;
+
+  /**
+   * The maximum value present for this attribute across all features.
+   */
+  max: number;
+}
+
+/**
+ * The schema for a text attribute on a layer.
+ *
+ * @group Layer Schema
+ */
+export interface LayerSchemaTextAttribute extends LayerSchemaCommmonAttribute {
+  /**
+   * Indicates this is a text attribute.
+   */
+  type: "text";
+
+  /**
+   * A small sample of string values for this attribute and their frequency.
+   */
+  sampleValues: Array<{ value: string; count: number }>;
+}
+
+/**
+ * The schema for a boolean attribute on a layer.
+ *
+ * @group Layer Schema
+ */
+export interface LayerSchemaBooleanAttribute
+  extends LayerSchemaCommmonAttribute {
+  /**
+   * Indicates this is a boolean attribute.
+   */
+  type: "boolean";
+
+  /**
+   * A representative sample of boolean values for this attribute and their frequency.
+   */
+  sampleValues: Array<{ value: boolean; count: number }>;
+}
+
+/**
+ * The schema for a date attribute on a layer.
+ *
+ * @group Layer Schema
+ */
+export interface LayerSchemaDateAttribute extends LayerSchemaCommmonAttribute {
+  /**
+   * Indicates this is a date attribute.
+   */
+  type: "date";
+
+  /**
+   * The earliest date present for this attribute in truncated ISO8601 format (YYYY-MM-DD).
+   */
+  min: string;
+
+  /**
+   * The latest date present for this attribute in truncated ISO8601 format (YYYY-MM-DD).
+   */
+  max: string;
+
+  /**
+   * A representative sample of date values for this attribute and their frequency.
+   */
+  sampleValues: Array<{ value: string; count: number }>;
+}
+
+/**
+ * The schema for a datetime attribute on a layer.
+ *
+ * @group Layer Schema
+ */
+export interface LayerSchemaDateTimeAttribute
+  extends LayerSchemaCommmonAttribute {
+  /**
+   * Indicates this is a datetime attribute.
+   */
+  type: "datetime";
+
+  /**
+   * The earliest datetime present for this attribute in ISO8601 format.
+   */
+  min: string;
+
+  /**
+   * The latest datetime present for this attribute in ISO8601 format.
+   */
+  max: string;
+
+  /**
+   * A representative sample of datetime values for this attribute and their frequency.
+   */
+  sampleValues: Array<{ value: string; count: number }>;
+}

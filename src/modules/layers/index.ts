@@ -16,12 +16,12 @@
  * @module Layers
  */
 export type {
-  Feature,
   GetLayerGroupsConstraint,
   GetLayersConstraint,
   GetRenderedFeaturesConstraint,
   Layer,
   LayerChangeCallbackParams,
+  LayerFeature,
   LayerGroup,
   LayerGroupChangeCallbackParams,
   LayerProcessingStatus,

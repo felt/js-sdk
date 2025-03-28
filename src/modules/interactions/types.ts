@@ -1,4 +1,4 @@
-import type { Feature } from "../layers";
+import type { LayerFeature } from "../layers";
 import type { RasterValue } from "../layers/features/types";
 import type { LatLng } from "../shared/types";
 
@@ -14,7 +14,7 @@ export interface MapInteractionEvent {
   /**
    * The vector features that are under the cursor.
    */
-  features: Array<Feature>;
+  features: Array<LayerFeature>;
 
   /**
    * The raster pixel values that are under the cursor.

@@ -7,7 +7,7 @@ import {
   type LatLng,
 } from "~/modules/shared/types";
 
-export type { Feature, RasterValue } from "./features/types";
+export type { LayerFeature, RasterValue } from "./features/types";
 
 /**
  * This describes the processing status of a layer.

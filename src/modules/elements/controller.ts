@@ -187,6 +187,7 @@ export interface ElementsController {
    *
    * @returns A function to unsubscribe from the listener
    *
+   * @event
    * @example
    * ```typescript
    * const unsubscribe = felt.onToolCreatedElement({

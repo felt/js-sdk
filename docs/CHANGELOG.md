@@ -1,5 +1,12 @@
 # @feltmaps/js-sdk
 
+## 1.5.0-next.10
+
+### Minor Changes
+
+* d877a83: Add getFeature for getting a single feature as GeoJSON with full detail geometry
+* b0e4149: Improves type readability and docs
+
 ## 1.5.0-next.9
 
 ### Minor Changes

@@ -52,7 +52,7 @@ independently of the Layer, so you can turn on and off each category or class in
 # Layer Schema
 
 * [LayerSchema](LayerSchema.md)
-* [LayerSchemaCommmonAttribute](LayerSchemaCommmonAttribute.md)
+* [LayerSchemaCommonAttribute](LayerSchemaCommonAttribute.md)
 * [LayerSchemaNumericAttribute](LayerSchemaNumericAttribute.md)
 * [LayerSchemaTextAttribute](LayerSchemaTextAttribute.md)
 * [LayerSchemaBooleanAttribute](LayerSchemaBooleanAttribute.md)

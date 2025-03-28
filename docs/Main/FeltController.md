@@ -998,6 +998,39 @@ const maxNewBuildingHeight = await felt.getAggregates({
 
 ***
 
+## getLayerSchema()
+
+> **getLayerSchema**(`layerId`: `string`): `Promise`\<[`LayerSchema`](../Layers/LayerSchema.md)>
+
+Get the schema for a layer.
+
+### Parameters
+
+| Parameter | Type     |
+| --------- | -------- |
+| `layerId` | `string` |
+
+### Returns
+
+`Promise`\<[`LayerSchema`](../Layers/LayerSchema.md)>
+
+### Remarks
+
+The schema describes the structure of the data in a layer, including the attributes
+that are available on the features in the layer.
+
+This can be useful to build generic UIs that need to know the structure of the data in
+a layer, such as a dropdown to choose an attribute.
+
+### Example
+
+```typescript
+const schema = await felt.getLayerSchema({ layerId: "layer-1" });
+const attributeIds = schema.attributes.map((attr) => attr.id);
+```
+
+***
+
 ## getMapDetails()
 
 > **getMapDetails**(): `Promise`\<[`MapDetails`](../Misc/MapDetails.md)>

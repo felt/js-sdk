@@ -371,7 +371,7 @@ export type LayerSchemaAttribute =
  *
  * @group Layer Schema
  */
-export interface LayerSchemaCommmonAttribute {
+export interface LayerSchemaCommonAttribute {
   /**
    * The unique identifier for this attribute.
    *
@@ -405,7 +405,7 @@ export interface LayerSchemaCommmonAttribute {
  * @group Layer Schema
  */
 export interface LayerSchemaNumericAttribute
-  extends LayerSchemaCommmonAttribute {
+  extends LayerSchemaCommonAttribute {
   /**
    * Indicates this is a numeric attribute.
    */
@@ -432,7 +432,7 @@ export interface LayerSchemaNumericAttribute
  *
  * @group Layer Schema
  */
-export interface LayerSchemaTextAttribute extends LayerSchemaCommmonAttribute {
+export interface LayerSchemaTextAttribute extends LayerSchemaCommonAttribute {
   /**
    * Indicates this is a text attribute.
    */
@@ -450,7 +450,7 @@ export interface LayerSchemaTextAttribute extends LayerSchemaCommmonAttribute {
  * @group Layer Schema
  */
 export interface LayerSchemaBooleanAttribute
-  extends LayerSchemaCommmonAttribute {
+  extends LayerSchemaCommonAttribute {
   /**
    * Indicates this is a boolean attribute.
    */
@@ -467,7 +467,7 @@ export interface LayerSchemaBooleanAttribute
  *
  * @group Layer Schema
  */
-export interface LayerSchemaDateAttribute extends LayerSchemaCommmonAttribute {
+export interface LayerSchemaDateAttribute extends LayerSchemaCommonAttribute {
   /**
    * Indicates this is a date attribute.
    */
@@ -495,7 +495,7 @@ export interface LayerSchemaDateAttribute extends LayerSchemaCommmonAttribute {
  * @group Layer Schema
  */
 export interface LayerSchemaDateTimeAttribute
-  extends LayerSchemaCommmonAttribute {
+  extends LayerSchemaCommonAttribute {
   /**
    * Indicates this is a datetime attribute.
    */

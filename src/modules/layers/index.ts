@@ -36,7 +36,7 @@ export type {
   LayerSchema,
   LayerSchemaAttribute,
   LayerSchemaBooleanAttribute,
-  LayerSchemaCommmonAttribute,
+  LayerSchemaCommonAttribute,
   LayerSchemaDateAttribute,
   LayerSchemaDateTimeAttribute,
   LayerSchemaNumericAttribute,

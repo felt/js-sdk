@@ -554,10 +554,8 @@ export interface GeoJsonArrayBufferSource
   extends zInfer<typeof GeoJsonArrayBufferSourceSchema>,
     EphemeralLayerSource {}
 
-export const CreateEphemeralLayerSourcesSchema = z.array(
-  z.union([
-    GeoJsonArrayBufferSourceSchema,
-    GeoJsonFileSourceSchema,
-    GeoJsonUrlSourceSchema,
-  ]),
-);
+export const CreateEphemeralLayerSourceSchema = z.union([
+  GeoJsonArrayBufferSourceSchema,
+  GeoJsonFileSourceSchema,
+  GeoJsonUrlSourceSchema,
+]);

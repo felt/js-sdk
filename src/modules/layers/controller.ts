@@ -42,28 +42,27 @@ export const layersController = (feltWindow: Window): LayersController => ({
   setLayerStyle: method(feltWindow, "setLayerStyle"),
   setLayerLegendVisibility: method(feltWindow, "setLayerLegendVisibility"),
   onLayerChange: listener(feltWindow, "onLayerChange"),
-  createEphemeralLayers: method(
+
+  // layers crud
+  createEphemeralLayer: method(
     feltWindow,
-    "createEphemeralLayers",
+    "createEphemeralLayer",
     async (params) => {
-      const filesConvertedToArrayBuffers = await Promise.all(
-        params.sources.map(async (source) => {
-          if ("url" in source || "arrayBuffer" in source) return source;
+      if ("url" in params.source || "arrayBuffer" in params.source)
+        return params;
 
-          return {
-            type: "application/geo+json",
-            name: source.name,
-            arrayBuffer: await source.file.arrayBuffer(),
-          };
-        }),
-      );
-
+      // convert file to array buffer
       return {
         ...params,
-        sources: filesConvertedToArrayBuffers,
+        source: {
+          type: "application/geo+json",
+          name: params.source.name,
+          arrayBuffer: await params.source.file.arrayBuffer(),
+        },
       };
     },
   ),
+  deleteLayer: method(feltWindow, "deleteLayer"),
 
   // groups
   getLayerGroup: method(feltWindow, "getLayerGroup"),
@@ -245,6 +244,7 @@ export interface LayersController {
     ) => void;
   }): VoidFunction;
 
+  // LAYERS CRUD
   /**
    * Adds layers to the map from file or URL sources.
    *
@@ -256,22 +256,33 @@ export interface LayersController {
    *
    * @example
    * ```typescript
-   * const layerGroups = await felt.createEphemeralLayers({
-   *   sources: [
-   *     { type: "application/geo+json", name: "Parcels", file: someFile},
-   *     { type: "application/geo+json", name: "Buildings", url: "https://example.com/buildings.geojson" },
-   *   ],
+   * const layerFromFile = await felt.createEphemeralLayer({
+   *   source: { type: "application/geo+json", name: "Parcels", file: someFile},
+   * });
+   *
+   * const layerFromUrl = await felt.createEphemeralLayer({
+   *   source: { type: "application/geo+json", name: "Parcels", url: "https://example.com/parcels.geojson" },
    * });
    * ```
    */
-  createEphemeralLayers(params: {
+  createEphemeralLayer(params: {
     /**
-     * The sources that you want to add to the map. These can be GeoJSON files or URLs.
+     * The source that you want to add to the map. These can be GeoJSON files or URLs.
      */
-    sources: Array<
-      GeoJsonArrayBufferSource | GeoJsonFileSource | GeoJsonUrlSource
-    >;
-  }): Promise<Array<LayerGroup | null>>;
+    source: GeoJsonArrayBufferSource | GeoJsonFileSource | GeoJsonUrlSource;
+  }): Promise<LayerGroup | null>;
+
+  /**
+   * Delete a layer from the map by its id.
+   *
+   * @remarks This only works for ephemeral layers created via the `createEphemeralLayer` method.
+   *
+   * @example
+   * ```typescript
+   * await felt.deleteLayer("layer-1");
+   * ```
+   */
+  deleteLayer(id: string): Promise<void>;
 
   // GROUPS
 

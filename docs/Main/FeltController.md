@@ -458,22 +458,22 @@ felt.setLayerLegendVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] 
 
 ***
 
-## createEphemeralLayers()
+## createEphemeralLayer()
 
-> **createEphemeralLayers**(`params`: \{ `sources`: ([`GeoJsonFileSource`](../Layers/GeoJsonFileSource.md) | [`GeoJsonUrlSource`](../Layers/GeoJsonUrlSource.md) | [`GeoJsonArrayBufferSource`](../Layers/GeoJsonArrayBufferSource.md))\[]; }): `Promise`\<(`null` | [`LayerGroup`](../Layers/LayerGroup.md))\[]>
+> **createEphemeralLayer**(`params`: \{ `source`: [`GeoJsonArrayBufferSource`](../Layers/GeoJsonArrayBufferSource.md) | [`GeoJsonFileSource`](../Layers/GeoJsonFileSource.md) | [`GeoJsonUrlSource`](../Layers/GeoJsonUrlSource.md); }): `Promise`\<`null` | [`LayerGroup`](../Layers/LayerGroup.md)>
 
 Adds layers to the map from file or URL sources.
 
 ### Parameters
 
-| Parameter        | Type                                                                                                                                                                                                      | Description                                                                      |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `params`         | \{ `sources`: ([`GeoJsonFileSource`](../Layers/GeoJsonFileSource.md) \| [`GeoJsonUrlSource`](../Layers/GeoJsonUrlSource.md) \| [`GeoJsonArrayBufferSource`](../Layers/GeoJsonArrayBufferSource.md))\[]; } | -                                                                                |
-| `params.sources` | ([`GeoJsonFileSource`](../Layers/GeoJsonFileSource.md) \| [`GeoJsonUrlSource`](../Layers/GeoJsonUrlSource.md) \| [`GeoJsonArrayBufferSource`](../Layers/GeoJsonArrayBufferSource.md))\[]                  | The sources that you want to add to the map. These can be GeoJSON files or URLs. |
+| Parameter       | Type                                                                                                                                                                                                | Description                                                                     |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `params`        | \{ `source`: [`GeoJsonArrayBufferSource`](../Layers/GeoJsonArrayBufferSource.md) \| [`GeoJsonFileSource`](../Layers/GeoJsonFileSource.md) \| [`GeoJsonUrlSource`](../Layers/GeoJsonUrlSource.md); } | -                                                                               |
+| `params.source` | [`GeoJsonArrayBufferSource`](../Layers/GeoJsonArrayBufferSource.md) \| [`GeoJsonFileSource`](../Layers/GeoJsonFileSource.md) \| [`GeoJsonUrlSource`](../Layers/GeoJsonUrlSource.md)                 | The source that you want to add to the map. These can be GeoJSON files or URLs. |
 
 ### Returns
 
-`Promise`\<(`null` | [`LayerGroup`](../Layers/LayerGroup.md))\[]>
+`Promise`\<`null` | [`LayerGroup`](../Layers/LayerGroup.md)>
 
 The layer groups that were created.
 
@@ -486,12 +486,41 @@ remote files.
 ### Example
 
 ```typescript
-const layerGroups = await felt.createEphemeralLayers({
-  sources: [
-    { type: "application/geo+json", name: "Parcels", file: someFile},
-    { type: "application/geo+json", name: "Buildings", url: "https://example.com/buildings.geojson" },
-  ],
+const layerFromFile = await felt.createEphemeralLayer({
+  source: { type: "application/geo+json", name: "Parcels", file: someFile},
 });
+
+const layerFromUrl = await felt.createEphemeralLayer({
+  source: { type: "application/geo+json", name: "Parcels", url: "https://example.com/parcels.geojson" },
+});
+```
+
+***
+
+## deleteLayer()
+
+> **deleteLayer**(`id`: `string`): `Promise`\<`void`>
+
+Delete a layer from the map by its id.
+
+### Parameters
+
+| Parameter | Type     |
+| --------- | -------- |
+| `id`      | `string` |
+
+### Returns
+
+`Promise`\<`void`>
+
+### Remarks
+
+This only works for ephemeral layers created via the `createEphemeralLayer` method.
+
+### Example
+
+```typescript
+await felt.deleteLayer("layer-1");
 ```
 
 ***

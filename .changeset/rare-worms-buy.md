@@ -2,4 +2,4 @@
 "@feltmaps/js-sdk": minor
 ---
 
-Add createEphemeralLayer and deleteLayer
+Add createLayer and deleteLayer

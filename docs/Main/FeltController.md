@@ -183,46 +183,6 @@ felt.setElementGroupVisibility({ show: ["element-group-1", "element-group-2"], h
 
 ***
 
-## onElementCreateEnd()
-
-> **onElementCreateEnd**(`args`: \{ `handler`: (`params`: \{ `element`: [`Element`](../Elements/Element.md); }) => `void`; }): `VoidFunction`
-
-Listens for when a new element is finished being created by a drawing tool.
-
-This differs from the `onElementCreate` listener, which fires whenever an
-element is first created. This fires when the user finishes creating an element
-which could be after a series of interactions.
-
-For example, when creating a polygon, the user places a series of points then
-finishes by pressing Enter or Escape. Or when creating a Place element, they
-add the marker, type a label, then finally deselect the element.
-
-### Parameters
-
-| Parameter      | Type                                                                                        | Description                                    |
-| -------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| `args`         | \{ `handler`: (`params`: \{ `element`: [`Element`](../Elements/Element.md); }) => `void`; } | -                                              |
-| `args.handler` | (`params`: \{ `element`: [`Element`](../Elements/Element.md); }) => `void`                  | The handler to call whenever this event fires. |
-
-### Returns
-
-`VoidFunction`
-
-A function to unsubscribe from the listener
-
-### Example
-
-```typescript
-const unsubscribe = felt.onToolCreatedElement({
-  handler: (params) => console.log(params),
-});
-
-// later on...
-unsubscribe();
-```
-
-***
-
 ## createElement()
 
 > **createElement**(`element`: [`ElementCreate`](../Elements/ElementCreate.md)): `Promise`\<[`Element`](../Elements/Element.md)>
@@ -1688,6 +1648,46 @@ A function to unsubscribe from the listener
 ```typescript
 const unsubscribe = felt.onElementCreate({
   handler: (element) => console.log(element.id),
+});
+
+// later on...
+unsubscribe();
+```
+
+***
+
+## onElementCreateEnd()
+
+> **onElementCreateEnd**(`args`: \{ `handler`: (`params`: \{ `element`: [`Element`](../Elements/Element.md); }) => `void`; }): `VoidFunction`
+
+Listens for when a new element is finished being created by a drawing tool.
+
+This differs from the `onElementCreate` listener, which fires whenever an
+element is first created. This fires when the user finishes creating an element
+which could be after a series of interactions.
+
+For example, when creating a polygon, the user places a series of points then
+finishes by pressing Enter or Escape. Or when creating a Place element, they
+add the marker, type a label, then finally deselect the element.
+
+### Parameters
+
+| Parameter      | Type                                                                                        | Description                                    |
+| -------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| `args`         | \{ `handler`: (`params`: \{ `element`: [`Element`](../Elements/Element.md); }) => `void`; } | -                                              |
+| `args.handler` | (`params`: \{ `element`: [`Element`](../Elements/Element.md); }) => `void`                  | The handler to call whenever this event fires. |
+
+### Returns
+
+`VoidFunction`
+
+A function to unsubscribe from the listener
+
+### Example
+
+```typescript
+const unsubscribe = felt.onToolCreatedElement({
+  handler: (params) => console.log(params),
 });
 
 // later on...

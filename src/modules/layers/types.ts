@@ -516,3 +516,46 @@ export interface LayerSchemaDateTimeAttribute
    */
   sampleValues: Array<{ value: string; count: number }>;
 }
+
+const EphemeralLayerGeometryStyleSchema = z.object({
+  Point: z.object({}).passthrough().optional(),
+  Line: z.object({}).passthrough().optional(),
+  Polygon: z.object({}).passthrough().optional(),
+});
+
+const EphemeralLayerSourceSchema = z.object({
+  type: z.literal("application/geo+json"),
+  name: z.string(),
+  geometryStyles: EphemeralLayerGeometryStyleSchema.optional(),
+});
+
+export interface EphemeralLayerSource
+  extends zInfer<typeof EphemeralLayerSourceSchema> {}
+
+const GeoJsonFileSourceSchema = EphemeralLayerSourceSchema.extend({
+  file: z.instanceof(File),
+});
+export interface GeoJsonFileSource
+  extends zInfer<typeof GeoJsonFileSourceSchema>,
+    EphemeralLayerSource {}
+
+const GeoJsonUrlSourceSchema = EphemeralLayerSourceSchema.extend({
+  url: z.string().url(),
+});
+export interface GeoJsonUrlSource
+  extends z.infer<typeof GeoJsonUrlSourceSchema>,
+    EphemeralLayerSource {}
+
+const GeoJsonArrayBufferSourceSchema = EphemeralLayerSourceSchema.extend({
+  arrayBuffer: z.instanceof(ArrayBuffer),
+});
+
+export interface GeoJsonArrayBufferSource
+  extends zInfer<typeof GeoJsonArrayBufferSourceSchema>,
+    EphemeralLayerSource {}
+
+export const createLayerSourceSchema = z.union([
+  GeoJsonArrayBufferSourceSchema,
+  GeoJsonFileSourceSchema,
+  GeoJsonUrlSourceSchema,
+]);

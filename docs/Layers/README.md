@@ -26,6 +26,10 @@ independently of the Layer, so you can turn on and off each category or class in
 * [GetLayerHistogramParams](GetLayerHistogramParams.md)
 * [GetLayerHistogramBin](GetLayerHistogramBin.md)
 * [GetLayerCalculationParams](GetLayerCalculationParams.md)
+* [EphemeralLayerSource](EphemeralLayerSource.md)
+* [GeoJsonFileSource](GeoJsonFileSource.md)
+* [GeoJsonUrlSource](GeoJsonUrlSource.md)
+* [GeoJsonArrayBufferSource](GeoJsonArrayBufferSource.md)
 
 # Type Aliases
 

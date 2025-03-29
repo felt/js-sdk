@@ -2,8 +2,8 @@ import { z } from "zod";
 import type { ModuleSchema } from "~/lib/ModuleSchema";
 import {
   type Listener,
-  type Method,
   listenerMessageWithParams,
+  type Method,
   methodMessage,
 } from "~/lib/builders";
 import type { zInfer } from "~/lib/utils";
@@ -21,6 +21,7 @@ import {
   GetLayerHistogramParamsSchema,
 } from "./stats/types";
 import {
+  createLayerSourceSchema,
   GetLayerGroupsFilterSchema,
   GetLayersConstraintSchema,
   GetRenderedFeaturesConstraintSchema,
@@ -58,6 +59,13 @@ const SetLayerLegendVisibilityMessage = methodMessage(
   "setLayerLegendVisibility",
   SetVisibilityRequestSchema,
 );
+
+const createLayerMessage = methodMessage(
+  "createLayer",
+  z.object({ source: createLayerSourceSchema }),
+);
+
+const DeleteLayerMessage = methodMessage("deleteLayer", z.string());
 
 // LAYER GROUPS
 const GetGroupMessage = methodMessage("getLayerGroup", z.string());
@@ -163,6 +171,8 @@ export const layersSchema = {
     SetLayerStyleMessage,
     SetLayerLegendVisibilityMessage,
 
+    createLayerMessage,
+    DeleteLayerMessage,
     GetGroupMessage,
     GetGroupsMessage,
     SetLayerGroupVisibilityMessage,
@@ -203,6 +213,9 @@ export type LayersSchema = {
       zInfer<typeof SetLayerLegendVisibilityMessage>,
       void
     >;
+
+    createLayer: Method<zInfer<typeof createLayerMessage>, LayerGroup | null>;
+    deleteLayer: Method<zInfer<typeof DeleteLayerMessage>, void>;
 
     getLayerGroup: Method<zInfer<typeof GetGroupMessage>, LayerGroup | null>;
     getLayerGroups: Method<

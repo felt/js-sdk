@@ -13,6 +13,9 @@ import type {
   GetLayerHistogramParams,
 } from "./stats/types";
 import type {
+  GeoJsonArrayBufferSource,
+  GeoJsonFileSource,
+  GeoJsonUrlSource,
   GetLayerGroupsConstraint,
   GetLayersConstraint,
   GetRenderedFeaturesConstraint,
@@ -39,6 +42,22 @@ export const layersController = (feltWindow: Window): LayersController => ({
   setLayerStyle: method(feltWindow, "setLayerStyle"),
   setLayerLegendVisibility: method(feltWindow, "setLayerLegendVisibility"),
   onLayerChange: listener(feltWindow, "onLayerChange"),
+
+  // layers crud
+  createLayer: method(feltWindow, "createLayer", async (params) => {
+    if ("url" in params.source || "arrayBuffer" in params.source) return params;
+
+    // convert file to array buffer
+    return {
+      ...params,
+      source: {
+        type: "application/geo+json",
+        name: params.source.name,
+        arrayBuffer: await params.source.file.arrayBuffer(),
+      },
+    };
+  }),
+  deleteLayer: method(feltWindow, "deleteLayer"),
 
   // groups
   getLayerGroup: method(feltWindow, "getLayerGroup"),
@@ -219,6 +238,46 @@ export interface LayersController {
       change: LayerChangeCallbackParams,
     ) => void;
   }): VoidFunction;
+
+  // LAYERS CRUD
+  /**
+   * Adds layers to the map from file or URL sources.
+   *
+   * @remarks This allows you to add temporary layers to the map that don't depend on
+   * any processing by Felt. This is useful for viewing data from external sources or
+   * remote files.
+   *
+   * @returns The layer groups that were created.
+   *
+   * @example
+   * ```typescript
+   * const layerFromFile = await felt.createLayer({
+   *   source: { type: "application/geo+json", name: "Parcels", file: someFile},
+   * });
+   *
+   * const layerFromUrl = await felt.createLayer({
+   *   source: { type: "application/geo+json", name: "Parcels", url: "https://example.com/parcels.geojson" },
+   * });
+   * ```
+   */
+  createLayer(params: {
+    /**
+     * The source that you want to add to the map. These can be GeoJSON files or URLs.
+     */
+    source: GeoJsonArrayBufferSource | GeoJsonFileSource | GeoJsonUrlSource;
+  }): Promise<LayerGroup | null>;
+
+  /**
+   * Delete a layer from the map by its id.
+   *
+   * @remarks This only works for layers created via the SDK `createLayer` method, not layers added via the Felt UI.
+   *
+   * @example
+   * ```typescript
+   * await felt.deleteLayer("layer-1");
+   * ```
+   */
+  deleteLayer(id: string): Promise<void>;
 
   // GROUPS
 

@@ -4,125 +4,129 @@
 
 ```ts
 
-import { ay as AggregationConfig } from './types-C_wMpqIu.js';
-import { A as AggregationMethod } from './types-C_wMpqIu.js';
-import { W as CircleElementCreate } from './types-C_wMpqIu.js';
-import { X as CircleElementRead } from './types-C_wMpqIu.js';
-import { Y as CircleElementUpdate } from './types-C_wMpqIu.js';
-import { aS as CircleToolSettings } from './types-C_wMpqIu.js';
-import { H as ConfigurableToolType } from './types-C_wMpqIu.js';
-import { E as Element_2 } from './types-C_wMpqIu.js';
-import { d as ElementChangeCallbackParams } from './types-C_wMpqIu.js';
-import { f as ElementCreate } from './types-C_wMpqIu.js';
-import { b as ElementGroup } from './types-C_wMpqIu.js';
-import { e as ElementGroupChangeCallbackParams } from './types-C_wMpqIu.js';
-import { aB as ElementGroupNode } from './types-C_wMpqIu.js';
-import { aC as ElementNode } from './types-C_wMpqIu.js';
-import { g as ElementUpdate } from './types-C_wMpqIu.js';
-import { C as EntityNode } from './types-C_wMpqIu.js';
-import { aD as FeatureNode } from './types-C_wMpqIu.js';
-import { D as FeatureSelection } from './types-C_wMpqIu.js';
-import { aG as FeltBoundary } from './types-C_wMpqIu.js';
-import { aH as FeltZoom } from './types-C_wMpqIu.js';
-import { av as FilterExpression } from './types-C_wMpqIu.js';
-import { aw as FilterLogicGate } from './types-C_wMpqIu.js';
-import { F as Filters } from './types-C_wMpqIu.js';
-import { ax as FilterTernary } from './types-C_wMpqIu.js';
-import { t as GeoJsonFeature } from './types-C_wMpqIu.js';
-import { G as GeoJsonGeometry } from './types-C_wMpqIu.js';
-import { aI as GeoJsonProperties } from './types-C_wMpqIu.js';
-import { c as GetElementGroupsConstraint } from './types-C_wMpqIu.js';
-import { a as GetElementsConstraint } from './types-C_wMpqIu.js';
-import { y as GetLayerCalculationParams } from './types-C_wMpqIu.js';
-import { v as GetLayerCategoriesGroup } from './types-C_wMpqIu.js';
-import { u as GetLayerCategoriesParams } from './types-C_wMpqIu.js';
-import { k as GetLayerGroupsConstraint } from './types-C_wMpqIu.js';
-import { x as GetLayerHistogramBin } from './types-C_wMpqIu.js';
-import { w as GetLayerHistogramParams } from './types-C_wMpqIu.js';
-import { h as GetLayersConstraint } from './types-C_wMpqIu.js';
-import { r as GetRenderedFeaturesConstraint } from './types-C_wMpqIu.js';
-import { Z as HighlighterElementCreate } from './types-C_wMpqIu.js';
-import { _ as HighlighterElementRead } from './types-C_wMpqIu.js';
-import { $ as HighlighterElementUpdate } from './types-C_wMpqIu.js';
-import { aT as HighlighterToolSettings } from './types-C_wMpqIu.js';
-import { a0 as ImageElementCreate } from './types-C_wMpqIu.js';
-import { a1 as ImageElementRead } from './types-C_wMpqIu.js';
-import { a2 as ImageElementUpdate } from './types-C_wMpqIu.js';
-import { I as InputToolSettings } from './types-C_wMpqIu.js';
-import { aJ as LatLng } from './types-C_wMpqIu.js';
-import { L as Layer } from './types-C_wMpqIu.js';
-import { i as LayerChangeCallbackParams } from './types-C_wMpqIu.js';
-import { s as LayerFeature } from './types-C_wMpqIu.js';
-import { q as LayerFilters } from './types-C_wMpqIu.js';
-import { j as LayerGroup } from './types-C_wMpqIu.js';
-import { l as LayerGroupChangeCallbackParams } from './types-C_wMpqIu.js';
-import { aE as LayerGroupNode } from './types-C_wMpqIu.js';
-import { aF as LayerNode } from './types-C_wMpqIu.js';
-import { am as LayerProcessingStatus } from './types-C_wMpqIu.js';
-import { z as LayerSchema } from './types-C_wMpqIu.js';
-import { ao as LayerSchemaAttribute } from './types-C_wMpqIu.js';
-import { ap as LayerSchemaBooleanAttribute } from './types-C_wMpqIu.js';
-import { aq as LayerSchemaCommonAttribute } from './types-C_wMpqIu.js';
-import { ar as LayerSchemaDateAttribute } from './types-C_wMpqIu.js';
-import { as as LayerSchemaDateTimeAttribute } from './types-C_wMpqIu.js';
-import { at as LayerSchemaNumericAttribute } from './types-C_wMpqIu.js';
-import { au as LayerSchemaTextAttribute } from './types-C_wMpqIu.js';
-import { n as LegendItem } from './types-C_wMpqIu.js';
-import { p as LegendItemChangeCallbackParams } from './types-C_wMpqIu.js';
-import { m as LegendItemIdentifier } from './types-C_wMpqIu.js';
-import { o as LegendItemsConstraint } from './types-C_wMpqIu.js';
-import { aK as LineStringGeometry } from './types-C_wMpqIu.js';
-import { aU as LineToolSettings } from './types-C_wMpqIu.js';
-import { a3 as LinkElementRead } from './types-C_wMpqIu.js';
-import { aL as LngLatTuple } from './types-C_wMpqIu.js';
-import { B as MapDetails } from './types-C_wMpqIu.js';
-import { M as MapInteractionEvent } from './types-C_wMpqIu.js';
-import { a4 as MarkerElementCreate } from './types-C_wMpqIu.js';
-import { a5 as MarkerElementRead } from './types-C_wMpqIu.js';
-import { a6 as MarkerElementUpdate } from './types-C_wMpqIu.js';
-import { aV as MarkerToolSettings } from './types-C_wMpqIu.js';
-import { az as MultiAggregationConfig } from './types-C_wMpqIu.js';
-import { aM as MultiLineStringGeometry } from './types-C_wMpqIu.js';
-import { aN as MultiPointGeometry } from './types-C_wMpqIu.js';
-import { aO as MultiPolygonGeometry } from './types-C_wMpqIu.js';
-import { N } from './types-C_wMpqIu.js';
-import { a7 as NoteElementCreate } from './types-C_wMpqIu.js';
-import { a8 as NoteElementRead } from './types-C_wMpqIu.js';
-import { a9 as NoteElementUpdate } from './types-C_wMpqIu.js';
-import { aW as NoteToolSettings } from './types-C_wMpqIu.js';
-import { aa as PathElementCreate } from './types-C_wMpqIu.js';
-import { ab as PathElementRead } from './types-C_wMpqIu.js';
-import { ac as PathElementUpdate } from './types-C_wMpqIu.js';
-import { aX as PinToolSettings } from './types-C_wMpqIu.js';
-import { ad as PlaceElementCreate } from './types-C_wMpqIu.js';
-import { ae as PlaceElementRead } from './types-C_wMpqIu.js';
-import { af as PlaceElementUpdate } from './types-C_wMpqIu.js';
-import { aY as PlaceFrame } from './types-C_wMpqIu.js';
-import { aZ as PlaceSymbol } from './types-C_wMpqIu.js';
-import { aP as PointGeometry } from './types-C_wMpqIu.js';
-import { ag as PolygonElementCreate } from './types-C_wMpqIu.js';
-import { ah as PolygonElementRead } from './types-C_wMpqIu.js';
-import { ai as PolygonElementUpdate } from './types-C_wMpqIu.js';
-import { aQ as PolygonGeometry } from './types-C_wMpqIu.js';
-import { a_ as PolygonToolSettings } from './types-C_wMpqIu.js';
-import { an as RasterValue } from './types-C_wMpqIu.js';
-import { a$ as RouteToolSettings } from './types-C_wMpqIu.js';
-import { P as SetViewportCenterZoomParams } from './types-C_wMpqIu.js';
-import { S as SetVisibilityRequest } from './types-C_wMpqIu.js';
-import { O as SortConfig } from './types-C_wMpqIu.js';
-import { aR as SortDirection } from './types-C_wMpqIu.js';
-import { aj as TextElementCreate } from './types-C_wMpqIu.js';
-import { ak as TextElementRead } from './types-C_wMpqIu.js';
-import { al as TextElementUpdate } from './types-C_wMpqIu.js';
-import { b0 as TextToolSettings } from './types-C_wMpqIu.js';
-import { K as ToolSettingsChangeEvent } from './types-C_wMpqIu.js';
-import { J as ToolSettingsMap } from './types-C_wMpqIu.js';
-import { T as ToolType } from './types-C_wMpqIu.js';
-import { aA as ValueConfiguration } from './types-C_wMpqIu.js';
-import { U as ViewportCenterZoom } from './types-C_wMpqIu.js';
-import { Q as ViewportConstraints } from './types-C_wMpqIu.js';
-import { R as ViewportFitBoundsParams } from './types-C_wMpqIu.js';
-import { V as ViewportState } from './types-C_wMpqIu.js';
+import { aC as AggregationConfig } from './types-PSY3LPGC.js';
+import { B as AggregationMethod } from './types-PSY3LPGC.js';
+import { Z as CircleElementCreate } from './types-PSY3LPGC.js';
+import { _ as CircleElementRead } from './types-PSY3LPGC.js';
+import { $ as CircleElementUpdate } from './types-PSY3LPGC.js';
+import { aW as CircleToolSettings } from './types-PSY3LPGC.js';
+import { N as ConfigurableToolType } from './types-PSY3LPGC.js';
+import { E as Element_2 } from './types-PSY3LPGC.js';
+import { d as ElementChangeCallbackParams } from './types-PSY3LPGC.js';
+import { f as ElementCreate } from './types-PSY3LPGC.js';
+import { b as ElementGroup } from './types-PSY3LPGC.js';
+import { e as ElementGroupChangeCallbackParams } from './types-PSY3LPGC.js';
+import { aF as ElementGroupNode } from './types-PSY3LPGC.js';
+import { aG as ElementNode } from './types-PSY3LPGC.js';
+import { g as ElementUpdate } from './types-PSY3LPGC.js';
+import { I as EntityNode } from './types-PSY3LPGC.js';
+import { ap as EphemeralLayerSource } from './types-PSY3LPGC.js';
+import { aH as FeatureNode } from './types-PSY3LPGC.js';
+import { J as FeatureSelection } from './types-PSY3LPGC.js';
+import { aK as FeltBoundary } from './types-PSY3LPGC.js';
+import { aL as FeltZoom } from './types-PSY3LPGC.js';
+import { az as FilterExpression } from './types-PSY3LPGC.js';
+import { aA as FilterLogicGate } from './types-PSY3LPGC.js';
+import { F as Filters } from './types-PSY3LPGC.js';
+import { aB as FilterTernary } from './types-PSY3LPGC.js';
+import { j as GeoJsonArrayBufferSource } from './types-PSY3LPGC.js';
+import { w as GeoJsonFeature } from './types-PSY3LPGC.js';
+import { k as GeoJsonFileSource } from './types-PSY3LPGC.js';
+import { G as GeoJsonGeometry } from './types-PSY3LPGC.js';
+import { aM as GeoJsonProperties } from './types-PSY3LPGC.js';
+import { l as GeoJsonUrlSource } from './types-PSY3LPGC.js';
+import { c as GetElementGroupsConstraint } from './types-PSY3LPGC.js';
+import { a as GetElementsConstraint } from './types-PSY3LPGC.js';
+import { C as GetLayerCalculationParams } from './types-PSY3LPGC.js';
+import { y as GetLayerCategoriesGroup } from './types-PSY3LPGC.js';
+import { x as GetLayerCategoriesParams } from './types-PSY3LPGC.js';
+import { n as GetLayerGroupsConstraint } from './types-PSY3LPGC.js';
+import { A as GetLayerHistogramBin } from './types-PSY3LPGC.js';
+import { z as GetLayerHistogramParams } from './types-PSY3LPGC.js';
+import { h as GetLayersConstraint } from './types-PSY3LPGC.js';
+import { u as GetRenderedFeaturesConstraint } from './types-PSY3LPGC.js';
+import { a0 as HighlighterElementCreate } from './types-PSY3LPGC.js';
+import { a1 as HighlighterElementRead } from './types-PSY3LPGC.js';
+import { a2 as HighlighterElementUpdate } from './types-PSY3LPGC.js';
+import { aX as HighlighterToolSettings } from './types-PSY3LPGC.js';
+import { a3 as ImageElementCreate } from './types-PSY3LPGC.js';
+import { a4 as ImageElementRead } from './types-PSY3LPGC.js';
+import { a5 as ImageElementUpdate } from './types-PSY3LPGC.js';
+import { K as InputToolSettings } from './types-PSY3LPGC.js';
+import { aN as LatLng } from './types-PSY3LPGC.js';
+import { L as Layer } from './types-PSY3LPGC.js';
+import { i as LayerChangeCallbackParams } from './types-PSY3LPGC.js';
+import { v as LayerFeature } from './types-PSY3LPGC.js';
+import { t as LayerFilters } from './types-PSY3LPGC.js';
+import { m as LayerGroup } from './types-PSY3LPGC.js';
+import { o as LayerGroupChangeCallbackParams } from './types-PSY3LPGC.js';
+import { aI as LayerGroupNode } from './types-PSY3LPGC.js';
+import { aJ as LayerNode } from './types-PSY3LPGC.js';
+import { aq as LayerProcessingStatus } from './types-PSY3LPGC.js';
+import { D as LayerSchema } from './types-PSY3LPGC.js';
+import { as as LayerSchemaAttribute } from './types-PSY3LPGC.js';
+import { at as LayerSchemaBooleanAttribute } from './types-PSY3LPGC.js';
+import { au as LayerSchemaCommonAttribute } from './types-PSY3LPGC.js';
+import { av as LayerSchemaDateAttribute } from './types-PSY3LPGC.js';
+import { aw as LayerSchemaDateTimeAttribute } from './types-PSY3LPGC.js';
+import { ax as LayerSchemaNumericAttribute } from './types-PSY3LPGC.js';
+import { ay as LayerSchemaTextAttribute } from './types-PSY3LPGC.js';
+import { q as LegendItem } from './types-PSY3LPGC.js';
+import { s as LegendItemChangeCallbackParams } from './types-PSY3LPGC.js';
+import { p as LegendItemIdentifier } from './types-PSY3LPGC.js';
+import { r as LegendItemsConstraint } from './types-PSY3LPGC.js';
+import { aO as LineStringGeometry } from './types-PSY3LPGC.js';
+import { aY as LineToolSettings } from './types-PSY3LPGC.js';
+import { a6 as LinkElementRead } from './types-PSY3LPGC.js';
+import { aP as LngLatTuple } from './types-PSY3LPGC.js';
+import { H as MapDetails } from './types-PSY3LPGC.js';
+import { M as MapInteractionEvent } from './types-PSY3LPGC.js';
+import { a7 as MarkerElementCreate } from './types-PSY3LPGC.js';
+import { a8 as MarkerElementRead } from './types-PSY3LPGC.js';
+import { a9 as MarkerElementUpdate } from './types-PSY3LPGC.js';
+import { aZ as MarkerToolSettings } from './types-PSY3LPGC.js';
+import { aD as MultiAggregationConfig } from './types-PSY3LPGC.js';
+import { aQ as MultiLineStringGeometry } from './types-PSY3LPGC.js';
+import { aR as MultiPointGeometry } from './types-PSY3LPGC.js';
+import { aS as MultiPolygonGeometry } from './types-PSY3LPGC.js';
+import { aa as NoteElementCreate } from './types-PSY3LPGC.js';
+import { ab as NoteElementRead } from './types-PSY3LPGC.js';
+import { ac as NoteElementUpdate } from './types-PSY3LPGC.js';
+import { a_ as NoteToolSettings } from './types-PSY3LPGC.js';
+import { ad as PathElementCreate } from './types-PSY3LPGC.js';
+import { ae as PathElementRead } from './types-PSY3LPGC.js';
+import { af as PathElementUpdate } from './types-PSY3LPGC.js';
+import { a$ as PinToolSettings } from './types-PSY3LPGC.js';
+import { ag as PlaceElementCreate } from './types-PSY3LPGC.js';
+import { ah as PlaceElementRead } from './types-PSY3LPGC.js';
+import { ai as PlaceElementUpdate } from './types-PSY3LPGC.js';
+import { b0 as PlaceFrame } from './types-PSY3LPGC.js';
+import { b1 as PlaceSymbol } from './types-PSY3LPGC.js';
+import { aT as PointGeometry } from './types-PSY3LPGC.js';
+import { aj as PolygonElementCreate } from './types-PSY3LPGC.js';
+import { ak as PolygonElementRead } from './types-PSY3LPGC.js';
+import { al as PolygonElementUpdate } from './types-PSY3LPGC.js';
+import { aU as PolygonGeometry } from './types-PSY3LPGC.js';
+import { b2 as PolygonToolSettings } from './types-PSY3LPGC.js';
+import { Q } from './types-PSY3LPGC.js';
+import { ar as RasterValue } from './types-PSY3LPGC.js';
+import { b3 as RouteToolSettings } from './types-PSY3LPGC.js';
+import { U as SetViewportCenterZoomParams } from './types-PSY3LPGC.js';
+import { S as SetVisibilityRequest } from './types-PSY3LPGC.js';
+import { R as SortConfig } from './types-PSY3LPGC.js';
+import { aV as SortDirection } from './types-PSY3LPGC.js';
+import { am as TextElementCreate } from './types-PSY3LPGC.js';
+import { an as TextElementRead } from './types-PSY3LPGC.js';
+import { ao as TextElementUpdate } from './types-PSY3LPGC.js';
+import { b4 as TextToolSettings } from './types-PSY3LPGC.js';
+import { P as ToolSettingsChangeEvent } from './types-PSY3LPGC.js';
+import { O as ToolSettingsMap } from './types-PSY3LPGC.js';
+import { T as ToolType } from './types-PSY3LPGC.js';
+import { aE as ValueConfiguration } from './types-PSY3LPGC.js';
+import { Y as ViewportCenterZoom } from './types-PSY3LPGC.js';
+import { W as ViewportConstraints } from './types-PSY3LPGC.js';
+import { X as ViewportFitBoundsParams } from './types-PSY3LPGC.js';
+import { V as ViewportState } from './types-PSY3LPGC.js';
 import { z } from 'zod';
 
 export { AggregationConfig }
@@ -201,6 +205,8 @@ export { ElementUpdate }
 
 export { EntityNode }
 
+export { EphemeralLayerSource }
+
 export { FeatureNode }
 
 export { FeatureSelection }
@@ -221,7 +227,7 @@ export interface FeltController extends ViewportController, UiController, Layers
 // Warning: (ae-forgotten-export) The symbol "FeltEmbedOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public
-export interface FeltEmbedOptions extends N<typeof FeltEmbedOptionsSchema> {
+export interface FeltEmbedOptions extends Q<typeof FeltEmbedOptionsSchema> {
     // (undocumented)
     initialViewport?: ViewportCenterZoom;
     // (undocumented)
@@ -327,11 +333,17 @@ export { Filters }
 
 export { FilterTernary }
 
+export { GeoJsonArrayBufferSource }
+
 export { GeoJsonFeature }
+
+export { GeoJsonFileSource }
 
 export { GeoJsonGeometry }
 
 export { GeoJsonProperties }
+
+export { GeoJsonUrlSource }
 
 export { GetElementGroupsConstraint }
 
@@ -418,6 +430,10 @@ export { LayerSchemaTextAttribute }
 
 // @public
 export interface LayersController {
+    createLayer(params: {
+        source: GeoJsonArrayBufferSource | GeoJsonFileSource | GeoJsonUrlSource;
+    }): Promise<LayerGroup | null>;
+    deleteLayer(id: string): Promise<void>;
     getAggregates<T extends AggregationMethod | "count">(params: GetLayerCalculationParams<T>): Promise<Record<T, number | null>>;
     getCategoryData(params: GetLayerCategoriesParams): Promise<Array<GetLayerCategoriesGroup>>;
     getFeature(params: {
@@ -536,7 +552,7 @@ export { NoteToolSettings }
 // Warning: (ae-forgotten-export) The symbol "UiOnMapInteractionsOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public
-export interface OnMapInteractionsOptions extends N<typeof UiOnMapInteractionsOptionsSchema> {
+export interface OnMapInteractionsOptions extends Q<typeof UiOnMapInteractionsOptionsSchema> {
 }
 
 export { PathElementCreate }
@@ -638,7 +654,7 @@ export interface UiController {
 // Warning: (ae-forgotten-export) The symbol "UiControlsOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public (undocumented)
-export interface UiControlsOptions extends N<typeof UiControlsOptionsSchema> {
+export interface UiControlsOptions extends Q<typeof UiControlsOptionsSchema> {
 }
 
 // @internal (undocumented)

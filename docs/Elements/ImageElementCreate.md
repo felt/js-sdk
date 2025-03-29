@@ -20,9 +20,9 @@
 
 ***
 
-## groupId?
+## description?
 
-> `optional` **groupId**: `null` | `string`
+> `optional` **description**: `null` | `string`
 
 ***
 
@@ -32,9 +32,9 @@
 
 ***
 
-## description?
+## groupId?
 
-> `optional` **description**: `null` | `string`
+> `optional` **groupId**: `null` | `string`
 
 ***
 

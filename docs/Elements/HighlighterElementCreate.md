@@ -14,15 +14,9 @@
 
 ***
 
-## groupId?
+## description?
 
-> `optional` **groupId**: `null` | `string`
-
-***
-
-## color?
-
-> `optional` **color**: `string`
+> `optional` **description**: `null` | `string`
 
 ***
 
@@ -32,9 +26,15 @@
 
 ***
 
-## description?
+## groupId?
 
-> `optional` **description**: `null` | `string`
+> `optional` **groupId**: `null` | `string`
+
+***
+
+## color?
+
+> `optional` **color**: `string`
 
 ***
 

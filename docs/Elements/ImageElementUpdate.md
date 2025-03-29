@@ -14,15 +14,9 @@
 
 ***
 
-## coordinates?
+## description?
 
-> `optional` **coordinates**: \[`number`, `number`]\[]\[]
-
-***
-
-## groupId?
-
-> `optional` **groupId**: `null` | `string`
+> `optional` **description**: `null` | `string`
 
 ***
 
@@ -32,9 +26,15 @@
 
 ***
 
-## description?
+## coordinates?
 
-> `optional` **description**: `null` | `string`
+> `optional` **coordinates**: \[`number`, `number`]\[]\[]
+
+***
+
+## groupId?
+
+> `optional` **groupId**: `null` | `string`
 
 ***
 

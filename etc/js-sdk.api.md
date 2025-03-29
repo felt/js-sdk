@@ -430,7 +430,7 @@ export { LayerSchemaTextAttribute }
 
 // @public
 export interface LayersController {
-    createEphemeralLayer(params: {
+    createLayer(params: {
         source: GeoJsonArrayBufferSource | GeoJsonFileSource | GeoJsonUrlSource;
     }): Promise<LayerGroup | null>;
     deleteLayer(id: string): Promise<void>;

@@ -44,9 +44,9 @@ export const layersController = (feltWindow: Window): LayersController => ({
   onLayerChange: listener(feltWindow, "onLayerChange"),
 
   // layers crud
-  createEphemeralLayer: method(
+  createLayer: method(
     feltWindow,
-    "createEphemeralLayer",
+    "createLayer",
     async (params) => {
       if ("url" in params.source || "arrayBuffer" in params.source)
         return params;
@@ -256,16 +256,16 @@ export interface LayersController {
    *
    * @example
    * ```typescript
-   * const layerFromFile = await felt.createEphemeralLayer({
+   * const layerFromFile = await felt.createLayer({
    *   source: { type: "application/geo+json", name: "Parcels", file: someFile},
    * });
    *
-   * const layerFromUrl = await felt.createEphemeralLayer({
+   * const layerFromUrl = await felt.createLayer({
    *   source: { type: "application/geo+json", name: "Parcels", url: "https://example.com/parcels.geojson" },
    * });
    * ```
    */
-  createEphemeralLayer(params: {
+  createLayer(params: {
     /**
      * The source that you want to add to the map. These can be GeoJSON files or URLs.
      */
@@ -275,7 +275,7 @@ export interface LayersController {
   /**
    * Delete a layer from the map by its id.
    *
-   * @remarks This only works for ephemeral layers created via the `createEphemeralLayer` method.
+   * @remarks This only works for layers created via the SDK `createLayer` method, not layers added via the Felt UI.
    *
    * @example
    * ```typescript

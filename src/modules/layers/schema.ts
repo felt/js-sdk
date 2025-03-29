@@ -21,7 +21,7 @@ import {
   GetLayerHistogramParamsSchema,
 } from "./stats/types";
 import {
-  CreateEphemeralLayerSourceSchema,
+  createLayerSourceSchema,
   GetLayerGroupsFilterSchema,
   GetLayersConstraintSchema,
   GetRenderedFeaturesConstraintSchema,
@@ -60,9 +60,9 @@ const SetLayerLegendVisibilityMessage = methodMessage(
   SetVisibilityRequestSchema,
 );
 
-const CreateEphemeralLayerMessage = methodMessage(
-  "createEphemeralLayer",
-  z.object({ source: CreateEphemeralLayerSourceSchema }),
+const createLayerMessage = methodMessage(
+  "createLayer",
+  z.object({ source: createLayerSourceSchema }),
 );
 
 const DeleteLayerMessage = methodMessage("deleteLayer", z.string());
@@ -171,7 +171,7 @@ export const layersSchema = {
     SetLayerStyleMessage,
     SetLayerLegendVisibilityMessage,
 
-    CreateEphemeralLayerMessage,
+    createLayerMessage,
     DeleteLayerMessage,
     GetGroupMessage,
     GetGroupsMessage,
@@ -214,8 +214,8 @@ export type LayersSchema = {
       void
     >;
 
-    createEphemeralLayer: Method<
-      zInfer<typeof CreateEphemeralLayerMessage>,
+    createLayer: Method<
+      zInfer<typeof createLayerMessage>,
       LayerGroup | null
     >;
     deleteLayer: Method<zInfer<typeof DeleteLayerMessage>, void>;

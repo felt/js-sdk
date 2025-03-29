@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.5.0-next.13
+
+### Minor Changes
+
+* 65bf269: Add createLayer and deleteLayer
+
 ## 1.5.0-next.12
 
 ### Minor Changes

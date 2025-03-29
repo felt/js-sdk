@@ -2,8 +2,8 @@ import { z } from "zod";
 import type { ModuleSchema } from "~/lib/ModuleSchema";
 import {
   type Listener,
-  type Method,
   listenerMessageWithParams,
+  type Method,
   methodMessage,
 } from "~/lib/builders";
 import type { zInfer } from "~/lib/utils";
@@ -214,10 +214,7 @@ export type LayersSchema = {
       void
     >;
 
-    createLayer: Method<
-      zInfer<typeof createLayerMessage>,
-      LayerGroup | null
-    >;
+    createLayer: Method<zInfer<typeof createLayerMessage>, LayerGroup | null>;
     deleteLayer: Method<zInfer<typeof DeleteLayerMessage>, void>;
 
     getLayerGroup: Method<zInfer<typeof GetGroupMessage>, LayerGroup | null>;

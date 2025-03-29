@@ -44,24 +44,19 @@ export const layersController = (feltWindow: Window): LayersController => ({
   onLayerChange: listener(feltWindow, "onLayerChange"),
 
   // layers crud
-  createLayer: method(
-    feltWindow,
-    "createLayer",
-    async (params) => {
-      if ("url" in params.source || "arrayBuffer" in params.source)
-        return params;
+  createLayer: method(feltWindow, "createLayer", async (params) => {
+    if ("url" in params.source || "arrayBuffer" in params.source) return params;
 
-      // convert file to array buffer
-      return {
-        ...params,
-        source: {
-          type: "application/geo+json",
-          name: params.source.name,
-          arrayBuffer: await params.source.file.arrayBuffer(),
-        },
-      };
-    },
-  ),
+    // convert file to array buffer
+    return {
+      ...params,
+      source: {
+        type: "application/geo+json",
+        name: params.source.name,
+        arrayBuffer: await params.source.file.arrayBuffer(),
+      },
+    };
+  }),
   deleteLayer: method(feltWindow, "deleteLayer"),
 
   // groups

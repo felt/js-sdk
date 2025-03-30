@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.5.0-next.14
+
+### Patch Changes
+
+- bb79037: Fix per-geometry styling for created layers
+
 ## 1.5.0-next.13
 
 ### Minor Changes

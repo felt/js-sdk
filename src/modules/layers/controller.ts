@@ -49,10 +49,8 @@ export const layersController = (feltWindow: Window): LayersController => ({
 
     // convert file to array buffer
     return {
-      ...params,
       source: {
-        type: "application/geo+json",
-        name: params.source.name,
+        ...params.source,
         arrayBuffer: await params.source.file.arrayBuffer(),
       },
     };

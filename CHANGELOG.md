@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.5.0-next.15
+
+### Patch Changes
+
+- 993fd44: Allow workers to be SDK clients
+
 ## 1.5.0-next.14
 
 ### Patch Changes

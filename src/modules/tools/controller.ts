@@ -10,7 +10,9 @@ import type {
 /**
  * @ignore
  */
-export const toolsController = (feltWindow: Window): ToolsController => ({
+export const toolsController = (
+  feltWindow: Pick<Window, "postMessage">,
+): ToolsController => ({
   setTool: method(feltWindow, "setTool"),
   getTool: method(feltWindow, "getTool"),
   onToolChange: listener(feltWindow, "onToolChange"),

@@ -5,7 +5,9 @@ import type { UiControlsOptions, UiOnMapInteractionsOptions } from "./types";
 /**
  * @ignore
  */
-export const uiController = (feltWindow: Window): UiController => ({
+export const uiController = (
+  feltWindow: Pick<Window, "postMessage">,
+): UiController => ({
   updateUiControls: method(feltWindow, "updateUiControls"),
   setOnMapInteractionsUi: method(feltWindow, "setOnMapInteractionsUi"),
 

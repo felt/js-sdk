@@ -18,7 +18,9 @@ import type {
 /**
  * @ignore
  */
-export const elementsController = (feltWindow: Window): ElementsController => ({
+export const elementsController = (
+  feltWindow: Pick<Window, "postMessage">,
+): ElementsController => ({
   getElement: method(feltWindow, "getElement"),
   getElementGeometry: method(feltWindow, "getElementGeometry"),
   getElements: method(feltWindow, "getElements"),

@@ -5,7 +5,7 @@ import type { EntityNode, FeatureSelection } from "./types";
  * @ignore
  */
 export const selectionController = (
-  feltWindow: Window,
+  feltWindow: Pick<Window, "postMessage">,
 ): SelectionController => ({
   onSelectionChange: listener(feltWindow, "onSelectionChange"),
   getSelection: method(feltWindow, "getSelection"),

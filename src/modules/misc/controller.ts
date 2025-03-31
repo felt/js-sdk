@@ -1,7 +1,9 @@
 import { method } from "~/lib/interface";
 import type { MapDetails } from "./types";
 
-export const miscController = (feltWindow: Window): MiscController => ({
+export const miscController = (
+  feltWindow: Pick<Window, "postMessage">,
+): MiscController => ({
   getMapDetails: method(feltWindow, "getMapDetails"),
 });
 

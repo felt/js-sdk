@@ -5,7 +5,7 @@ import type { MapInteractionEvent } from "./types";
  * @ignore
  */
 export const interactionsController = (
-  feltWindow: Window,
+  feltWindow: Pick<Window, "postMessage">,
 ): InteractionsController => ({
   onPointerClick: listener(feltWindow, "onPointerClick"),
   onPointerMove: listener(feltWindow, "onPointerMove"),

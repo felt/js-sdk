@@ -90,7 +90,7 @@ type FeltEventListener<TKey extends keyof ListenerSpec> = (
 ) => VoidFunction;
 
 export function listener<TEventName extends keyof ListenerSpec>(
-  feltWindow: Window,
+  feltWindow: Pick<Window, "postMessage">,
   eventName: TEventName,
 ): FeltEventListener<TEventName> {
   return (params) => {
@@ -143,7 +143,7 @@ type FeltMethod<TKey extends keyof StandardMethods> = (
 ) => Promise<StandardMethods[TKey]["response"]>;
 
 export function method<TKey extends keyof StandardMethods, R>(
-  feltWindow: Window,
+  feltWindow: Pick<Window, "postMessage">,
   type: TKey,
   transformer?: (
     params: StandardMethods[TKey]["request"]["params"],

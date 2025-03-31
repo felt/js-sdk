@@ -151,7 +151,7 @@ export const Felt = {
    * @param feltWindow - The iframe element containing the Felt map.
    * @returns
    */
-  connect(feltWindow: Window): Promise<FeltController> {
+  connect(feltWindow: Pick<Window, "postMessage">): Promise<FeltController> {
     const controller = makeController(feltWindow);
 
     return new Promise((resolve, reject) => {

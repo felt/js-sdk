@@ -34,7 +34,9 @@ import type {
 /**
  * @ignore
  */
-export const layersController = (feltWindow: Window): LayersController => ({
+export const layersController = (
+  feltWindow: Pick<Window, "postMessage">,
+): LayersController => ({
   // layers
   getLayer: method(feltWindow, "getLayer"),
   getLayers: method(feltWindow, "getLayers"),

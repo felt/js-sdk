@@ -9,7 +9,9 @@ import type {
 /**
  * @ignore
  */
-export const viewportController = (feltWindow: Window): ViewportController => ({
+export const viewportController = (
+  feltWindow: Pick<Window, "postMessage">,
+): ViewportController => ({
   getViewport: method(feltWindow, "getViewport"),
   setViewport: method(feltWindow, "setViewport"),
   getViewportConstraints: method(feltWindow, "getViewportConstraints"),

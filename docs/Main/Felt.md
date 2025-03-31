@@ -29,9 +29,9 @@ Binds to an existing Felt map iframe.
 
 ### Parameters
 
-| Parameter    | Type     | Description                                 |
-| ------------ | -------- | ------------------------------------------- |
-| `feltWindow` | `Window` | The iframe element containing the Felt map. |
+| Parameter    | Type                               | Description                                 |
+| ------------ | ---------------------------------- | ------------------------------------------- |
+| `feltWindow` | `Pick`\<`Window`, `"postMessage"`> | The iframe element containing the Felt map. |
 
 ### Returns
 

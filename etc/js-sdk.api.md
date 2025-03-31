@@ -214,7 +214,7 @@ export { FeatureSelection }
 // @public
 export const Felt: {
     embed(container: HTMLElement, mapId: string, options?: FeltEmbedOptions): Promise<FeltController>;
-    connect(feltWindow: Window): Promise<FeltController>;
+    connect(feltWindow: Pick<Window, "postMessage">): Promise<FeltController>;
 };
 
 export { FeltBoundary }

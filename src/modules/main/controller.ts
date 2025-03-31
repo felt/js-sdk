@@ -24,7 +24,9 @@ import {
  * @ignore
  * @internal
  */
-export function makeController(feltWindow: Window): FeltController {
+export function makeController(
+  feltWindow: Pick<Window, "postMessage">,
+): FeltController {
   return {
     iframe: null,
     ...viewportController(feltWindow),

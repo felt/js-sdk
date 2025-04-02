@@ -61,17 +61,10 @@ export type GeoJsonFeature = {
   properties: GeoJsonProperties;
 };
 
-export interface PointGeometry extends zInfer<typeof PointGeometrySchema> {
+export interface PointGeometry {
+  type: "Point";
   coordinates: LngLatTuple;
 }
-
-/**
- * A GeoJSON point geometry.
- */
-export const PointGeometrySchema = z.object({
-  type: z.literal("Point"),
-  coordinates: LngLatTupleSchema,
-});
 
 /**
  * A GeoJSON multi-point geometry.

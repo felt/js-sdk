@@ -1728,12 +1728,12 @@ still being created by a drawing tool.
 
 ### Parameters
 
-| Parameter         | Type                                                                                                                                                | Description                                          |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| `args`            | \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`; } | -                                                    |
-| `args.options`    | \{ `id`: `string`; }                                                                                                                                | -                                                    |
-| `args.options.id` | `string`                                                                                                                                            | The id of the element to listen for changes to.      |
-| `args.handler`    | (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`                                                   | The handler that is called when the element changes. |
+| Parameter          | Type                                                                                                                                                | Description                                                                                               |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `args`             | \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`; } | -                                                                                                         |
+| `args.options`?    | \{ `id`: `string`; }                                                                                                                                | -                                                                                                         |
+| `args.options.id`? | `string`                                                                                                                                            | The id of the element to listen for changes to. If not provided, the listener will fire for all elements. |
+| `args.handler`     | (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`                                                   | The handler that is called when the element changes.                                                      |
 
 ### Returns
 
@@ -1757,18 +1757,18 @@ unsubscribe();
 
 ## onElementDelete()
 
-> **onElementDelete**(`args`: \{ `options`: \{ `id`: `string`; }; `handler`: () => `void`; }): `VoidFunction`
+> **onElementDelete**(`args`: \{ `options`: \{ `id`: `string`; }; `handler`: (`args`: \{ `id`: `string`; }) => `void`; }): `VoidFunction`
 
 Adds a listener for when an element is deleted.
 
 ### Parameters
 
-| Parameter         | Type                                                           | Description                                             |
-| ----------------- | -------------------------------------------------------------- | ------------------------------------------------------- |
-| `args`            | \{ `options`: \{ `id`: `string`; }; `handler`: () => `void`; } | -                                                       |
-| `args.options`    | \{ `id`: `string`; }                                           | -                                                       |
-| `args.options.id` | `string`                                                       | The id of the element to listen for deletions of.       |
-| `args.handler`    | () => `void`                                                   | The handler that is called when the element is deleted. |
+| Parameter          | Type                                                                                       | Description                                                                                                 |
+| ------------------ | ------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| `args`             | \{ `options`: \{ `id`: `string`; }; `handler`: (`args`: \{ `id`: `string`; }) => `void`; } | -                                                                                                           |
+| `args.options`?    | \{ `id`: `string`; }                                                                       | -                                                                                                           |
+| `args.options.id`? | `string`                                                                                   | The id of the element to listen for deletions of. If not provided, the listener will fire for all elements. |
+| `args.handler`     | (`args`: \{ `id`: `string`; }) => `void`                                                   | The handler that is called when the element is deleted.                                                     |
 
 ### Returns
 
@@ -1779,13 +1779,20 @@ A function to unsubscribe from the listener
 ### Example
 
 ```typescript
+// For a specific element
 const unsubscribe = felt.onElementDelete({
   options: { id: "element-1" },
   handler: () => console.log("element-1 deleted"),
 });
 
+// For any element
+const unsubscribe2 = felt.onElementDelete({
+  handler: (id) => console.log(id),
+});
+
 // later on...
 unsubscribe();
+unsubscribe2();
 ```
 
 ***
@@ -1798,12 +1805,12 @@ Adds a listener for when an element group changes.
 
 ### Parameters
 
-| Parameter         | Type                                                                                                                                                          |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `args`            | \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`ElementGroupChangeCallbackParams`](../Elements/ElementGroupChangeCallbackParams.md)) => `void`; } |
-| `args.options`    | \{ `id`: `string`; }                                                                                                                                          |
-| `args.options.id` | `string`                                                                                                                                                      |
-| `args.handler`    | (`change`: [`ElementGroupChangeCallbackParams`](../Elements/ElementGroupChangeCallbackParams.md)) => `void`                                                   |
+| Parameter          | Type                                                                                                                                                          | Description                                                                                                           |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `args`             | \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`ElementGroupChangeCallbackParams`](../Elements/ElementGroupChangeCallbackParams.md)) => `void`; } | -                                                                                                                     |
+| `args.options`?    | \{ `id`: `string`; }                                                                                                                                          | The options to apply to the listener. If not provided                                                                 |
+| `args.options.id`? | `string`                                                                                                                                                      | The id of the element group to listen for changes to. If not provided, the listener will fire for all element groups. |
+| `args.handler`     | (`change`: [`ElementGroupChangeCallbackParams`](../Elements/ElementGroupChangeCallbackParams.md)) => `void`                                                   | The handler that is called when the element group changes.                                                            |
 
 ### Returns
 

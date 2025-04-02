@@ -45,7 +45,7 @@ const SetElementGroupVisibilityMessage = methodMessage(
 
 const OnElementChangeMessage = listenerMessageWithParams(
   "onElementChange",
-  z.object({ id: z.string() }),
+  z.object({ id: z.string() }).partial().optional(),
 );
 
 const OnElementCreateMessage = listenerMessageNoParams("onElementCreate");
@@ -54,12 +54,12 @@ const OnElementCreateEndMessage = listenerMessageNoParams("onElementCreateEnd");
 
 const OnElementDeleteMessage = listenerMessageWithParams(
   "onElementDelete",
-  z.object({ id: z.string() }),
+  z.object({ id: z.string() }).partial().optional(),
 );
 
 const OnElementGroupChangeMessage = listenerMessageWithParams(
   "onElementGroupChange",
-  z.object({ id: z.string() }),
+  z.object({ id: z.string() }).partial().optional(),
 );
 
 const CreateElementMessage = methodMessage(
@@ -123,18 +123,18 @@ export type ElementsSchema = {
   };
   listeners: {
     onElementChange: Listener<
-      zInfer<typeof OnElementChangeMessage.shape.options>,
+      zInfer<typeof OnElementChangeMessage>,
       ElementChangeCallbackParams
     >;
     onElementGroupChange: Listener<
-      zInfer<typeof OnElementGroupChangeMessage.shape.options>,
+      zInfer<typeof OnElementGroupChangeMessage>,
       ElementGroupChangeCallbackParams
     >;
     onElementCreate: ListenerNoOptions<ElementChangeCallbackParams>;
     onElementCreateEnd: ListenerNoOptions<{ element: Element }>;
     onElementDelete: Listener<
-      zInfer<typeof OnElementDeleteMessage.shape.options>,
-      void
+      zInfer<typeof OnElementDeleteMessage>,
+      { id: Element["id"] }
     >;
   };
 };

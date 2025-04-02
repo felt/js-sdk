@@ -218,7 +218,7 @@ export interface ElementsController {
    * Like the {@link ElementsController.onElementCreate | `onElementCreate`} listener, this will fire when an element is
    * still being created by a drawing tool.
    *
-   * You can check the {@link ElementChangeCallbackParams.isBeingCreated | `isBeingCreated`} property to determine if the element is 
+   * You can check the {@link ElementChangeCallbackParams.isBeingCreated | `isBeingCreated`} property to determine if the element is
    * still being created by a drawing tool.
    *
    * @returns A function to unsubscribe from the listener

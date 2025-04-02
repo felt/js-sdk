@@ -56,12 +56,6 @@
 
 ***
 
-## coordinates
-
-> **coordinates**: \[`number`, `number`] = `PointGeometrySchema.shape.coordinates`
-
-***
-
 ## symbol
 
 > **symbol**: `string`
@@ -77,3 +71,9 @@
 ## hideLabel
 
 > **hideLabel**: `boolean`
+
+***
+
+## coordinates
+
+> **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)

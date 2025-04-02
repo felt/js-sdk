@@ -17,4 +17,4 @@ of the GeoJSON spec.
 
 ## coordinates
 
-> **coordinates**: \[`number`, `number`]\[]
+> **coordinates**: [`LngLatTuple`](LngLatTuple.md)\[]

@@ -28,7 +28,7 @@ The zoom level of the viewport.
 
 > **bounds**: \[`number`, `number`, `number`, `number`]
 
-The bounding box of the viewport.
+The bounding box of the viewport in \[west, south, east, north] order.
 
 This is derived, and depends on the center and zoom of the viewport, as
 well as its size.

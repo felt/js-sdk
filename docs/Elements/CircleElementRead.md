@@ -74,12 +74,6 @@
 
 ***
 
-## coordinates
-
-> **coordinates**: \[`number`, `number`] = `LngLatTupleSchema`
-
-***
-
 ## radius
 
 > **radius**: `number`
@@ -107,3 +101,9 @@
 ## radiusMarker
 
 > **radiusMarker**: `boolean`
+
+***
+
+## coordinates
+
+> **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)

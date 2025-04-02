@@ -8,12 +8,6 @@
 
 ***
 
-## coordinates
-
-> **coordinates**: \[`number`, `number`]
-
-***
-
 ## radius
 
 > **radius**: `number`
@@ -101,3 +95,9 @@
 ## radiusMarker?
 
 > `optional` **radiusMarker**: `boolean`
+
+***
+
+## coordinates
+
+> **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)

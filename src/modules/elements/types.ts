@@ -3,7 +3,7 @@ import type { zInfer } from "~/lib/utils";
 import {
   LngLatTupleSchema,
   MultiLineStringGeometrySchema,
-  PointGeometrySchema,
+  type LngLatTuple,
 } from "../shared/types";
 
 const BaseFeltElementSchema = z.object({
@@ -32,7 +32,7 @@ const PlaceElementSchema = BaseFeltElementSchema.extend(
   Geographic.shape,
 ).extend({
   type: z.literal("Place"),
-  coordinates: PointGeometrySchema.shape.coordinates,
+  coordinates: LngLatTupleSchema,
 
   symbol: z.string(),
   frame: z.enum(["frame-circle", "frame-square"]).nullable(),
@@ -254,29 +254,48 @@ export const ElementUpdateSchema = z.discriminatedUnion("type", [
   ImageUpdateSchema,
 ]);
 
-export interface PlaceElementCreate extends zInfer<typeof PlaceCreateSchema> {}
-export interface PathElementCreate extends zInfer<typeof PathCreateSchema> {}
+export interface PlaceElementCreate extends zInfer<typeof PlaceCreateSchema> {
+  coordinates: LngLatTuple;
+}
+
+export interface PathElementCreate extends zInfer<typeof PathCreateSchema> {
+  coordinates: LngLatTuple[][];
+}
 export interface PolygonElementCreate
-  extends zInfer<typeof PolygonCreateSchema> {}
-export interface CircleElementCreate
-  extends zInfer<typeof CircleCreateSchema> {}
-export interface MarkerElementCreate
-  extends zInfer<typeof MarkerCreateSchema> {}
+  extends zInfer<typeof PolygonCreateSchema> {
+  coordinates: LngLatTuple[][];
+}
+export interface CircleElementCreate extends zInfer<typeof CircleCreateSchema> {
+  coordinates: LngLatTuple;
+}
+export interface MarkerElementCreate extends zInfer<typeof MarkerCreateSchema> {
+  coordinates: LngLatTuple[][];
+}
 export interface HighlighterElementCreate
-  extends zInfer<typeof HighlighterCreateSchema> {}
+  extends zInfer<typeof HighlighterCreateSchema> {
+  coordinates: LngLatTuple[][];
+}
 export interface TextElementCreate extends zInfer<typeof TextCreateSchema> {}
 export interface NoteElementCreate extends zInfer<typeof NoteCreateSchema> {}
 export interface ImageElementCreate extends zInfer<typeof ImageCreateSchema> {}
 
-export interface PlaceElementRead extends zInfer<typeof PlaceReadSchema> {}
+export interface PlaceElementRead extends zInfer<typeof PlaceReadSchema> {
+  coordinates: LngLatTuple;
+}
 export interface PathElementRead extends zInfer<typeof PathReadSchema> {}
 export interface PolygonElementRead extends zInfer<typeof PolygonReadSchema> {}
-export interface CircleElementRead extends zInfer<typeof CircleReadSchema> {}
+export interface CircleElementRead extends zInfer<typeof CircleReadSchema> {
+  coordinates: LngLatTuple;
+}
 export interface MarkerElementRead extends zInfer<typeof MarkerReadSchema> {}
 export interface HighlighterElementRead
   extends zInfer<typeof HighlighterReadSchema> {}
-export interface TextElementRead extends zInfer<typeof TextReadSchema> {}
-export interface NoteElementRead extends zInfer<typeof NoteReadSchema> {}
+export interface TextElementRead extends zInfer<typeof TextReadSchema> {
+  position: LngLatTuple;
+}
+export interface NoteElementRead extends zInfer<typeof NoteReadSchema> {
+  position: LngLatTuple;
+}
 export interface ImageElementRead extends zInfer<typeof ImageReadSchema> {}
 export interface LinkElementRead extends zInfer<typeof LinkReadSchema> {}
 

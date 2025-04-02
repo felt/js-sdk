@@ -264,7 +264,7 @@ export interface ElementsController {
    * ```typescript
    * const unsubscribe = felt.onElementDelete({
    *   options: { id: "element-1" },
-   *   handler: (element) => console.log(element.id),
+   *   handler: () => console.log("element-1 deleted"),
    * });
    *
    * // later on...

@@ -2,12 +2,12 @@
 
 # Properties
 
-## type
+## coordinates
 
-> **type**: `"Point"`
+> **coordinates**: [`LngLatTuple`](LngLatTuple.md)
 
 ***
 
-## coordinates
+## type
 
-> **coordinates**: \[`number`, `number`] = `LngLatTupleSchema`
+> **type**: `"Point"`

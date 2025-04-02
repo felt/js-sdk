@@ -8,12 +8,6 @@
 
 ***
 
-## coordinates
-
-> **coordinates**: \[`number`, `number`]\[]\[]
-
-***
-
 ## groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -89,3 +83,9 @@
 ## routingMode?
 
 > `optional` **routingMode**: `null` | `"driving"` | `"cycling"` | `"walking"` | `"flying"`
+
+***
+
+## coordinates
+
+> **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)\[]\[]

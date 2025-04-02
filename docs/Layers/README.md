@@ -8,7 +8,7 @@ Each Layer can be grouped under a LayerGroup, and has associated LegendItems tha
 how the layer is rendered in the legend.
 
 You can control the visibility of layers, layer groups, and legend items using the
-`setLayerVisibility`, `setLayerGroupVisibility`, and `setLegendItemVisibility` methods.
+[\`setLayerVisibility\`](LayersController.md#setlayervisibility), [\`setLayerGroupVisibility\`](LayersController.md#setlayergroupvisibility), and [\`setLegendItemVisibility\`](LayersController.md#setlegenditemvisibility) methods.
 
 When a Layer is styled to as categorical data or "classed" numeric data, there will be
 a LegendItem for each category or class. Each LegendItem can be controlled for visibility

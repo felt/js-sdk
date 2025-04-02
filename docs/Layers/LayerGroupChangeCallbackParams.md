@@ -1,6 +1,6 @@
 ***
 
-The parameters for the `onLayerGroupChange` listener.
+The parameters for the [\`onLayerGroupChange\`](LayersController.md#onlayergroupchange) listener.
 
 # Properties
 

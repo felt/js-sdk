@@ -1,6 +1,6 @@
 ***
 
-The parameters for the `fitViewportToBounds` method.
+The parameters for the [\`fitViewportToBounds\`](ViewportController.md#fitviewporttobounds) method.
 
 # Properties
 

@@ -11,6 +11,7 @@
     "./customTheme.mjs"
   ],
   "projectDocuments": ["./CHANGELOG.md"],
+  "groupOrder": ["Controller", "Methods", "Interfaces", "Type Aliases"],
   "cleanOutputDir": true,
   "indexFormat": "list",
   "parametersFormat": "table",

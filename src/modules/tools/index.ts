@@ -21,6 +21,8 @@
  * felt.setTool(null);
  * ```
  *
+ * > To create elements programatically, use the {@link ElementsController} instead.
+ *
  * @module Tools
  */
 export type {
@@ -43,3 +45,5 @@ export type {
 } from "./types";
 
 export type { ToolsController } from "./controller";
+
+import type { ElementsController } from "../elements";

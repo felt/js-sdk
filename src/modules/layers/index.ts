@@ -10,7 +10,7 @@
  * {@link LayersController.setLayerVisibility | `setLayerVisibility`}, {@link LayersController.setLayerGroupVisibility | `setLayerGroupVisibility`}, and {@link LayersController.setLegendItemVisibility |  `setLegendItemVisibility`} methods.
  *
  * When a Layer is styled to as categorical data or "classed" numeric data, there will be
- * a LegendItem for each category or class. Each LegendItem can be controlled for visibility
+ * a `LegendItem` for each category or class. Each `LegendItem` can be controlled for visibility
  * independently of the Layer, so you can turn on and off each category or class individually.
  *
  * @module Layers

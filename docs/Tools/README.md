@@ -23,6 +23,12 @@ felt.setTool("line");
 felt.setTool(null);
 ```
 
+> To create elements programatically, use the [ElementsController](../Elements/ElementsController.md) instead.
+
+# Controller
+
+* [ToolsController](ToolsController.md)
+
 # Interfaces
 
 * [PinToolSettings](PinToolSettings.md)
@@ -44,7 +50,3 @@ felt.setTool(null);
 * [ToolSettingsMap](ToolSettingsMap.md)
 * [PlaceFrame](PlaceFrame.md)
 * [PlaceSymbol](PlaceSymbol.md)
-
-# Controller
-
-* [ToolsController](ToolsController.md)

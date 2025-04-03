@@ -205,7 +205,6 @@ const CircleElementSchema = BaseFeltElementSchema.extend(Geographic.shape)
   .extend(Strokable.shape)
   .extend({
     type: z.literal("Circle"),
-    coordinates: LngLatTupleSchema,
 
     /**
      * The center of the circle.

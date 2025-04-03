@@ -1,12 +1,12 @@
 ***
 
-# Interfaces
-
-* [FeatureSelection](FeatureSelection.md)
-
 # Controller
 
 * [SelectionController](SelectionController.md)
+
+# Interfaces
+
+* [FeatureSelection](FeatureSelection.md)
 
 # Entity Node
 

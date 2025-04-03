@@ -58,7 +58,7 @@ describe("Felt SDK integration", () => {
     tearDown = createMessageHandler(
       window,
       {
-        methods: methods as Methods,
+        methods: methods as unknown as Methods,
         listeners: listeners as Listeners,
       },
       {
@@ -89,7 +89,8 @@ describe("Felt SDK integration", () => {
   test("void methods work", async () => {
     const client = await Felt.connect(window);
 
-    vi.spyOn(methods, "setViewport");
+    // this "any" prevents TypeScript "excessively deep or possibly infinite" error
+    vi.spyOn(methods as any, "setViewport");
 
     await client.setViewport({
       center: {

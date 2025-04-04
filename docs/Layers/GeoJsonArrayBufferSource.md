@@ -14,6 +14,12 @@
 
 ***
 
+## arrayBuffer
+
+> **arrayBuffer**: `ArrayBuffer`
+
+***
+
 ## geometryStyles?
 
 > `optional` **geometryStyles**: \{ `Point`: `objectOutputType`\<\{}, `ZodTypeAny`, `"passthrough"`>; `Line`: `objectOutputType`\<\{}, `ZodTypeAny`, `"passthrough"`>; `Polygon`: `objectOutputType`\<\{}, `ZodTypeAny`, `"passthrough"`>; }
@@ -23,9 +29,3 @@
 | `Point`?   | `objectOutputType`\<\{}, `ZodTypeAny`, `"passthrough"`> |
 | `Line`?    | `objectOutputType`\<\{}, `ZodTypeAny`, `"passthrough"`> |
 | `Polygon`? | `objectOutputType`\<\{}, `ZodTypeAny`, `"passthrough"`> |
-
-***
-
-## arrayBuffer
-
-> **arrayBuffer**: `ArrayBuffer`

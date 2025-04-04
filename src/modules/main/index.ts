@@ -40,12 +40,13 @@ import type { FeltEmbedOptions } from "./types";
  */
 export const Felt = {
   /**
-   * Embeds a Felt map into the provided container.
+   * Embeds a Felt map into the provided container, returning a promise that resolves
+   * to a {@link FeltController} object that you can use to control the map.
    *
    * @param container - The container element to embed the map into.
    * @param mapId - The ID of the map to embed.
    * @param options - The options to configure the map.
-   * @returns
+   * @returns A promise for a {@link FeltController}.
    */
   embed(container: HTMLElement, mapId: string, options?: FeltEmbedOptions) {
     const defaultOptions: FeltEmbedOptions = {

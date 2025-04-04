@@ -14,6 +14,12 @@
 
 ***
 
+## file
+
+> **file**: `File`
+
+***
+
 ## geometryStyles?
 
 > `optional` **geometryStyles**: \{ `Point`: `objectOutputType`\<\{}, `ZodTypeAny`, `"passthrough"`>; `Line`: `objectOutputType`\<\{}, `ZodTypeAny`, `"passthrough"`>; `Polygon`: `objectOutputType`\<\{}, `ZodTypeAny`, `"passthrough"`>; }
@@ -23,9 +29,3 @@
 | `Point`?   | `objectOutputType`\<\{}, `ZodTypeAny`, `"passthrough"`> |
 | `Line`?    | `objectOutputType`\<\{}, `ZodTypeAny`, `"passthrough"`> |
 | `Polygon`? | `objectOutputType`\<\{}, `ZodTypeAny`, `"passthrough"`> |
-
-***
-
-## file
-
-> **file**: `File`

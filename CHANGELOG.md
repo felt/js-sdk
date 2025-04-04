@@ -1,5 +1,18 @@
 # @feltmaps/js-sdk
 
+## 1.5.0-next.16
+
+### Minor Changes
+
+- 6504fea: Change documentation for getElementGeoemtry to document Highlighter and Marker functionality, and allow holes in Highlighter geometry
+- 9620df9: Change Circle.coordinates for Circle.center
+
+### Patch Changes
+
+- 417b8f4: Fixes incorrect value in documentation and updates links to other methods
+- 9620df9: Improve element docs
+- f0892c4: Improve documentation
+
 ## 1.5.0-next.15
 
 ### Patch Changes

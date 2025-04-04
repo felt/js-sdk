@@ -37,6 +37,7 @@
   "type": "module",
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.16.4",
+    "@asteasolutions/zod-to-openapi": "^7.3.0",
     "@changesets/cli": "^2.27.9",
     "@microsoft/api-extractor": "^7.47.9",
     "@types/node": "^22.7.4",
@@ -45,6 +46,7 @@
     "prettier": "^3.3.3",
     "prettier-plugin-organize-imports": "^4.1.0",
     "tsup": "^8.3.0",
+    "tsx": "^4.19.3",
     "typedoc": "^0.27.6",
     "typedoc-plugin-markdown": "^4.4.1",
     "typedoc-plugin-remark": "^1.2.4",
@@ -60,7 +62,8 @@
   "scripts": {
     "build:compile": "tsup",
     "build:docs": "typedoc",
-    "build": "npm run build:compile && npm run build:docs",
+    "build:export-jsonschema": "tsx ./scripts/export-jsonschema.ts --outDir dist/schemas --clean",
+    "build": "npm run build:compile && npm run build:export-jsonschema && npm run build:docs",
     "changeset": "changeset",
     "check:api": "npm run build:compile && attw --pack . && api-extractor run",
     "check:client-bundle": "npm run build:compile && node ./scripts/check-client-bundle-contents.js",
@@ -73,6 +76,7 @@
     "ci": "npm run build && npm run check",
     "enter-prerelease": "git checkout prerelease && git pull && changeset pre enter next",
     "exit-prerelease": "git checkout prerelease && git pull && changeset pre exit",
+    "generate": "npm run update-api && npm run build:export-jsonschema && npm run build:docs",
     "list-changes": "./scripts/list-possible-changes.sh",
     "local-release:dry": "./scripts/local-release.sh --dry-run",
     "local-release": "./scripts/local-release.sh",

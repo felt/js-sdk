@@ -140,7 +140,7 @@ export interface LayerGroup {
    * The ids of the layers in the layer group.
    *
    * @remarks
-   * You can use these ids to get the full layer objects via the `getLayers` method.
+   * You can use these ids to get the full layer objects via the {@link LayersController.getLayers | `getLayers`} method.
    */
   layerIds: Array<string>;
 
@@ -197,7 +197,7 @@ export const GetLayerGroupsFilterSchema = z.object({
 });
 
 /**
- * The parameters for the `onLayerChange` listener.
+ * The parameters for the {@link LayersController.onLayerChange | `onLayerChange`} listener.
  *
  * @group Layers
  */
@@ -209,7 +209,7 @@ export interface LayerChangeCallbackParams {
 }
 
 /**
- * The parameters for the `onLayerGroupChange` listener.
+ * The parameters for the {@link LayersController.onLayerGroupChange | `onLayerGroupChange`} listener.
  *
  * @group Layer Groups
  */
@@ -231,10 +231,10 @@ export interface LegendItem extends LegendItemIdentifier {
 
   /**
    * Whether the title depends on the zoom level or not. If it does, you
-   * need to call `getLegendItem` when the zoom level changes.
+   * need to call {@link LayersController.getLegendItem | `getLegendItem`} when the zoom level changes.
    *
-   * Note that as the zoom level changes, the `onLegendItemChange` handler
-   * will not be called, so you need to call `getLegendItem` yourself.
+   * Note that as the zoom level changes, the {@link LayersController.onLegendItemChange | `onLegendItemChange`} handler
+   * will not be called, so you need to call {@link LayersController.getLegendItem | `getLegendItem`} yourself.
    */
   titleDependsOnZoom: boolean;
 
@@ -286,7 +286,7 @@ export const LegendItemsConstraintSchema = z.object({
 });
 
 /**
- * The parameters for the `onLegendItemChange` listener.
+ * The parameters for the {@link LayersController.onLegendItemChange | `onLegendItemChange`} listener.
  *
  * @group Legend Items
  */
@@ -298,7 +298,7 @@ export interface LegendItemChangeCallbackParams {
 }
 
 /**
- * Constraints for the `getRenderedFeatures` method. This can include layer constriants, spatial constraints, or both. If no constraints are
+ * Constraints for the {@link LayersController.getRenderedFeatures | `getRenderedFeatures`} method. This can include layer constriants, spatial constraints, or both. If no constraints are
  * provided, all rendered features will be returned.
  *
  * @group Layers

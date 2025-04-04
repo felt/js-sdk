@@ -7,7 +7,7 @@
  * how the layer is rendered in the legend.
  *
  * You can control the visibility of layers, layer groups, and legend items using the
- * `setLayerVisibility`, `setLayerGroupVisibility`, and `setLegendItemVisibility` methods.
+ * {@link LayersController.setLayerVisibility | `setLayerVisibility`}, {@link LayersController.setLayerGroupVisibility | `setLayerGroupVisibility`}, and {@link LayersController.setLegendItemVisibility |  `setLegendItemVisibility`} methods.
  *
  * When a Layer is styled to as categorical data or "classed" numeric data, there will be
  * a LegendItem for each category or class. Each LegendItem can be controlled for visibility

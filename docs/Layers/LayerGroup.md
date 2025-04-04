@@ -34,7 +34,7 @@ The ids of the layers in the layer group.
 
 ### Remarks
 
-You can use these ids to get the full layer objects via the `getLayers` method.
+You can use these ids to get the full layer objects via the [\`getLayers\`](LayersController.md#getlayers) method.
 
 ***
 

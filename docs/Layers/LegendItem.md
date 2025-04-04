@@ -18,10 +18,10 @@ The title of the legend item.
 > **titleDependsOnZoom**: `boolean`
 
 Whether the title depends on the zoom level or not. If it does, you
-need to call `getLegendItem` when the zoom level changes.
+need to call [\`getLegendItem\`](LayersController.md#getlegenditem) when the zoom level changes.
 
-Note that as the zoom level changes, the `onLegendItemChange` handler
-will not be called, so you need to call `getLegendItem` yourself.
+Note that as the zoom level changes, the [\`onLegendItemChange\`](LayersController.md#onlegenditemchange) handler
+will not be called, so you need to call [\`getLegendItem\`](LayersController.md#getlegenditem) yourself.
 
 ***
 

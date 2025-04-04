@@ -1,6 +1,6 @@
 ***
 
-Constraints for the `getRenderedFeatures` method. This can include layer constriants, spatial constraints, or both. If no constraints are
+Constraints for the [\`getRenderedFeatures\`](LayersController.md#getrenderedfeatures) method. This can include layer constriants, spatial constraints, or both. If no constraints are
 provided, all rendered features will be returned.
 
 # Properties

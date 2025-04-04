@@ -1634,10 +1634,10 @@ Adds a listener for when an element is created.
 
 ### Parameters
 
-| Parameter      | Type                                                                                                               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| -------------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `args`         | \{ `handler`: (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`; } | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| `args.handler` | (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`                  | The handler that is called when an element is created. This will fire when elements are created programatically, or when the user starts creating an element with a drawing tool. When the user creates an element with a drawing tool, it can begin in an invalid state, such as if you've just placed a single point in a polygon. You can use the `isBeingCreated` property to determine if the element is still being created by a drawing tool. If you want to know when the element is finished being created, you can use the `onToolCreateElementEnd` listener. |
+| Parameter      | Type                                                                                                               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| -------------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `args`         | \{ `handler`: (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`; } | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `args.handler` | (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`                  | The handler that is called when an element is created. This will fire when elements are created programatically, or when the user starts creating an element with a drawing tool. When the user creates an element with a drawing tool, it can begin in an invalid state, such as if you've just placed a single point in a polygon. You can use the `isBeingCreated` property to determine if the element is still being created by a drawing tool. If you want to know when the element is finished being created, you can use the [\`onElementCreateEnd\`](../Elements/ElementsController.md#onelementcreateend) listener. |
 
 ### Returns
 
@@ -1664,7 +1664,7 @@ unsubscribe();
 
 Listens for when a new element is finished being created by a drawing tool.
 
-This differs from the `onElementCreate` listener, which fires whenever an
+This differs from the [\`onElementCreate\`](../Elements/ElementsController.md#onelementcreate) listener, which fires whenever an
 element is first created. This fires when the user finishes creating an element
 which could be after a series of interactions.
 
@@ -1707,10 +1707,10 @@ Adds a listener for when an element changes.
 This will fire when an element is being edited, either on the map by the user
 or programatically.
 
-Like the `onElementCreate` listener, this will fire when an element is
+Like the [\`onElementCreate\`](../Elements/ElementsController.md#onelementcreate) listener, this will fire when an element is
 still being created by a drawing tool.
 
-You can check the `isBeingCreated` property to determine if the element is
+You can check the [\`isBeingCreated\`](../Elements/ElementChangeCallbackParams.md#isbeingcreated) property to determine if the element is
 still being created by a drawing tool.
 
 ### Parameters

@@ -563,7 +563,7 @@ export interface EphemeralLayerSource
    * });
    * ```
    */
-  geometryStyles: {
+  geometryStyles?: {
     Point?: Record<string, unknown>;
     Line?: Record<string, unknown>;
     Polygon?: Record<string, unknown>;
@@ -592,7 +592,7 @@ export interface GeoJsonArrayBufferSource
   extends Omit<zInfer<typeof GeoJsonArrayBufferSourceSchema>, "geometryStyles">,
     EphemeralLayerSource {}
 
-export const createLayerSourceSchema = z.union([
+export const CreateLayerSourceSchema = z.union([
   GeoJsonArrayBufferSourceSchema,
   GeoJsonFileSourceSchema,
   GeoJsonUrlSourceSchema,

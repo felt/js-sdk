@@ -14,9 +14,9 @@
 
 ***
 
-## geometryStyles
+## geometryStyles?
 
-> **geometryStyles**: \{ `Point`: `Record`\<`string`, `unknown`>; `Line`: `Record`\<`string`, `unknown`>; `Polygon`: `Record`\<`string`, `unknown`>; }
+> `optional` **geometryStyles**: \{ `Point`: `Record`\<`string`, `unknown`>; `Line`: `Record`\<`string`, `unknown`>; `Polygon`: `Record`\<`string`, `unknown`>; }
 
 The styles to apply to each geometry on the layer.
 

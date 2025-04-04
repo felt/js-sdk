@@ -14,9 +14,15 @@
 
 ***
 
-## geometryStyles
+## file
 
-> **geometryStyles**: \{ `Point`: `Record`\<`string`, `unknown`>; `Line`: `Record`\<`string`, `unknown`>; `Polygon`: `Record`\<`string`, `unknown`>; }
+> **file**: `File`
+
+***
+
+## geometryStyles?
+
+> `optional` **geometryStyles**: \{ `Point`: `Record`\<`string`, `unknown`>; `Line`: `Record`\<`string`, `unknown`>; `Polygon`: `Record`\<`string`, `unknown`>; }
 
 The styles to apply to each geometry on the layer.
 
@@ -52,9 +58,3 @@ const layer = await layersController.createLayer({
   },
 });
 ```
-
-***
-
-## file
-
-> **file**: `File`

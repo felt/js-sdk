@@ -75,8 +75,12 @@ export interface ElementsController {
    *
    * - Path elements become MultiLineString geometries.
    *
-   * - Text, Note, Marker, Highlighter and Image elements do not return geometry,
-   * so will return `null`.
+   * - Marker elements return a MultiLineString of the path traced by the user
+   * as they drew the marker. Note that this is not the polygon formed by filled-in
+   * "pen" stroke, which doesn't exactly follow the path traced by the user as it
+   * is smoothed and interpolated to create a continuous line.
+   *
+   * - Text, Note and Image elements do not return geometry, so will return `null`.
    *
    *
    * @example

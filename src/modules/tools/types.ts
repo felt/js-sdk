@@ -108,6 +108,7 @@ export interface MarkerToolSettings
 const HighlighterToolSettingsSchema = HighlighterCreateSchema.pick({
   color: true,
   opacity: true,
+  renderHoles: true,
 })
   .extend({
     size: z.number().min(0).max(200),

@@ -3,6 +3,8 @@ import type { zInfer } from "~/lib/utils";
 import {
   LngLatTupleSchema,
   MultiLineStringGeometrySchema,
+  MultiPolygonGeometrySchema,
+  PolygonGeometrySchema,
   type LngLatTuple,
 } from "../shared/types";
 
@@ -281,7 +283,21 @@ const MarkerElementSchema = BaseFeltElementSchema.extend({
 
 const HighlighterElementSchema = BaseFeltElementSchema.extend({
   type: z.literal("Highlighter"),
-  coordinates: MultiLineStringGeometrySchema.shape.coordinates,
+
+  /**
+   * A multipolygon describing the area that is highlighted.
+   *
+   * If `renderHoles` is set to false, only the outer ring of each polygon
+   * will be rendered, filling in the area inside the highlighted region.
+   */
+  coordinates: MultiPolygonGeometrySchema.shape.coordinates,
+
+  /**
+   * Whether to render the holes of the highlighted area.
+   *
+   * @default false
+   */
+  renderHoles: z.boolean(),
 
   /**
    * The opacity of the highlighter, between 0 and 1.
@@ -297,7 +313,7 @@ const DerivedCoords = z.object({
   scale: z.number(),
   zoom: z.number().min(0).max(23),
 
-  coordinates: MultiLineStringGeometrySchema.shape.coordinates,
+  coordinates: PolygonGeometrySchema.shape.coordinates,
 });
 
 const Textual = z.object({
@@ -509,7 +525,7 @@ export interface MarkerElementCreate extends zInfer<typeof MarkerCreateSchema> {
 }
 export interface HighlighterElementCreate
   extends zInfer<typeof HighlighterCreateSchema> {
-  coordinates: LngLatTuple[][];
+  coordinates: LngLatTuple[][][];
 }
 export interface TextElementCreate extends zInfer<typeof TextCreateSchema> {}
 export interface NoteElementCreate extends zInfer<typeof NoteCreateSchema> {}
@@ -553,7 +569,7 @@ export interface MarkerElementUpdate extends zInfer<typeof MarkerUpdateSchema> {
 }
 export interface HighlighterElementUpdate
   extends zInfer<typeof HighlighterUpdateSchema> {
-  coordinates?: LngLatTuple[][];
+  coordinates?: LngLatTuple[][][];
 }
 export interface TextElementUpdate extends zInfer<typeof TextUpdateSchema> {}
 export interface NoteElementUpdate extends zInfer<typeof NoteUpdateSchema> {}

@@ -108,6 +108,20 @@ attributes.
 
 ***
 
+## renderHoles?
+
+> `optional` **renderHoles**: `boolean`
+
+Whether to render the holes of the highlighted area.
+
+### Default
+
+```ts
+false
+```
+
+***
+
 ## opacity?
 
 > `optional` **opacity**: `number`
@@ -124,4 +138,9 @@ The opacity of the highlighter, between 0 and 1.
 
 ## coordinates?
 
-> `optional` **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)\[]\[]
+> `optional` **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)\[]\[]\[]
+
+A multipolygon describing the area that is highlighted.
+
+If `renderHoles` is set to false, only the outer ring of each polygon
+will be rendered, filling in the area inside the highlighted region.

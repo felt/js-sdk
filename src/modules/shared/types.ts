@@ -98,6 +98,11 @@ export type MultiPolygonGeometry = {
   coordinates: PolygonGeometry["coordinates"][];
 };
 
+export const MultiPolygonGeometrySchema = z.object({
+  type: z.literal("MultiPolygon"),
+  coordinates: z.array(PolygonGeometrySchema.shape.coordinates),
+});
+
 /**
  * A GeoJSON line string geometry.
  *

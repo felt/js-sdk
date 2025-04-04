@@ -10,4 +10,4 @@
 
 ## coordinates
 
-> **coordinates**: \[`number`, `number`] = `LngLatTupleSchema`
+> **coordinates**: [`LngLatTuple`](LngLatTuple.md)

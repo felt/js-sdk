@@ -547,6 +547,8 @@ export interface LayersController {
    * Get a feature in GeoJSON format from the map by its ID and layer ID.
    *
    * The response is a GeoJSON Feature object with the complete geometry of the
+   * feature. Note that for some _very_ large geometries, the response may take a
+   * long time to return, and may return a very large object.
    *
    * @example
    * ```typescript

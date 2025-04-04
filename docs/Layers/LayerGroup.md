@@ -58,6 +58,6 @@ Whether the layer group is shown in the legend or not.
 
 > **bounds**: `null` | \[`number`, `number`, `number`, `number`]
 
-The bounding box of the layer group.
+The bounding box of the layer group in \[west, south, east, north] order.
 
 [FeltBoundary](../Shared/FeltBoundary.md)

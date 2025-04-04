@@ -110,7 +110,10 @@ in the future.
 
 > **bounds**: `null` | \[`number`, `number`, `number`, `number`]
 
-The bounding box of the layer. If the layer is processing, or the bounds have otherwise
-not been calculated or are not available, this will be `null`.
+The bounding box of the layer in \[west, south, east, north] order
+
+There are cases where the bounds are not available, such as for layers added to the map
+from URL sources, as these are not (depending on their type) processed and analyzed by
+Felt.
 
 [FeltBoundary](../Shared/FeltBoundary.md)

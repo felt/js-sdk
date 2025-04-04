@@ -40,7 +40,7 @@ export type GeoJsonFeature = {
   type: "Feature";
 
   /**
-   * The bounding box of the feature.
+   * The bounding box of the feature in [west, south, east, north] order.
    */
   bbox?: FeltBoundary;
 
@@ -61,15 +61,10 @@ export type GeoJsonFeature = {
   properties: GeoJsonProperties;
 };
 
-export interface PointGeometry extends zInfer<typeof PointGeometrySchema> {}
-
-/**
- * A GeoJSON point geometry.
- */
-export const PointGeometrySchema = z.object({
-  type: z.literal("Point"),
-  coordinates: LngLatTupleSchema,
-});
+export interface PointGeometry {
+  type: "Point";
+  coordinates: LngLatTuple;
+}
 
 /**
  * A GeoJSON multi-point geometry.
@@ -215,7 +210,9 @@ const SortDirectionSchema = z.enum(["asc", "desc"]);
  *
  * @group Types
  */
-export interface SortConfig extends zInfer<typeof SortConfigSchema> {}
+export interface SortConfig extends zInfer<typeof SortConfigSchema> {
+  direction: SortDirection;
+}
 /** @ignore */
 export const SortConfigSchema = z.object({
   /**

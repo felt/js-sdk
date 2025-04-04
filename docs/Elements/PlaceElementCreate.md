@@ -8,12 +8,6 @@
 
 ***
 
-## coordinates
-
-> **coordinates**: \[`number`, `number`]
-
-***
-
 ## symbol?
 
 > `optional` **symbol**: `string`
@@ -71,3 +65,9 @@
 ## hideLabel?
 
 > `optional` **hideLabel**: `boolean`
+
+***
+
+## coordinates
+
+> **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)

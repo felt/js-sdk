@@ -38,12 +38,6 @@
 
 ***
 
-## position
-
-> **position**: \[`number`, `number`] = `LngLatTupleSchema`
-
-***
-
 ## rotation
 
 > **rotation**: `number`
@@ -89,3 +83,9 @@
 ## type
 
 > **type**: `"Text"`
+
+***
+
+## position
+
+> **position**: [`LngLatTuple`](../Shared/LngLatTuple.md)

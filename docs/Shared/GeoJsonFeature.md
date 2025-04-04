@@ -15,7 +15,7 @@ A GeoJSON feature object, compliant with:
 
 > `optional` **bbox**: \[`number`, `number`, `number`, `number`]
 
-The bounding box of the feature.
+The bounding box of the feature in \[west, south, east, north] order.
 
 ***
 

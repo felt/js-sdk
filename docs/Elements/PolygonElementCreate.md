@@ -8,12 +8,6 @@
 
 ***
 
-## coordinates
-
-> **coordinates**: \[`number`, `number`]\[]\[]
-
-***
-
 ## groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -83,3 +77,9 @@
 ## areaMarker?
 
 > `optional` **areaMarker**: `boolean`
+
+***
+
+## coordinates
+
+> **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)\[]\[]

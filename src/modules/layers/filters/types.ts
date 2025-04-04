@@ -106,7 +106,7 @@ const FilterTernarySchema: z.ZodType<FilterTernary> = z.tuple([
 /**
  *
  * Filters can be used to change which features in a layer are rendered. Filters can be
- * applied to a layer by the {@link LayersController.setLayerFilters | `setLayerFilters`} method on the Felt controller.
+ * applied to a layer by the `setLayerFilters` method on the Felt controller.
  *
  * Filters use a tree structure for combining expressions with logical operators, called a
  * {@link FilterTernary}. When combining three or more conditions, you must use proper nesting
@@ -244,7 +244,7 @@ export interface LayerFilters {
   /**
    * Filters that are set ephemerally by viewers in their own session.
    *
-   * These are the filters that are set when the {@link LayersController.setLayerFilters | `setLayerFilters`} method is
+   * These are the filters that are set when the `setLayerFilters` method is
    * called. There is no way to set these in the Felt UI - they can only be
    * set using the SDK.
    */

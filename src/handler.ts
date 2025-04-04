@@ -1,7 +1,7 @@
 import { z, ZodError } from "zod";
 import type { FeltHandlers } from "./lib/interface";
 import type { ModuleSchema } from "./lib/ModuleSchema";
-import { allModules } from "./modules/main/schema";
+import { allModules } from "./modules/api/schema";
 
 /**
  * This function creates a message handler for the Felt SDK. Its job is to start listening

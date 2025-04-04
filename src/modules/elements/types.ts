@@ -186,7 +186,7 @@ const PolygonElementSchema = BaseFeltElementSchema.extend(Geographic.shape)
   .extend(Strokable.shape)
   .extend({
     type: z.literal("Polygon"),
-    coordinates: MultiLineStringGeometrySchema.shape.coordinates,
+    coordinates: PolygonGeometrySchema.shape.coordinates,
 
     /**
      * The opacity of the polygon's fill, between 0 and 1.

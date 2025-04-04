@@ -1,4 +1,5 @@
 import type { AllModules } from "~/modules/main/schema";
+import { isErrorMessage } from "./errors";
 import type { PromiseOrNot, UnionToIntersection } from "./utils";
 
 export type FeltHandlers = {
@@ -110,7 +111,12 @@ export function listener<TEventName extends keyof ListenerSpec>(
     );
 
     messageChannel.port1.onmessage = (event) => {
-      handler(event.data);
+      // we cannot send errors down the message channel - listeners unfortunately cannot have invalid
+      // messages thrown or rejected, because their only communication mechanism is the message channel,
+      // and that is only designed to receive successful events.
+      if (!isErrorMessage(event)) {
+        handler(event.data);
+      }
     };
 
     return () => {
@@ -160,11 +166,7 @@ export function method<TKey extends keyof StandardMethods, R>(
 
     return new Promise((resolve, reject) => {
       messageChannel.port1.onmessage = (event) => {
-        if (
-          event.data &&
-          typeof event.data === "object" &&
-          "__error__" in event.data
-        ) {
+        if (isErrorMessage(event)) {
           reject(new Error(event.data.__error__));
         } else {
           resolve(event.data);

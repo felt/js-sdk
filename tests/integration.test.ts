@@ -168,7 +168,7 @@ describe("Felt SDK integration", () => {
     expect(onInvalidMessage).toHaveBeenCalledOnce();
   });
 
-  test("All client messages are handled", async () => {
+  test("No client messages are considered unknown", async () => {
     const client = await Felt.connect(window);
 
     // iterate through all the functions in the client, calling them

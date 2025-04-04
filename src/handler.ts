@@ -1,4 +1,5 @@
 import { z, ZodError } from "zod";
+import { createErrorMessage } from "./lib/errors";
 import type { FeltHandlers } from "./lib/interface";
 import type { ModuleSchema } from "./lib/ModuleSchema";
 import { allModules } from "./modules/main/schema";
@@ -47,6 +48,7 @@ export function createMessageHandler(
     const result = AllMessagesSchema.safeParse(message.data);
     if (!result.success) {
       options?.onInvalidMessage?.(message.data, result.error);
+      message.ports[0]?.postMessage(createErrorMessage(result.error.message));
       return;
     }
 
@@ -87,9 +89,7 @@ export function createMessageHandler(
         const result = await handler(data.params);
         message.ports[0]?.postMessage(result);
       } catch (error) {
-        message.ports[0]?.postMessage({
-          __error__: errorStringFromUnknown(error),
-        });
+        message.ports[0]?.postMessage(createErrorMessage(error));
       }
     }
   }
@@ -99,22 +99,6 @@ export function createMessageHandler(
   return () => {
     feltWindow.removeEventListener("message", handleMessage);
   };
-}
-
-function errorStringFromUnknown(error: unknown): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (typeof error === "object" && error !== null && "message" in error) {
-    return String(error.message);
-  }
-
-  if (typeof error === "string") {
-    return error;
-  }
-
-  return "Unknown error";
 }
 
 const mergedSchemas = {

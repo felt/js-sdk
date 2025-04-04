@@ -521,7 +521,7 @@ export interface PlaceElementRead extends zInfer<typeof PlaceReadSchema> {
 export interface PathElementRead extends zInfer<typeof PathReadSchema> {}
 export interface PolygonElementRead extends zInfer<typeof PolygonReadSchema> {}
 export interface CircleElementRead extends zInfer<typeof CircleReadSchema> {
-  coordinates: LngLatTuple;
+  center: LngLatTuple;
 }
 export interface MarkerElementRead extends zInfer<typeof MarkerReadSchema> {}
 export interface HighlighterElementRead

@@ -202,9 +202,11 @@ The opacity of the circle's fill.
 
 ***
 
-## coordinates
+## center
 
-> **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)
+> **center**: [`LngLatTuple`](../Shared/LngLatTuple.md)
+
+The center of the circle.
 
 ***
 

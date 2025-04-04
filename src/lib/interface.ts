@@ -110,7 +110,9 @@ export function listener<TEventName extends keyof ListenerSpec>(
     );
 
     messageChannel.port1.onmessage = (event) => {
-      handler(event.data);
+      if (!isErrorMessage(event)) {
+        handler(event.data);
+      }
     };
 
     return () => {
@@ -160,11 +162,7 @@ export function method<TKey extends keyof StandardMethods, R>(
 
     return new Promise((resolve, reject) => {
       messageChannel.port1.onmessage = (event) => {
-        if (
-          event.data &&
-          typeof event.data === "object" &&
-          "__error__" in event.data
-        ) {
+        if (isErrorMessage(event)) {
           reject(new Error(event.data.__error__));
         } else {
           resolve(event.data);
@@ -174,4 +172,12 @@ export function method<TKey extends keyof StandardMethods, R>(
       };
     });
   };
+}
+
+function isErrorMessage(
+  event: MessageEvent,
+): event is MessageEvent<{ __error__: string }> {
+  return (
+    event.data && typeof event.data === "object" && "__error__" in event.data
+  );
 }

@@ -47,6 +47,7 @@ export function createMessageHandler(
     const result = AllMessagesSchema.safeParse(message.data);
     if (!result.success) {
       options?.onInvalidMessage?.(message.data, result.error);
+      message.ports[0]?.postMessage({ __error__: result.error.message });
       return;
     }
 

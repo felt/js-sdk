@@ -533,20 +533,55 @@ const EphemeralLayerSourceSchema = z.object({
 });
 
 export interface EphemeralLayerSource
-  extends zInfer<typeof EphemeralLayerSourceSchema> {}
+  extends zInfer<typeof EphemeralLayerSourceSchema> {
+  /**
+   * The styles to apply to each geometry on the layer.
+   *
+   * Each style should be a valid FSL style, as described in {@link Layer.style}.
+   *
+   * These are optional, and if missing will use a default style determined by
+   * Felt, which you can consider to be undefined behaviour.
+   *
+   * @example
+   * ```typescript
+   * const layer = await layersController.createLayer({
+   *   type: "application/geo+json",
+   *   name: "My Layer",
+   *   geometryStyles: {
+   *     Point: {
+   *       paint: { color: "red", size: 8 },
+   *     },
+   *     Line: {
+   *       paint: { color: "blue", size: 4 },
+   *       config: { labelAttribute: ["name"] },
+   *       label: { minZoom: 0 },
+   *     },
+   *     Polygon: {
+   *       paint: { color: "green", strokeColor: "darkgreen" },
+   *     },
+   *   },
+   * });
+   * ```
+   */
+  geometryStyles: {
+    Point?: Record<string, unknown>;
+    Line?: Record<string, unknown>;
+    Polygon?: Record<string, unknown>;
+  };
+}
 
 const GeoJsonFileSourceSchema = EphemeralLayerSourceSchema.extend({
   file: z.instanceof(File),
 });
 export interface GeoJsonFileSource
-  extends zInfer<typeof GeoJsonFileSourceSchema>,
+  extends Omit<zInfer<typeof GeoJsonFileSourceSchema>, "geometryStyles">,
     EphemeralLayerSource {}
 
 const GeoJsonUrlSourceSchema = EphemeralLayerSourceSchema.extend({
   url: z.string().url(),
 });
 export interface GeoJsonUrlSource
-  extends z.infer<typeof GeoJsonUrlSourceSchema>,
+  extends Omit<zInfer<typeof GeoJsonUrlSourceSchema>, "geometryStyles">,
     EphemeralLayerSource {}
 
 const GeoJsonArrayBufferSourceSchema = EphemeralLayerSourceSchema.extend({
@@ -554,7 +589,7 @@ const GeoJsonArrayBufferSourceSchema = EphemeralLayerSourceSchema.extend({
 });
 
 export interface GeoJsonArrayBufferSource
-  extends zInfer<typeof GeoJsonArrayBufferSourceSchema>,
+  extends Omit<zInfer<typeof GeoJsonArrayBufferSourceSchema>, "geometryStyles">,
     EphemeralLayerSource {}
 
 export const createLayerSourceSchema = z.union([

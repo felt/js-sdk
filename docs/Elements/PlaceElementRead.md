@@ -77,31 +77,6 @@ data.
 
 ***
 
-## interaction?
-
-> `optional` **interaction**: `"default"` | `"locked"`
-
-Whether the element is interactive.
-
-The `default` interaction mode means that the element can be selected and edited by
-the user, if it was created by the SDK or by the user using a tool.
-
-If the interaction mode is `locked`, the element will not be editable by the user,
-which is often used for elements that you don't want the user to edit or move by
-accident.
-
-Elements that were created by the map author (i.e. not during an SDK "session") are
-not editable and have special behaviour depending on their name, description and
-attributes.
-
-### Default
-
-```ts
-"default"
-```
-
-***
-
 ## imageUrl
 
 > **imageUrl**: `null` | `string`
@@ -162,3 +137,28 @@ false
 ## coordinates
 
 > **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)
+
+***
+
+## interaction?
+
+> `optional` **interaction**: `"default"` | `"locked"`
+
+Whether the element is interactive.
+
+The `default` interaction mode means that the element can be selected and edited by
+the user, if it was created by the SDK or by the user using a tool.
+
+If the interaction mode is `locked`, the element will not be editable by the user,
+which is often used for elements that you don't want the user to edit or move by
+accident.
+
+Elements that were created by the map author (i.e. not during an SDK "session") are
+not editable and have special behaviour depending on their name, description and
+attributes.
+
+### Default
+
+```ts
+"default"
+```

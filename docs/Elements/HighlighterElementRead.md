@@ -77,6 +77,26 @@ data.
 
 ***
 
+## type
+
+> **type**: `"Highlighter"`
+
+***
+
+## opacity
+
+> **opacity**: `number`
+
+The opacity of the highlighter, between 0 and 1.
+
+### Default
+
+```ts
+0.5
+```
+
+***
+
 ## interaction?
 
 > `optional` **interaction**: `"default"` | `"locked"`
@@ -98,24 +118,4 @@ attributes.
 
 ```ts
 "default"
-```
-
-***
-
-## type
-
-> **type**: `"Highlighter"`
-
-***
-
-## opacity
-
-> **opacity**: `number`
-
-The opacity of the highlighter, between 0 and 1.
-
-### Default
-
-```ts
-0.5
 ```

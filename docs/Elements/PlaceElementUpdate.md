@@ -10,6 +10,12 @@ The unique identifier for the element.
 
 ***
 
+## type
+
+> **type**: `"Place"`
+
+***
+
 ## groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -110,18 +116,6 @@ The URL of an image that has been added to the element.
 
 ***
 
-## type
-
-> **type**: `"Place"`
-
-***
-
-## coordinates?
-
-> `optional` **coordinates**: \[`number`, `number`] = `LngLatTupleSchema`
-
-***
-
 ## symbol?
 
 > `optional` **symbol**: `string`
@@ -162,3 +156,9 @@ an editable Place is selected.
 ```ts
 false
 ```
+
+***
+
+## coordinates?
+
+> `optional` **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)

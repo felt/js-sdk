@@ -10,6 +10,12 @@ The unique identifier for the element.
 
 ***
 
+## type
+
+> **type**: `"Image"`
+
+***
+
 ## groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -77,12 +83,6 @@ attributes.
 ```ts
 "default"
 ```
-
-***
-
-## type
-
-> **type**: `"Image"`
 
 ***
 

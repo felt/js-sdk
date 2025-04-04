@@ -2,6 +2,18 @@
 
 # Properties
 
+## type
+
+> **type**: `"Path"`
+
+***
+
+## coordinates
+
+> **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)\[]\[]
+
+***
+
 ## groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -144,12 +156,6 @@ The style of the element's stroke.
 
 ***
 
-## type
-
-> **type**: `"Path"`
-
-***
-
 ## distanceMarker?
 
 > `optional` **distanceMarker**: `boolean`
@@ -194,9 +200,3 @@ only available if the `routingMode` is set.
 ```ts
 false
 ```
-
-***
-
-## coordinates
-
-> **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)\[]\[]

@@ -502,7 +502,7 @@ export interface PolygonElementCreate
   coordinates: LngLatTuple[][];
 }
 export interface CircleElementCreate extends zInfer<typeof CircleCreateSchema> {
-  coordinates: LngLatTuple;
+  center: LngLatTuple;
 }
 export interface MarkerElementCreate extends zInfer<typeof MarkerCreateSchema> {
   coordinates: LngLatTuple[][];
@@ -535,16 +535,26 @@ export interface NoteElementRead extends zInfer<typeof NoteReadSchema> {
 export interface ImageElementRead extends zInfer<typeof ImageReadSchema> {}
 export interface LinkElementRead extends zInfer<typeof LinkReadSchema> {}
 
-export interface PlaceElementUpdate extends zInfer<typeof PlaceUpdateSchema> {}
-export interface PathElementUpdate extends zInfer<typeof PathUpdateSchema> {}
+export interface PlaceElementUpdate extends zInfer<typeof PlaceUpdateSchema> {
+  coordinates?: LngLatTuple;
+}
+export interface PathElementUpdate extends zInfer<typeof PathUpdateSchema> {
+  coordinates?: LngLatTuple[][];
+}
 export interface PolygonElementUpdate
-  extends zInfer<typeof PolygonUpdateSchema> {}
-export interface CircleElementUpdate
-  extends zInfer<typeof CircleUpdateSchema> {}
-export interface MarkerElementUpdate
-  extends zInfer<typeof MarkerUpdateSchema> {}
+  extends zInfer<typeof PolygonUpdateSchema> {
+  coordinates?: LngLatTuple[][];
+}
+export interface CircleElementUpdate extends zInfer<typeof CircleUpdateSchema> {
+  center?: LngLatTuple;
+}
+export interface MarkerElementUpdate extends zInfer<typeof MarkerUpdateSchema> {
+  coordinates?: LngLatTuple[][];
+}
 export interface HighlighterElementUpdate
-  extends zInfer<typeof HighlighterUpdateSchema> {}
+  extends zInfer<typeof HighlighterUpdateSchema> {
+  coordinates?: LngLatTuple[][];
+}
 export interface TextElementUpdate extends zInfer<typeof TextUpdateSchema> {}
 export interface NoteElementUpdate extends zInfer<typeof NoteUpdateSchema> {}
 export interface ImageElementUpdate extends zInfer<typeof ImageUpdateSchema> {}

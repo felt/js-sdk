@@ -10,6 +10,12 @@ The unique identifier for the element.
 
 ***
 
+## type
+
+> **type**: `"Polygon"`
+
+***
+
 ## groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -152,18 +158,6 @@ The style of the element's stroke.
 
 ***
 
-## type
-
-> **type**: `"Polygon"`
-
-***
-
-## coordinates?
-
-> `optional` **coordinates**: \[`number`, `number`]\[]\[] = `MultiLineStringGeometrySchema.shape.coordinates`
-
-***
-
 ## fillOpacity?
 
 > `optional` **fillOpacity**: `number`
@@ -189,3 +183,9 @@ Whether to show an area marker on the polygon.
 ```ts
 false
 ```
+
+***
+
+## coordinates?
+
+> `optional` **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)\[]\[]

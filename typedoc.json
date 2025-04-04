@@ -3,7 +3,7 @@
   "disableSources": true,
   "out": "./docs",
   "entryPoints": ["src/modules/*/index.ts"],
-  "sort": ["kind", "source-order"],
+  "sort": ["kind", "required-first", "source-order"],
   "plugin": [
     "typedoc-plugin-zod",
     "typedoc-plugin-markdown",

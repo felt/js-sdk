@@ -2,6 +2,18 @@
 
 # Properties
 
+## type
+
+> **type**: `"Polygon"`
+
+***
+
+## coordinates
+
+> **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)\[]\[]
+
+***
+
 ## groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -144,12 +156,6 @@ The style of the element's stroke.
 
 ***
 
-## type
-
-> **type**: `"Polygon"`
-
-***
-
 ## fillOpacity?
 
 > `optional` **fillOpacity**: `number`
@@ -175,9 +181,3 @@ Whether to show an area marker on the polygon.
 ```ts
 false
 ```
-
-***
-
-## coordinates
-
-> **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)\[]\[]

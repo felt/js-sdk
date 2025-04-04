@@ -10,6 +10,12 @@ The unique identifier for the element.
 
 ***
 
+## type
+
+> **type**: `"Circle"`
+
+***
+
 ## groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -152,20 +158,6 @@ The style of the element's stroke.
 
 ***
 
-## type
-
-> **type**: `"Circle"`
-
-***
-
-## center?
-
-> `optional` **center**: \[`number`, `number`] = `LngLatTupleSchema`
-
-The center of the circle.
-
-***
-
 ## radius?
 
 > `optional` **radius**: `number`
@@ -232,3 +224,11 @@ The opacity of the circle's fill.
 ```ts
 0.25
 ```
+
+***
+
+## center?
+
+> `optional` **center**: [`LngLatTuple`](../Shared/LngLatTuple.md)
+
+The center of the circle.

@@ -2,6 +2,26 @@
 
 # Properties
 
+## type
+
+> **type**: `"Image"`
+
+***
+
+## coordinates
+
+> **coordinates**: \[`number`, `number`]\[]\[] = `MultiLineStringGeometrySchema.shape.coordinates`
+
+***
+
+## imageUrl
+
+> **imageUrl**: `string`
+
+The URL of the image that is rendered in this element
+
+***
+
 ## groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -69,26 +89,6 @@ attributes.
 ```ts
 "default"
 ```
-
-***
-
-## type
-
-> **type**: `"Image"`
-
-***
-
-## coordinates
-
-> **coordinates**: \[`number`, `number`]\[]\[] = `MultiLineStringGeometrySchema.shape.coordinates`
-
-***
-
-## imageUrl
-
-> **imageUrl**: `string`
-
-The URL of the image that is rendered in this element
 
 ***
 

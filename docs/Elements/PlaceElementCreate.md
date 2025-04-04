@@ -2,6 +2,18 @@
 
 # Properties
 
+## type
+
+> **type**: `"Place"`
+
+***
+
+## coordinates
+
+> **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)
+
+***
+
 ## groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -102,12 +114,6 @@ The URL of an image that has been added to the element.
 
 ***
 
-## type
-
-> **type**: `"Place"`
-
-***
-
 ## symbol?
 
 > `optional` **symbol**: `string`
@@ -148,9 +154,3 @@ an editable Place is selected.
 ```ts
 false
 ```
-
-***
-
-## coordinates
-
-> **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)

@@ -2,6 +2,28 @@
 
 # Properties
 
+## type
+
+> **type**: `"Circle"`
+
+***
+
+## radius
+
+> **radius**: `number`
+
+The radius of the circle in meters.
+
+***
+
+## center
+
+> **center**: [`LngLatTuple`](../Shared/LngLatTuple.md)
+
+The center of the circle.
+
+***
+
 ## groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -144,28 +166,6 @@ The style of the element's stroke.
 
 ***
 
-## type
-
-> **type**: `"Circle"`
-
-***
-
-## center
-
-> **center**: \[`number`, `number`] = `LngLatTupleSchema`
-
-The center of the circle.
-
-***
-
-## radius
-
-> **radius**: `number`
-
-The radius of the circle in meters.
-
-***
-
 ## radiusMarker?
 
 > `optional` **radiusMarker**: `boolean`
@@ -224,9 +224,3 @@ The opacity of the circle's fill.
 ```ts
 0.25
 ```
-
-***
-
-## coordinates
-
-> **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)

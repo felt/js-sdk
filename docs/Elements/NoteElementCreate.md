@@ -2,6 +2,18 @@
 
 # Properties
 
+## type
+
+> **type**: `"Note"`
+
+***
+
+## text
+
+> **text**: `string`
+
+***
+
 ## groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -137,15 +149,3 @@ The style of the text, either `italic`, `light`, `regular` or `caps`.
 ## widthScale?
 
 > `optional` **widthScale**: `number`
-
-***
-
-## type
-
-> **type**: `"Note"`
-
-***
-
-## text
-
-> **text**: `string`

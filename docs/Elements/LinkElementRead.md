@@ -77,6 +77,20 @@ data.
 
 ***
 
+## type
+
+> **type**: `"Link"`
+
+***
+
+## url
+
+> **url**: `string`
+
+The URL of the link that is rendered in this element.
+
+***
+
 ## interaction?
 
 > `optional` **interaction**: `"default"` | `"locked"`
@@ -99,17 +113,3 @@ attributes.
 ```ts
 "default"
 ```
-
-***
-
-## type
-
-> **type**: `"Link"`
-
-***
-
-## url
-
-> **url**: `string`
-
-The URL of the link that is rendered in this element.

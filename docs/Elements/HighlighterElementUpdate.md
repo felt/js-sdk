@@ -10,6 +10,12 @@ The unique identifier for the element.
 
 ***
 
+## type
+
+> **type**: `"Highlighter"`
+
+***
+
 ## groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -102,18 +108,6 @@ attributes.
 
 ***
 
-## type
-
-> **type**: `"Highlighter"`
-
-***
-
-## coordinates?
-
-> `optional` **coordinates**: \[`number`, `number`]\[]\[] = `MultiLineStringGeometrySchema.shape.coordinates`
-
-***
-
 ## opacity?
 
 > `optional` **opacity**: `number`
@@ -125,3 +119,9 @@ The opacity of the highlighter, between 0 and 1.
 ```ts
 0.5
 ```
+
+***
+
+## coordinates?
+
+> `optional` **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)\[]\[]

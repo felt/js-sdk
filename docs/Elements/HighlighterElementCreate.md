@@ -2,6 +2,18 @@
 
 # Properties
 
+## type
+
+> **type**: `"Highlighter"`
+
+***
+
+## coordinates
+
+> **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)\[]\[]
+
+***
+
 ## groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -94,12 +106,6 @@ attributes.
 
 ***
 
-## type
-
-> **type**: `"Highlighter"`
-
-***
-
 ## opacity?
 
 > `optional` **opacity**: `number`
@@ -111,9 +117,3 @@ The opacity of the highlighter, between 0 and 1.
 ```ts
 0.5
 ```
-
-***
-
-## coordinates
-
-> **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)\[]\[]

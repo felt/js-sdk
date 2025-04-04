@@ -2,6 +2,18 @@
 
 # Properties
 
+## type
+
+> **type**: `"Text"`
+
+***
+
+## text
+
+> **text**: `string`
+
+***
+
 ## groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -131,15 +143,3 @@ The style of the text, either `italic`, `light`, `regular` or `caps`.
 ```ts
 "regular"
 ```
-
-***
-
-## type
-
-> **type**: `"Text"`
-
-***
-
-## text
-
-> **text**: `string`

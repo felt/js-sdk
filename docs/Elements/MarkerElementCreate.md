@@ -2,6 +2,18 @@
 
 # Properties
 
+## type
+
+> **type**: `"Marker"`
+
+***
+
+## coordinates
+
+> **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)\[]\[]
+
+***
+
 ## groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -94,12 +106,6 @@ attributes.
 
 ***
 
-## type
-
-> **type**: `"Marker"`
-
-***
-
 ## opacity?
 
 > `optional` **opacity**: `number`
@@ -138,9 +144,3 @@ the `size` to determine the actual size of the marker.
 
 When creating a marker, if you don't supply this value it defaults to
 the current zoom of the map when you call `createElement`.
-
-***
-
-## coordinates
-
-> **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)\[]\[]

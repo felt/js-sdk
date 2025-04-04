@@ -10,6 +10,12 @@ The unique identifier for the element.
 
 ***
 
+## type
+
+> **type**: `"Path"`
+
+***
+
 ## groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -152,18 +158,6 @@ The style of the element's stroke.
 
 ***
 
-## type
-
-> **type**: `"Path"`
-
-***
-
-## coordinates?
-
-> `optional` **coordinates**: \[`number`, `number`]\[]\[] = `MultiLineStringGeometrySchema.shape.coordinates`
-
-***
-
 ## distanceMarker?
 
 > `optional` **distanceMarker**: `boolean`
@@ -208,3 +202,9 @@ only available if the `routingMode` is set.
 ```ts
 false
 ```
+
+***
+
+## coordinates?
+
+> `optional` **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)\[]\[]

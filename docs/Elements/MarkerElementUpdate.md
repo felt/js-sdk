@@ -10,6 +10,12 @@ The unique identifier for the element.
 
 ***
 
+## type
+
+> **type**: `"Marker"`
+
+***
+
 ## groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -102,18 +108,6 @@ attributes.
 
 ***
 
-## type
-
-> **type**: `"Marker"`
-
-***
-
-## coordinates?
-
-> `optional` **coordinates**: \[`number`, `number`]\[]\[] = `MultiLineStringGeometrySchema.shape.coordinates`
-
-***
-
 ## opacity?
 
 > `optional` **opacity**: `number`
@@ -152,3 +146,9 @@ the `size` to determine the actual size of the marker.
 
 When creating a marker, if you don't supply this value it defaults to
 the current zoom of the map when you call `createElement`.
+
+***
+
+## coordinates?
+
+> `optional` **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)\[]\[]

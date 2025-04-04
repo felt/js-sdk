@@ -76,6 +76,7 @@
     "ci": "npm run build && npm run check",
     "enter-prerelease": "git checkout prerelease && git pull && changeset pre enter next",
     "exit-prerelease": "git checkout prerelease && git pull && changeset pre exit",
+    "generate": "npm run update-api && npm run build:export-jsonschema && npm run build:docs",
     "list-changes": "./scripts/list-possible-changes.sh",
     "local-release:dry": "./scripts/local-release.sh --dry-run",
     "local-release": "./scripts/local-release.sh",

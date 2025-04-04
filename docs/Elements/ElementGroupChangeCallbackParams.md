@@ -1,6 +1,6 @@
 ***
 
-The parameters for the `onElementGroupChange` listener.
+The parameters for the [\`onElementGroupChange\`](ElementsController.md#onelementgroupchange) listener.
 
 # Properties
 

@@ -1,6 +1,6 @@
 ***
 
-The parameters for the `onLegendItemChange` listener.
+The parameters for the [\`onLegendItemChange\`](LayersController.md#onlegenditemchange) listener.
 
 # Properties
 

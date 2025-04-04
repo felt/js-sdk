@@ -32,7 +32,7 @@ but their default value can be set by the map creator.
 
 Filters that are set ephemerally by viewers in their own session.
 
-These are the filters that are set when the `setLayerFilters` method is
+These are the filters that are set when the [\`setLayerFilters\`](LayersController.md#setlayerfilters) method is
 called. There is no way to set these in the Felt UI - they can only be
 set using the SDK.
 

@@ -373,7 +373,7 @@ export interface ElementGroup {
    * The ids of the elements in the element group.
    *
    * @remarks
-   * You can use these ids to get the full element objects via the `getElements` method.
+   * You can use these ids to get the full element objects via the {@link ElementsController.getElements | `getElements`} method.
    */
   elementIds: Array<string>;
 
@@ -420,7 +420,7 @@ export const GetElementGroupsConstraintSchema = z.object({
 });
 
 /**
- * The parameters for the `onElementChange` and the `onElementCreate` listeners.
+ * The parameters for the {@link ElementsController.onElementChange | `onElementChange`} and the {@link ElementsController.onElementCreate | `onElementCreate`} listeners.
  *
  * @group Elements
  */
@@ -449,7 +449,7 @@ export interface ElementChangeCallbackParams {
 }
 
 /**
- * The parameters for the `onElementGroupChange` listener.
+ * The parameters for the {@link ElementsController.onElementGroupChange | `onElementGroupChange`} listener.
  *
  * @group Element Groups
  */

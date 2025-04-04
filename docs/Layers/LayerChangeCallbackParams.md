@@ -1,6 +1,6 @@
 ***
 
-The parameters for the `onLayerChange` listener.
+The parameters for the [\`onLayerChange\`](LayersController.md#onlayerchange) listener.
 
 # Properties
 

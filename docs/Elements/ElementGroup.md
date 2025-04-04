@@ -34,7 +34,7 @@ The ids of the elements in the element group.
 
 ### Remarks
 
-You can use these ids to get the full element objects via the `getElements` method.
+You can use these ids to get the full element objects via the [\`getElements\`](ElementsController.md#getelements) method.
 
 ***
 

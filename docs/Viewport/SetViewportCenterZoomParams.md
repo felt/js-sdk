@@ -1,6 +1,6 @@
 ***
 
-The parameters for the `setViewport` method.
+The parameters for the [\`setViewport\`](ViewportController.md#setviewport) method.
 
 # Properties
 

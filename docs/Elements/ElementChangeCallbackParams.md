@@ -1,6 +1,6 @@
 ***
 
-The parameters for the `onElementChange` and the `onElementCreate` listeners.
+The parameters for the [\`onElementChange\`](ElementsController.md#onelementchange) and the [\`onElementCreate\`](ElementsController.md#onelementcreate) listeners.
 
 # Properties
 

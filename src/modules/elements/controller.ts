@@ -252,11 +252,12 @@ export interface ElementsController {
    * ```
    */
   onElementChange(args: {
-    options: {
+    options?: {
       /**
-       * The id of the element to listen for changes to.
+       * The id of the element to listen for changes to. If not provided,
+       * the listener will fire for all elements.
        */
-      id: string;
+      id?: string;
     };
 
     /**
@@ -278,27 +279,35 @@ export interface ElementsController {
    * @event
    * @example
    * ```typescript
+   * // For a specific element
    * const unsubscribe = felt.onElementDelete({
    *   options: { id: "element-1" },
    *   handler: () => console.log("element-1 deleted"),
    * });
    *
+   * // For any element
+   * const unsubscribe2 = felt.onElementDelete({
+   *   handler: (id) => console.log(id),
+   * });
+   *
    * // later on...
    * unsubscribe();
+   * unsubscribe2();
    * ```
    */
   onElementDelete(args: {
-    options: {
+    options?: {
       /**
-       * The id of the element to listen for deletions of.
+       * The id of the element to listen for deletions of. If not provided,
+       * the listener will fire for all elements.
        */
-      id: string;
+      id?: string;
     };
 
     /**
      * The handler that is called when the element is deleted.
      */
-    handler: () => void;
+    handler: (args: { id: Element["id"] }) => void;
   }): VoidFunction;
 
   /**
@@ -319,9 +328,20 @@ export interface ElementsController {
    * ```
    */
   onElementGroupChange(args: {
-    options: {
-      id: string;
+    /**
+     * The options to apply to the listener. If not provided
+     */
+    options?: {
+      /**
+       * The id of the element group to listen for changes to. If
+       * not provided, the listener will fire for all element groups.
+       */
+      id?: string;
     };
+
+    /**
+     * The handler that is called when the element group changes.
+     */
     handler: (change: ElementGroupChangeCallbackParams) => void;
   }): VoidFunction;
 

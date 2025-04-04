@@ -65,7 +65,19 @@ export interface ElementsController {
   ): Promise<Element | null>;
 
   /**
-   * Get the geometry of an element.
+   * Get the geometry of an element in GeoJSON geometry format.
+   *
+   * For most element types, the geometry returned is based on the `coordinates`
+   * property of the element, with some differences:
+   *
+   * - For Circle elements, the geometry is a Polygon drawn from the `center` and
+   * `radius` properties.
+   *
+   * - Path elements become MultiLineString geometries.
+   *
+   * - Text, Note, Marker, Highlighter and Image elements do not return geometry,
+   * so will return `null`.
+   *
    *
    * @example
    * ```typescript
@@ -333,7 +345,7 @@ export interface ElementsController {
    * // Update a polygon's style
    * await felt.updateElement({
    *   id: "element-2",
-   *   color: "#FF0000",
+   *   color: "#ABC123",
    *   fillOpacity: 0.5
    * });
    * ```

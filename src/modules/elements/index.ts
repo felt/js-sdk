@@ -1,6 +1,13 @@
 /**
- * The Felt SDK lets you get information about the elements in the map, and the
- * groups that they belong to.
+ * The Felt SDK lets you read, create and update elements on the map.
+ *
+ * Elements that are created via the SDK are only available to the current
+ * session - they are not persisted to the map and not available to other users
+ * of the map.
+ *
+ * > If you want to let your users create elements (as opposed to using the SDK to
+ * create them programmatically), you can use the {@link ToolsController} to
+ * select and configure the drawing tools in Felt.
  *
  * @module Elements
  */
@@ -44,3 +51,5 @@ export type {
 } from "./types";
 
 export type { ElementsController } from "./controller";
+
+import type { ToolsController } from "../tools";

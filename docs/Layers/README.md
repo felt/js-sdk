@@ -11,8 +11,12 @@ You can control the visibility of layers, layer groups, and legend items using t
 [\`setLayerVisibility\`](LayersController.md#setlayervisibility), [\`setLayerGroupVisibility\`](LayersController.md#setlayergroupvisibility), and [\`setLegendItemVisibility\`](LayersController.md#setlegenditemvisibility) methods.
 
 When a Layer is styled to as categorical data or "classed" numeric data, there will be
-a LegendItem for each category or class. Each LegendItem can be controlled for visibility
+a `LegendItem` for each category or class. Each `LegendItem` can be controlled for visibility
 independently of the Layer, so you can turn on and off each category or class individually.
+
+# Controller
+
+* [LayersController](LayersController.md)
 
 # Interfaces
 
@@ -34,10 +38,6 @@ independently of the Layer, so you can turn on and off each category or class in
 # Type Aliases
 
 * [AggregationMethod](AggregationMethod.md)
-
-# Controller
-
-* [LayersController](LayersController.md)
 
 # Filters
 

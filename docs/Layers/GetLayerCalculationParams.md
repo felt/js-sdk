@@ -19,6 +19,16 @@ The ID of the layer to calculate an aggregate value for.
 
 ***
 
+## aggregation
+
+> **aggregation**: [`MultiAggregationConfig`](MultiAggregationConfig.md)\<`T`>
+
+Specifies how to aggregate values within each category or bin. When omitted,
+features are counted. When specified, the chosen calculation (avg, sum, etc.)
+is performed on the specified attribute.
+
+***
+
 ## filters?
 
 > `optional` **filters**: [`Filters`](Filters.md)
@@ -34,13 +44,3 @@ Attribute filters to determine what gets counted or aggregated.
 A spatial boundary to filter what gets counted or aggregated. This can be either
 a \[w, s, e, n] bounding box, a GeoJSON Polygon geometry, or a list of coordinates
 that form a polyline.
-
-***
-
-## aggregation
-
-> **aggregation**: [`MultiAggregationConfig`](MultiAggregationConfig.md)\<`T`>
-
-Specifies how to aggregate values within each category or bin. When omitted,
-features are counted. When specified, the chosen calculation (avg, sum, etc.)
-is performed on the specified attribute.

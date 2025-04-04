@@ -9,7 +9,8 @@ allowing you to control and inspect the map programmatically.
 
 ## embed()
 
-Embeds a Felt map into the provided container.
+Embeds a Felt map into the provided container, returning a promise that resolves
+to a [FeltController](FeltController.md) object that you can use to control the map.
 
 ### Parameters
 
@@ -22,6 +23,8 @@ Embeds a Felt map into the provided container.
 ### Returns
 
 `Promise`\<[`FeltController`](FeltController.md)>
+
+A promise for a [FeltController](FeltController.md).
 
 ## connect()
 

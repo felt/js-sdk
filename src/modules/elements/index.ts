@@ -43,4 +43,4 @@ export type {
   TextElementUpdate,
 } from "./types";
 
-export type { ElementsController } from "./controller";
+// export type { ElementsController } from "./controller";

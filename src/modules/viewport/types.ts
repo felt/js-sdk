@@ -65,7 +65,7 @@ export interface ViewportState {
 }
 
 /**
- * The parameters for the {@link ViewportController.setViewport | `setViewport`} method.
+ * The parameters for the `setViewport` method.
  *
  * @group Types
  */
@@ -106,7 +106,7 @@ export interface ViewportConstraints {
 }
 
 /**
- * The parameters for the {@link ViewportController.setViewportConstraints | `setViewportConstraints`} method.
+ * The parameters for the `setViewportConstraints` method.
  *
  * @group Types
  */
@@ -119,7 +119,7 @@ export const SetViewportConstraintsParamsSchema = z
   .nullable();
 
 /**
- * The parameters for the {@link ViewportController.fitViewportToBounds | `fitViewportToBounds`} method.
+ * The parameters for the `fitViewportToBounds` method.
  *
  * @group Types
  */

@@ -1,22 +1,3 @@
 # API Reference
 
-To get started:
-
-```
-import { Felt } from "@feltmaps/js-sdk";
-
-const felt = await Felt.embed(
-  document.querySelector("#container"),
-  "FELT_MAP_ID",
-  {
-    uiControls: {
-      cooperativeGestures: false,
-      fullScreenButton: false,
-      showLegend: false,
-    },
-  }
-);
-const layers = await map.getLayers();
-```
-
-**View {@link Main.FeltController | FeltController} for a complete list of available functions. {@link Main.FeltEmbedOptions | FeltEmbedOptions} enumerates initialization options.**
+A note about how to naviagate the documentation... All functions are available through FeltController, and type information is listed in each file 

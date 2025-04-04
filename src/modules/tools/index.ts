@@ -42,4 +42,4 @@ export type {
   ToolType,
 } from "./types";
 
-export type { ToolsController } from "./controller";
+// export type { ToolsController } from "./controller";

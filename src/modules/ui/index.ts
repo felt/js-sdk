@@ -9,4 +9,4 @@ export type {
   UiControlsOptions,
 } from "./types";
 
-export type { UiController } from "./controller";
+// export type { UiController } from "./controller";

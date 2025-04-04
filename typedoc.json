@@ -41,9 +41,10 @@
     "hideDefaults": false
   },
 
-  "outputFileStrategy": "members",
+  "router": "module",
   "flattenOutputFiles": false,
   "theme": "customTheme",
   "readme": "./src/docs_api_readme_prepend.md",
-  "mergeReadme": true
+  "mergeReadme": true,
+  "name": "Felt API"
 }

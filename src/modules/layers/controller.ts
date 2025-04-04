@@ -47,14 +47,12 @@ export const layersController = (
 
   // layers crud
   createLayer: method(feltWindow, "createLayer", async (params) => {
-    if ("url" in params.source || "arrayBuffer" in params.source) return params;
+    if ("url" in params || "arrayBuffer" in params) return params;
 
     // convert file to array buffer
     return {
-      source: {
-        ...params.source,
-        arrayBuffer: await params.source.file.arrayBuffer(),
-      },
+      ...params,
+      arrayBuffer: await params.file.arrayBuffer(),
     };
   }),
   deleteLayer: method(feltWindow, "deleteLayer"),
@@ -252,20 +250,20 @@ export interface LayersController {
    * @example
    * ```typescript
    * const layerFromFile = await felt.createLayer({
-   *   source: { type: "application/geo+json", name: "Parcels", file: someFile},
+   *   type: "application/geo+json", name: "Parcels", file: someFile,
    * });
    *
    * const layerFromUrl = await felt.createLayer({
-   *   source: { type: "application/geo+json", name: "Parcels", url: "https://example.com/parcels.geojson" },
+   *   type: "application/geo+json", name: "Parcels", url: "https://example.com/parcels.geojson",
    * });
    * ```
    */
-  createLayer(params: {
+  createLayer(
     /**
      * The source that you want to add to the map. These can be GeoJSON files or URLs.
      */
-    source: GeoJsonArrayBufferSource | GeoJsonFileSource | GeoJsonUrlSource;
-  }): Promise<LayerGroup | null>;
+    source: GeoJsonArrayBufferSource | GeoJsonFileSource | GeoJsonUrlSource,
+  ): Promise<LayerGroup | null>;
 
   /**
    * Delete a layer from the map by its id.

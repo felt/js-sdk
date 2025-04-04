@@ -21,7 +21,7 @@ import {
   GetLayerHistogramParamsSchema,
 } from "./stats/types";
 import {
-  createLayerSourceSchema,
+  CreateLayerSourceSchema,
   GetLayerGroupsFilterSchema,
   GetLayersConstraintSchema,
   GetRenderedFeaturesConstraintSchema,
@@ -62,7 +62,7 @@ const SetLayerLegendVisibilityMessage = methodMessage(
 
 const createLayerMessage = methodMessage(
   "createLayer",
-  z.object({ source: createLayerSourceSchema }),
+  CreateLayerSourceSchema,
 );
 
 const DeleteLayerMessage = methodMessage("deleteLayer", z.string());

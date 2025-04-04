@@ -83,6 +83,20 @@ data.
 
 ***
 
+## renderHoles
+
+> **renderHoles**: `boolean`
+
+Whether to render the holes of the highlighted area.
+
+### Default
+
+```ts
+false
+```
+
+***
+
 ## opacity
 
 > **opacity**: `number`

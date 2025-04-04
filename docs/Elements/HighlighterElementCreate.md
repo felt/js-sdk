@@ -10,7 +10,12 @@
 
 ## coordinates
 
-> **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)\[]\[]
+> **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)\[]\[]\[]
+
+A multipolygon describing the area that is highlighted.
+
+If `renderHoles` is set to false, only the outer ring of each polygon
+will be rendered, filling in the area inside the highlighted region.
 
 ***
 
@@ -102,6 +107,20 @@ attributes.
 
 ```ts
 "default"
+```
+
+***
+
+## renderHoles?
+
+> `optional` **renderHoles**: `boolean`
+
+Whether to render the holes of the highlighted area.
+
+### Default
+
+```ts
+false
 ```
 
 ***

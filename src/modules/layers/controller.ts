@@ -46,15 +46,19 @@ export const layersController = (
   onLayerChange: listener(feltWindow, "onLayerChange"),
 
   // layers crud
-  createLayer: method(feltWindow, "createLayer", async (params) => {
-    if ("url" in params || "arrayBuffer" in params) return params;
+  createLayersFromGeoJson: method(
+    feltWindow,
+    "createLayersFromGeoJson",
+    async (params) => {
+      if ("url" in params || "arrayBuffer" in params) return params;
 
-    // convert file to array buffer
-    return {
-      ...params,
-      arrayBuffer: await params.file.arrayBuffer(),
-    };
-  }),
+      // convert file to array buffer
+      return {
+        ...params,
+        arrayBuffer: await params.file.arrayBuffer(),
+      };
+    },
+  ),
   deleteLayer: method(feltWindow, "deleteLayer"),
 
   // groups
@@ -249,16 +253,16 @@ export interface LayersController {
    *
    * @example
    * ```typescript
-   * const layerFromFile = await felt.createLayer({
-   *   type: "application/geo+json", name: "Parcels", file: someFile,
+   * const layerFromFile = await felt.createLayersFromGeoJson({
+   *   name: "Parcels", file: someFile,
    * });
    *
-   * const layerFromUrl = await felt.createLayer({
-   *   type: "application/geo+json", name: "Parcels", url: "https://example.com/parcels.geojson",
+   * const layerFromUrl = await felt.createLayersFromGeoJson({
+   *   name: "Parcels", url: "https://example.com/parcels.geojson",
    * });
    * ```
    */
-  createLayer(
+  createLayersFromGeoJson(
     /**
      * The source that you want to add to the map. These can be GeoJSON files or URLs.
      */
@@ -268,7 +272,7 @@ export interface LayersController {
   /**
    * Delete a layer from the map by its id.
    *
-   * @remarks This only works for layers created via the SDK `createLayer` method, not layers added via the Felt UI.
+   * @remarks This only works for layers created via the SDK `createLayersFromGeoJson` method, not layers added via the Felt UI.
    *
    * @example
    * ```typescript

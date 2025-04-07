@@ -2,12 +2,6 @@
 
 # Properties
 
-## type
-
-> **type**: `"application/geo+json"`
-
-***
-
 ## name
 
 > **name**: `string`
@@ -40,8 +34,7 @@ Felt, which you can consider to be undefined behaviour.
 ### Example
 
 ```typescript
-const layer = await layersController.createLayer({
-  type: "application/geo+json",
+const layer = await layersController.createLayersFromGeoJson({
   name: "My Layer",
   geometryStyles: {
     Point: {

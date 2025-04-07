@@ -21,7 +21,7 @@ import {
   GetLayerHistogramParamsSchema,
 } from "./stats/types";
 import {
-  CreateLayerSourceSchema,
+  CreateLayersFromGeoJsonSchema,
   GetLayerGroupsFilterSchema,
   GetLayersConstraintSchema,
   GetRenderedFeaturesConstraintSchema,
@@ -60,9 +60,9 @@ const SetLayerLegendVisibilityMessage = methodMessage(
   SetVisibilityRequestSchema,
 );
 
-const createLayerMessage = methodMessage(
-  "createLayer",
-  CreateLayerSourceSchema,
+const CreateLayersFromGeoJsonMessage = methodMessage(
+  "createLayersFromGeoJson",
+  CreateLayersFromGeoJsonSchema,
 );
 
 const DeleteLayerMessage = methodMessage("deleteLayer", z.string());
@@ -171,7 +171,7 @@ export const layersSchema = {
     SetLayerStyleMessage,
     SetLayerLegendVisibilityMessage,
 
-    createLayerMessage,
+    CreateLayersFromGeoJsonMessage,
     DeleteLayerMessage,
     GetGroupMessage,
     GetGroupsMessage,
@@ -214,7 +214,10 @@ export type LayersSchema = {
       void
     >;
 
-    createLayer: Method<zInfer<typeof createLayerMessage>, LayerGroup | null>;
+    createLayersFromGeoJson: Method<
+      zInfer<typeof CreateLayersFromGeoJsonMessage>,
+      LayerGroup | null
+    >;
     deleteLayer: Method<zInfer<typeof DeleteLayerMessage>, void>;
 
     getLayerGroup: Method<zInfer<typeof GetGroupMessage>, LayerGroup | null>;

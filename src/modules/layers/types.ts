@@ -527,7 +527,6 @@ const EphemeralLayerGeometryStyleSchema = z.object({
 });
 
 const EphemeralLayerSourceSchema = z.object({
-  type: z.literal("application/geo+json"),
   name: z.string(),
   geometryStyles: EphemeralLayerGeometryStyleSchema.optional(),
 });
@@ -544,8 +543,7 @@ export interface EphemeralLayerSource
    *
    * @example
    * ```typescript
-   * const layer = await layersController.createLayer({
-   *   type: "application/geo+json",
+   * const layer = await layersController.createLayersFromGeoJson({
    *   name: "My Layer",
    *   geometryStyles: {
    *     Point: {
@@ -592,7 +590,7 @@ export interface GeoJsonArrayBufferSource
   extends Omit<zInfer<typeof GeoJsonArrayBufferSourceSchema>, "geometryStyles">,
     EphemeralLayerSource {}
 
-export const CreateLayerSourceSchema = z.union([
+export const CreateLayersFromGeoJsonSchema = z.union([
   GeoJsonArrayBufferSourceSchema,
   GeoJsonFileSourceSchema,
   GeoJsonUrlSourceSchema,

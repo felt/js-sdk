@@ -76,7 +76,6 @@
     "list-changes": "./scripts/list-possible-changes.sh",
     "local-release:dry": "./scripts/local-release.sh --dry-run",
     "local-release": "./scripts/local-release.sh",
-    "prepublishOnly": "npm run ci",
     "update-api": "npm run build:compile && api-extractor run --local"
   }
 }

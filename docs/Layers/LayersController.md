@@ -164,22 +164,21 @@ felt.setLayerLegendVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] 
 
 ***
 
-## createLayer()
+## createLayersFromGeoJson()
 
-> **createLayer**(`params`: \{ `source`: [`GeoJsonArrayBufferSource`](GeoJsonArrayBufferSource.md) | [`GeoJsonFileSource`](GeoJsonFileSource.md) | [`GeoJsonUrlSource`](GeoJsonUrlSource.md); }): `Promise`\<`null` | [`LayerGroup`](LayerGroup.md)>
+> **createLayersFromGeoJson**(`source`: [`GeoJsonArrayBufferSource`](GeoJsonArrayBufferSource.md) | [`GeoJsonFileSource`](GeoJsonFileSource.md) | [`GeoJsonUrlSource`](GeoJsonUrlSource.md)): `Promise`\<`null` | \{ `layerGroup`: [`LayerGroup`](LayerGroup.md); `layers`: [`Layer`](Layer.md)\[]; }>
 
 Adds layers to the map from file or URL sources.
 
 ### Parameters
 
-| Parameter       | Type                                                                                                                                                                  | Description                                                                     |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `params`        | \{ `source`: [`GeoJsonArrayBufferSource`](GeoJsonArrayBufferSource.md) \| [`GeoJsonFileSource`](GeoJsonFileSource.md) \| [`GeoJsonUrlSource`](GeoJsonUrlSource.md); } | -                                                                               |
-| `params.source` | [`GeoJsonArrayBufferSource`](GeoJsonArrayBufferSource.md) \| [`GeoJsonFileSource`](GeoJsonFileSource.md) \| [`GeoJsonUrlSource`](GeoJsonUrlSource.md)                 | The source that you want to add to the map. These can be GeoJSON files or URLs. |
+| Parameter | Type                                                                                                                                                  | Description                                                                     |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `source`  | [`GeoJsonArrayBufferSource`](GeoJsonArrayBufferSource.md) \| [`GeoJsonFileSource`](GeoJsonFileSource.md) \| [`GeoJsonUrlSource`](GeoJsonUrlSource.md) | The source that you want to add to the map. These can be GeoJSON files or URLs. |
 
 ### Returns
 
-`Promise`\<`null` | [`LayerGroup`](LayerGroup.md)>
+`Promise`\<`null` | \{ `layerGroup`: [`LayerGroup`](LayerGroup.md); `layers`: [`Layer`](Layer.md)\[]; }>
 
 The layer groups that were created.
 
@@ -192,12 +191,12 @@ remote files.
 ### Example
 
 ```typescript
-const layerFromFile = await felt.createLayer({
-  source: { type: "application/geo+json", name: "Parcels", file: someFile},
+const layerFromFile = await felt.createLayersFromGeoJson({
+  name: "Parcels", file: someFile,
 });
 
-const layerFromUrl = await felt.createLayer({
-  source: { type: "application/geo+json", name: "Parcels", url: "https://example.com/parcels.geojson" },
+const layerFromUrl = await felt.createLayersFromGeoJson({
+  name: "Parcels", url: "https://example.com/parcels.geojson",
 });
 ```
 
@@ -221,7 +220,7 @@ Delete a layer from the map by its id.
 
 ### Remarks
 
-This only works for layers created via the SDK `createLayer` method, not layers added via the Felt UI.
+This only works for layers created via the SDK `createLayersFromGeoJson` method, not layers added via the Felt UI.
 
 ### Example
 

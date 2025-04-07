@@ -1,5 +1,12 @@
 # @feltmaps/js-sdk
 
+## 1.5.0-next.18
+
+### Minor Changes
+
+* 19b41ce: Improve createLayer API
+* 87304d8: Fix geometry filter type
+
 ## 1.5.0-next.17
 
 ### Minor Changes

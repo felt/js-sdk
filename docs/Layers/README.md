@@ -38,6 +38,7 @@ independently of the Layer, so you can turn on and off each category or class in
 # Type Aliases
 
 * [AggregationMethod](AggregationMethod.md)
+* [GeometryFilter](GeometryFilter.md)
 
 # Filters
 

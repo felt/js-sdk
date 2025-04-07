@@ -25,7 +25,7 @@ the [LayersController.getHistogramData](LayersController.md#gethistogramdata) me
 
 ## values?
 
-> `optional` **values**: \{ `boundary`: \[`number`, `number`]\[] | \[`number`, `number`, `number`, `number`] | \{ `type`: `"Polygon"`; `coordinates`: \[`number`, `number`]\[]\[]; }; `filters`: `null` | `boolean` | \[`null` | `string`, `"in"` | `"ni"`, `null` | (`null` | `string` | `number` | `boolean`)\[]] | \[`null` | `string`, `"lt"` | `"gt"` | `"le"` | `"ge"` | `"eq"` | `"ne"` | `"cn"` | `"nc"` | `"is"` | `"isnt"`, `null` | `string` | `number` | `boolean`] | [`FilterTernary`](FilterTernary.md); `aggregation`: \{ `method`: `"avg"` | `"max"` | `"min"` | `"sum"` | `"median"`; `attribute`: `string`; }; }
+> `optional` **values**: \{ `boundary`: \[`number`, `number`]\[] | \[`number`, `number`, `number`, `number`] | \{ `type`: `"Polygon"`; `coordinates`: \[`number`, `number`]\[]\[]; } | \{ `type`: `"MultiPolygon"`; `coordinates`: \[`number`, `number`]\[]\[]\[]; }; `filters`: `null` | `boolean` | \[`null` | `string`, `"in"` | `"ni"`, `null` | (`null` | `string` | `number` | `boolean`)\[]] | \[`null` | `string`, `"lt"` | `"gt"` | `"le"` | `"ge"` | `"eq"` | `"ne"` | `"cn"` | `"nc"` | `"is"` | `"isnt"`, `null` | `string` | `number` | `boolean`] | [`FilterTernary`](FilterTernary.md); `aggregation`: \{ `method`: `"avg"` | `"max"` | `"min"` | `"sum"` | `"median"`; `attribute`: `string`; }; }
 
 Configuration for filtering and aggregating values while preserving the full set of
 bin ranges in the results.
@@ -41,7 +41,7 @@ ranges in the results.
 
 | Name                    | Type                                                                                                                                                                                                                                                                                                                                        | Default value         | Description                                                                 |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------- |
-| `boundary`?             | \[`number`, `number`]\[] \| \[`number`, `number`, `number`, `number`] \| \{ `type`: `"Polygon"`; `coordinates`: \[`number`, `number`]\[]\[]; }                                                                                                                                                                                              | -                     | -                                                                           |
+| `boundary`?             | \[`number`, `number`]\[] \| \[`number`, `number`, `number`, `number`] \| \{ `type`: `"Polygon"`; `coordinates`: \[`number`, `number`]\[]\[]; } \| \{ `type`: `"MultiPolygon"`; `coordinates`: \[`number`, `number`]\[]\[]\[]; }                                                                                                             | -                     | -                                                                           |
 | `filters`?              | `null` \| `boolean` \| \[`null` \| `string`, `"in"` \| `"ni"`, `null` \| (`null` \| `string` \| `number` \| `boolean`)\[]] \| \[`null` \| `string`, `"lt"` \| `"gt"` \| `"le"` \| `"ge"` \| `"eq"` \| `"ne"` \| `"cn"` \| `"nc"` \| `"is"` \| `"isnt"`, `null` \| `string` \| `number` \| `boolean`] \| [`FilterTernary`](FilterTernary.md) | -                     | -                                                                           |
 | `aggregation`?          | \{ `method`: `"avg"` \| `"max"` \| `"min"` \| `"sum"` \| `"median"`; `attribute`: `string`; }                                                                                                                                                                                                                                               | -                     | -                                                                           |
 | `aggregation.method`    | `"avg"` \| `"max"` \| `"min"` \| `"sum"` \| `"median"`                                                                                                                                                                                                                                                                                      | AggregateMethodSchema | The operation to use on the values from the features in the layer           |
@@ -53,14 +53,12 @@ ranges in the results.
 
 > `optional` **filters**: [`Filters`](Filters.md)
 
-Attribute filters to determine what gets counted or aggregated.
+Attribute filters for the features to include when calculating the histogram bins.
 
 ***
 
 ## boundary?
 
-> `optional` **boundary**: \[`number`, `number`, `number`, `number`] | [`PolygonGeometry`](../Shared/PolygonGeometry.md) | [`LngLatTuple`](../Shared/LngLatTuple.md)\[]
+> `optional` **boundary**: [`GeometryFilter`](GeometryFilter.md)
 
-A spatial boundary to filter what gets counted or aggregated. This can be either
-a \[w, s, e, n] bounding box, a GeoJSON Polygon geometry, or a list of coordinates
-that form a polyline.
+The spatial boundary for the features to include when calculating the histogram bins.

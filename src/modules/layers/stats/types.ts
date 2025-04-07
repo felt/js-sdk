@@ -3,9 +3,11 @@ import type { zInfer } from "~/lib/utils";
 import {
   FeltBoundarySchema,
   LngLatTupleSchema,
+  MultiPolygonGeometrySchema,
   PolygonGeometrySchema,
   type FeltBoundary,
   type LngLatTuple,
+  type MultiPolygonGeometry,
   type PolygonGeometry,
 } from "~/modules/shared/types";
 import type { LayersController } from "../controller";
@@ -73,8 +75,24 @@ export interface MultiAggregationConfig<T extends AggregationMethod | "count">
 const GeometryFilterSchema = z.union([
   FeltBoundarySchema,
   PolygonGeometrySchema,
+  MultiPolygonGeometrySchema,
   z.array(LngLatTupleSchema),
 ]);
+
+/**
+ * The common type for filtering data by a spatial boundary.
+ *
+ * This can be either:
+ * - `FeltBoundary`: a [w, s, e, n] bounding box
+ * - `PolygonGeometry`: a GeoJSON Polygon geometry
+ * - `MultiPolygonGeometry`: a GeoJSON MultiPolygon geometry
+ * - `LngLatTuple[]`: a list of coordinates describing a single ring of a polygon
+ */
+export type GeometryFilter =
+  | FeltBoundary
+  | PolygonGeometry
+  | MultiPolygonGeometry
+  | LngLatTuple[];
 
 const ValueConfigurationSchema = z.object({
   boundary: GeometryFilterSchema.optional(),
@@ -93,14 +111,12 @@ const ValueConfigurationSchema = z.object({
 export interface ValueConfiguration
   extends zInfer<typeof ValueConfigurationSchema> {
   /**
-   * A spatial boundary to filter what gets counted or aggregated, while still including
-   * all possible categories or bin ranges in the results.
+   * The spatial boundary for what to count or aggregate.
    */
-  boundary?: PolygonGeometry | LngLatTuple[] | FeltBoundary;
+  boundary?: GeometryFilter;
 
   /**
-   * Attribute filters to determine what gets counted or aggregated, while still including
-   * all possible categories or bin ranges in the results.
+   * Attribute filters to determine what gets counted or aggregated.
    */
   filters?: Filters;
 
@@ -143,16 +159,14 @@ export const GetLayerCategoriesParamsSchema = z.object({
 export interface GetLayerCategoriesParams
   extends zInfer<typeof GetLayerCategoriesParamsSchema> {
   /**
-   * Attribute filters to determine what gets counted or aggregated.
+   * Attribute filters for the features to include when calculating the categories.
    */
   filters?: Filters;
 
   /**
-   * A spatial boundary to filter what gets counted or aggregated. This can be either
-   * a [w, s, e, n] bounding box, a GeoJSON Polygon geometry, or a list of coordinates
-   * that form a polyline.
+   * The spatial boundary for the features to include when calculating the categories.
    */
-  boundary?: PolygonGeometry | LngLatTuple[] | FeltBoundary;
+  boundary?: GeometryFilter;
 
   /**
    * Configuration for filtering and aggregating values while preserving the full set of
@@ -238,16 +252,14 @@ export const GetLayerHistogramParamsSchema = z.object({
 export interface GetLayerHistogramParams
   extends zInfer<typeof GetLayerHistogramParamsSchema> {
   /**
-   * Attribute filters to determine what gets counted or aggregated.
+   * Attribute filters for the features to include when calculating the histogram bins.
    */
   filters?: Filters;
 
   /**
-   * A spatial boundary to filter what gets counted or aggregated. This can be either
-   * a [w, s, e, n] bounding box, a GeoJSON Polygon geometry, or a list of coordinates
-   * that form a polyline.
+   * The spatial boundary for the features to include when calculating the histogram bins.
    */
-  boundary?: PolygonGeometry | LngLatTuple[] | FeltBoundary;
+  boundary?: GeometryFilter;
 }
 
 const GetLayerHistogramBinSchema = z.object({
@@ -294,16 +306,14 @@ export interface GetLayerCalculationParams<
   T extends AggregationMethod | "count",
 > extends z.infer<typeof GetLayerCalculationParamsSchema> {
   /**
-   * Attribute filters to determine what gets counted or aggregated.
+   * Attribute filters for the features to include when calculating the aggregate value.
    */
   filters?: Filters;
 
   /**
-   * A spatial boundary to filter what gets counted or aggregated. This can be either
-   * a [w, s, e, n] bounding box, a GeoJSON Polygon geometry, or a list of coordinates
-   * that form a polyline.
+   * The spatial boundary for the features to include when calculating the aggregate value.
    */
-  boundary?: PolygonGeometry | LngLatTuple[] | FeltBoundary;
+  boundary?: GeometryFilter;
 
   /**
    * Specifies how to aggregate values within each category or bin. When omitted,

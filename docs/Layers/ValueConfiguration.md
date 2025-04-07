@@ -11,10 +11,9 @@ It can also be used to specify how to aggregate the values via the `aggregation`
 
 ## boundary?
 
-> `optional` **boundary**: \[`number`, `number`, `number`, `number`] | [`PolygonGeometry`](../Shared/PolygonGeometry.md) | [`LngLatTuple`](../Shared/LngLatTuple.md)\[]
+> `optional` **boundary**: [`GeometryFilter`](GeometryFilter.md)
 
-A spatial boundary to filter what gets counted or aggregated, while still including
-all possible categories or bin ranges in the results.
+The spatial boundary for what to count or aggregate.
 
 ***
 
@@ -22,8 +21,7 @@ all possible categories or bin ranges in the results.
 
 > `optional` **filters**: [`Filters`](Filters.md)
 
-Attribute filters to determine what gets counted or aggregated, while still including
-all possible categories or bin ranges in the results.
+Attribute filters to determine what gets counted or aggregated.
 
 ***
 

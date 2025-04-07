@@ -58,6 +58,7 @@ export type {
 export type {
   AggregationConfig,
   AggregationMethod,
+  GeometryFilter,
   GetLayerCalculationParams,
   GetLayerCategoriesGroup,
   GetLayerCategoriesParams,

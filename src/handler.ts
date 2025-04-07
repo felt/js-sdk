@@ -1,5 +1,5 @@
 import { z, ZodError } from "zod";
-import { createErrorMessage } from "./lib/errors";
+import type { TransportableError } from "./lib/errors";
 import type { FeltHandlers } from "./lib/interface";
 import type { ModuleSchema } from "./lib/ModuleSchema";
 import { allModules } from "./modules/main/schema";
@@ -146,3 +146,23 @@ const PreliminarySchema = z.object({
     ],
   ),
 });
+
+function createErrorMessage(errorish: unknown): TransportableError {
+  return { __error__: errorStringFromUnknown(errorish) };
+}
+
+function errorStringFromUnknown(error: unknown): string {
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  if (typeof error === "object" && error !== null && "message" in error) {
+    return String(error.message);
+  }
+
+  if (typeof error === "string") {
+    return error;
+  }
+
+  return "Unknown error";
+}

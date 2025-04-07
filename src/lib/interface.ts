@@ -1,5 +1,5 @@
 import type { AllModules } from "~/modules/main/schema";
-import { isErrorMessage } from "./errors";
+import { type TransportableError } from "./errors";
 import type { PromiseOrNot, UnionToIntersection } from "./utils";
 
 export type FeltHandlers = {
@@ -176,4 +176,12 @@ export function method<TKey extends keyof StandardMethods, R>(
       };
     });
   };
+}
+
+function isErrorMessage(
+  event: MessageEvent,
+): event is MessageEvent<TransportableError> {
+  return (
+    event.data && typeof event.data === "object" && "__error__" in event.data
+  );
 }

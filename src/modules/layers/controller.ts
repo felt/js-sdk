@@ -267,7 +267,17 @@ export interface LayersController {
      * The source that you want to add to the map. These can be GeoJSON files or URLs.
      */
     source: GeoJsonArrayBufferSource | GeoJsonFileSource | GeoJsonUrlSource,
-  ): Promise<LayerGroup | null>;
+  ): Promise<{
+    /**
+     * The layer group that was created containing the created layers.
+     */
+    layerGroup: LayerGroup;
+
+    /**
+     * The layers that were created from the source.
+     */
+    layers: Array<Layer>;
+  } | null>;
 
   /**
    * Delete a layer from the map by its id.

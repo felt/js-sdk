@@ -434,7 +434,10 @@ export { LayerSchemaTextAttribute }
 // @public
 export interface LayersController {
     createLayersFromGeoJson(
-    source: GeoJsonArrayBufferSource | GeoJsonFileSource | GeoJsonUrlSource): Promise<LayerGroup | null>;
+    source: GeoJsonArrayBufferSource | GeoJsonFileSource | GeoJsonUrlSource): Promise<{
+        layerGroup: LayerGroup;
+        layers: Array<Layer>;
+    } | null>;
     deleteLayer(id: string): Promise<void>;
     getAggregates<T extends AggregationMethod | "count">(params: GetLayerCalculationParams<T>): Promise<Record<T, number | null>>;
     getCategoryData(params: GetLayerCategoriesParams): Promise<Array<GetLayerCategoriesGroup>>;

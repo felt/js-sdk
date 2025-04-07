@@ -216,7 +216,10 @@ export type LayersSchema = {
 
     createLayersFromGeoJson: Method<
       zInfer<typeof CreateLayersFromGeoJsonMessage>,
-      LayerGroup | null
+      {
+        layerGroup: LayerGroup;
+        layers: Array<Layer>;
+      } | null
     >;
     deleteLayer: Method<zInfer<typeof DeleteLayerMessage>, void>;
 

@@ -427,7 +427,7 @@ felt.setLayerLegendVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] 
 
 ## createLayersFromGeoJson()
 
-> **createLayersFromGeoJson**(`source`: [`GeoJsonArrayBufferSource`](../Layers/GeoJsonArrayBufferSource.md) | [`GeoJsonFileSource`](../Layers/GeoJsonFileSource.md) | [`GeoJsonUrlSource`](../Layers/GeoJsonUrlSource.md)): `Promise`\<`null` | [`LayerGroup`](../Layers/LayerGroup.md)>
+> **createLayersFromGeoJson**(`source`: [`GeoJsonArrayBufferSource`](../Layers/GeoJsonArrayBufferSource.md) | [`GeoJsonFileSource`](../Layers/GeoJsonFileSource.md) | [`GeoJsonUrlSource`](../Layers/GeoJsonUrlSource.md)): `Promise`\<`null` | \{ `layerGroup`: [`LayerGroup`](../Layers/LayerGroup.md); `layers`: [`Layer`](../Layers/Layer.md)\[]; }>
 
 Adds layers to the map from file or URL sources.
 
@@ -439,7 +439,7 @@ Adds layers to the map from file or URL sources.
 
 ### Returns
 
-`Promise`\<`null` | [`LayerGroup`](../Layers/LayerGroup.md)>
+`Promise`\<`null` | \{ `layerGroup`: [`LayerGroup`](../Layers/LayerGroup.md); `layers`: [`Layer`](../Layers/Layer.md)\[]; }>
 
 The layer groups that were created.
 

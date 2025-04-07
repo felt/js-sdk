@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.5.0-next.17
+
+### Minor Changes
+
+* cbfd3fd: Reject promises when method handlers are invalid
+
 ## 1.5.0-next.16
 
 ### Minor Changes

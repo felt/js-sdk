@@ -85,7 +85,26 @@ export interface PolygonGeometry extends zInfer<typeof PolygonGeometrySchema> {}
  */
 export const PolygonGeometrySchema = z.object({
   type: z.literal("Polygon"),
-  coordinates: z.array(z.array(LngLatTupleSchema)),
+
+  /**
+   * The coordinates of a polygon. The first array is the exterior ring, and
+   * any subsequent arrays are the interior rings.
+   *
+   * Each ring must have at least 4 points: 3 to make a valid triangle and the
+   * last to close the path, which must be identical to the first.
+   */
+  coordinates: z.array(
+    z
+      .array(LngLatTupleSchema)
+      .min(4)
+      .refine(
+        (arr) =>
+          arr[0]![0] === arr[arr.length - 1]![0] &&
+          arr[0]![1] === arr[arr.length - 1]![1],
+
+        "The last point of each ring must be identical to the first",
+      ),
+  ),
 });
 
 /**
@@ -115,7 +134,7 @@ export type LineStringGeometry = {
 
 const LineStringGeometrySchema = z.object({
   type: z.literal("LineString"),
-  coordinates: z.array(LngLatTupleSchema),
+  coordinates: z.array(LngLatTupleSchema).min(2),
 });
 
 /**

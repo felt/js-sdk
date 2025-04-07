@@ -33,17 +33,15 @@ The maximum number of categories to return.
 
 > `optional` **filters**: [`Filters`](Filters.md)
 
-Attribute filters to determine what gets counted or aggregated.
+Attribute filters for the features to include when calculating the categories.
 
 ***
 
 ## boundary?
 
-> `optional` **boundary**: \[`number`, `number`, `number`, `number`] | [`PolygonGeometry`](../Shared/PolygonGeometry.md) | [`LngLatTuple`](../Shared/LngLatTuple.md)\[]
+> `optional` **boundary**: [`GeometryFilter`](GeometryFilter.md)
 
-A spatial boundary to filter what gets counted or aggregated. This can be either
-a \[w, s, e, n] bounding box, a GeoJSON Polygon geometry, or a list of coordinates
-that form a polyline.
+The spatial boundary for the features to include when calculating the categories.
 
 ***
 

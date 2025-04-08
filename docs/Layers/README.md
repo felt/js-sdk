@@ -30,9 +30,6 @@ independently of the Layer, so you can turn on and off each category or class in
 * [GetLayerHistogramParams](GetLayerHistogramParams.md)
 * [GetLayerHistogramBin](GetLayerHistogramBin.md)
 * [GetLayerCalculationParams](GetLayerCalculationParams.md)
-* [GeoJsonUrlVectorSource](GeoJsonUrlVectorSource.md)
-* [GeoJsonDataVectorSource](GeoJsonDataVectorSource.md)
-* [GeoJsonFileVectorSource](GeoJsonFileVectorSource.md)
 * [CreateLayersFromGeoJsonParams](CreateLayersFromGeoJsonParams.md)
 
 # Type Aliases
@@ -69,6 +66,9 @@ independently of the Layer, so you can turn on and off each category or class in
 
 * [RasterLayerSource](RasterLayerSource.md)
 * [RasterBand](RasterBand.md)
+* [GeoJsonUrlVectorSource](GeoJsonUrlVectorSource.md)
+* [GeoJsonDataVectorSource](GeoJsonDataVectorSource.md)
+* [GeoJsonFileVectorSource](GeoJsonFileVectorSource.md)
 * [FeltTiledVectorSource](FeltTiledVectorSource.md)
 
 # Layers

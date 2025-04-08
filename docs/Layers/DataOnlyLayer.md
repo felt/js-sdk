@@ -86,22 +86,16 @@ The current processing status of the layer.
 
 ***
 
-## bounds
-
-> **bounds**: `null` | \[`number`, `number`, `number`, `number`]
-
-The bounding box of the layer in \[west, south, east, north] order
-
-There are cases where the bounds are not available, such as for layers added to the map
-from URL sources, as these are not (depending on their type) processed and analyzed by
-Felt.
-
-[FeltBoundary](../Shared/FeltBoundary.md)
-
-***
-
 ## geometryType
 
 > **geometryType**: `null`
 
 Indicates that this layer has no geometry.
+
+***
+
+## bounds
+
+> **bounds**: `null`
+
+This is always null for data-only layers.

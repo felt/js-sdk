@@ -219,16 +219,6 @@ export type FeltTiledVectorSource = {
   tileTemplateUrl: string;
 };
 
-/**
- * A GeoJSON URL source is a layer that is populated from a GeoJSON file at a remote URL.
- *
- * These sources are ones that have not been uploaded to and processed by Felt, and as such
- * their capabilities are limited.
- *
- * For instance, they cannot be filtered, nor can statistics be fetched for them.
- *
- * @group Layer sources
- */
 const GeoJsonUrlVectorSourceSchema = z.object({
   /**
    * Identifies this as a GeoJSON URL source.
@@ -241,8 +231,24 @@ const GeoJsonUrlVectorSourceSchema = z.object({
   url: z.string().url(),
 });
 
+/**
+ * A GeoJSON URL source is a layer that is populated from a GeoJSON file at a remote URL.
+ *
+ * These sources are ones that have not been uploaded to and processed by Felt, and as such
+ * their capabilities are limited.
+ *
+ * For instance, they cannot be filtered, nor can statistics be fetched for them.
+ *
+ * @group Layer sources
+ */
 export interface GeoJsonUrlVectorSource
   extends zInfer<typeof GeoJsonUrlVectorSourceSchema> {}
+
+// this isn't used for derived types because z.object({}) documents horribly
+const GeoJsonDataVectorSourceSchema = z.object({
+  type: z.literal("geoJsonData"),
+  data: z.object({}).passthrough(),
+});
 
 /**
  * A GeoJSON data source is a layer that is populated from GeoJSON data, such as
@@ -250,30 +256,18 @@ export interface GeoJsonUrlVectorSource
  *
  * @group Layer sources
  */
-const GeoJsonDataVectorSourceSchema = z.object({
+export interface GeoJsonDataVectorSource {
   /**
    * Identifies this as a GeoJSON data source.
    */
-  type: z.literal("geoJsonData"),
+  type: "geoJsonData";
 
   /**
    * The GeoJSON data for the layer.
    */
-  data: z.object({}).passthrough(),
-});
+  data: object;
+}
 
-export interface GeoJsonDataVectorSource
-  extends zInfer<typeof GeoJsonDataVectorSourceSchema> {}
-
-/**
- * A GeoJSON file source is a layer that is populated from a GeoJSON file
- * on your local machine.
- *
- * This is an input-only type. It is converted to a {@link GeoJsonDataVectorSource}
- * when passed to {@link LayersController.createLayersFromGeoJson}.
- *
- * @group Layer sources
- */
 const GeoJsonFileVectorSourceSchema = z.object({
   /**
    * Identifies this as a GeoJSON file source.
@@ -286,6 +280,15 @@ const GeoJsonFileVectorSourceSchema = z.object({
   file: z.instanceof(File),
 });
 
+/**
+ * A GeoJSON file source is a layer that is populated from a GeoJSON file
+ * on your local machine.
+ *
+ * This is an input-only type. It is converted to a {@link GeoJsonDataVectorSource}
+ * when passed to {@link LayersController.createLayersFromGeoJson}.
+ *
+ * @group Layer sources
+ */
 export interface GeoJsonFileVectorSource
   extends zInfer<typeof GeoJsonFileVectorSourceSchema> {}
 
@@ -299,6 +302,11 @@ export interface DataOnlyLayer extends LayerCommon {
    * Indicates that this layer has no geometry.
    */
   geometryType: null;
+
+  /**
+   * This is always null for data-only layers.
+   */
+  bounds: null;
 }
 
 /**
@@ -716,9 +724,6 @@ const LayersFromGeoJsonStylesPerGeometrySchema = z.object({
  * @group Layers
  */
 export const CreateLayersFromGeoJsonSchema = z.object({
-  /**
-   * The source of the GeoJSON data.
-   */
   source: z.union([
     GeoJsonUrlVectorSourceSchema,
     GeoJsonDataVectorSourceSchema,
@@ -729,6 +734,22 @@ export const CreateLayersFromGeoJsonSchema = z.object({
    * The name of the layer to create.
    */
   name: z.string(),
+
+  geometryStyles: LayersFromGeoJsonStylesPerGeometrySchema.optional(),
+});
+
+export interface CreateLayersFromGeoJsonParams
+  extends Omit<
+    zInfer<typeof CreateLayersFromGeoJsonSchema>,
+    "source" | "geometryStyles"
+  > {
+  /**
+   * The source of the GeoJSON data.
+   */
+  source:
+    | GeoJsonDataVectorSource
+    | GeoJsonFileVectorSource
+    | GeoJsonUrlVectorSource;
 
   /**
    * The styles to apply to each geometry on the layer.
@@ -758,8 +779,9 @@ export const CreateLayersFromGeoJsonSchema = z.object({
    * });
    * ```
    */
-  geometryStyles: LayersFromGeoJsonStylesPerGeometrySchema.optional(),
-});
-
-export interface CreateLayersFromGeoJsonParams
-  extends zInfer<typeof CreateLayersFromGeoJsonSchema> {}
+  geometryStyles?: {
+    Point?: object;
+    Line?: object;
+    Polygon?: object;
+  };
+}

@@ -30,9 +30,11 @@ const LayerProcessingStatusSchema = z.enum([
 ]);
 
 /**
+ * The common properties for all layers.
+ *
  * @group Layers
  */
-export interface Layer {
+export interface LayerCommon {
   /**
    * The string identifying the layer
    */
@@ -89,23 +91,6 @@ export interface Layer {
   status: LayerProcessingStatus;
 
   /**
-   * The geometry type of the layer.
-   *
-   * @remarks
-   * This will generally be one of:
-   * - `"Point"`
-   * - `"Line"`
-   * - `"Polygon"`
-   * - `"Raster"`
-   * - `null`
-   *
-   * When the layer is processing, or it is a data-only layer, it will be null. You should
-   * expect this to be able to be any string, however, as more geometry types can be added
-   * in the future.
-   */
-  geometryType: string | null;
-
-  /**
    * The bounding box of the layer in [west, south, east, north] order
    *
    * There are cases where the bounds are not available, such as for layers added to the map
@@ -115,6 +100,211 @@ export interface Layer {
    * {@link FeltBoundary}
    */
   bounds: FeltBoundary | null;
+}
+
+/**
+ * @group Layers
+ */
+export type Layer = RasterLayer | VectorLayer | DataOnlyLayer;
+
+/**
+ * A raster layer is a layer that contains raster data that can be rendered on the map
+ *
+ * @group Layers
+ */
+export interface RasterLayer extends LayerCommon {
+  /**
+   * Identifies the type of geometry in the layer.
+   */
+  geometryType: "Raster";
+
+  /**
+   * The source of the raster layer's data.
+   */
+  source: RasterLayerSource;
+}
+
+/**
+ * The source of a raster layer's data.
+ *
+ * @group Layer sources
+ */
+export interface RasterLayerSource {
+  /**
+   * A URL template for fetching image tiles for the raster.
+   */
+  imageTileTemplateUrl: string;
+
+  /**
+   * A URL template for fetching encoded tiles for the raster.
+   *
+   * The encoded raster value can be calculated from the red, green, and blue values of the pixel
+   * using the following formula:
+   *
+   * ```
+   * base + ((RED << 16) + (GREEN <<8) + BLUE) * interval
+   * ```
+   * or
+   * ```
+   * base + (RED * 256 * 256 + GREEN * 256 + BLUE) * interval
+   * ```
+   */
+  encodedTileTemplateUrl: string;
+
+  /**
+   * List of encoded raster bands
+   */
+  bands: Array<RasterBand>;
+}
+
+/**
+ * The RasterBand interface describes the metadata for a raster band, necessary for
+ * calculating the encoded raster value from the red, green, and blue values of the pixel.
+ *
+ * @group Layer sources
+ */
+export interface RasterBand {
+  /**
+   * Encoding base value as a floating point number
+   */
+  base: number;
+
+  /**
+   * Encoding interval as a floating point number
+   */
+  interval: number;
+
+  /**
+   * 1-based index of the band in the raster
+   */
+  bandIndex: number;
+}
+
+/**
+ * A vector layer is a layer that contains vector data that can be rendered on the map
+ *
+ * @group Layers
+ */
+export interface VectorLayer extends LayerCommon {
+  /**
+   * Identifies the type of geometry in the layer.
+   */
+  geometryType: "Point" | "Line" | "Polygon";
+
+  /**
+   * The source of the vector layer's data.
+   */
+  source:
+    | FeltTiledVectorSource
+    | GeoJsonUrlVectorSource
+    | GeoJsonDataVectorSource;
+}
+
+/**
+ * A tiled vector source is a layer that is populated from data the has been uploaded
+ * to Felt, and processed into vector tiles.
+ *
+ * These sources cannot be updated via the SDK.
+ *
+ * @group Layer sources
+ */
+export type FeltTiledVectorSource = {
+  /**
+   * Identifies this as a tiled vector source. Typically, these tiles will have been
+   * uploaded to and processed by Felt.
+   */
+  type: "felt";
+
+  /**
+   * The template URL used for fetching tiles.
+   */
+  tileTemplateUrl: string;
+};
+
+/**
+ * A GeoJSON URL source is a layer that is populated from a GeoJSON file at a remote URL.
+ *
+ * These sources are ones that have not been uploaded to and processed by Felt, and as such
+ * their capabilities are limited.
+ *
+ * For instance, they cannot be filtered, nor can statistics be fetched for them.
+ *
+ * They can be updated via the SDK.
+ *
+ * @group Layer sources
+ */
+const GeoJsonUrlVectorSourceSchema = z.object({
+  /**
+   * Identifies this as a GeoJSON URL source.
+   */
+  type: z.literal("geoJsonUrl"),
+
+  /**
+   * The remote URL of the GeoJSON file used to populate the layer.
+   */
+  url: z.string().url(),
+});
+
+export interface GeoJsonUrlVectorSource
+  extends zInfer<typeof GeoJsonUrlVectorSourceSchema> {}
+
+/**
+ * A GeoJSON data source is a layer that is populated from GeoJSON data, such as
+ * from a local file, or programatically-created data.
+ *
+ * These types of sources can be updated via the SDK.
+ *
+ * @group Layer sources
+ */
+const GeoJsonDataVectorSourceSchema = z.object({
+  /**
+   * Identifies this as a GeoJSON data source.
+   */
+  type: z.literal("geoJsonData"),
+
+  /**
+   * The GeoJSON data for the layer.
+   */
+  data: z.object({}).passthrough(),
+});
+
+export interface GeoJsonDataVectorSource
+  extends zInfer<typeof GeoJsonDataVectorSourceSchema> {}
+
+/**
+ * A GeoJSON file source is a layer that is populated from a GeoJSON file
+ * on your local machine.
+ *
+ * This is an input-only type. It is converted to a {@link GeoJsonDataVectorSource}
+ * when passed to {@link LayersController.createLayersFromGeoJson}.
+ *
+ * @group Layer sources
+ */
+const GeoJsonFileVectorSourceSchema = z.object({
+  /**
+   * Identifies this as a GeoJSON file source.
+   */
+  type: z.literal("geoJsonFile"),
+
+  /**
+   * The GeoJSON file for the layer.
+   */
+  file: z.instanceof(File),
+});
+
+export interface GeoJsonFileVectorSource
+  extends zInfer<typeof GeoJsonFileVectorSourceSchema> {}
+
+/**
+ * A data-only layer doesn't have any geometry, but can be used to join with other layers
+ *
+ * @group Layers
+ */
+export interface DataOnlyLayer extends LayerCommon {
+  /**
+   * Indicates that this layer has no geometry.
+   */
+  geometryType: null;
 }
 
 /**
@@ -520,19 +710,32 @@ export interface LayerSchemaDateTimeAttribute
   sampleValues: Array<{ value: string; count: number }>;
 }
 
-const EphemeralLayerGeometryStyleSchema = z.object({
+const LayersFromGeoJsonStylesPerGeometrySchema = z.object({
   Point: z.object({}).passthrough().optional(),
   Line: z.object({}).passthrough().optional(),
   Polygon: z.object({}).passthrough().optional(),
 });
 
-const EphemeralLayerSourceSchema = z.object({
-  name: z.string(),
-  geometryStyles: EphemeralLayerGeometryStyleSchema.optional(),
-});
+/**
+ * The parameters for the {@link LayersController.createLayersFromGeoJson} method.
+ *
+ * @group Layers
+ */
+export const CreateLayersFromGeoJsonSchema = z.object({
+  /**
+   * The source of the GeoJSON data.
+   */
+  source: z.union([
+    GeoJsonUrlVectorSourceSchema,
+    GeoJsonDataVectorSourceSchema,
+    GeoJsonFileVectorSourceSchema,
+  ]),
 
-export interface EphemeralLayerSource
-  extends zInfer<typeof EphemeralLayerSourceSchema> {
+  /**
+   * The name of the layer to create.
+   */
+  name: z.string(),
+
   /**
    * The styles to apply to each geometry on the layer.
    *
@@ -561,37 +764,8 @@ export interface EphemeralLayerSource
    * });
    * ```
    */
-  geometryStyles?: {
-    Point?: Record<string, unknown>;
-    Line?: Record<string, unknown>;
-    Polygon?: Record<string, unknown>;
-  };
-}
-
-const GeoJsonFileSourceSchema = EphemeralLayerSourceSchema.extend({
-  file: z.instanceof(File),
-});
-export interface GeoJsonFileSource
-  extends Omit<zInfer<typeof GeoJsonFileSourceSchema>, "geometryStyles">,
-    EphemeralLayerSource {}
-
-const GeoJsonUrlSourceSchema = EphemeralLayerSourceSchema.extend({
-  url: z.string().url(),
-});
-export interface GeoJsonUrlSource
-  extends Omit<zInfer<typeof GeoJsonUrlSourceSchema>, "geometryStyles">,
-    EphemeralLayerSource {}
-
-const GeoJsonArrayBufferSourceSchema = EphemeralLayerSourceSchema.extend({
-  arrayBuffer: z.instanceof(ArrayBuffer),
+  geometryStyles: LayersFromGeoJsonStylesPerGeometrySchema.optional(),
 });
 
-export interface GeoJsonArrayBufferSource
-  extends Omit<zInfer<typeof GeoJsonArrayBufferSourceSchema>, "geometryStyles">,
-    EphemeralLayerSource {}
-
-export const CreateLayersFromGeoJsonSchema = z.union([
-  GeoJsonArrayBufferSourceSchema,
-  GeoJsonFileSourceSchema,
-  GeoJsonUrlSourceSchema,
-]);
+export interface CreateLayersFromGeoJsonParams
+  extends zInfer<typeof CreateLayersFromGeoJsonSchema> {}

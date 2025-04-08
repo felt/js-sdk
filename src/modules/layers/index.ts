@@ -16,15 +16,17 @@
  * @module Layers
  */
 export type {
-  EphemeralLayerSource,
-  GeoJsonArrayBufferSource,
-  GeoJsonFileSource,
-  GeoJsonUrlSource,
+  CreateLayersFromGeoJsonParams,
+  DataOnlyLayer,
+  FeltTiledVectorSource,
+  GeoJsonDataVectorSource,
+  GeoJsonUrlVectorSource,
   GetLayerGroupsConstraint,
   GetLayersConstraint,
   GetRenderedFeaturesConstraint,
   Layer,
   LayerChangeCallbackParams,
+  LayerCommon,
   LayerFeature,
   LayerGroup,
   LayerGroupChangeCallbackParams,
@@ -33,7 +35,11 @@ export type {
   LegendItemChangeCallbackParams,
   LegendItemIdentifier,
   LegendItemsConstraint,
+  RasterBand,
+  RasterLayer,
+  RasterLayerSource,
   RasterValue,
+  VectorLayer,
 } from "./types";
 
 export type {

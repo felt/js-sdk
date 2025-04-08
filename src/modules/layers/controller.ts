@@ -13,9 +13,7 @@ import type {
   GetLayerHistogramParams,
 } from "./stats/types";
 import type {
-  GeoJsonArrayBufferSource,
-  GeoJsonFileSource,
-  GeoJsonUrlSource,
+  CreateLayersFromGeoJsonParams,
   GetLayerGroupsConstraint,
   GetLayersConstraint,
   GetRenderedFeaturesConstraint,
@@ -50,13 +48,18 @@ export const layersController = (
     feltWindow,
     "createLayersFromGeoJson",
     async (params) => {
-      if ("url" in params || "arrayBuffer" in params) return params;
+      const { source } = params;
 
-      // convert file to array buffer
-      return {
-        ...params,
-        arrayBuffer: await params.file.arrayBuffer(),
-      };
+      // url and data
+      if (source.type === "geoJsonFile") {
+        // convert file to array buffer
+        return {
+          ...params,
+          data: await source.file.arrayBuffer(),
+        };
+      } else {
+        return params;
+      }
     },
   ),
   deleteLayer: method(feltWindow, "deleteLayer"),
@@ -254,20 +257,22 @@ export interface LayersController {
    * @example
    * ```typescript
    * const layerFromFile = await felt.createLayersFromGeoJson({
-   *   name: "Parcels", file: someFile,
+   *   source: {
+   *     type: "geoJsonFile",
+   *     file: someFile,
+   *   },
+   *   name: "Parcels",
    * });
    *
    * const layerFromUrl = await felt.createLayersFromGeoJson({
-   *   name: "Parcels", url: "https://example.com/parcels.geojson",
-   * });
+   *   source: {
+   *     sourceType: "geoJsonUrl",
+   *     url: "https://example.com/parcels.geojson",
+   *   },
+   *   name: "Parcels",
    * ```
    */
-  createLayersFromGeoJson(
-    /**
-     * The source that you want to add to the map. These can be GeoJSON files or URLs.
-     */
-    source: GeoJsonArrayBufferSource | GeoJsonFileSource | GeoJsonUrlSource,
-  ): Promise<{
+  createLayersFromGeoJson(params: CreateLayersFromGeoJsonParams): Promise<{
     /**
      * The layer group that was created containing the created layers.
      */

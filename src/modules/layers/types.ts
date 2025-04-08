@@ -197,14 +197,12 @@ export interface VectorLayer extends LayerCommon {
   source:
     | FeltTiledVectorSource
     | GeoJsonUrlVectorSource
-    | GeoJsonDataVectorSource;
+    | Omit<GeoJsonDataVectorSource, "data">;
 }
 
 /**
  * A tiled vector source is a layer that is populated from data the has been uploaded
  * to Felt, and processed into vector tiles.
- *
- * These sources cannot be updated via the SDK.
  *
  * @group Layer sources
  */
@@ -229,8 +227,6 @@ export type FeltTiledVectorSource = {
  *
  * For instance, they cannot be filtered, nor can statistics be fetched for them.
  *
- * They can be updated via the SDK.
- *
  * @group Layer sources
  */
 const GeoJsonUrlVectorSourceSchema = z.object({
@@ -251,8 +247,6 @@ export interface GeoJsonUrlVectorSource
 /**
  * A GeoJSON data source is a layer that is populated from GeoJSON data, such as
  * from a local file, or programatically-created data.
- *
- * These types of sources can be updated via the SDK.
  *
  * @group Layer sources
  */

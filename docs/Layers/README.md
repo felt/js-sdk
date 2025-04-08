@@ -32,6 +32,7 @@ independently of the Layer, so you can turn on and off each category or class in
 * [GetLayerCalculationParams](GetLayerCalculationParams.md)
 * [GeoJsonUrlVectorSource](GeoJsonUrlVectorSource.md)
 * [GeoJsonDataVectorSource](GeoJsonDataVectorSource.md)
+* [GeoJsonFileVectorSource](GeoJsonFileVectorSource.md)
 * [CreateLayersFromGeoJsonParams](CreateLayersFromGeoJsonParams.md)
 
 # Type Aliases

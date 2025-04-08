@@ -20,6 +20,7 @@ export type {
   DataOnlyLayer,
   FeltTiledVectorSource,
   GeoJsonDataVectorSource,
+  GeoJsonFileVectorSource,
   GeoJsonUrlVectorSource,
   GetLayerGroupsConstraint,
   GetLayersConstraint,

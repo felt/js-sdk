@@ -110,6 +110,6 @@ Identifies the type of geometry in the layer.
 
 ## source
 
-> **source**: [`FeltTiledVectorSource`](FeltTiledVectorSource.md) | [`GeoJsonUrlVectorSource`](GeoJsonUrlVectorSource.md) | [`GeoJsonDataVectorSource`](GeoJsonDataVectorSource.md)
+> **source**: [`FeltTiledVectorSource`](FeltTiledVectorSource.md) | [`GeoJsonUrlVectorSource`](GeoJsonUrlVectorSource.md) | `Omit`\<[`GeoJsonDataVectorSource`](GeoJsonDataVectorSource.md), `"data"`>
 
 The source of the vector layer's data.

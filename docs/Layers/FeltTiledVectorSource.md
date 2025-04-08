@@ -5,8 +5,6 @@
 A tiled vector source is a layer that is populated from data the has been uploaded
 to Felt, and processed into vector tiles.
 
-These sources cannot be updated via the SDK.
-
 # Type declaration
 
 ## type

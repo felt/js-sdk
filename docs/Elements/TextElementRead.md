@@ -69,17 +69,40 @@ data.
 
 > **rotation**: `number`
 
+The rotation of the element in degrees.
+
+### Default
+
+```ts
+0
+```
+
 ***
 
 ## scale
 
 > **scale**: `number`
 
+The relative scale of the element from the default size. This is combined
+with the `zoom` to determine the actual size of the element.
+
+### Default
+
+```ts
+1
+```
+
 ***
 
 ## zoom
 
 > **zoom**: `number`
+
+The zoom level at which the element was created. This is combined with
+the `scale` to determine the actual size of the element.
+
+When creating an element, if you don't supply this value it defaults to
+the current zoom of the map when you call `createElement`.
 
 ***
 
@@ -141,6 +164,8 @@ property.
 ## position
 
 > **position**: [`LngLatTuple`](../Shared/LngLatTuple.md)
+
+The geographical position of the center of the text element.
 
 ***
 

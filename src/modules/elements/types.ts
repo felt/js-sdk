@@ -307,16 +307,36 @@ const HighlighterElementSchema = BaseFeltElementSchema.extend({
   opacity: z.number().min(0).max(1),
 });
 
-const DerivedCoords = z.object({
+const Textual = z.object({
+  /**
+   * The geographical position of the center of the element.
+   */
   position: LngLatTupleSchema,
+
+  /**
+   * The rotation of the element in degrees.
+   *
+   * @default 0
+   */
   rotation: z.number(),
+
+  /**
+   * The relative scale of the element from the default size. This is combined
+   * with the `zoom` to determine the actual size of the element.
+   *
+   * @default 1
+   */
   scale: z.number(),
+
+  /**
+   * The zoom level at which the element was created. This is combined with
+   * the `scale` to determine the actual size of the element.
+   *
+   * When creating an element, if you don't supply this value it defaults to
+   * the current zoom of the map when you call `createElement`.
+   */
   zoom: z.number().min(0).max(23),
 
-  coordinates: PolygonGeometrySchema.shape.coordinates,
-});
-
-const Textual = z.object({
   /**
    * The text in the element.
    */
@@ -345,13 +365,14 @@ const Textual = z.object({
   name: z.string(),
 });
 
-const TextElementSchema = BaseFeltElementSchema.extend(DerivedCoords.shape)
-  .extend(Textual.shape)
-  .extend({ type: z.literal("Text") });
+const TextElementSchema = BaseFeltElementSchema.extend(Textual.shape).extend({
+  type: z.literal("Text"),
+});
 
-const NoteElementSchema = BaseFeltElementSchema.extend(DerivedCoords.shape)
-  .extend(Textual.shape)
-  .extend({ type: z.literal("Note"), widthScale: z.number().min(0) });
+const NoteElementSchema = BaseFeltElementSchema.extend(Textual.shape).extend({
+  type: z.literal("Note"),
+  widthScale: z.number().min(0),
+});
 
 const ImageElementSchema = BaseFeltElementSchema.extend({
   type: z.literal("Image"),
@@ -413,11 +434,11 @@ export const HighlighterCreateSchema = HighlighterElementSchema.partial()
   .omit(omitCreateProps);
 
 export const TextCreateSchema = TextElementSchema.partial()
-  .omit({ ...omitCreateProps, coordinates: true, name: true, type: true })
+  .omit({ ...omitCreateProps, name: true, type: true })
   .extend({ type: z.literal("Text"), text: z.string() });
 
 export const NoteCreateSchema = NoteElementSchema.partial()
-  .omit({ ...omitCreateProps, coordinates: true, name: true, type: true })
+  .omit({ ...omitCreateProps, name: true, type: true })
   .extend({ type: z.literal("Note"), text: z.string() });
 
 const ImageCreateSchema = ImageElementSchema.partial()
@@ -451,8 +472,8 @@ const MarkerReadSchema = MarkerElementSchema.omit({ coordinates: true });
 const HighlighterReadSchema = HighlighterElementSchema.omit({
   coordinates: true,
 });
-const TextReadSchema = TextElementSchema.omit({ coordinates: true });
-const NoteReadSchema = NoteElementSchema.omit({ coordinates: true });
+const TextReadSchema = TextElementSchema;
+const NoteReadSchema = NoteElementSchema;
 const ImageReadSchema = ImageElementSchema.omit({ coordinates: true });
 const LinkReadSchema = LinkElementSchema.omit({ coordinates: true });
 
@@ -484,11 +505,11 @@ const HighlighterUpdateSchema = HighlighterElementSchema.partial().extend(
 
 const TextUpdateSchema = TextElementSchema.partial()
   .extend(TextElementSchema.pick(requiredUpdateProps).shape)
-  .omit({ coordinates: true, name: true });
+  .omit({ name: true });
 
 const NoteUpdateSchema = NoteElementSchema.partial()
   .extend(NoteElementSchema.pick(requiredUpdateProps).shape)
-  .omit({ coordinates: true, name: true });
+  .omit({ name: true });
 
 const ImageUpdateSchema = ImageElementSchema.partial().extend(
   ImageElementSchema.pick(requiredUpdateProps).shape,
@@ -528,10 +549,22 @@ export interface HighlighterElementCreate
   coordinates: LngLatTuple[][][];
 }
 export interface TextElementCreate extends zInfer<typeof TextCreateSchema> {
-  position: LngLatTuple;
+  /**
+   * The geographical position of the center of the text element.
+   *
+   * If this is omitted, the text will be placed at the center of the current
+   * viewport.
+   */
+  position?: LngLatTuple;
 }
 export interface NoteElementCreate extends zInfer<typeof NoteCreateSchema> {
-  position: LngLatTuple;
+  /**
+   * The geographical position of the center of the note element.
+   *
+   * If this is omitted, the note will be placed at the center of the current
+   * viewport.
+   */
+  position?: LngLatTuple;
 }
 export interface ImageElementCreate extends zInfer<typeof ImageCreateSchema> {}
 
@@ -547,9 +580,15 @@ export interface MarkerElementRead extends zInfer<typeof MarkerReadSchema> {}
 export interface HighlighterElementRead
   extends zInfer<typeof HighlighterReadSchema> {}
 export interface TextElementRead extends zInfer<typeof TextReadSchema> {
+  /**
+   * The geographical position of the center of the text element.
+   */
   position: LngLatTuple;
 }
 export interface NoteElementRead extends zInfer<typeof NoteReadSchema> {
+  /**
+   * The geographical position of the center of the note element.
+   */
   position: LngLatTuple;
 }
 export interface ImageElementRead extends zInfer<typeof ImageReadSchema> {}

@@ -12,6 +12,14 @@ export interface MapInteractionEvent {
   coordinate: LatLng;
 
   /**
+   * The pixel coordinates of the mouse cursor, relative to the map and measured from the top left corner.
+   */
+  point: {
+    x: number;
+    y: number;
+  };
+
+  /**
    * The vector features that are under the cursor.
    */
   features: Array<LayerFeature>;

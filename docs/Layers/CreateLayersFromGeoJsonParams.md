@@ -6,24 +6,34 @@
 
 > **name**: `string`
 
+The name of the layer to create.
+
+***
+
+## source
+
+> **source**: [`GeoJsonDataVectorSource`](GeoJsonDataVectorSource.md) | [`GeoJsonFileVectorSource`](GeoJsonFileVectorSource.md) | [`GeoJsonUrlVectorSource`](GeoJsonUrlVectorSource.md)
+
+The source of the GeoJSON data.
+
 ***
 
 ## geometryStyles?
 
-> `optional` **geometryStyles**: \{ `Point`: `Record`\<`string`, `unknown`>; `Line`: `Record`\<`string`, `unknown`>; `Polygon`: `Record`\<`string`, `unknown`>; }
+> `optional` **geometryStyles**: \{ `Point`: `object`; `Line`: `object`; `Polygon`: `object`; }
 
 The styles to apply to each geometry on the layer.
 
-Each style should be a valid FSL style, as described in [Layer.style](Layer.md#style).
+Each style should be a valid FSL style, as described in [Layer.style](LayerCommon.md#style).
 
 These are optional, and if missing will use a default style determined by
 Felt, which you can consider to be undefined behaviour.
 
-| Name       | Type                           |
-| ---------- | ------------------------------ |
-| `Point`?   | `Record`\<`string`, `unknown`> |
-| `Line`?    | `Record`\<`string`, `unknown`> |
-| `Polygon`? | `Record`\<`string`, `unknown`> |
+| Name       | Type     |
+| ---------- | -------- |
+| `Point`?   | `object` |
+| `Line`?    | `object` |
+| `Polygon`? | `object` |
 
 ### Example
 

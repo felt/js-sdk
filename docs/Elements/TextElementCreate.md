@@ -14,6 +14,12 @@
 
 ***
 
+## position
+
+> **position**: [`LngLatTuple`](../Shared/LngLatTuple.md)
+
+***
+
 ## groupId?
 
 > `optional` **groupId**: `null` | `string`
@@ -91,12 +97,6 @@ attributes.
 ```ts
 "default"
 ```
-
-***
-
-## position?
-
-> `optional` **position**: \[`number`, `number`] = `LngLatTupleSchema`
 
 ***
 

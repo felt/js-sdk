@@ -527,8 +527,12 @@ export interface HighlighterElementCreate
   extends zInfer<typeof HighlighterCreateSchema> {
   coordinates: LngLatTuple[][][];
 }
-export interface TextElementCreate extends zInfer<typeof TextCreateSchema> {}
-export interface NoteElementCreate extends zInfer<typeof NoteCreateSchema> {}
+export interface TextElementCreate extends zInfer<typeof TextCreateSchema> {
+  position: LngLatTuple;
+}
+export interface NoteElementCreate extends zInfer<typeof NoteCreateSchema> {
+  position: LngLatTuple;
+}
 export interface ImageElementCreate extends zInfer<typeof ImageCreateSchema> {}
 
 export interface PlaceElementRead extends zInfer<typeof PlaceReadSchema> {

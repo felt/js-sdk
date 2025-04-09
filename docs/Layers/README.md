@@ -30,10 +30,7 @@ independently of the Layer, so you can turn on and off each category or class in
 * [GetLayerHistogramParams](GetLayerHistogramParams.md)
 * [GetLayerHistogramBin](GetLayerHistogramBin.md)
 * [GetLayerCalculationParams](GetLayerCalculationParams.md)
-* [EphemeralLayerSource](EphemeralLayerSource.md)
-* [GeoJsonFileSource](GeoJsonFileSource.md)
-* [GeoJsonUrlSource](GeoJsonUrlSource.md)
-* [GeoJsonArrayBufferSource](GeoJsonArrayBufferSource.md)
+* [CreateLayersFromGeoJsonParams](CreateLayersFromGeoJsonParams.md)
 
 # Type Aliases
 
@@ -65,13 +62,26 @@ independently of the Layer, so you can turn on and off each category or class in
 * [LayerSchemaDateTimeAttribute](LayerSchemaDateTimeAttribute.md)
 * [LayerSchemaAttribute](LayerSchemaAttribute.md)
 
+# Layer sources
+
+* [RasterLayerSource](RasterLayerSource.md)
+* [RasterBand](RasterBand.md)
+* [GeoJsonUrlVectorSource](GeoJsonUrlVectorSource.md)
+* [GeoJsonDataVectorSource](GeoJsonDataVectorSource.md)
+* [GeoJsonFileVectorSource](GeoJsonFileVectorSource.md)
+* [FeltTiledVectorSource](FeltTiledVectorSource.md)
+
 # Layers
 
-* [Layer](Layer.md)
+* [LayerCommon](LayerCommon.md)
+* [RasterLayer](RasterLayer.md)
+* [VectorLayer](VectorLayer.md)
+* [DataOnlyLayer](DataOnlyLayer.md)
 * [GetLayersConstraint](GetLayersConstraint.md)
 * [LayerChangeCallbackParams](LayerChangeCallbackParams.md)
 * [GetRenderedFeaturesConstraint](GetRenderedFeaturesConstraint.md)
 * [LayerProcessingStatus](LayerProcessingStatus.md)
+* [Layer](Layer.md)
 
 # Legend Items
 

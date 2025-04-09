@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.5.0-next.19
+
+### Minor Changes
+
+- 5f903fb: Update Layer type and createLayerFromGeoJson to separate out Source concept
+
 ## 1.5.0-next.18
 
 ### Minor Changes

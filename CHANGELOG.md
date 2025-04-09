@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.5.0-next.21
+
+### Minor Changes
+
+- 1f22654: Add screen point to pointer events
+
 ## 1.5.0-next.20
 
 ### Minor Changes

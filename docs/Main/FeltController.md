@@ -427,15 +427,15 @@ felt.setLayerLegendVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] 
 
 ## createLayersFromGeoJson()
 
-> **createLayersFromGeoJson**(`source`: [`GeoJsonArrayBufferSource`](../Layers/GeoJsonArrayBufferSource.md) | [`GeoJsonFileSource`](../Layers/GeoJsonFileSource.md) | [`GeoJsonUrlSource`](../Layers/GeoJsonUrlSource.md)): `Promise`\<`null` | \{ `layerGroup`: [`LayerGroup`](../Layers/LayerGroup.md); `layers`: [`Layer`](../Layers/Layer.md)\[]; }>
+> **createLayersFromGeoJson**(`params`: [`CreateLayersFromGeoJsonParams`](../Layers/CreateLayersFromGeoJsonParams.md)): `Promise`\<`null` | \{ `layerGroup`: [`LayerGroup`](../Layers/LayerGroup.md); `layers`: [`Layer`](../Layers/Layer.md)\[]; }>
 
 Adds layers to the map from file or URL sources.
 
 ### Parameters
 
-| Parameter | Type                                                                                                                                                                                | Description                                                                     |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `source`  | [`GeoJsonArrayBufferSource`](../Layers/GeoJsonArrayBufferSource.md) \| [`GeoJsonFileSource`](../Layers/GeoJsonFileSource.md) \| [`GeoJsonUrlSource`](../Layers/GeoJsonUrlSource.md) | The source that you want to add to the map. These can be GeoJSON files or URLs. |
+| Parameter | Type                                                                          |
+| --------- | ----------------------------------------------------------------------------- |
+| `params`  | [`CreateLayersFromGeoJsonParams`](../Layers/CreateLayersFromGeoJsonParams.md) |
 
 ### Returns
 
@@ -453,12 +453,19 @@ remote files.
 
 ```typescript
 const layerFromFile = await felt.createLayersFromGeoJson({
-  name: "Parcels", file: someFile,
+  source: {
+    type: "geoJsonFile",
+    file: someFile,
+  },
+  name: "Parcels",
 });
 
 const layerFromUrl = await felt.createLayersFromGeoJson({
-  name: "Parcels", url: "https://example.com/parcels.geojson",
-});
+  source: {
+    sourceType: "geoJsonUrl",
+    url: "https://example.com/parcels.geojson",
+  },
+  name: "Parcels",
 ```
 
 ***

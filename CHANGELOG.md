@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.5.0-next.20
+
+### Minor Changes
+
+- cf1dd7c: Improve Text and Note types and docs
+
 ## 1.5.0-next.19
 
 ### Minor Changes

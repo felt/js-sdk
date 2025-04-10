@@ -16,6 +16,24 @@ true
 
 ***
 
+## legendTitle?
+
+> `optional` **legendTitle**: `string` | `boolean`
+
+Customize the title of the legend.
+
+* If true, map title is used.
+* If false, literal "Legend" is used.
+* For a custom legend title, set as string.
+
+### Default Value
+
+```ts
+true
+```
+
+***
+
 ## cooperativeGestures?
 
 > `optional` **cooperativeGestures**: `boolean`

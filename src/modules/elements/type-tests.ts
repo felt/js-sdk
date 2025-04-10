@@ -34,9 +34,9 @@ export const elementsControllerTypeTests = {
     });
     unsub();
 
-    // @ts-expect-error: options are missing
+    // without options is allowed
     sdk.onElementDelete({
-      handler: () => {},
+      handler: (_arg: { id: string }) => {},
     });
 
     sdk.onElementDelete({
@@ -46,10 +46,14 @@ export const elementsControllerTypeTests = {
     });
 
     sdk.onElementDelete({
-      // @ts-expect-error: there are no args to onElementDelete handler
-      handler: (arg) => {},
-      // @ts-expect-error: id is missing
-      options: {},
+      // @ts-expect-error: id should be a string
+      handler: (_arg: { id: number }) => {},
+
+      // without ID is ok
+      options: {
+        // @ts-expect-error: egg is not a valid option
+        egg: "bacon",
+      },
     });
   },
 };

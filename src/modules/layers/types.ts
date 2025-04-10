@@ -822,6 +822,24 @@ export const CreateLayersFromGeoJsonSchema = z.object({
    */
   name: z.string(),
 
+  /**
+   * Sets the bounds of the layer.
+   */
+  bounds: FeltBoundarySchema.optional(),
+
+  /**
+   * Sets the caption of the layer.
+   */
+  caption: z.string().optional(),
+
+  /**
+   * Sets the description of the layer.
+   */
+  description: z.string().optional(),
+
+  /**
+   * Sets the styles to apply to each geometry on the layer.
+   */
   geometryStyles: LayersFromGeoJsonStylesPerGeometrySchema.optional(),
 });
 

@@ -18,6 +18,30 @@ The source of the GeoJSON data.
 
 ***
 
+## bounds?
+
+> `optional` **bounds**: \[`number`, `number`, `number`, `number`]
+
+Sets the bounds of the layer.
+
+***
+
+## caption?
+
+> `optional` **caption**: `string`
+
+Sets the caption of the layer.
+
+***
+
+## description?
+
+> `optional` **description**: `string`
+
+Sets the description of the layer.
+
+***
+
 ## geometryStyles?
 
 > `optional` **geometryStyles**: \{ `Point`: `object`; `Line`: `object`; `Polygon`: `object`; }

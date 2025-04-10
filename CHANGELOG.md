@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.5.0-next.22
+
+### Minor Changes
+
+- 6a66d40: Add updateLayer and expand createLayersFromGeoJson options
+
 ## 1.5.0-next.21
 
 ### Minor Changes

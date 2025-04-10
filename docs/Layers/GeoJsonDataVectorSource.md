@@ -18,3 +18,5 @@ Identifies this as a GeoJSON data source.
 > **data**: `object`
 
 The GeoJSON data for the layer.
+
+This must be a GeoJSON FeatureCollection.

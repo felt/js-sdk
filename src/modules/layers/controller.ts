@@ -14,6 +14,9 @@ import type {
 } from "./stats/types";
 import type {
   CreateLayersFromGeoJsonParams,
+  GeoJsonDataVectorSource,
+  GeoJsonFileVectorSource,
+  GeoJsonUrlVectorSource,
   GetLayerGroupsConstraint,
   GetLayersConstraint,
   GetRenderedFeaturesConstraint,
@@ -27,6 +30,7 @@ import type {
   LegendItemChangeCallbackParams,
   LegendItemIdentifier,
   LegendItemsConstraint,
+  UpdateLayerParams,
 } from "./types";
 
 /**
@@ -47,21 +51,9 @@ export const layersController = (
   createLayersFromGeoJson: method(
     feltWindow,
     "createLayersFromGeoJson",
-    async (params) => {
-      const { source } = params;
-
-      // url and data
-      if (source.type === "geoJsonFile") {
-        // convert file to array buffer
-        return {
-          ...params,
-          data: await source.file.arrayBuffer(),
-        };
-      } else {
-        return params;
-      }
-    },
+    convertFileSourceToDataSource,
   ),
+  updateLayer: method(feltWindow, "updateLayer", convertFileSourceToDataSource),
   deleteLayer: method(feltWindow, "deleteLayer"),
 
   // groups
@@ -98,6 +90,33 @@ export const layersController = (
   // schema
   getLayerSchema: method(feltWindow, "getLayerSchema"),
 });
+
+/**
+ * As file sources cannot pass over the message channel, we need to convert them to data
+ * sources.
+ */
+async function convertFileSourceToDataSource<
+  T extends {
+    source?:
+      | GeoJsonUrlVectorSource
+      | GeoJsonDataVectorSource
+      | GeoJsonFileVectorSource;
+  },
+>(params: T): Promise<T> {
+  const { source } = params;
+  if (!source) return params;
+
+  if (source.type === "geoJsonFile") {
+    return {
+      ...params,
+      source: {
+        type: "geoJsonData",
+        data: JSON.parse(await source.file.text()),
+      },
+    };
+  }
+  return params;
+}
 
 /**
  * The Layers controller allows you to get information about the layers on the
@@ -283,6 +302,23 @@ export interface LayersController {
      */
     layers: Array<Layer>;
   } | null>;
+
+  /**
+   * Update a layer by passing a subset of the layer's properties.
+   *
+   * Note that not all properties can be updated, so check the {@link UpdateLayerParams}
+   * type to see which properties can be updated.
+   *
+   * @example
+   * ```typescript
+   * await felt.updateLayer({
+   *   id: "layer-1",
+   *   name: "My Layer",
+   *   caption: "A description of the layer",
+   * });
+   * ```
+   */
+  updateLayer(params: UpdateLayerParams): Promise<Layer>;
 
   /**
    * Delete a layer from the map by its id.

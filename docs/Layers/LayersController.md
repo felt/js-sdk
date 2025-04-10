@@ -209,6 +209,37 @@ const layerFromUrl = await felt.createLayersFromGeoJson({
 
 ***
 
+## updateLayer()
+
+> **updateLayer**(`params`: [`UpdateLayerParams`](UpdateLayerParams.md)): `Promise`\<[`Layer`](Layer.md)>
+
+Update a layer by passing a subset of the layer's properties.
+
+Note that not all properties can be updated, so check the [UpdateLayerParams](UpdateLayerParams.md)
+type to see which properties can be updated.
+
+### Parameters
+
+| Parameter | Type                                        |
+| --------- | ------------------------------------------- |
+| `params`  | [`UpdateLayerParams`](UpdateLayerParams.md) |
+
+### Returns
+
+`Promise`\<[`Layer`](Layer.md)>
+
+### Example
+
+```typescript
+await felt.updateLayer({
+  id: "layer-1",
+  name: "My Layer",
+  caption: "A description of the layer",
+});
+```
+
+***
+
 ## deleteLayer()
 
 > **deleteLayer**(`id`: `string`): `Promise`\<`void`>

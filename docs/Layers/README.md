@@ -76,6 +76,7 @@ independently of the Layer, so you can turn on and off each category or class in
 * [LayerCommon](LayerCommon.md)
 * [RasterLayer](RasterLayer.md)
 * [VectorLayer](VectorLayer.md)
+* [UpdateLayerParams](UpdateLayerParams.md)
 * [DataOnlyLayer](DataOnlyLayer.md)
 * [GetLayersConstraint](GetLayersConstraint.md)
 * [LayerChangeCallbackParams](LayerChangeCallbackParams.md)

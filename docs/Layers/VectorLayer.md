@@ -8,7 +8,7 @@ A vector layer is a layer that contains vector data that can be rendered on the 
 
 > **id**: `string`
 
-The string identifying the layer
+A string identifying the layer
 
 ***
 

@@ -8,7 +8,7 @@ A data-only layer doesn't have any geometry, but can be used to join with other 
 
 > **id**: `string`
 
-The string identifying the layer
+A string identifying the layer
 
 ***
 

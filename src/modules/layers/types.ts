@@ -36,7 +36,7 @@ const LayerProcessingStatusSchema = z.enum([
  */
 export interface LayerCommon {
   /**
-   * The string identifying the layer
+   * A string identifying the layer
    */
   id: string;
 
@@ -229,6 +229,20 @@ const GeoJsonUrlVectorSourceSchema = z.object({
    * The remote URL of the GeoJSON file used to populate the layer.
    */
   url: z.string().url(),
+
+  /**
+   * The interval in milliseconds between automatic refreshes of the GeoJSON.
+   *
+   * The value must be in the range of 250ms - 5 minutes (300,000ms).
+   *
+   * If the value is `null`, the GeoJSON will not be refreshed automatically.
+   */
+  refreshInterval: z
+    .number()
+    .min(250)
+    .max(5 * 60 * 1000)
+    .nullable()
+    .optional(),
 });
 
 /**
@@ -247,7 +261,7 @@ export interface GeoJsonUrlVectorSource
 // this isn't used for derived types because z.object({}) documents horribly
 const GeoJsonDataVectorSourceSchema = z.object({
   type: z.literal("geoJsonData"),
-  data: z.object({}).passthrough(),
+  data: z.object({}).passthrough().or(z.instanceof(ArrayBuffer)),
 });
 
 /**
@@ -264,6 +278,8 @@ export interface GeoJsonDataVectorSource {
 
   /**
    * The GeoJSON data for the layer.
+   *
+   * This must be a GeoJSON FeatureCollection.
    */
   data: object;
 }
@@ -291,6 +307,77 @@ const GeoJsonFileVectorSourceSchema = z.object({
  */
 export interface GeoJsonFileVectorSource
   extends zInfer<typeof GeoJsonFileVectorSourceSchema> {}
+
+/**
+ * The parameters for the {@link LayersController.updateLayer} method.
+ */
+export const UpdateLayerSchema = z.object({
+  /**
+   * The id of the layer to update.
+   */
+  id: z.string(),
+
+  style: z.object({}).passthrough().optional(),
+
+  /**
+   * Changes whether the layer is shown in the legend.
+   */
+  shownInLegend: z.boolean().optional(),
+
+  /**
+   * Changes the name of the layer.
+   */
+  name: z.string().optional(),
+
+  /**
+   * Changes the caption of the layer.
+   */
+  caption: z.string().optional(),
+
+  /**
+   * Changes the description of the layer.
+   */
+  description: z.string().optional(),
+
+  /**
+   * Changes the bounds of the layer.
+   */
+  bounds: FeltBoundarySchema.optional(),
+
+  source: z
+    .union([
+      GeoJsonUrlVectorSourceSchema,
+      GeoJsonDataVectorSourceSchema,
+      GeoJsonFileVectorSourceSchema,
+    ])
+    .optional(),
+});
+
+/**
+ * The value you need to pass to {@link LayersController.updateLayer}
+ *
+ * @group Layers
+ */
+export interface UpdateLayerParams
+  extends Omit<zInfer<typeof UpdateLayerSchema>, "style" | "source"> {
+  /**
+   * The style of the layer.
+   */
+  style?: object;
+
+  /**
+   * Updates the source of the layer.
+   *
+   * Only layers that have a GeoJSON source can have their source udpated.
+   *
+   * For URL sources, if you pass the same URL again it will cause the data to be
+   * refreshed.
+   */
+  source?:
+    | GeoJsonUrlVectorSource
+    | GeoJsonDataVectorSource
+    | GeoJsonFileVectorSource;
+}
 
 /**
  * A data-only layer doesn't have any geometry, but can be used to join with other layers
@@ -735,6 +822,24 @@ export const CreateLayersFromGeoJsonSchema = z.object({
    */
   name: z.string(),
 
+  /**
+   * Sets the bounds of the layer.
+   */
+  bounds: FeltBoundarySchema.optional(),
+
+  /**
+   * Sets the caption of the layer.
+   */
+  caption: z.string().optional(),
+
+  /**
+   * Sets the description of the layer.
+   */
+  description: z.string().optional(),
+
+  /**
+   * Sets the styles to apply to each geometry on the layer.
+   */
   geometryStyles: LayersFromGeoJsonStylesPerGeometrySchema.optional(),
 });
 

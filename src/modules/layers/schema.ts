@@ -35,6 +35,7 @@ import {
   type LegendItemChangeCallbackParams,
   LegendItemIdentifierSchema,
   LegendItemsConstraintSchema,
+  UpdateLayerSchema,
 } from "./types";
 
 // LAYERS
@@ -64,6 +65,8 @@ const CreateLayersFromGeoJsonMessage = methodMessage(
   "createLayersFromGeoJson",
   CreateLayersFromGeoJsonSchema,
 );
+
+const UpdateLayerMessage = methodMessage("updateLayer", UpdateLayerSchema);
 
 const DeleteLayerMessage = methodMessage("deleteLayer", z.string());
 
@@ -173,6 +176,8 @@ export const layersSchema = {
 
     CreateLayersFromGeoJsonMessage,
     DeleteLayerMessage,
+    UpdateLayerMessage,
+
     GetGroupMessage,
     GetGroupsMessage,
     SetLayerGroupVisibilityMessage,
@@ -221,6 +226,7 @@ export type LayersSchema = {
         layers: Array<Layer>;
       } | null
     >;
+    updateLayer: Method<zInfer<typeof UpdateLayerMessage>, Layer>;
     deleteLayer: Method<zInfer<typeof DeleteLayerMessage>, void>;
 
     getLayerGroup: Method<zInfer<typeof GetGroupMessage>, LayerGroup | null>;

@@ -20,6 +20,17 @@ export const UiControlsOptionsSchema = z.object({
   showLegend: z.boolean().optional(),
 
   /**
+   * Customize the title of the legend.
+   *
+   *   - If true, map title is used.
+   *   - If false, literal "Legend" is used.
+   *   - For a custom legend title, set as string.
+   *
+   * @defaultValue true
+   */
+  legendTitle: z.union([z.string(), z.boolean()]).optional(),
+
+  /**
    * When co-operative gestures are enabled, the pan and zoom gestures are
    * adjusted to work better when the map is embedded in another page.
    *

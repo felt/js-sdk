@@ -96,14 +96,6 @@ attributes.
 
 ***
 
-## position?
-
-> `optional` **position**: \[`number`, `number`] = `LngLatTupleSchema`
-
-The geographical position of the center of the element.
-
-***
-
 ## rotation?
 
 > `optional` **rotation**: `number`
@@ -178,3 +170,11 @@ The style of the text, either `italic`, `light`, `regular` or `caps`.
 ```ts
 "regular"
 ```
+
+***
+
+## position?
+
+> `optional` **position**: [`LngLatTuple`](../Shared/LngLatTuple.md)
+
+The geographical position of the center of the text element.

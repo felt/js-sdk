@@ -40,6 +40,7 @@ export type {
   RasterLayer,
   RasterLayerSource,
   RasterValue,
+  UpdateLayerParams,
   VectorLayer,
 } from "./types";
 

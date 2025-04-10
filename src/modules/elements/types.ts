@@ -614,8 +614,18 @@ export interface HighlighterElementUpdate
   extends zInfer<typeof HighlighterUpdateSchema> {
   coordinates?: LngLatTuple[][][];
 }
-export interface TextElementUpdate extends zInfer<typeof TextUpdateSchema> {}
-export interface NoteElementUpdate extends zInfer<typeof NoteUpdateSchema> {}
+export interface TextElementUpdate extends zInfer<typeof TextUpdateSchema> {
+  /**
+   * The geographical position of the center of the text element.
+   */
+  position?: LngLatTuple;
+}
+export interface NoteElementUpdate extends zInfer<typeof NoteUpdateSchema> {
+  /**
+   * The geographical position of the center of the note element.
+   */
+  position?: LngLatTuple;
+}
 export interface ImageElementUpdate extends zInfer<typeof ImageUpdateSchema> {}
 
 export type ElementCreate =

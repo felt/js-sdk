@@ -8,7 +8,7 @@ The common properties for all layers.
 
 > **id**: `string`
 
-The string identifying the layer
+A string identifying the layer
 
 ***
 

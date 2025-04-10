@@ -148,12 +148,12 @@ type FeltMethod<TKey extends keyof StandardMethods> = (
   payload: OneMethod<TKey>,
 ) => Promise<StandardMethods[TKey]["response"]>;
 
-export function method<TKey extends keyof StandardMethods, R>(
+export function method<TKey extends keyof StandardMethods>(
   feltWindow: Pick<Window, "postMessage">,
   type: TKey,
   transformer?: (
     params: StandardMethods[TKey]["request"]["params"],
-  ) => Promise<R> | R,
+  ) => PromiseOrNot<StandardMethods[TKey]["request"]["params"]>,
 ): FeltMethod<TKey> {
   return async (params) => {
     const messageChannel = new MessageChannel();

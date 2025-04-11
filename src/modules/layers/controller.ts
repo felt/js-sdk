@@ -786,7 +786,7 @@ export interface LayersController {
    *
    * @example
    * ```typescript
-   * const schema = await felt.getLayerSchema({ layerId: "layer-1" });
+   * const schema = await felt.getLayerSchema("layer-1");
    * const attributeIds = schema.attributes.map((attr) => attr.id);
    * ```
    */

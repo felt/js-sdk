@@ -38,7 +38,7 @@ npm run ci
 echo "Versioning changesets..."
 npx changeset version
 
-# Build docs
+# Build docs again to include changelog
 echo "Building docs..."
 npm run build:docs
 

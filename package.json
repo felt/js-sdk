@@ -1,6 +1,6 @@
 {
   "name": "@feltmaps/js-sdk",
-  "version": "1.4.0",
+  "version": "1.5.1",
   "description": "An SDK for Felt maps",
   "keywords": [
     "felt",
@@ -76,7 +76,6 @@
     "list-changes": "./scripts/list-possible-changes.sh",
     "local-release:dry": "./scripts/local-release.sh --dry-run",
     "local-release": "./scripts/local-release.sh",
-    "prepublishOnly": "npm run ci",
     "update-api": "npm run build:compile && api-extractor run --local"
   }
 }

@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.5.1
+
+### Patch Changes
+
+* ac68984: Update getLayerSchema example
+
 ## 1.5.0
 
 ### Minor Changes

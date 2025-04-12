@@ -76,6 +76,7 @@ export const Felt = {
       geolocation: "geolocation",
       zoomControls: "zoomControls",
       scaleBar: "scaleBar",
+      legendTitle: "legendTitle",
     };
 
     const uiControlsOptions = {

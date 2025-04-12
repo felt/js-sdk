@@ -251,6 +251,7 @@ const FeltEmbedOptionsSchema: z.ZodObject<{
     token: z.ZodOptional<z.ZodString>;
     uiControls: z.ZodOptional<z.ZodObject<{
         showLegend: z.ZodOptional<z.ZodBoolean>;
+        legendTitle: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodBoolean]>>;
         cooperativeGestures: z.ZodOptional<z.ZodBoolean>;
         fullScreenButton: z.ZodOptional<z.ZodBoolean>;
         geolocation: z.ZodOptional<z.ZodBoolean>;
@@ -258,6 +259,7 @@ const FeltEmbedOptionsSchema: z.ZodObject<{
         scaleBar: z.ZodOptional<z.ZodBoolean>;
     }, "strip", z.ZodTypeAny, {
         showLegend?: boolean | undefined;
+        legendTitle?: string | boolean | undefined;
         cooperativeGestures?: boolean | undefined;
         fullScreenButton?: boolean | undefined;
         geolocation?: boolean | undefined;
@@ -265,6 +267,7 @@ const FeltEmbedOptionsSchema: z.ZodObject<{
         scaleBar?: boolean | undefined;
     }, {
         showLegend?: boolean | undefined;
+        legendTitle?: string | boolean | undefined;
         cooperativeGestures?: boolean | undefined;
         fullScreenButton?: boolean | undefined;
         geolocation?: boolean | undefined;
@@ -301,6 +304,7 @@ const FeltEmbedOptionsSchema: z.ZodObject<{
     token?: string | undefined;
     uiControls?: {
         showLegend?: boolean | undefined;
+        legendTitle?: string | boolean | undefined;
         cooperativeGestures?: boolean | undefined;
         fullScreenButton?: boolean | undefined;
         geolocation?: boolean | undefined;
@@ -319,6 +323,7 @@ const FeltEmbedOptionsSchema: z.ZodObject<{
     token?: string | undefined;
     uiControls?: {
         showLegend?: boolean | undefined;
+        legendTitle?: string | boolean | undefined;
         cooperativeGestures?: boolean | undefined;
         fullScreenButton?: boolean | undefined;
         geolocation?: boolean | undefined;
@@ -685,6 +690,7 @@ export interface UiControlsOptions extends O<typeof UiControlsOptionsSchema> {
 // @internal (undocumented)
 const UiControlsOptionsSchema: z.ZodObject<{
     showLegend: z.ZodOptional<z.ZodBoolean>;
+    legendTitle: z.ZodOptional<z.ZodUnion<[z.ZodString, z.ZodBoolean]>>;
     cooperativeGestures: z.ZodOptional<z.ZodBoolean>;
     fullScreenButton: z.ZodOptional<z.ZodBoolean>;
     geolocation: z.ZodOptional<z.ZodBoolean>;
@@ -692,6 +698,7 @@ const UiControlsOptionsSchema: z.ZodObject<{
     scaleBar: z.ZodOptional<z.ZodBoolean>;
 }, "strip", z.ZodTypeAny, {
     showLegend?: boolean | undefined;
+    legendTitle?: string | boolean | undefined;
     cooperativeGestures?: boolean | undefined;
     fullScreenButton?: boolean | undefined;
     geolocation?: boolean | undefined;
@@ -699,6 +706,7 @@ const UiControlsOptionsSchema: z.ZodObject<{
     scaleBar?: boolean | undefined;
 }, {
     showLegend?: boolean | undefined;
+    legendTitle?: string | boolean | undefined;
     cooperativeGestures?: boolean | undefined;
     fullScreenButton?: boolean | undefined;
     geolocation?: boolean | undefined;

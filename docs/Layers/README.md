@@ -20,6 +20,7 @@ independently of the Layer, so you can turn on and off each category or class in
 
 # Interfaces
 
+* [LayerBoundaries](LayerBoundaries.md)
 * [LayerFeature](LayerFeature.md)
 * [RasterValue](RasterValue.md)
 * [AggregationConfig](AggregationConfig.md)
@@ -34,6 +35,7 @@ independently of the Layer, so you can turn on and off each category or class in
 
 # Type Aliases
 
+* [LayerBoundary](LayerBoundary.md)
 * [AggregationMethod](AggregationMethod.md)
 * [GeometryFilter](GeometryFilter.md)
 

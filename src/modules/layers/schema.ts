@@ -11,6 +11,7 @@ import {
   type GeoJsonFeature,
   SetVisibilityRequestSchema,
 } from "~/modules/shared/types";
+import type { LayerBoundaries } from "./boundary/types";
 import { FiltersSchema, type LayerFilters } from "./filters/types";
 import {
   type AggregationMethod,
@@ -35,6 +36,7 @@ import {
   type LegendItemChangeCallbackParams,
   LegendItemIdentifierSchema,
   LegendItemsConstraintSchema,
+  SetLayerBoundaryParamsSchema,
   UpdateLayerSchema,
 } from "./types";
 
@@ -125,6 +127,20 @@ const OnLayerFiltersChangeMessage = listenerMessageWithParams(
   z.object({ layerId: z.string() }),
 );
 
+// BOUNDARY
+const GetLayerBoundariesMessage = methodMessage(
+  "getLayerBoundaries",
+  z.string(),
+);
+const SetLayerBoundaryMessage = methodMessage(
+  "setLayerBoundary",
+  SetLayerBoundaryParamsSchema,
+);
+const OnLayerBoundariesChangeMessage = listenerMessageWithParams(
+  "onLayerBoundariesChange",
+  z.object({ layerId: z.string() }),
+);
+
 // RENDERED FEATURES
 const GetRenderedFeaturesMessage = methodMessage(
   "getRenderedFeatures",
@@ -190,6 +206,9 @@ export const layersSchema = {
     GetFiltersMessage,
     SetFiltersMessage,
 
+    GetLayerBoundariesMessage,
+    SetLayerBoundaryMessage,
+
     GetRenderedFeaturesMessage,
     GetFeatureMessage,
     GetGeoJsonFeatureMessage,
@@ -205,6 +224,7 @@ export const layersSchema = {
     OnLayerGroupChangeMessage,
     OnLegendItemChangeMessage,
     OnLayerFiltersChangeMessage,
+    OnLayerBoundariesChangeMessage,
   ],
 } satisfies ModuleSchema;
 
@@ -263,6 +283,12 @@ export type LayersSchema = {
 
     setLayerFilters: Method<zInfer<typeof SetFiltersMessage>, void>;
 
+    getLayerBoundaries: Method<
+      zInfer<typeof GetLayerBoundariesMessage>,
+      LayerBoundaries | null
+    >;
+    setLayerBoundary: Method<zInfer<typeof SetLayerBoundaryMessage>, void>;
+
     getRenderedFeatures: Method<
       zInfer<typeof GetRenderedFeaturesMessage>,
       Array<LayerFeature>
@@ -304,6 +330,10 @@ export type LayersSchema = {
     onLayerFiltersChange: Listener<
       zInfer<typeof OnLayerFiltersChangeMessage.shape.options>,
       LayerFilters
+    >;
+    onLayerBoundariesChange: Listener<
+      zInfer<typeof OnLayerBoundariesChangeMessage.shape.options>,
+      LayerBoundaries | null
     >;
   };
 };

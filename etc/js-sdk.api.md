@@ -4,140 +4,140 @@
 
 ```ts
 
-import { aM as AggregationConfig } from './types-CRH0MOpN.js';
-import { A as AggregationMethod } from './types-CRH0MOpN.js';
-import { _ as CircleElementCreate } from './types-CRH0MOpN.js';
-import { $ as CircleElementRead } from './types-CRH0MOpN.js';
-import { a0 as CircleElementUpdate } from './types-CRH0MOpN.js';
-import { b5 as CircleToolSettings } from './types-CRH0MOpN.js';
-import { N as ConfigurableToolType } from './types-CRH0MOpN.js';
-import { C as CreateLayersFromGeoJsonParams } from './types-CRH0MOpN.js';
-import { aq as DataOnlyLayer } from './types-CRH0MOpN.js';
-import { E as Element_2 } from './types-CRH0MOpN.js';
-import { d as ElementChangeCallbackParams } from './types-CRH0MOpN.js';
-import { f as ElementCreate } from './types-CRH0MOpN.js';
-import { b as ElementGroup } from './types-CRH0MOpN.js';
-import { e as ElementGroupChangeCallbackParams } from './types-CRH0MOpN.js';
-import { aQ as ElementGroupNode } from './types-CRH0MOpN.js';
-import { aR as ElementNode } from './types-CRH0MOpN.js';
-import { g as ElementUpdate } from './types-CRH0MOpN.js';
-import { I as EntityNode } from './types-CRH0MOpN.js';
-import { aS as FeatureNode } from './types-CRH0MOpN.js';
-import { J as FeatureSelection } from './types-CRH0MOpN.js';
-import { aV as FeltBoundary } from './types-CRH0MOpN.js';
-import { ar as FeltTiledVectorSource } from './types-CRH0MOpN.js';
-import { aW as FeltZoom } from './types-CRH0MOpN.js';
-import { aJ as FilterExpression } from './types-CRH0MOpN.js';
-import { aK as FilterLogicGate } from './types-CRH0MOpN.js';
-import { F as Filters } from './types-CRH0MOpN.js';
-import { aL as FilterTernary } from './types-CRH0MOpN.js';
-import { as as GeoJsonDataVectorSource } from './types-CRH0MOpN.js';
-import { v as GeoJsonFeature } from './types-CRH0MOpN.js';
-import { at as GeoJsonFileVectorSource } from './types-CRH0MOpN.js';
-import { G as GeoJsonGeometry } from './types-CRH0MOpN.js';
-import { aX as GeoJsonProperties } from './types-CRH0MOpN.js';
-import { au as GeoJsonUrlVectorSource } from './types-CRH0MOpN.js';
-import { aN as GeometryFilter } from './types-CRH0MOpN.js';
-import { c as GetElementGroupsConstraint } from './types-CRH0MOpN.js';
-import { a as GetElementsConstraint } from './types-CRH0MOpN.js';
-import { B as GetLayerCalculationParams } from './types-CRH0MOpN.js';
-import { x as GetLayerCategoriesGroup } from './types-CRH0MOpN.js';
-import { w as GetLayerCategoriesParams } from './types-CRH0MOpN.js';
-import { k as GetLayerGroupsConstraint } from './types-CRH0MOpN.js';
-import { z as GetLayerHistogramBin } from './types-CRH0MOpN.js';
-import { y as GetLayerHistogramParams } from './types-CRH0MOpN.js';
-import { h as GetLayersConstraint } from './types-CRH0MOpN.js';
-import { t as GetRenderedFeaturesConstraint } from './types-CRH0MOpN.js';
-import { a1 as HighlighterElementCreate } from './types-CRH0MOpN.js';
-import { a2 as HighlighterElementRead } from './types-CRH0MOpN.js';
-import { a3 as HighlighterElementUpdate } from './types-CRH0MOpN.js';
-import { b6 as HighlighterToolSettings } from './types-CRH0MOpN.js';
-import { a4 as ImageElementCreate } from './types-CRH0MOpN.js';
-import { a5 as ImageElementRead } from './types-CRH0MOpN.js';
-import { a6 as ImageElementUpdate } from './types-CRH0MOpN.js';
-import { K as InputToolSettings } from './types-CRH0MOpN.js';
-import { aY as LatLng } from './types-CRH0MOpN.js';
-import { L as Layer } from './types-CRH0MOpN.js';
-import { r as LayerBoundaries } from './types-CRH0MOpN.js';
-import { s as LayerBoundary } from './types-CRH0MOpN.js';
-import { i as LayerChangeCallbackParams } from './types-CRH0MOpN.js';
-import { av as LayerCommon } from './types-CRH0MOpN.js';
-import { u as LayerFeature } from './types-CRH0MOpN.js';
-import { q as LayerFilters } from './types-CRH0MOpN.js';
-import { j as LayerGroup } from './types-CRH0MOpN.js';
-import { l as LayerGroupChangeCallbackParams } from './types-CRH0MOpN.js';
-import { aT as LayerGroupNode } from './types-CRH0MOpN.js';
-import { aU as LayerNode } from './types-CRH0MOpN.js';
-import { aw as LayerProcessingStatus } from './types-CRH0MOpN.js';
-import { D as LayerSchema } from './types-CRH0MOpN.js';
-import { aC as LayerSchemaAttribute } from './types-CRH0MOpN.js';
-import { aD as LayerSchemaBooleanAttribute } from './types-CRH0MOpN.js';
-import { aE as LayerSchemaCommonAttribute } from './types-CRH0MOpN.js';
-import { aF as LayerSchemaDateAttribute } from './types-CRH0MOpN.js';
-import { aG as LayerSchemaDateTimeAttribute } from './types-CRH0MOpN.js';
-import { aH as LayerSchemaNumericAttribute } from './types-CRH0MOpN.js';
-import { aI as LayerSchemaTextAttribute } from './types-CRH0MOpN.js';
-import { n as LegendItem } from './types-CRH0MOpN.js';
-import { p as LegendItemChangeCallbackParams } from './types-CRH0MOpN.js';
-import { m as LegendItemIdentifier } from './types-CRH0MOpN.js';
-import { o as LegendItemsConstraint } from './types-CRH0MOpN.js';
-import { aZ as LineStringGeometry } from './types-CRH0MOpN.js';
-import { b7 as LineToolSettings } from './types-CRH0MOpN.js';
-import { a7 as LinkElementRead } from './types-CRH0MOpN.js';
-import { a_ as LngLatTuple } from './types-CRH0MOpN.js';
-import { H as MapDetails } from './types-CRH0MOpN.js';
-import { M as MapInteractionEvent } from './types-CRH0MOpN.js';
-import { a8 as MarkerElementCreate } from './types-CRH0MOpN.js';
-import { a9 as MarkerElementRead } from './types-CRH0MOpN.js';
-import { aa as MarkerElementUpdate } from './types-CRH0MOpN.js';
-import { b8 as MarkerToolSettings } from './types-CRH0MOpN.js';
-import { aO as MultiAggregationConfig } from './types-CRH0MOpN.js';
-import { a$ as MultiLineStringGeometry } from './types-CRH0MOpN.js';
-import { b0 as MultiPointGeometry } from './types-CRH0MOpN.js';
-import { b1 as MultiPolygonGeometry } from './types-CRH0MOpN.js';
-import { ab as NoteElementCreate } from './types-CRH0MOpN.js';
-import { ac as NoteElementRead } from './types-CRH0MOpN.js';
-import { ad as NoteElementUpdate } from './types-CRH0MOpN.js';
-import { b9 as NoteToolSettings } from './types-CRH0MOpN.js';
-import { ae as PathElementCreate } from './types-CRH0MOpN.js';
-import { af as PathElementRead } from './types-CRH0MOpN.js';
-import { ag as PathElementUpdate } from './types-CRH0MOpN.js';
-import { ba as PinToolSettings } from './types-CRH0MOpN.js';
-import { ah as PlaceElementCreate } from './types-CRH0MOpN.js';
-import { ai as PlaceElementRead } from './types-CRH0MOpN.js';
-import { aj as PlaceElementUpdate } from './types-CRH0MOpN.js';
-import { bb as PlaceFrame } from './types-CRH0MOpN.js';
-import { bc as PlaceSymbol } from './types-CRH0MOpN.js';
-import { b2 as PointGeometry } from './types-CRH0MOpN.js';
-import { ak as PolygonElementCreate } from './types-CRH0MOpN.js';
-import { al as PolygonElementRead } from './types-CRH0MOpN.js';
-import { am as PolygonElementUpdate } from './types-CRH0MOpN.js';
-import { b3 as PolygonGeometry } from './types-CRH0MOpN.js';
-import { bd as PolygonToolSettings } from './types-CRH0MOpN.js';
-import { Q } from './types-CRH0MOpN.js';
-import { ax as RasterBand } from './types-CRH0MOpN.js';
-import { ay as RasterLayer } from './types-CRH0MOpN.js';
-import { az as RasterLayerSource } from './types-CRH0MOpN.js';
-import { aA as RasterValue } from './types-CRH0MOpN.js';
-import { be as RouteToolSettings } from './types-CRH0MOpN.js';
-import { W as SetViewportCenterZoomParams } from './types-CRH0MOpN.js';
-import { S as SetVisibilityRequest } from './types-CRH0MOpN.js';
-import { R as SortConfig } from './types-CRH0MOpN.js';
-import { b4 as SortDirection } from './types-CRH0MOpN.js';
-import { an as TextElementCreate } from './types-CRH0MOpN.js';
-import { ao as TextElementRead } from './types-CRH0MOpN.js';
-import { ap as TextElementUpdate } from './types-CRH0MOpN.js';
-import { bf as TextToolSettings } from './types-CRH0MOpN.js';
-import { P as ToolSettingsChangeEvent } from './types-CRH0MOpN.js';
-import { O as ToolSettingsMap } from './types-CRH0MOpN.js';
-import { T as ToolType } from './types-CRH0MOpN.js';
-import { U as UpdateLayerParams } from './types-CRH0MOpN.js';
-import { aP as ValueConfiguration } from './types-CRH0MOpN.js';
-import { aB as VectorLayer } from './types-CRH0MOpN.js';
-import { Z as ViewportCenterZoom } from './types-CRH0MOpN.js';
-import { X as ViewportConstraints } from './types-CRH0MOpN.js';
-import { Y as ViewportFitBoundsParams } from './types-CRH0MOpN.js';
-import { V as ViewportState } from './types-CRH0MOpN.js';
+import { aN as AggregationConfig } from './types-BywprBBs.js';
+import { D as AggregationMethod } from './types-BywprBBs.js';
+import { $ as CircleElementCreate } from './types-BywprBBs.js';
+import { a0 as CircleElementRead } from './types-BywprBBs.js';
+import { a1 as CircleElementUpdate } from './types-BywprBBs.js';
+import { b5 as CircleToolSettings } from './types-BywprBBs.js';
+import { P as ConfigurableToolType } from './types-BywprBBs.js';
+import { C as CreateLayersFromGeoJsonParams } from './types-BywprBBs.js';
+import { ar as DataOnlyLayer } from './types-BywprBBs.js';
+import { E as Element_2 } from './types-BywprBBs.js';
+import { d as ElementChangeCallbackParams } from './types-BywprBBs.js';
+import { f as ElementCreate } from './types-BywprBBs.js';
+import { b as ElementGroup } from './types-BywprBBs.js';
+import { e as ElementGroupChangeCallbackParams } from './types-BywprBBs.js';
+import { aQ as ElementGroupNode } from './types-BywprBBs.js';
+import { aR as ElementNode } from './types-BywprBBs.js';
+import { g as ElementUpdate } from './types-BywprBBs.js';
+import { K as EntityNode } from './types-BywprBBs.js';
+import { aS as FeatureNode } from './types-BywprBBs.js';
+import { N as FeatureSelection } from './types-BywprBBs.js';
+import { aV as FeltBoundary } from './types-BywprBBs.js';
+import { as as FeltTiledVectorSource } from './types-BywprBBs.js';
+import { aW as FeltZoom } from './types-BywprBBs.js';
+import { aK as FilterExpression } from './types-BywprBBs.js';
+import { aL as FilterLogicGate } from './types-BywprBBs.js';
+import { F as Filters } from './types-BywprBBs.js';
+import { aM as FilterTernary } from './types-BywprBBs.js';
+import { at as GeoJsonDataVectorSource } from './types-BywprBBs.js';
+import { x as GeoJsonFeature } from './types-BywprBBs.js';
+import { au as GeoJsonFileVectorSource } from './types-BywprBBs.js';
+import { G as GeoJsonGeometry } from './types-BywprBBs.js';
+import { aX as GeoJsonProperties } from './types-BywprBBs.js';
+import { av as GeoJsonUrlVectorSource } from './types-BywprBBs.js';
+import { w as GeometryFilter } from './types-BywprBBs.js';
+import { c as GetElementGroupsConstraint } from './types-BywprBBs.js';
+import { a as GetElementsConstraint } from './types-BywprBBs.js';
+import { H as GetLayerCalculationParams } from './types-BywprBBs.js';
+import { z as GetLayerCategoriesGroup } from './types-BywprBBs.js';
+import { y as GetLayerCategoriesParams } from './types-BywprBBs.js';
+import { k as GetLayerGroupsConstraint } from './types-BywprBBs.js';
+import { B as GetLayerHistogramBin } from './types-BywprBBs.js';
+import { A as GetLayerHistogramParams } from './types-BywprBBs.js';
+import { h as GetLayersConstraint } from './types-BywprBBs.js';
+import { t as GetRenderedFeaturesConstraint } from './types-BywprBBs.js';
+import { a2 as HighlighterElementCreate } from './types-BywprBBs.js';
+import { a3 as HighlighterElementRead } from './types-BywprBBs.js';
+import { a4 as HighlighterElementUpdate } from './types-BywprBBs.js';
+import { b6 as HighlighterToolSettings } from './types-BywprBBs.js';
+import { a5 as ImageElementCreate } from './types-BywprBBs.js';
+import { a6 as ImageElementRead } from './types-BywprBBs.js';
+import { a7 as ImageElementUpdate } from './types-BywprBBs.js';
+import { O as InputToolSettings } from './types-BywprBBs.js';
+import { aY as LatLng } from './types-BywprBBs.js';
+import { L as Layer } from './types-BywprBBs.js';
+import { r as LayerBoundaries } from './types-BywprBBs.js';
+import { s as LayerBoundary } from './types-BywprBBs.js';
+import { i as LayerChangeCallbackParams } from './types-BywprBBs.js';
+import { aw as LayerCommon } from './types-BywprBBs.js';
+import { u as LayerFeature } from './types-BywprBBs.js';
+import { q as LayerFilters } from './types-BywprBBs.js';
+import { j as LayerGroup } from './types-BywprBBs.js';
+import { l as LayerGroupChangeCallbackParams } from './types-BywprBBs.js';
+import { aT as LayerGroupNode } from './types-BywprBBs.js';
+import { aU as LayerNode } from './types-BywprBBs.js';
+import { ax as LayerProcessingStatus } from './types-BywprBBs.js';
+import { I as LayerSchema } from './types-BywprBBs.js';
+import { aD as LayerSchemaAttribute } from './types-BywprBBs.js';
+import { aE as LayerSchemaBooleanAttribute } from './types-BywprBBs.js';
+import { aF as LayerSchemaCommonAttribute } from './types-BywprBBs.js';
+import { aG as LayerSchemaDateAttribute } from './types-BywprBBs.js';
+import { aH as LayerSchemaDateTimeAttribute } from './types-BywprBBs.js';
+import { aI as LayerSchemaNumericAttribute } from './types-BywprBBs.js';
+import { aJ as LayerSchemaTextAttribute } from './types-BywprBBs.js';
+import { n as LegendItem } from './types-BywprBBs.js';
+import { p as LegendItemChangeCallbackParams } from './types-BywprBBs.js';
+import { m as LegendItemIdentifier } from './types-BywprBBs.js';
+import { o as LegendItemsConstraint } from './types-BywprBBs.js';
+import { aZ as LineStringGeometry } from './types-BywprBBs.js';
+import { b7 as LineToolSettings } from './types-BywprBBs.js';
+import { a8 as LinkElementRead } from './types-BywprBBs.js';
+import { a_ as LngLatTuple } from './types-BywprBBs.js';
+import { J as MapDetails } from './types-BywprBBs.js';
+import { M as MapInteractionEvent } from './types-BywprBBs.js';
+import { a9 as MarkerElementCreate } from './types-BywprBBs.js';
+import { aa as MarkerElementRead } from './types-BywprBBs.js';
+import { ab as MarkerElementUpdate } from './types-BywprBBs.js';
+import { b8 as MarkerToolSettings } from './types-BywprBBs.js';
+import { aO as MultiAggregationConfig } from './types-BywprBBs.js';
+import { a$ as MultiLineStringGeometry } from './types-BywprBBs.js';
+import { b0 as MultiPointGeometry } from './types-BywprBBs.js';
+import { b1 as MultiPolygonGeometry } from './types-BywprBBs.js';
+import { ac as NoteElementCreate } from './types-BywprBBs.js';
+import { ad as NoteElementRead } from './types-BywprBBs.js';
+import { ae as NoteElementUpdate } from './types-BywprBBs.js';
+import { b9 as NoteToolSettings } from './types-BywprBBs.js';
+import { af as PathElementCreate } from './types-BywprBBs.js';
+import { ag as PathElementRead } from './types-BywprBBs.js';
+import { ah as PathElementUpdate } from './types-BywprBBs.js';
+import { ba as PinToolSettings } from './types-BywprBBs.js';
+import { ai as PlaceElementCreate } from './types-BywprBBs.js';
+import { aj as PlaceElementRead } from './types-BywprBBs.js';
+import { ak as PlaceElementUpdate } from './types-BywprBBs.js';
+import { bb as PlaceFrame } from './types-BywprBBs.js';
+import { bc as PlaceSymbol } from './types-BywprBBs.js';
+import { b2 as PointGeometry } from './types-BywprBBs.js';
+import { al as PolygonElementCreate } from './types-BywprBBs.js';
+import { am as PolygonElementRead } from './types-BywprBBs.js';
+import { an as PolygonElementUpdate } from './types-BywprBBs.js';
+import { b3 as PolygonGeometry } from './types-BywprBBs.js';
+import { bd as PolygonToolSettings } from './types-BywprBBs.js';
+import { ay as RasterBand } from './types-BywprBBs.js';
+import { az as RasterLayer } from './types-BywprBBs.js';
+import { aA as RasterLayerSource } from './types-BywprBBs.js';
+import { aB as RasterValue } from './types-BywprBBs.js';
+import { be as RouteToolSettings } from './types-BywprBBs.js';
+import { X as SetViewportCenterZoomParams } from './types-BywprBBs.js';
+import { S as SetVisibilityRequest } from './types-BywprBBs.js';
+import { v as SortConfig } from './types-BywprBBs.js';
+import { b4 as SortDirection } from './types-BywprBBs.js';
+import { ao as TextElementCreate } from './types-BywprBBs.js';
+import { ap as TextElementRead } from './types-BywprBBs.js';
+import { aq as TextElementUpdate } from './types-BywprBBs.js';
+import { bf as TextToolSettings } from './types-BywprBBs.js';
+import { R as ToolSettingsChangeEvent } from './types-BywprBBs.js';
+import { Q as ToolSettingsMap } from './types-BywprBBs.js';
+import { T as ToolType } from './types-BywprBBs.js';
+import { U as UpdateLayerParams } from './types-BywprBBs.js';
+import { V } from './types-BywprBBs.js';
+import { aP as ValueConfiguration } from './types-BywprBBs.js';
+import { aC as VectorLayer } from './types-BywprBBs.js';
+import { _ as ViewportCenterZoom } from './types-BywprBBs.js';
+import { Y as ViewportConstraints } from './types-BywprBBs.js';
+import { Z as ViewportFitBoundsParams } from './types-BywprBBs.js';
+import { W as ViewportState } from './types-BywprBBs.js';
 import { z } from 'zod';
 
 export { AggregationConfig }
@@ -240,7 +240,7 @@ export interface FeltController extends ViewportController, UiController, Layers
 // Warning: (ae-forgotten-export) The symbol "FeltEmbedOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public
-export interface FeltEmbedOptions extends Q<typeof FeltEmbedOptionsSchema> {
+export interface FeltEmbedOptions extends V<typeof FeltEmbedOptionsSchema> {
     // (undocumented)
     initialViewport?: ViewportCenterZoom;
     // (undocumented)
@@ -464,6 +464,19 @@ export interface LayersController {
         id: string | number;
         layerId: string;
     }): Promise<LayerFeature | null>;
+    getFeatures(params: {
+        layerId: string;
+        filters?: Filters;
+        sorting?: SortConfig;
+        boundary?: GeometryFilter;
+        search?: string;
+        pagination?: string;
+    }): Promise<{
+        features: Array<LayerFeature>;
+        count: number;
+        previousPage: string | null;
+        nextPage: string | null;
+    }>;
     getGeoJsonFeature(params: {
         id: string | number;
         layerId: string;
@@ -588,7 +601,7 @@ export { NoteToolSettings }
 // Warning: (ae-forgotten-export) The symbol "UiOnMapInteractionsOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public
-export interface OnMapInteractionsOptions extends Q<typeof UiOnMapInteractionsOptionsSchema> {
+export interface OnMapInteractionsOptions extends V<typeof UiOnMapInteractionsOptionsSchema> {
 }
 
 export { PathElementCreate }
@@ -696,7 +709,7 @@ export interface UiController {
 // Warning: (ae-forgotten-export) The symbol "UiControlsOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public (undocumented)
-export interface UiControlsOptions extends Q<typeof UiControlsOptionsSchema> {
+export interface UiControlsOptions extends V<typeof UiControlsOptionsSchema> {
 }
 
 // @internal (undocumented)

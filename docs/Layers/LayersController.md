@@ -637,6 +637,54 @@ const feature = await felt.getFeature({ layerId: "layer-1", id: 123 });
 
 ***
 
+## getFeatures()
+
+> **getFeatures**(`params`: \{ `layerId`: `string`; `filters`: [`Filters`](Filters.md); `sorting`: [`SortConfig`](../Shared/SortConfig.md); `boundary`: [`GeometryFilter`](GeometryFilter.md); `search`: `string`; `pagination`: `string`; }): `Promise`\<\{ `features`: [`LayerFeature`](LayerFeature.md)\[]; `count`: `number`; `previousPage`: `null` | `string`; `nextPage`: `null` | `string`; }>
+
+Get a list of layer features.
+
+### Parameters
+
+| Parameter            | Type                                                                                                                                                                                                             | Description                                                                                       |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `params`             | \{ `layerId`: `string`; `filters`: [`Filters`](Filters.md); `sorting`: [`SortConfig`](../Shared/SortConfig.md); `boundary`: [`GeometryFilter`](GeometryFilter.md); `search`: `string`; `pagination`: `string`; } |                                                                                                   |
+| `params.layerId`     | `string`                                                                                                                                                                                                         | Layer ID.                                                                                         |
+| `params.filters`?    | [`Filters`](Filters.md)                                                                                                                                                                                          | Filters to be applied. These filters will merge with layer's own filters.                         |
+| `params.sorting`?    | [`SortConfig`](../Shared/SortConfig.md)                                                                                                                                                                          | Attribute to sort by.                                                                             |
+| `params.boundary`?   | [`GeometryFilter`](GeometryFilter.md)                                                                                                                                                                            | The spatial boundary to be applied.                                                               |
+| `params.search`?     | `string`                                                                                                                                                                                                         | Term to search by. Search is case-insensitive and look for matches across all feature properties. |
+| `params.pagination`? | `string`                                                                                                                                                                                                         | Pagination token. It comes from `previousPage` or `nextPage` from `getFeatures` response.         |
+
+### Returns
+
+`Promise`\<\{ `features`: [`LayerFeature`](LayerFeature.md)\[]; `count`: `number`; `previousPage`: `null` | `string`; `nextPage`: `null` | `string`; }>
+
+The response is an object which contains:
+
+* `features`: list of [LayerFeature](LayerFeature.md) objects, which does not include
+  the geometry of the feature but it does include its actual bounding box.
+* `count`: amount of features that match params. Considering 20 features for page,
+  it's possible to compute number of pages.
+* `previousPage` & `nextPage`: as mentioned before, these are tokens that should be passed
+  to `pagination` in order to navigate between pages.
+
+### Remarks
+
+This list is paginated in sets of 20 features for each page. In order to paginate
+between pages, the response includes `previousPage` and `nextPage` that are tokens
+that should be sent in the `pagination` params for requesting sibling pages.
+
+### Example
+
+```typescript
+const [pagination, setPagination] = someReactiveTech<string | undefined>(undefined);
+const response = await felt.getFeatures({ layerId: "layer-1", pagination });
+const gotoNextPage = response.nextPage && (() => setPagination(response.nextPage));
+const gotoPreviousPage = response.previousPage && (() => setPagination(response.previousPage));
+```
+
+***
+
 ## getGeoJsonFeature()
 
 > **getGeoJsonFeature**(`params`: \{ `id`: `string` | `number`; `layerId`: `string`; }): `Promise`\<`null` | [`GeoJsonFeature`](../Shared/GeoJsonFeature.md)>

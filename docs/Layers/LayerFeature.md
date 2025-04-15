@@ -36,7 +36,7 @@ The type of geometry of the feature.
 
 ### Remarks
 
-Because LayerFeatures are read from tiled features, it's
+Because LayerFeatures can be read from tiled features, it's
 possible that this `geometryType` won't match the `geometry.type` of the
 [GeoJsonFeature](../Shared/GeoJsonFeature.md) returned by [FeltController.getGeoJsonFeature](LayersController.md#getgeojsonfeature).
 
@@ -44,6 +44,20 @@ For example, this may return `LineString` but the full feature is a `MultiLineSt
 or, similarly `Polygon` here may be a `MultiPolygon` in the full feature.
 
 As a result, you should treat this property as being indicative only.
+
+***
+
+## bbox
+
+> **bbox**: `undefined` | \[`number`, `number`, `number`, `number`]
+
+The bounding box of the feature.
+
+### Remarks
+
+Because LayerFeatures can be read from tiled features and considering
+that feature geometry can go through multiple tiles, it's possible that this
+is not the complete bounding box of the feature.
 
 ***
 

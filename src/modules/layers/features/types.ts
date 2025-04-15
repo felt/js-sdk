@@ -1,6 +1,7 @@
 import type { FeltController } from "~/client";
 import type { SelectionController } from "~/modules/selection";
 import type {
+  FeltBoundary,
   GeoJsonFeature,
   GeoJsonGeometry,
   GeoJsonProperties,
@@ -31,7 +32,7 @@ export interface LayerFeature {
   /**
    * The type of geometry of the feature.
    *
-   * @remarks Because LayerFeatures are read from tiled features, it's
+   * @remarks Because LayerFeatures can be read from tiled features, it's
    * possible that this `geometryType` won't match the `geometry.type` of the
    * {@link GeoJsonFeature} returned by {@link FeltController.getGeoJsonFeature}.
    *
@@ -41,6 +42,15 @@ export interface LayerFeature {
    * As a result, you should treat this property as being indicative only.
    */
   geometryType: GeoJsonGeometry["type"] | (string & {});
+
+  /**
+   * The bounding box of the feature.
+   *
+   * @remarks Because LayerFeatures can be read from tiled features and considering
+   * that feature geometry can go through multiple tiles, it's possible that this
+   * is not the complete bounding box of the feature.
+   */
+  bbox: FeltBoundary | undefined;
 
   /**
    * The properties of the feature, as a bag of attributes.

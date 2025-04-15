@@ -2,11 +2,13 @@ import { listener, method } from "~/lib/interface";
 import type {
   GeoJsonFeature,
   SetVisibilityRequest,
+  SortConfig,
 } from "~/modules/shared/types";
 import type { LayerBoundaries, LayerBoundary } from "./boundary/types";
 import type { Filters, LayerFilters } from "./filters/types";
 import type {
   AggregationMethod,
+  GeometryFilter,
   GetLayerCalculationParams,
   GetLayerCategoriesGroup,
   GetLayerCategoriesParams,
@@ -86,6 +88,7 @@ export const layersController = (
   // features
   getRenderedFeatures: method(feltWindow, "getRenderedFeatures"),
   getFeature: method(feltWindow, "getFeature"),
+  getFeatures: method(feltWindow, "getFeatures"),
   getGeoJsonFeature: method(feltWindow, "getGeoJsonFeature"),
 
   // stats
@@ -690,6 +693,52 @@ export interface LayersController {
     id: string | number;
     layerId: string;
   }): Promise<LayerFeature | null>;
+
+  /**
+   * Get a list of layer features.
+   *
+   * @remarks This list is paginated in sets of 20 features for each page. In order to paginate
+   * between pages, the response includes `previousPage` and `nextPage` that are tokens
+   * that should be sent in the `pagination` params for requesting sibling pages.
+   *
+   * @param {Object} params
+   * @param {string} params.layerId - Layer ID.
+   * @param {Filters} params.filters - Filters to be applied. These filters will merge with layer's own filters.
+   * @param {SortConfig} params.sorting - Attribute to sort by.
+   * @param {GeometryFilter} params.boundary - The spatial boundary to be applied.
+   * @param {string} params.search - Term to search by. Search is case-insensitive and look for matches across all feature properties.
+   * @param {string} params.pagination - Pagination token. It comes from `previousPage` or `nextPage` from `getFeatures` response.
+   *
+   * @returns
+   * The response is an object which contains:
+   *   - `features`: list of {@link LayerFeature} objects, which does not include
+   * the geometry of the feature but it does include its actual bounding box.
+   *   - `count`: amount of features that match params. Considering 20 features for page,
+   * it's possible to compute number of pages.
+   *   - `previousPage` & `nextPage`: as mentioned before, these are tokens that should be passed
+   * to `pagination` in order to navigate between pages.
+   *
+   * @example
+   * ```typescript
+   * const [pagination, setPagination] = someReactiveTech<string | undefined>(undefined);
+   * const response = await felt.getFeatures({ layerId: "layer-1", pagination });
+   * const gotoNextPage = response.nextPage && (() => setPagination(response.nextPage));
+   * const gotoPreviousPage = response.previousPage && (() => setPagination(response.previousPage));
+   * ```
+   */
+  getFeatures(params: {
+    layerId: string;
+    filters?: Filters;
+    sorting?: SortConfig;
+    boundary?: GeometryFilter;
+    search?: string;
+    pagination?: string;
+  }): Promise<{
+    features: Array<LayerFeature>;
+    count: number;
+    previousPage: string | null;
+    nextPage: string | null;
+  }>;
 
   /**
    * Get a feature in GeoJSON format from the map by its ID and layer ID.

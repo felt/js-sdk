@@ -8,9 +8,11 @@ import {
 } from "~/lib/builders";
 import type { zInfer } from "~/lib/utils";
 import {
+  FeltBoundarySchema,
   type GeoJsonFeature,
   MultiPolygonGeometrySchema,
   SetVisibilityRequestSchema,
+  SortConfigSchema,
 } from "~/modules/shared/types";
 import type { LayerBoundaries } from "./boundary/types";
 import { FiltersSchema, type LayerFilters } from "./filters/types";
@@ -158,6 +160,18 @@ const GetFeatureMessage = methodMessage(
   }),
 );
 
+const GetFeaturesMessage = methodMessage(
+  "getFeatures",
+  z.object({
+    layerId: z.string(),
+    filters: FiltersSchema.optional(),
+    sorting: SortConfigSchema.optional(),
+    boundary: FeltBoundarySchema.optional(),
+    search: z.string().optional(),
+    pagination: z.string().optional(),
+  }),
+);
+
 const GetGeoJsonFeatureMessage = methodMessage(
   "getGeoJsonFeature",
   z.object({
@@ -214,6 +228,7 @@ export const layersSchema = {
 
     GetRenderedFeaturesMessage,
     GetFeatureMessage,
+    GetFeaturesMessage,
     GetGeoJsonFeatureMessage,
 
     GetLayerCategoriesMessage,
@@ -297,6 +312,16 @@ export type LayersSchema = {
       Array<LayerFeature>
     >;
     getFeature: Method<zInfer<typeof GetFeatureMessage>, LayerFeature | null>;
+    getFeatures: Method<
+      zInfer<typeof GetFeaturesMessage>,
+      {
+        features: LayerFeature[];
+        count: number;
+        previousPage: string | null;
+        nextPage: string | null;
+      }
+    >;
+
     getGeoJsonFeature: Method<
       zInfer<typeof GetGeoJsonFeatureMessage>,
       GeoJsonFeature | null

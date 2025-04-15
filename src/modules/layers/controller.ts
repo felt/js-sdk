@@ -700,14 +700,7 @@ export interface LayersController {
    * @remarks This list is paginated in sets of 20 features for each page. In order to paginate
    * between pages, the response includes `previousPage` and `nextPage` that are tokens
    * that should be sent in the `pagination` params for requesting sibling pages.
-   *
-   * @param {Object} params
-   * @param {string} params.layerId - Layer ID.
-   * @param {Filters} params.filters - Filters to be applied. These filters will merge with layer's own filters.
-   * @param {SortConfig} params.sorting - Attribute to sort by.
-   * @param {GeometryFilter} params.boundary - The spatial boundary to be applied.
-   * @param {string} params.search - Term to search by. Search is case-insensitive and look for matches across all feature properties.
-   * @param {string} params.pagination - Pagination token. It comes from `previousPage` or `nextPage` from `getFeatures` response.
+   * Search is case-insensitive and looks for matches across all feature properties.
    *
    * @returns
    * The response is an object which contains:
@@ -727,11 +720,34 @@ export interface LayersController {
    * ```
    */
   getFeatures(params: {
+    /**
+     * The ID of the layer to get features from.
+     */
     layerId: string;
+
+    /**
+     * Filters to be applied. These filters will merge with layer's own filters.
+     */
     filters?: Filters;
+
+    /**
+     * Attribute to sort by.
+     */
     sorting?: SortConfig;
+
+    /**
+     * The spatial boundary to be applied.
+     */
     boundary?: GeometryFilter;
+
+    /**
+     * Term to search by. Search is case-insensitive and look for matches across all feature properties.
+     */
     search?: string;
+
+    /**
+     * Pagination token. It comes from `previousPage` or `nextPage` from `getFeatures` response.
+     */
     pagination?: string;
   }): Promise<{
     features: Array<LayerFeature>;

@@ -647,8 +647,8 @@ Get a list of layer features.
 
 | Parameter            | Type                                                                                                                                                                                                             | Description                                                                                       |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `params`             | \{ `layerId`: `string`; `filters`: [`Filters`](Filters.md); `sorting`: [`SortConfig`](../Shared/SortConfig.md); `boundary`: [`GeometryFilter`](GeometryFilter.md); `search`: `string`; `pagination`: `string`; } |                                                                                                   |
-| `params.layerId`     | `string`                                                                                                                                                                                                         | Layer ID.                                                                                         |
+| `params`             | \{ `layerId`: `string`; `filters`: [`Filters`](Filters.md); `sorting`: [`SortConfig`](../Shared/SortConfig.md); `boundary`: [`GeometryFilter`](GeometryFilter.md); `search`: `string`; `pagination`: `string`; } | -                                                                                                 |
+| `params.layerId`     | `string`                                                                                                                                                                                                         | The ID of the layer to get features from.                                                         |
 | `params.filters`?    | [`Filters`](Filters.md)                                                                                                                                                                                          | Filters to be applied. These filters will merge with layer's own filters.                         |
 | `params.sorting`?    | [`SortConfig`](../Shared/SortConfig.md)                                                                                                                                                                          | Attribute to sort by.                                                                             |
 | `params.boundary`?   | [`GeometryFilter`](GeometryFilter.md)                                                                                                                                                                            | The spatial boundary to be applied.                                                               |
@@ -673,6 +673,7 @@ The response is an object which contains:
 This list is paginated in sets of 20 features for each page. In order to paginate
 between pages, the response includes `previousPage` and `nextPage` that are tokens
 that should be sent in the `pagination` params for requesting sibling pages.
+Search is case-insensitive and looks for matches across all feature properties.
 
 ### Example
 

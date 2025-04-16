@@ -9,6 +9,7 @@ import {
 import type { zInfer } from "~/lib/utils";
 import {
   type GeoJsonFeature,
+  MultiPolygonGeometrySchema,
   SetVisibilityRequestSchema,
 } from "~/modules/shared/types";
 import type { LayerBoundaries } from "./boundary/types";
@@ -36,7 +37,6 @@ import {
   type LegendItemChangeCallbackParams,
   LegendItemIdentifierSchema,
   LegendItemsConstraintSchema,
-  SetLayerBoundaryParamsSchema,
   UpdateLayerSchema,
 } from "./types";
 
@@ -134,7 +134,10 @@ const GetLayerBoundariesMessage = methodMessage(
 );
 const SetLayerBoundaryMessage = methodMessage(
   "setLayerBoundary",
-  SetLayerBoundaryParamsSchema,
+  z.object({
+    layerIds: z.array(z.string()),
+    boundary: MultiPolygonGeometrySchema.nullable(),
+  }),
 );
 const OnLayerBoundariesChangeMessage = listenerMessageWithParams(
   "onLayerBoundariesChange",

@@ -3,7 +3,6 @@ import type { zInfer } from "~/lib/utils";
 import {
   FeltBoundarySchema,
   LatLngSchema,
-  MultiPolygonGeometrySchema,
   type FeltBoundary,
   type LatLng,
 } from "~/modules/shared/types";
@@ -891,15 +890,3 @@ export interface CreateLayersFromGeoJsonParams
     Polygon?: object;
   };
 }
-
-/**
- * @ignore
- */
-export const SetLayerBoundaryParamsSchema = z.object({
-  /**
-   * The id of the layer to set the boundary for.
-   */
-  layerId: z.string(),
-
-  boundary: MultiPolygonGeometrySchema.nullable(),
-});

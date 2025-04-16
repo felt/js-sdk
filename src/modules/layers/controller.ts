@@ -584,21 +584,21 @@ export interface LayersController {
   getLayerBoundaries(layerId: string): Promise<LayerBoundaries | null>;
 
   /**
-   * Set the ephemeral boundary for a layer.
+   * Set the {@link LayerBoundaries.ephemeral | `ephemeral`} boundary for one or more layers.
    *
    * @example
    * ```typescript
    * await felt.setLayerBoundary({
-   *   layerId: "layer-1",
+   *   layerIds: ["layer-1", "layer-2"],
    *   boundary: { type: "MultiPolygon", coordinates: [[[100, 0], [101, 0], [101, 1], [100, 1], [100, 0]]] }
    * });
    * ```
    */
   setLayerBoundary(params: {
     /**
-     * The id of the layer to set the boundary for.
+     * The ids of the layers to set the boundary for.
      */
-    layerId: string;
+    layerIds: Array<string>;
 
     /**
      * The boundary to set for the layer.

@@ -513,7 +513,7 @@ export interface LayersController {
         handler: (change: LegendItemChangeCallbackParams) => void;
     }): VoidFunction;
     setLayerBoundary(params: {
-        layerId: string;
+        layerIds: Array<string>;
         boundary: LayerBoundary | null;
     }): Promise<void>;
     setLayerFilters(params: {

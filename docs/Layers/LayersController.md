@@ -549,17 +549,17 @@ console.log(boundaries?.ephemeral);
 
 ## setLayerBoundary()
 
-> **setLayerBoundary**(`params`: \{ `layerId`: `string`; `boundary`: `null` | [`MultiPolygonGeometry`](../Shared/MultiPolygonGeometry.md); }): `Promise`\<`void`>
+> **setLayerBoundary**(`params`: \{ `layerIds`: `string`\[]; `boundary`: `null` | [`MultiPolygonGeometry`](../Shared/MultiPolygonGeometry.md); }): `Promise`\<`void`>
 
-Set the ephemeral boundary for a layer.
+Set the [\`ephemeral\`](LayerBoundaries.md#ephemeral) boundary for one or more layers.
 
 ### Parameters
 
-| Parameter         | Type                                                                                                         | Description                                                                                    |
-| ----------------- | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
-| `params`          | \{ `layerId`: `string`; `boundary`: `null` \| [`MultiPolygonGeometry`](../Shared/MultiPolygonGeometry.md); } | -                                                                                              |
-| `params.layerId`  | `string`                                                                                                     | The id of the layer to set the boundary for.                                                   |
-| `params.boundary` | `null` \| [`MultiPolygonGeometry`](../Shared/MultiPolygonGeometry.md)                                        | The boundary to set for the layer. Passing `null` clears the ephemeral boundary for the layer. |
+| Parameter         | Type                                                                                                             | Description                                                                                    |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `params`          | \{ `layerIds`: `string`\[]; `boundary`: `null` \| [`MultiPolygonGeometry`](../Shared/MultiPolygonGeometry.md); } | -                                                                                              |
+| `params.layerIds` | `string`\[]                                                                                                      | The ids of the layers to set the boundary for.                                                 |
+| `params.boundary` | `null` \| [`MultiPolygonGeometry`](../Shared/MultiPolygonGeometry.md)                                            | The boundary to set for the layer. Passing `null` clears the ephemeral boundary for the layer. |
 
 ### Returns
 
@@ -569,7 +569,7 @@ Set the ephemeral boundary for a layer.
 
 ```typescript
 await felt.setLayerBoundary({
-  layerId: "layer-1",
+  layerIds: ["layer-1", "layer-2"],
   boundary: { type: "MultiPolygon", coordinates: [[[100, 0], [101, 0], [101, 1], [100, 1], [100, 0]]] }
 });
 ```

@@ -1,4 +1,6 @@
 import { z } from "zod";
+import type { FeltController } from "~/modules/main/controller";
+import type { UnwrapPromise } from "./utils";
 
 export function methodMessage<
   TType extends string,
@@ -33,12 +35,14 @@ export function listenerMessageNoParams<TEventName extends string>(
   });
 }
 
+type FeltControllerFunctions = Omit<FeltController, "iframe">;
 export type Method<
-  TRequest extends { type: string; params?: any },
-  TResponse,
+  TRequest extends { type: keyof FeltControllerFunctions; params?: any },
 > = {
   request: TRequest;
-  response: TResponse;
+  response: UnwrapPromise<
+    ReturnType<FeltControllerFunctions[TRequest["type"]]>
+  >;
 };
 
 export type Listener<TOptions, TParams> = {

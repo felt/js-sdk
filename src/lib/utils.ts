@@ -21,3 +21,5 @@ export type zInfer<T extends { shape: ZodRawShape }> = objectOutputType<
   ZodTypeAny,
   "strip"
 >;
+
+export type UnwrapPromise<T> = T extends Promise<infer U> ? U : T;

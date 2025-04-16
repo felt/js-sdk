@@ -46,14 +46,11 @@ export const uiSchema = {
 
 export type UiSchema = {
   methods: {
-    updateUiControls: Method<zInfer<typeof UiControlsMessage>, void>;
-    setOnMapInteractionsUi: Method<
-      zInfer<typeof OnMapInteractionsMessage>,
-      void
-    >;
+    updateUiControls: Method<zInfer<typeof UiControlsMessage>>;
+    setOnMapInteractionsUi: Method<zInfer<typeof OnMapInteractionsMessage>>;
 
-    showLayerDataTable: Method<zInfer<typeof ShowLayerDataTableMessage>, void>;
-    hideLayerDataTable: Method<zInfer<typeof HideLayerDataTableMessage>, void>;
+    showLayerDataTable: Method<zInfer<typeof ShowLayerDataTableMessage>>;
+    hideLayerDataTable: Method<zInfer<typeof HideLayerDataTableMessage>>;
   };
   listeners: {};
 };

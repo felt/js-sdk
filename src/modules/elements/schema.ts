@@ -9,14 +9,10 @@ import {
   methodMessage,
 } from "~/lib/builders";
 import type { zInfer } from "~/lib/utils";
-import {
-  type GeoJsonGeometry,
-  SetVisibilityRequestSchema,
-} from "~/modules/shared/types";
+import { SetVisibilityRequestSchema } from "~/modules/shared/types";
 import {
   type Element,
   type ElementChangeCallbackParams,
-  type ElementGroup,
   type ElementGroupChangeCallbackParams,
   ElementCreateSchema,
   ElementUpdateSchema,
@@ -95,31 +91,18 @@ export const elementsSchema = {
 
 export type ElementsSchema = {
   methods: {
-    getElement: Method<zInfer<typeof GetElementMessage>, Element | null>;
-    getElementGeometry: Method<
-      zInfer<typeof GetElementGeometryMessage>,
-      GeoJsonGeometry | null
-    >;
-    getElements: Method<
-      zInfer<typeof GetElementsMessage>,
-      Array<Element | null>
-    >;
-    getElementGroup: Method<
-      zInfer<typeof GetGroupMessage>,
-      ElementGroup | null
-    >;
-    getElementGroups: Method<
-      zInfer<typeof GetGroupsMessage>,
-      Array<ElementGroup | null>
-    >;
+    getElement: Method<zInfer<typeof GetElementMessage>>;
+    getElementGeometry: Method<zInfer<typeof GetElementGeometryMessage>>;
+    getElements: Method<zInfer<typeof GetElementsMessage>>;
+    getElementGroup: Method<zInfer<typeof GetGroupMessage>>;
+    getElementGroups: Method<zInfer<typeof GetGroupsMessage>>;
     setElementGroupVisibility: Method<
-      zInfer<typeof SetElementGroupVisibilityMessage>,
-      void
+      zInfer<typeof SetElementGroupVisibilityMessage>
     >;
 
-    createElement: Method<zInfer<typeof CreateElementMessage>, Element>;
-    updateElement: Method<zInfer<typeof UpdateElementMessage>, Element>;
-    deleteElement: Method<zInfer<typeof DeleteElementMessage>, void>;
+    createElement: Method<zInfer<typeof CreateElementMessage>>;
+    updateElement: Method<zInfer<typeof UpdateElementMessage>>;
+    deleteElement: Method<zInfer<typeof DeleteElementMessage>>;
   };
   listeners: {
     onElementChange: Listener<

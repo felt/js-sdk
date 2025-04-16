@@ -11,7 +11,6 @@ import {
   SetViewportCenterZoomParamsSchema,
   SetViewportConstraintsParamsSchema,
   ViewportFitBoundsParamsSchema,
-  type ViewportConstraints,
   type ViewportState,
 } from "./types";
 
@@ -55,19 +54,17 @@ export const viewportSchema = {
 
 export type ViewportSchema = {
   methods: {
-    getViewport: Method<zInfer<typeof GetViewportMessage>, ViewportState>;
-    setViewport: Method<zInfer<typeof GotoViewportMessage>, void>;
+    getViewport: Method<zInfer<typeof GetViewportMessage>>;
+    setViewport: Method<zInfer<typeof GotoViewportMessage>>;
 
     getViewportConstraints: Method<
-      zInfer<typeof GetViewportConstraintsMessage>,
-      ViewportConstraints | null
+      zInfer<typeof GetViewportConstraintsMessage>
     >;
     setViewportConstraints: Method<
-      zInfer<typeof SetViewportConstraintsMessage>,
-      void
+      zInfer<typeof SetViewportConstraintsMessage>
     >;
 
-    fitViewportToBounds: Method<zInfer<typeof ViewportFitBoundsMessage>, void>;
+    fitViewportToBounds: Method<zInfer<typeof ViewportFitBoundsMessage>>;
   };
   listeners: {
     onViewportMove: ListenerNoOptions<ViewportState>;

@@ -34,9 +34,9 @@ export const selectionSchema = {
 
 export type SelectionSchema = {
   methods: {
-    getSelection: Method<zInfer<typeof GetSelectionMessage>, Array<EntityNode>>;
-    selectFeature: Method<zInfer<typeof SelectFeatureMessage>, void>;
-    clearSelection: Method<zInfer<typeof ClearSelectionMessage>, void>;
+    getSelection: Method<zInfer<typeof GetSelectionMessage>>;
+    selectFeature: Method<zInfer<typeof SelectFeatureMessage>>;
+    clearSelection: Method<zInfer<typeof ClearSelectionMessage>>;
   };
   listeners: {
     onSelectionChange: ListenerNoOptions<{ selection: Array<EntityNode> }>;

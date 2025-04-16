@@ -1,4 +1,4 @@
-import type { FeltController } from "~/client";
+import type { FeltController } from "~/modules/main/controller";
 import type { SelectionController } from "~/modules/selection";
 import type {
   FeltBoundary,

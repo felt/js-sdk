@@ -1,5 +1,7 @@
 ***
 
+The parameters for the [LayersController.createLayersFromGeoJson](LayersController.md#createlayersfromgeojson) method.
+
 # Properties
 
 ## name

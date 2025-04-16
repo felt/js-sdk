@@ -5,10 +5,9 @@ import type {
   SortConfig,
 } from "~/modules/shared/types";
 import type { LayerBoundaries, LayerBoundary } from "./boundary/types";
-import type { Filters, LayerFilters } from "./filters/types";
+import type { Filters, GeometryFilter, LayerFilters } from "./filters/types";
 import type {
   AggregationMethod,
-  GeometryFilter,
   GetLayerCalculationParams,
   GetLayerCategoriesGroup,
   GetLayerCategoriesParams,
@@ -700,23 +699,33 @@ export interface LayersController {
    * @remarks This list is paginated in sets of 20 features for each page. In order to paginate
    * between pages, the response includes `previousPage` and `nextPage` that are tokens
    * that should be sent in the `pagination` params for requesting sibling pages.
-   * Search is case-insensitive and looks for matches across all feature properties.
+   *
+   * Text search is case-insensitive and looks for matches across all feature properties.
    *
    * @returns
    * The response is an object which contains:
    *   - `features`: list of {@link LayerFeature} objects, which does not include
-   * the geometry of the feature but it does include its actual bounding box.
-   *   - `count`: amount of features that match params. Considering 20 features for page,
-   * it's possible to compute number of pages.
-   *   - `previousPage` & `nextPage`: as mentioned before, these are tokens that should be passed
-   * to `pagination` in order to navigate between pages.
+   * the geometry of the feature but it does include its bounding box.
+   *   - `count`: the total number of features that match the query.
+   *   - `previousPage` & `nextPage`: The tokens to pass in the `pagination` param
+   * to navigate between pages.
    *
    * @example
    * ```typescript
-   * const [pagination, setPagination] = someReactiveTech<string | undefined>(undefined);
-   * const response = await felt.getFeatures({ layerId: "layer-1", pagination });
-   * const gotoNextPage = response.nextPage && (() => setPagination(response.nextPage));
-   * const gotoPreviousPage = response.previousPage && (() => setPagination(response.previousPage));
+   * const page1Response = await felt.getFeatures({
+   *   layerId: "layer-1",
+   *   search: "abc123",
+   *   pagination: undefined,
+   * });
+   *
+   * // Note that the search term here matches the one for the first page.
+   * if (page1Response.nextPage) {
+   *   const page2Response = await felt.getFeatures({
+   *     layerId: "layer-1",
+   *     search: "abc123",
+   *     pagination: page1Response.nextPage,
+   *   });
+   * }
    * ```
    */
   getFeatures(params: {
@@ -741,18 +750,36 @@ export interface LayersController {
     boundary?: GeometryFilter;
 
     /**
-     * Term to search by. Search is case-insensitive and look for matches across all feature properties.
+     * Search term to search by.
+     *
+     * Search is case-insensitive and looks for matches across all feature properties.
      */
     search?: string;
 
     /**
-     * Pagination token. It comes from `previousPage` or `nextPage` from `getFeatures` response.
+     * Pagination token. It comes from either the `previousPage` or `nextPage`
+     * properties of the previous response.
      */
-    pagination?: string;
+    pagination?: string | null;
   }): Promise<{
-    features: Array<LayerFeature>;
+    /**
+     * The list of features returned from the query.
+     */
+    features: LayerFeature[];
+
+    /**
+     * The total number of features that match the query.
+     */
     count: number;
+
+    /**
+     * The pagination token to get the previous page of features.
+     */
     previousPage: string | null;
+
+    /**
+     * The pagination token to get the next page of features.
+     */
     nextPage: string | null;
   }>;
 

@@ -17,6 +17,8 @@ import type {
  *
  * The geometry can be obtained via the {@link FeltController.getGeoJsonFeature}
  * method, which returns a {@link GeoJsonFeature} object.
+ *
+ * @group Features
  */
 export interface LayerFeature {
   /**
@@ -61,9 +63,9 @@ export interface LayerFeature {
 /**
  * A raster pixel value for a specific layer.
  *
- * @interface
+ * @group Features
  */
-export type RasterValue = {
+export interface RasterValue {
   /**
    * The value of the pixel.
    */
@@ -88,4 +90,4 @@ export type RasterValue = {
     b: number;
     a: number;
   };
-};
+}

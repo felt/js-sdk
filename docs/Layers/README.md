@@ -21,23 +21,15 @@ independently of the Layer, so you can turn on and off each category or class in
 # Interfaces
 
 * [LayerBoundaries](LayerBoundaries.md)
-* [LayerFeature](LayerFeature.md)
-* [RasterValue](RasterValue.md)
-* [AggregationConfig](AggregationConfig.md)
-* [MultiAggregationConfig](MultiAggregationConfig.md)
-* [ValueConfiguration](ValueConfiguration.md)
-* [GetLayerCategoriesParams](GetLayerCategoriesParams.md)
-* [GetLayerCategoriesGroup](GetLayerCategoriesGroup.md)
-* [GetLayerHistogramParams](GetLayerHistogramParams.md)
-* [GetLayerHistogramBin](GetLayerHistogramBin.md)
-* [GetLayerCalculationParams](GetLayerCalculationParams.md)
-* [CreateLayersFromGeoJsonParams](CreateLayersFromGeoJsonParams.md)
 
 # Type Aliases
 
 * [LayerBoundary](LayerBoundary.md)
-* [AggregationMethod](AggregationMethod.md)
-* [GeometryFilter](GeometryFilter.md)
+
+# Features
+
+* [LayerFeature](LayerFeature.md)
+* [RasterValue](RasterValue.md)
 
 # Filters
 
@@ -46,6 +38,7 @@ independently of the Layer, so you can turn on and off each category or class in
 * [FilterExpression](FilterExpression.md)
 * [FilterTernary](FilterTernary.md)
 * [Filters](Filters.md)
+* [GeometryFilter](GeometryFilter.md)
 
 # Layer Groups
 
@@ -83,6 +76,7 @@ independently of the Layer, so you can turn on and off each category or class in
 * [GetLayersConstraint](GetLayersConstraint.md)
 * [LayerChangeCallbackParams](LayerChangeCallbackParams.md)
 * [GetRenderedFeaturesConstraint](GetRenderedFeaturesConstraint.md)
+* [CreateLayersFromGeoJsonParams](CreateLayersFromGeoJsonParams.md)
 * [LayerProcessingStatus](LayerProcessingStatus.md)
 * [Layer](Layer.md)
 
@@ -92,3 +86,15 @@ independently of the Layer, so you can turn on and off each category or class in
 * [LegendItemIdentifier](LegendItemIdentifier.md)
 * [LegendItemsConstraint](LegendItemsConstraint.md)
 * [LegendItemChangeCallbackParams](LegendItemChangeCallbackParams.md)
+
+# Stats
+
+* [AggregationConfig](AggregationConfig.md)
+* [MultiAggregationConfig](MultiAggregationConfig.md)
+* [ValueConfiguration](ValueConfiguration.md)
+* [GetLayerCategoriesParams](GetLayerCategoriesParams.md)
+* [GetLayerCategoriesGroup](GetLayerCategoriesGroup.md)
+* [GetLayerHistogramParams](GetLayerHistogramParams.md)
+* [GetLayerHistogramBin](GetLayerHistogramBin.md)
+* [GetLayerCalculationParams](GetLayerCalculationParams.md)
+* [AggregationMethod](AggregationMethod.md)

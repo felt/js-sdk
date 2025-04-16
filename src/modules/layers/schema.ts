@@ -1,4 +1,5 @@
 import { z } from "zod";
+import type { LayerBoundaries } from "~/client";
 import type { ModuleSchema } from "~/lib/ModuleSchema";
 import {
   type Listener,
@@ -6,16 +7,19 @@ import {
   type Method,
   methodMessage,
 } from "~/lib/builders";
-import type { zInfer } from "~/lib/utils";
+import type { UnwrapPromise, zInfer } from "~/lib/utils";
 import {
-  FeltBoundarySchema,
   type GeoJsonFeature,
   MultiPolygonGeometrySchema,
   SetVisibilityRequestSchema,
   SortConfigSchema,
 } from "~/modules/shared/types";
-import type { LayerBoundaries } from "./boundary/types";
-import { FiltersSchema, type LayerFilters } from "./filters/types";
+import type { LayersController } from "./controller";
+import {
+  FiltersSchema,
+  GeometryFilterSchema,
+  type LayerFilters,
+} from "./filters/types";
 import {
   type AggregationMethod,
   GetLayerCalculationParamsSchema,
@@ -166,9 +170,9 @@ const GetFeaturesMessage = methodMessage(
     layerId: z.string(),
     filters: FiltersSchema.optional(),
     sorting: SortConfigSchema.optional(),
-    boundary: FeltBoundarySchema.optional(),
+    boundary: GeometryFilterSchema.optional(),
     search: z.string().optional(),
-    pagination: z.string().optional(),
+    pagination: z.string().optional().nullish(),
   }),
 );
 
@@ -314,12 +318,7 @@ export type LayersSchema = {
     getFeature: Method<zInfer<typeof GetFeatureMessage>, LayerFeature | null>;
     getFeatures: Method<
       zInfer<typeof GetFeaturesMessage>,
-      {
-        features: LayerFeature[];
-        count: number;
-        previousPage: string | null;
-        nextPage: string | null;
-      }
+      UnwrapPromise<ReturnType<LayersController["getFeatures"]>>
     >;
 
     getGeoJsonFeature: Method<

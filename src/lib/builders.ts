@@ -1,5 +1,5 @@
 import { z } from "zod";
-import type { FeltController } from "~/client";
+import type { FeltController } from "~/modules/main/controller";
 import type { UnwrapPromise } from "./utils";
 
 export function methodMessage<

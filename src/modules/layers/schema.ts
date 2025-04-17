@@ -1,5 +1,4 @@
 import { z } from "zod";
-import type { LayerBoundaries } from "~/client";
 import type { ModuleSchema } from "~/lib/ModuleSchema";
 import {
   type Listener,
@@ -12,6 +11,7 @@ import {
   SetVisibilityRequestSchema,
   SortConfigSchema,
 } from "~/modules/shared/types";
+import type { LayerBoundaries } from "./filters/types";
 import {
   FiltersSchema,
   GeometryFilterSchema,

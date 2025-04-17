@@ -1,6 +1,7 @@
 import type { FeltController } from "~/client";
 import type { SelectionController } from "~/modules/selection";
 import type {
+  FeltBoundary,
   GeoJsonFeature,
   GeoJsonGeometry,
   GeoJsonProperties,
@@ -16,6 +17,8 @@ import type {
  *
  * The geometry can be obtained via the {@link FeltController.getGeoJsonFeature}
  * method, which returns a {@link GeoJsonFeature} object.
+ *
+ * @group Features
  */
 export interface LayerFeature {
   /**
@@ -31,7 +34,7 @@ export interface LayerFeature {
   /**
    * The type of geometry of the feature.
    *
-   * @remarks Because LayerFeatures are read from tiled features, it's
+   * @remarks Because LayerFeatures can be read from tiled features, it's
    * possible that this `geometryType` won't match the `geometry.type` of the
    * {@link GeoJsonFeature} returned by {@link FeltController.getGeoJsonFeature}.
    *
@@ -43,6 +46,15 @@ export interface LayerFeature {
   geometryType: GeoJsonGeometry["type"] | (string & {});
 
   /**
+   * The bounding box of the feature.
+   *
+   * @remarks Because LayerFeatures can be read from tiled features and considering
+   * that feature geometry can go through multiple tiles, it's possible that this
+   * is not the complete bounding box of the feature.
+   */
+  bbox: FeltBoundary | undefined;
+
+  /**
    * The properties of the feature, as a bag of attributes.
    */
   properties: GeoJsonProperties;
@@ -51,9 +63,9 @@ export interface LayerFeature {
 /**
  * A raster pixel value for a specific layer.
  *
- * @interface
+ * @group Features
  */
-export type RasterValue = {
+export interface RasterValue {
   /**
    * The value of the pixel.
    */
@@ -78,4 +90,4 @@ export type RasterValue = {
     b: number;
     a: number;
   };
-};
+}

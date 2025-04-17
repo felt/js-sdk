@@ -1,4 +1,16 @@
 import { z } from "zod";
+import type {
+  FeltBoundary,
+  LngLatTuple,
+  MultiPolygonGeometry,
+  PolygonGeometry,
+} from "~/client";
+import {
+  FeltBoundarySchema,
+  LngLatTupleSchema,
+  MultiPolygonGeometrySchema,
+  PolygonGeometrySchema,
+} from "~/modules/shared/types";
 
 const InFilterOperatorSchema = z.enum(["in", "ni"]);
 const ScalarFilterOperatorSchema = z.enum([
@@ -255,3 +267,28 @@ export interface LayerFilters {
    */
   combined: Filters;
 }
+
+export const GeometryFilterSchema = z.union([
+  FeltBoundarySchema,
+  PolygonGeometrySchema,
+  MultiPolygonGeometrySchema,
+  z.array(LngLatTupleSchema),
+]);
+
+/**
+ * The common type for filtering data by a spatial boundary.
+ *
+ * This can be either:
+ * - `FeltBoundary`: a [w, s, e, n] bounding box
+ * - `PolygonGeometry`: a GeoJSON Polygon geometry
+ * - `MultiPolygonGeometry`: a GeoJSON MultiPolygon geometry
+ * - `LngLatTuple[]`: a list of coordinates describing a single ring of a polygon
+ *
+ * @group Filters
+ */
+
+export type GeometryFilter =
+  | FeltBoundary
+  | PolygonGeometry
+  | MultiPolygonGeometry
+  | LngLatTuple[];

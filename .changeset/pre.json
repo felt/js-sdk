@@ -4,5 +4,7 @@
   "initialVersions": {
     "@feltmaps/js-sdk": "1.5.1"
   },
-  "changesets": []
+  "changesets": [
+    "silent-pugs-fetch"
+  ]
 }

@@ -4,139 +4,140 @@
 
 ```ts
 
-import { aK as AggregationConfig } from './types-CnYUajGG.js';
-import { A as AggregationMethod } from './types-CnYUajGG.js';
-import { Y as CircleElementCreate } from './types-CnYUajGG.js';
-import { Z as CircleElementRead } from './types-CnYUajGG.js';
-import { _ as CircleElementUpdate } from './types-CnYUajGG.js';
-import { b3 as CircleToolSettings } from './types-CnYUajGG.js';
-import { J as ConfigurableToolType } from './types-CnYUajGG.js';
-import { C as CreateLayersFromGeoJsonParams } from './types-CnYUajGG.js';
-import { ao as DataOnlyLayer } from './types-CnYUajGG.js';
-import { E as Element_2 } from './types-CnYUajGG.js';
-import { d as ElementChangeCallbackParams } from './types-CnYUajGG.js';
-import { f as ElementCreate } from './types-CnYUajGG.js';
-import { b as ElementGroup } from './types-CnYUajGG.js';
-import { e as ElementGroupChangeCallbackParams } from './types-CnYUajGG.js';
-import { aO as ElementGroupNode } from './types-CnYUajGG.js';
-import { aP as ElementNode } from './types-CnYUajGG.js';
-import { g as ElementUpdate } from './types-CnYUajGG.js';
-import { D as EntityNode } from './types-CnYUajGG.js';
-import { aQ as FeatureNode } from './types-CnYUajGG.js';
-import { H as FeatureSelection } from './types-CnYUajGG.js';
-import { aT as FeltBoundary } from './types-CnYUajGG.js';
-import { ap as FeltTiledVectorSource } from './types-CnYUajGG.js';
-import { aU as FeltZoom } from './types-CnYUajGG.js';
-import { aH as FilterExpression } from './types-CnYUajGG.js';
-import { aI as FilterLogicGate } from './types-CnYUajGG.js';
-import { F as Filters } from './types-CnYUajGG.js';
-import { aJ as FilterTernary } from './types-CnYUajGG.js';
-import { aq as GeoJsonDataVectorSource } from './types-CnYUajGG.js';
-import { t as GeoJsonFeature } from './types-CnYUajGG.js';
-import { ar as GeoJsonFileVectorSource } from './types-CnYUajGG.js';
-import { G as GeoJsonGeometry } from './types-CnYUajGG.js';
-import { aV as GeoJsonProperties } from './types-CnYUajGG.js';
-import { as as GeoJsonUrlVectorSource } from './types-CnYUajGG.js';
-import { aL as GeometryFilter } from './types-CnYUajGG.js';
-import { c as GetElementGroupsConstraint } from './types-CnYUajGG.js';
-import { a as GetElementsConstraint } from './types-CnYUajGG.js';
-import { y as GetLayerCalculationParams } from './types-CnYUajGG.js';
-import { v as GetLayerCategoriesGroup } from './types-CnYUajGG.js';
-import { u as GetLayerCategoriesParams } from './types-CnYUajGG.js';
-import { k as GetLayerGroupsConstraint } from './types-CnYUajGG.js';
-import { x as GetLayerHistogramBin } from './types-CnYUajGG.js';
-import { w as GetLayerHistogramParams } from './types-CnYUajGG.js';
-import { h as GetLayersConstraint } from './types-CnYUajGG.js';
-import { r as GetRenderedFeaturesConstraint } from './types-CnYUajGG.js';
-import { $ as HighlighterElementCreate } from './types-CnYUajGG.js';
-import { a0 as HighlighterElementRead } from './types-CnYUajGG.js';
-import { a1 as HighlighterElementUpdate } from './types-CnYUajGG.js';
-import { b4 as HighlighterToolSettings } from './types-CnYUajGG.js';
-import { a2 as ImageElementCreate } from './types-CnYUajGG.js';
-import { a3 as ImageElementRead } from './types-CnYUajGG.js';
-import { a4 as ImageElementUpdate } from './types-CnYUajGG.js';
-import { I as InputToolSettings } from './types-CnYUajGG.js';
-import { aW as LatLng } from './types-CnYUajGG.js';
-import { L as Layer } from './types-CnYUajGG.js';
-import { i as LayerChangeCallbackParams } from './types-CnYUajGG.js';
-import { at as LayerCommon } from './types-CnYUajGG.js';
-import { s as LayerFeature } from './types-CnYUajGG.js';
-import { q as LayerFilters } from './types-CnYUajGG.js';
-import { j as LayerGroup } from './types-CnYUajGG.js';
-import { l as LayerGroupChangeCallbackParams } from './types-CnYUajGG.js';
-import { aR as LayerGroupNode } from './types-CnYUajGG.js';
-import { aS as LayerNode } from './types-CnYUajGG.js';
-import { au as LayerProcessingStatus } from './types-CnYUajGG.js';
-import { z as LayerSchema } from './types-CnYUajGG.js';
-import { aA as LayerSchemaAttribute } from './types-CnYUajGG.js';
-import { aB as LayerSchemaBooleanAttribute } from './types-CnYUajGG.js';
-import { aC as LayerSchemaCommonAttribute } from './types-CnYUajGG.js';
-import { aD as LayerSchemaDateAttribute } from './types-CnYUajGG.js';
-import { aE as LayerSchemaDateTimeAttribute } from './types-CnYUajGG.js';
-import { aF as LayerSchemaNumericAttribute } from './types-CnYUajGG.js';
-import { aG as LayerSchemaTextAttribute } from './types-CnYUajGG.js';
-import { n as LegendItem } from './types-CnYUajGG.js';
-import { p as LegendItemChangeCallbackParams } from './types-CnYUajGG.js';
-import { m as LegendItemIdentifier } from './types-CnYUajGG.js';
-import { o as LegendItemsConstraint } from './types-CnYUajGG.js';
-import { aX as LineStringGeometry } from './types-CnYUajGG.js';
-import { b5 as LineToolSettings } from './types-CnYUajGG.js';
-import { a5 as LinkElementRead } from './types-CnYUajGG.js';
-import { aY as LngLatTuple } from './types-CnYUajGG.js';
-import { B as MapDetails } from './types-CnYUajGG.js';
-import { M as MapInteractionEvent } from './types-CnYUajGG.js';
-import { a6 as MarkerElementCreate } from './types-CnYUajGG.js';
-import { a7 as MarkerElementRead } from './types-CnYUajGG.js';
-import { a8 as MarkerElementUpdate } from './types-CnYUajGG.js';
-import { b6 as MarkerToolSettings } from './types-CnYUajGG.js';
-import { aM as MultiAggregationConfig } from './types-CnYUajGG.js';
-import { aZ as MultiLineStringGeometry } from './types-CnYUajGG.js';
-import { a_ as MultiPointGeometry } from './types-CnYUajGG.js';
-import { a$ as MultiPolygonGeometry } from './types-CnYUajGG.js';
-import { a9 as NoteElementCreate } from './types-CnYUajGG.js';
-import { aa as NoteElementRead } from './types-CnYUajGG.js';
-import { ab as NoteElementUpdate } from './types-CnYUajGG.js';
-import { b7 as NoteToolSettings } from './types-CnYUajGG.js';
-import { O } from './types-CnYUajGG.js';
-import { ac as PathElementCreate } from './types-CnYUajGG.js';
-import { ad as PathElementRead } from './types-CnYUajGG.js';
-import { ae as PathElementUpdate } from './types-CnYUajGG.js';
-import { b8 as PinToolSettings } from './types-CnYUajGG.js';
-import { af as PlaceElementCreate } from './types-CnYUajGG.js';
-import { ag as PlaceElementRead } from './types-CnYUajGG.js';
-import { ah as PlaceElementUpdate } from './types-CnYUajGG.js';
-import { b9 as PlaceFrame } from './types-CnYUajGG.js';
-import { ba as PlaceSymbol } from './types-CnYUajGG.js';
-import { b0 as PointGeometry } from './types-CnYUajGG.js';
-import { ai as PolygonElementCreate } from './types-CnYUajGG.js';
-import { aj as PolygonElementRead } from './types-CnYUajGG.js';
-import { ak as PolygonElementUpdate } from './types-CnYUajGG.js';
-import { b1 as PolygonGeometry } from './types-CnYUajGG.js';
-import { bb as PolygonToolSettings } from './types-CnYUajGG.js';
-import { av as RasterBand } from './types-CnYUajGG.js';
-import { aw as RasterLayer } from './types-CnYUajGG.js';
-import { ax as RasterLayerSource } from './types-CnYUajGG.js';
-import { ay as RasterValue } from './types-CnYUajGG.js';
-import { bc as RouteToolSettings } from './types-CnYUajGG.js';
-import { Q as SetViewportCenterZoomParams } from './types-CnYUajGG.js';
-import { S as SetVisibilityRequest } from './types-CnYUajGG.js';
-import { P as SortConfig } from './types-CnYUajGG.js';
-import { b2 as SortDirection } from './types-CnYUajGG.js';
-import { al as TextElementCreate } from './types-CnYUajGG.js';
-import { am as TextElementRead } from './types-CnYUajGG.js';
-import { an as TextElementUpdate } from './types-CnYUajGG.js';
-import { bd as TextToolSettings } from './types-CnYUajGG.js';
-import { N as ToolSettingsChangeEvent } from './types-CnYUajGG.js';
-import { K as ToolSettingsMap } from './types-CnYUajGG.js';
-import { T as ToolType } from './types-CnYUajGG.js';
-import { U as UpdateLayerParams } from './types-CnYUajGG.js';
-import { aN as ValueConfiguration } from './types-CnYUajGG.js';
-import { az as VectorLayer } from './types-CnYUajGG.js';
-import { X as ViewportCenterZoom } from './types-CnYUajGG.js';
-import { R as ViewportConstraints } from './types-CnYUajGG.js';
-import { W as ViewportFitBoundsParams } from './types-CnYUajGG.js';
-import { V as ViewportState } from './types-CnYUajGG.js';
-import { z } from 'zod';
+import { aF as AggregationConfig } from './types-B241Rd9q.js';
+import { aG as AggregationMethod } from './types-B241Rd9q.js';
+import { q as CircleElementCreate } from './types-B241Rd9q.js';
+import { r as CircleElementRead } from './types-B241Rd9q.js';
+import { s as CircleElementUpdate } from './types-B241Rd9q.js';
+import { b4 as CircleToolSettings } from './types-B241Rd9q.js';
+import { C as ConfigurableToolType } from './types-B241Rd9q.js';
+import { a1 as CreateLayersFromGeoJsonParams } from './types-B241Rd9q.js';
+import { a2 as DataOnlyLayer } from './types-B241Rd9q.js';
+import { E as Element_2 } from './types-B241Rd9q.js';
+import { d as ElementChangeCallbackParams } from './types-B241Rd9q.js';
+import { f as ElementCreate } from './types-B241Rd9q.js';
+import { b as ElementGroup } from './types-B241Rd9q.js';
+import { e as ElementGroupChangeCallbackParams } from './types-B241Rd9q.js';
+import { aO as ElementGroupNode } from './types-B241Rd9q.js';
+import { aP as ElementNode } from './types-B241Rd9q.js';
+import { g as ElementUpdate } from './types-B241Rd9q.js';
+import { i as EntityNode } from './types-B241Rd9q.js';
+import { aQ as FeatureNode } from './types-B241Rd9q.js';
+import { F as FeatureSelection } from './types-B241Rd9q.js';
+import { aT as FeltBoundary } from './types-B241Rd9q.js';
+import { a3 as FeltTiledVectorSource } from './types-B241Rd9q.js';
+import { aU as FeltZoom } from './types-B241Rd9q.js';
+import { az as FilterExpression } from './types-B241Rd9q.js';
+import { aA as FilterLogicGate } from './types-B241Rd9q.js';
+import { aC as Filters } from './types-B241Rd9q.js';
+import { aB as FilterTernary } from './types-B241Rd9q.js';
+import { a4 as GeoJsonDataVectorSource } from './types-B241Rd9q.js';
+import { aV as GeoJsonFeature } from './types-B241Rd9q.js';
+import { a5 as GeoJsonFileVectorSource } from './types-B241Rd9q.js';
+import { G as GeoJsonGeometry } from './types-B241Rd9q.js';
+import { aW as GeoJsonProperties } from './types-B241Rd9q.js';
+import { a6 as GeoJsonUrlVectorSource } from './types-B241Rd9q.js';
+import { aD as GeometryFilter } from './types-B241Rd9q.js';
+import { c as GetElementGroupsConstraint } from './types-B241Rd9q.js';
+import { a as GetElementsConstraint } from './types-B241Rd9q.js';
+import { aH as GetLayerCalculationParams } from './types-B241Rd9q.js';
+import { aI as GetLayerCategoriesGroup } from './types-B241Rd9q.js';
+import { aJ as GetLayerCategoriesParams } from './types-B241Rd9q.js';
+import { a7 as GetLayerGroupsConstraint } from './types-B241Rd9q.js';
+import { aK as GetLayerHistogramBin } from './types-B241Rd9q.js';
+import { aL as GetLayerHistogramParams } from './types-B241Rd9q.js';
+import { a8 as GetLayersConstraint } from './types-B241Rd9q.js';
+import { a9 as GetRenderedFeaturesConstraint } from './types-B241Rd9q.js';
+import { H as HighlighterElementCreate } from './types-B241Rd9q.js';
+import { t as HighlighterElementRead } from './types-B241Rd9q.js';
+import { u as HighlighterElementUpdate } from './types-B241Rd9q.js';
+import { b5 as HighlighterToolSettings } from './types-B241Rd9q.js';
+import { v as ImageElementCreate } from './types-B241Rd9q.js';
+import { w as ImageElementRead } from './types-B241Rd9q.js';
+import { x as ImageElementUpdate } from './types-B241Rd9q.js';
+import { I as InputToolSettings } from './types-B241Rd9q.js';
+import { aX as LatLng } from './types-B241Rd9q.js';
+import { aa as Layer } from './types-B241Rd9q.js';
+import { ab as LayerChangeCallbackParams } from './types-B241Rd9q.js';
+import { ac as LayerCommon } from './types-B241Rd9q.js';
+import { ap as LayerFeature } from './types-B241Rd9q.js';
+import { aE as LayerFilters } from './types-B241Rd9q.js';
+import { ad as LayerGroup } from './types-B241Rd9q.js';
+import { ae as LayerGroupChangeCallbackParams } from './types-B241Rd9q.js';
+import { aR as LayerGroupNode } from './types-B241Rd9q.js';
+import { aS as LayerNode } from './types-B241Rd9q.js';
+import { af as LayerProcessingStatus } from './types-B241Rd9q.js';
+import { ar as LayerSchema } from './types-B241Rd9q.js';
+import { as as LayerSchemaAttribute } from './types-B241Rd9q.js';
+import { at as LayerSchemaBooleanAttribute } from './types-B241Rd9q.js';
+import { au as LayerSchemaCommonAttribute } from './types-B241Rd9q.js';
+import { av as LayerSchemaDateAttribute } from './types-B241Rd9q.js';
+import { aw as LayerSchemaDateTimeAttribute } from './types-B241Rd9q.js';
+import { ax as LayerSchemaNumericAttribute } from './types-B241Rd9q.js';
+import { ay as LayerSchemaTextAttribute } from './types-B241Rd9q.js';
+import { L as LayersController } from './types-B241Rd9q.js';
+import { ag as LegendItem } from './types-B241Rd9q.js';
+import { ah as LegendItemChangeCallbackParams } from './types-B241Rd9q.js';
+import { ai as LegendItemIdentifier } from './types-B241Rd9q.js';
+import { aj as LegendItemsConstraint } from './types-B241Rd9q.js';
+import { aY as LineStringGeometry } from './types-B241Rd9q.js';
+import { b6 as LineToolSettings } from './types-B241Rd9q.js';
+import { y as LinkElementRead } from './types-B241Rd9q.js';
+import { aZ as LngLatTuple } from './types-B241Rd9q.js';
+import { h as MapDetails } from './types-B241Rd9q.js';
+import { M as MapInteractionEvent } from './types-B241Rd9q.js';
+import { A as MarkerElementCreate } from './types-B241Rd9q.js';
+import { B as MarkerElementRead } from './types-B241Rd9q.js';
+import { D as MarkerElementUpdate } from './types-B241Rd9q.js';
+import { b7 as MarkerToolSettings } from './types-B241Rd9q.js';
+import { aM as MultiAggregationConfig } from './types-B241Rd9q.js';
+import { a_ as MultiLineStringGeometry } from './types-B241Rd9q.js';
+import { a$ as MultiPointGeometry } from './types-B241Rd9q.js';
+import { b0 as MultiPolygonGeometry } from './types-B241Rd9q.js';
+import { N as NoteElementCreate } from './types-B241Rd9q.js';
+import { J as NoteElementRead } from './types-B241Rd9q.js';
+import { K as NoteElementUpdate } from './types-B241Rd9q.js';
+import { b8 as NoteToolSettings } from './types-B241Rd9q.js';
+import { P as PathElementCreate } from './types-B241Rd9q.js';
+import { O as PathElementRead } from './types-B241Rd9q.js';
+import { Q as PathElementUpdate } from './types-B241Rd9q.js';
+import { b9 as PinToolSettings } from './types-B241Rd9q.js';
+import { R as PlaceElementCreate } from './types-B241Rd9q.js';
+import { U as PlaceElementRead } from './types-B241Rd9q.js';
+import { W as PlaceElementUpdate } from './types-B241Rd9q.js';
+import { ba as PlaceFrame } from './types-B241Rd9q.js';
+import { bb as PlaceSymbol } from './types-B241Rd9q.js';
+import { b1 as PointGeometry } from './types-B241Rd9q.js';
+import { X as PolygonElementCreate } from './types-B241Rd9q.js';
+import { Y as PolygonElementRead } from './types-B241Rd9q.js';
+import { Z as PolygonElementUpdate } from './types-B241Rd9q.js';
+import { b2 as PolygonGeometry } from './types-B241Rd9q.js';
+import { bc as PolygonToolSettings } from './types-B241Rd9q.js';
+import { ak as RasterBand } from './types-B241Rd9q.js';
+import { al as RasterLayer } from './types-B241Rd9q.js';
+import { am as RasterLayerSource } from './types-B241Rd9q.js';
+import { aq as RasterValue } from './types-B241Rd9q.js';
+import { bd as RouteToolSettings } from './types-B241Rd9q.js';
+import { m as SetViewportCenterZoomParams } from './types-B241Rd9q.js';
+import { S as SetVisibilityRequest } from './types-B241Rd9q.js';
+import { l as SortConfig } from './types-B241Rd9q.js';
+import { b3 as SortDirection } from './types-B241Rd9q.js';
+import { _ as TextElementCreate } from './types-B241Rd9q.js';
+import { $ as TextElementRead } from './types-B241Rd9q.js';
+import { a0 as TextElementUpdate } from './types-B241Rd9q.js';
+import { be as TextToolSettings } from './types-B241Rd9q.js';
+import { k as ToolSettingsChangeEvent } from './types-B241Rd9q.js';
+import { j as ToolSettingsMap } from './types-B241Rd9q.js';
+import { T as ToolType } from './types-B241Rd9q.js';
+import { an as UpdateLayerParams } from './types-B241Rd9q.js';
+import { aN as ValueConfiguration } from './types-B241Rd9q.js';
+import { ao as VectorLayer } from './types-B241Rd9q.js';
+import { p as ViewportCenterZoom } from './types-B241Rd9q.js';
+import { n as ViewportConstraints } from './types-B241Rd9q.js';
+import { o as ViewportFitBoundsParams } from './types-B241Rd9q.js';
+import { V as ViewportState } from './types-B241Rd9q.js';
+import { z } from './types-B241Rd9q.js';
+import { z as z_2 } from 'zod';
 
 export { AggregationConfig }
 
@@ -238,7 +239,7 @@ export interface FeltController extends ViewportController, UiController, Layers
 // Warning: (ae-forgotten-export) The symbol "FeltEmbedOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public
-export interface FeltEmbedOptions extends O<typeof FeltEmbedOptionsSchema> {
+export interface FeltEmbedOptions extends z<typeof FeltEmbedOptionsSchema> {
     // (undocumented)
     initialViewport?: ViewportCenterZoom;
     // (undocumented)
@@ -246,17 +247,17 @@ export interface FeltEmbedOptions extends O<typeof FeltEmbedOptionsSchema> {
 }
 
 // @internal (undocumented)
-const FeltEmbedOptionsSchema: z.ZodObject<{
-    origin: z.ZodOptional<z.ZodString>;
-    token: z.ZodOptional<z.ZodString>;
-    uiControls: z.ZodOptional<z.ZodObject<{
-        showLegend: z.ZodOptional<z.ZodBoolean>;
-        cooperativeGestures: z.ZodOptional<z.ZodBoolean>;
-        fullScreenButton: z.ZodOptional<z.ZodBoolean>;
-        geolocation: z.ZodOptional<z.ZodBoolean>;
-        zoomControls: z.ZodOptional<z.ZodBoolean>;
-        scaleBar: z.ZodOptional<z.ZodBoolean>;
-    }, "strip", z.ZodTypeAny, {
+const FeltEmbedOptionsSchema: z_2.ZodObject<{
+    origin: z_2.ZodOptional<z_2.ZodString>;
+    token: z_2.ZodOptional<z_2.ZodString>;
+    uiControls: z_2.ZodOptional<z_2.ZodObject<{
+        showLegend: z_2.ZodOptional<z_2.ZodBoolean>;
+        cooperativeGestures: z_2.ZodOptional<z_2.ZodBoolean>;
+        fullScreenButton: z_2.ZodOptional<z_2.ZodBoolean>;
+        geolocation: z_2.ZodOptional<z_2.ZodBoolean>;
+        zoomControls: z_2.ZodOptional<z_2.ZodBoolean>;
+        scaleBar: z_2.ZodOptional<z_2.ZodBoolean>;
+    }, "strip", z_2.ZodTypeAny, {
         showLegend?: boolean | undefined;
         cooperativeGestures?: boolean | undefined;
         fullScreenButton?: boolean | undefined;
@@ -271,19 +272,19 @@ const FeltEmbedOptionsSchema: z.ZodObject<{
         zoomControls?: boolean | undefined;
         scaleBar?: boolean | undefined;
     }>>;
-    initialViewport: z.ZodOptional<z.ZodObject<{
-        center: z.ZodObject<{
-            latitude: z.ZodNumber;
-            longitude: z.ZodNumber;
-        }, "strip", z.ZodTypeAny, {
+    initialViewport: z_2.ZodOptional<z_2.ZodObject<{
+        center: z_2.ZodObject<{
+            latitude: z_2.ZodNumber;
+            longitude: z_2.ZodNumber;
+        }, "strip", z_2.ZodTypeAny, {
             latitude: number;
             longitude: number;
         }, {
             latitude: number;
             longitude: number;
         }>;
-        zoom: z.ZodNumber;
-    }, "strip", z.ZodTypeAny, {
+        zoom: z_2.ZodNumber;
+    }, "strip", z_2.ZodTypeAny, {
         center: {
             latitude: number;
             longitude: number;
@@ -296,7 +297,7 @@ const FeltEmbedOptionsSchema: z.ZodObject<{
         };
         zoom: number;
     }>>;
-}, "strip", z.ZodTypeAny, {
+}, "strip", z_2.ZodTypeAny, {
     origin?: string | undefined;
     token?: string | undefined;
     uiControls?: {
@@ -445,79 +446,7 @@ export { LayerSchemaNumericAttribute }
 
 export { LayerSchemaTextAttribute }
 
-// @public
-export interface LayersController {
-    createLayersFromGeoJson(params: CreateLayersFromGeoJsonParams): Promise<{
-        layerGroup: LayerGroup;
-        layers: Array<Layer>;
-    } | null>;
-    deleteLayer(id: string): Promise<void>;
-    getAggregates<T extends AggregationMethod | "count">(params: GetLayerCalculationParams<T>): Promise<Record<T, number | null>>;
-    getCategoryData(params: GetLayerCategoriesParams): Promise<Array<GetLayerCategoriesGroup>>;
-    getFeature(params: {
-        id: string | number;
-        layerId: string;
-    }): Promise<LayerFeature | null>;
-    getGeoJsonFeature(params: {
-        id: string | number;
-        layerId: string;
-    }): Promise<GeoJsonFeature | null>;
-    getHistogramData(params: GetLayerHistogramParams): Promise<Array<GetLayerHistogramBin>>;
-    getLayer(
-    id: string): Promise<Layer | null>;
-    getLayerFilters(layerId: string): Promise<LayerFilters | null>;
-    getLayerGroup(id: string): Promise<LayerGroup | null>;
-    getLayerGroups(
-    constraint?: GetLayerGroupsConstraint): Promise<Array<LayerGroup | null>>;
-    getLayers(
-    constraint?: GetLayersConstraint): Promise<Array<Layer | null>>;
-    getLayerSchema(layerId: string): Promise<LayerSchema>;
-    getLegendItem(id: LegendItemIdentifier): Promise<LegendItem | null>;
-    getLegendItems(constraint?: LegendItemsConstraint): Promise<Array<LegendItem | null>>;
-    getRenderedFeatures(
-    params?: GetRenderedFeaturesConstraint): Promise<Array<LayerFeature>>;
-    onLayerChange(args: {
-        options: {
-            id: string;
-        };
-        handler: (
-        change: LayerChangeCallbackParams) => void;
-    }): VoidFunction;
-    onLayerFiltersChange(params: {
-        options: {
-            layerId: string;
-        };
-        handler: (change: LayerFilters) => void;
-    }): VoidFunction;
-    onLayerGroupChange(args: {
-        options: {
-            id: string;
-        };
-        handler: (change: LayerGroupChangeCallbackParams) => void;
-    }): VoidFunction;
-    onLegendItemChange(args: {
-        options: LegendItemIdentifier;
-        handler: (change: LegendItemChangeCallbackParams) => void;
-    }): VoidFunction;
-    setLayerFilters(params: {
-        layerId: string;
-        filters: Filters;
-        note?: string;
-    }): Promise<void>;
-    setLayerGroupLegendVisibility(params: SetVisibilityRequest): Promise<void>;
-    setLayerGroupVisibility(visibility: SetVisibilityRequest): Promise<void>;
-    setLayerLegendVisibility(params: SetVisibilityRequest): Promise<void>;
-    setLayerStyle(params: {
-        id: string;
-        style: object;
-    }): Promise<void>;
-    setLayerVisibility(visibility: SetVisibilityRequest): Promise<void>;
-    setLegendItemVisibility(visibility: {
-        show?: Array<LegendItemIdentifier>;
-        hide?: Array<LegendItemIdentifier>;
-    }): Promise<void>;
-    updateLayer(params: UpdateLayerParams): Promise<Layer>;
-}
+export { LayersController }
 
 export { LegendItem }
 
@@ -571,7 +500,7 @@ export { NoteToolSettings }
 // Warning: (ae-forgotten-export) The symbol "UiOnMapInteractionsOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public
-export interface OnMapInteractionsOptions extends O<typeof UiOnMapInteractionsOptionsSchema> {
+export interface OnMapInteractionsOptions extends z<typeof UiOnMapInteractionsOptionsSchema> {
 }
 
 export { PathElementCreate }
@@ -679,18 +608,18 @@ export interface UiController {
 // Warning: (ae-forgotten-export) The symbol "UiControlsOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public (undocumented)
-export interface UiControlsOptions extends O<typeof UiControlsOptionsSchema> {
+export interface UiControlsOptions extends z<typeof UiControlsOptionsSchema> {
 }
 
 // @internal (undocumented)
-const UiControlsOptionsSchema: z.ZodObject<{
-    showLegend: z.ZodOptional<z.ZodBoolean>;
-    cooperativeGestures: z.ZodOptional<z.ZodBoolean>;
-    fullScreenButton: z.ZodOptional<z.ZodBoolean>;
-    geolocation: z.ZodOptional<z.ZodBoolean>;
-    zoomControls: z.ZodOptional<z.ZodBoolean>;
-    scaleBar: z.ZodOptional<z.ZodBoolean>;
-}, "strip", z.ZodTypeAny, {
+const UiControlsOptionsSchema: z_2.ZodObject<{
+    showLegend: z_2.ZodOptional<z_2.ZodBoolean>;
+    cooperativeGestures: z_2.ZodOptional<z_2.ZodBoolean>;
+    fullScreenButton: z_2.ZodOptional<z_2.ZodBoolean>;
+    geolocation: z_2.ZodOptional<z_2.ZodBoolean>;
+    zoomControls: z_2.ZodOptional<z_2.ZodBoolean>;
+    scaleBar: z_2.ZodOptional<z_2.ZodBoolean>;
+}, "strip", z_2.ZodTypeAny, {
     showLegend?: boolean | undefined;
     cooperativeGestures?: boolean | undefined;
     fullScreenButton?: boolean | undefined;
@@ -707,13 +636,13 @@ const UiControlsOptionsSchema: z.ZodObject<{
 }>;
 
 // @internal (undocumented)
-const UiOnMapInteractionsOptionsSchema: z.ZodObject<{
-    featureSelectPanel: z.ZodOptional<z.ZodBoolean>;
-    featureHoverPanel: z.ZodOptional<z.ZodBoolean>;
-    elementSelectPanel: z.ZodOptional<z.ZodBoolean>;
-    linkClickOpen: z.ZodOptional<z.ZodBoolean>;
-    imageLightboxOpen: z.ZodOptional<z.ZodBoolean>;
-}, "strip", z.ZodTypeAny, {
+const UiOnMapInteractionsOptionsSchema: z_2.ZodObject<{
+    featureSelectPanel: z_2.ZodOptional<z_2.ZodBoolean>;
+    featureHoverPanel: z_2.ZodOptional<z_2.ZodBoolean>;
+    elementSelectPanel: z_2.ZodOptional<z_2.ZodBoolean>;
+    linkClickOpen: z_2.ZodOptional<z_2.ZodBoolean>;
+    imageLightboxOpen: z_2.ZodOptional<z_2.ZodBoolean>;
+}, "strip", z_2.ZodTypeAny, {
     featureSelectPanel?: boolean | undefined;
     featureHoverPanel?: boolean | undefined;
     elementSelectPanel?: boolean | undefined;

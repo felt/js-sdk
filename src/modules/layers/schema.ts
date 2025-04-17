@@ -6,12 +6,18 @@ import {
   type Method,
   methodMessage,
 } from "~/lib/builders";
-import type { zInfer } from "~/lib/utils";
+import type { UnwrapPromise, zInfer } from "~/lib/utils";
 import {
   type GeoJsonFeature,
   SetVisibilityRequestSchema,
+  SortConfigSchema,
 } from "~/modules/shared/types";
-import { FiltersSchema, type LayerFilters } from "./filters/types";
+import type { LayersController } from "./controller";
+import {
+  FiltersSchema,
+  GeometryFilterSchema,
+  type LayerFilters,
+} from "./filters/types";
 import {
   type AggregationMethod,
   GetLayerCalculationParamsSchema,
@@ -139,6 +145,18 @@ const GetFeatureMessage = methodMessage(
   }),
 );
 
+const GetFeaturesMessage = methodMessage(
+  "getFeatures",
+  z.object({
+    layerId: z.string(),
+    filters: FiltersSchema.optional(),
+    sorting: SortConfigSchema.optional(),
+    boundary: GeometryFilterSchema.optional(),
+    search: z.string().optional(),
+    pagination: z.string().optional().nullish(),
+  }),
+);
+
 const GetGeoJsonFeatureMessage = methodMessage(
   "getGeoJsonFeature",
   z.object({
@@ -192,6 +210,7 @@ export const layersSchema = {
 
     GetRenderedFeaturesMessage,
     GetFeatureMessage,
+    GetFeaturesMessage,
     GetGeoJsonFeatureMessage,
 
     GetLayerCategoriesMessage,
@@ -268,6 +287,11 @@ export type LayersSchema = {
       Array<LayerFeature>
     >;
     getFeature: Method<zInfer<typeof GetFeatureMessage>, LayerFeature | null>;
+    getFeatures: Method<
+      zInfer<typeof GetFeaturesMessage>,
+      UnwrapPromise<ReturnType<LayersController["getFeatures"]>>
+    >;
+
     getGeoJsonFeature: Method<
       zInfer<typeof GetGeoJsonFeatureMessage>,
       GeoJsonFeature | null

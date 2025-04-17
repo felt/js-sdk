@@ -843,6 +843,11 @@ export const CreateLayersFromGeoJsonSchema = z.object({
   geometryStyles: LayersFromGeoJsonStylesPerGeometrySchema.optional(),
 });
 
+/**
+ * The parameters for the {@link LayersController.createLayersFromGeoJson} method.
+ *
+ * @group Layers
+ */
 export interface CreateLayersFromGeoJsonParams
   extends Omit<
     zInfer<typeof CreateLayersFromGeoJsonSchema>,

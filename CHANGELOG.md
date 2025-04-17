@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.6.0-next.0
+
+### Minor Changes
+
+- 29d4e8a: Implement getFeatures method on LayersController
+
 ## 1.5.1
 
 ### Patch Changes

@@ -1,17 +1,12 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
-import {
-  FeltBoundarySchema,
-  LngLatTupleSchema,
-  MultiPolygonGeometrySchema,
-  PolygonGeometrySchema,
-  type FeltBoundary,
-  type LngLatTuple,
-  type MultiPolygonGeometry,
-  type PolygonGeometry,
-} from "~/modules/shared/types";
 import type { LayersController } from "../controller";
-import { FiltersSchema, type Filters } from "../filters/types";
+import {
+  FiltersSchema,
+  GeometryFilterSchema,
+  type Filters,
+  type GeometryFilter,
+} from "../filters/types";
 
 const AggregateMethodSchema = z.enum(["avg", "max", "min", "sum", "median"]);
 
@@ -41,6 +36,8 @@ const MutliAggregationConfigSchema = z.object({
 
 /**
  * Defines how to aggregate a value across features in a layer.
+ *
+ * @group Stats
  */
 export interface AggregationConfig
   extends zInfer<typeof AggregationConfigSchema> {
@@ -52,12 +49,16 @@ export interface AggregationConfig
 
 /**
  * The method to use for the aggregation.
+ *
+ * @group Stats
  */
 export type AggregationMethod = z.infer<typeof AggregateMethodSchema>;
 
 /**
  * Defines how to aggregate a value across features in a layer with multiple aggregations
  * returned at once.
+ *
+ * @group Stats
  */
 export interface MultiAggregationConfig<T extends AggregationMethod | "count">
   extends zInfer<typeof MutliAggregationConfigSchema> {
@@ -72,28 +73,6 @@ export interface MultiAggregationConfig<T extends AggregationMethod | "count">
   attribute?: string;
 }
 
-const GeometryFilterSchema = z.union([
-  FeltBoundarySchema,
-  PolygonGeometrySchema,
-  MultiPolygonGeometrySchema,
-  z.array(LngLatTupleSchema),
-]);
-
-/**
- * The common type for filtering data by a spatial boundary.
- *
- * This can be either:
- * - `FeltBoundary`: a [w, s, e, n] bounding box
- * - `PolygonGeometry`: a GeoJSON Polygon geometry
- * - `MultiPolygonGeometry`: a GeoJSON MultiPolygon geometry
- * - `LngLatTuple[]`: a list of coordinates describing a single ring of a polygon
- */
-export type GeometryFilter =
-  | FeltBoundary
-  | PolygonGeometry
-  | MultiPolygonGeometry
-  | LngLatTuple[];
-
 const ValueConfigurationSchema = z.object({
   boundary: GeometryFilterSchema.optional(),
   filters: FiltersSchema.optional(),
@@ -107,6 +86,8 @@ const ValueConfigurationSchema = z.object({
  * and `filters` properties.
  *
  * It can also be used to specify how to aggregate the values via the `aggregation` property.
+ *
+ * @group Stats
  */
 export interface ValueConfiguration
   extends zInfer<typeof ValueConfigurationSchema> {
@@ -155,6 +136,8 @@ export const GetLayerCategoriesParamsSchema = z.object({
 /**
  * The parameters for getting categories from a layer, passed to
  * the {@link LayersController.getCategoryData} method.
+ *
+ * @group Stats
  */
 export interface GetLayerCategoriesParams
   extends zInfer<typeof GetLayerCategoriesParamsSchema> {
@@ -202,6 +185,8 @@ const GetLayerCategoriesGroupSchema = z.object({
 
 /**
  * A single category from the response from the {@link LayersController.getCategoryData} method.
+ *
+ * @group Stats
  */
 export interface GetLayerCategoriesGroup
   extends zInfer<typeof GetLayerCategoriesGroupSchema> {}
@@ -248,6 +233,8 @@ export const GetLayerHistogramParamsSchema = z.object({
 /**
  * The params used to request a histogram of values from a layer, passed to
  * the {@link LayersController.getHistogramData} method.
+ *
+ * @group Stats
  */
 export interface GetLayerHistogramParams
   extends zInfer<typeof GetLayerHistogramParamsSchema> {
@@ -281,6 +268,8 @@ const GetLayerHistogramBinSchema = z.object({
 
 /**
  * One bin from the response from the {@link LayersController.getHistogramData} method.
+ *
+ * @group Stats
  */
 export interface GetLayerHistogramBin
   extends zInfer<typeof GetLayerHistogramBinSchema> {}
@@ -301,6 +290,8 @@ export const GetLayerCalculationParamsSchema = z.object({
 /**
  * The parameters for calculating a single aggregate value for a layer, passed to
  * the {@link LayersController.getAggregates} method.
+ *
+ * @group Stats
  */
 export interface GetLayerCalculationParams<
   T extends AggregationMethod | "count",

@@ -2,9 +2,10 @@ import { listener, method } from "~/lib/interface";
 import type {
   GeoJsonFeature,
   SetVisibilityRequest,
+  SortConfig,
 } from "~/modules/shared/types";
 import type { LayerBoundaries, LayerBoundary } from "./boundary/types";
-import type { Filters, LayerFilters } from "./filters/types";
+import type { Filters, GeometryFilter, LayerFilters } from "./filters/types";
 import type {
   AggregationMethod,
   GetLayerCalculationParams,
@@ -86,6 +87,7 @@ export const layersController = (
   // features
   getRenderedFeatures: method(feltWindow, "getRenderedFeatures"),
   getFeature: method(feltWindow, "getFeature"),
+  getFeatures: method(feltWindow, "getFeatures"),
   getGeoJsonFeature: method(feltWindow, "getGeoJsonFeature"),
 
   // stats
@@ -690,6 +692,96 @@ export interface LayersController {
     id: string | number;
     layerId: string;
   }): Promise<LayerFeature | null>;
+
+  /**
+   * Get a list of layer features.
+   *
+   * @remarks This list is paginated in sets of 20 features for each page. In order to paginate
+   * between pages, the response includes `previousPage` and `nextPage` that are tokens
+   * that should be sent in the `pagination` params for requesting sibling pages.
+   *
+   * Text search is case-insensitive and looks for matches across all feature properties.
+   *
+   * @returns
+   * The response is an object which contains:
+   *   - `features`: list of {@link LayerFeature} objects, which does not include
+   * the geometry of the feature but it does include its bounding box.
+   *   - `count`: the total number of features that match the query.
+   *   - `previousPage` & `nextPage`: The tokens to pass in the `pagination` param
+   * to navigate between pages.
+   *
+   * @example
+   * ```typescript
+   * const page1Response = await felt.getFeatures({
+   *   layerId: "layer-1",
+   *   search: "abc123",
+   *   pagination: undefined,
+   * });
+   *
+   * // Note that the search term here matches the one for the first page.
+   * if (page1Response.nextPage) {
+   *   const page2Response = await felt.getFeatures({
+   *     layerId: "layer-1",
+   *     search: "abc123",
+   *     pagination: page1Response.nextPage,
+   *   });
+   * }
+   * ```
+   */
+  getFeatures(params: {
+    /**
+     * The ID of the layer to get features from.
+     */
+    layerId: string;
+
+    /**
+     * Filters to be applied. These filters will merge with layer's own filters.
+     */
+    filters?: Filters;
+
+    /**
+     * Attribute to sort by.
+     */
+    sorting?: SortConfig;
+
+    /**
+     * The spatial boundary to be applied.
+     */
+    boundary?: GeometryFilter;
+
+    /**
+     * Search term to search by.
+     *
+     * Search is case-insensitive and looks for matches across all feature properties.
+     */
+    search?: string;
+
+    /**
+     * Pagination token. It comes from either the `previousPage` or `nextPage`
+     * properties of the previous response.
+     */
+    pagination?: string | null;
+  }): Promise<{
+    /**
+     * The list of features returned from the query.
+     */
+    features: LayerFeature[];
+
+    /**
+     * The total number of features that match the query.
+     */
+    count: number;
+
+    /**
+     * The pagination token to get the previous page of features.
+     */
+    previousPage: string | null;
+
+    /**
+     * The pagination token to get the next page of features.
+     */
+    nextPage: string | null;
+  }>;
 
   /**
    * Get a feature in GeoJSON format from the map by its ID and layer ID.

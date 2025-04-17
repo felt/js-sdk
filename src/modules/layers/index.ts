@@ -28,7 +28,6 @@ export type {
   Layer,
   LayerChangeCallbackParams,
   LayerCommon,
-  LayerFeature,
   LayerGroup,
   LayerGroupChangeCallbackParams,
   LayerProcessingStatus,
@@ -39,10 +38,11 @@ export type {
   RasterBand,
   RasterLayer,
   RasterLayerSource,
-  RasterValue,
   UpdateLayerParams,
   VectorLayer,
 } from "./types";
+
+export type { LayerFeature, RasterValue } from "./features/types";
 
 export type {
   LayerSchema,
@@ -60,6 +60,7 @@ export type {
   FilterLogicGate,
   FilterTernary,
   Filters,
+  GeometryFilter,
   LayerFilters,
 } from "./filters/types";
 
@@ -68,7 +69,6 @@ export type { LayerBoundaries, LayerBoundary } from "./boundary/types";
 export type {
   AggregationConfig,
   AggregationMethod,
-  GeometryFilter,
   GetLayerCalculationParams,
   GetLayerCategoriesGroup,
   GetLayerCategoriesParams,

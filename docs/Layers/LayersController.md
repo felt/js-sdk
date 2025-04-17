@@ -512,6 +512,70 @@ await felt.setLayerFilters({
 
 ***
 
+## getLayerBoundaries()
+
+> **getLayerBoundaries**(`layerId`: `string`): `Promise`\<`null` | [`LayerBoundaries`](LayerBoundaries.md)>
+
+Get the spatial boundaries that are filtering a layer.
+
+### Parameters
+
+| Parameter | Type     |
+| --------- | -------- |
+| `layerId` | `string` |
+
+### Returns
+
+`Promise`\<`null` | [`LayerBoundaries`](LayerBoundaries.md)>
+
+### Remarks
+
+The return type gives you the boundaries split up into the various sources
+that make up the overall boundary for a layer.
+
+The combined boundary is the intersection of the other sources of boundaries.
+
+### Example
+
+```typescript
+const boundaries = await felt.getLayerBoundaries("layer-1");
+
+console.log(boundaries?.combined);
+console.log(boundaries?.spatialFilters);
+console.log(boundaries?.ephemeral);
+```
+
+***
+
+## setLayerBoundary()
+
+> **setLayerBoundary**(`params`: \{ `layerIds`: `string`\[]; `boundary`: `null` | [`MultiPolygonGeometry`](../Shared/MultiPolygonGeometry.md); }): `Promise`\<`void`>
+
+Set the [\`ephemeral\`](LayerBoundaries.md#ephemeral) boundary for one or more layers.
+
+### Parameters
+
+| Parameter         | Type                                                                                                             | Description                                                                                    |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `params`          | \{ `layerIds`: `string`\[]; `boundary`: `null` \| [`MultiPolygonGeometry`](../Shared/MultiPolygonGeometry.md); } | -                                                                                              |
+| `params.layerIds` | `string`\[]                                                                                                      | The ids of the layers to set the boundary for.                                                 |
+| `params.boundary` | `null` \| [`MultiPolygonGeometry`](../Shared/MultiPolygonGeometry.md)                                            | The boundary to set for the layer. Passing `null` clears the ephemeral boundary for the layer. |
+
+### Returns
+
+`Promise`\<`void`>
+
+### Example
+
+```typescript
+await felt.setLayerBoundary({
+  layerIds: ["layer-1", "layer-2"],
+  boundary: { type: "MultiPolygon", coordinates: [[[100, 0], [101, 0], [101, 1], [100, 1], [100, 0]]] }
+});
+```
+
+***
+
 ## getRenderedFeatures()
 
 > **getRenderedFeatures**(`params`?: [`GetRenderedFeaturesConstraint`](GetRenderedFeaturesConstraint.md)): `Promise`\<[`LayerFeature`](LayerFeature.md)\[]>
@@ -985,6 +1049,53 @@ const unsubscribe = felt.onLayerFiltersChange({
       ephemeral, // Filters set via SDK
       style,     // Filters from layer style
       components // Filters from UI components
+    });
+  },
+});
+
+// later on...
+unsubscribe();
+```
+
+***
+
+## onLayerBoundariesChange()
+
+> **onLayerBoundariesChange**(`params`: \{ `options`: \{ `layerId`: `string`; }; `handler`: (`boundaries`: `null` | [`LayerBoundaries`](LayerBoundaries.md)) => `void`; }): `VoidFunction`
+
+Adds a listener for when a layer's spatial boundaries change.
+
+### Parameters
+
+| Parameter                | Type                                                                                                                               | Description                                            |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| `params`                 | \{ `options`: \{ `layerId`: `string`; }; `handler`: (`boundaries`: `null` \| [`LayerBoundaries`](LayerBoundaries.md)) => `void`; } | -                                                      |
+| `params.options`         | \{ `layerId`: `string`; }                                                                                                          | -                                                      |
+| `params.options.layerId` | `string`                                                                                                                           | The id of the layer to listen for boundary changes on. |
+| `params.handler`         | (`boundaries`: `null` \| [`LayerBoundaries`](LayerBoundaries.md)) => `void`                                                        | A function that is called when the boundaries change.  |
+
+### Returns
+
+`VoidFunction`
+
+A function to unsubscribe from the listener
+
+### Remarks
+
+This event fires whenever any type of spatial boundary changes on the layer, including
+ephemeral boundaries set via the SDK or boundaries set through the Felt UI via
+Spatial filter components.
+
+### Example
+
+```typescript
+const unsubscribe = felt.onLayerBoundariesChange({
+  options: { layerId: "layer-1" },
+  handler: ({combined, ephemeral, spatialFilters}) => {
+    console.log("Layer boundaries updated:", {
+      combined,  // All boundaries combined
+      ephemeral, // Boundaries set via SDK
+      spatialFilters // Boundaries set via UI
     });
   },
 });

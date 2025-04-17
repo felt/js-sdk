@@ -63,6 +63,8 @@ export type {
   LayerFilters,
 } from "./filters/types";
 
+export type { LayerBoundaries, LayerBoundary } from "./boundary/types";
+
 export type {
   AggregationConfig,
   AggregationMethod,

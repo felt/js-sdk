@@ -187,8 +187,8 @@ export interface ElementsController {
     getElements(
     constraint?: GetElementsConstraint): Promise<Array<Element_2 | null>>;
     onElementChange(args: {
-        options: {
-            id: string;
+        options?: {
+            id?: string;
         };
         handler: (
         change: ElementChangeCallbackParams) => void;
@@ -202,14 +202,16 @@ export interface ElementsController {
         }) => void;
     }): VoidFunction;
     onElementDelete(args: {
-        options: {
-            id: string;
+        options?: {
+            id?: string;
         };
-        handler: () => void;
+        handler: (args: {
+            id: Element_2["id"];
+        }) => void;
     }): VoidFunction;
     onElementGroupChange(args: {
-        options: {
-            id: string;
+        options?: {
+            id?: string;
         };
         handler: (change: ElementGroupChangeCallbackParams) => void;
     }): VoidFunction;

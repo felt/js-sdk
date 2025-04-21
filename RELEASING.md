@@ -41,7 +41,7 @@ the prerelease onto NPM:
 1. `npm run enter-prerelease` - ensure the tooling is in prerelease mode. This might fail if
    you are already in `pre` mode (i.e. we're adding more to the prerelease) but that's ok.
 2. Run `npm run list-changes` to see what changes from `main` can be cherry-picked.
-3. `git cherry-pick <commit from main that you want to include>` - bring the changes you want
+3. `git cherry-pick -x <commit from main that you want to include>` - bring the changes you want
    to publish into the prerelease branch.
 4. `npm run local-release` - builds, checks and publishes the prerelease on NPM - you have to
    be an authorised publisher on NPM, and to enter an OTP from an Authenticator app to proceed.

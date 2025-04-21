@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.6.0-next.1
+
+### Minor Changes
+
+* 5a0e3e5: Add setLayerBoundary, getLayerBoundaries, onLayerBoundaryChange
+
 ## 1.6.0-next.0
 
 ### Minor Changes

@@ -5,6 +5,7 @@
     "@feltmaps/js-sdk": "1.5.1"
   },
   "changesets": [
-    "silent-pugs-fetch"
+    "silent-pugs-fetch",
+    "stupid-items-reply"
   ]
 }

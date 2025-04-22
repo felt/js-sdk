@@ -18,14 +18,6 @@ independently of the Layer, so you can turn on and off each category or class in
 
 * [LayersController](LayersController.md)
 
-# Interfaces
-
-* [LayerBoundaries](LayerBoundaries.md)
-
-# Type Aliases
-
-* [LayerBoundary](LayerBoundary.md)
-
 # Features
 
 * [LayerFeature](LayerFeature.md)
@@ -34,6 +26,7 @@ independently of the Layer, so you can turn on and off each category or class in
 # Filters
 
 * [LayerFilters](LayerFilters.md)
+* [LayerBoundaries](LayerBoundaries.md)
 * [FilterLogicGate](FilterLogicGate.md)
 * [FilterExpression](FilterExpression.md)
 * [FilterTernary](FilterTernary.md)

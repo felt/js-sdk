@@ -810,17 +810,17 @@ console.log(boundaries?.ephemeral);
 
 ## setLayerBoundary()
 
-> **setLayerBoundary**(`params`: \{ `layerIds`: `string`\[]; `boundary`: `null` | [`MultiPolygonGeometry`](../Shared/MultiPolygonGeometry.md); }): `Promise`\<`void`>
+> **setLayerBoundary**(`params`: \{ `layerIds`: `string`\[]; `boundary`: `null` | [`GeometryFilter`](../Layers/GeometryFilter.md); }): `Promise`\<`void`>
 
 Set the [\`ephemeral\`](../Layers/LayerBoundaries.md#ephemeral) boundary for one or more layers.
 
 ### Parameters
 
-| Parameter         | Type                                                                                                             | Description                                                                                    |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `params`          | \{ `layerIds`: `string`\[]; `boundary`: `null` \| [`MultiPolygonGeometry`](../Shared/MultiPolygonGeometry.md); } | -                                                                                              |
-| `params.layerIds` | `string`\[]                                                                                                      | The ids of the layers to set the boundary for.                                                 |
-| `params.boundary` | `null` \| [`MultiPolygonGeometry`](../Shared/MultiPolygonGeometry.md)                                            | The boundary to set for the layer. Passing `null` clears the ephemeral boundary for the layer. |
+| Parameter         | Type                                                                                                 | Description                                                                                    |
+| ----------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `params`          | \{ `layerIds`: `string`\[]; `boundary`: `null` \| [`GeometryFilter`](../Layers/GeometryFilter.md); } | -                                                                                              |
+| `params.layerIds` | `string`\[]                                                                                          | The ids of the layers to set the boundary for.                                                 |
+| `params.boundary` | `null` \| [`GeometryFilter`](../Layers/GeometryFilter.md)                                            | The boundary to set for the layer. Passing `null` clears the ephemeral boundary for the layer. |
 
 ### Returns
 

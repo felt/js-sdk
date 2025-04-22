@@ -9,7 +9,6 @@ import {
 } from "~/lib/builders";
 import type { zInfer } from "~/lib/utils";
 import {
-  MultiPolygonGeometrySchema,
   SetVisibilityRequestSchema,
   SortConfigSchema,
 } from "~/modules/shared/types";
@@ -132,7 +131,7 @@ const SetLayerBoundaryMessage = methodMessage(
   "setLayerBoundary",
   z.object({
     layerIds: z.array(z.string()),
-    boundary: MultiPolygonGeometrySchema.nullable(),
+    boundary: GeometryFilterSchema.nullable(),
   }),
 );
 const OnLayerBoundariesChangeMessage = listenerMessageWithParams(

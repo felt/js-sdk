@@ -16,7 +16,7 @@ When there are multiple spatial filters, they are combined into a multi-polygon.
 
 ## ephemeral
 
-> **ephemeral**: `null` | [`MultiPolygonGeometry`](../Shared/MultiPolygonGeometry.md)
+> **ephemeral**: `null` | [`GeometryFilter`](GeometryFilter.md)
 
 Boundaries that are set ephemerally by viewers in their own session.
 

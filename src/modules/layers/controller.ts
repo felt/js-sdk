@@ -4,8 +4,12 @@ import type {
   SetVisibilityRequest,
   SortConfig,
 } from "~/modules/shared/types";
-import type { LayerBoundaries, LayerBoundary } from "./boundary/types";
-import type { Filters, GeometryFilter, LayerFilters } from "./filters/types";
+import type {
+  Filters,
+  GeometryFilter,
+  LayerBoundaries,
+  LayerFilters,
+} from "./filters/types";
 import type {
   AggregationMethod,
   GetLayerCalculationParams,
@@ -607,7 +611,7 @@ export interface LayersController {
      *
      * Passing `null` clears the ephemeral boundary for the layer.
      */
-    boundary: LayerBoundary | null;
+    boundary: GeometryFilter | null;
   }): Promise<void>;
 
   /**

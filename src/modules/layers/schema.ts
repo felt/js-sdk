@@ -6,26 +6,21 @@ import {
   type Method,
   methodMessage,
 } from "~/lib/builders";
-import type { UnwrapPromise, zInfer } from "~/lib/utils";
+import type { zInfer } from "~/lib/utils";
 import {
-  type GeoJsonFeature,
   MultiPolygonGeometrySchema,
   SetVisibilityRequestSchema,
   SortConfigSchema,
 } from "~/modules/shared/types";
 import type { LayerBoundaries } from "./boundary/types";
-import type { LayersController } from "./controller";
 import {
   FiltersSchema,
   GeometryFilterSchema,
   type LayerFilters,
 } from "./filters/types";
 import {
-  type AggregationMethod,
   GetLayerCalculationParamsSchema,
-  type GetLayerCategoriesGroup,
   GetLayerCategoriesParamsSchema,
-  type GetLayerHistogramBin,
   GetLayerHistogramParamsSchema,
 } from "./stats/types";
 import {
@@ -33,13 +28,8 @@ import {
   GetLayerGroupsFilterSchema,
   GetLayersConstraintSchema,
   GetRenderedFeaturesConstraintSchema,
-  type Layer,
   type LayerChangeCallbackParams,
-  type LayerFeature,
-  type LayerGroup,
   type LayerGroupChangeCallbackParams,
-  type LayerSchema,
-  type LegendItem,
   type LegendItemChangeCallbackParams,
   LegendItemIdentifierSchema,
   LegendItemsConstraintSchema,
@@ -252,94 +242,50 @@ export const layersSchema = {
 
 export type LayersSchema = {
   methods: {
-    getLayer: Method<zInfer<typeof GetLayerMessage>, Layer | null>;
-    getLayers: Method<zInfer<typeof GetLayersMessage>, Array<Layer | null>>;
-    setLayerVisibility: Method<zInfer<typeof SetLayerVisibilityMessage>, void>;
-    setLayerStyle: Method<zInfer<typeof SetLayerStyleMessage>, void>;
+    getLayer: Method<zInfer<typeof GetLayerMessage>>;
+    getLayers: Method<zInfer<typeof GetLayersMessage>>;
+    setLayerVisibility: Method<zInfer<typeof SetLayerVisibilityMessage>>;
+    setLayerStyle: Method<zInfer<typeof SetLayerStyleMessage>>;
     setLayerLegendVisibility: Method<
-      zInfer<typeof SetLayerLegendVisibilityMessage>,
-      void
+      zInfer<typeof SetLayerLegendVisibilityMessage>
     >;
 
     createLayersFromGeoJson: Method<
-      zInfer<typeof CreateLayersFromGeoJsonMessage>,
-      {
-        layerGroup: LayerGroup;
-        layers: Array<Layer>;
-      } | null
+      zInfer<typeof CreateLayersFromGeoJsonMessage>
     >;
-    updateLayer: Method<zInfer<typeof UpdateLayerMessage>, Layer>;
-    deleteLayer: Method<zInfer<typeof DeleteLayerMessage>, void>;
+    updateLayer: Method<zInfer<typeof UpdateLayerMessage>>;
+    deleteLayer: Method<zInfer<typeof DeleteLayerMessage>>;
 
-    getLayerGroup: Method<zInfer<typeof GetGroupMessage>, LayerGroup | null>;
-    getLayerGroups: Method<
-      zInfer<typeof GetGroupsMessage>,
-      Array<LayerGroup | null>
-    >;
+    getLayerGroup: Method<zInfer<typeof GetGroupMessage>>;
+    getLayerGroups: Method<zInfer<typeof GetGroupsMessage>>;
     setLayerGroupVisibility: Method<
-      zInfer<typeof SetLayerGroupVisibilityMessage>,
-      void
+      zInfer<typeof SetLayerGroupVisibilityMessage>
     >;
     setLayerGroupLegendVisibility: Method<
-      zInfer<typeof SetLayerGroupLegendVisibilityMessage>,
-      void
+      zInfer<typeof SetLayerGroupLegendVisibilityMessage>
     >;
 
-    getLegendItem: Method<
-      zInfer<typeof GetLegendItemMessage>,
-      LegendItem | null
-    >;
-    getLegendItems: Method<
-      zInfer<typeof GetLegendItemsMessage>,
-      Array<LegendItem | null>
-    >;
+    getLegendItem: Method<zInfer<typeof GetLegendItemMessage>>;
+    getLegendItems: Method<zInfer<typeof GetLegendItemsMessage>>;
     setLegendItemVisibility: Method<
-      zInfer<typeof SetLegendItemVisibilityMessage>,
-      void
+      zInfer<typeof SetLegendItemVisibilityMessage>
     >;
 
-    getLayerFilters: Method<
-      zInfer<typeof GetFiltersMessage>,
-      LayerFilters | null
-    >;
+    getLayerFilters: Method<zInfer<typeof GetFiltersMessage>>;
+    setLayerFilters: Method<zInfer<typeof SetFiltersMessage>>;
 
-    setLayerFilters: Method<zInfer<typeof SetFiltersMessage>, void>;
+    getRenderedFeatures: Method<zInfer<typeof GetRenderedFeaturesMessage>>;
+    getFeature: Method<zInfer<typeof GetFeatureMessage>>;
+    getGeoJsonFeature: Method<zInfer<typeof GetGeoJsonFeatureMessage>>;
 
-    getLayerBoundaries: Method<
-      zInfer<typeof GetLayerBoundariesMessage>,
-      LayerBoundaries | null
-    >;
-    setLayerBoundary: Method<zInfer<typeof SetLayerBoundaryMessage>, void>;
+    getLayerBoundaries: Method<zInfer<typeof GetLayerBoundariesMessage>>;
+    setLayerBoundary: Method<zInfer<typeof SetLayerBoundaryMessage>>;
+    getFeatures: Method<zInfer<typeof GetFeaturesMessage>>;
+    getCategoryData: Method<zInfer<typeof GetLayerCategoriesMessage>>;
+    getHistogramData: Method<zInfer<typeof GetLayerHistogramMessage>>;
+    getAggregates: Method<zInfer<typeof GetLayerCalculationMessage>>;
 
-    getRenderedFeatures: Method<
-      zInfer<typeof GetRenderedFeaturesMessage>,
-      Array<LayerFeature>
-    >;
-    getFeature: Method<zInfer<typeof GetFeatureMessage>, LayerFeature | null>;
-    getFeatures: Method<
-      zInfer<typeof GetFeaturesMessage>,
-      UnwrapPromise<ReturnType<LayersController["getFeatures"]>>
-    >;
-
-    getGeoJsonFeature: Method<
-      zInfer<typeof GetGeoJsonFeatureMessage>,
-      GeoJsonFeature | null
-    >;
-
-    getCategoryData: Method<
-      zInfer<typeof GetLayerCategoriesMessage>,
-      Array<GetLayerCategoriesGroup>
-    >;
-    getHistogramData: Method<
-      zInfer<typeof GetLayerHistogramMessage>,
-      Array<GetLayerHistogramBin>
-    >;
-    getAggregates: Method<
-      zInfer<typeof GetLayerCalculationMessage>,
-      Record<AggregationMethod | "count", number | null>
-    >;
-
-    getLayerSchema: Method<zInfer<typeof GetLayerSchemaMessage>, LayerSchema>;
+    getLayerSchema: Method<zInfer<typeof GetLayerSchemaMessage>>;
   };
   listeners: {
     onLayerChange: Listener<

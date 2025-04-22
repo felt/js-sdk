@@ -128,32 +128,23 @@ export function listener<TEventName extends keyof ListenerSpec>(
   };
 }
 
-// methods where we write out the entire function signature
-type LiteralMethodKeys = {
-  [K in keyof MethodSpec]: MethodSpec[K] extends (...args: any[]) => any
-    ? K
-    : never;
-}[keyof MethodSpec];
-
-type MaybeOneMethod<K extends keyof Omit<MethodSpec, LiteralMethodKeys>> = {
+type MaybeOneMethod<K extends keyof MethodSpec> = {
   [K1 in K]: MethodSpec[K1]["request"];
 }[K]["params"];
 
-type StandardMethods = Omit<MethodSpec, LiteralMethodKeys>;
-
-type OneMethod<K extends keyof StandardMethods> =
+type OneMethod<K extends keyof MethodSpec> =
   MaybeOneMethod<K> extends undefined ? void : MaybeOneMethod<K>;
 
-type FeltMethod<TKey extends keyof StandardMethods> = (
+type FeltMethod<TKey extends keyof MethodSpec> = (
   payload: OneMethod<TKey>,
-) => Promise<StandardMethods[TKey]["response"]>;
+) => Promise<MethodSpec[TKey]["response"]>;
 
-export function method<TKey extends keyof StandardMethods>(
+export function method<TKey extends keyof MethodSpec>(
   feltWindow: Pick<Window, "postMessage">,
   type: TKey,
   transformer?: (
-    params: StandardMethods[TKey]["request"]["params"],
-  ) => PromiseOrNot<StandardMethods[TKey]["request"]["params"]>,
+    params: MethodSpec[TKey]["request"]["params"],
+  ) => PromiseOrNot<MethodSpec[TKey]["request"]["params"]>,
 ): FeltMethod<TKey> {
   return async (params) => {
     const messageChannel = new MessageChannel();

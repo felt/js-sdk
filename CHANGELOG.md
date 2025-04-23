@@ -8,24 +8,6 @@
 - 6a1e536: Widen allowed boundary types
 - 56077be: Add setLayerBoundary, getLayerBoundaries, onLayerBoundaryChange
 
-## 1.6.0-next.2
-
-### Minor Changes
-
-- 8dad86b: Widen allowed boundary types
-
-## 1.6.0-next.1
-
-### Minor Changes
-
-- 5a0e3e5: Add setLayerBoundary, getLayerBoundaries, onLayerBoundaryChange
-
-## 1.6.0-next.0
-
-### Minor Changes
-
-- 29d4e8a: Implement getFeatures method on LayersController
-
 ## 1.5.1
 
 ### Patch Changes

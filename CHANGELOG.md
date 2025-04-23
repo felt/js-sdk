@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.6.0-next.2
+
+### Minor Changes
+
+- 8dad86b: Widen allowed boundary types
+
 ## 1.6.0-next.1
 
 ### Minor Changes

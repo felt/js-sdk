@@ -1,5 +1,13 @@
 # @feltmaps/js-sdk
 
+## 1.6.0
+
+### Minor Changes
+
+- 160ca6d: Implement getFeatures method on LayersController
+- 6a1e536: Widen allowed boundary types
+- 56077be: Add setLayerBoundary, getLayerBoundaries, onLayerBoundaryChange
+
 ## 1.6.0-next.2
 
 ### Minor Changes

@@ -76,5 +76,3 @@ export type {
   MultiAggregationConfig,
   ValueConfiguration,
 } from "./stats/types";
-
-export type { LayersController } from "./controller";

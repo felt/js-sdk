@@ -46,4 +46,4 @@ export type {
 
 export type { ToolsController } from "./controller";
 
-import type { ElementsController } from "../elements";
+import type { ElementsController } from "../elements/controller";

@@ -10,5 +10,3 @@ export type {
   LayerGroupNode,
   LayerNode,
 } from "./types";
-
-export type { SelectionController } from "./controller";

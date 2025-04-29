@@ -50,6 +50,4 @@ export type {
   TextElementUpdate,
 } from "./types";
 
-export type { ElementsController } from "./controller";
-
 import type { ToolsController } from "../tools";

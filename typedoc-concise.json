@@ -1,0 +1,41 @@
+{
+  "$schema": "https://typedoc-plugin-markdown.org/schema.json",
+  "name": "Felt JS SDK Docs",
+  "disableSources": true,
+  "out": "./temp/docs-concise",
+  "entryPoints": ["src/modules/*/index.ts"],
+  "sort": ["kind", "required-first", "source-order"],
+  "plugin": [
+    "typedoc-plugin-zod",
+    "typedoc-plugin-markdown",
+    "typedoc-plugin-remark"
+  ],
+  "groupOrder": ["Methods", "Interfaces", "Type Aliases"],
+  "cleanOutputDir": true,
+  "indexFormat": "list",
+  "parametersFormat": "table",
+  "interfacePropertiesFormat": "list",
+  "classPropertiesFormat": "list",
+  "enumMembersFormat": "table",
+  "typeDeclarationFormat": "list",
+  "propertyMembersFormat": "table",
+
+  "expandParameters": true,
+  "expandObjects": true,
+
+  "hideBreadcrumbs": true,
+  "hidePageHeader": true,
+  "hidePageTitle": true,
+  "hideGroupHeadings": true,
+
+  "treatWarningsAsErrors": false,
+  "useCodeBlocks": false,
+
+  "tableColumnSettings": {
+    "hideInherited": true,
+    "hideDefaults": false
+  },
+
+  "outputFileStrategy": "members",
+  "router": "module"
+}

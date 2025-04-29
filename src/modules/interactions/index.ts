@@ -6,5 +6,3 @@
  * @module Interactions
  */
 export type { MapInteractionEvent } from "./types";
-
-export type { InteractionsController } from "./controller";

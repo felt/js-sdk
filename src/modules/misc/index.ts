@@ -5,4 +5,3 @@
  */
 export type { MapDetails } from "./types";
 
-export type { MiscController } from "./controller";

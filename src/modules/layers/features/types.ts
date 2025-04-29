@@ -1,5 +1,5 @@
 import type { FeltController } from "~/modules/main/controller";
-import type { SelectionController } from "~/modules/selection";
+import type { SelectionController } from "~/modules/selection/controller";
 import type {
   FeltBoundary,
   GeoJsonFeature,

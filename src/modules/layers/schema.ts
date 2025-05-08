@@ -290,7 +290,9 @@ export type LayersSchema = {
     getCategoryData: Method<zInfer<typeof GetLayerCategoriesMessage>>;
     getHistogramData: Method<zInfer<typeof GetLayerHistogramMessage>>;
     getAggregates: Method<zInfer<typeof GetLayerCalculationMessage>>;
-    getPrecomputedAggregates: Method<zInfer<typeof GetLayerPrecomputedCalculationMessage>>;
+    getPrecomputedAggregates: Method<
+      zInfer<typeof GetLayerPrecomputedCalculationMessage>
+    >;
 
     getLayerSchema: Method<zInfer<typeof GetLayerSchemaMessage>>;
   };

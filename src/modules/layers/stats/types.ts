@@ -9,7 +9,13 @@ import {
 } from "../filters/types";
 
 const AggregateMethodSchema = z.enum(["avg", "max", "min", "sum", "median"]);
-const PrecomputedAggregateMethodSchema = z.enum(["avg", "max", "min", "sum", "count"]);
+const PrecomputedAggregateMethodSchema = z.enum([
+  "avg",
+  "max",
+  "min",
+  "sum",
+  "count",
+]);
 
 const AggregationConfigSchema = z.object({
   /**
@@ -60,7 +66,9 @@ export type AggregationMethod = z.infer<typeof AggregateMethodSchema>;
  *
  * @group Stats
  */
-export type PrecomputedAggregationMethod = z.infer<typeof PrecomputedAggregateMethodSchema>;
+export type PrecomputedAggregationMethod = z.infer<
+  typeof PrecomputedAggregateMethodSchema
+>;
 
 /**
  * Defines how to aggregate a value across features in a layer with multiple aggregations
@@ -322,7 +330,6 @@ export interface GetLayerCalculationParams<
   aggregation: MultiAggregationConfig<T>;
 }
 
-
 export const GetLayerPrecomputedCalculationParamsSchema = z.object({
   /**
    * The ID of the layer to calculate an aggregate value for.
@@ -366,5 +373,7 @@ export interface GetLayerPrecomputedCalculationParams<
   /**
    * The grid configuration to use for the precomputed calculation.
    */
-  gridConfig: z.infer<typeof GetLayerPrecomputedCalculationParamsSchema.shape.gridConfig>;
+  gridConfig: z.infer<
+    typeof GetLayerPrecomputedCalculationParamsSchema.shape.gridConfig
+  >;
 }

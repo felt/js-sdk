@@ -9,6 +9,7 @@ import {
 } from "../filters/types";
 
 const AggregateMethodSchema = z.enum(["avg", "max", "min", "sum", "median"]);
+const PrecomputedAggregateMethodSchema = z.enum(["avg", "max", "min", "sum", "count"]);
 
 const AggregationConfigSchema = z.object({
   /**
@@ -53,6 +54,13 @@ export interface AggregationConfig
  * @group Stats
  */
 export type AggregationMethod = z.infer<typeof AggregateMethodSchema>;
+
+/**
+ * The method to use for the precomputed aggregation.
+ *
+ * @group Stats
+ */
+export type PrecomputedAggregationMethod = z.infer<typeof PrecomputedAggregateMethodSchema>;
 
 /**
  * Defines how to aggregate a value across features in a layer with multiple aggregations
@@ -312,4 +320,51 @@ export interface GetLayerCalculationParams<
    * is performed on the specified attribute.
    */
   aggregation: MultiAggregationConfig<T>;
+}
+
+
+export const GetLayerPrecomputedCalculationParamsSchema = z.object({
+  /**
+   * The ID of the layer to calculate an aggregate value for.
+   */
+  layerId: z.string(),
+
+  boundary: GeometryFilterSchema.optional(),
+
+  filters: FiltersSchema.optional(),
+
+  /**
+   * The type of grid to use for the precomputed calculation.
+   */
+  gridConfig: z.object({
+    type: z.enum(["h3"]),
+    resolution: z.number(),
+    method: PrecomputedAggregateMethodSchema,
+    attribute: z.string().optional(),
+  }),
+});
+
+/**
+ * The parameters for calculating a single aggregate value for a layer, passed to
+ * the {@link LayersController.getPrecomputedAggregates} method.
+ *
+ * @group Stats
+ */
+export interface GetLayerPrecomputedCalculationParams<
+  T extends PrecomputedAggregationMethod,
+> extends z.infer<typeof GetLayerPrecomputedCalculationParamsSchema> {
+  /**
+   * Attribute filters for the features to include when calculating the aggregate value.
+   */
+  filters?: Filters;
+
+  /**
+   * The spatial boundary for the features to include when calculating the aggregate value.
+   */
+  boundary?: GeometryFilter;
+
+  /**
+   * The grid configuration to use for the precomputed calculation.
+   */
+  gridConfig: z.infer<typeof GetLayerPrecomputedCalculationParamsSchema.shape.gridConfig>;
 }

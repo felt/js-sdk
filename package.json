@@ -71,7 +71,7 @@
     "check:unused": "knip",
     "check": "npm run check:client-bundle && npm run check:format && npm run check:api && npm run check:unused && npm run check:types && npm run check:test && npm run check:docs",
     "format:write": "prettier --write .",
-    "ci": "npm run build && npm run check",
+    "ci": "npm run build && npm run check && git diff --exit-code",
     "enter-prerelease": "git checkout prerelease && git pull && changeset pre enter next",
     "exit-prerelease": "git checkout prerelease && git pull && changeset pre exit",
     "list-changes": "./scripts/list-possible-changes.sh",

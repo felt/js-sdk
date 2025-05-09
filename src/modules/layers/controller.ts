@@ -978,11 +978,11 @@ export interface LayersController {
    * ```typescript
    * const aggregates = await felt.getPrecomputedAggregates({
    *   layerId: "buildings",
-   *   gridConfig: { 
-   *     type: "h3", 
-   *     resolution: 10, 
-   *     method: "avg", 
-   *     attribute: "assessed_value" 
+   *   gridConfig: {
+   *     type: "h3",
+   *     resolution: 10,
+   *     method: "avg",
+   *     attribute: "assessed_value"
    *   },
    * });
    * ```

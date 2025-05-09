@@ -68,14 +68,14 @@ export type {
 export type {
   AggregationConfig,
   AggregationMethod,
-  PrecomputedAggregationMethod,
   GetLayerCalculationParams,
-  GetLayerPrecomputedCalculationParams,
   GetLayerCategoriesGroup,
   GetLayerCategoriesParams,
   GetLayerHistogramBin,
   GetLayerHistogramParams,
+  GetLayerPrecomputedCalculationParams,
   MultiAggregationConfig,
+  PrecomputedAggregationMethod,
   ValueConfiguration,
 } from "./stats/types";
 

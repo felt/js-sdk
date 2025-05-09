@@ -12,6 +12,8 @@ import {
 } from "../elements/types";
 
 const configurableTools = [
+  "text",
+  "note",
   "pin",
   "line",
   "route",
@@ -19,11 +21,11 @@ const configurableTools = [
   "circle",
   "marker",
   "highlighter",
-  "text",
-  "note",
-] as const satisfies Array<ConfigurableToolType>;
+] as const;
 
-export const ToolSchema = z.enum([...configurableTools, "link"]);
+const allTools = [...configurableTools, "link"] as const;
+
+export const ToolSchema = z.enum(allTools);
 export const ConfigurableToolSchema = z.enum(configurableTools);
 
 export type ToolType = z.infer<typeof ToolSchema>;

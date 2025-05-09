@@ -68,6 +68,7 @@ export type {
 export type {
   AggregationConfig,
   AggregationMethod,
+  PrecomputedAggregationMethod,
   GetLayerCalculationParams,
   GetLayerPrecomputedCalculationParams,
   GetLayerCategoriesGroup,

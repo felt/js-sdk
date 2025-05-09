@@ -1194,6 +1194,38 @@ const maxNewBuildingHeight = await felt.getAggregates({
 
 ***
 
+## getPrecomputedAggregates()
+
+> **getPrecomputedAggregates**(`params`: [`GetLayerPrecomputedCalculationParams`](../Layers/GetLayerPrecomputedCalculationParams.md)\<`"avg"` | `"max"` | `"min"` | `"sum"` | `"count"`>): `Promise`\<\{ `avg`: `null` | `number`; `max`: `null` | `number`; `min`: `null` | `number`; `sum`: `null` | `number`; `count`: `null` | `number`; }>
+
+Calculates aggregates for spatial cells of a layer.
+
+### Parameters
+
+| Parameter | Type                                                                                                                                                |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `params`  | [`GetLayerPrecomputedCalculationParams`](../Layers/GetLayerPrecomputedCalculationParams.md)\<`"avg"` \| `"max"` \| `"min"` \| `"sum"` \| `"count"`> |
+
+### Returns
+
+`Promise`\<\{ `avg`: `null` | `number`; `max`: `null` | `number`; `min`: `null` | `number`; `sum`: `null` | `number`; `count`: `null` | `number`; }>
+
+### Remarks
+
+Performs statistical calculations on spatial cells of a layer, returning min, max, avg, sum, and count. You can focus your calculation on specific areas or subsets
+of your data using boundaries and filters. When using the count method, an attribute is not required.
+
+### Example
+
+```typescript
+const aggregates = await felt.getPrecomputedAggregates({
+  layerId: "buildings",
+  gridConfig: { type: "h3", resolution: 10, method: "avg", attribute: "assessed_value" },
+});
+```
+
+***
+
 ## getLayerSchema()
 
 > **getLayerSchema**(`layerId`: `string`): `Promise`\<[`LayerSchema`](../Layers/LayerSchema.md)>
@@ -1340,7 +1372,7 @@ felt.clearSelection({ elements: true });
 
 ## setTool()
 
-> **setTool**(`tool`: `null` | `"text"` | `"link"` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"`): `void`
+> **setTool**(`tool`: `null` | `"text"` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"` | `"link"`): `void`
 
 Sets the tool to use for drawing elements on the map.
 
@@ -1348,7 +1380,7 @@ Sets the tool to use for drawing elements on the map.
 
 | Parameter | Type                                                                                                                                         | Description      |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
-| `tool`    | `null` \| `"text"` \| `"link"` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` | The tool to set. |
+| `tool`    | `null` \| `"text"` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"link"` | The tool to set. |
 
 ### Returns
 
@@ -1368,13 +1400,13 @@ await felt.setTool(null);
 
 ## getTool()
 
-> **getTool**(): `Promise`\<`null` | `"text"` | `"link"` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"`>
+> **getTool**(): `Promise`\<`null` | `"text"` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"` | `"link"`>
 
 Gets the current tool, if any is in use.
 
 ### Returns
 
-`Promise`\<`null` | `"text"` | `"link"` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"`>
+`Promise`\<`null` | `"text"` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"` | `"link"`>
 
 The current tool, or `null` if no tool is in use.
 
@@ -1388,7 +1420,7 @@ const tool = await felt.getTool(); // "marker", "polygon", etc.
 
 ## onToolChange()
 
-> **onToolChange**(`args`: \{ `handler`: (`tool`: `null` | `"text"` | `"link"` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"`) => `void`; }): `VoidFunction`
+> **onToolChange**(`args`: \{ `handler`: (`tool`: `null` | `"text"` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"` | `"link"`) => `void`; }): `VoidFunction`
 
 Listens for changes to the current tool.
 
@@ -1396,8 +1428,8 @@ Listens for changes to the current tool.
 
 | Parameter      | Type                                                                                                                                                                              | Description                                                              |
 | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| `args`         | \{ `handler`: (`tool`: `null` \| `"text"` \| `"link"` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"`) => `void`; } | -                                                                        |
-| `args.handler` | (`tool`: `null` \| `"text"` \| `"link"` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"`) => `void`                  | This callback is called with the current tool whenever the tool changes. |
+| `args`         | \{ `handler`: (`tool`: `null` \| `"text"` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"link"`) => `void`; } | -                                                                        |
+| `args.handler` | (`tool`: `null` \| `"text"` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` \| `"link"`) => `void`                  | This callback is called with the current tool whenever the tool changes. |
 
 ### Returns
 

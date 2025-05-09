@@ -988,7 +988,7 @@ export interface LayersController {
    * ```
    */
   getPrecomputedAggregates(
-    params: GetLayerPrecomputedCalculationParams<PrecomputedAggregationMethod>,
+    params: GetLayerPrecomputedCalculationParams,
   ): Promise<{ [key in PrecomputedAggregationMethod]: number | null }>;
 
   /**

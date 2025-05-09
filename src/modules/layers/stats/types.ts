@@ -357,9 +357,7 @@ export const GetLayerPrecomputedCalculationParamsSchema = z.object({
  *
  * @group Stats
  */
-export interface GetLayerPrecomputedCalculationParams<
-  T extends PrecomputedAggregationMethod,
-> extends z.infer<typeof GetLayerPrecomputedCalculationParamsSchema> {
+export interface GetLayerPrecomputedCalculationParams extends z.infer<typeof GetLayerPrecomputedCalculationParamsSchema> {
   /**
    * Attribute filters for the features to include when calculating the aggregate value.
    */

@@ -989,7 +989,13 @@ export interface LayersController {
    */
   getPrecomputedAggregates(
     params: GetLayerPrecomputedCalculationParams,
-  ): Promise<{ [key in PrecomputedAggregationMethod]: number | null }>;
+  ): Promise<{
+    avg: number | null;
+    max: number | null;
+    min: number | null;
+    sum: number | null;
+    count: number | null;
+  }>;
 
   /**
    * Get the schema for a layer.

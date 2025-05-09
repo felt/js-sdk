@@ -69,6 +69,7 @@ export type {
   AggregationConfig,
   AggregationMethod,
   GetLayerCalculationParams,
+  GetLayerPrecomputedCalculationParams,
   GetLayerCategoriesGroup,
   GetLayerCategoriesParams,
   GetLayerHistogramBin,

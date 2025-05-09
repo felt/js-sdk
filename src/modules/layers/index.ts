@@ -73,7 +73,9 @@ export type {
   GetLayerCategoriesParams,
   GetLayerHistogramBin,
   GetLayerHistogramParams,
+  GetLayerPrecomputedCalculationParams,
   MultiAggregationConfig,
+  PrecomputedAggregationMethod,
   ValueConfiguration,
 } from "./stats/types";
 

@@ -1,3 +1,3 @@
 ***
 
-> **ConfigurableToolType**: keyof [`ToolSettingsMap`](ToolSettingsMap.md)
+> **ConfigurableToolType**: `Exclude`\<[`ToolType`](ToolType.md), `"link"`>

@@ -21,6 +21,7 @@ import {
   GetLayerCalculationParamsSchema,
   GetLayerCategoriesParamsSchema,
   GetLayerHistogramParamsSchema,
+  GetLayerPrecomputedCalculationParamsSchema,
 } from "./stats/types";
 import {
   CreateLayersFromGeoJsonSchema,
@@ -189,6 +190,11 @@ const GetLayerCalculationMessage = methodMessage(
   GetLayerCalculationParamsSchema,
 );
 
+const GetLayerPrecomputedCalculationMessage = methodMessage(
+  "getPrecomputedAggregates",
+  GetLayerPrecomputedCalculationParamsSchema,
+);
+
 // SCHEMA
 const GetLayerSchemaMessage = methodMessage("getLayerSchema", z.string());
 
@@ -227,6 +233,7 @@ export const layersSchema = {
     GetLayerCategoriesMessage,
     GetLayerHistogramMessage,
     GetLayerCalculationMessage,
+    GetLayerPrecomputedCalculationMessage,
 
     GetLayerSchemaMessage,
   ],
@@ -283,6 +290,9 @@ export type LayersSchema = {
     getCategoryData: Method<zInfer<typeof GetLayerCategoriesMessage>>;
     getHistogramData: Method<zInfer<typeof GetLayerHistogramMessage>>;
     getAggregates: Method<zInfer<typeof GetLayerCalculationMessage>>;
+    getPrecomputedAggregates: Method<
+      zInfer<typeof GetLayerPrecomputedCalculationMessage>
+    >;
 
     getLayerSchema: Method<zInfer<typeof GetLayerSchemaMessage>>;
   };

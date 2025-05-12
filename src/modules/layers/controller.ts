@@ -17,6 +17,7 @@ import type {
   GetLayerCategoriesParams,
   GetLayerHistogramBin,
   GetLayerHistogramParams,
+  GetLayerPrecomputedCalculationParams,
 } from "./stats/types";
 import type {
   CreateLayersFromGeoJsonParams,
@@ -98,7 +99,7 @@ export const layersController = (
   getCategoryData: method(feltWindow, "getCategoryData"),
   getHistogramData: method(feltWindow, "getHistogramData"),
   getAggregates: method(feltWindow, "getAggregates"),
-
+  getPrecomputedAggregates: method(feltWindow, "getPrecomputedAggregates"),
   // schema
   getLayerSchema: method(feltWindow, "getLayerSchema"),
 });
@@ -964,6 +965,36 @@ export interface LayersController {
   getAggregates<T extends AggregationMethod | "count">(
     params: GetLayerCalculationParams<T>,
   ): Promise<Record<T, number | null>>;
+
+  /**
+   * Calculates aggregates for spatial cells of a layer.
+   *
+   * @remarks
+   * Performs statistical calculations on spatial cells of a layer, returning min, max, avg, sum, and count. You can focus your calculation on specific areas or subsets
+   * of your data using boundaries and filters. When using the count method, an attribute is not required.
+   *
+   * @example
+   * ```typescript
+   * const aggregates = await felt.getPrecomputedAggregates({
+   *   layerId: "buildings",
+   *   gridConfig: {
+   *     type: "h3",
+   *     resolution: 10,
+   *     method: "avg",
+   *     attribute: "assessed_value"
+   *   },
+   * });
+   * ```
+   */
+  getPrecomputedAggregates(
+    params: GetLayerPrecomputedCalculationParams,
+  ): Promise<{
+    avg: number | null;
+    max: number | null;
+    min: number | null;
+    sum: number | null;
+    count: number | null;
+  }>;
 
   /**
    * Get the schema for a layer.

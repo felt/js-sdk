@@ -18,6 +18,14 @@ independently of the Layer, so you can turn on and off each category or class in
 
 * [LayersController](LayersController.md)
 
+# Interfaces
+
+* [GridConfig](GridConfig.md)
+
+# Type Aliases
+
+* [GridType](GridType.md)
+
 # Features
 
 * [LayerFeature](LayerFeature.md)
@@ -90,4 +98,6 @@ independently of the Layer, so you can turn on and off each category or class in
 * [GetLayerHistogramParams](GetLayerHistogramParams.md)
 * [GetLayerHistogramBin](GetLayerHistogramBin.md)
 * [GetLayerCalculationParams](GetLayerCalculationParams.md)
+* [GetLayerPrecomputedCalculationParams](GetLayerPrecomputedCalculationParams.md)
 * [AggregationMethod](AggregationMethod.md)
+* [PrecomputedAggregationMethod](PrecomputedAggregationMethod.md)

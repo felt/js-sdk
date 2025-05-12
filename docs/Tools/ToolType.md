@@ -1,3 +1,3 @@
 ***
 
-> **ToolType**: `"text"` | `"link"` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"`
+> **ToolType**: `"circle"` | `"highlighter"` | `"line"` | `"link"` | `"marker"` | `"note"` | `"pin"` | `"polygon"` | `"route"` | `"text"`

@@ -933,6 +933,43 @@ const maxNewBuildingHeight = await felt.getAggregates({
 
 ***
 
+## getPrecomputedAggregates()
+
+> **getPrecomputedAggregates**(`params`: [`GetLayerPrecomputedCalculationParams`](GetLayerPrecomputedCalculationParams.md)): `Promise`\<\{ `avg`: `null` | `number`; `max`: `null` | `number`; `min`: `null` | `number`; `sum`: `null` | `number`; `count`: `null` | `number`; }>
+
+Calculates aggregates for spatial cells of a layer.
+
+### Parameters
+
+| Parameter | Type                                                                              |
+| --------- | --------------------------------------------------------------------------------- |
+| `params`  | [`GetLayerPrecomputedCalculationParams`](GetLayerPrecomputedCalculationParams.md) |
+
+### Returns
+
+`Promise`\<\{ `avg`: `null` | `number`; `max`: `null` | `number`; `min`: `null` | `number`; `sum`: `null` | `number`; `count`: `null` | `number`; }>
+
+### Remarks
+
+Performs statistical calculations on spatial cells of a layer, returning min, max, avg, sum, and count. You can focus your calculation on specific areas or subsets
+of your data using boundaries and filters. When using the count method, an attribute is not required.
+
+### Example
+
+```typescript
+const aggregates = await felt.getPrecomputedAggregates({
+  layerId: "buildings",
+  gridConfig: {
+    type: "h3",
+    resolution: 10,
+    method: "avg",
+    attribute: "assessed_value"
+  },
+});
+```
+
+***
+
 ## getLayerSchema()
 
 > **getLayerSchema**(`layerId`: `string`): `Promise`\<[`LayerSchema`](LayerSchema.md)>

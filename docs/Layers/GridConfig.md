@@ -1,33 +1,17 @@
 ***
 
-# Properties
+> **GridConfig**: \{ `type`: [`GridType`](GridType.md); `resolution`: `number`; } & \{ `method`: `"count"`; `attribute`: `undefined`; } | \{ `method`: `Exclude`\<[`PrecomputedAggregationMethod`](PrecomputedAggregationMethod.md), `"count"`>; `attribute`: `string`; }
+
+# Type declaration
 
 ## type
 
-> **type**: `"h3"`
+> **type**: [`GridType`](GridType.md)
 
 The type of grid to use for the precomputed calculation.
-
-***
 
 ## resolution
 
 > **resolution**: `number`
 
 The resolution of the grid to use for the precomputed calculation.
-
-***
-
-## method
-
-> **method**: `"avg"` | `"max"` | `"min"` | `"sum"` | `"count"`
-
-The method to use for the precomputed calculation.
-
-***
-
-## attribute
-
-> **attribute**: `undefined` | `string`
-
-The attribute to use for the precomputed calculation.

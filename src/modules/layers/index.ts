@@ -74,6 +74,7 @@ export type {
   GetLayerHistogramBin,
   GetLayerHistogramParams,
   GetLayerPrecomputedCalculationParams,
+  GridConfig,
   MultiAggregationConfig,
   PrecomputedAggregationMethod,
   ValueConfiguration,

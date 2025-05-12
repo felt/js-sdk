@@ -330,9 +330,9 @@ export interface GetLayerCalculationParams<
   aggregation: MultiAggregationConfig<T>;
 }
 
-export const GridTypeSchema = z.enum(["h3"]);
+const GridTypeSchema = z.enum(["h3"]);
 
-export const GridConfigSchema = z.object({
+const GridConfigSchema = z.object({
   /**
    * The type of grid to use for the precomputed calculation.
    */

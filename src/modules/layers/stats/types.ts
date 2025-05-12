@@ -333,30 +333,44 @@ export interface GetLayerCalculationParams<
 const GridTypeSchema = z.enum(["h3"]);
 export type GridType = z.infer<typeof GridTypeSchema>;
 
-const GridConfigSchema = z.object({
-  /**
-   * The type of grid to use for the precomputed calculation.
-   */
-  type: GridTypeSchema,
+const GridConfigSchema = z
+  .object({
+    /**
+     * The type of grid to use for the precomputed calculation.
+     */
+    type: GridTypeSchema,
 
-  /**
-   * The resolution of the grid to use for the precomputed calculation.
-   */
-  resolution: z.number(),
+    /**
+     * The resolution of the grid to use for the precomputed calculation.
+     */
+    resolution: z.number(),
 
-  /**
-   * The method to use for the precomputed calculation.
-   */
-  method: PrecomputedAggregateMethodSchema,
+    /**
+     * The method to use for the precomputed calculation.
+     */
+    method: PrecomputedAggregateMethodSchema,
 
-  /**
-   * The attribute to use for the precomputed calculation. This can be omitted if the aggregation method is "count".
-   * Must be a numeric attribute otherwise.
-   */
-  attribute: z.string().optional(),
-});
+    /**
+     * The attribute to use for the precomputed calculation. This can be omitted if the aggregation method is "count".
+     * Must be a numeric attribute otherwise.
+     */
+    attribute: z.string().optional(),
+  })
+  .refine(
+    (data) => {
+      if (data.method === "count") {
+        return data.attribute === undefined;
+      }
+      return data.attribute !== undefined;
+    },
+    {
+      message:
+        "Attribute must be defined when method is not 'count', and must be undefined when method is 'count'",
+      path: ["attribute"],
+    },
+  );
 
-export interface GridConfig extends z.infer<typeof GridConfigSchema> {
+export type GridConfig = {
   /**
    * The type of grid to use for the precomputed calculation.
    */
@@ -366,17 +380,29 @@ export interface GridConfig extends z.infer<typeof GridConfigSchema> {
    * The resolution of the grid to use for the precomputed calculation.
    */
   resolution: number;
-
-  /**
-   * The method to use for the precomputed calculation.
-   */
-  method: PrecomputedAggregationMethod;
-
-  /**
-   * The attribute to use for the precomputed calculation.
-   */
-  attribute: string | undefined;
-}
+} & (
+  | {
+      /**
+       * The method to use for the precomputed calculation.
+       */
+      method: "count";
+      /**
+       * The attribute must be undefined when method is "count"
+       */
+      attribute?: undefined;
+    }
+  | {
+      /**
+       * The method to use for the precomputed calculation.
+       */
+      method: Exclude<PrecomputedAggregationMethod, "count">;
+      /**
+       * The attribute to use for the precomputed calculation.
+       * Must be a numeric attribute.
+       */
+      attribute: string;
+    }
+);
 
 export const GetLayerPrecomputedCalculationParamsSchema = z.object({
   /**

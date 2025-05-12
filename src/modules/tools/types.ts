@@ -12,22 +12,34 @@ import {
 } from "../elements/types";
 
 const configurableTools = [
-  "pin",
-  "line",
-  "route",
-  "polygon",
   "circle",
-  "marker",
   "highlighter",
-  "text",
+  "line",
+  "marker",
   "note",
+  "pin",
+  "polygon",
+  "route",
+  "text",
 ] as const satisfies Array<ConfigurableToolType>;
 
-export const ToolSchema = z.enum([...configurableTools, "link"]);
+const allTools = [...configurableTools, "link"] as const;
+
+export const ToolSchema = z.enum(allTools);
 export const ConfigurableToolSchema = z.enum(configurableTools);
 
-export type ToolType = z.infer<typeof ToolSchema>;
-export type ConfigurableToolType = keyof ToolSettingsMap;
+export type ToolType =
+  | "circle"
+  | "highlighter"
+  | "line"
+  | "link"
+  | "marker"
+  | "note"
+  | "pin"
+  | "polygon"
+  | "route"
+  | "text";
+export type ConfigurableToolType = Exclude<ToolType, "link">;
 
 const PinToolSettingsSchema = PlaceCreateSchema.pick({
   color: true,

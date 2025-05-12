@@ -10,15 +10,15 @@ The Tools controller allows you to let users draw elements on the map.
 
 ## setTool()
 
-> **setTool**(`tool`: `null` | `"text"` | `"link"` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"`): `void`
+> **setTool**(`tool`: `null` | [`ToolType`](ToolType.md)): `void`
 
 Sets the tool to use for drawing elements on the map.
 
 ### Parameters
 
-| Parameter | Type                                                                                                                                         | Description      |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
-| `tool`    | `null` \| `"text"` \| `"link"` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"` | The tool to set. |
+| Parameter | Type                                | Description      |
+| --------- | ----------------------------------- | ---------------- |
+| `tool`    | `null` \| [`ToolType`](ToolType.md) | The tool to set. |
 
 ### Returns
 
@@ -38,13 +38,13 @@ await felt.setTool(null);
 
 ## getTool()
 
-> **getTool**(): `Promise`\<`null` | `"text"` | `"link"` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"`>
+> **getTool**(): `Promise`\<`null` | [`ToolType`](ToolType.md)>
 
 Gets the current tool, if any is in use.
 
 ### Returns
 
-`Promise`\<`null` | `"text"` | `"link"` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"`>
+`Promise`\<`null` | [`ToolType`](ToolType.md)>
 
 The current tool, or `null` if no tool is in use.
 
@@ -58,16 +58,16 @@ const tool = await felt.getTool(); // "marker", "polygon", etc.
 
 ## onToolChange()
 
-> **onToolChange**(`args`: \{ `handler`: (`tool`: `null` | `"text"` | `"link"` | `"note"` | `"pin"` | `"line"` | `"route"` | `"polygon"` | `"circle"` | `"marker"` | `"highlighter"`) => `void`; }): `VoidFunction`
+> **onToolChange**(`args`: \{ `handler`: (`tool`: `null` | [`ToolType`](ToolType.md)) => `void`; }): `VoidFunction`
 
 Listens for changes to the current tool.
 
 ### Parameters
 
-| Parameter      | Type                                                                                                                                                                              | Description                                                              |
-| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| `args`         | \{ `handler`: (`tool`: `null` \| `"text"` \| `"link"` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"`) => `void`; } | -                                                                        |
-| `args.handler` | (`tool`: `null` \| `"text"` \| `"link"` \| `"note"` \| `"pin"` \| `"line"` \| `"route"` \| `"polygon"` \| `"circle"` \| `"marker"` \| `"highlighter"`) => `void`                  | This callback is called with the current tool whenever the tool changes. |
+| Parameter      | Type                                                                     | Description                                                              |
+| -------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `args`         | \{ `handler`: (`tool`: `null` \| [`ToolType`](ToolType.md)) => `void`; } | -                                                                        |
+| `args.handler` | (`tool`: `null` \| [`ToolType`](ToolType.md)) => `void`                  | This callback is called with the current tool whenever the tool changes. |
 
 ### Returns
 
@@ -124,9 +124,9 @@ Gets the settings for the chosen tool
 
 ### Type Parameters
 
-| Type Parameter                                              |
-| ----------------------------------------------------------- |
-| `T` *extends* keyof [`ToolSettingsMap`](ToolSettingsMap.md) |
+| Type Parameter                                                  |
+| --------------------------------------------------------------- |
+| `T` *extends* [`ConfigurableToolType`](ConfigurableToolType.md) |
 
 ### Parameters
 

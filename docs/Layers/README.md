@@ -22,6 +22,10 @@ independently of the Layer, so you can turn on and off each category or class in
 
 * [GridConfig](GridConfig.md)
 
+# Type Aliases
+
+* [GridType](GridType.md)
+
 # Features
 
 * [LayerFeature](LayerFeature.md)

@@ -75,6 +75,7 @@ export type {
   GetLayerHistogramParams,
   GetLayerPrecomputedCalculationParams,
   GridConfig,
+  GridType,
   MultiAggregationConfig,
   PrecomputedAggregationMethod,
   ValueConfiguration,

@@ -331,6 +331,7 @@ export interface GetLayerCalculationParams<
 }
 
 const GridTypeSchema = z.enum(["h3"]);
+export type GridType = z.infer<typeof GridTypeSchema>;
 
 const GridConfigSchema = z.object({
   /**
@@ -359,7 +360,7 @@ export interface GridConfig extends z.infer<typeof GridConfigSchema> {
   /**
    * The type of grid to use for the precomputed calculation.
    */
-  type: z.infer<typeof GridTypeSchema>;
+  type: GridType;
 
   /**
    * The resolution of the grid to use for the precomputed calculation.

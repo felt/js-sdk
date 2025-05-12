@@ -330,6 +330,32 @@ export interface GetLayerCalculationParams<
   aggregation: MultiAggregationConfig<T>;
 }
 
+const GridTypeSchema = z.enum(["h3"]);
+
+const GridConfigSchema = z.object({
+  /**
+   * The type of grid to use for the precomputed calculation.
+   */
+  type: GridTypeSchema,
+
+  /**
+   * The resolution of the grid to use for the precomputed calculation.
+   */
+  resolution: z.number(),
+
+  /**
+   * The method to use for the precomputed calculation.
+   */
+  method: PrecomputedAggregateMethodSchema,
+
+  /**
+   * The attribute to use for the precomputed calculation. This can be omitted if the aggregation method is "count".
+   * Must be a numeric attribute otherwise.
+   */
+  attribute: z.string().optional(),
+});
+
+type GridConfig = z.infer<typeof GridConfigSchema>;
 export const GetLayerPrecomputedCalculationParamsSchema = z.object({
   /**
    * The ID of the layer to calculate an aggregate value for.
@@ -343,12 +369,7 @@ export const GetLayerPrecomputedCalculationParamsSchema = z.object({
   /**
    * The type of grid to use for the precomputed calculation.
    */
-  gridConfig: z.object({
-    type: z.enum(["h3"]),
-    resolution: z.number(),
-    method: PrecomputedAggregateMethodSchema,
-    attribute: z.string().optional(),
-  }),
+  gridConfig: GridConfigSchema,
 });
 
 /**
@@ -357,7 +378,8 @@ export const GetLayerPrecomputedCalculationParamsSchema = z.object({
  *
  * @group Stats
  */
-export interface GetLayerPrecomputedCalculationParams extends z.infer<typeof GetLayerPrecomputedCalculationParamsSchema> {
+export interface GetLayerPrecomputedCalculationParams
+  extends z.infer<typeof GetLayerPrecomputedCalculationParamsSchema> {
   /**
    * Attribute filters for the features to include when calculating the aggregate value.
    */
@@ -371,7 +393,5 @@ export interface GetLayerPrecomputedCalculationParams extends z.infer<typeof Get
   /**
    * The grid configuration to use for the precomputed calculation.
    */
-  gridConfig: z.infer<
-    typeof GetLayerPrecomputedCalculationParamsSchema.shape.gridConfig
-  >;
+  gridConfig: GridConfig;
 }

@@ -3,12 +3,6 @@
 The parameters for calculating a single aggregate value for a layer, passed to
 the [LayersController.getPrecomputedAggregates](LayersController.md#getprecomputedaggregates) method.
 
-# Type Parameters
-
-| Type Parameter                                                                  |
-| ------------------------------------------------------------------------------- |
-| `T` *extends* [`PrecomputedAggregationMethod`](PrecomputedAggregationMethod.md) |
-
 # Properties
 
 ## layerId
@@ -25,12 +19,12 @@ The ID of the layer to calculate an aggregate value for.
 
 The grid configuration to use for the precomputed calculation.
 
-| Name         | Type                                                  | Default value                    |
-| ------------ | ----------------------------------------------------- | -------------------------------- |
-| `type`       | `"h3"`                                                | -                                |
-| `resolution` | `number`                                              | -                                |
-| `method`     | `"avg"` \| `"max"` \| `"min"` \| `"sum"` \| `"count"` | PrecomputedAggregateMethodSchema |
-| `attribute`? | `string`                                              | -                                |
+| Name         | Type                                                  | Default value                    | Description                                                                                                                                            |
+| ------------ | ----------------------------------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `type`       | `"h3"`                                                | GridTypeSchema                   | The type of grid to use for the precomputed calculation.                                                                                               |
+| `resolution` | `number`                                              | -                                | The resolution of the grid to use for the precomputed calculation.                                                                                     |
+| `method`     | `"avg"` \| `"max"` \| `"min"` \| `"sum"` \| `"count"` | PrecomputedAggregateMethodSchema | The method to use for the precomputed calculation.                                                                                                     |
+| `attribute`? | `string`                                              | -                                | The attribute to use for the precomputed calculation. This can be omitted if the aggregation method is "count". Must be a numeric attribute otherwise. |
 
 ***
 

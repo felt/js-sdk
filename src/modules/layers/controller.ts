@@ -18,7 +18,6 @@ import type {
   GetLayerHistogramBin,
   GetLayerHistogramParams,
   GetLayerPrecomputedCalculationParams,
-  PrecomputedAggregationMethod,
 } from "./stats/types";
 import type {
   CreateLayersFromGeoJsonParams,

@@ -935,15 +935,15 @@ const maxNewBuildingHeight = await felt.getAggregates({
 
 ## getPrecomputedAggregates()
 
-> **getPrecomputedAggregates**(`params`: [`GetLayerPrecomputedCalculationParams`](GetLayerPrecomputedCalculationParams.md)\<`"avg"` | `"max"` | `"min"` | `"sum"` | `"count"`>): `Promise`\<\{ `avg`: `null` | `number`; `max`: `null` | `number`; `min`: `null` | `number`; `sum`: `null` | `number`; `count`: `null` | `number`; }>
+> **getPrecomputedAggregates**(`params`: [`GetLayerPrecomputedCalculationParams`](GetLayerPrecomputedCalculationParams.md)): `Promise`\<\{ `avg`: `null` | `number`; `max`: `null` | `number`; `min`: `null` | `number`; `sum`: `null` | `number`; `count`: `null` | `number`; }>
 
 Calculates aggregates for spatial cells of a layer.
 
 ### Parameters
 
-| Parameter | Type                                                                                                                                      |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `params`  | [`GetLayerPrecomputedCalculationParams`](GetLayerPrecomputedCalculationParams.md)\<`"avg"` \| `"max"` \| `"min"` \| `"sum"` \| `"count"`> |
+| Parameter | Type                                                                              |
+| --------- | --------------------------------------------------------------------------------- |
+| `params`  | [`GetLayerPrecomputedCalculationParams`](GetLayerPrecomputedCalculationParams.md) |
 
 ### Returns
 

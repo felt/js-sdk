@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.7.0-next.0
+
+### Minor Changes
+
+- 15a35a5: Add method getPrecomputedAggregates
+
 ## 1.6.0
 
 ### Minor Changes

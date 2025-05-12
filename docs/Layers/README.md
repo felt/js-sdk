@@ -18,7 +18,7 @@ independently of the Layer, so you can turn on and off each category or class in
 
 * [LayersController](LayersController.md)
 
-# Type Aliases
+# Interfaces
 
 * [GridConfig](GridConfig.md)
 

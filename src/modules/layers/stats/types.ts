@@ -355,7 +355,27 @@ const GridConfigSchema = z.object({
   attribute: z.string().optional(),
 });
 
-export type GridConfig = z.infer<typeof GridConfigSchema>;
+export interface GridConfig extends z.infer<typeof GridConfigSchema> {
+  /**
+   * The type of grid to use for the precomputed calculation.
+   */
+  type: z.infer<typeof GridTypeSchema>;
+
+  /**
+   * The resolution of the grid to use for the precomputed calculation.
+   */
+  resolution: number;
+
+  /**
+   * The method to use for the precomputed calculation.
+   */
+  method: PrecomputedAggregationMethod;
+
+  /**
+   * The attribute to use for the precomputed calculation.
+   */
+  attribute: string | undefined;
+}
 
 export const GetLayerPrecomputedCalculationParamsSchema = z.object({
   /**

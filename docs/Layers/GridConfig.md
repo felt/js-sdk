@@ -1,14 +1,14 @@
 ***
 
-> **GridConfig**: \{ `type`: `"h3"`; `resolution`: `number`; `method`: `"avg"` | `"max"` | `"min"` | `"sum"` | `"count"`; `attribute`: `string`; }
-
-# Type declaration
+# Properties
 
 ## type
 
-> **type**: `"h3"` = `GridTypeSchema`
+> **type**: `"h3"`
 
 The type of grid to use for the precomputed calculation.
+
+***
 
 ## resolution
 
@@ -16,15 +16,18 @@ The type of grid to use for the precomputed calculation.
 
 The resolution of the grid to use for the precomputed calculation.
 
+***
+
 ## method
 
-> **method**: `"avg"` | `"max"` | `"min"` | `"sum"` | `"count"` = `PrecomputedAggregateMethodSchema`
+> **method**: `"avg"` | `"max"` | `"min"` | `"sum"` | `"count"`
 
 The method to use for the precomputed calculation.
 
-## attribute?
+***
 
-> `optional` **attribute**: `string`
+## attribute
 
-The attribute to use for the precomputed calculation. This can be omitted if the aggregation method is "count".
-Must be a numeric attribute otherwise.
+> **attribute**: `undefined` | `string`
+
+The attribute to use for the precomputed calculation.

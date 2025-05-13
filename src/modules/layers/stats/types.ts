@@ -331,12 +331,15 @@ export interface GetLayerCalculationParams<
 }
 
 const GridTypeSchema = z.enum(["h3"]);
+
+/**
+ * The type of grid to use for precomputed aggregate values.
+ *
+ * @group Stats
+ */
 export type GridType = z.infer<typeof GridTypeSchema>;
 
-const GridConfigSchema = z.object({
-  /**
-   * The type of grid to use for the precomputed calculation.
-   */
+const CountGridConfigSchema = z.object({
   type: GridTypeSchema,
 
   /**
@@ -344,39 +347,83 @@ const GridConfigSchema = z.object({
    */
   resolution: z.number(),
 
-  /**
-   * The method to use for the precomputed calculation.
-   */
-  method: PrecomputedAggregateMethodSchema,
-
-  /**
-   * The attribute to use for the precomputed calculation. This can be omitted if the aggregation method is "count".
-   * Must be a numeric attribute otherwise.
-   */
-  attribute: z.string().optional(),
+  method: PrecomputedAggregateMethodSchema.extract(["count"]),
 });
 
-export interface GridConfig extends z.infer<typeof GridConfigSchema> {
+/**
+ * The grid configuration for a count-based precomputed aggregate value. Compared to the
+ * {@link AggregatedGridConfig}, the `attribute` property is not required, because the count
+ * is the same regardless of the attribute.
+ *
+ * Used inside {@link GetLayerPrecomputedCalculationParams}.
+ *
+ * @group Stats
+ */
+export interface CountGridConfig extends zInfer<typeof CountGridConfigSchema> {
   /**
    * The type of grid to use for the precomputed calculation.
    */
   type: GridType;
 
   /**
+   * The method to use for the precomputed calculation, which in this case is always "count".
+   */
+  method: Extract<PrecomputedAggregationMethod, "count">;
+}
+
+const AggregatedGridConfigSchema = z.object({
+  type: GridTypeSchema,
+
+  /**
    * The resolution of the grid to use for the precomputed calculation.
    */
-  resolution: number;
+  resolution: z.number(),
+
+  method: PrecomputedAggregateMethodSchema.exclude(["count"]),
+
+  /**
+   * The attribute to use for the precomputed calculation.
+   *
+   * This must be a numeric attribute;
+   */
+  attribute: z.string(),
+});
+
+/**
+ * The grid configuration for an aggregated precomputed aggregate value. This requires
+ * an `attribute` property, because the numeric aggregation requires it.
+ *
+ * If you just want to count the features in each grid cell, use the {@link CountGridConfig}
+ * instead, where you are not required to specify an `attribute`.
+ *
+ * Used inside {@link GetLayerPrecomputedCalculationParams}.
+ *
+ * @group Stats
+ */
+export interface AggregatedGridConfig
+  extends zInfer<typeof AggregatedGridConfigSchema> {
+  /**
+   * The type of grid to use for the precomputed calculation.
+   */
+  type: GridType;
 
   /**
    * The method to use for the precomputed calculation.
    */
-  method: PrecomputedAggregationMethod;
-
-  /**
-   * The attribute to use for the precomputed calculation.
-   */
-  attribute: string | undefined;
+  method: Exclude<PrecomputedAggregationMethod, "count">;
 }
+
+const GridConfigSchema = z.union([
+  CountGridConfigSchema,
+  AggregatedGridConfigSchema,
+]);
+
+/**
+ * Describes the type of grid to use for precomputed aggregate values.
+ *
+ * @group Stats
+ */
+export type GridConfig = CountGridConfig | AggregatedGridConfig;
 
 export const GetLayerPrecomputedCalculationParamsSchema = z.object({
   /**

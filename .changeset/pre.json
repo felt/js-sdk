@@ -5,6 +5,7 @@
     "@feltmaps/js-sdk": "1.6.0"
   },
   "changesets": [
+    "eight-needles-eat",
     "quiet-coins-carry"
   ]
 }

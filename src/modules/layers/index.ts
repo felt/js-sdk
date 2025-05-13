@@ -66,8 +66,10 @@ export type {
 } from "./filters/types";
 
 export type {
+  AggregatedGridConfig,
   AggregationConfig,
   AggregationMethod,
+  CountGridConfig,
   GetLayerCalculationParams,
   GetLayerCategoriesGroup,
   GetLayerCategoriesParams,

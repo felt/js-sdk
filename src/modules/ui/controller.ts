@@ -1,6 +1,13 @@
-import { method } from "~/lib/interface";
+import { method, methodWithListeners } from "~/lib/interface";
 import type { SortConfig } from "~/modules/shared/types";
-import type { UiControlsOptions, UiOnMapInteractionsOptions } from "./types";
+import type {
+  AddElementToPanelInput,
+  PanelInput,
+  UiControlsOptions,
+  UiOnMapInteractionsOptions,
+  UpdateElementInPanelInput,
+  UpdatePanelInput,
+} from "./types";
 
 /**
  * @ignore
@@ -13,6 +20,23 @@ export const uiController = (
 
   showLayerDataTable: method(feltWindow, "showLayerDataTable"),
   hideLayerDataTable: method(feltWindow, "hideLayerDataTable"),
+
+  addPanel: methodWithListeners<"addPanel", PanelInput>(feltWindow, "addPanel"),
+  updatePanel: methodWithListeners<"updatePanel", UpdatePanelInput>(
+    feltWindow,
+    "updatePanel",
+  ),
+  deletePanel: method(feltWindow, "deletePanel"),
+
+  addElementToPanel: methodWithListeners<
+    "addElementToPanel",
+    AddElementToPanelInput
+  >(feltWindow, "addElementToPanel"),
+
+  updateElementInPanel: methodWithListeners<
+    "updateElementInPanel",
+    UpdateElementInPanelInput
+  >(feltWindow, "updateElementInPanel"),
 });
 
 /**
@@ -25,6 +49,86 @@ export const uiController = (
  * @public
  */
 export interface UiController {
+  /**
+   * Adds a panel to the embedded map.
+   *
+   * @param panel - The panel to add.
+   * @example
+   * ```typescript
+   * await felt.addPanel({
+   *   id: "panel-1", // not required but useful for further updates
+   *   title: "My Panel",
+   *   items: [
+   *     {
+   *       type: "Text",
+   *       content: "Hello, world!",
+   *     },
+   *   ],
+   * });
+   */
+  addPanel(panel: PanelInput): void;
+
+  /**
+   * Updates a panel on the embedded map.
+   *
+   * Panel to update is identified by the `id` property.
+   *
+   * @remarks
+   * Properties provided will override the existing properties.
+   * Override is done at Panel level, so if you want to update a specific item,
+   * you need to provide the entire item.
+   *
+   * @param panel - The panel to update.
+   * @example
+   * ```typescript
+   * await felt.updatePanel({
+   *   id: "panel-1",
+   *   title: "A new title for my panel", // only title changes
+   * });
+   */
+  updatePanel(panel: UpdatePanelInput): void;
+
+  /**
+   * Deletes a panel from the embedded map.
+   *
+   * @param id - The id of the panel to delete.
+   * @example
+   * ```typescript
+   * await felt.deletePanel("panel-1");
+   * ```
+   */
+  deletePanel(id: string): void;
+
+  /**
+   * Adds a UI element to a panel.
+   *
+   * @param panelId - The id of the panel to add the element to.
+   * @param element - The element to add.
+   * @example
+   * ```typescript
+   * await felt.addElementToPanel({
+   *   panelId: "panel-1",
+   *   element: { type: "Text", content: "Hello, world!" },
+   * });
+   * ```
+   */
+  addElementToPanel(args: AddElementToPanelInput): void;
+
+  /**
+   * Updates an element in a panel.
+   *
+   * @param panelId - The id of the panel to update the element in.
+   * @param element - The element to update.
+   * @example
+   * ```typescript
+   * await felt.updateElementInPanel({
+   *   panelId: "panel-1",
+   *   element: { type: "Text", content: "Hello, world!" },
+   * });
+   * ```
+   */
+  updateElementInPanel(args: UpdateElementInPanelInput): void;
+
   /**
    * Updates the UI controls on the embedded map.
    *

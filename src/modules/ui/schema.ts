@@ -4,9 +4,30 @@ import { type Method, methodMessage } from "~/lib/builders";
 import type { zInfer } from "~/lib/utils";
 import { SortConfigSchema } from "../shared/types";
 import {
+  AddElementToPanelClonableSchema,
+  PanelClonableSchema,
   UiControlsOptionsSchema,
   UiOnMapInteractionsOptionsSchema,
+  UpdateElementInPanelClonableSchema,
+  UpdatePanelClonableSchema,
 } from "./types";
+
+const AddPanelMessage = methodMessage("addPanel", PanelClonableSchema);
+const UpdatePanelMessage = methodMessage(
+  "updatePanel",
+  UpdatePanelClonableSchema,
+);
+const DeletePanelMessage = methodMessage("deletePanel", z.string());
+
+const AddElementToPanelMessage = methodMessage(
+  "addElementToPanel",
+  AddElementToPanelClonableSchema,
+);
+
+const UpdateElementInPanelMessage = methodMessage(
+  "updateElementInPanel",
+  UpdateElementInPanelClonableSchema,
+);
 
 const UiControlsMessage = methodMessage(
   "updateUiControls",
@@ -35,6 +56,13 @@ const HideLayerDataTableMessage = methodMessage(
 
 export const uiSchema = {
   methods: [
+    AddPanelMessage,
+    UpdatePanelMessage,
+    DeletePanelMessage,
+
+    AddElementToPanelMessage,
+    UpdateElementInPanelMessage,
+
     UiControlsMessage,
     OnMapInteractionsMessage,
 
@@ -46,6 +74,13 @@ export const uiSchema = {
 
 export type UiSchema = {
   methods: {
+    addPanel: Method<zInfer<typeof AddPanelMessage>>;
+    updatePanel: Method<zInfer<typeof UpdatePanelMessage>>;
+    deletePanel: Method<zInfer<typeof DeletePanelMessage>>;
+
+    addElementToPanel: Method<zInfer<typeof AddElementToPanelMessage>>;
+    updateElementInPanel: Method<zInfer<typeof UpdateElementInPanelMessage>>;
+
     updateUiControls: Method<zInfer<typeof UiControlsMessage>>;
     setOnMapInteractionsUi: Method<zInfer<typeof OnMapInteractionsMessage>>;
 

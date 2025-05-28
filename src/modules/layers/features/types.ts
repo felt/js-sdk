@@ -1,3 +1,4 @@
+import type { LayersController } from "~/modules/layers";
 import type { FeltController } from "~/modules/main/controller";
 import type { SelectionController } from "~/modules/selection";
 import type {
@@ -25,6 +26,21 @@ export interface LayerFeature {
    * The identifier of the feature, unique within the layer.
    */
   id: string | number;
+
+  /**
+   * Whether the id is deterministic.
+   *
+   * @remarks If the id is deterministic, it means that the id can be used to reference the feature
+   * in the layer and therefore in all the SDK feature-related methods.
+   *
+   * When the id is not deterministic, the feature cannot be referenced on SDK methods like {@link FeltController.getFeature}
+   * or {@link SelectionController.selectFeature}.
+   *
+   * For layers created using Felt, the id is deterministic because Felt ensures every feature is correctly referenciable on vector tiles.
+   * This cannot be guaranteed for layers created using a GeoJSON source on the SDK (see {@link LayersController.createLayersFromGeoJson})
+   * where the ID will only be deterministic if GeoJSON features have an `id` property.
+   */
+  isDeterministicId: boolean;
 
   /**
    * The identifier of the layer that the feature belongs to.

@@ -36,7 +36,7 @@ export interface LayerFeature {
    * When the id is not deterministic, the feature cannot be referenced on SDK methods like {@link FeltController.getFeature}
    * or {@link SelectionController.selectFeature}.
    *
-   * For layers created using Felt, the id is deterministic because Felt ensures every feature is correctly referenciable on vector tiles.
+   * For layers created and processed on Felt servers, the feature IDs are deterministic because Felt ensures every feature is correctly identified in vector tiles.
    * This cannot be guaranteed for layers created using a GeoJSON source on the SDK (see {@link LayersController.createLayersFromGeoJson})
    * where the ID will only be deterministic if GeoJSON features have an `id` property.
    */

@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.7.0-next.2
+
+### Patch Changes
+
+- 58bd6dd: Add isDeterministicId to LayerFeature
+
 ## 1.7.0-next.1
 
 ### Minor Changes

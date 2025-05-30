@@ -111,6 +111,11 @@ const mergedSchemas = {
 const EventSchema = z.discriminatedUnion("eventName", [
   // this first literal event keeps zod quiet when creating the discriminated union
   z.strictObject({ eventName: z.literal("") }),
+  z.strictObject({
+    eventName: z.literal("onGenericEvent"),
+    id: z.string(),
+    options: z.object({ id: z.string() }),
+  }),
   ...mergedSchemas.listeners,
 ]);
 

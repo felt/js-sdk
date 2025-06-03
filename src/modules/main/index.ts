@@ -181,6 +181,11 @@ export const Felt = {
         ]);
       }, 100);
 
+      // try immediately to see if the map is already ready
+      feltWindow.postMessage({ type: "felt.ready" }, "*", [
+        messageChannel.port2,
+      ]);
+
       messageChannel.port1.onmessage = (event) => {
         if (event.data === true) {
           clearInterval(interval);

@@ -100,7 +100,7 @@ export interface AddPanelElementsInput
     /**
      * The placement of the element in the target container (based on the `on` property).
      *
-     * @defaultValue `undefined`
+     * @defaultValue `{ at: "end" }`
      */
     placement?: PlacementForUIElement;
   }>;

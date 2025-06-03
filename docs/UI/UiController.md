@@ -42,7 +42,7 @@ Panels have two sections:
 
 ### Example
 
-````typescript
+```typescript
 await felt.addPanel({
    panel: {
       id: "panel-1", // not required but useful for further updates
@@ -70,6 +70,7 @@ await felt.addPanel({
    },
    placement: { at: "start" }, // add the panel to the start of the stack
 });
+```
 
 ***
 
@@ -83,9 +84,9 @@ Panel to update is identified by the `id` property.
 
 ### Parameters
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `panel` | [`UpdatePanelElementInput`](UpdatePanelElementInput.md) | The panel to update. |
+| Parameter | Type                                                    | Description          |
+| --------- | ------------------------------------------------------- | -------------------- |
+| `panel`   | [`UpdatePanelElementInput`](UpdatePanelElementInput.md) | The panel to update. |
 
 ### Returns
 
@@ -105,6 +106,7 @@ await felt.updatePanel({
   id: "panel-1",
   title: "A new title for my panel", // only title changes
 });
+```
 
 ***
 
@@ -116,9 +118,9 @@ Deletes a panel.
 
 ### Parameters
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `id` | `string` | The id of the panel to delete. |
+| Parameter | Type     | Description                    |
+| --------- | -------- | ------------------------------ |
+| `id`      | `string` | The id of the panel to delete. |
 
 ### Returns
 
@@ -128,7 +130,7 @@ Deletes a panel.
 
 ```typescript
 await felt.deletePanel("panel-1");
-````
+```
 
 ***
 

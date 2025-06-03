@@ -105,6 +105,7 @@ export interface UiController {
    *    },
    *    placement: { at: "start" }, // add the panel to the start of the stack
    * });
+   * ```
    */
   addPanel(args: AddPanelInput): void;
 
@@ -126,6 +127,7 @@ export interface UiController {
    *   id: "panel-1",
    *   title: "A new title for my panel", // only title changes
    * });
+   * ```
    */
   updatePanel(panel: UpdatePanelInput): void;
 

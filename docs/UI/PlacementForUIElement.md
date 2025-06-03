@@ -2,12 +2,7 @@
 
 > **PlacementForUIElement**: \{ `after`: `string`; } | \{ `before`: `string`; } | \{ `at`: `"start"` | `"end"`; }
 
-The placement of an element in a panel.
+Used in [UiController.addPanel](UiController.md#addpanel) to specify the position of a panel in the stack
+and in [UiController.addPanelElements](UiController.md#addpanelelements) to specify the position of an element in a panel.
 
-# Remarks
-
-This is used to specify the position of an element in a panel when adding it.
-
-# Default Value
-
-`"end"`
+In both cases, the default value is `{ at: "end" }`.

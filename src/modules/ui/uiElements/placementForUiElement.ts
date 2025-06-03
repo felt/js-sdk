@@ -1,4 +1,5 @@
 import { z } from "zod";
+import type { UiController } from "../controller";
 
 export const placementForUiElementSchema = z.union([
   z.object({ after: z.string() }),
@@ -7,12 +8,10 @@ export const placementForUiElementSchema = z.union([
 ]);
 
 /**
- * The placement of an element in a panel.
+ * Used in {@link UiController.addPanel} to specify the position of a panel in the stack
+ * and in {@link UiController.addPanelElements} to specify the position of an element in a panel.
  *
- * @remarks
- * This is used to specify the position of an element in a panel when adding it.
- *
- * @defaultValue `"end"`
+ * In both cases, the default value is `{ at: "end" }`.
  *
  * @public
  */

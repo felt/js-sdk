@@ -57,7 +57,7 @@ await felt.addPanelElement({
             label: "Name",
             placeholder: "Enter your name",
             value: "",
-            onChange: (value) => setName(value),
+            onChange: ({ value }) => setName(value),
          },
       ],
       footer: [

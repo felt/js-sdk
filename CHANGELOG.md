@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.7.0-next.3
+
+### Minor Changes
+
+- 2b0f08f: Add Custom UI API for panels
+
 ## 1.7.0-next.2
 
 ### Patch Changes

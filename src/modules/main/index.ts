@@ -155,7 +155,8 @@ export const Felt = {
   connect(feltWindow: Pick<Window, "postMessage">): Promise<FeltController> {
     const controller = makeController(feltWindow);
 
-    // a secret way to skip the ready check
+    // a back-door to skip the ready check, for cases where we know the map is already ready,
+    // such as if we invoke the SDK from inside the Felt application.
     if (arguments.length === 2) {
       const firstArg = arguments[1];
       if (

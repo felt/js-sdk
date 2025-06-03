@@ -1,5 +1,7 @@
 import type { AllModules } from "~/modules/main/schema";
+import type { Listener } from "./builders";
 import { type TransportableError } from "./errors";
+import { forEveryEventHandler } from "./forEveryEventHandler";
 import type { PromiseOrNot, UnionToIntersection } from "./utils";
 
 export type FeltHandlers = {
@@ -8,7 +10,9 @@ export type FeltHandlers = {
 };
 
 type MethodSpec = UnionToIntersection<AllModules["methods"]>;
-type ListenerSpec = UnionToIntersection<AllModules["listeners"]>;
+type ListenerSpec = UnionToIntersection<AllModules["listeners"]> & {
+  onGenericEvent: Listener<{ id: string }, void>;
+};
 
 type ExtractMethodParams<
   T extends Record<
@@ -166,6 +170,50 @@ export function method<TKey extends keyof MethodSpec>(
         messageChannel.port2.close();
       };
     });
+  };
+}
+
+export function methodWithListeners<
+  TKey extends keyof MethodSpec,
+  TUserFacingParams extends object,
+>(
+  feltWindow: Pick<Window, "postMessage">,
+  type: TKey,
+): (params: TUserFacingParams) => ReturnType<FeltMethod<TKey>> {
+  const methodRes = method(feltWindow, type);
+  const genericEventListener = listener(feltWindow, "onGenericEvent");
+
+  return async (userFacingParams) => {
+    const destroyListeners: VoidFunction[] = [];
+
+    forEveryEventHandler(userFacingParams, (key, handler, object) => {
+      const eventId = crypto.randomUUID();
+
+      (object as Record<string, unknown>)[key] = eventId;
+
+      const unsubscribe = genericEventListener({
+        handler: (event) => {
+          switch (event) {
+            // @ts-expect-error - this is a special event that is not part of the event spec
+            case `felt.removeGenericListener:${eventId}`:
+              unsubscribe();
+              break;
+            default:
+              handler(event);
+          }
+        },
+        options: { id: eventId },
+      });
+
+      destroyListeners.push(unsubscribe);
+    });
+
+    // assuming userFacingParams turned into a clonable params (OneMethod<TKey>)
+    // during the forEveryEventHandler loop
+    const clonableParams = userFacingParams as unknown as OneMethod<TKey>;
+    const response = await methodRes(clonableParams);
+
+    return response;
   };
 }
 

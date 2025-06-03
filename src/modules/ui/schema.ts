@@ -4,9 +4,36 @@ import { type Method, methodMessage } from "~/lib/builders";
 import type { zInfer } from "~/lib/utils";
 import { SortConfigSchema } from "../shared/types";
 import {
+  AddPanelClonableSchema,
+  AddPanelElementsClonableSchema,
+  DeletePanelElementsSchema,
   UiControlsOptionsSchema,
   UiOnMapInteractionsOptionsSchema,
+  UpdatePanelClonableSchema,
+  UpdatePanelElementsClonableSchema,
 } from "./types";
+
+const AddPanelMessage = methodMessage("addPanel", AddPanelClonableSchema);
+const UpdatePanelMessage = methodMessage(
+  "updatePanel",
+  UpdatePanelClonableSchema,
+);
+const DeletePanelMessage = methodMessage("deletePanel", z.string());
+
+const AddPanelElementsMessage = methodMessage(
+  "addPanelElements",
+  AddPanelElementsClonableSchema,
+);
+
+const UpdatePanelElementsMessage = methodMessage(
+  "updatePanelElements",
+  UpdatePanelElementsClonableSchema,
+);
+
+const DeletePanelElementsMessage = methodMessage(
+  "deletePanelElements",
+  DeletePanelElementsSchema,
+);
 
 const UiControlsMessage = methodMessage(
   "updateUiControls",
@@ -35,6 +62,14 @@ const HideLayerDataTableMessage = methodMessage(
 
 export const uiSchema = {
   methods: [
+    AddPanelMessage,
+    UpdatePanelMessage,
+    DeletePanelMessage,
+
+    AddPanelElementsMessage,
+    UpdatePanelElementsMessage,
+    DeletePanelElementsMessage,
+
     UiControlsMessage,
     OnMapInteractionsMessage,
 
@@ -46,6 +81,14 @@ export const uiSchema = {
 
 export type UiSchema = {
   methods: {
+    addPanel: Method<zInfer<typeof AddPanelMessage>>;
+    updatePanel: Method<zInfer<typeof UpdatePanelMessage>>;
+    deletePanel: Method<zInfer<typeof DeletePanelMessage>>;
+
+    addPanelElements: Method<zInfer<typeof AddPanelElementsMessage>>;
+    updatePanelElements: Method<zInfer<typeof UpdatePanelElementsMessage>>;
+    deletePanelElements: Method<zInfer<typeof DeletePanelElementsMessage>>;
+
     updateUiControls: Method<zInfer<typeof UiControlsMessage>>;
     setOnMapInteractionsUi: Method<zInfer<typeof OnMapInteractionsMessage>>;
 

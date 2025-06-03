@@ -155,6 +155,19 @@ export const Felt = {
   connect(feltWindow: Pick<Window, "postMessage">): Promise<FeltController> {
     const controller = makeController(feltWindow);
 
+    // a secret way to skip the ready check
+    if (arguments.length === 2) {
+      const firstArg = arguments[1];
+      if (
+        firstArg &&
+        typeof firstArg === "object" &&
+        "skipReadyCheck" in firstArg &&
+        firstArg.skipReadyCheck
+      ) {
+        return Promise.resolve(controller);
+      }
+    }
+
     return new Promise((resolve, reject) => {
       const failureTimeout = setTimeout(() => {
         reject(new Error("Failed to load Felt map"));

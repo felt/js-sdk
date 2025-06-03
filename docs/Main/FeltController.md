@@ -1547,11 +1547,11 @@ unsubscribe();
 
 ***
 
-## addPanelElement()
+## addPanel()
 
-> **addPanelElement**(`args`: [`AddPanelElementInput`](../UI/AddPanelElementInput.md)): `void`
+> **addPanel**(`args`: [`AddPanelInput`](../UI/AddPanelInput.md)): `void`
 
-Adds a panel to the embedded map.
+Adds a panel.
 Panels are rendered on the right side of the map.
 
 By default, the panel will be added to the end of the stack but you can
@@ -1568,9 +1568,9 @@ Panels have two sections:
 
 ### Parameters
 
-| Parameter | Type                                                    | Description                   |
-| --------- | ------------------------------------------------------- | ----------------------------- |
-| `args`    | [`AddPanelElementInput`](../UI/AddPanelElementInput.md) | The arguments for the method. |
+| Parameter | Type                                      | Description                   |
+| --------- | ----------------------------------------- | ----------------------------- |
+| `args`    | [`AddPanelInput`](../UI/AddPanelInput.md) | The arguments for the method. |
 
 ### Returns
 
@@ -1579,7 +1579,7 @@ Panels have two sections:
 ### Example
 
 ````typescript
-await felt.addPanelElement({
+await felt.addPanel({
    panel: {
       id: "panel-1", // not required but useful for further updates
       title: "My Panel",
@@ -1609,11 +1609,11 @@ await felt.addPanelElement({
 
 ***
 
-## updatePanelElement()
+## updatePanel()
 
-> **updatePanelElement**(`panel`: [`UpdatePanelElementInput`](../UI/UpdatePanelElementInput.md)): `void`
+> **updatePanel**(`panel`: [`UpdatePanelElementInput`](../UI/UpdatePanelElementInput.md)): `void`
 
-Updates a panel on the embedded map.
+Updates a panel.
 
 Panel to update is identified by the `id` property.
 
@@ -1632,23 +1632,23 @@ Panel to update is identified by the `id` property.
 Properties provided will override the existing properties.
 Override is done at Panel level, so if you want to update a specific element,
 you need to provide the entire element. For partial updates of elements, use
-[updateElementsInPanel](../UI/UiController.md#updateelementsinpanel) instead.
+[updatePanelElements](../UI/UiController.md#updatepanelelements) instead.
 
 ### Example
 
 ```typescript
-await felt.updatePanelElement({
+await felt.updatePanel({
   id: "panel-1",
   title: "A new title for my panel", // only title changes
 });
 
 ***
 
-## deletePanelElement()
+## deletePanel()
 
-> **deletePanelElement**(`id`: `string`): `void`
+> **deletePanel**(`id`: `string`): `void`
 
-Deletes a panel from the embedded map.
+Deletes a panel.
 
 ### Parameters
 
@@ -1663,22 +1663,22 @@ Deletes a panel from the embedded map.
 ### Example
 
 ```typescript
-await felt.deletePanelElement("panel-1");
+await felt.deletePanel("panel-1");
 ````
 
 ***
 
-## addElementsToPanel()
+## addPanelElements()
 
-> **addElementsToPanel**(`args`: [`AddElementsToPanelInput`](../UI/AddElementsToPanelInput.md)): `void`
+> **addPanelElements**(`args`: [`AddPanelElementsInput`](../UI/AddPanelElementsInput.md)): `void`
 
 Adds elements to a panel.
 
 ### Parameters
 
-| Parameter | Type                                                          | Description                   |
-| --------- | ------------------------------------------------------------- | ----------------------------- |
-| `args`    | [`AddElementsToPanelInput`](../UI/AddElementsToPanelInput.md) | The arguments for the method. |
+| Parameter | Type                                                      | Description                   |
+| --------- | --------------------------------------------------------- | ----------------------------- |
+| `args`    | [`AddPanelElementsInput`](../UI/AddPanelElementsInput.md) | The arguments for the method. |
 
 ### Returns
 
@@ -1687,7 +1687,7 @@ Adds elements to a panel.
 ### Example
 
 ```typescript
-await felt.addElementsToPanel({
+await felt.addPanelElements({
   panelId: "panel-1",
   elements: [
     {
@@ -1701,17 +1701,17 @@ await felt.addElementsToPanel({
 
 ***
 
-## updateElementsInPanel()
+## updatePanelElements()
 
-> **updateElementsInPanel**(`args`: [`UpdateElementsInPanelInput`](../UI/UpdateElementsInPanelInput.md)): `void`
+> **updatePanelElements**(`args`: [`UpdatePanelElementsInput`](../UI/UpdatePanelElementsInput.md)): `void`
 
 Updates an element in a panel.
 
 ### Parameters
 
-| Parameter | Type                                                                | Description                   |
-| --------- | ------------------------------------------------------------------- | ----------------------------- |
-| `args`    | [`UpdateElementsInPanelInput`](../UI/UpdateElementsInPanelInput.md) | The arguments for the method. |
+| Parameter | Type                                                            | Description                   |
+| --------- | --------------------------------------------------------------- | ----------------------------- |
+| `args`    | [`UpdatePanelElementsInput`](../UI/UpdatePanelElementsInput.md) | The arguments for the method. |
 
 ### Returns
 
@@ -1720,7 +1720,7 @@ Updates an element in a panel.
 ### Example
 
 ```typescript
-await felt.updateElementsInPanel({
+await felt.updatePanelElements({
   panelId: "panel-1",
   elements: {
     "element-1": { type: "Text", content: "Hello, world!" },
@@ -1730,17 +1730,17 @@ await felt.updateElementsInPanel({
 
 ***
 
-## deleteElementsFromPanel()
+## deletePanelElements()
 
-> **deleteElementsFromPanel**(`args`: [`DeleteElementsFromPanel`](../UI/DeleteElementsFromPanel.md)): `void`
+> **deletePanelElements**(`args`: [`DeletePanelElements`](../UI/DeletePanelElements.md)): `void`
 
 Deletes elements from a panel.
 
 ### Parameters
 
-| Parameter | Type                                                          | Description                   |
-| --------- | ------------------------------------------------------------- | ----------------------------- |
-| `args`    | [`DeleteElementsFromPanel`](../UI/DeleteElementsFromPanel.md) | The arguments for the method. |
+| Parameter | Type                                                  | Description                   |
+| --------- | ----------------------------------------------------- | ----------------------------- |
+| `args`    | [`DeletePanelElements`](../UI/DeletePanelElements.md) | The arguments for the method. |
 
 ### Returns
 
@@ -1749,7 +1749,7 @@ Deletes elements from a panel.
 ### Example
 
 ```typescript
-await felt.deleteElementsFromPanel({
+await felt.deletePanelElements({
   panelId: "panel-1",
   elements: ["element-1", "element-2"],
 });

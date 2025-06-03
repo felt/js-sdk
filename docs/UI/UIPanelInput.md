@@ -1,6 +1,6 @@
 ***
 
-The input panel to add to the map by using the [UiController.addPanelElement](UiController.md#addpanelelement) method.
+The input panel to add to the map by using the [UiController.addPanel](UiController.md#addpanel) method.
 
 # Remarks
 
@@ -11,7 +11,7 @@ but it is recommended to provide them if you want to be able to perform updates.
 
 ## items
 
-> **items**: [`PanelUIElementsInput`](PanelUIElementsInput.md)\[]
+> **items**: [`UIPanelElementsInput`](UIPanelElementsInput.md)\[]
 
 The elements to add to the panel body.
 
@@ -27,29 +27,27 @@ The elements to add to the panel body.
 
 > `optional` **title**: `string`
 
-***
-
-## onClose()?
-
-> `optional` **onClose**: (...`args`: `unknown`\[]) => `void`
-
-### Parameters
-
-| Parameter | Type         |
-| --------- | ------------ |
-| ...`args` | `unknown`\[] |
-
-### Returns
-
-`void`
+The title to display in the panel header.
 
 ***
 
 ## footer?
 
-> `optional` **footer**: [`PanelUIElementsInput`](PanelUIElementsInput.md)\[]
+> `optional` **footer**: [`UIPanelElementsInput`](UIPanelElementsInput.md)\[]
 
 The elements to add to the panel footer.
+
+***
+
+## onClose()?
+
+> `optional` **onClose**: () => `void`
+
+A function to call when panel's close button is clicked.
+
+### Returns
+
+`void`
 
 ***
 

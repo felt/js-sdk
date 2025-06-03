@@ -1,13 +1,13 @@
 import { method, methodWithListeners } from "~/lib/interface";
 import type { SortConfig } from "~/modules/shared/types";
 import type {
-  AddElementsToPanelInput,
-  AddPanelElementInput,
-  DeleteElementsFromPanel,
+  AddPanelElementsInput,
+  AddPanelInput,
+  DeletePanelElements,
   UiControlsOptions,
   UiOnMapInteractionsOptions,
-  UpdateElementsInPanelInput,
-  UpdatePanelElementInput,
+  UpdatePanelElementsInput,
+  UpdatePanelInput,
 } from "./types";
 
 /**
@@ -22,29 +22,29 @@ export const uiController = (
   showLayerDataTable: method(feltWindow, "showLayerDataTable"),
   hideLayerDataTable: method(feltWindow, "hideLayerDataTable"),
 
-  addPanelElement: methodWithListeners<"addPanelElement", AddPanelElementInput>(
+  addPanel: methodWithListeners<"addPanel", AddPanelInput>(
     feltWindow,
-    "addPanelElement",
+    "addPanel",
   ),
-  updatePanelElement: methodWithListeners<
-    "updatePanelElement",
-    UpdatePanelElementInput
-  >(feltWindow, "updatePanelElement"),
-  deletePanelElement: method(feltWindow, "deletePanelElement"),
+  updatePanel: methodWithListeners<"updatePanel", UpdatePanelInput>(
+    feltWindow,
+    "updatePanel",
+  ),
+  deletePanel: method(feltWindow, "deletePanel"),
 
-  addElementsToPanel: methodWithListeners<
-    "addElementsToPanel",
-    AddElementsToPanelInput
-  >(feltWindow, "addElementsToPanel"),
-  updateElementsInPanel: methodWithListeners<
-    "updateElementsInPanel",
-    UpdateElementsInPanelInput
-  >(feltWindow, "updateElementsInPanel"),
-  deleteElementsFromPanel: method(feltWindow, "deleteElementsFromPanel"),
+  addPanelElements: methodWithListeners<
+    "addPanelElements",
+    AddPanelElementsInput
+  >(feltWindow, "addPanelElements"),
+  updatePanelElements: methodWithListeners<
+    "updatePanelElements",
+    UpdatePanelElementsInput
+  >(feltWindow, "updatePanelElements"),
+  deletePanelElements: method(feltWindow, "deletePanelElements"),
 });
 
 /**
- * The UI controller allows you to control various aspects of the Felt UI in your embedded map.
+ * The UI controller allows you to control various aspects of the Felt UI in your map.
  *
  * This includes enabling/disabling UI controls, managing on-map interactions, and controlling
  * the visibility of UI components like the data table.
@@ -54,7 +54,7 @@ export const uiController = (
  */
 export interface UiController {
   /**
-   * Adds a panel to the embedded map.
+   * Adds a panel.
    * Panels are rendered on the right side of the map.
    *
    * By default, the panel will be added to the end of the stack but you can
@@ -78,7 +78,7 @@ export interface UiController {
    *
    * @example
    * ```typescript
-   * await felt.addPanelElement({
+   * await felt.addPanel({
    *    panel: {
    *       id: "panel-1", // not required but useful for further updates
    *       title: "My Panel",
@@ -106,10 +106,10 @@ export interface UiController {
    *    placement: { at: "start" }, // add the panel to the start of the stack
    * });
    */
-  addPanelElement(args: AddPanelElementInput): void;
+  addPanel(args: AddPanelInput): void;
 
   /**
-   * Updates a panel on the embedded map.
+   * Updates a panel.
    *
    * Panel to update is identified by the `id` property.
    *
@@ -117,28 +117,28 @@ export interface UiController {
    * Properties provided will override the existing properties.
    * Override is done at Panel level, so if you want to update a specific element,
    * you need to provide the entire element. For partial updates of elements, use
-   * {@link updateElementsInPanel} instead.
+   * {@link updatePanelElements} instead.
    *
    * @param panel - The panel to update.
    * @example
    * ```typescript
-   * await felt.updatePanelElement({
+   * await felt.updatePanel({
    *   id: "panel-1",
    *   title: "A new title for my panel", // only title changes
    * });
    */
-  updatePanelElement(panel: UpdatePanelElementInput): void;
+  updatePanel(panel: UpdatePanelInput): void;
 
   /**
-   * Deletes a panel from the embedded map.
+   * Deletes a panel.
    *
    * @param id - The id of the panel to delete.
    * @example
    * ```typescript
-   * await felt.deletePanelElement("panel-1");
+   * await felt.deletePanel("panel-1");
    * ```
    */
-  deletePanelElement(id: string): void;
+  deletePanel(id: string): void;
 
   /**
    * Adds elements to a panel.
@@ -164,7 +164,7 @@ export interface UiController {
    *
    * @example
    * ```typescript
-   * await felt.addElementsToPanel({
+   * await felt.addPanelElements({
    *   panelId: "panel-1",
    *   elements: [
    *     {
@@ -176,7 +176,7 @@ export interface UiController {
    * });
    * ```
    */
-  addElementsToPanel(args: AddElementsToPanelInput): void;
+  addPanelElements(args: AddPanelElementsInput): void;
 
   /**
    * Updates an element in a panel.
@@ -187,7 +187,7 @@ export interface UiController {
    *
    * @example
    * ```typescript
-   * await felt.updateElementsInPanel({
+   * await felt.updatePanelElements({
    *   panelId: "panel-1",
    *   elements: {
    *     "element-1": { type: "Text", content: "Hello, world!" },
@@ -195,7 +195,7 @@ export interface UiController {
    * });
    * ```
    */
-  updateElementsInPanel(args: UpdateElementsInPanelInput): void;
+  updatePanelElements(args: UpdatePanelElementsInput): void;
 
   /**
    * Deletes elements from a panel.
@@ -205,13 +205,13 @@ export interface UiController {
    * @param args.elements - The elements to delete.
    * @example
    * ```typescript
-   * await felt.deleteElementsFromPanel({
+   * await felt.deletePanelElements({
    *   panelId: "panel-1",
    *   elements: ["element-1", "element-2"],
    * });
    * ```
    */
-  deleteElementsFromPanel(args: DeleteElementsFromPanel): void;
+  deletePanelElements(args: DeletePanelElements): void;
 
   /**
    * Updates the UI controls on the embedded map.

@@ -5,21 +5,18 @@
  * @module UI
  */
 export type {
-  AddElementsToPanelInput,
-  AddPanelElementInput,
-  DeleteElementsFromPanel,
+  AddPanelElementsInput as AddPanelElementsInput,
+  AddPanelInput,
+  DeletePanelElements,
   UiOnMapInteractionsOptions as OnMapInteractionsOptions,
   UiControlsOptions,
-  UpdateElementsInPanelInput,
-  UpdatePanelElementInput,
+  UpdatePanelInput as UpdatePanelElementInput,
+  UpdatePanelElementsInput,
 } from "./types";
 
 export type { PlacementForUIElement } from "./uiElements/placementForUiElement";
 
-export type {
-  PanelUIElementsInput,
-  UIPanelElementInput,
-} from "./uiElements/UIPanelElement";
+export type { UIPanelElementsInput, UIPanelInput } from "./uiElements/UIPanel";
 
 export type { UIButtonElementInput } from "./uiElements/UIButtonElement";
 

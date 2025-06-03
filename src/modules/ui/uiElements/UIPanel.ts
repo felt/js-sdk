@@ -27,7 +27,7 @@ import {
   type UITextInputElementInput,
 } from "./UITextInputElement";
 
-export const panelUiElementsSchemas = {
+export const uiPanelElementsSchemas = {
   public: z.discriminatedUnion("type", [
     uiTextElementSchemas.public,
     uiButtonElementSchemas.public,
@@ -54,32 +54,39 @@ export const panelUiElementsSchemas = {
   ]),
 };
 
-export const uiPanelElementSchemas = {
-  public: uiElementBaseSchema.extend({
-    type: z.literal("Panel"),
-    title: z.string().optional(),
+const uiPanelBaseSchema = z.object({
+  type: z.literal("Panel"),
+
+  /**
+   * The title to display in the panel header.
+   */
+  title: z.string().optional(),
+});
+
+export const uiPanelSchemas = {
+  public: uiElementBaseSchema.extend(uiPanelBaseSchema.shape).extend({
     onClose: z.function().returns(z.void()).optional(),
-    items: z.array(panelUiElementsSchemas.public),
-    footer: z.array(panelUiElementsSchemas.public).optional(),
+    items: z.array(uiPanelElementsSchemas.public),
+    footer: z.array(uiPanelElementsSchemas.public).optional(),
   }),
-  input: uiElementBaseInputSchema.extend({
-    type: z.literal("Panel").optional(),
-    title: z.string().optional(),
-    onClose: z.function().returns(z.void()).optional(),
-    items: z.array(panelUiElementsSchemas.input),
-    footer: z.array(panelUiElementsSchemas.input).optional(),
-  }),
-  clonable: uiElementBaseClonableSchema.extend({
-    type: z.literal("Panel").optional(),
-    title: z.string().optional(),
-    onClose: z.string().optional(),
-    items: z.array(panelUiElementsSchemas.clonable),
-    footer: z.array(panelUiElementsSchemas.clonable).optional(),
-  }),
+  input: uiElementBaseInputSchema
+    .extend(uiPanelBaseSchema.partial().shape)
+    .extend({
+      onClose: z.function().returns(z.void()).optional(),
+      items: z.array(uiPanelElementsSchemas.input),
+      footer: z.array(uiPanelElementsSchemas.input).optional(),
+    }),
+  clonable: uiElementBaseClonableSchema
+    .extend(uiPanelBaseSchema.partial().shape)
+    .extend({
+      onClose: z.string().optional(),
+      items: z.array(uiPanelElementsSchemas.clonable),
+      footer: z.array(uiPanelElementsSchemas.clonable).optional(),
+    }),
 };
 
 /**
- * The input panel to add to the map by using the {@link UiController.addPanelElement} method.
+ * The input panel to add to the map by using the {@link UiController.addPanel} method.
  *
  * @remarks
  * For the sake of convenience, the `id` of the panel and its elements are optional,
@@ -87,17 +94,21 @@ export const uiPanelElementSchemas = {
  *
  * @public
  */
-export interface UIPanelElementInput
-  extends zInfer<typeof uiPanelElementSchemas.input> {
+export interface UIPanelInput extends zInfer<typeof uiPanelSchemas.input> {
   /**
    * The elements to add to the panel body.
    */
-  items: PanelUIElementsInput[];
+  items: UIPanelElementsInput[];
 
   /**
    * The elements to add to the panel footer.
    */
-  footer?: PanelUIElementsInput[];
+  footer?: UIPanelElementsInput[];
+
+  /**
+   * A function to call when panel's close button is clicked.
+   */
+  onClose?: () => void;
 }
 
 /**
@@ -109,7 +120,7 @@ export interface UIPanelElementInput
  *
  * @public
  */
-export type PanelUIElementsInput =
+export type UIPanelElementsInput =
   | UITextElementInput
   | UIButtonElementInput
   | UITextInputElementInput
@@ -117,7 +128,7 @@ export type PanelUIElementsInput =
   | UIButtonGroupElementInput
   | UISelectElementInput;
 
-export const panelUiElementsUpdateSchemas = {
+export const uiPanelElementsUpdateSchemas = {
   input: z.discriminatedUnion("type", [
     uiTextElementSchemas.input.partial().required({ type: true }),
     uiButtonElementSchemas.input.partial().required({ type: true }),

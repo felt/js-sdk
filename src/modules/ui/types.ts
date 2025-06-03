@@ -7,32 +7,28 @@ import {
   uiFlexibleSpaceElementSchemas,
   type UIFlexibleSpaceElementInput,
 } from "./uiElements/UIFlexibleSpaceElement";
-import type {
-  PanelUIElementsInput,
-  UIPanelElementInput,
-} from "./uiElements/UIPanelElement";
+import type { UIPanelElementsInput, UIPanelInput } from "./uiElements/UIPanel";
 import {
-  panelUiElementsSchemas,
-  panelUiElementsUpdateSchemas,
-  uiPanelElementSchemas,
-} from "./uiElements/UIPanelElement";
+  uiPanelElementsSchemas,
+  uiPanelElementsUpdateSchemas,
+  uiPanelSchemas,
+} from "./uiElements/UIPanel";
 
-const AddPanelElementInputSchema = z.object({
-  panel: uiPanelElementSchemas.input,
+const AddPanelInputSchema = z.object({
+  panel: uiPanelSchemas.input,
   placement: placementForUiElementSchema.optional(),
 });
 
 /**
- * The input for adding a panel to the map by using {@link UiController.addPanelElement}.
+ * The input for adding a panel to the map by using {@link UiController.addPanel}.
  *
  * @public
  */
-export interface AddPanelElementInput
-  extends zInfer<typeof AddPanelElementInputSchema> {
+export interface AddPanelInput extends zInfer<typeof AddPanelInputSchema> {
   /**
    * The panel to add.
    */
-  panel: UIPanelElementInput;
+  panel: UIPanelInput;
 
   /**
    * The placement of the panel on the right sidebar stack.
@@ -42,38 +38,34 @@ export interface AddPanelElementInput
   placement?: PlacementForUIElement;
 }
 
-/**
- * @internal
- * @ignore
- */
-export const AddPanelElementClonableSchema = z.object({
-  panel: uiPanelElementSchemas.clonable,
+export const AddPanelClonableSchema = z.object({
+  panel: uiPanelSchemas.clonable,
   placement: placementForUiElementSchema.optional(),
 });
 
-const UpdatePanelElementInputSchema = uiPanelElementSchemas.input
+const UpdatePanelInputSchema = uiPanelSchemas.input
   .partial()
   .required({ id: true });
 
 /**
  * @public
  */
-export interface UpdatePanelElementInput
-  extends zInfer<typeof UpdatePanelElementInputSchema> {
-  items?: AddPanelElementInput["panel"]["items"];
-  footer?: AddPanelElementInput["panel"]["footer"];
+export interface UpdatePanelInput
+  extends zInfer<typeof UpdatePanelInputSchema> {
+  items?: AddPanelInput["panel"]["items"];
+  footer?: AddPanelInput["panel"]["footer"];
 }
 
-export const UpdatePanelElementClonableSchema = uiPanelElementSchemas.clonable
+export const UpdatePanelClonableSchema = uiPanelSchemas.clonable
   .partial()
   .required({ id: true });
 
-const AddElementsToPanelInputSchema = z.object({
+const AddPanelElementsInputSchema = z.object({
   panelId: z.string(),
   elements: z.array(
     z.object({
       element: z.union([
-        panelUiElementsSchemas.input,
+        uiPanelElementsSchemas.input,
         uiFlexibleSpaceElementSchemas.input,
       ]),
       on: z
@@ -91,10 +83,10 @@ const AddElementsToPanelInputSchema = z.object({
 /**
  * @public
  */
-export interface AddElementsToPanelInput
-  extends zInfer<typeof AddElementsToPanelInputSchema> {
+export interface AddPanelElementsInput
+  extends zInfer<typeof AddPanelElementsInputSchema> {
   elements: Array<{
-    element: PanelUIElementsInput | UIFlexibleSpaceElementInput;
+    element: UIPanelElementsInput | UIFlexibleSpaceElementInput;
 
     /**
      * The section of the panel to add the element to.
@@ -118,12 +110,12 @@ export interface AddElementsToPanelInput
  * @internal
  * @ignore
  */
-export const AddElementsToPanelClonableSchema = z.object({
+export const AddPanelElementsClonableSchema = z.object({
   panelId: z.string(),
   elements: z.array(
     z.object({
       element: z.union([
-        panelUiElementsSchemas.clonable,
+        uiPanelElementsSchemas.clonable,
         uiFlexibleSpaceElementSchemas.clonable,
       ]),
       on: z
@@ -138,7 +130,7 @@ export const AddElementsToPanelClonableSchema = z.object({
   ),
 });
 
-const UpdateElementsInPanelInputSchema = z.object({
+const UpdatePanelElementsInputSchema = z.object({
   /**
    * The ID of the panel to update.
    */
@@ -147,7 +139,7 @@ const UpdateElementsInPanelInputSchema = z.object({
   elements: z.record(
     z.string(),
     z.union([
-      panelUiElementsUpdateSchemas.input,
+      uiPanelElementsUpdateSchemas.input,
       uiFlexibleSpaceElementSchemas.input,
     ]),
   ),
@@ -156,20 +148,20 @@ const UpdateElementsInPanelInputSchema = z.object({
 /**
  * @public
  */
-export interface UpdateElementsInPanelInput
-  extends zInfer<typeof UpdateElementsInPanelInputSchema> {
+export interface UpdatePanelElementsInput
+  extends zInfer<typeof UpdatePanelElementsInputSchema> {
   /**
    * Dictionary of element IDs to the element to update.
    */
-  elements: Record<string, PanelUIElementsInput | UIFlexibleSpaceElementInput>;
+  elements: Record<string, UIPanelElementsInput | UIFlexibleSpaceElementInput>;
 }
 
-export const UpdateElementsInPanelClonableSchema = z.object({
+export const UpdatePanelElementsClonableSchema = z.object({
   panelId: z.string(),
   elements: z.record(
     z.string(),
     z.union([
-      panelUiElementsUpdateSchemas.clonable,
+      uiPanelElementsUpdateSchemas.clonable,
       uiFlexibleSpaceElementSchemas.clonable,
     ]),
   ),
@@ -179,7 +171,7 @@ export const UpdateElementsInPanelClonableSchema = z.object({
  * @internal
  * @ignore
  */
-export const DeleteElementsFromPanelSchema = z.object({
+export const DeletePanelElementsSchema = z.object({
   panelId: z.string(),
   elements: z.array(z.string()),
 });
@@ -187,8 +179,8 @@ export const DeleteElementsFromPanelSchema = z.object({
 /**
  * @public
  */
-export interface DeleteElementsFromPanel
-  extends zInfer<typeof DeleteElementsFromPanelSchema> {}
+export interface DeletePanelElements
+  extends zInfer<typeof DeletePanelElementsSchema> {}
 
 /**
  * @public

@@ -1,12 +1,12 @@
 ***
 
-The input for adding a panel to the map by using [UiController.addPanelElement](UiController.md#addpanelelement).
+The input for adding a panel to the map by using [UiController.addPanel](UiController.md#addpanel).
 
 # Properties
 
 ## panel
 
-> **panel**: [`UIPanelElementInput`](UIPanelElementInput.md)
+> **panel**: [`UIPanelInput`](UIPanelInput.md)
 
 The panel to add.
 

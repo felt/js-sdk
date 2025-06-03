@@ -192,7 +192,16 @@ export function methodWithListeners<
       (object as Record<string, unknown>)[key] = eventId;
 
       const unsubscribe = genericEventListener({
-        handler: handler as (event: void) => void,
+        handler: (event) => {
+          switch (event) {
+            // @ts-expect-error - this is a special event that is not part of the event spec
+            case `felt.removeGenericListener:${eventId}`:
+              unsubscribe();
+              break;
+            default:
+              handler(event);
+          }
+        },
         options: { id: eventId },
       });
 

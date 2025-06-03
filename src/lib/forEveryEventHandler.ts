@@ -1,4 +1,4 @@
-export function forEveryKey<T extends object>(
+function forEveryKey<T extends object>(
   obj: T,
   fn: (key: string, value: unknown, obj: object) => void,
 ) {

@@ -5,8 +5,34 @@
  * @module UI
  */
 export type {
+  AddElementsToPanelInput,
+  AddPanelElementInput,
+  DeleteElementsFromPanel,
   UiOnMapInteractionsOptions as OnMapInteractionsOptions,
   UiControlsOptions,
+  UpdateElementsInPanelInput,
+  UpdatePanelElementInput,
 } from "./types";
+
+export type { PlacementForUIElement } from "./uiElements/placementForUiElement";
+
+export type {
+  PanelUIElementsInput,
+  UIPanelElementInput,
+} from "./uiElements/UIPanelElement";
+
+export type { UIButtonElementInput } from "./uiElements/UIButtonElement";
+
+export type { UIButtonGroupElementInput } from "./uiElements/UIButtonGroupElement";
+
+export type { UIDividerElementInput } from "./uiElements/UIDividerElement";
+
+export type { UIFlexibleSpaceElementInput } from "./uiElements/UIFlexibleSpaceElement";
+
+export type { UISelectElementInput } from "./uiElements/UISelectElement";
+
+export type { UITextElementInput } from "./uiElements/UITextElement";
+
+export type { UITextInputElementInput } from "./uiElements/UITextInputElement";
 
 export type { UiController } from "./controller";

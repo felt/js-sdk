@@ -1,12 +1,13 @@
 import { method, methodWithListeners } from "~/lib/interface";
 import type { SortConfig } from "~/modules/shared/types";
 import type {
-  AddElementToPanelInput,
-  PanelInput,
+  AddElementsToPanelInput,
+  AddPanelElementInput,
+  DeleteElementsFromPanel,
   UiControlsOptions,
   UiOnMapInteractionsOptions,
-  UpdateElementInPanelInput,
-  UpdatePanelInput,
+  UpdateElementsInPanelInput,
+  UpdatePanelElementInput,
 } from "./types";
 
 /**
@@ -21,22 +22,25 @@ export const uiController = (
   showLayerDataTable: method(feltWindow, "showLayerDataTable"),
   hideLayerDataTable: method(feltWindow, "hideLayerDataTable"),
 
-  addPanel: methodWithListeners<"addPanel", PanelInput>(feltWindow, "addPanel"),
-  updatePanel: methodWithListeners<"updatePanel", UpdatePanelInput>(
+  addPanelElement: methodWithListeners<"addPanelElement", AddPanelElementInput>(
     feltWindow,
-    "updatePanel",
+    "addPanelElement",
   ),
-  deletePanel: method(feltWindow, "deletePanel"),
+  updatePanelElement: methodWithListeners<
+    "updatePanelElement",
+    UpdatePanelElementInput
+  >(feltWindow, "updatePanelElement"),
+  deletePanelElement: method(feltWindow, "deletePanelElement"),
 
-  addElementToPanel: methodWithListeners<
-    "addElementToPanel",
-    AddElementToPanelInput
-  >(feltWindow, "addElementToPanel"),
-
-  updateElementInPanel: methodWithListeners<
-    "updateElementInPanel",
-    UpdateElementInPanelInput
-  >(feltWindow, "updateElementInPanel"),
+  addElementsToPanel: methodWithListeners<
+    "addElementsToPanel",
+    AddElementsToPanelInput
+  >(feltWindow, "addElementsToPanel"),
+  updateElementsInPanel: methodWithListeners<
+    "updateElementsInPanel",
+    UpdateElementsInPanelInput
+  >(feltWindow, "updateElementsInPanel"),
+  deleteElementsFromPanel: method(feltWindow, "deleteElementsFromPanel"),
 });
 
 /**
@@ -51,22 +55,58 @@ export const uiController = (
 export interface UiController {
   /**
    * Adds a panel to the embedded map.
+   * Panels are rendered on the right side of the map.
    *
-   * @param panel - The panel to add.
+   * By default, the panel will be added to the end of the stack but you can
+   * specify a placement to add it at a specific position in the stack.
+   *
+   * When adding a panel, its id is optional as well as its elements' ids.
+   * It is recommended to provide an id for the panel and its elements to make
+   * it easier to update or delete them later.
+   *
+   * Panels have two sections:
+   * - `items` - Body of the panel, scrollable.
+   * - `footer` - It sticks to the bottom of the panel, useful to add submit buttons.
+   *
+   * @param args - The arguments for the method.
+   * @param args.panel - The panel to add.
+   * @param args.placement - The placement of the panel. Optional. Defaults to `{ at: "end" }`.
+   * - `{ at: "start" }` - Add the panel to the start of the stack.
+   * - `{ at: "end" }` - Add the panel to the end of the stack.
+   * - `{ after: "panel-1" }` - Add the panel after the panel with the id `panel-1`.
+   * - `{ before: "panel-1" }` - Add the panel before the panel with the id `panel-1`.
+   *
    * @example
    * ```typescript
-   * await felt.addPanel({
-   *   id: "panel-1", // not required but useful for further updates
-   *   title: "My Panel",
-   *   items: [
-   *     {
-   *       type: "Text",
-   *       content: "Hello, world!",
-   *     },
-   *   ],
+   * await felt.addPanelElement({
+   *    panel: {
+   *       id: "panel-1", // not required but useful for further updates
+   *       title: "My Panel",
+   *       items: [
+   *          {
+   *             type: "Text",
+   *             content: "Hello, world!",
+   *          },
+   *          {
+   *             type: "TextInput",
+   *             label: "Name",
+   *             placeholder: "Enter your name",
+   *             value: "",
+   *             onChange: (value) => setName(value),
+   *          },
+   *       ],
+   *       footer: [
+   *          {
+   *             type: "Button",
+   *             label: "Submit",
+   *             onClick: () => submitForm(),
+   *          },
+   *       ],
+   *    },
+   *    placement: { at: "start" }, // add the panel to the start of the stack
    * });
    */
-  addPanel(panel: PanelInput): void;
+  addPanelElement(args: AddPanelElementInput): void;
 
   /**
    * Updates a panel on the embedded map.
@@ -75,18 +115,19 @@ export interface UiController {
    *
    * @remarks
    * Properties provided will override the existing properties.
-   * Override is done at Panel level, so if you want to update a specific item,
-   * you need to provide the entire item.
+   * Override is done at Panel level, so if you want to update a specific element,
+   * you need to provide the entire element. For partial updates of elements, use
+   * {@link updateElementsInPanel} instead.
    *
    * @param panel - The panel to update.
    * @example
    * ```typescript
-   * await felt.updatePanel({
+   * await felt.updatePanelElement({
    *   id: "panel-1",
    *   title: "A new title for my panel", // only title changes
    * });
    */
-  updatePanel(panel: UpdatePanelInput): void;
+  updatePanelElement(panel: UpdatePanelElementInput): void;
 
   /**
    * Deletes a panel from the embedded map.
@@ -94,40 +135,83 @@ export interface UiController {
    * @param id - The id of the panel to delete.
    * @example
    * ```typescript
-   * await felt.deletePanel("panel-1");
+   * await felt.deletePanelElement("panel-1");
    * ```
    */
-  deletePanel(id: string): void;
+  deletePanelElement(id: string): void;
 
   /**
-   * Adds a UI element to a panel.
+   * Adds elements to a panel.
    *
-   * @param panelId - The id of the panel to add the element to.
-   * @param element - The element to add.
+   * @param args - The arguments for the method.
+   * @param args.panelId - The id of the panel to add the elements to.
+   * @param args.elements - The elements to add.
+   *
+   * For every element...
+   *
+   * - `element`: The element to add.
+   *
+   * - `on`: The section of the panel to add the element to. To point to a specific container, use the `id` of the container. Optional. Defaults to `items`.
+   *   - `items` - Add the element to the items section of the panel.
+   *   - `footer` - Add the element to the footer section of the panel.
+   *   - `{ id: "container-1" }` - Add the element to the container identified by `id`.
+   *
+   * - `placement`: The placement of the element in the section. Optional. Defaults to `{ at: "end" }`.
+   *   - `{ after: "element-1" }` - Add the element after the element with the id `element-1`.
+   *   - `{ before: "element-1" }` - Add the element before the element with the id `element-1`.
+   *   - `{ at: "start" }` - Add the element to the start of the section.
+   *   - `{ at: "end" }` - Add the element to the end of the section.
+   *
    * @example
    * ```typescript
-   * await felt.addElementToPanel({
+   * await felt.addElementsToPanel({
    *   panelId: "panel-1",
-   *   element: { type: "Text", content: "Hello, world!" },
+   *   elements: [
+   *     {
+   *       element: { type: "Text", content: "Hello, world!" },
+   *       on: "items",
+   *       placement: { at: "start" },
+   *     },
+   *   ],
    * });
    * ```
    */
-  addElementToPanel(args: AddElementToPanelInput): void;
+  addElementsToPanel(args: AddElementsToPanelInput): void;
 
   /**
    * Updates an element in a panel.
    *
-   * @param panelId - The id of the panel to update the element in.
-   * @param element - The element to update.
+   * @param args - The arguments for the method.
+   * @param args.panelId - The id of the panel to update the element in.
+   * @param args.elements - Dictionary of elements to update with their id as key and the element properties to change as value.
+   *
    * @example
    * ```typescript
-   * await felt.updateElementInPanel({
+   * await felt.updateElementsInPanel({
    *   panelId: "panel-1",
-   *   element: { type: "Text", content: "Hello, world!" },
+   *   elements: {
+   *     "element-1": { type: "Text", content: "Hello, world!" },
+   *   },
    * });
    * ```
    */
-  updateElementInPanel(args: UpdateElementInPanelInput): void;
+  updateElementsInPanel(args: UpdateElementsInPanelInput): void;
+
+  /**
+   * Deletes elements from a panel.
+   *
+   * @param args - The arguments for the method.
+   * @param args.panelId - The id of the panel to delete the elements from.
+   * @param args.elements - The elements to delete.
+   * @example
+   * ```typescript
+   * await felt.deleteElementsFromPanel({
+   *   panelId: "panel-1",
+   *   elements: ["element-1", "element-2"],
+   * });
+   * ```
+   */
+  deleteElementsFromPanel(args: DeleteElementsFromPanel): void;
 
   /**
    * Updates the UI controls on the embedded map.

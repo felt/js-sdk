@@ -1,349 +1,194 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
+import type { UiController } from "./controller";
+import type { PlacementForUIElement } from "./uiElements/placementForUiElement";
+import { placementForUiElementSchema } from "./uiElements/placementForUiElement";
+import {
+  uiFlexibleSpaceElementSchemas,
+  type UIFlexibleSpaceElementInput,
+} from "./uiElements/UIFlexibleSpaceElement";
+import type {
+  PanelUIElementsInput,
+  UIPanelElementInput,
+} from "./uiElements/UIPanelElement";
+import {
+  panelUiElementsSchemas,
+  panelUiElementsUpdateSchemas,
+  uiPanelElementSchemas,
+} from "./uiElements/UIPanelElement";
 
-// Helpers
-
-const uiElementLifecycleSchema = z.object({
-  onCreate: z.function().optional(),
-  onDestroy: z.function().optional(),
+const AddPanelElementInputSchema = z.object({
+  panel: uiPanelElementSchemas.input,
+  placement: placementForUiElementSchema.optional(),
 });
 
-const uiElementLifecycleClonableSchema = z.object({
-  onCreate: z.string().optional(),
-  onDestroy: z.string().optional(),
+/**
+ * The input for adding a panel to the map by using {@link UiController.addPanelElement}.
+ *
+ * @public
+ */
+export interface AddPanelElementInput
+  extends zInfer<typeof AddPanelElementInputSchema> {
+  /**
+   * The panel to add.
+   */
+  panel: UIPanelElementInput;
+
+  /**
+   * The placement of the panel on the right sidebar stack.
+   *
+   * @defaultValue `{ at: "end" }`
+   */
+  placement?: PlacementForUIElement;
+}
+
+/**
+ * @internal
+ * @ignore
+ */
+export const AddPanelElementClonableSchema = z.object({
+  panel: uiPanelElementSchemas.clonable,
+  placement: placementForUiElementSchema.optional(),
 });
 
-const uiElementBaseSchema = uiElementLifecycleSchema.extend({
-  id: z.string(),
-});
-
-const uiElementBaseInputSchema = uiElementLifecycleSchema.extend({
-  id: z.string().optional(),
-});
-
-const uiElementBaseClonableSchema = uiElementLifecycleClonableSchema.extend({
-  id: z.string().optional(),
-});
-
-const uiLabelReadyElementBaseSchema = z.object({ label: z.string() });
-
-const uiLabelReadyElementSchemas = {
-  public: uiElementBaseSchema.extend(uiLabelReadyElementBaseSchema.shape),
-  input: uiElementBaseInputSchema.extend(uiLabelReadyElementBaseSchema.shape),
-  clonable: uiElementBaseClonableSchema.extend(
-    uiLabelReadyElementBaseSchema.shape,
-  ),
-};
-
-// Actual elements
-
-const uiTextElementBaseSchema = z.object({
-  type: z.literal("Text"),
-  content: z.string(),
-});
-
-const uiTextElementSchemas = {
-  public: uiElementBaseSchema.extend(uiTextElementBaseSchema.shape),
-  input: uiElementBaseInputSchema.extend(uiTextElementBaseSchema.shape),
-  clonable: uiElementBaseClonableSchema.extend(uiTextElementBaseSchema.shape),
-};
-
-const uiButtonElementBaseSchema = z.object({
-  type: z.literal("Button"),
-  label: z.string(),
-  variant: z
-    .enum(["primary", "outlined", "transparent", "transparentThin"])
-    .optional(),
-  disabled: z.boolean().optional(),
-});
-
-const uiButtonElementSchemas = {
-  public: uiElementBaseSchema
-    .extend(uiButtonElementBaseSchema.shape)
-    .extend({ onClick: z.function().returns(z.void()) }),
-  input: uiElementBaseInputSchema
-    .extend(uiButtonElementBaseSchema.shape)
-    .extend({ onClick: z.function().returns(z.void()) }),
-  clonable: uiElementBaseClonableSchema
-    .extend(uiButtonElementBaseSchema.shape)
-    .extend({ onClick: z.string() }),
-};
-
-const uiTextInputElementBaseSchema = z.object({
-  type: z.literal("TextInput"),
-  value: z.string(),
-  placeholder: z.string().optional(),
-});
-
-const uiTextInputElementSchemas = {
-  public: uiLabelReadyElementSchemas.public
-    .extend(uiTextInputElementBaseSchema.shape)
-    .extend({
-      onChange: z.function().args(z.string()).returns(z.void()).optional(),
-      onBlur: z.function().args(z.string()).returns(z.void()).optional(),
-      onFocus: z.function().args(z.string()).returns(z.void()).optional(),
-    }),
-  input: uiLabelReadyElementSchemas.input
-    .extend(uiTextInputElementBaseSchema.shape)
-    .extend({
-      onChange: z.function().args(z.string()).returns(z.void()).optional(),
-      onBlur: z.function().args(z.string()).returns(z.void()).optional(),
-      onFocus: z.function().args(z.string()).returns(z.void()).optional(),
-    }),
-  clonable: uiLabelReadyElementSchemas.clonable
-    .extend(uiTextInputElementBaseSchema.shape)
-    .extend({
-      onChange: z.string().optional(),
-      onBlur: z.string().optional(),
-      onFocus: z.string().optional(),
-    }),
-};
-
-const uiDividerElementSchemas = {
-  public: uiElementBaseSchema.extend({ type: z.literal("Divider") }),
-  input: uiElementBaseInputSchema.extend({ type: z.literal("Divider") }),
-  clonable: uiElementBaseClonableSchema.extend({ type: z.literal("Divider") }),
-};
-
-const uiFlexibleSpaceElementSchemas = {
-  public: uiElementBaseSchema.extend({ type: z.literal("FlexibleSpace") }),
-  input: uiElementBaseInputSchema.extend({ type: z.literal("FlexibleSpace") }),
-  clonable: uiElementBaseClonableSchema.extend({
-    type: z.literal("FlexibleSpace"),
-  }),
-};
-
-const uiButtonGroupElementBaseSchema = z.object({
-  type: z.literal("ButtonGroup"),
-  align: z.enum(["start", "end"]).optional(),
-});
-
-const uiButtonGroupElementSchemas = {
-  public: uiElementBaseSchema
-    .extend(uiButtonGroupElementBaseSchema.shape)
-    .extend({
-      items: z.array(
-        z.union([
-          uiButtonElementSchemas.public,
-          uiTextElementSchemas.public,
-          uiFlexibleSpaceElementSchemas.public,
-        ]),
-      ),
-    }),
-  input: uiElementBaseInputSchema
-    .extend(uiButtonGroupElementBaseSchema.shape)
-    .extend({
-      items: z.array(
-        z.union([
-          uiButtonElementSchemas.input,
-          uiTextElementSchemas.input,
-          uiFlexibleSpaceElementSchemas.input,
-        ]),
-      ),
-    }),
-  clonable: uiElementBaseClonableSchema
-    .extend(uiButtonGroupElementBaseSchema.shape)
-    .extend({
-      items: z.array(
-        z.union([
-          uiButtonElementSchemas.clonable,
-          uiTextElementSchemas.clonable,
-          uiFlexibleSpaceElementSchemas.clonable,
-        ]),
-      ),
-    }),
-};
-
-const uiSelectElementBaseSchema = z.object({
-  type: z.literal("Select"),
-  options: z.array(z.object({ label: z.string(), value: z.string() })),
-  value: z.string().optional(),
-  search: z.boolean().optional(),
-  placeholder: z.string().optional(),
-});
-
-const uiSelectElementSchemas = {
-  public: uiLabelReadyElementSchemas.public
-    .extend(uiSelectElementBaseSchema.shape)
-    .extend({ onChange: z.function().args(z.string()).returns(z.void()) }),
-  input: uiLabelReadyElementSchemas.input
-    .extend(uiSelectElementBaseSchema.shape)
-    .extend({ onChange: z.function().args(z.string()).returns(z.void()) }),
-  clonable: uiLabelReadyElementSchemas.clonable
-    .extend(uiSelectElementBaseSchema.shape)
-    .extend({ onChange: z.string() }),
-};
-
-const anyUiElementPublicSchema = z.union([
-  uiTextElementSchemas.public,
-  uiButtonElementSchemas.public,
-  uiTextInputElementSchemas.public,
-  uiDividerElementSchemas.public,
-  uiButtonGroupElementSchemas.public,
-  uiSelectElementSchemas.public,
-]);
-
-const anyUiElementInputSchema = z.union([
-  uiTextElementSchemas.input,
-  uiButtonElementSchemas.input,
-  uiTextInputElementSchemas.input,
-  uiDividerElementSchemas.input,
-  uiButtonGroupElementSchemas.input,
-  uiSelectElementSchemas.input,
-]);
-
-const anyUiElementUpdateInputSchema = z.union([
-  uiTextElementSchemas.input.partial().required({ type: true, id: true }),
-  uiButtonElementSchemas.input.partial().required({ type: true, id: true }),
-  uiTextInputElementSchemas.input.partial().required({ type: true, id: true }),
-  uiDividerElementSchemas.input.partial().required({ type: true, id: true }),
-  uiButtonGroupElementSchemas.input
-    .partial()
-    .required({ type: true, id: true }),
-  uiSelectElementSchemas.input.partial().required({ type: true, id: true }),
-]);
-
-const anyUiElementClonableSchema = z.union([
-  uiTextElementSchemas.clonable,
-  uiButtonElementSchemas.clonable,
-  uiTextInputElementSchemas.clonable,
-  uiDividerElementSchemas.clonable,
-  uiButtonGroupElementSchemas.clonable,
-  uiSelectElementSchemas.clonable,
-]);
-
-const anyUiElementUpdateClonableSchema = z.union([
-  uiTextElementSchemas.clonable.partial().required({ type: true, id: true }),
-  uiButtonElementSchemas.clonable.partial().required({ type: true, id: true }),
-  uiTextInputElementSchemas.clonable
-    .partial()
-    .required({ type: true, id: true }),
-  uiDividerElementSchemas.clonable.partial().required({ type: true, id: true }),
-  uiButtonGroupElementSchemas.clonable
-    .partial()
-    .required({ type: true, id: true }),
-  uiSelectElementSchemas.clonable.partial().required({ type: true, id: true }),
-]);
-
-const uiPanelElementSchemas = {
-  public: uiElementBaseSchema.extend({
-    type: z.literal("Panel"),
-    title: z.string().optional(),
-    onClose: z.function().returns(z.void()).optional(),
-    items: z.array(anyUiElementPublicSchema),
-    footer: z.array(anyUiElementPublicSchema).optional(),
-  }),
-  input: uiElementBaseInputSchema.extend({
-    type: z.literal("Panel").optional(),
-    title: z.string().optional(),
-    onClose: z.function().returns(z.void()).optional(),
-    items: z.array(anyUiElementInputSchema),
-    footer: z.array(anyUiElementInputSchema).optional(),
-  }),
-  clonable: uiElementBaseClonableSchema.extend({
-    type: z.literal("Panel").optional(),
-    title: z.string().optional(),
-    onClose: z.string().optional(),
-    items: z.array(anyUiElementClonableSchema),
-    footer: z.array(anyUiElementClonableSchema).optional(),
-  }),
-};
+const UpdatePanelElementInputSchema = uiPanelElementSchemas.input
+  .partial()
+  .required({ id: true });
 
 /**
  * @public
  */
-export interface PanelInput extends zInfer<typeof PanelInputSchema> {}
+export interface UpdatePanelElementInput
+  extends zInfer<typeof UpdatePanelElementInputSchema> {
+  items?: AddPanelElementInput["panel"]["items"];
+  footer?: AddPanelElementInput["panel"]["footer"];
+}
 
-/**
- * @internal
- * @ignore
- */
-export const PanelSchema = uiPanelElementSchemas.public;
+export const UpdatePanelElementClonableSchema = uiPanelElementSchemas.clonable
+  .partial()
+  .required({ id: true });
 
-/**
- * @internal
- * @ignore
- */
-export const PanelInputSchema = uiPanelElementSchemas.input;
-
-/**
- * @internal
- * @ignore
- */
-export const PanelClonableSchema = uiPanelElementSchemas.clonable;
-
-/**
- * @internal
- * @ignore
- */
-const UpdatePanelInputSchema = PanelInputSchema.partial().required({
-  id: true,
-});
-
-/**
- * @internal
- * @ignore
- */
-export interface UpdatePanelInput
-  extends zInfer<typeof UpdatePanelInputSchema> {}
-
-/**
- * @internal
- * @ignore
- */
-export const UpdatePanelClonableSchema = PanelClonableSchema.partial().required(
-  {
-    id: true,
-  },
-);
-
-/**
- * @internal
- * @ignore
- */
-export const AddElementToPanelInputSchema = z.object({
+const AddElementsToPanelInputSchema = z.object({
   panelId: z.string(),
-  on: z.enum(["items", "footer"]),
-  element: anyUiElementInputSchema,
+  elements: z.array(
+    z.object({
+      element: z.union([
+        panelUiElementsSchemas.input,
+        uiFlexibleSpaceElementSchemas.input,
+      ]),
+      on: z
+        .union([
+          z.literal("items"),
+          z.literal("footer"),
+          z.object({ id: z.string() }),
+        ])
+        .optional(),
+      placement: placementForUiElementSchema.optional(),
+    }),
+  ),
 });
 
 /**
- * @internal
- * @ignore
+ * @public
  */
-export interface AddElementToPanelInput
-  extends zInfer<typeof AddElementToPanelInputSchema> {}
+export interface AddElementsToPanelInput
+  extends zInfer<typeof AddElementsToPanelInputSchema> {
+  elements: Array<{
+    element: PanelUIElementsInput | UIFlexibleSpaceElementInput;
+
+    /**
+     * The section of the panel to add the element to.
+     * It can be either one of the top-level sections of the panel (`"items"` or `"footer"`)
+     * or a specific container (like `ButtonGroup`) in the panel (`{ id: string }`).
+     *
+     * @defaultValue `"items"`
+     */
+    on?: "items" | "footer" | { id: string };
+
+    /**
+     * The placement of the element in the target container (based on the `on` property).
+     *
+     * @defaultValue `undefined`
+     */
+    placement?: PlacementForUIElement;
+  }>;
+}
 
 /**
  * @internal
  * @ignore
  */
-export const AddElementToPanelClonableSchema = z.object({
+export const AddElementsToPanelClonableSchema = z.object({
   panelId: z.string(),
-  on: z.enum(["items", "footer"]),
-  element: anyUiElementClonableSchema,
+  elements: z.array(
+    z.object({
+      element: z.union([
+        panelUiElementsSchemas.clonable,
+        uiFlexibleSpaceElementSchemas.clonable,
+      ]),
+      on: z
+        .union([
+          z.literal("items"),
+          z.literal("footer"),
+          z.object({ id: z.string() }),
+        ])
+        .optional(),
+      placement: placementForUiElementSchema.optional(),
+    }),
+  ),
+});
+
+const UpdateElementsInPanelInputSchema = z.object({
+  /**
+   * The ID of the panel to update.
+   */
+  panelId: z.string(),
+
+  elements: z.record(
+    z.string(),
+    z.union([
+      panelUiElementsUpdateSchemas.input,
+      uiFlexibleSpaceElementSchemas.input,
+    ]),
+  ),
+});
+
+/**
+ * @public
+ */
+export interface UpdateElementsInPanelInput
+  extends zInfer<typeof UpdateElementsInPanelInputSchema> {
+  /**
+   * Dictionary of element IDs to the element to update.
+   */
+  elements: Record<string, PanelUIElementsInput | UIFlexibleSpaceElementInput>;
+}
+
+export const UpdateElementsInPanelClonableSchema = z.object({
+  panelId: z.string(),
+  elements: z.record(
+    z.string(),
+    z.union([
+      panelUiElementsUpdateSchemas.clonable,
+      uiFlexibleSpaceElementSchemas.clonable,
+    ]),
+  ),
 });
 
 /**
  * @internal
  * @ignore
  */
-export const UpdateElementInPanelInputSchema = z.object({
+export const DeleteElementsFromPanelSchema = z.object({
   panelId: z.string(),
-  element: anyUiElementUpdateInputSchema,
+  elements: z.array(z.string()),
 });
-
-export interface UpdateElementInPanelInput
-  extends zInfer<typeof UpdateElementInPanelInputSchema> {}
 
 /**
- * @internal
- * @ignore
+ * @public
  */
-export const UpdateElementInPanelClonableSchema = z.object({
-  panelId: z.string(),
-  element: anyUiElementUpdateClonableSchema,
-});
+export interface DeleteElementsFromPanel
+  extends zInfer<typeof DeleteElementsFromPanelSchema> {}
 
 /**
  * @public

@@ -32,4 +32,4 @@ export type { UITextElementInput } from "./uiElements/UITextElement";
 
 export type { UITextInputElementInput } from "./uiElements/UITextInputElement";
 
-export type { UiController } from "./controller";
+// export type { UiController } from "./controller";

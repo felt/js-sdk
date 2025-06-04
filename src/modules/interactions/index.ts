@@ -7,4 +7,4 @@
  */
 export type { MapInteractionEvent } from "./types";
 
-export type { InteractionsController } from "./controller";
+// export type { InteractionsController } from "./controller";

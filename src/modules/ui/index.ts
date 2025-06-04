@@ -5,11 +5,13 @@
  * @module UI
  */
 export type {
+  CreateActionTriggerParams,
   CreatePanelElementsParams,
   CreatePanelParams,
   DeletePanelElementsParams,
   UiOnMapInteractionsOptions as OnMapInteractionsOptions,
   UiControlsOptions,
+  UpdateActionTriggerParams,
   UpdatePanelElementsParams,
   UpdatePanelParams,
 } from "./types";
@@ -34,5 +36,7 @@ export type { UISelectElementCreate } from "./uiElements/UISelectElement";
 export type { UITextElementCreate } from "./uiElements/UITextElement";
 
 export type { UITextInputElementCreate } from "./uiElements/UITextInputElement";
+
+export type { UIActionTriggerCreate } from "./uiElements/UIActionTrigger";
 
 export type { UiController } from "./controller";

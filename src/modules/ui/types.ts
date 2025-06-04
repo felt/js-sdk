@@ -4,6 +4,10 @@ import type { UiController } from "./controller";
 import type { PlacementForUIElement } from "./uiElements/placementForUiElement";
 import { placementForUiElementSchema } from "./uiElements/placementForUiElement";
 import {
+  uiActionTriggerSchemas,
+  type UIActionTriggerCreate,
+} from "./uiElements/UIActionTrigger";
+import {
   uiFlexibleSpaceElementSchemas,
   type UIFlexibleSpaceElementCreate,
 } from "./uiElements/UIFlexibleSpaceElement";
@@ -16,6 +20,35 @@ import {
   uiPanelElementsUpdateSchemas,
   uiPanelSchemas,
 } from "./uiElements/UIPanel";
+
+const CreateActionTriggerParamsSchema = z.object({
+  actionTrigger: uiActionTriggerSchemas.create,
+  placement: placementForUiElementSchema.optional(),
+});
+
+export const CreateActionTriggerParamsClonableSchema = z.object({
+  actionTrigger: uiActionTriggerSchemas.clonable,
+  placement: placementForUiElementSchema.optional(),
+});
+
+export interface CreateActionTriggerParams
+  extends zInfer<typeof CreateActionTriggerParamsSchema> {
+  actionTrigger: UIActionTriggerCreate;
+  placement?: PlacementForUIElement;
+}
+
+const UpdateActionTriggerParamsSchema = uiActionTriggerSchemas.create
+  .partial()
+  .required({ id: true });
+
+export const UpdateActionTriggerParamsClonableSchema =
+  uiActionTriggerSchemas.clonable.partial().required({ id: true });
+
+/**
+ * @public
+ */
+export interface UpdateActionTriggerParams
+  extends zInfer<typeof UpdateActionTriggerParamsSchema> {}
 
 const CreatePanelParamsSchema = z.object({
   panel: uiPanelSchemas.create,

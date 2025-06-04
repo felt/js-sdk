@@ -1,11 +1,13 @@
 import { method, methodWithListeners } from "~/lib/interface";
 import type { SortConfig } from "~/modules/shared/types";
 import type {
+  CreateActionTriggerParams,
   CreatePanelElementsParams,
   CreatePanelParams,
   DeletePanelElementsParams,
   UiControlsOptions,
   UiOnMapInteractionsOptions,
+  UpdateActionTriggerParams,
   UpdatePanelElementsParams,
   UpdatePanelParams,
 } from "./types";
@@ -41,6 +43,16 @@ export const uiController = (
     UpdatePanelElementsParams
   >(feltWindow, "updatePanelElements"),
   deletePanelElements: method(feltWindow, "deletePanelElements"),
+
+  createActionTrigger: methodWithListeners<
+    "createActionTrigger",
+    CreateActionTriggerParams
+  >(feltWindow, "createActionTrigger"),
+  updateActionTrigger: methodWithListeners<
+    "updateActionTrigger",
+    UpdateActionTriggerParams
+  >(feltWindow, "updateActionTrigger"),
+  deleteActionTrigger: method(feltWindow, "deleteActionTrigger"),
 });
 
 /**
@@ -53,6 +65,70 @@ export const uiController = (
  * @public
  */
 export interface UiController {
+  /**
+   * Creates an action trigger.
+   * Action triggers are rendered on map's left sidebar as a button,
+   * similar to other map extensions like measure and spatial filter.
+   *
+   * The goal of action triggers is to allow users to perform actions on the map
+   * by clicking on a button.
+   *
+   * @param args - The arguments for the method.
+   * @param args.actionTrigger - The action trigger to add.
+   * @param args.placement - The placement of the action trigger. Optional. Defaults to `{ at: "end" }`.
+   * - `{ at: "start" }` - Add the action trigger to the start of the stack.
+   * - `{ at: "end" }` - Add the action trigger to the end of the stack.
+   * - `{ after: "action-trigger-1" }` - Add the action trigger after the action trigger with the id `action-trigger-1`.
+   * - `{ before: "action-trigger-1" }` - Add the action trigger before the action trigger with the id `action-trigger-1`.
+   *
+   * @example
+   * ```typescript
+   * await felt.createActionTrigger({
+   *   actionTrigger: {
+   *     id: "layerTurnPurple", // not required but useful for further updates
+   *     label: "Turn layer purple",
+   *     onClick: async () => {
+   *       await felt.setLayerStyle("layer-1", { ..., paint: { color: "purple" } });
+   *     },
+   *     disabled: false, // optional, defaults to false
+   *   },
+   *   placement: { at: "start" }, // optional, defaults to { at: "end" }
+   * });
+   */
+  createActionTrigger(args: CreateActionTriggerParams): void;
+
+  /**
+   * Updates an action trigger.
+   *
+   * Action trigger to update is identified by the `id` property.
+   *
+   * @remarks
+   * Properties provided will override the existing properties.
+   *
+   * @param args - The action trigger to update.
+   *
+   * @example
+   * ```typescript
+   * await felt.updateActionTrigger({
+   *   id: "layerTurnPurple",
+   *   label: "Turn layer points purple", // only label changes
+   * });
+   * ```
+   */
+  updateActionTrigger(args: UpdateActionTriggerParams): void;
+
+  /**
+   * Deletes an action trigger.
+   *
+   * @param id - The id of the action trigger to delete.
+   *
+   * @example
+   * ```typescript
+   * await felt.deleteActionTrigger("layerTurnPurple");
+   * ```
+   */
+  deleteActionTrigger(id: string): void;
+
   /**
    * Creates a panel on map's right sidebar.
    *

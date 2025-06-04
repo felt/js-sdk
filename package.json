@@ -62,6 +62,8 @@
   "scripts": {
     "build:compile": "tsup && ./scripts/dtsroll.sh",
     "build:docs": "typedoc",
+    "build:docs-minimal": "typedoc --options typedoc-minimal.json",
+    "build:docs-llm": "tsx scripts/process-docs.ts",
     "build": "npm run build:compile && npm run build:docs",
     "changeset": "changeset",
     "check:api": "npm run build:compile && attw --pack . --profile node16 && api-extractor run",

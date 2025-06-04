@@ -8,7 +8,7 @@
     "typedoc-plugin-zod",
     "typedoc-plugin-markdown",
     "typedoc-plugin-remark",
-    "./minimalTheme.mjs"
+    "./minimalTheme.mjs"  
   ],
   "projectDocuments": ["./CHANGELOG.md"],
   "groupOrder": ["Controller", "Methods", "Interfaces", "Type Aliases"],
@@ -44,7 +44,24 @@
 
   "outputFileStrategy": "modules",
   "flattenOutputFiles": false,
-  "theme": "customTheme",
+  "theme": "minimal",
   "readme": "./src/docs_api_readme_prepend.md",
-  "mergeReadme": true
+  "mergeReadme": true,
+
+  // Add these options to handle inheritance
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeExternals": true,
+  "excludeNotDocumented": true,
+  "excludeTags": ["@internal", "@ignore"],
+  "includeVersion": false,
+  "hideGenerator": true,
+  "visibilityFilters": {
+    "protected": false,
+    "private": false,
+    "inherited": false,
+    "external": false
+  },
+  "tsconfig": "./tsconfig.json",
+  "kindSortOrder": ["Class", "Interface", "Function", "Variable", "TypeAlias"]
 }

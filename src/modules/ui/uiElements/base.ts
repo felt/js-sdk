@@ -39,7 +39,7 @@ export const uiElementBaseSchema = uiElementLifecycleSchema.extend({
   id: z.string(),
 });
 
-export const uiElementBaseInputSchema = uiElementLifecycleSchema.extend({
+export const uiElementBaseCreateSchema = uiElementLifecycleSchema.extend({
   id: z.string().optional(),
 });
 
@@ -56,8 +56,8 @@ const uiLabelReadyElementBaseSchema = z.object({
 });
 
 export const uiLabelReadyElementSchemas = {
-  public: uiElementBaseSchema.extend(uiLabelReadyElementBaseSchema.shape),
-  input: uiElementBaseInputSchema.extend(uiLabelReadyElementBaseSchema.shape),
+  read: uiElementBaseSchema.extend(uiLabelReadyElementBaseSchema.shape),
+  create: uiElementBaseCreateSchema.extend(uiLabelReadyElementBaseSchema.shape),
   clonable: uiElementBaseClonableSchema.extend(
     uiLabelReadyElementBaseSchema.shape,
   ),

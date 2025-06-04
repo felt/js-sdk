@@ -2,15 +2,15 @@ import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
   uiElementBaseClonableSchema,
-  uiElementBaseInputSchema,
+  uiElementBaseCreateSchema,
   uiElementBaseSchema,
   type UIElementLifecycle,
 } from "./base";
-import type { UIButtonElementInput } from "./UIButtonElement";
+import type { UIButtonElementCreate } from "./UIButtonElement";
 import { uiButtonElementSchemas } from "./UIButtonElement";
-import type { UIFlexibleSpaceElementInput } from "./UIFlexibleSpaceElement";
+import type { UIFlexibleSpaceElementCreate } from "./UIFlexibleSpaceElement";
 import { uiFlexibleSpaceElementSchemas } from "./UIFlexibleSpaceElement";
-import type { UITextElementInput } from "./UITextElement";
+import type { UITextElementCreate } from "./UITextElement";
 import { uiTextElementSchemas } from "./UITextElement";
 
 const uiButtonGroupElementBaseSchema = z.object({
@@ -25,25 +25,25 @@ const uiButtonGroupElementBaseSchema = z.object({
 });
 
 export const uiButtonGroupElementSchemas = {
-  public: uiElementBaseSchema
+  read: uiElementBaseSchema
     .extend(uiButtonGroupElementBaseSchema.shape)
     .extend({
       items: z.array(
         z.union([
-          uiButtonElementSchemas.public,
-          uiTextElementSchemas.public,
-          uiFlexibleSpaceElementSchemas.public,
+          uiButtonElementSchemas.read,
+          uiTextElementSchemas.read,
+          uiFlexibleSpaceElementSchemas.read,
         ]),
       ),
     }),
-  input: uiElementBaseInputSchema
+  create: uiElementBaseCreateSchema
     .extend(uiButtonGroupElementBaseSchema.shape)
     .extend({
       items: z.array(
         z.union([
-          uiButtonElementSchemas.input,
-          uiTextElementSchemas.input,
-          uiFlexibleSpaceElementSchemas.input,
+          uiButtonElementSchemas.create,
+          uiTextElementSchemas.create,
+          uiFlexibleSpaceElementSchemas.create,
         ]),
       ),
     }),
@@ -68,13 +68,13 @@ export const uiButtonGroupElementSchemas = {
  *
  * @public
  */
-export interface UIButtonGroupElementInput
+export interface UIButtonGroupElementCreate
   extends UIElementLifecycle,
     Omit<
-      zInfer<typeof uiButtonGroupElementSchemas.input>,
+      zInfer<typeof uiButtonGroupElementSchemas.create>,
       "onCreate" | "onDestroy"
     > {
   items: Array<
-    UIButtonElementInput | UITextElementInput | UIFlexibleSpaceElementInput
+    UIButtonElementCreate | UITextElementCreate | UIFlexibleSpaceElementCreate
   >;
 }

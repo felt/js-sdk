@@ -1,48 +1,48 @@
-import type { UISelectElementInput } from "./UISelectElement";
+import type { UISelectElementCreate } from "./UISelectElement";
 
-import type { UIButtonGroupElementInput } from "./UIButtonGroupElement";
+import type { UIButtonGroupElementCreate } from "./UIButtonGroupElement";
 
-import type { UIButtonElementInput } from "./UIButtonElement";
+import type { UIButtonElementCreate } from "./UIButtonElement";
 
-import type { UITextElementInput } from "./UITextElement";
+import type { UITextElementCreate } from "./UITextElement";
 
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import type { UiController } from "../controller";
 import {
   uiElementBaseClonableSchema,
-  uiElementBaseInputSchema,
+  uiElementBaseCreateSchema,
   uiElementBaseSchema,
 } from "./base";
 import { uiButtonElementSchemas } from "./UIButtonElement";
 import { uiButtonGroupElementSchemas } from "./UIButtonGroupElement";
 import {
   uiDividerElementSchemas,
-  type UIDividerElementInput,
+  type UIDividerElementCreate,
 } from "./UIDividerElement";
 import { uiSelectElementSchemas } from "./UISelectElement";
 import { uiTextElementSchemas } from "./UITextElement";
 import {
   uiTextInputElementSchemas,
-  type UITextInputElementInput,
+  type UITextInputElementCreate,
 } from "./UITextInputElement";
 
 export const uiPanelElementsSchemas = {
-  public: z.discriminatedUnion("type", [
-    uiTextElementSchemas.public,
-    uiButtonElementSchemas.public,
-    uiTextInputElementSchemas.public,
-    uiDividerElementSchemas.public,
-    uiButtonGroupElementSchemas.public,
-    uiSelectElementSchemas.public,
+  read: z.discriminatedUnion("type", [
+    uiTextElementSchemas.read,
+    uiButtonElementSchemas.read,
+    uiTextInputElementSchemas.read,
+    uiDividerElementSchemas.read,
+    uiButtonGroupElementSchemas.read,
+    uiSelectElementSchemas.read,
   ]),
-  input: z.discriminatedUnion("type", [
-    uiTextElementSchemas.input,
-    uiButtonElementSchemas.input,
-    uiTextInputElementSchemas.input,
-    uiDividerElementSchemas.input,
-    uiButtonGroupElementSchemas.input,
-    uiSelectElementSchemas.input,
+  create: z.discriminatedUnion("type", [
+    uiTextElementSchemas.create,
+    uiButtonElementSchemas.create,
+    uiTextInputElementSchemas.create,
+    uiDividerElementSchemas.create,
+    uiButtonGroupElementSchemas.create,
+    uiSelectElementSchemas.create,
   ]),
   clonable: z.discriminatedUnion("type", [
     uiTextElementSchemas.clonable,
@@ -64,17 +64,17 @@ const uiPanelBaseSchema = z.object({
 });
 
 export const uiPanelSchemas = {
-  public: uiElementBaseSchema.extend(uiPanelBaseSchema.shape).extend({
+  read: uiElementBaseSchema.extend(uiPanelBaseSchema.shape).extend({
     onClose: z.function().returns(z.void()).optional(),
-    items: z.array(uiPanelElementsSchemas.public),
-    footer: z.array(uiPanelElementsSchemas.public).optional(),
+    items: z.array(uiPanelElementsSchemas.read),
+    footer: z.array(uiPanelElementsSchemas.read).optional(),
   }),
-  input: uiElementBaseInputSchema
+  create: uiElementBaseCreateSchema
     .extend(uiPanelBaseSchema.partial().shape)
     .extend({
       onClose: z.function().returns(z.void()).optional(),
-      items: z.array(uiPanelElementsSchemas.input),
-      footer: z.array(uiPanelElementsSchemas.input).optional(),
+      items: z.array(uiPanelElementsSchemas.create),
+      footer: z.array(uiPanelElementsSchemas.create).optional(),
     }),
   clonable: uiElementBaseClonableSchema
     .extend(uiPanelBaseSchema.partial().shape)
@@ -86,7 +86,7 @@ export const uiPanelSchemas = {
 };
 
 /**
- * The input panel to add to the map by using the {@link UiController.addPanel} method.
+ * The panel to add to the map by using the {@link UiController.addPanel} method.
  *
  * @remarks
  * For the sake of convenience, the `id` of the panel and its elements are optional,
@@ -94,16 +94,16 @@ export const uiPanelSchemas = {
  *
  * @public
  */
-export interface UIPanelInput extends zInfer<typeof uiPanelSchemas.input> {
+export interface UIPanelCreate extends zInfer<typeof uiPanelSchemas.create> {
   /**
    * The elements to add to the panel body.
    */
-  items: UIPanelElementsInput[];
+  items: UIPanelElementsCreate[];
 
   /**
    * The elements to add to the panel footer.
    */
-  footer?: UIPanelElementsInput[];
+  footer?: UIPanelElementsCreate[];
 
   /**
    * A function to call when panel's close button is clicked.
@@ -120,22 +120,22 @@ export interface UIPanelInput extends zInfer<typeof uiPanelSchemas.input> {
  *
  * @public
  */
-export type UIPanelElementsInput =
-  | UITextElementInput
-  | UIButtonElementInput
-  | UITextInputElementInput
-  | UIDividerElementInput
-  | UIButtonGroupElementInput
-  | UISelectElementInput;
+export type UIPanelElementsCreate =
+  | UITextElementCreate
+  | UIButtonElementCreate
+  | UITextInputElementCreate
+  | UIDividerElementCreate
+  | UIButtonGroupElementCreate
+  | UISelectElementCreate;
 
 export const uiPanelElementsUpdateSchemas = {
-  input: z.discriminatedUnion("type", [
-    uiTextElementSchemas.input.partial().required({ type: true }),
-    uiButtonElementSchemas.input.partial().required({ type: true }),
-    uiTextInputElementSchemas.input.partial().required({ type: true }),
-    uiDividerElementSchemas.input.partial().required({ type: true }),
-    uiButtonGroupElementSchemas.input.partial().required({ type: true }),
-    uiSelectElementSchemas.input.partial().required({ type: true }),
+  create: z.discriminatedUnion("type", [
+    uiTextElementSchemas.create.partial().required({ type: true }),
+    uiButtonElementSchemas.create.partial().required({ type: true }),
+    uiTextInputElementSchemas.create.partial().required({ type: true }),
+    uiDividerElementSchemas.create.partial().required({ type: true }),
+    uiButtonGroupElementSchemas.create.partial().required({ type: true }),
+    uiSelectElementSchemas.create.partial().required({ type: true }),
   ]),
   clonable: z.discriminatedUnion("type", [
     uiTextElementSchemas.clonable.partial().required({ type: true }),

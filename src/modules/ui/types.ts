@@ -5,9 +5,9 @@ import type { PlacementForUIElement } from "./uiElements/placementForUiElement";
 import { placementForUiElementSchema } from "./uiElements/placementForUiElement";
 import {
   uiFlexibleSpaceElementSchemas,
-  type UIFlexibleSpaceElementInput,
+  type UIFlexibleSpaceElementCreate,
 } from "./uiElements/UIFlexibleSpaceElement";
-import type { UIPanelElementsInput, UIPanelInput } from "./uiElements/UIPanel";
+import type { UIPanelElementsCreate, UIPanelCreate } from "./uiElements/UIPanel";
 import {
   uiPanelElementsSchemas,
   uiPanelElementsUpdateSchemas,
@@ -15,7 +15,7 @@ import {
 } from "./uiElements/UIPanel";
 
 const AddPanelParamsSchema = z.object({
-  panel: uiPanelSchemas.input,
+  panel: uiPanelSchemas.create,
   placement: placementForUiElementSchema.optional(),
 });
 
@@ -28,7 +28,7 @@ export interface AddPanelParams extends zInfer<typeof AddPanelParamsSchema> {
   /**
    * The panel to add.
    */
-  panel: UIPanelInput;
+  panel: UIPanelCreate;
 
   /**
    * The placement of the panel on the right sidebar stack.
@@ -43,7 +43,7 @@ export const AddPanelParamsClonableSchema = z.object({
   placement: placementForUiElementSchema.optional(),
 });
 
-const UpdatePanelParamsSchema = uiPanelSchemas.input
+const UpdatePanelParamsSchema = uiPanelSchemas.create
   .partial()
   .required({ id: true });
 
@@ -65,8 +65,8 @@ const AddPanelElementsParamsSchema = z.object({
   elements: z.array(
     z.object({
       element: z.union([
-        uiPanelElementsSchemas.input,
-        uiFlexibleSpaceElementSchemas.input,
+        uiPanelElementsSchemas.create,
+        uiFlexibleSpaceElementSchemas.create,
       ]),
       on: z
         .union([
@@ -86,7 +86,7 @@ const AddPanelElementsParamsSchema = z.object({
 export interface AddPanelElementsParams
   extends zInfer<typeof AddPanelElementsParamsSchema> {
   elements: Array<{
-    element: UIPanelElementsInput | UIFlexibleSpaceElementInput;
+    element: UIPanelElementsCreate | UIFlexibleSpaceElementCreate;
 
     /**
      * The section of the panel to add the element to.
@@ -139,8 +139,8 @@ const UpdatePanelElementsParamsSchema = z.object({
   elements: z.record(
     z.string(),
     z.union([
-      uiPanelElementsUpdateSchemas.input,
-      uiFlexibleSpaceElementSchemas.input,
+      uiPanelElementsUpdateSchemas.create,
+      uiFlexibleSpaceElementSchemas.create,
     ]),
   ),
 });
@@ -153,7 +153,7 @@ export interface UpdatePanelElementsParams
   /**
    * Dictionary of element IDs to the element to update.
    */
-  elements: Record<string, UIPanelElementsInput | UIFlexibleSpaceElementInput>;
+  elements: Record<string, UIPanelElementsCreate | UIFlexibleSpaceElementCreate>;
 }
 
 export const UpdatePanelElementsParamsClonableSchema = z.object({

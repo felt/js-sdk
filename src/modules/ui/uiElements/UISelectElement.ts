@@ -11,7 +11,7 @@ const uiSelectElementBaseSchema = z.object({
 });
 
 export const uiSelectElementSchemas = {
-  public: uiLabelReadyElementSchemas.public
+  read: uiLabelReadyElementSchemas.read
     .extend(uiSelectElementBaseSchema.shape)
     .extend({
       onChange: z
@@ -19,7 +19,7 @@ export const uiSelectElementSchemas = {
         .args(z.object({ value: z.string() }))
         .returns(z.void()),
     }),
-  input: uiLabelReadyElementSchemas.input
+  create: uiLabelReadyElementSchemas.create
     .extend(uiSelectElementBaseSchema.shape)
     .extend({
       onChange: z
@@ -40,10 +40,10 @@ export const uiSelectElementSchemas = {
  *
  * @public
  */
-export interface UISelectElementInput
+export interface UISelectElementCreate
   extends UIElementLifecycle,
     Omit<
-      zInfer<typeof uiSelectElementSchemas.input>,
+      zInfer<typeof uiSelectElementSchemas.create>,
       "onCreate" | "onDestroy"
     > {
   /**

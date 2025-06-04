@@ -2,28 +2,26 @@ import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
   uiElementBaseClonableSchema,
-  uiElementBaseInputSchema,
+  uiElementBaseCreateSchema,
   uiElementBaseSchema,
   type UIElementLifecycle,
 } from "./base";
-import type { UIButtonGroupElementInput } from "./UIButtonGroupElement";
+import type { UIButtonGroupElementCreate } from "./UIButtonGroupElement";
 
 export const uiFlexibleSpaceElementSchemas = {
-  public: uiElementBaseSchema.extend({ type: z.literal("FlexibleSpace") }),
-  input: uiElementBaseInputSchema.extend({ type: z.literal("FlexibleSpace") }),
-  clonable: uiElementBaseClonableSchema.extend({
-    type: z.literal("FlexibleSpace"),
-  }),
+  read: uiElementBaseSchema.extend({ type: z.literal("FlexibleSpace") }),
+  create: uiElementBaseCreateSchema.extend({ type: z.literal("FlexibleSpace") }),
+  clonable: uiElementBaseClonableSchema.extend({ type: z.literal("FlexibleSpace") }),
 };
 
 /**
- * Only accepted for {@link UIButtonGroupElementInput} elements.
+ * Only accepted for {@link UIButtonGroupElementCreate} elements.
  *
  * @public
  */
-export interface UIFlexibleSpaceElementInput
+export interface UIFlexibleSpaceElementCreate
   extends UIElementLifecycle,
     Omit<
-      zInfer<typeof uiFlexibleSpaceElementSchemas.input>,
+      zInfer<typeof uiFlexibleSpaceElementSchemas.create>,
       "onCreate" | "onDestroy"
     > {}

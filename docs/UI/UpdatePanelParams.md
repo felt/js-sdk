@@ -70,10 +70,10 @@
 
 ## items?
 
-> `optional` **items**: [`UIPanelElementsInput`](UIPanelElementsInput.md)\[]
+> `optional` **items**: [`UIPanelElementsCreate`](UIPanelElementsCreate.md)\[]
 
 ***
 
 ## footer?
 
-> `optional` **footer**: [`UIPanelElementsInput`](UIPanelElementsInput.md)\[]
+> `optional` **footer**: [`UIPanelElementsCreate`](UIPanelElementsCreate.md)\[]

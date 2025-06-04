@@ -16,7 +16,7 @@ This element is used to group buttons and text elements together.
 
 ## items
 
-> **items**: ([`UIButtonElementInput`](UIButtonElementInput.md) | [`UITextElementInput`](UITextElementInput.md) | [`UIFlexibleSpaceElementInput`](UIFlexibleSpaceElementInput.md))\[]
+> **items**: ([`UIButtonElementCreate`](UIButtonElementCreate.md) | [`UITextElementCreate`](UITextElementCreate.md) | [`UIFlexibleSpaceElementCreate`](UIFlexibleSpaceElementCreate.md))\[]
 
 ***
 

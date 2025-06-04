@@ -4,8 +4,8 @@ import { type Method, methodMessage } from "~/lib/builders";
 import type { zInfer } from "~/lib/utils";
 import { SortConfigSchema } from "../shared/types";
 import {
-  AddPanelParamsClonableSchema,
   AddPanelElementsClonableSchema,
+  AddPanelParamsClonableSchema,
   DeletePanelElementsParamsSchema,
   UiControlsOptionsSchema,
   UiOnMapInteractionsOptionsSchema,

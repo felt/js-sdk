@@ -10,13 +10,16 @@ export type {
   DeletePanelElementsParams,
   UiOnMapInteractionsOptions as OnMapInteractionsOptions,
   UiControlsOptions,
-  UpdatePanelParams,
   UpdatePanelElementsParams,
+  UpdatePanelParams,
 } from "./types";
 
 export type { PlacementForUIElement } from "./uiElements/placementForUiElement";
 
-export type { UIPanelElementsCreate, UIPanelCreate } from "./uiElements/UIPanel";
+export type {
+  UIPanelCreate,
+  UIPanelElementsCreate,
+} from "./uiElements/UIPanel";
 
 export type { UIButtonElementCreate } from "./uiElements/UIButtonElement";
 

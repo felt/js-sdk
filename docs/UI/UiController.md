@@ -13,7 +13,7 @@ the visibility of UI components like the data table.
 
 ## addPanel()
 
-> **addPanel**(`args`: [`AddPanelInput`](AddPanelInput.md)): `void`
+> **addPanel**(`args`: [`AddPanelParams`](AddPanelParams.md)): `void`
 
 Adds a panel.
 Panels are rendered on the right side of the map.
@@ -32,9 +32,9 @@ Panels have two sections:
 
 ### Parameters
 
-| Parameter | Type                                | Description                   |
-| --------- | ----------------------------------- | ----------------------------- |
-| `args`    | [`AddPanelInput`](AddPanelInput.md) | The arguments for the method. |
+| Parameter | Type                                  | Description                   |
+| --------- | ------------------------------------- | ----------------------------- |
+| `args`    | [`AddPanelParams`](AddPanelParams.md) | The arguments for the method. |
 
 ### Returns
 
@@ -76,7 +76,7 @@ await felt.addPanel({
 
 ## updatePanel()
 
-> **updatePanel**(`panel`: [`UpdatePanelElementInput`](UpdatePanelElementInput.md)): `void`
+> **updatePanel**(`panel`: [`UpdatePanelParams`](UpdatePanelParams.md)): `void`
 
 Updates a panel.
 
@@ -84,9 +84,9 @@ Panel to update is identified by the `id` property.
 
 ### Parameters
 
-| Parameter | Type                                                    | Description          |
-| --------- | ------------------------------------------------------- | -------------------- |
-| `panel`   | [`UpdatePanelElementInput`](UpdatePanelElementInput.md) | The panel to update. |
+| Parameter | Type                                        | Description          |
+| --------- | ------------------------------------------- | -------------------- |
+| `panel`   | [`UpdatePanelParams`](UpdatePanelParams.md) | The panel to update. |
 
 ### Returns
 
@@ -136,15 +136,15 @@ await felt.deletePanel("panel-1");
 
 ## addPanelElements()
 
-> **addPanelElements**(`args`: [`AddPanelElementsInput`](AddPanelElementsInput.md)): `void`
+> **addPanelElements**(`args`: [`AddPanelElementsParams`](AddPanelElementsParams.md)): `void`
 
 Adds elements to a panel.
 
 ### Parameters
 
-| Parameter | Type                                                | Description                   |
-| --------- | --------------------------------------------------- | ----------------------------- |
-| `args`    | [`AddPanelElementsInput`](AddPanelElementsInput.md) | The arguments for the method. |
+| Parameter | Type                                                  | Description                   |
+| --------- | ----------------------------------------------------- | ----------------------------- |
+| `args`    | [`AddPanelElementsParams`](AddPanelElementsParams.md) | The arguments for the method. |
 
 ### Returns
 
@@ -169,15 +169,15 @@ await felt.addPanelElements({
 
 ## updatePanelElements()
 
-> **updatePanelElements**(`args`: [`UpdatePanelElementsInput`](UpdatePanelElementsInput.md)): `void`
+> **updatePanelElements**(`args`: [`UpdatePanelElementsParams`](UpdatePanelElementsParams.md)): `void`
 
 Updates an element in a panel.
 
 ### Parameters
 
-| Parameter | Type                                                      | Description                   |
-| --------- | --------------------------------------------------------- | ----------------------------- |
-| `args`    | [`UpdatePanelElementsInput`](UpdatePanelElementsInput.md) | The arguments for the method. |
+| Parameter | Type                                                        | Description                   |
+| --------- | ----------------------------------------------------------- | ----------------------------- |
+| `args`    | [`UpdatePanelElementsParams`](UpdatePanelElementsParams.md) | The arguments for the method. |
 
 ### Returns
 
@@ -198,15 +198,15 @@ await felt.updatePanelElements({
 
 ## deletePanelElements()
 
-> **deletePanelElements**(`args`: [`DeletePanelElements`](DeletePanelElements.md)): `void`
+> **deletePanelElements**(`args`: [`DeletePanelElementsParams`](DeletePanelElementsParams.md)): `void`
 
 Deletes elements from a panel.
 
 ### Parameters
 
-| Parameter | Type                                            | Description                   |
-| --------- | ----------------------------------------------- | ----------------------------- |
-| `args`    | [`DeletePanelElements`](DeletePanelElements.md) | The arguments for the method. |
+| Parameter | Type                                                        | Description                   |
+| --------- | ----------------------------------------------------------- | ----------------------------- |
+| `args`    | [`DeletePanelElementsParams`](DeletePanelElementsParams.md) | The arguments for the method. |
 
 ### Returns
 

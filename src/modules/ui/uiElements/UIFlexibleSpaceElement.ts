@@ -10,8 +10,12 @@ import type { UIButtonGroupElementCreate } from "./UIButtonGroupElement";
 
 export const uiFlexibleSpaceElementSchemas = {
   read: uiElementBaseSchema.extend({ type: z.literal("FlexibleSpace") }),
-  create: uiElementBaseCreateSchema.extend({ type: z.literal("FlexibleSpace") }),
-  clonable: uiElementBaseClonableSchema.extend({ type: z.literal("FlexibleSpace") }),
+  create: uiElementBaseCreateSchema.extend({
+    type: z.literal("FlexibleSpace"),
+  }),
+  clonable: uiElementBaseClonableSchema.extend({
+    type: z.literal("FlexibleSpace"),
+  }),
 };
 
 /**

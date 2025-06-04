@@ -29,4 +29,7 @@ export const uiTextElementSchemas = {
  */
 export interface UITextElementCreate
   extends UIElementLifecycle,
-    Omit<zInfer<typeof uiTextElementSchemas.create>, "onCreate" | "onDestroy"> {}
+    Omit<
+      zInfer<typeof uiTextElementSchemas.create>,
+      "onCreate" | "onDestroy"
+    > {}

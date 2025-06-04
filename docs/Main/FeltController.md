@@ -1549,7 +1549,7 @@ unsubscribe();
 
 ## addPanel()
 
-> **addPanel**(`args`: [`AddPanelInput`](../UI/AddPanelInput.md)): `void`
+> **addPanel**(`args`: [`AddPanelParams`](../UI/AddPanelParams.md)): `void`
 
 Adds a panel.
 Panels are rendered on the right side of the map.
@@ -1568,9 +1568,9 @@ Panels have two sections:
 
 ### Parameters
 
-| Parameter | Type                                      | Description                   |
-| --------- | ----------------------------------------- | ----------------------------- |
-| `args`    | [`AddPanelInput`](../UI/AddPanelInput.md) | The arguments for the method. |
+| Parameter | Type                                        | Description                   |
+| --------- | ------------------------------------------- | ----------------------------- |
+| `args`    | [`AddPanelParams`](../UI/AddPanelParams.md) | The arguments for the method. |
 
 ### Returns
 
@@ -1612,7 +1612,7 @@ await felt.addPanel({
 
 ## updatePanel()
 
-> **updatePanel**(`panel`: [`UpdatePanelElementInput`](../UI/UpdatePanelElementInput.md)): `void`
+> **updatePanel**(`panel`: [`UpdatePanelParams`](../UI/UpdatePanelParams.md)): `void`
 
 Updates a panel.
 
@@ -1620,9 +1620,9 @@ Panel to update is identified by the `id` property.
 
 ### Parameters
 
-| Parameter | Type                                                          | Description          |
-| --------- | ------------------------------------------------------------- | -------------------- |
-| `panel`   | [`UpdatePanelElementInput`](../UI/UpdatePanelElementInput.md) | The panel to update. |
+| Parameter | Type                                              | Description          |
+| --------- | ------------------------------------------------- | -------------------- |
+| `panel`   | [`UpdatePanelParams`](../UI/UpdatePanelParams.md) | The panel to update. |
 
 ### Returns
 
@@ -1672,15 +1672,15 @@ await felt.deletePanel("panel-1");
 
 ## addPanelElements()
 
-> **addPanelElements**(`args`: [`AddPanelElementsInput`](../UI/AddPanelElementsInput.md)): `void`
+> **addPanelElements**(`args`: [`AddPanelElementsParams`](../UI/AddPanelElementsParams.md)): `void`
 
 Adds elements to a panel.
 
 ### Parameters
 
-| Parameter | Type                                                      | Description                   |
-| --------- | --------------------------------------------------------- | ----------------------------- |
-| `args`    | [`AddPanelElementsInput`](../UI/AddPanelElementsInput.md) | The arguments for the method. |
+| Parameter | Type                                                        | Description                   |
+| --------- | ----------------------------------------------------------- | ----------------------------- |
+| `args`    | [`AddPanelElementsParams`](../UI/AddPanelElementsParams.md) | The arguments for the method. |
 
 ### Returns
 
@@ -1705,15 +1705,15 @@ await felt.addPanelElements({
 
 ## updatePanelElements()
 
-> **updatePanelElements**(`args`: [`UpdatePanelElementsInput`](../UI/UpdatePanelElementsInput.md)): `void`
+> **updatePanelElements**(`args`: [`UpdatePanelElementsParams`](../UI/UpdatePanelElementsParams.md)): `void`
 
 Updates an element in a panel.
 
 ### Parameters
 
-| Parameter | Type                                                            | Description                   |
-| --------- | --------------------------------------------------------------- | ----------------------------- |
-| `args`    | [`UpdatePanelElementsInput`](../UI/UpdatePanelElementsInput.md) | The arguments for the method. |
+| Parameter | Type                                                              | Description                   |
+| --------- | ----------------------------------------------------------------- | ----------------------------- |
+| `args`    | [`UpdatePanelElementsParams`](../UI/UpdatePanelElementsParams.md) | The arguments for the method. |
 
 ### Returns
 
@@ -1734,15 +1734,15 @@ await felt.updatePanelElements({
 
 ## deletePanelElements()
 
-> **deletePanelElements**(`args`: [`DeletePanelElements`](../UI/DeletePanelElements.md)): `void`
+> **deletePanelElements**(`args`: [`DeletePanelElementsParams`](../UI/DeletePanelElementsParams.md)): `void`
 
 Deletes elements from a panel.
 
 ### Parameters
 
-| Parameter | Type                                                  | Description                   |
-| --------- | ----------------------------------------------------- | ----------------------------- |
-| `args`    | [`DeletePanelElements`](../UI/DeletePanelElements.md) | The arguments for the method. |
+| Parameter | Type                                                              | Description                   |
+| --------- | ----------------------------------------------------------------- | ----------------------------- |
+| `args`    | [`DeletePanelElementsParams`](../UI/DeletePanelElementsParams.md) | The arguments for the method. |
 
 ### Returns
 

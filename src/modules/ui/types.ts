@@ -7,7 +7,10 @@ import {
   uiFlexibleSpaceElementSchemas,
   type UIFlexibleSpaceElementCreate,
 } from "./uiElements/UIFlexibleSpaceElement";
-import type { UIPanelElementsCreate, UIPanelCreate } from "./uiElements/UIPanel";
+import type {
+  UIPanelCreate,
+  UIPanelElementsCreate,
+} from "./uiElements/UIPanel";
 import {
   uiPanelElementsSchemas,
   uiPanelElementsUpdateSchemas,
@@ -153,7 +156,10 @@ export interface UpdatePanelElementsParams
   /**
    * Dictionary of element IDs to the element to update.
    */
-  elements: Record<string, UIPanelElementsCreate | UIFlexibleSpaceElementCreate>;
+  elements: Record<
+    string,
+    UIPanelElementsCreate | UIFlexibleSpaceElementCreate
+  >;
 }
 
 export const UpdatePanelElementsParamsClonableSchema = z.object({

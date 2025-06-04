@@ -4,16 +4,16 @@ import { type Method, methodMessage } from "~/lib/builders";
 import type { zInfer } from "~/lib/utils";
 import { SortConfigSchema } from "../shared/types";
 import {
-  AddPanelClonableSchema,
+  AddPanelParamsClonableSchema,
   AddPanelElementsClonableSchema,
-  DeletePanelElementsSchema,
+  DeletePanelElementsParamsSchema,
   UiControlsOptionsSchema,
   UiOnMapInteractionsOptionsSchema,
   UpdatePanelClonableSchema,
-  UpdatePanelElementsClonableSchema,
+  UpdatePanelElementsParamsClonableSchema,
 } from "./types";
 
-const AddPanelMessage = methodMessage("addPanel", AddPanelClonableSchema);
+const AddPanelMessage = methodMessage("addPanel", AddPanelParamsClonableSchema);
 const UpdatePanelMessage = methodMessage(
   "updatePanel",
   UpdatePanelClonableSchema,
@@ -27,12 +27,12 @@ const AddPanelElementsMessage = methodMessage(
 
 const UpdatePanelElementsMessage = methodMessage(
   "updatePanelElements",
-  UpdatePanelElementsClonableSchema,
+  UpdatePanelElementsParamsClonableSchema,
 );
 
 const DeletePanelElementsMessage = methodMessage(
   "deletePanelElements",
-  DeletePanelElementsSchema,
+  DeletePanelElementsParamsSchema,
 );
 
 const UiControlsMessage = methodMessage(

@@ -1,13 +1,13 @@
 import { method, methodWithListeners } from "~/lib/interface";
 import type { SortConfig } from "~/modules/shared/types";
 import type {
-  AddPanelElementsInput,
-  AddPanelInput,
-  DeletePanelElements,
+  AddPanelElementsParams,
+  AddPanelParams,
+  DeletePanelElementsParams,
   UiControlsOptions,
   UiOnMapInteractionsOptions,
-  UpdatePanelElementsInput,
-  UpdatePanelInput,
+  UpdatePanelElementsParams,
+  UpdatePanelParams,
 } from "./types";
 
 /**
@@ -22,11 +22,11 @@ export const uiController = (
   showLayerDataTable: method(feltWindow, "showLayerDataTable"),
   hideLayerDataTable: method(feltWindow, "hideLayerDataTable"),
 
-  addPanel: methodWithListeners<"addPanel", AddPanelInput>(
+  addPanel: methodWithListeners<"addPanel", AddPanelParams>(
     feltWindow,
     "addPanel",
   ),
-  updatePanel: methodWithListeners<"updatePanel", UpdatePanelInput>(
+  updatePanel: methodWithListeners<"updatePanel", UpdatePanelParams>(
     feltWindow,
     "updatePanel",
   ),
@@ -34,11 +34,11 @@ export const uiController = (
 
   addPanelElements: methodWithListeners<
     "addPanelElements",
-    AddPanelElementsInput
+    AddPanelElementsParams
   >(feltWindow, "addPanelElements"),
   updatePanelElements: methodWithListeners<
     "updatePanelElements",
-    UpdatePanelElementsInput
+    UpdatePanelElementsParams
   >(feltWindow, "updatePanelElements"),
   deletePanelElements: method(feltWindow, "deletePanelElements"),
 });
@@ -107,7 +107,7 @@ export interface UiController {
    * });
    * ```
    */
-  addPanel(args: AddPanelInput): void;
+  addPanel(args: AddPanelParams): void;
 
   /**
    * Updates a panel.
@@ -129,7 +129,7 @@ export interface UiController {
    * });
    * ```
    */
-  updatePanel(panel: UpdatePanelInput): void;
+  updatePanel(panel: UpdatePanelParams): void;
 
   /**
    * Deletes a panel.
@@ -178,7 +178,7 @@ export interface UiController {
    * });
    * ```
    */
-  addPanelElements(args: AddPanelElementsInput): void;
+  addPanelElements(args: AddPanelElementsParams): void;
 
   /**
    * Updates an element in a panel.
@@ -197,7 +197,7 @@ export interface UiController {
    * });
    * ```
    */
-  updatePanelElements(args: UpdatePanelElementsInput): void;
+  updatePanelElements(args: UpdatePanelElementsParams): void;
 
   /**
    * Deletes elements from a panel.
@@ -213,7 +213,7 @@ export interface UiController {
    * });
    * ```
    */
-  deletePanelElements(args: DeletePanelElements): void;
+  deletePanelElements(args: DeletePanelElementsParams): void;
 
   /**
    * Updates the UI controls on the embedded map.

@@ -5,13 +5,13 @@
  * @module UI
  */
 export type {
-  AddPanelElementsInput as AddPanelElementsInput,
-  AddPanelInput,
-  DeletePanelElements,
+  AddPanelElementsParams,
+  AddPanelParams,
+  DeletePanelElementsParams,
   UiOnMapInteractionsOptions as OnMapInteractionsOptions,
   UiControlsOptions,
-  UpdatePanelInput as UpdatePanelElementInput,
-  UpdatePanelElementsInput,
+  UpdatePanelParams,
+  UpdatePanelElementsParams,
 } from "./types";
 
 export type { PlacementForUIElement } from "./uiElements/placementForUiElement";

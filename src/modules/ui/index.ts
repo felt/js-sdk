@@ -103,9 +103,11 @@ export type { UIControlElementOption } from "./uiElements/base";
 
 export type { UIActionTriggerCreate } from "./uiElements/UIActionTrigger";
 
+
 export type {
   UIFeatureAction,
   UIFeatureActionCreate,
 } from "./uiElements/UIFeatureAction";
 
-export type { UiController } from "./controller";
+
+// export type { UiController } from "./controller";

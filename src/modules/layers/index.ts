@@ -84,4 +84,4 @@ export type {
   ValueConfiguration,
 } from "./stats/types";
 
-export type { LayersController } from "./controller";
+// export type { LayersController } from "./controller";

@@ -11,4 +11,4 @@ export type {
   LayerNode,
 } from "./types";
 
-export type { SelectionController } from "./controller";
+// export type { SelectionController } from "./controller";

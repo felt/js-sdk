@@ -102,7 +102,7 @@ Felt.
 
 ## geometryType
 
-> **geometryType**: `"Polygon"` | `"Point"` | `"Line"`
+> **geometryType**: `"Point"` | `"Polygon"` | `"Line"`
 
 Identifies the type of geometry in the layer.
 

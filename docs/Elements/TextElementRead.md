@@ -116,7 +116,7 @@ The text in the element.
 
 ## align
 
-> **align**: `"center"` | `"left"` | `"right"`
+> **align**: `"left"` | `"center"` | `"right"`
 
 The alignment of the text, either `left`, `center` or `right`.
 

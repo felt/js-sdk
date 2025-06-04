@@ -101,4 +101,4 @@ export type { UIControlElementOption } from "./uiElements/base";
 
 export type { UIActionTriggerCreate } from "./uiElements/UIActionTrigger";
 
-export type { UiController } from "./controller";
+// export type { UiController } from "./controller";

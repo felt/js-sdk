@@ -18,8 +18,6 @@ export const uiDividerElementSchemas = {
  *
  * @remarks
  * This element is used to separate other elements in a panel.
- *
- * @public
  */
 export interface UIDividerElementCreate
   extends UIElementLifecycle,

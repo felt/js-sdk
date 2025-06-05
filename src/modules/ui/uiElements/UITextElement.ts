@@ -24,8 +24,6 @@ export const uiTextElementSchemas = {
 
 /**
  * Represents a text element in a panel.
- *
- * @public
  */
 export interface UITextElementCreate
   extends UIElementLifecycle,

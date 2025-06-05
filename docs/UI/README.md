@@ -9,6 +9,8 @@ UI features such as the legend and the full screen button.
 
 # Interfaces
 
+* [CreateActionTriggerParams](CreateActionTriggerParams.md)
+* [UpdateActionTriggerParams](UpdateActionTriggerParams.md)
 * [CreatePanelParams](CreatePanelParams.md)
 * [UpdatePanelParams](UpdatePanelParams.md)
 * [CreatePanelElementsParams](CreatePanelElementsParams.md)
@@ -16,6 +18,7 @@ UI features such as the legend and the full screen button.
 * [DeletePanelElementsParams](DeletePanelElementsParams.md)
 * [UiControlsOptions](UiControlsOptions.md)
 * [OnMapInteractionsOptions](OnMapInteractionsOptions.md)
+* [UIActionTriggerCreate](UIActionTriggerCreate.md)
 * [UIButtonElementCreate](UIButtonElementCreate.md)
 * [UIButtonGroupElementCreate](UIButtonGroupElementCreate.md)
 * [UIDividerElementCreate](UIDividerElementCreate.md)

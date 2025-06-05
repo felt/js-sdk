@@ -54,8 +54,6 @@ export const uiTextInputElementSchemas = {
 
 /**
  * Represents a text input element.
- *
- * @public
  */
 export interface UITextInputElementCreate
   extends UIElementLifecycle,

@@ -91,8 +91,6 @@ export const uiPanelSchemas = {
  * @remarks
  * For the sake of convenience, the `id` of the panel and its elements are optional,
  * but it is recommended to provide them if you want to be able to perform updates.
- *
- * @public
  */
 export interface UIPanelCreate extends zInfer<typeof uiPanelSchemas.create> {
   /**
@@ -117,8 +115,6 @@ export interface UIPanelCreate extends zInfer<typeof uiPanelSchemas.create> {
  * @remarks
  * For the sake of convenience, `id` is optional but recommended if you want to be able to
  * perform updates.
- *
- * @public
  */
 export type UIPanelElementsCreate =
   | UITextElementCreate

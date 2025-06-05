@@ -12,7 +12,5 @@ export const placementForUiElementSchema = z.union([
  * and in {@link UiController.createPanelElements} to specify the position of an element in a panel.
  *
  * In both cases, the default value is `{ at: "end" }`.
- *
- * @public
  */
 export type PlacementForUIElement = z.infer<typeof placementForUiElementSchema>;

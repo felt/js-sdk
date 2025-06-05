@@ -2,14 +2,14 @@ import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
   uiElementBaseClonableSchema,
-  uiElementBaseInputSchema,
+  uiElementBaseCreateSchema,
   uiElementBaseSchema,
   type UIElementLifecycle,
 } from "./base";
 
 export const uiDividerElementSchemas = {
-  public: uiElementBaseSchema.extend({ type: z.literal("Divider") }),
-  input: uiElementBaseInputSchema.extend({ type: z.literal("Divider") }),
+  read: uiElementBaseSchema.extend({ type: z.literal("Divider") }),
+  create: uiElementBaseCreateSchema.extend({ type: z.literal("Divider") }),
   clonable: uiElementBaseClonableSchema.extend({ type: z.literal("Divider") }),
 };
 
@@ -21,9 +21,9 @@ export const uiDividerElementSchemas = {
  *
  * @public
  */
-export interface UIDividerElementInput
+export interface UIDividerElementCreate
   extends UIElementLifecycle,
     Omit<
-      zInfer<typeof uiDividerElementSchemas.input>,
+      zInfer<typeof uiDividerElementSchemas.create>,
       "onCreate" | "onDestroy"
     > {}

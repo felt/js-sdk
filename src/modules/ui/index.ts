@@ -5,31 +5,34 @@
  * @module UI
  */
 export type {
-  AddPanelElementsInput as AddPanelElementsInput,
-  AddPanelInput,
-  DeletePanelElements,
+  CreatePanelElementsParams,
+  CreatePanelParams,
+  DeletePanelElementsParams,
   UiOnMapInteractionsOptions as OnMapInteractionsOptions,
   UiControlsOptions,
-  UpdatePanelInput as UpdatePanelElementInput,
-  UpdatePanelElementsInput,
+  UpdatePanelElementsParams,
+  UpdatePanelParams,
 } from "./types";
 
 export type { PlacementForUIElement } from "./uiElements/placementForUiElement";
 
-export type { UIPanelElementsInput, UIPanelInput } from "./uiElements/UIPanel";
+export type {
+  UIPanelCreate,
+  UIPanelElementsCreate,
+} from "./uiElements/UIPanel";
 
-export type { UIButtonElementInput } from "./uiElements/UIButtonElement";
+export type { UIButtonElementCreate } from "./uiElements/UIButtonElement";
 
-export type { UIButtonGroupElementInput } from "./uiElements/UIButtonGroupElement";
+export type { UIButtonGroupElementCreate } from "./uiElements/UIButtonGroupElement";
 
-export type { UIDividerElementInput } from "./uiElements/UIDividerElement";
+export type { UIDividerElementCreate } from "./uiElements/UIDividerElement";
 
-export type { UIFlexibleSpaceElementInput } from "./uiElements/UIFlexibleSpaceElement";
+export type { UIFlexibleSpaceElementCreate } from "./uiElements/UIFlexibleSpaceElement";
 
-export type { UISelectElementInput } from "./uiElements/UISelectElement";
+export type { UISelectElementCreate } from "./uiElements/UISelectElement";
 
-export type { UITextElementInput } from "./uiElements/UITextElement";
+export type { UITextElementCreate } from "./uiElements/UITextElement";
 
-export type { UITextInputElementInput } from "./uiElements/UITextInputElement";
+export type { UITextInputElementCreate } from "./uiElements/UITextInputElement";
 
 export type { UiController } from "./controller";

@@ -1,0 +1,14 @@
+diff --git a/node_modules/dtsroll/dist/index-C9-38zEa.mjs b/node_modules/dtsroll/dist/index-C9-38zEa.mjs
+index e8a38f4..07dc90b 100644
+--- a/node_modules/dtsroll/dist/index-C9-38zEa.mjs
++++ b/node_modules/dtsroll/dist/index-C9-38zEa.mjs
+@@ -365,8 +365,7 @@ const getDtsEntryPoints = async (packageJson, packageJsonDirectory) => {
+ };
+ const externalizedDependencies = [
+   "dependencies",
+-  "peerDependencies",
+-  "optionalDependencies"
++  "peerDependencies"
+ ];
+ const getExternals = (packageJson) => {
+   const external = /* @__PURE__ */ new Map();

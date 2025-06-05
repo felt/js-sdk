@@ -155,6 +155,20 @@ export const Felt = {
   connect(feltWindow: Pick<Window, "postMessage">): Promise<FeltController> {
     const controller = makeController(feltWindow);
 
+    // a back-door to skip the ready check, for cases where we know the map is already ready,
+    // such as if we invoke the SDK from inside the Felt application.
+    if (arguments.length === 2) {
+      const firstArg = arguments[1];
+      if (
+        firstArg &&
+        typeof firstArg === "object" &&
+        "skipReadyCheck" in firstArg &&
+        firstArg.skipReadyCheck
+      ) {
+        return Promise.resolve(controller);
+      }
+    }
+
     return new Promise((resolve, reject) => {
       const failureTimeout = setTimeout(() => {
         reject(new Error("Failed to load Felt map"));
@@ -167,6 +181,11 @@ export const Felt = {
           messageChannel.port2,
         ]);
       }, 100);
+
+      // try immediately to see if the map is already ready
+      feltWindow.postMessage({ type: "felt.ready" }, "*", [
+        messageChannel.port2,
+      ]);
 
       messageChannel.port1.onmessage = (event) => {
         if (event.data === true) {

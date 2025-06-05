@@ -94,6 +94,7 @@ export interface UiController {
    *   },
    *   placement: { at: "start" }, // optional, defaults to { at: "end" }
    * });
+   * ```
    */
   createActionTrigger(args: CreateActionTriggerParams): void;
 

@@ -34,7 +34,7 @@ by clicking on a button.
 
 ### Example
 
-````typescript
+```typescript
 await felt.createActionTrigger({
   actionTrigger: {
     id: "layerTurnPurple", // not required but useful for further updates
@@ -46,6 +46,7 @@ await felt.createActionTrigger({
   },
   placement: { at: "start" }, // optional, defaults to { at: "end" }
 });
+```
 
 ***
 
@@ -59,9 +60,9 @@ Action trigger to update is identified by the `id` property.
 
 ### Parameters
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `args` | [`UpdateActionTriggerParams`](UpdateActionTriggerParams.md) | The action trigger to update. |
+| Parameter | Type                                                        | Description                   |
+| --------- | ----------------------------------------------------------- | ----------------------------- |
+| `args`    | [`UpdateActionTriggerParams`](UpdateActionTriggerParams.md) | The action trigger to update. |
 
 ### Returns
 
@@ -78,7 +79,7 @@ await felt.updateActionTrigger({
   id: "layerTurnPurple",
   label: "Turn layer points purple", // only label changes
 });
-````
+```
 
 ***
 

@@ -1575,7 +1575,7 @@ await felt.createActionTrigger({
   actionTrigger: {
     id: "layerTurnPurple", // not required but useful for further updates
     label: "Turn layer purple",
-    onClick: async () => {
+    onTrigger: async () => {
       await felt.setLayerStyle("layer-1", { ..., paint: { color: "purple" } });
     },
     disabled: false, // optional, defaults to false

@@ -20,8 +20,6 @@ export const uiFlexibleSpaceElementSchemas = {
 
 /**
  * Only accepted for {@link UIButtonGroupElementCreate} elements.
- *
- * @public
  */
 export interface UIFlexibleSpaceElementCreate
   extends UIElementLifecycle,

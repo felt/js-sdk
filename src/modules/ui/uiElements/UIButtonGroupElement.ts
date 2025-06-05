@@ -65,8 +65,6 @@ export const uiButtonGroupElementSchemas = {
  *
  * @remarks
  * This element is used to group buttons and text elements together.
- *
- * @public
  */
 export interface UIButtonGroupElementCreate
   extends UIElementLifecycle,

@@ -25,20 +25,20 @@ const uiActionTriggerBaseSchema = z.object({
 export const uiActionTriggerSchemas = {
   read: uiElementBaseSchema
     .extend(uiActionTriggerBaseSchema.shape)
-    .extend({ onClick: z.function().returns(z.void()) }),
+    .extend({ onTrigger: z.function().returns(z.void()) }),
   create: uiElementBaseCreateSchema
-    .extend(uiActionTriggerBaseSchema.partial({ type: true }).shape)
-    .extend({ onClick: z.function().returns(z.void()) }),
+    .extend(uiActionTriggerBaseSchema.shape)
+    .extend({ type: z.undefined() }) // using partial() causes JSDoc to not appear
+    .extend({ onTrigger: z.function().returns(z.void()) }),
   clonable: uiElementBaseClonableSchema
-    .extend(uiActionTriggerBaseSchema.partial({ type: true }).shape)
-    .extend({ onClick: z.string() }),
+    .extend(uiActionTriggerBaseSchema.shape)
+    .extend({ type: z.undefined() })
+    .extend({ onTrigger: z.string() }),
 };
 
 /**
  * Represents an action trigger.
  * It can be added to the map by using the {@link UiController.createActionTrigger} method.
- *
- * @public
  */
 export interface UIActionTriggerCreate
   extends UIElementLifecycle,
@@ -47,7 +47,7 @@ export interface UIActionTriggerCreate
       "onCreate" | "onDestroy"
     > {
   /**
-   * The function to call when the action trigger is clicked.
+   * The function to call when the action trigger is triggered.
    */
-  onClick: () => void;
+  onTrigger: () => void;
 }

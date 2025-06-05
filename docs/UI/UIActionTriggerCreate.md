@@ -9,13 +9,15 @@ It can be added to the map by using the [UiController.createActionTrigger](UiCon
 
 > **label**: `string`
 
+The label of the action trigger.
+
 ***
 
-## onClick()
+## onTrigger()
 
-> **onClick**: () => `void`
+> **onTrigger**: () => `void`
 
-The function to call when the action trigger is clicked.
+The function to call when the action trigger is triggered.
 
 ### Returns
 
@@ -23,15 +25,17 @@ The function to call when the action trigger is clicked.
 
 ***
 
-## type?
-
-> `optional` **type**: `"ActionTrigger"`
-
-***
-
 ## disabled?
 
 > `optional` **disabled**: `boolean`
+
+Whether the action trigger is disabled or not.
+
+***
+
+## type?
+
+> `optional` **type**: `undefined`
 
 ***
 

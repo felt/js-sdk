@@ -51,8 +51,6 @@ export const uiButtonElementSchemas = {
 
 /**
  * Represents a button element in a panel.
- *
- * @public
  */
 export interface UIButtonElementCreate
   extends UIElementLifecycle,

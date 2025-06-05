@@ -48,7 +48,9 @@ export const UpdateActionTriggerParamsClonableSchema =
  * @public
  */
 export interface UpdateActionTriggerParams
-  extends zInfer<typeof UpdateActionTriggerParamsSchema> {}
+  extends Omit<Partial<UIActionTriggerCreate>, "id"> {
+  id: zInfer<typeof UpdateActionTriggerParamsSchema>["id"];
+}
 
 const CreatePanelParamsSchema = z.object({
   panel: uiPanelSchemas.create,

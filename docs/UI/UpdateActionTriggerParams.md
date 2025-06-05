@@ -8,21 +8,45 @@
 
 ***
 
+## label?
+
+> `optional` **label**: `string`
+
+The label of the action trigger.
+
+***
+
+## disabled?
+
+> `optional` **disabled**: `boolean`
+
+Whether the action trigger is disabled or not.
+
+***
+
 ## type?
 
-> `optional` **type**: `"ActionTrigger"`
+> `optional` **type**: `undefined`
+
+***
+
+## onTrigger()?
+
+> `optional` **onTrigger**: () => `void`
+
+The function to call when the action trigger is triggered.
+
+### Returns
+
+`void`
 
 ***
 
 ## onCreate()?
 
-> `optional` **onCreate**: (...`args`: `unknown`\[]) => `void`
+> `optional` **onCreate**: () => `void`
 
-### Parameters
-
-| Parameter | Type         |
-| --------- | ------------ |
-| ...`args` | `unknown`\[] |
+A function to call when the element is created.
 
 ### Returns
 
@@ -32,41 +56,9 @@
 
 ## onDestroy()?
 
-> `optional` **onDestroy**: (...`args`: `unknown`\[]) => `void`
+> `optional` **onDestroy**: () => `void`
 
-### Parameters
-
-| Parameter | Type         |
-| --------- | ------------ |
-| ...`args` | `unknown`\[] |
-
-### Returns
-
-`void`
-
-***
-
-## label?
-
-> `optional` **label**: `string`
-
-***
-
-## disabled?
-
-> `optional` **disabled**: `boolean`
-
-***
-
-## onClick()?
-
-> `optional` **onClick**: (...`args`: `unknown`\[]) => `void`
-
-### Parameters
-
-| Parameter | Type         |
-| --------- | ------------ |
-| ...`args` | `unknown`\[] |
+A function to call when the element is destroyed.
 
 ### Returns
 

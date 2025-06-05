@@ -946,7 +946,7 @@ export interface LayersController {
    *   layerId: "buildings",
    *   boundary: [-122.43, 47.60, -122.33, 47.62],  // neighborhood boundary
    *   aggregation: {
-   *     method: "avg",
+   *     methods: ["avg"],
    *     attribute: "assessed_value"
    *   }
    * });
@@ -956,7 +956,7 @@ export interface LayersController {
    *   layerId: "buildings",
    *   filters: ["year_built", "gte", 2000],
    *   aggregation: {
-   *     method: "max",
+   *     methods: ["max"],
    *     attribute: "height"
    *   }
    * });

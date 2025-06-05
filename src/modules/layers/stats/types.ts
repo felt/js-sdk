@@ -81,10 +81,12 @@ export interface MultiAggregationConfig<T extends AggregationMethod | "count">
   methods: T[];
 
   /**
-   * The attribute to use for the aggregation when aggregations other than "count" are used.
+   * The attribute ID to use for the aggregation when aggregations other than "count" are used.
    *
    * This can be omitted if the only aggregation is "count", but must be a numeric attribute
    * otherwise.
+   *
+   * Use `getLayerSchema` to get the attributes available for a layer.
    */
   attribute?: string;
 }

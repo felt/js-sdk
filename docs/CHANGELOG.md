@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.7.0-next.7
+
+### Patch Changes
+
+* 4c83cfe: Don't try to patch packages not in dev mode
+
 ## 1.7.0-next.6
 
 ### Minor Changes

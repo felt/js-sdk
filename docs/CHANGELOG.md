@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.7.0-next.8
+
+### Patch Changes
+
+* ea5c7ff: Run patch on prepare, not install
+
 ## 1.7.0-next.7
 
 ### Patch Changes

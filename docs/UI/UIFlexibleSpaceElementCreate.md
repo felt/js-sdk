@@ -1,6 +1,6 @@
 ***
 
-Only accepted for [UIButtonGroupElementInput](UIButtonGroupElementInput.md) elements.
+Only accepted for [UIButtonGroupElementCreate](UIButtonGroupElementCreate.md) elements.
 
 # Properties
 

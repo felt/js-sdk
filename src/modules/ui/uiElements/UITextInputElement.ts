@@ -17,14 +17,14 @@ const uiTextInputElementBaseSchema = z.object({
 });
 
 export const uiTextInputElementSchemas = {
-  public: uiLabelReadyElementSchemas.public
+  read: uiLabelReadyElementSchemas.read
     .extend(uiTextInputElementBaseSchema.shape)
     .extend({
       onChange: z.function().args(z.string()).returns(z.void()).optional(),
       onBlur: z.function().args(z.string()).returns(z.void()).optional(),
       onFocus: z.function().args(z.string()).returns(z.void()).optional(),
     }),
-  input: uiLabelReadyElementSchemas.input
+  create: uiLabelReadyElementSchemas.create
     .extend(uiTextInputElementBaseSchema.shape)
     .extend({
       onChange: z
@@ -57,10 +57,10 @@ export const uiTextInputElementSchemas = {
  *
  * @public
  */
-export interface UITextInputElementInput
+export interface UITextInputElementCreate
   extends UIElementLifecycle,
     Omit<
-      zInfer<typeof uiTextInputElementSchemas.input>,
+      zInfer<typeof uiTextInputElementSchemas.create>,
       "onCreate" | "onDestroy"
     > {
   /**

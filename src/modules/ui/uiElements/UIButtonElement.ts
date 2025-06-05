@@ -2,7 +2,7 @@ import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
   uiElementBaseClonableSchema,
-  uiElementBaseInputSchema,
+  uiElementBaseCreateSchema,
   uiElementBaseSchema,
   type UIElementLifecycle,
 } from "./base";
@@ -38,10 +38,10 @@ const uiButtonElementBaseSchema = z.object({
 });
 
 export const uiButtonElementSchemas = {
-  public: uiElementBaseSchema
+  read: uiElementBaseSchema
     .extend(uiButtonElementBaseSchema.shape)
     .extend({ onClick: z.function().returns(z.void()) }),
-  input: uiElementBaseInputSchema
+  create: uiElementBaseCreateSchema
     .extend(uiButtonElementBaseSchema.shape)
     .extend({ onClick: z.function().returns(z.void()) }),
   clonable: uiElementBaseClonableSchema
@@ -54,10 +54,10 @@ export const uiButtonElementSchemas = {
  *
  * @public
  */
-export interface UIButtonElementInput
+export interface UIButtonElementCreate
   extends UIElementLifecycle,
     Omit<
-      zInfer<typeof uiButtonElementSchemas.input>,
+      zInfer<typeof uiButtonElementSchemas.create>,
       "onCreate" | "onDestroy"
     > {
   /**

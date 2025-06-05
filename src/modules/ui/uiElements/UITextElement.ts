@@ -2,7 +2,7 @@ import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
   uiElementBaseClonableSchema,
-  uiElementBaseInputSchema,
+  uiElementBaseCreateSchema,
   uiElementBaseSchema,
   type UIElementLifecycle,
 } from "./base";
@@ -17,8 +17,8 @@ const uiTextElementBaseSchema = z.object({
 });
 
 export const uiTextElementSchemas = {
-  public: uiElementBaseSchema.extend(uiTextElementBaseSchema.shape),
-  input: uiElementBaseInputSchema.extend(uiTextElementBaseSchema.shape),
+  read: uiElementBaseSchema.extend(uiTextElementBaseSchema.shape),
+  create: uiElementBaseCreateSchema.extend(uiTextElementBaseSchema.shape),
   clonable: uiElementBaseClonableSchema.extend(uiTextElementBaseSchema.shape),
 };
 
@@ -27,6 +27,9 @@ export const uiTextElementSchemas = {
  *
  * @public
  */
-export interface UITextElementInput
+export interface UITextElementCreate
   extends UIElementLifecycle,
-    Omit<zInfer<typeof uiTextElementSchemas.input>, "onCreate" | "onDestroy"> {}
+    Omit<
+      zInfer<typeof uiTextElementSchemas.create>,
+      "onCreate" | "onDestroy"
+    > {}

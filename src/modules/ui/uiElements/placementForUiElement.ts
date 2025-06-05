@@ -8,8 +8,8 @@ export const placementForUiElementSchema = z.union([
 ]);
 
 /**
- * Used in {@link UiController.addPanel} to specify the position of a panel in the stack
- * and in {@link UiController.addPanelElements} to specify the position of an element in a panel.
+ * Used in {@link UiController.createPanel} to specify the position of a panel in the stack
+ * and in {@link UiController.createPanelElements} to specify the position of an element in a panel.
  *
  * In both cases, the default value is `{ at: "end" }`.
  *

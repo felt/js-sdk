@@ -39,4 +39,4 @@ export type { UITextInputElementCreate } from "./uiElements/UITextInputElement";
 
 export type { UIActionTriggerCreate } from "./uiElements/UIActionTrigger";
 
-export type { UiController } from "./controller";
+// export type { UiController } from "./controller";

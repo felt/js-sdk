@@ -1,5 +1,15 @@
 # @feltmaps/js-sdk
 
+## 1.7.0-next.6
+
+### Minor Changes
+
+* f5ca219: Speed up initial Felt/SDK connection
+
+### Patch Changes
+
+* 07b27c6: Export bundled controller types file for consumption as single file
+
 ## 1.7.0-next.5
 
 ### Minor Changes

@@ -135,7 +135,7 @@ export interface CreatePanelElementsParams
     container?: "body" | "footer" | { id: string };
 
     /**
-     * The placement of the element in the target container (based on the `on` property).
+     * The placement of the element in the target container (based on the `container` property).
      *
      * @defaultValue `{ at: "end" }`
      */

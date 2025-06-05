@@ -4,14 +4,31 @@ import { type Method, methodMessage } from "~/lib/builders";
 import type { zInfer } from "~/lib/utils";
 import { SortConfigSchema } from "../shared/types";
 import {
+  CreateActionTriggerParamsClonableSchema,
   CreatePanelElementsClonableSchema,
   CreatePanelParamsClonableSchema,
   DeletePanelElementsParamsSchema,
   UiControlsOptionsSchema,
   UiOnMapInteractionsOptionsSchema,
+  UpdateActionTriggerParamsClonableSchema,
   UpdatePanelClonableSchema,
   UpdatePanelElementsParamsClonableSchema,
 } from "./types";
+
+const CreateActionTriggerMessage = methodMessage(
+  "createActionTrigger",
+  CreateActionTriggerParamsClonableSchema,
+);
+
+const UpdateActionTriggerMessage = methodMessage(
+  "updateActionTrigger",
+  UpdateActionTriggerParamsClonableSchema,
+);
+
+const DeleteActionTriggerMessage = methodMessage(
+  "deleteActionTrigger",
+  z.string(),
+);
 
 const CreatePanelMessage = methodMessage(
   "createPanel",
@@ -65,6 +82,10 @@ const HideLayerDataTableMessage = methodMessage(
 
 export const uiSchema = {
   methods: [
+    CreateActionTriggerMessage,
+    UpdateActionTriggerMessage,
+    DeleteActionTriggerMessage,
+
     CreatePanelMessage,
     UpdatePanelMessage,
     DeletePanelMessage,
@@ -84,6 +105,10 @@ export const uiSchema = {
 
 export type UiSchema = {
   methods: {
+    createActionTrigger: Method<zInfer<typeof CreateActionTriggerMessage>>;
+    updateActionTrigger: Method<zInfer<typeof UpdateActionTriggerMessage>>;
+    deleteActionTrigger: Method<zInfer<typeof DeleteActionTriggerMessage>>;
+
     createPanel: Method<zInfer<typeof CreatePanelMessage>>;
     updatePanel: Method<zInfer<typeof UpdatePanelMessage>>;
     deletePanel: Method<zInfer<typeof DeletePanelMessage>>;

@@ -37,8 +37,6 @@ export const uiSelectElementSchemas = {
  *
  * @remarks
  * This element is used to select a single option from a list of options.
- *
- * @public
  */
 export interface UISelectElementCreate
   extends UIElementLifecycle,

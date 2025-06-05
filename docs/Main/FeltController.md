@@ -1547,6 +1547,102 @@ unsubscribe();
 
 ***
 
+## createActionTrigger()
+
+> **createActionTrigger**(`args`: [`CreateActionTriggerParams`](../UI/CreateActionTriggerParams.md)): `void`
+
+Creates an action trigger.
+Action triggers are rendered on map's left sidebar as a button,
+similar to other map extensions like measure and spatial filter.
+
+The goal of action triggers is to allow users to perform actions on the map
+by clicking on a button.
+
+### Parameters
+
+| Parameter | Type                                                              | Description                   |
+| --------- | ----------------------------------------------------------------- | ----------------------------- |
+| `args`    | [`CreateActionTriggerParams`](../UI/CreateActionTriggerParams.md) | The arguments for the method. |
+
+### Returns
+
+`void`
+
+### Example
+
+```typescript
+await felt.createActionTrigger({
+  actionTrigger: {
+    id: "layerTurnPurple", // not required but useful for further updates
+    label: "Turn layer purple",
+    onTrigger: async () => {
+      await felt.setLayerStyle("layer-1", { ..., paint: { color: "purple" } });
+    },
+    disabled: false, // optional, defaults to false
+  },
+  placement: { at: "start" }, // optional, defaults to { at: "end" }
+});
+```
+
+***
+
+## updateActionTrigger()
+
+> **updateActionTrigger**(`args`: [`UpdateActionTriggerParams`](../UI/UpdateActionTriggerParams.md)): `void`
+
+Updates an action trigger.
+
+Action trigger to update is identified by the `id` property.
+
+### Parameters
+
+| Parameter | Type                                                              | Description                   |
+| --------- | ----------------------------------------------------------------- | ----------------------------- |
+| `args`    | [`UpdateActionTriggerParams`](../UI/UpdateActionTriggerParams.md) | The action trigger to update. |
+
+### Returns
+
+`void`
+
+### Remarks
+
+Properties provided will override the existing properties.
+
+### Example
+
+```typescript
+await felt.updateActionTrigger({
+  id: "layerTurnPurple",
+  label: "Turn layer points purple", // only label changes
+});
+```
+
+***
+
+## deleteActionTrigger()
+
+> **deleteActionTrigger**(`id`: `string`): `void`
+
+Deletes an action trigger.
+
+### Parameters
+
+| Parameter | Type     | Description                             |
+| --------- | -------- | --------------------------------------- |
+| `id`      | `string` | The id of the action trigger to delete. |
+
+### Returns
+
+`void`
+
+### Example
+
+```typescript
+await felt.deleteActionTrigger("layerTurnPurple");
+```
+
+***
+
 ## createPanel()
 
 > **createPanel**(`args`: [`CreatePanelParams`](../UI/CreatePanelParams.md)): `void`

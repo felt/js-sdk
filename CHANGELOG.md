@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.7.0-next.5
+
+### Minor Changes
+
+- 49d8895: Add Custom UI API for action triggers
+
 ## 1.7.0-next.4
 
 ### Patch Changes

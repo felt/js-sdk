@@ -1547,30 +1547,36 @@ unsubscribe();
 
 ***
 
-## addPanel()
+## createPanel()
 
-> **addPanel**(`args`: [`AddPanelParams`](../UI/AddPanelParams.md)): `void`
+> **createPanel**(`args`: [`CreatePanelParams`](../UI/CreatePanelParams.md)): `void`
 
-Adds a panel.
-Panels are rendered on the right side of the map.
+Creates a panel on map's right sidebar.
+
+Panels are useful to extend Felt UI for your own use cases (e.g. a form, a settings panel, etc.)
+by using Felt UI elements (e.g. Text, Button, etc.). This way the user experience is consistent
+with the rest of Felt.
+
+Panels have two sections:
+
+* `body` - Body of the panel, scrollable.
+* `footer` - It sticks to the bottom of the panel, useful to add submit buttons.
 
 By default, the panel will be added to the end of the stack but you can
 specify a placement to add it at a specific position in the stack.
+
+Once created, you can add elements to the panel by using the [createPanelElements](../UI/UiController.md#createpanelelements) method or
+perform partial updates of elements by using the [updatePanelElements](../UI/UiController.md#updatepanelelements) method.
 
 When adding a panel, its id is optional as well as its elements' ids.
 It is recommended to provide an id for the panel and its elements to make
 it easier to update or delete them later.
 
-Panels have two sections:
-
-* `items` - Body of the panel, scrollable.
-* `footer` - It sticks to the bottom of the panel, useful to add submit buttons.
-
 ### Parameters
 
-| Parameter | Type                                        | Description                   |
-| --------- | ------------------------------------------- | ----------------------------- |
-| `args`    | [`AddPanelParams`](../UI/AddPanelParams.md) | The arguments for the method. |
+| Parameter | Type                                              | Description                   |
+| --------- | ------------------------------------------------- | ----------------------------- |
+| `args`    | [`CreatePanelParams`](../UI/CreatePanelParams.md) | The arguments for the method. |
 
 ### Returns
 
@@ -1579,11 +1585,11 @@ Panels have two sections:
 ### Example
 
 ```typescript
-await felt.addPanel({
+await felt.createPanel({
    panel: {
       id: "panel-1", // not required but useful for further updates
       title: "My Panel",
-      items: [
+      body: [
          {
             type: "Text",
             content: "Hello, world!",
@@ -1670,17 +1676,17 @@ await felt.deletePanel("panel-1");
 
 ***
 
-## addPanelElements()
+## createPanelElements()
 
-> **addPanelElements**(`args`: [`AddPanelElementsParams`](../UI/AddPanelElementsParams.md)): `void`
+> **createPanelElements**(`args`: [`CreatePanelElementsParams`](../UI/CreatePanelElementsParams.md)): `void`
 
-Adds elements to a panel.
+Creates elements in a panel.
 
 ### Parameters
 
-| Parameter | Type                                                        | Description                   |
-| --------- | ----------------------------------------------------------- | ----------------------------- |
-| `args`    | [`AddPanelElementsParams`](../UI/AddPanelElementsParams.md) | The arguments for the method. |
+| Parameter | Type                                                              | Description                   |
+| --------- | ----------------------------------------------------------------- | ----------------------------- |
+| `args`    | [`CreatePanelElementsParams`](../UI/CreatePanelElementsParams.md) | The arguments for the method. |
 
 ### Returns
 
@@ -1689,12 +1695,12 @@ Adds elements to a panel.
 ### Example
 
 ```typescript
-await felt.addPanelElements({
+await felt.createPanelElements({
   panelId: "panel-1",
   elements: [
     {
       element: { type: "Text", content: "Hello, world!" },
-      on: "items",
+      container: "body",
       placement: { at: "start" },
     },
   ],

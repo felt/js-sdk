@@ -1,8 +1,8 @@
 import { method, methodWithListeners } from "~/lib/interface";
 import type { SortConfig } from "~/modules/shared/types";
 import type {
-  AddPanelElementsParams,
-  AddPanelParams,
+  CreatePanelElementsParams,
+  CreatePanelParams,
   DeletePanelElementsParams,
   UiControlsOptions,
   UiOnMapInteractionsOptions,
@@ -22,9 +22,9 @@ export const uiController = (
   showLayerDataTable: method(feltWindow, "showLayerDataTable"),
   hideLayerDataTable: method(feltWindow, "hideLayerDataTable"),
 
-  addPanel: methodWithListeners<"addPanel", AddPanelParams>(
+  createPanel: methodWithListeners<"createPanel", CreatePanelParams>(
     feltWindow,
-    "addPanel",
+    "createPanel",
   ),
   updatePanel: methodWithListeners<"updatePanel", UpdatePanelParams>(
     feltWindow,
@@ -32,10 +32,10 @@ export const uiController = (
   ),
   deletePanel: method(feltWindow, "deletePanel"),
 
-  addPanelElements: methodWithListeners<
-    "addPanelElements",
-    AddPanelElementsParams
-  >(feltWindow, "addPanelElements"),
+  createPanelElements: methodWithListeners<
+    "createPanelElements",
+    CreatePanelElementsParams
+  >(feltWindow, "createPanelElements"),
   updatePanelElements: methodWithListeners<
     "updatePanelElements",
     UpdatePanelElementsParams
@@ -54,19 +54,25 @@ export const uiController = (
  */
 export interface UiController {
   /**
-   * Adds a panel.
-   * Panels are rendered on the right side of the map.
+   * Creates a panel on map's right sidebar.
+   *
+   * Panels are useful to extend Felt UI for your own use cases (e.g. a form, a settings panel, etc.)
+   * by using Felt UI elements (e.g. Text, Button, etc.). This way the user experience is consistent
+   * with the rest of Felt.
+   *
+   * Panels have two sections:
+   *  - `body` - Body of the panel, scrollable.
+   *  - `footer` - It sticks to the bottom of the panel, useful to add submit buttons.
    *
    * By default, the panel will be added to the end of the stack but you can
    * specify a placement to add it at a specific position in the stack.
    *
+   * Once created, you can add elements to the panel by using the {@link createPanelElements} method or
+   * perform partial updates of elements by using the {@link updatePanelElements} method.
+   *
    * When adding a panel, its id is optional as well as its elements' ids.
    * It is recommended to provide an id for the panel and its elements to make
    * it easier to update or delete them later.
-   *
-   * Panels have two sections:
-   * - `items` - Body of the panel, scrollable.
-   * - `footer` - It sticks to the bottom of the panel, useful to add submit buttons.
    *
    * @param args - The arguments for the method.
    * @param args.panel - The panel to add.
@@ -78,11 +84,11 @@ export interface UiController {
    *
    * @example
    * ```typescript
-   * await felt.addPanel({
+   * await felt.createPanel({
    *    panel: {
    *       id: "panel-1", // not required but useful for further updates
    *       title: "My Panel",
-   *       items: [
+   *       body: [
    *          {
    *             type: "Text",
    *             content: "Hello, world!",
@@ -107,7 +113,7 @@ export interface UiController {
    * });
    * ```
    */
-  addPanel(args: AddPanelParams): void;
+  createPanel(args: CreatePanelParams): void;
 
   /**
    * Updates a panel.
@@ -143,7 +149,7 @@ export interface UiController {
   deletePanel(id: string): void;
 
   /**
-   * Adds elements to a panel.
+   * Creates elements in a panel.
    *
    * @param args - The arguments for the method.
    * @param args.panelId - The id of the panel to add the elements to.
@@ -153,8 +159,8 @@ export interface UiController {
    *
    * - `element`: The element to add.
    *
-   * - `on`: The section of the panel to add the element to. To point to a specific container, use the `id` of the container. Optional. Defaults to `items`.
-   *   - `items` - Add the element to the items section of the panel.
+   * - `container`: The section of the panel to add the element to. To point to a specific container, use the `id` of the container. Optional. Defaults to `body`.
+   *   - `body` - Add the element to the body section of the panel.
    *   - `footer` - Add the element to the footer section of the panel.
    *   - `{ id: "container-1" }` - Add the element to the container identified by `id`.
    *
@@ -166,19 +172,19 @@ export interface UiController {
    *
    * @example
    * ```typescript
-   * await felt.addPanelElements({
+   * await felt.createPanelElements({
    *   panelId: "panel-1",
    *   elements: [
    *     {
    *       element: { type: "Text", content: "Hello, world!" },
-   *       on: "items",
+   *       container: "body",
    *       placement: { at: "start" },
    *     },
    *   ],
    * });
    * ```
    */
-  addPanelElements(args: AddPanelElementsParams): void;
+  createPanelElements(args: CreatePanelElementsParams): void;
 
   /**
    * Updates an element in a panel.

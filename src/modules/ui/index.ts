@@ -5,8 +5,8 @@
  * @module UI
  */
 export type {
-  AddPanelElementsParams,
-  AddPanelParams,
+  CreatePanelElementsParams,
+  CreatePanelParams,
   DeletePanelElementsParams,
   UiOnMapInteractionsOptions as OnMapInteractionsOptions,
   UiControlsOptions,

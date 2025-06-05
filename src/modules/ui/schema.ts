@@ -4,8 +4,8 @@ import { type Method, methodMessage } from "~/lib/builders";
 import type { zInfer } from "~/lib/utils";
 import { SortConfigSchema } from "../shared/types";
 import {
-  AddPanelElementsClonableSchema,
-  AddPanelParamsClonableSchema,
+  CreatePanelElementsClonableSchema,
+  CreatePanelParamsClonableSchema,
   DeletePanelElementsParamsSchema,
   UiControlsOptionsSchema,
   UiOnMapInteractionsOptionsSchema,
@@ -13,16 +13,19 @@ import {
   UpdatePanelElementsParamsClonableSchema,
 } from "./types";
 
-const AddPanelMessage = methodMessage("addPanel", AddPanelParamsClonableSchema);
+const CreatePanelMessage = methodMessage(
+  "createPanel",
+  CreatePanelParamsClonableSchema,
+);
 const UpdatePanelMessage = methodMessage(
   "updatePanel",
   UpdatePanelClonableSchema,
 );
 const DeletePanelMessage = methodMessage("deletePanel", z.string());
 
-const AddPanelElementsMessage = methodMessage(
-  "addPanelElements",
-  AddPanelElementsClonableSchema,
+const CreatePanelElementsMessage = methodMessage(
+  "createPanelElements",
+  CreatePanelElementsClonableSchema,
 );
 
 const UpdatePanelElementsMessage = methodMessage(
@@ -62,11 +65,11 @@ const HideLayerDataTableMessage = methodMessage(
 
 export const uiSchema = {
   methods: [
-    AddPanelMessage,
+    CreatePanelMessage,
     UpdatePanelMessage,
     DeletePanelMessage,
 
-    AddPanelElementsMessage,
+    CreatePanelElementsMessage,
     UpdatePanelElementsMessage,
     DeletePanelElementsMessage,
 
@@ -81,11 +84,11 @@ export const uiSchema = {
 
 export type UiSchema = {
   methods: {
-    addPanel: Method<zInfer<typeof AddPanelMessage>>;
+    createPanel: Method<zInfer<typeof CreatePanelMessage>>;
     updatePanel: Method<zInfer<typeof UpdatePanelMessage>>;
     deletePanel: Method<zInfer<typeof DeletePanelMessage>>;
 
-    addPanelElements: Method<zInfer<typeof AddPanelElementsMessage>>;
+    createPanelElements: Method<zInfer<typeof CreatePanelElementsMessage>>;
     updatePanelElements: Method<zInfer<typeof UpdatePanelElementsMessage>>;
     deletePanelElements: Method<zInfer<typeof DeletePanelElementsMessage>>;
 

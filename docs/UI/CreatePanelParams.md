@@ -1,6 +1,6 @@
 ***
 
-The parameters for adding a panel to the map by using [UiController.addPanel](UiController.md#addpanel).
+The parameters for adding a panel to the map by using [UiController.createPanel](UiController.md#createpanel).
 
 # Properties
 

@@ -66,27 +66,27 @@ const uiPanelBaseSchema = z.object({
 export const uiPanelSchemas = {
   read: uiElementBaseSchema.extend(uiPanelBaseSchema.shape).extend({
     onClose: z.function().returns(z.void()).optional(),
-    items: z.array(uiPanelElementsSchemas.read),
+    body: z.array(uiPanelElementsSchemas.read),
     footer: z.array(uiPanelElementsSchemas.read).optional(),
   }),
   create: uiElementBaseCreateSchema
     .extend(uiPanelBaseSchema.partial().shape)
     .extend({
       onClose: z.function().returns(z.void()).optional(),
-      items: z.array(uiPanelElementsSchemas.create),
+      body: z.array(uiPanelElementsSchemas.create),
       footer: z.array(uiPanelElementsSchemas.create).optional(),
     }),
   clonable: uiElementBaseClonableSchema
     .extend(uiPanelBaseSchema.partial().shape)
     .extend({
       onClose: z.string().optional(),
-      items: z.array(uiPanelElementsSchemas.clonable),
+      body: z.array(uiPanelElementsSchemas.clonable),
       footer: z.array(uiPanelElementsSchemas.clonable).optional(),
     }),
 };
 
 /**
- * The panel to add to the map by using the {@link UiController.addPanel} method.
+ * The panel to add to the map by using the {@link UiController.createPanel} method.
  *
  * @remarks
  * For the sake of convenience, the `id` of the panel and its elements are optional,
@@ -98,7 +98,7 @@ export interface UIPanelCreate extends zInfer<typeof uiPanelSchemas.create> {
   /**
    * The elements to add to the panel body.
    */
-  items: UIPanelElementsCreate[];
+  body: UIPanelElementsCreate[];
 
   /**
    * The elements to add to the panel footer.

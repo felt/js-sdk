@@ -17,17 +17,18 @@ import {
   uiPanelSchemas,
 } from "./uiElements/UIPanel";
 
-const AddPanelParamsSchema = z.object({
+const CreatePanelParamsSchema = z.object({
   panel: uiPanelSchemas.create,
   placement: placementForUiElementSchema.optional(),
 });
 
 /**
- * The parameters for adding a panel to the map by using {@link UiController.addPanel}.
+ * The parameters for adding a panel to the map by using {@link UiController.createPanel}.
  *
  * @public
  */
-export interface AddPanelParams extends zInfer<typeof AddPanelParamsSchema> {
+export interface CreatePanelParams
+  extends zInfer<typeof CreatePanelParamsSchema> {
   /**
    * The panel to add.
    */
@@ -41,7 +42,7 @@ export interface AddPanelParams extends zInfer<typeof AddPanelParamsSchema> {
   placement?: PlacementForUIElement;
 }
 
-export const AddPanelParamsClonableSchema = z.object({
+export const CreatePanelParamsClonableSchema = z.object({
   panel: uiPanelSchemas.clonable,
   placement: placementForUiElementSchema.optional(),
 });
@@ -55,15 +56,15 @@ const UpdatePanelParamsSchema = uiPanelSchemas.create
  */
 export interface UpdatePanelParams
   extends zInfer<typeof UpdatePanelParamsSchema> {
-  items?: AddPanelParams["panel"]["items"];
-  footer?: AddPanelParams["panel"]["footer"];
+  body?: CreatePanelParams["panel"]["body"];
+  footer?: CreatePanelParams["panel"]["footer"];
 }
 
 export const UpdatePanelClonableSchema = uiPanelSchemas.clonable
   .partial()
   .required({ id: true });
 
-const AddPanelElementsParamsSchema = z.object({
+const CreatePanelElementsParamsSchema = z.object({
   panelId: z.string(),
   elements: z.array(
     z.object({
@@ -71,9 +72,9 @@ const AddPanelElementsParamsSchema = z.object({
         uiPanelElementsSchemas.create,
         uiFlexibleSpaceElementSchemas.create,
       ]),
-      on: z
+      container: z
         .union([
-          z.literal("items"),
+          z.literal("body"),
           z.literal("footer"),
           z.object({ id: z.string() }),
         ])
@@ -86,19 +87,19 @@ const AddPanelElementsParamsSchema = z.object({
 /**
  * @public
  */
-export interface AddPanelElementsParams
-  extends zInfer<typeof AddPanelElementsParamsSchema> {
+export interface CreatePanelElementsParams
+  extends zInfer<typeof CreatePanelElementsParamsSchema> {
   elements: Array<{
     element: UIPanelElementsCreate | UIFlexibleSpaceElementCreate;
 
     /**
      * The section of the panel to add the element to.
-     * It can be either one of the top-level sections of the panel (`"items"` or `"footer"`)
+     * It can be either one of the top-level sections of the panel (`"body"` or `"footer"`)
      * or a specific container (like `ButtonGroup`) in the panel (`{ id: string }`).
      *
-     * @defaultValue `"items"`
+     * @defaultValue `"body"`
      */
-    on?: "items" | "footer" | { id: string };
+    container?: "body" | "footer" | { id: string };
 
     /**
      * The placement of the element in the target container (based on the `on` property).
@@ -113,7 +114,7 @@ export interface AddPanelElementsParams
  * @internal
  * @ignore
  */
-export const AddPanelElementsClonableSchema = z.object({
+export const CreatePanelElementsClonableSchema = z.object({
   panelId: z.string(),
   elements: z.array(
     z.object({
@@ -121,9 +122,9 @@ export const AddPanelElementsClonableSchema = z.object({
         uiPanelElementsSchemas.clonable,
         uiFlexibleSpaceElementSchemas.clonable,
       ]),
-      on: z
+      container: z
         .union([
-          z.literal("items"),
+          z.literal("body"),
           z.literal("footer"),
           z.object({ id: z.string() }),
         ])

@@ -68,9 +68,9 @@
 
 ***
 
-## items?
+## body?
 
-> `optional` **items**: [`UIPanelElementsCreate`](UIPanelElementsCreate.md)\[]
+> `optional` **body**: [`UIPanelElementsCreate`](UIPanelElementsCreate.md)\[]
 
 ***
 

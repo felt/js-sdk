@@ -9,9 +9,9 @@ UI features such as the legend and the full screen button.
 
 # Interfaces
 
-* [AddPanelParams](AddPanelParams.md)
+* [CreatePanelParams](CreatePanelParams.md)
 * [UpdatePanelParams](UpdatePanelParams.md)
-* [AddPanelElementsParams](AddPanelElementsParams.md)
+* [CreatePanelElementsParams](CreatePanelElementsParams.md)
 * [UpdatePanelElementsParams](UpdatePanelElementsParams.md)
 * [DeletePanelElementsParams](DeletePanelElementsParams.md)
 * [UiControlsOptions](UiControlsOptions.md)

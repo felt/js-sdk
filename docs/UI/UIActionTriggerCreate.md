@@ -25,6 +25,12 @@ The function to call when the action trigger is triggered.
 
 ***
 
+## id?
+
+> `optional` **id**: `string`
+
+***
+
 ## disabled?
 
 > `optional` **disabled**: `boolean`
@@ -60,9 +66,3 @@ A function to call when the element is destroyed.
 ### Returns
 
 `void`
-
-***
-
-## id?
-
-> `optional` **id**: `string`

@@ -1,3 +1,3 @@
 ***
 
-> **FilterLogicGate**: `"and"` | `"or"`
+> **FilterLogicGate** = `"and"` | `"or"`

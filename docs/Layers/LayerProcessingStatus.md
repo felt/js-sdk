@@ -1,6 +1,6 @@
 ***
 
-> **LayerProcessingStatus**: `"processing"` | `"completed"` | `"failed"` | `"incomplete"`
+> **LayerProcessingStatus** = `"processing"` | `"completed"` | `"failed"` | `"incomplete"`
 
 This describes the processing status of a layer.
 

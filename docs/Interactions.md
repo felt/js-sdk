@@ -6,8 +6,8 @@ Interactions include clicking and hovering on points and features.
 
 # Controller
 
-* [InteractionsController](InteractionsController.md)
+* [InteractionsController](Interactions/InteractionsController.md)
 
 # Interfaces
 
-* [MapInteractionEvent](MapInteractionEvent.md)
+* [MapInteractionEvent](Interactions/MapInteractionEvent.md)

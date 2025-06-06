@@ -6,13 +6,13 @@ Constraints for legend items. If nothing is passed, all legend items will be ret
 
 ## ids?
 
-> `optional` **ids**: \{ `id`: `string`; `layerId`: `string`; }\[]
+> `optional` **ids**: { `id`: `string`; `layerId`: `string`; }\[]
 
 Array of legend item identifiers to constrain by.
 
-| Name      | Type     | Description                                     |
-| --------- | -------- | ----------------------------------------------- |
-| `id`      | `string` | The id of the legend item.                      |
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| `id` | `string` | The id of the legend item. |
 | `layerId` | `string` | The id of the layer the legend item belongs to. |
 
 ***

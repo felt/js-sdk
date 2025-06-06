@@ -67,7 +67,7 @@ and Markers, so their description will not be shown.
 
 ## attributes
 
-> **attributes**: `Record`\<`string`, `unknown`>
+> **attributes**: `Record`<`string`, `unknown`>
 
 A set of key-value pairs that can be used to store arbitrary data about the element.
 

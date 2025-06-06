@@ -1,7 +1,7 @@
 ***
 
 A GeoJSON feature object, compliant with:
-[https://datatracker.ietf.org/doc/html/rfc7946#section-3.2](https://datatracker.ietf.org/doc/html/rfc7946#section-3.2)
+https://datatracker.ietf.org/doc/html/rfc7946#section-3.2
 
 # Properties
 
@@ -40,4 +40,4 @@ The bounding box of the feature in \[west, south, east, north] order.
 > `optional` **id**: `string` | `number`
 
 A value that uniquely identifies this feature in a
-[https://tools.ietf.org/html/rfc7946#section-3.2](https://tools.ietf.org/html/rfc7946#section-3.2).
+https://tools.ietf.org/html/rfc7946#section-3.2.

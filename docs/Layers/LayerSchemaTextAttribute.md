@@ -52,11 +52,11 @@ Indicates this is a text attribute.
 
 ## sampleValues
 
-> **sampleValues**: \{ `value`: `string`; `count`: `number`; }\[]
+> **sampleValues**: { `value`: `string`; `count`: `number`; }\[]
 
 A small sample of string values for this attribute and their frequency.
 
-| Name    | Type     |
-| ------- | -------- |
+| Name | Type |
+| ------ | ------ |
 | `value` | `string` |
 | `count` | `number` |

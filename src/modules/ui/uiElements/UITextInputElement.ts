@@ -63,25 +63,40 @@ export interface UITextInputElementCreate
     > {
   /**
    * Event handler for when the value of the input changes.
-   *
-   * @param args
-   * @param args.value - The new value of the input.
    */
-  onChange?: (args: { value: string }) => void;
+  onChange?: (
+    /**/
+    args: {
+      /**
+       * The new value of the input.
+       */
+      value: string;
+    },
+  ) => void;
 
   /**
    * Event handler for when the input loses focus.
-   *
-   * @param args
-   * @param args.value - The input value when the input loses focus.
    */
-  onBlur?: (args: { value: string }) => void;
+  onBlur?: (
+    /**/
+    args: {
+      /**
+       * The input value when the input loses focus.
+       */
+      value: string;
+    },
+  ) => void;
 
   /**
    * Event handler for when the input gains focus.
-   *
-   * @param args
-   * @param args.value - The input value when the input gains focus.
    */
-  onFocus?: (args: { value: string }) => void;
+  onFocus?: (
+    /**/
+    args: {
+      /**
+       * The input value when the input gains focus.
+       */
+      value: string;
+    },
+  ) => void;
 }

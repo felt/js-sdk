@@ -14,14 +14,14 @@ The cursor position in world coordinates.
 
 ## point
 
-> **point**: \{ `x`: `number`; `y`: `number`; }
+> **point**: { `x`: `number`; `y`: `number`; }
 
 The pixel coordinates of the mouse cursor, relative to the map and measured from the top left corner.
 
-| Name | Type     |
-| ---- | -------- |
-| `x`  | `number` |
-| `y`  | `number` |
+| Name | Type |
+| ------ | ------ |
+| `x` | `number` |
+| `y` | `number` |
 
 ***
 

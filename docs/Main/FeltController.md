@@ -16,19 +16,19 @@ own to make it easier to find related methods and events.
 
 ## getElement()
 
-> **getElement**(`id`: `string`): `Promise`\<`null` | [`Element`](../Elements/Element.md)>
+> **getElement**(`id`: `string`): `Promise`<`null` | [`Element`](../Elements/Element.md)>
 
 Get a single element from the map by its id.
 
 ### Parameters
 
-| Parameter | Type     | Description                            |
-| --------- | -------- | -------------------------------------- |
-| `id`      | `string` | The id of the element you want to get. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | `string` | The id of the element you want to get. |
 
 ### Returns
 
-`Promise`\<`null` | [`Element`](../Elements/Element.md)>
+`Promise`<`null` | [`Element`](../Elements/Element.md)>
 
 The requested element.
 
@@ -42,7 +42,7 @@ const element = await felt.getElement("element-1");
 
 ## getElementGeometry()
 
-> **getElementGeometry**(`id`: `string`): `Promise`\<`null` | [`GeoJsonGeometry`](../Shared/GeoJsonGeometry.md)>
+> **getElementGeometry**(`id`: `string`): `Promise`<`null` | [`GeoJsonGeometry`](../Shared/GeoJsonGeometry.md)>
 
 Get the geometry of an element in GeoJSON geometry format.
 
@@ -63,13 +63,13 @@ property of the element, with some differences:
 
 ### Parameters
 
-| Parameter | Type     | Description                                            |
-| --------- | -------- | ------------------------------------------------------ |
-| `id`      | `string` | The id of the element you want to get the geometry of. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | `string` | The id of the element you want to get the geometry of. |
 
 ### Returns
 
-`Promise`\<`null` | [`GeoJsonGeometry`](../Shared/GeoJsonGeometry.md)>
+`Promise`<`null` | [`GeoJsonGeometry`](../Shared/GeoJsonGeometry.md)>
 
 ### Example
 
@@ -82,20 +82,20 @@ console.log(geometry?.type, geometry?.coordinates);
 
 ## getElements()
 
-> **getElements**(`constraint`?: [`GetElementsConstraint`](../Elements/GetElementsConstraint.md)): `Promise`\<(`null` | [`Element`](../Elements/Element.md))\[]>
+> **getElements**(`constraint?`: [`GetElementsConstraint`](../Elements/GetElementsConstraint.md)): `Promise`<(`null` | [`Element`](../Elements/Element.md))\[]>
 
 Gets elements from the map, according to the constraints supplied. If no
 constraints are supplied, all elements will be returned.
 
 ### Parameters
 
-| Parameter     | Type                                                            | Description                                                     |
-| ------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| `constraint`? | [`GetElementsConstraint`](../Elements/GetElementsConstraint.md) | The constraints to apply to the elements returned from the map. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `constraint?` | [`GetElementsConstraint`](../Elements/GetElementsConstraint.md) | The constraints to apply to the elements returned from the map. |
 
 ### Returns
 
-`Promise`\<(`null` | [`Element`](../Elements/Element.md))\[]>
+`Promise`<(`null` | [`Element`](../Elements/Element.md))\[]>
 
 All elements on the map.
 
@@ -115,19 +115,19 @@ const elements = await felt.getElements();
 
 ## getElementGroup()
 
-> **getElementGroup**(`id`: `string`): `Promise`\<`null` | [`ElementGroup`](../Elements/ElementGroup.md)>
+> **getElementGroup**(`id`: `string`): `Promise`<`null` | [`ElementGroup`](../Elements/ElementGroup.md)>
 
 Get an element group from the map by its id.
 
 ### Parameters
 
-| Parameter | Type     |
-| --------- | -------- |
-| `id`      | `string` |
+| Parameter | Type |
+| ------ | ------ |
+| `id` | `string` |
 
 ### Returns
 
-`Promise`\<`null` | [`ElementGroup`](../Elements/ElementGroup.md)>
+`Promise`<`null` | [`ElementGroup`](../Elements/ElementGroup.md)>
 
 The requested element group.
 
@@ -141,20 +141,20 @@ const elementGroup = await felt.getElementGroup("element-group-1");
 
 ## getElementGroups()
 
-> **getElementGroups**(`constraint`?: [`GetElementGroupsConstraint`](../Elements/GetElementGroupsConstraint.md)): `Promise`\<(`null` | [`ElementGroup`](../Elements/ElementGroup.md))\[]>
+> **getElementGroups**(`constraint?`: [`GetElementGroupsConstraint`](../Elements/GetElementGroupsConstraint.md)): `Promise`<(`null` | [`ElementGroup`](../Elements/ElementGroup.md))\[]>
 
 Gets element groups from the map, according to the filters supplied. If no
 constraints are supplied, all element groups will be returned in rendering order.
 
 ### Parameters
 
-| Parameter     | Type                                                                      | Description                                                           |
-| ------------- | ------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `constraint`? | [`GetElementGroupsConstraint`](../Elements/GetElementGroupsConstraint.md) | The constraints to apply to the element groups returned from the map. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `constraint?` | [`GetElementGroupsConstraint`](../Elements/GetElementGroupsConstraint.md) | The constraints to apply to the element groups returned from the map. |
 
 ### Returns
 
-`Promise`\<(`null` | [`ElementGroup`](../Elements/ElementGroup.md))\[]>
+`Promise`<(`null` | [`ElementGroup`](../Elements/ElementGroup.md))\[]>
 
 The requested element groups.
 
@@ -168,19 +168,19 @@ const elementGroups = await felt.getElementGroups({ ids: ["element-group-1", "el
 
 ## setElementGroupVisibility()
 
-> **setElementGroupVisibility**(`visibility`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`\<`void`>
+> **setElementGroupVisibility**(`visibility`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`<`void`>
 
 Hide or show element groups with the given ids.
 
 ### Parameters
 
-| Parameter    | Type                                                        |
-| ------------ | ----------------------------------------------------------- |
+| Parameter | Type |
+| ------ | ------ |
 | `visibility` | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -192,19 +192,19 @@ felt.setElementGroupVisibility({ show: ["element-group-1", "element-group-2"], h
 
 ## createElement()
 
-> **createElement**(`element`: [`ElementCreate`](../Elements/ElementCreate.md)): `Promise`\<[`Element`](../Elements/Element.md)>
+> **createElement**(`element`: [`ElementCreate`](../Elements/ElementCreate.md)): `Promise`<[`Element`](../Elements/Element.md)>
 
 Create a new element on the map.
 
 ### Parameters
 
-| Parameter | Type                                            |
-| --------- | ----------------------------------------------- |
+| Parameter | Type |
+| ------ | ------ |
 | `element` | [`ElementCreate`](../Elements/ElementCreate.md) |
 
 ### Returns
 
-`Promise`\<[`Element`](../Elements/Element.md)>
+`Promise`<[`Element`](../Elements/Element.md)>
 
 ### Example
 
@@ -216,19 +216,19 @@ const element = await felt.createElement({ type: "Place", coordinates: [10, 10] 
 
 ## updateElement()
 
-> **updateElement**(`element`: [`ElementUpdate`](../Elements/ElementUpdate.md)): `Promise`\<[`Element`](../Elements/Element.md)>
+> **updateElement**(`element`: [`ElementUpdate`](../Elements/ElementUpdate.md)): `Promise`<[`Element`](../Elements/Element.md)>
 
 Update an element on the map.
 
 ### Parameters
 
-| Parameter | Type                                            |
-| --------- | ----------------------------------------------- |
+| Parameter | Type |
+| ------ | ------ |
 | `element` | [`ElementUpdate`](../Elements/ElementUpdate.md) |
 
 ### Returns
 
-`Promise`\<[`Element`](../Elements/Element.md)>
+`Promise`<[`Element`](../Elements/Element.md)>
 
 ### Example
 
@@ -251,19 +251,19 @@ await felt.updateElement({
 
 ## deleteElement()
 
-> **deleteElement**(`id`: `string`): `Promise`\<`void`>
+> **deleteElement**(`id`: `string`): `Promise`<`void`>
 
 Delete an element from the map.
 
 ### Parameters
 
-| Parameter | Type     |
-| --------- | -------- |
-| `id`      | `string` |
+| Parameter | Type |
+| ------ | ------ |
+| `id` | `string` |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -275,19 +275,19 @@ await felt.deleteElement("element-1");
 
 ## getLayer()
 
-> **getLayer**(`id`: `string`): `Promise`\<`null` | [`Layer`](../Layers/Layer.md)>
+> **getLayer**(`id`: `string`): `Promise`<`null` | [`Layer`](../Layers/Layer.md)>
 
 Get a single layer from the map by its id.
 
 ### Parameters
 
-| Parameter | Type     | Description                          |
-| --------- | -------- | ------------------------------------ |
-| `id`      | `string` | The id of the layer you want to get. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | `string` | The id of the layer you want to get. |
 
 ### Returns
 
-`Promise`\<`null` | [`Layer`](../Layers/Layer.md)>
+`Promise`<`null` | [`Layer`](../Layers/Layer.md)>
 
 The requested layer.
 
@@ -301,20 +301,20 @@ const layer = await felt.getLayer("layer-1");
 
 ## getLayers()
 
-> **getLayers**(`constraint`?: [`GetLayersConstraint`](../Layers/GetLayersConstraint.md)): `Promise`\<(`null` | [`Layer`](../Layers/Layer.md))\[]>
+> **getLayers**(`constraint?`: [`GetLayersConstraint`](../Layers/GetLayersConstraint.md)): `Promise`<(`null` | [`Layer`](../Layers/Layer.md))\[]>
 
 Gets layers from the map, according to the constraints supplied. If no
 constraints are supplied, all layers will be returned.
 
 ### Parameters
 
-| Parameter     | Type                                                      | Description                                                   |
-| ------------- | --------------------------------------------------------- | ------------------------------------------------------------- |
-| `constraint`? | [`GetLayersConstraint`](../Layers/GetLayersConstraint.md) | The constraints to apply to the layers returned from the map. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `constraint?` | [`GetLayersConstraint`](../Layers/GetLayersConstraint.md) | The constraints to apply to the layers returned from the map. |
 
 ### Returns
 
-`Promise`\<(`null` | [`Layer`](../Layers/Layer.md))\[]>
+`Promise`<(`null` | [`Layer`](../Layers/Layer.md))\[]>
 
 All layers on the map.
 
@@ -334,19 +334,19 @@ const layers = await felt.getLayers();
 
 ## setLayerVisibility()
 
-> **setLayerVisibility**(`visibility`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`\<`void`>
+> **setLayerVisibility**(`visibility`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`<`void`>
 
 Hide or show layers with the given ids.
 
 ### Parameters
 
-| Parameter    | Type                                                        |
-| ------------ | ----------------------------------------------------------- |
+| Parameter | Type |
+| ------ | ------ |
 | `visibility` | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -358,7 +358,7 @@ felt.setLayerVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
 
 ## setLayerStyle()
 
-> **setLayerStyle**(`params`: \{ `id`: `string`; `style`: `object`; }): `Promise`\<`void`>
+> **setLayerStyle**(`params`: { `id`: `string`; `style`: `object`; }): `Promise`<`void`>
 
 Set the style for a layer using FSL, the Felt Style Language.
 
@@ -374,15 +374,15 @@ in the rejected promise value.
 
 ### Parameters
 
-| Parameter      | Type                                    | Description                               |
-| -------------- | --------------------------------------- | ----------------------------------------- |
-| `params`       | \{ `id`: `string`; `style`: `object`; } | -                                         |
-| `params.id`    | `string`                                | The id of the layer to set the style for. |
-| `params.style` | `object`                                | The style to set for the layer.           |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `params` | { `id`: `string`; `style`: `object`; } | - |
+| `params.id` | `string` | The id of the layer to set the style for. |
+| `params.style` | `object` | The style to set for the layer. |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -403,19 +403,19 @@ felt.setLayerStyle({ id: "layer-1", style: {
 
 ## setLayerLegendVisibility()
 
-> **setLayerLegendVisibility**(`params`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`\<`void`>
+> **setLayerLegendVisibility**(`params`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`<`void`>
 
 Hide or show layers with the given ids from the legend.
 
 ### Parameters
 
-| Parameter | Type                                                        |
-| --------- | ----------------------------------------------------------- |
-| `params`  | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -427,19 +427,19 @@ felt.setLayerLegendVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] 
 
 ## createLayersFromGeoJson()
 
-> **createLayersFromGeoJson**(`params`: [`CreateLayersFromGeoJsonParams`](../Layers/CreateLayersFromGeoJsonParams.md)): `Promise`\<`null` | \{ `layerGroup`: [`LayerGroup`](../Layers/LayerGroup.md); `layers`: [`Layer`](../Layers/Layer.md)\[]; }>
+> **createLayersFromGeoJson**(`params`: [`CreateLayersFromGeoJsonParams`](../Layers/CreateLayersFromGeoJsonParams.md)): `Promise`<`null` | { `layerGroup`: [`LayerGroup`](../Layers/LayerGroup.md); `layers`: [`Layer`](../Layers/Layer.md)\[]; }>
 
 Adds layers to the map from file or URL sources.
 
 ### Parameters
 
-| Parameter | Type                                                                          |
-| --------- | ----------------------------------------------------------------------------- |
-| `params`  | [`CreateLayersFromGeoJsonParams`](../Layers/CreateLayersFromGeoJsonParams.md) |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | [`CreateLayersFromGeoJsonParams`](../Layers/CreateLayersFromGeoJsonParams.md) |
 
 ### Returns
 
-`Promise`\<`null` | \{ `layerGroup`: [`LayerGroup`](../Layers/LayerGroup.md); `layers`: [`Layer`](../Layers/Layer.md)\[]; }>
+`Promise`<`null` | { `layerGroup`: [`LayerGroup`](../Layers/LayerGroup.md); `layers`: [`Layer`](../Layers/Layer.md)\[]; }>
 
 The layer groups that were created.
 
@@ -472,7 +472,7 @@ const layerFromUrl = await felt.createLayersFromGeoJson({
 
 ## updateLayer()
 
-> **updateLayer**(`params`: [`UpdateLayerParams`](../Layers/UpdateLayerParams.md)): `Promise`\<[`Layer`](../Layers/Layer.md)>
+> **updateLayer**(`params`: [`UpdateLayerParams`](../Layers/UpdateLayerParams.md)): `Promise`<[`Layer`](../Layers/Layer.md)>
 
 Update a layer by passing a subset of the layer's properties.
 
@@ -481,13 +481,13 @@ type to see which properties can be updated.
 
 ### Parameters
 
-| Parameter | Type                                                  |
-| --------- | ----------------------------------------------------- |
-| `params`  | [`UpdateLayerParams`](../Layers/UpdateLayerParams.md) |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | [`UpdateLayerParams`](../Layers/UpdateLayerParams.md) |
 
 ### Returns
 
-`Promise`\<[`Layer`](../Layers/Layer.md)>
+`Promise`<[`Layer`](../Layers/Layer.md)>
 
 ### Example
 
@@ -503,19 +503,19 @@ await felt.updateLayer({
 
 ## deleteLayer()
 
-> **deleteLayer**(`id`: `string`): `Promise`\<`void`>
+> **deleteLayer**(`id`: `string`): `Promise`<`void`>
 
 Delete a layer from the map by its id.
 
 ### Parameters
 
-| Parameter | Type     |
-| --------- | -------- |
-| `id`      | `string` |
+| Parameter | Type |
+| ------ | ------ |
+| `id` | `string` |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Remarks
 
@@ -531,19 +531,19 @@ await felt.deleteLayer("layer-1");
 
 ## getLayerGroup()
 
-> **getLayerGroup**(`id`: `string`): `Promise`\<`null` | [`LayerGroup`](../Layers/LayerGroup.md)>
+> **getLayerGroup**(`id`: `string`): `Promise`<`null` | [`LayerGroup`](../Layers/LayerGroup.md)>
 
 Get a layer group from the map by its id.
 
 ### Parameters
 
-| Parameter | Type     |
-| --------- | -------- |
-| `id`      | `string` |
+| Parameter | Type |
+| ------ | ------ |
+| `id` | `string` |
 
 ### Returns
 
-`Promise`\<`null` | [`LayerGroup`](../Layers/LayerGroup.md)>
+`Promise`<`null` | [`LayerGroup`](../Layers/LayerGroup.md)>
 
 The requested layer group.
 
@@ -557,20 +557,20 @@ const layerGroup = await felt.getLayerGroup("layer-group-1");
 
 ## getLayerGroups()
 
-> **getLayerGroups**(`constraint`?: [`GetLayerGroupsConstraint`](../Layers/GetLayerGroupsConstraint.md)): `Promise`\<(`null` | [`LayerGroup`](../Layers/LayerGroup.md))\[]>
+> **getLayerGroups**(`constraint?`: [`GetLayerGroupsConstraint`](../Layers/GetLayerGroupsConstraint.md)): `Promise`<(`null` | [`LayerGroup`](../Layers/LayerGroup.md))\[]>
 
 Gets layer groups from the map, according to the constraints supplied. If no
 constraints are supplied, all layer groups will be returned in rendering order.
 
 ### Parameters
 
-| Parameter     | Type                                                                | Description                                                         |
-| ------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `constraint`? | [`GetLayerGroupsConstraint`](../Layers/GetLayerGroupsConstraint.md) | The constraints to apply to the layer groups returned from the map. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `constraint?` | [`GetLayerGroupsConstraint`](../Layers/GetLayerGroupsConstraint.md) | The constraints to apply to the layer groups returned from the map. |
 
 ### Returns
 
-`Promise`\<(`null` | [`LayerGroup`](../Layers/LayerGroup.md))\[]>
+`Promise`<(`null` | [`LayerGroup`](../Layers/LayerGroup.md))\[]>
 
 The requested layer groups.
 
@@ -584,19 +584,19 @@ const layerGroups = await felt.getLayerGroups({ ids: ["layer-group-1", "layer-gr
 
 ## setLayerGroupVisibility()
 
-> **setLayerGroupVisibility**(`visibility`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`\<`void`>
+> **setLayerGroupVisibility**(`visibility`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`<`void`>
 
 Hide or show layer groups with the given ids.
 
 ### Parameters
 
-| Parameter    | Type                                                        |
-| ------------ | ----------------------------------------------------------- |
+| Parameter | Type |
+| ------ | ------ |
 | `visibility` | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -608,19 +608,19 @@ felt.setLayerGroupVisibility({ show: ["layer-group-1", "layer-group-2"], hide: [
 
 ## setLayerGroupLegendVisibility()
 
-> **setLayerGroupLegendVisibility**(`params`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`\<`void`>
+> **setLayerGroupLegendVisibility**(`params`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`<`void`>
 
 Hide or show layer groups with the given ids from the legend.
 
 ### Parameters
 
-| Parameter | Type                                                        |
-| --------- | ----------------------------------------------------------- |
-| `params`  | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -632,19 +632,19 @@ felt.setLayerGroupLegendVisibility({ show: ["layer-1", "layer-2"], hide: ["layer
 
 ## getLegendItem()
 
-> **getLegendItem**(`id`: [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)): `Promise`\<`null` | [`LegendItem`](../Layers/LegendItem.md)>
+> **getLegendItem**(`id`: [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)): `Promise`<`null` | [`LegendItem`](../Layers/LegendItem.md)>
 
 Allows you to get the state of a single legend item.
 
 ### Parameters
 
-| Parameter | Type                                                        |
-| --------- | ----------------------------------------------------------- |
-| `id`      | [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md) |
+| Parameter | Type |
+| ------ | ------ |
+| `id` | [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md) |
 
 ### Returns
 
-`Promise`\<`null` | [`LegendItem`](../Layers/LegendItem.md)>
+`Promise`<`null` | [`LegendItem`](../Layers/LegendItem.md)>
 
 ### Example
 
@@ -659,7 +659,7 @@ const legendItem = await felt.getLegendItem({
 
 ## getLegendItems()
 
-> **getLegendItems**(`constraint`?: [`LegendItemsConstraint`](../Layers/LegendItemsConstraint.md)): `Promise`\<(`null` | [`LegendItem`](../Layers/LegendItem.md))\[]>
+> **getLegendItems**(`constraint?`: [`LegendItemsConstraint`](../Layers/LegendItemsConstraint.md)): `Promise`<(`null` | [`LegendItem`](../Layers/LegendItem.md))\[]>
 
 Allows you to obtain the state of several legend items, by passing in
 constraints describing which legend items you want.
@@ -668,13 +668,13 @@ If you do not pass any constraints, you will receive all legend items.
 
 ### Parameters
 
-| Parameter     | Type                                                          |
-| ------------- | ------------------------------------------------------------- |
-| `constraint`? | [`LegendItemsConstraint`](../Layers/LegendItemsConstraint.md) |
+| Parameter | Type |
+| ------ | ------ |
+| `constraint?` | [`LegendItemsConstraint`](../Layers/LegendItemsConstraint.md) |
 
 ### Returns
 
-`Promise`\<(`null` | [`LegendItem`](../Layers/LegendItem.md))\[]>
+`Promise`<(`null` | [`LegendItem`](../Layers/LegendItem.md))\[]>
 
 ### Example
 
@@ -686,21 +686,21 @@ const legendItems = await felt.getLegendItems({layerId: "layer-1"});
 
 ## setLegendItemVisibility()
 
-> **setLegendItemVisibility**(`visibility`: \{ `show`: [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)\[]; `hide`: [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)\[]; }): `Promise`\<`void`>
+> **setLegendItemVisibility**(`visibility`: { `show?`: [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)\[]; `hide?`: [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)\[]; }): `Promise`<`void`>
 
 Hide or show legend items with the given identifiers.
 
 ### Parameters
 
-| Parameter          | Type                                                                                                                                                 |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `visibility`       | \{ `show`: [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)\[]; `hide`: [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)\[]; } |
-| `visibility.show`? | [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)\[]                                                                                       |
-| `visibility.hide`? | [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)\[]                                                                                       |
+| Parameter | Type |
+| ------ | ------ |
+| `visibility` | { `show?`: [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)\[]; `hide?`: [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)\[]; } |
+| `visibility.show?` | [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)\[] |
+| `visibility.hide?` | [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)\[] |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -715,19 +715,19 @@ felt.setLegendItemVisibility({
 
 ## getLayerFilters()
 
-> **getLayerFilters**(`layerId`: `string`): `Promise`\<`null` | [`LayerFilters`](../Layers/LayerFilters.md)>
+> **getLayerFilters**(`layerId`: `string`): `Promise`<`null` | [`LayerFilters`](../Layers/LayerFilters.md)>
 
 Get the filters for a layer.
 
 ### Parameters
 
-| Parameter | Type     |
-| --------- | -------- |
+| Parameter | Type |
+| ------ | ------ |
 | `layerId` | `string` |
 
 ### Returns
 
-`Promise`\<`null` | [`LayerFilters`](../Layers/LayerFilters.md)>
+`Promise`<`null` | [`LayerFilters`](../Layers/LayerFilters.md)>
 
 ### Remarks
 
@@ -745,22 +745,22 @@ console.log(filters.combined, filters.style, filters.ephemeral, filters.componen
 
 ## setLayerFilters()
 
-> **setLayerFilters**(`params`: \{ `layerId`: `string`; `filters`: [`Filters`](../Layers/Filters.md); `note`: `string`; }): `Promise`\<`void`>
+> **setLayerFilters**(`params`: { `layerId`: `string`; `filters`: [`Filters`](../Layers/Filters.md); `note?`: `string`; }): `Promise`<`void`>
 
 Sets the **ephemeral** filters for a layer.
 
 ### Parameters
 
-| Parameter        | Type                                                                                      | Description                                                                                                                                                          |
-| ---------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `params`         | \{ `layerId`: `string`; `filters`: [`Filters`](../Layers/Filters.md); `note`: `string`; } | -                                                                                                                                                                    |
-| `params.layerId` | `string`                                                                                  | The layer that you want to set the filters for.                                                                                                                      |
-| `params.filters` | [`Filters`](../Layers/Filters.md)                                                         | The filters to set for the layer. This will replace any ephemeral filters that are currently set for the layer.                                                      |
-| `params.note`?   | `string`                                                                                  | A note to display on the layer legend when this filter is applied. When the note is shown, a reset button will also be shown, allowing the user to clear the filter. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `params` | { `layerId`: `string`; `filters`: [`Filters`](../Layers/Filters.md); `note?`: `string`; } | - |
+| `params.layerId` | `string` | The layer that you want to set the filters for. |
+| `params.filters` | [`Filters`](../Layers/Filters.md) | The filters to set for the layer. This will replace any ephemeral filters that are currently set for the layer. |
+| `params.note?` | `string` | A note to display on the layer legend when this filter is applied. When the note is shown, a reset button will also be shown, allowing the user to clear the filter. |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -775,19 +775,19 @@ await felt.setLayerFilters({
 
 ## getLayerBoundaries()
 
-> **getLayerBoundaries**(`layerId`: `string`): `Promise`\<`null` | [`LayerBoundaries`](../Layers/LayerBoundaries.md)>
+> **getLayerBoundaries**(`layerId`: `string`): `Promise`<`null` | [`LayerBoundaries`](../Layers/LayerBoundaries.md)>
 
 Get the spatial boundaries that are filtering a layer.
 
 ### Parameters
 
-| Parameter | Type     |
-| --------- | -------- |
+| Parameter | Type |
+| ------ | ------ |
 | `layerId` | `string` |
 
 ### Returns
 
-`Promise`\<`null` | [`LayerBoundaries`](../Layers/LayerBoundaries.md)>
+`Promise`<`null` | [`LayerBoundaries`](../Layers/LayerBoundaries.md)>
 
 ### Remarks
 
@@ -810,21 +810,21 @@ console.log(boundaries?.ephemeral);
 
 ## setLayerBoundary()
 
-> **setLayerBoundary**(`params`: \{ `layerIds`: `string`\[]; `boundary`: `null` | [`GeometryFilter`](../Layers/GeometryFilter.md); }): `Promise`\<`void`>
+> **setLayerBoundary**(`params`: { `layerIds`: `string`\[]; `boundary`: `null` | [`GeometryFilter`](../Layers/GeometryFilter.md); }): `Promise`<`void`>
 
 Set the [\`ephemeral\`](../Layers/LayerBoundaries.md#ephemeral) boundary for one or more layers.
 
 ### Parameters
 
-| Parameter         | Type                                                                                                 | Description                                                                                    |
-| ----------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `params`          | \{ `layerIds`: `string`\[]; `boundary`: `null` \| [`GeometryFilter`](../Layers/GeometryFilter.md); } | -                                                                                              |
-| `params.layerIds` | `string`\[]                                                                                          | The ids of the layers to set the boundary for.                                                 |
-| `params.boundary` | `null` \| [`GeometryFilter`](../Layers/GeometryFilter.md)                                            | The boundary to set for the layer. Passing `null` clears the ephemeral boundary for the layer. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `params` | { `layerIds`: `string`\[]; `boundary`: `null` | [`GeometryFilter`](../Layers/GeometryFilter.md); } | - |
+| `params.layerIds` | `string`\[] | The ids of the layers to set the boundary for. |
+| `params.boundary` | `null` | [`GeometryFilter`](../Layers/GeometryFilter.md) | The boundary to set for the layer. Passing `null` clears the ephemeral boundary for the layer. |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -839,7 +839,7 @@ await felt.setLayerBoundary({
 
 ## getRenderedFeatures()
 
-> **getRenderedFeatures**(`params`?: [`GetRenderedFeaturesConstraint`](../Layers/GetRenderedFeaturesConstraint.md)): `Promise`\<[`LayerFeature`](../Layers/LayerFeature.md)\[]>
+> **getRenderedFeatures**(`params?`: [`GetRenderedFeaturesConstraint`](../Layers/GetRenderedFeaturesConstraint.md)): `Promise`<[`LayerFeature`](../Layers/LayerFeature.md)\[]>
 
 Get the features that are currently **rendered** on the map in the viewport.
 
@@ -850,13 +850,13 @@ features are omitted from what is rendered on the screen.
 
 ### Parameters
 
-| Parameter | Type                                                                          | Description                                                     |
-| --------- | ----------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| `params`? | [`GetRenderedFeaturesConstraint`](../Layers/GetRenderedFeaturesConstraint.md) | The constraints to apply to the features returned from the map. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `params?` | [`GetRenderedFeaturesConstraint`](../Layers/GetRenderedFeaturesConstraint.md) | The constraints to apply to the features returned from the map. |
 
 ### Returns
 
-`Promise`\<[`LayerFeature`](../Layers/LayerFeature.md)\[]>
+`Promise`<[`LayerFeature`](../Layers/LayerFeature.md)\[]>
 
 ### Example
 
@@ -868,7 +868,7 @@ const features = await felt.getRenderedFeatures();
 
 ## getFeature()
 
-> **getFeature**(`params`: \{ `id`: `string` | `number`; `layerId`: `string`; }): `Promise`\<`null` | [`LayerFeature`](../Layers/LayerFeature.md)>
+> **getFeature**(`params`: { `id`: `string` | `number`; `layerId`: `string`; }): `Promise`<`null` | [`LayerFeature`](../Layers/LayerFeature.md)>
 
 Get a feature from the map by its ID and layer ID.
 
@@ -880,15 +880,15 @@ but you know the ID of the feature you need.
 
 ### Parameters
 
-| Parameter        | Type                                                  |
-| ---------------- | ----------------------------------------------------- |
-| `params`         | \{ `id`: `string` \| `number`; `layerId`: `string`; } |
-| `params.id`      | `string` \| `number`                                  |
-| `params.layerId` | `string`                                              |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | { `id`: `string` | `number`; `layerId`: `string`; } |
+| `params.id` | `string` | `number` |
+| `params.layerId` | `string` |
 
 ### Returns
 
-`Promise`\<`null` | [`LayerFeature`](../Layers/LayerFeature.md)>
+`Promise`<`null` | [`LayerFeature`](../Layers/LayerFeature.md)>
 
 ### Example
 
@@ -900,25 +900,25 @@ const feature = await felt.getFeature({ layerId: "layer-1", id: 123 });
 
 ## getFeatures()
 
-> **getFeatures**(`params`: \{ `layerId`: `string`; `filters`: [`Filters`](../Layers/Filters.md); `sorting`: [`SortConfig`](../Shared/SortConfig.md); `boundary`: [`GeometryFilter`](../Layers/GeometryFilter.md); `search`: `string`; `pagination`: `null` | `string`; }): `Promise`\<\{ `features`: [`LayerFeature`](../Layers/LayerFeature.md)\[]; `count`: `number`; `previousPage`: `null` | `string`; `nextPage`: `null` | `string`; }>
+> **getFeatures**(`params`: { `layerId`: `string`; `filters?`: [`Filters`](../Layers/Filters.md); `sorting?`: [`SortConfig`](../Shared/SortConfig.md); `boundary?`: [`GeometryFilter`](../Layers/GeometryFilter.md); `search?`: `string`; `pagination?`: `null` | `string`; }): `Promise`<{ `features`: [`LayerFeature`](../Layers/LayerFeature.md)\[]; `count`: `number`; `previousPage`: `null` | `string`; `nextPage`: `null` | `string`; }>
 
 Get a list of layer features.
 
 ### Parameters
 
-| Parameter            | Type                                                                                                                                                                                                                                           | Description                                                                                                  |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| `params`             | \{ `layerId`: `string`; `filters`: [`Filters`](../Layers/Filters.md); `sorting`: [`SortConfig`](../Shared/SortConfig.md); `boundary`: [`GeometryFilter`](../Layers/GeometryFilter.md); `search`: `string`; `pagination`: `null` \| `string`; } | -                                                                                                            |
-| `params.layerId`     | `string`                                                                                                                                                                                                                                       | The ID of the layer to get features from.                                                                    |
-| `params.filters`?    | [`Filters`](../Layers/Filters.md)                                                                                                                                                                                                              | Filters to be applied. These filters will merge with layer's own filters.                                    |
-| `params.sorting`?    | [`SortConfig`](../Shared/SortConfig.md)                                                                                                                                                                                                        | Attribute to sort by.                                                                                        |
-| `params.boundary`?   | [`GeometryFilter`](../Layers/GeometryFilter.md)                                                                                                                                                                                                | The spatial boundary to be applied.                                                                          |
-| `params.search`?     | `string`                                                                                                                                                                                                                                       | Search term to search by. Search is case-insensitive and looks for matches across all feature properties.    |
-| `params.pagination`? | `null` \| `string`                                                                                                                                                                                                                             | Pagination token. It comes from either the `previousPage` or `nextPage` properties of the previous response. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `params` | { `layerId`: `string`; `filters?`: [`Filters`](../Layers/Filters.md); `sorting?`: [`SortConfig`](../Shared/SortConfig.md); `boundary?`: [`GeometryFilter`](../Layers/GeometryFilter.md); `search?`: `string`; `pagination?`: `null` | `string`; } | - |
+| `params.layerId` | `string` | The ID of the layer to get features from. |
+| `params.filters?` | [`Filters`](../Layers/Filters.md) | Filters to be applied. These filters will merge with layer's own filters. |
+| `params.sorting?` | [`SortConfig`](../Shared/SortConfig.md) | Attribute to sort by. |
+| `params.boundary?` | [`GeometryFilter`](../Layers/GeometryFilter.md) | The spatial boundary to be applied. |
+| `params.search?` | `string` | Search term to search by. Search is case-insensitive and looks for matches across all feature properties. |
+| `params.pagination?` | `null` | `string` | Pagination token. It comes from either the `previousPage` or `nextPage` properties of the previous response. |
 
 ### Returns
 
-`Promise`\<\{ `features`: [`LayerFeature`](../Layers/LayerFeature.md)\[]; `count`: `number`; `previousPage`: `null` | `string`; `nextPage`: `null` | `string`; }>
+`Promise`<{ `features`: [`LayerFeature`](../Layers/LayerFeature.md)\[]; `count`: `number`; `previousPage`: `null` | `string`; `nextPage`: `null` | `string`; }>
 
 The response is an object which contains:
 
@@ -959,7 +959,7 @@ if (page1Response.nextPage) {
 
 ## getGeoJsonFeature()
 
-> **getGeoJsonFeature**(`params`: \{ `id`: `string` | `number`; `layerId`: `string`; }): `Promise`\<`null` | [`GeoJsonFeature`](../Shared/GeoJsonFeature.md)>
+> **getGeoJsonFeature**(`params`: { `id`: `string` | `number`; `layerId`: `string`; }): `Promise`<`null` | [`GeoJsonFeature`](../Shared/GeoJsonFeature.md)>
 
 Get a feature in GeoJSON format from the map by its ID and layer ID.
 
@@ -969,15 +969,15 @@ long time to return, and may return a very large object.
 
 ### Parameters
 
-| Parameter        | Type                                                  |
-| ---------------- | ----------------------------------------------------- |
-| `params`         | \{ `id`: `string` \| `number`; `layerId`: `string`; } |
-| `params.id`      | `string` \| `number`                                  |
-| `params.layerId` | `string`                                              |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | { `id`: `string` | `number`; `layerId`: `string`; } |
+| `params.id` | `string` | `number` |
+| `params.layerId` | `string` |
 
 ### Returns
 
-`Promise`\<`null` | [`GeoJsonFeature`](../Shared/GeoJsonFeature.md)>
+`Promise`<`null` | [`GeoJsonFeature`](../Shared/GeoJsonFeature.md)>
 
 ### Example
 
@@ -989,19 +989,19 @@ const feature = await felt.getGeoJsonFeature({ layerId: "layer-1", id: 123 });
 
 ## getCategoryData()
 
-> **getCategoryData**(`params`: [`GetLayerCategoriesParams`](../Layers/GetLayerCategoriesParams.md)): `Promise`\<[`GetLayerCategoriesGroup`](../Layers/GetLayerCategoriesGroup.md)\[]>
+> **getCategoryData**(`params`: [`GetLayerCategoriesParams`](../Layers/GetLayerCategoriesParams.md)): `Promise`<[`GetLayerCategoriesGroup`](../Layers/GetLayerCategoriesGroup.md)\[]>
 
 Gets values from a layer grouped by a given attribute.
 
 ### Parameters
 
-| Parameter | Type                                                                |
-| --------- | ------------------------------------------------------------------- |
-| `params`  | [`GetLayerCategoriesParams`](../Layers/GetLayerCategoriesParams.md) |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | [`GetLayerCategoriesParams`](../Layers/GetLayerCategoriesParams.md) |
 
 ### Returns
 
-`Promise`\<[`GetLayerCategoriesGroup`](../Layers/GetLayerCategoriesGroup.md)\[]>
+`Promise`<[`GetLayerCategoriesGroup`](../Layers/GetLayerCategoriesGroup.md)\[]>
 
 ### Remarks
 
@@ -1065,19 +1065,19 @@ const newBuildingDensityByNeighborhood = await felt.getCategoryData({
 
 ## getHistogramData()
 
-> **getHistogramData**(`params`: [`GetLayerHistogramParams`](../Layers/GetLayerHistogramParams.md)): `Promise`\<[`GetLayerHistogramBin`](../Layers/GetLayerHistogramBin.md)\[]>
+> **getHistogramData**(`params`: [`GetLayerHistogramParams`](../Layers/GetLayerHistogramParams.md)): `Promise`<[`GetLayerHistogramBin`](../Layers/GetLayerHistogramBin.md)\[]>
 
 Gets a histogram of values from a layer for a given attribute.
 
 ### Parameters
 
-| Parameter | Type                                                              |
-| --------- | ----------------------------------------------------------------- |
-| `params`  | [`GetLayerHistogramParams`](../Layers/GetLayerHistogramParams.md) |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | [`GetLayerHistogramParams`](../Layers/GetLayerHistogramParams.md) |
 
 ### Returns
 
-`Promise`\<[`GetLayerHistogramBin`](../Layers/GetLayerHistogramBin.md)\[]>
+`Promise`<[`GetLayerHistogramBin`](../Layers/GetLayerHistogramBin.md)\[]>
 
 ### Remarks
 
@@ -1133,25 +1133,25 @@ const newBuildingHeights = await felt.getHistogramData({
 
 ## getAggregates()
 
-> **getAggregates**\<`T`>(`params`: [`GetLayerCalculationParams`](../Layers/GetLayerCalculationParams.md)\<`T`>): `Promise`\<`Record`\<`T`, `null` | `number`>>
+> **getAggregates**<`T`>(`params`: [`GetLayerCalculationParams`](../Layers/GetLayerCalculationParams.md)<`T`>): `Promise`<`Record`<`T`, `null` | `number`>>
 
 Calculates a single aggregate value for a layer based on the provided configuration.
 
 ### Type Parameters
 
-| Type Parameter                                                                    |
-| --------------------------------------------------------------------------------- |
-| `T` *extends* `"avg"` \| `"max"` \| `"min"` \| `"sum"` \| `"median"` \| `"count"` |
+| Type Parameter |
+| ------ |
+| `T` *extends* `"avg"` | `"max"` | `"min"` | `"sum"` | `"median"` | `"count"` |
 
 ### Parameters
 
-| Parameter | Type                                                                        |
-| --------- | --------------------------------------------------------------------------- |
-| `params`  | [`GetLayerCalculationParams`](../Layers/GetLayerCalculationParams.md)\<`T`> |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | [`GetLayerCalculationParams`](../Layers/GetLayerCalculationParams.md)<`T`> |
 
 ### Returns
 
-`Promise`\<`Record`\<`T`, `null` | `number`>>
+`Promise`<`Record`<`T`, `null` | `number`>>
 
 ### Remarks
 
@@ -1196,19 +1196,19 @@ const maxNewBuildingHeight = await felt.getAggregates({
 
 ## getPrecomputedAggregates()
 
-> **getPrecomputedAggregates**(`params`: [`GetLayerPrecomputedCalculationParams`](../Layers/GetLayerPrecomputedCalculationParams.md)): `Promise`\<\{ `avg`: `null` | `number`; `max`: `null` | `number`; `min`: `null` | `number`; `sum`: `null` | `number`; `count`: `null` | `number`; }>
+> **getPrecomputedAggregates**(`params`: [`GetLayerPrecomputedCalculationParams`](../Layers/GetLayerPrecomputedCalculationParams.md)): `Promise`<{ `avg`: `null` | `number`; `max`: `null` | `number`; `min`: `null` | `number`; `sum`: `null` | `number`; `count`: `null` | `number`; }>
 
 Calculates aggregates for spatial cells of a layer.
 
 ### Parameters
 
-| Parameter | Type                                                                                        |
-| --------- | ------------------------------------------------------------------------------------------- |
-| `params`  | [`GetLayerPrecomputedCalculationParams`](../Layers/GetLayerPrecomputedCalculationParams.md) |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | [`GetLayerPrecomputedCalculationParams`](../Layers/GetLayerPrecomputedCalculationParams.md) |
 
 ### Returns
 
-`Promise`\<\{ `avg`: `null` | `number`; `max`: `null` | `number`; `min`: `null` | `number`; `sum`: `null` | `number`; `count`: `null` | `number`; }>
+`Promise`<{ `avg`: `null` | `number`; `max`: `null` | `number`; `min`: `null` | `number`; `sum`: `null` | `number`; `count`: `null` | `number`; }>
 
 ### Remarks
 
@@ -1233,19 +1233,19 @@ const aggregates = await felt.getPrecomputedAggregates({
 
 ## getLayerSchema()
 
-> **getLayerSchema**(`layerId`: `string`): `Promise`\<[`LayerSchema`](../Layers/LayerSchema.md)>
+> **getLayerSchema**(`layerId`: `string`): `Promise`<[`LayerSchema`](../Layers/LayerSchema.md)>
 
 Get the schema for a layer.
 
 ### Parameters
 
-| Parameter | Type     |
-| --------- | -------- |
+| Parameter | Type |
+| ------ | ------ |
 | `layerId` | `string` |
 
 ### Returns
 
-`Promise`\<[`LayerSchema`](../Layers/LayerSchema.md)>
+`Promise`<[`LayerSchema`](../Layers/LayerSchema.md)>
 
 ### Remarks
 
@@ -1266,13 +1266,13 @@ const attributeIds = schema.attributes.map((attr) => attr.id);
 
 ## getMapDetails()
 
-> **getMapDetails**(): `Promise`\<[`MapDetails`](../Misc/MapDetails.md)>
+> **getMapDetails**(): `Promise`<[`MapDetails`](../Misc/MapDetails.md)>
 
 Gets the details of the map.
 
 ### Returns
 
-`Promise`\<[`MapDetails`](../Misc/MapDetails.md)>
+`Promise`<[`MapDetails`](../Misc/MapDetails.md)>
 
 ### Example
 
@@ -1289,13 +1289,13 @@ console.log({
 
 ## getSelection()
 
-> **getSelection**(): `Promise`\<[`EntityNode`](../Selection/EntityNode.md)\[]>
+> **getSelection**(): `Promise`<[`EntityNode`](../Selection/EntityNode.md)\[]>
 
 Gets the current selection as a list of entity identifiers.
 
 ### Returns
 
-`Promise`\<[`EntityNode`](../Selection/EntityNode.md)\[]>
+`Promise`<[`EntityNode`](../Selection/EntityNode.md)\[]>
 
 ### Example
 
@@ -1307,20 +1307,20 @@ const selection = await felt.getSelection();
 
 ## selectFeature()
 
-> **selectFeature**(`params`: [`FeatureSelection`](../Selection/FeatureSelection.md)): `Promise`\<`void`>
+> **selectFeature**(`params`: [`FeatureSelection`](../Selection/FeatureSelection.md)): `Promise`<`void`>
 
 Selects a feature on a layer. This will show the feature's popup, modal or
 sidebar (if configured) and highlight the feature.
 
 ### Parameters
 
-| Parameter | Type                                                   |
-| --------- | ------------------------------------------------------ |
-| `params`  | [`FeatureSelection`](../Selection/FeatureSelection.md) |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | [`FeatureSelection`](../Selection/FeatureSelection.md) |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -1337,21 +1337,21 @@ felt.selectFeature({
 
 ## clearSelection()
 
-> **clearSelection**(`params`?: \{ `features`: `boolean`; `elements`: `boolean`; }): `Promise`\<`void`>
+> **clearSelection**(`params?`: { `features?`: `boolean`; `elements?`: `boolean`; }): `Promise`<`void`>
 
 Clears the current selection. This clears the selection of
 
 ### Parameters
 
-| Parameter          | Type                                               | Description                                                                                                 |
-| ------------------ | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `params`?          | \{ `features`: `boolean`; `elements`: `boolean`; } | The parameters to clear the selection. If this is not provided, both features and elements will be cleared. |
-| `params.features`? | `boolean`                                          | Whether to clear the features from the selection.                                                           |
-| `params.elements`? | `boolean`                                          | Whether to clear the elements from the selection.                                                           |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `params?` | { `features?`: `boolean`; `elements?`: `boolean`; } | The parameters to clear the selection. If this is not provided, both features and elements will be cleared. |
+| `params.features?` | `boolean` | Whether to clear the features from the selection. |
+| `params.elements?` | `boolean` | Whether to clear the elements from the selection. |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -1383,9 +1383,9 @@ Sets the tool to use for drawing elements on the map.
 
 ### Parameters
 
-| Parameter | Type                                         | Description      |
-| --------- | -------------------------------------------- | ---------------- |
-| `tool`    | `null` \| [`ToolType`](../Tools/ToolType.md) | The tool to set. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `tool` | `null` | [`ToolType`](../Tools/ToolType.md) | The tool to set. |
 
 ### Returns
 
@@ -1405,13 +1405,13 @@ await felt.setTool(null);
 
 ## getTool()
 
-> **getTool**(): `Promise`\<`null` | [`ToolType`](../Tools/ToolType.md)>
+> **getTool**(): `Promise`<`null` | [`ToolType`](../Tools/ToolType.md)>
 
 Gets the current tool, if any is in use.
 
 ### Returns
 
-`Promise`\<`null` | [`ToolType`](../Tools/ToolType.md)>
+`Promise`<`null` | [`ToolType`](../Tools/ToolType.md)>
 
 The current tool, or `null` if no tool is in use.
 
@@ -1425,16 +1425,16 @@ const tool = await felt.getTool(); // "marker", "polygon", etc.
 
 ## onToolChange()
 
-> **onToolChange**(`args`: \{ `handler`: (`tool`: `null` | [`ToolType`](../Tools/ToolType.md)) => `void`; }): `VoidFunction`
+> **onToolChange**(`args`: { `handler`: (`tool`: `null` | [`ToolType`](../Tools/ToolType.md)) => `void`; }): `VoidFunction`
 
 Listens for changes to the current tool.
 
 ### Parameters
 
-| Parameter      | Type                                                                              | Description                                                              |
-| -------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| `args`         | \{ `handler`: (`tool`: `null` \| [`ToolType`](../Tools/ToolType.md)) => `void`; } | -                                                                        |
-| `args.handler` | (`tool`: `null` \| [`ToolType`](../Tools/ToolType.md)) => `void`                  | This callback is called with the current tool whenever the tool changes. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | { `handler`: (`tool`: `null` | [`ToolType`](../Tools/ToolType.md)) => `void`; } | - |
+| `args.handler` | (`tool`: `null` | [`ToolType`](../Tools/ToolType.md)) => `void` | This callback is called with the current tool whenever the tool changes. |
 
 ### Returns
 
@@ -1463,8 +1463,8 @@ Sets the settings for the current tool.
 
 ### Parameters
 
-| Parameter  | Type                                                 | Description          |
-| ---------- | ---------------------------------------------------- | -------------------- |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
 | `settings` | [`InputToolSettings`](../Tools/InputToolSettings.md) | The settings to set. |
 
 ### Returns
@@ -1485,25 +1485,25 @@ await felt.setToolSettings({
 
 ## getToolSettings()
 
-> **getToolSettings**\<`T`>(`tool`: `T`): `Promise`\<[`ToolSettingsMap`](../Tools/ToolSettingsMap.md)\[`T`]>
+> **getToolSettings**<`T`>(`tool`: `T`): `Promise`<[`ToolSettingsMap`](../Tools/ToolSettingsMap.md)\[`T`]>
 
 Gets the settings for the chosen tool
 
 ### Type Parameters
 
-| Type Parameter                                                           |
-| ------------------------------------------------------------------------ |
+| Type Parameter |
+| ------ |
 | `T` *extends* [`ConfigurableToolType`](../Tools/ConfigurableToolType.md) |
 
 ### Parameters
 
 | Parameter | Type |
-| --------- | ---- |
-| `tool`    | `T`  |
+| ------ | ------ |
+| `tool` | `T` |
 
 ### Returns
 
-`Promise`\<[`ToolSettingsMap`](../Tools/ToolSettingsMap.md)\[`T`]>
+`Promise`<[`ToolSettingsMap`](../Tools/ToolSettingsMap.md)\[`T`]>
 
 The settings for the chosen tool.
 
@@ -1517,16 +1517,16 @@ const settings = await felt.getToolSettings("marker");
 
 ## onToolSettingsChange()
 
-> **onToolSettingsChange**(`args`: \{ `handler`: (`settings`: [`ToolSettingsChangeEvent`](../Tools/ToolSettingsChangeEvent.md)) => `void`; }): `VoidFunction`
+> **onToolSettingsChange**(`args`: { `handler`: (`settings`: [`ToolSettingsChangeEvent`](../Tools/ToolSettingsChangeEvent.md)) => `void`; }): `VoidFunction`
 
 Listens for changes to the settings on all tools.
 
 ### Parameters
 
-| Parameter      | Type                                                                                                      |
-| -------------- | --------------------------------------------------------------------------------------------------------- |
-| `args`         | \{ `handler`: (`settings`: [`ToolSettingsChangeEvent`](../Tools/ToolSettingsChangeEvent.md)) => `void`; } |
-| `args.handler` | (`settings`: [`ToolSettingsChangeEvent`](../Tools/ToolSettingsChangeEvent.md)) => `void`                  |
+| Parameter | Type |
+| ------ | ------ |
+| `args` | { `handler`: (`settings`: [`ToolSettingsChangeEvent`](../Tools/ToolSettingsChangeEvent.md)) => `void`; } |
+| `args.handler` | (`settings`: [`ToolSettingsChangeEvent`](../Tools/ToolSettingsChangeEvent.md)) => `void` |
 
 ### Returns
 
@@ -1560,9 +1560,9 @@ by clicking on a button.
 
 ### Parameters
 
-| Parameter | Type                                                              | Description                   |
-| --------- | ----------------------------------------------------------------- | ----------------------------- |
-| `args`    | [`CreateActionTriggerParams`](../UI/CreateActionTriggerParams.md) | The arguments for the method. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | [`CreateActionTriggerParams`](../UI/CreateActionTriggerParams.md) | The arguments for the method. |
 
 ### Returns
 
@@ -1596,9 +1596,9 @@ Action trigger to update is identified by the `id` property.
 
 ### Parameters
 
-| Parameter | Type                                                              | Description                   |
-| --------- | ----------------------------------------------------------------- | ----------------------------- |
-| `args`    | [`UpdateActionTriggerParams`](../UI/UpdateActionTriggerParams.md) | The action trigger to update. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | [`UpdateActionTriggerParams`](../UI/UpdateActionTriggerParams.md) | The action trigger to update. |
 
 ### Returns
 
@@ -1627,9 +1627,9 @@ Deletes an action trigger.
 
 ### Parameters
 
-| Parameter | Type     | Description                             |
-| --------- | -------- | --------------------------------------- |
-| `id`      | `string` | The id of the action trigger to delete. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | `string` | The id of the action trigger to delete. |
 
 ### Returns
 
@@ -1670,9 +1670,9 @@ it easier to update or delete them later.
 
 ### Parameters
 
-| Parameter | Type                                              | Description                   |
-| --------- | ------------------------------------------------- | ----------------------------- |
-| `args`    | [`CreatePanelParams`](../UI/CreatePanelParams.md) | The arguments for the method. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | [`CreatePanelParams`](../UI/CreatePanelParams.md) | The arguments for the method. |
 
 ### Returns
 
@@ -1722,9 +1722,9 @@ Panel to update is identified by the `id` property.
 
 ### Parameters
 
-| Parameter | Type                                              | Description          |
-| --------- | ------------------------------------------------- | -------------------- |
-| `panel`   | [`UpdatePanelParams`](../UI/UpdatePanelParams.md) | The panel to update. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `panel` | [`UpdatePanelParams`](../UI/UpdatePanelParams.md) | The panel to update. |
 
 ### Returns
 
@@ -1756,9 +1756,9 @@ Deletes a panel.
 
 ### Parameters
 
-| Parameter | Type     | Description                    |
-| --------- | -------- | ------------------------------ |
-| `id`      | `string` | The id of the panel to delete. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | `string` | The id of the panel to delete. |
 
 ### Returns
 
@@ -1780,9 +1780,9 @@ Creates elements in a panel.
 
 ### Parameters
 
-| Parameter | Type                                                              | Description                   |
-| --------- | ----------------------------------------------------------------- | ----------------------------- |
-| `args`    | [`CreatePanelElementsParams`](../UI/CreatePanelElementsParams.md) | The arguments for the method. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | [`CreatePanelElementsParams`](../UI/CreatePanelElementsParams.md) | The arguments for the method. |
 
 ### Returns
 
@@ -1813,9 +1813,9 @@ Updates an element in a panel.
 
 ### Parameters
 
-| Parameter | Type                                                              | Description                   |
-| --------- | ----------------------------------------------------------------- | ----------------------------- |
-| `args`    | [`UpdatePanelElementsParams`](../UI/UpdatePanelElementsParams.md) | The arguments for the method. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | [`UpdatePanelElementsParams`](../UI/UpdatePanelElementsParams.md) | The arguments for the method. |
 
 ### Returns
 
@@ -1842,9 +1842,9 @@ Deletes elements from a panel.
 
 ### Parameters
 
-| Parameter | Type                                                              | Description                   |
-| --------- | ----------------------------------------------------------------- | ----------------------------- |
-| `args`    | [`DeletePanelElementsParams`](../UI/DeletePanelElementsParams.md) | The arguments for the method. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | [`DeletePanelElementsParams`](../UI/DeletePanelElementsParams.md) | The arguments for the method. |
 
 ### Returns
 
@@ -1869,8 +1869,8 @@ Updates the UI controls on the embedded map.
 
 ### Parameters
 
-| Parameter  | Type                                              | Description             |
-| ---------- | ------------------------------------------------- | ----------------------- |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
 | `controls` | [`UiControlsOptions`](../UI/UiControlsOptions.md) | The controls to update. |
 
 ### Returns
@@ -1911,8 +1911,8 @@ will still be selected when clicked.
 
 ### Parameters
 
-| Parameter | Type                                                            |
-| --------- | --------------------------------------------------------------- |
+| Parameter | Type |
+| ------ | ------ |
 | `options` | [`OnMapInteractionsOptions`](../UI/OnMapInteractionsOptions.md) |
 
 ### Returns
@@ -1933,21 +1933,21 @@ await felt.setOnMapInteractionsUi({
 
 ## showLayerDataTable()
 
-> **showLayerDataTable**(`params`?: \{ `layerId`: `string`; `sorting`: [`SortConfig`](../Shared/SortConfig.md); }): `Promise`\<`void`>
+> **showLayerDataTable**(`params?`: { `layerId`: `string`; `sorting?`: [`SortConfig`](../Shared/SortConfig.md); }): `Promise`<`void`>
 
 Shows a data table view for the specified layer, optionally sorted by a given attribute.
 
 ### Parameters
 
-| Parameter         | Type                                                                          |
-| ----------------- | ----------------------------------------------------------------------------- |
-| `params`?         | \{ `layerId`: `string`; `sorting`: [`SortConfig`](../Shared/SortConfig.md); } |
-| `params.layerId`? | `string`                                                                      |
-| `params.sorting`? | [`SortConfig`](../Shared/SortConfig.md)                                       |
+| Parameter | Type |
+| ------ | ------ |
+| `params?` | { `layerId`: `string`; `sorting?`: [`SortConfig`](../Shared/SortConfig.md); } |
+| `params.layerId?` | `string` |
+| `params.sorting?` | [`SortConfig`](../Shared/SortConfig.md) |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -1974,13 +1974,13 @@ await felt.showLayerDataTable();
 
 ## hideLayerDataTable()
 
-> **hideLayerDataTable**(): `Promise`\<`void`>
+> **hideLayerDataTable**(): `Promise`<`void`>
 
 Hides the data table.
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -1992,13 +1992,13 @@ await felt.hideLayerDataTable();
 
 ## getViewport()
 
-> **getViewport**(): `Promise`\<[`ViewportState`](../Viewport/ViewportState.md)>
+> **getViewport**(): `Promise`<[`ViewportState`](../Viewport/ViewportState.md)>
 
 Gets the current state of the viewport.
 
 ### Returns
 
-`Promise`\<[`ViewportState`](../Viewport/ViewportState.md)>
+`Promise`<[`ViewportState`](../Viewport/ViewportState.md)>
 
 ### Example
 
@@ -2021,8 +2021,8 @@ Moves the map to the specified location.
 
 ### Parameters
 
-| Parameter  | Type                                                                        |
-| ---------- | --------------------------------------------------------------------------- |
+| Parameter | Type |
+| ------ | ------ |
 | `viewport` | [`SetViewportCenterZoomParams`](../Viewport/SetViewportCenterZoomParams.md) |
 
 ### Returns
@@ -2042,13 +2042,13 @@ felt.setViewport({
 
 ## getViewportConstraints()
 
-> **getViewportConstraints**(): `Promise`\<`null` | [`ViewportConstraints`](../Viewport/ViewportConstraints.md)>
+> **getViewportConstraints**(): `Promise`<`null` | [`ViewportConstraints`](../Viewport/ViewportConstraints.md)>
 
 Gets the current state of the viewport constraints.
 
 ### Returns
 
-`Promise`\<`null` | [`ViewportConstraints`](../Viewport/ViewportConstraints.md)>
+`Promise`<`null` | [`ViewportConstraints`](../Viewport/ViewportConstraints.md)>
 
 ### Example
 
@@ -2070,15 +2070,15 @@ if (constraints) {
 
 ## setViewportConstraints()
 
-> **setViewportConstraints**(`constraints`: `null` | `Partial`\<[`ViewportConstraints`](../Viewport/ViewportConstraints.md)>): `void`
+> **setViewportConstraints**(`constraints`: `null` | `Partial`<[`ViewportConstraints`](../Viewport/ViewportConstraints.md)>): `void`
 
 Constrains the map viewport so it stays inside certain bounds and/or certain zoom levels.
 
 ### Parameters
 
-| Parameter     | Type                                                                              |
-| ------------- | --------------------------------------------------------------------------------- |
-| `constraints` | `null` \| `Partial`\<[`ViewportConstraints`](../Viewport/ViewportConstraints.md)> |
+| Parameter | Type |
+| ------ | ------ |
+| `constraints` | `null` | `Partial`<[`ViewportConstraints`](../Viewport/ViewportConstraints.md)> |
 
 ### Returns
 
@@ -2124,9 +2124,9 @@ Fits the map to the specified bounds.
 
 ### Parameters
 
-| Parameter | Type                                                                |
-| --------- | ------------------------------------------------------------------- |
-| `bounds`  | [`ViewportFitBoundsParams`](../Viewport/ViewportFitBoundsParams.md) |
+| Parameter | Type |
+| ------ | ------ |
+| `bounds` | [`ViewportFitBoundsParams`](../Viewport/ViewportFitBoundsParams.md) |
 
 ### Returns
 
@@ -2146,16 +2146,16 @@ felt.fitViewportToBounds({ bounds: [west, south, east, north] });
 
 ## onElementCreate()
 
-> **onElementCreate**(`args`: \{ `handler`: (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`; }): `VoidFunction`
+> **onElementCreate**(`args`: { `handler`: (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when an element is created.
 
 ### Parameters
 
-| Parameter      | Type                                                                                                               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| -------------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `args`         | \{ `handler`: (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`; } | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| `args.handler` | (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`                  | The handler that is called when an element is created. This will fire when elements are created programatically, or when the user starts creating an element with a drawing tool. When the user creates an element with a drawing tool, it can begin in an invalid state, such as if you've just placed a single point in a polygon. You can use the `isBeingCreated` property to determine if the element is still being created by a drawing tool. If you want to know when the element is finished being created, you can use the [\`onElementCreateEnd\`](../Elements/ElementsController.md#onelementcreateend) listener. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | { `handler`: (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`; } | - |
+| `args.handler` | (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void` | The handler that is called when an element is created. This will fire when elements are created programatically, or when the user starts creating an element with a drawing tool. When the user creates an element with a drawing tool, it can begin in an invalid state, such as if you've just placed a single point in a polygon. You can use the `isBeingCreated` property to determine if the element is still being created by a drawing tool. If you want to know when the element is finished being created, you can use the [\`onElementCreateEnd\`](../Elements/ElementsController.md#onelementcreateend) listener. |
 
 ### Returns
 
@@ -2178,7 +2178,7 @@ unsubscribe();
 
 ## onElementCreateEnd()
 
-> **onElementCreateEnd**(`args`: \{ `handler`: (`params`: \{ `element`: [`Element`](../Elements/Element.md); }) => `void`; }): `VoidFunction`
+> **onElementCreateEnd**(`args`: { `handler`: (`params`: { `element`: [`Element`](../Elements/Element.md); }) => `void`; }): `VoidFunction`
 
 Listens for when a new element is finished being created by a drawing tool.
 
@@ -2192,10 +2192,10 @@ add the marker, type a label, then finally deselect the element.
 
 ### Parameters
 
-| Parameter      | Type                                                                                        | Description                                    |
-| -------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| `args`         | \{ `handler`: (`params`: \{ `element`: [`Element`](../Elements/Element.md); }) => `void`; } | -                                              |
-| `args.handler` | (`params`: \{ `element`: [`Element`](../Elements/Element.md); }) => `void`                  | The handler to call whenever this event fires. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | { `handler`: (`params`: { `element`: [`Element`](../Elements/Element.md); }) => `void`; } | - |
+| `args.handler` | (`params`: { `element`: [`Element`](../Elements/Element.md); }) => `void` | The handler to call whenever this event fires. |
 
 ### Returns
 
@@ -2218,7 +2218,7 @@ unsubscribe();
 
 ## onElementChange()
 
-> **onElementChange**(`args`: \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`; }): `VoidFunction`
+> **onElementChange**(`args`: { `options`: { `id`: `string`; }; `handler`: (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when an element changes.
 
@@ -2233,12 +2233,12 @@ still being created by a drawing tool.
 
 ### Parameters
 
-| Parameter         | Type                                                                                                                                                | Description                                          |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| `args`            | \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`; } | -                                                    |
-| `args.options`    | \{ `id`: `string`; }                                                                                                                                | -                                                    |
-| `args.options.id` | `string`                                                                                                                                            | The id of the element to listen for changes to.      |
-| `args.handler`    | (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`                                                   | The handler that is called when the element changes. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | { `options`: { `id`: `string`; }; `handler`: (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`; } | - |
+| `args.options` | { `id`: `string`; } | - |
+| `args.options.id` | `string` | The id of the element to listen for changes to. |
+| `args.handler` | (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void` | The handler that is called when the element changes. |
 
 ### Returns
 
@@ -2262,18 +2262,18 @@ unsubscribe();
 
 ## onElementDelete()
 
-> **onElementDelete**(`args`: \{ `options`: \{ `id`: `string`; }; `handler`: () => `void`; }): `VoidFunction`
+> **onElementDelete**(`args`: { `options`: { `id`: `string`; }; `handler`: () => `void`; }): `VoidFunction`
 
 Adds a listener for when an element is deleted.
 
 ### Parameters
 
-| Parameter         | Type                                                           | Description                                             |
-| ----------------- | -------------------------------------------------------------- | ------------------------------------------------------- |
-| `args`            | \{ `options`: \{ `id`: `string`; }; `handler`: () => `void`; } | -                                                       |
-| `args.options`    | \{ `id`: `string`; }                                           | -                                                       |
-| `args.options.id` | `string`                                                       | The id of the element to listen for deletions of.       |
-| `args.handler`    | () => `void`                                                   | The handler that is called when the element is deleted. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | { `options`: { `id`: `string`; }; `handler`: () => `void`; } | - |
+| `args.options` | { `id`: `string`; } | - |
+| `args.options.id` | `string` | The id of the element to listen for deletions of. |
+| `args.handler` | () => `void` | The handler that is called when the element is deleted. |
 
 ### Returns
 
@@ -2297,18 +2297,18 @@ unsubscribe();
 
 ## onElementGroupChange()
 
-> **onElementGroupChange**(`args`: \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`ElementGroupChangeCallbackParams`](../Elements/ElementGroupChangeCallbackParams.md)) => `void`; }): `VoidFunction`
+> **onElementGroupChange**(`args`: { `options`: { `id`: `string`; }; `handler`: (`change`: [`ElementGroupChangeCallbackParams`](../Elements/ElementGroupChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when an element group changes.
 
 ### Parameters
 
-| Parameter         | Type                                                                                                                                                          |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `args`            | \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`ElementGroupChangeCallbackParams`](../Elements/ElementGroupChangeCallbackParams.md)) => `void`; } |
-| `args.options`    | \{ `id`: `string`; }                                                                                                                                          |
-| `args.options.id` | `string`                                                                                                                                                      |
-| `args.handler`    | (`change`: [`ElementGroupChangeCallbackParams`](../Elements/ElementGroupChangeCallbackParams.md)) => `void`                                                   |
+| Parameter | Type |
+| ------ | ------ |
+| `args` | { `options`: { `id`: `string`; }; `handler`: (`change`: [`ElementGroupChangeCallbackParams`](../Elements/ElementGroupChangeCallbackParams.md)) => `void`; } |
+| `args.options` | { `id`: `string`; } |
+| `args.options.id` | `string` |
+| `args.handler` | (`change`: [`ElementGroupChangeCallbackParams`](../Elements/ElementGroupChangeCallbackParams.md)) => `void` |
 
 ### Returns
 
@@ -2332,16 +2332,16 @@ unsubscribe();
 
 ## onPointerClick()
 
-> **onPointerClick**(`params`: \{ `handler`: (`event`: [`MapInteractionEvent`](../Interactions/MapInteractionEvent.md)) => `void`; }): `VoidFunction`
+> **onPointerClick**(`params`: { `handler`: (`event`: [`MapInteractionEvent`](../Interactions/MapInteractionEvent.md)) => `void`; }): `VoidFunction`
 
 Allows you to be notified the user clicks on the map.
 
 ### Parameters
 
-| Parameter        | Type                                                                                                  |
-| ---------------- | ----------------------------------------------------------------------------------------------------- |
-| `params`         | \{ `handler`: (`event`: [`MapInteractionEvent`](../Interactions/MapInteractionEvent.md)) => `void`; } |
-| `params.handler` | (`event`: [`MapInteractionEvent`](../Interactions/MapInteractionEvent.md)) => `void`                  |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | { `handler`: (`event`: [`MapInteractionEvent`](../Interactions/MapInteractionEvent.md)) => `void`; } |
+| `params.handler` | (`event`: [`MapInteractionEvent`](../Interactions/MapInteractionEvent.md)) => `void` |
 
 ### Returns
 
@@ -2364,16 +2364,16 @@ unsubscribe();
 
 ## onPointerMove()
 
-> **onPointerMove**(`params`: \{ `handler`: (`event`: [`MapInteractionEvent`](../Interactions/MapInteractionEvent.md)) => `void`; }): `VoidFunction`
+> **onPointerMove**(`params`: { `handler`: (`event`: [`MapInteractionEvent`](../Interactions/MapInteractionEvent.md)) => `void`; }): `VoidFunction`
 
 Allows you to be notified the user moves the mouse over the map.
 
 ### Parameters
 
-| Parameter        | Type                                                                                                  | Description             |
-| ---------------- | ----------------------------------------------------------------------------------------------------- | ----------------------- |
-| `params`         | \{ `handler`: (`event`: [`MapInteractionEvent`](../Interactions/MapInteractionEvent.md)) => `void`; } | Params for the listener |
-| `params.handler` | (`event`: [`MapInteractionEvent`](../Interactions/MapInteractionEvent.md)) => `void`                  | The handler function    |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `params` | { `handler`: (`event`: [`MapInteractionEvent`](../Interactions/MapInteractionEvent.md)) => `void`; } | Params for the listener |
+| `params.handler` | (`event`: [`MapInteractionEvent`](../Interactions/MapInteractionEvent.md)) => `void` | The handler function |
 
 ### Returns
 
@@ -2400,18 +2400,18 @@ unsubscribe();
 
 ## onLayerChange()
 
-> **onLayerChange**(`args`: \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`LayerChangeCallbackParams`](../Layers/LayerChangeCallbackParams.md)) => `void`; }): `VoidFunction`
+> **onLayerChange**(`args`: { `options`: { `id`: `string`; }; `handler`: (`change`: [`LayerChangeCallbackParams`](../Layers/LayerChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when a layer changes.
 
 ### Parameters
 
-| Parameter         | Type                                                                                                                                          | Description                                        |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| `args`            | \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`LayerChangeCallbackParams`](../Layers/LayerChangeCallbackParams.md)) => `void`; } | -                                                  |
-| `args.options`    | \{ `id`: `string`; }                                                                                                                          | -                                                  |
-| `args.options.id` | `string`                                                                                                                                      | The id of the layer to listen for changes to.      |
-| `args.handler`    | (`change`: [`LayerChangeCallbackParams`](../Layers/LayerChangeCallbackParams.md)) => `void`                                                   | The handler that is called when the layer changes. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | { `options`: { `id`: `string`; }; `handler`: (`change`: [`LayerChangeCallbackParams`](../Layers/LayerChangeCallbackParams.md)) => `void`; } | - |
+| `args.options` | { `id`: `string`; } | - |
+| `args.options.id` | `string` | The id of the layer to listen for changes to. |
+| `args.handler` | (`change`: [`LayerChangeCallbackParams`](../Layers/LayerChangeCallbackParams.md)) => `void` | The handler that is called when the layer changes. |
 
 ### Returns
 
@@ -2435,18 +2435,18 @@ unsubscribe();
 
 ## onLayerGroupChange()
 
-> **onLayerGroupChange**(`args`: \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`LayerGroupChangeCallbackParams`](../Layers/LayerGroupChangeCallbackParams.md)) => `void`; }): `VoidFunction`
+> **onLayerGroupChange**(`args`: { `options`: { `id`: `string`; }; `handler`: (`change`: [`LayerGroupChangeCallbackParams`](../Layers/LayerGroupChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when a layer group changes.
 
 ### Parameters
 
-| Parameter         | Type                                                                                                                                                    |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `args`            | \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`LayerGroupChangeCallbackParams`](../Layers/LayerGroupChangeCallbackParams.md)) => `void`; } |
-| `args.options`    | \{ `id`: `string`; }                                                                                                                                    |
-| `args.options.id` | `string`                                                                                                                                                |
-| `args.handler`    | (`change`: [`LayerGroupChangeCallbackParams`](../Layers/LayerGroupChangeCallbackParams.md)) => `void`                                                   |
+| Parameter | Type |
+| ------ | ------ |
+| `args` | { `options`: { `id`: `string`; }; `handler`: (`change`: [`LayerGroupChangeCallbackParams`](../Layers/LayerGroupChangeCallbackParams.md)) => `void`; } |
+| `args.options` | { `id`: `string`; } |
+| `args.options.id` | `string` |
+| `args.handler` | (`change`: [`LayerGroupChangeCallbackParams`](../Layers/LayerGroupChangeCallbackParams.md)) => `void` |
 
 ### Returns
 
@@ -2470,17 +2470,17 @@ unsubscribe();
 
 ## onLegendItemChange()
 
-> **onLegendItemChange**(`args`: \{ `options`: [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md); `handler`: (`change`: [`LegendItemChangeCallbackParams`](../Layers/LegendItemChangeCallbackParams.md)) => `void`; }): `VoidFunction`
+> **onLegendItemChange**(`args`: { `options`: [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md); `handler`: (`change`: [`LegendItemChangeCallbackParams`](../Layers/LegendItemChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when a legend item changes.
 
 ### Parameters
 
-| Parameter      | Type                                                                                                                                                                                           |
-| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `args`         | \{ `options`: [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md); `handler`: (`change`: [`LegendItemChangeCallbackParams`](../Layers/LegendItemChangeCallbackParams.md)) => `void`; } |
-| `args.options` | [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md)                                                                                                                                    |
-| `args.handler` | (`change`: [`LegendItemChangeCallbackParams`](../Layers/LegendItemChangeCallbackParams.md)) => `void`                                                                                          |
+| Parameter | Type |
+| ------ | ------ |
+| `args` | { `options`: [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md); `handler`: (`change`: [`LegendItemChangeCallbackParams`](../Layers/LegendItemChangeCallbackParams.md)) => `void`; } |
+| `args.options` | [`LegendItemIdentifier`](../Layers/LegendItemIdentifier.md) |
+| `args.handler` | (`change`: [`LegendItemChangeCallbackParams`](../Layers/LegendItemChangeCallbackParams.md)) => `void` |
 
 ### Returns
 
@@ -2504,18 +2504,18 @@ unsubscribe();
 
 ## onLayerFiltersChange()
 
-> **onLayerFiltersChange**(`params`: \{ `options`: \{ `layerId`: `string`; }; `handler`: (`change`: [`LayerFilters`](../Layers/LayerFilters.md)) => `void`; }): `VoidFunction`
+> **onLayerFiltersChange**(`params`: { `options`: { `layerId`: `string`; }; `handler`: (`change`: [`LayerFilters`](../Layers/LayerFilters.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when a layer's filters change.
 
 ### Parameters
 
-| Parameter                | Type                                                                                                                     |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| `params`                 | \{ `options`: \{ `layerId`: `string`; }; `handler`: (`change`: [`LayerFilters`](../Layers/LayerFilters.md)) => `void`; } |
-| `params.options`         | \{ `layerId`: `string`; }                                                                                                |
-| `params.options.layerId` | `string`                                                                                                                 |
-| `params.handler`         | (`change`: [`LayerFilters`](../Layers/LayerFilters.md)) => `void`                                                        |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | { `options`: { `layerId`: `string`; }; `handler`: (`change`: [`LayerFilters`](../Layers/LayerFilters.md)) => `void`; } |
+| `params.options` | { `layerId`: `string`; } |
+| `params.options.layerId` | `string` |
+| `params.handler` | (`change`: [`LayerFilters`](../Layers/LayerFilters.md)) => `void` |
 
 ### Returns
 
@@ -2552,18 +2552,18 @@ unsubscribe();
 
 ## onLayerBoundariesChange()
 
-> **onLayerBoundariesChange**(`params`: \{ `options`: \{ `layerId`: `string`; }; `handler`: (`boundaries`: `null` | [`LayerBoundaries`](../Layers/LayerBoundaries.md)) => `void`; }): `VoidFunction`
+> **onLayerBoundariesChange**(`params`: { `options`: { `layerId`: `string`; }; `handler`: (`boundaries`: `null` | [`LayerBoundaries`](../Layers/LayerBoundaries.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when a layer's spatial boundaries change.
 
 ### Parameters
 
-| Parameter                | Type                                                                                                                                         | Description                                            |
-| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
-| `params`                 | \{ `options`: \{ `layerId`: `string`; }; `handler`: (`boundaries`: `null` \| [`LayerBoundaries`](../Layers/LayerBoundaries.md)) => `void`; } | -                                                      |
-| `params.options`         | \{ `layerId`: `string`; }                                                                                                                    | -                                                      |
-| `params.options.layerId` | `string`                                                                                                                                     | The id of the layer to listen for boundary changes on. |
-| `params.handler`         | (`boundaries`: `null` \| [`LayerBoundaries`](../Layers/LayerBoundaries.md)) => `void`                                                        | A function that is called when the boundaries change.  |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `params` | { `options`: { `layerId`: `string`; }; `handler`: (`boundaries`: `null` | [`LayerBoundaries`](../Layers/LayerBoundaries.md)) => `void`; } | - |
+| `params.options` | { `layerId`: `string`; } | - |
+| `params.options.layerId` | `string` | The id of the layer to listen for boundary changes on. |
+| `params.handler` | (`boundaries`: `null` | [`LayerBoundaries`](../Layers/LayerBoundaries.md)) => `void` | A function that is called when the boundaries change. |
 
 ### Returns
 
@@ -2599,16 +2599,16 @@ unsubscribe();
 
 ## onSelectionChange()
 
-> **onSelectionChange**(`params`: \{ `handler`: (`change`: \{ `selection`: [`EntityNode`](../Selection/EntityNode.md)\[]; }) => `void`; }): `VoidFunction`
+> **onSelectionChange**(`params`: { `handler`: (`change`: { `selection`: [`EntityNode`](../Selection/EntityNode.md)\[]; }) => `void`; }): `VoidFunction`
 
 Adds a listener for when the selection changes.
 
 ### Parameters
 
-| Parameter        | Type                                                                                                    |
-| ---------------- | ------------------------------------------------------------------------------------------------------- |
-| `params`         | \{ `handler`: (`change`: \{ `selection`: [`EntityNode`](../Selection/EntityNode.md)\[]; }) => `void`; } |
-| `params.handler` | (`change`: \{ `selection`: [`EntityNode`](../Selection/EntityNode.md)\[]; }) => `void`                  |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | { `handler`: (`change`: { `selection`: [`EntityNode`](../Selection/EntityNode.md)\[]; }) => `void`; } |
+| `params.handler` | (`change`: { `selection`: [`EntityNode`](../Selection/EntityNode.md)\[]; }) => `void` |
 
 ### Returns
 
@@ -2631,16 +2631,16 @@ unsubscribe();
 
 ## onViewportMove()
 
-> **onViewportMove**(`args`: \{ `handler`: (`viewport`: [`ViewportState`](../Viewport/ViewportState.md)) => `void`; }): `VoidFunction`
+> **onViewportMove**(`args`: { `handler`: (`viewport`: [`ViewportState`](../Viewport/ViewportState.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when the viewport changes.
 
 ### Parameters
 
-| Parameter      | Type                                                                                     | Description                                                                            |
-| -------------- | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `args`         | \{ `handler`: (`viewport`: [`ViewportState`](../Viewport/ViewportState.md)) => `void`; } | -                                                                                      |
-| `args.handler` | (`viewport`: [`ViewportState`](../Viewport/ViewportState.md)) => `void`                  | This callback is called with the current viewport state whenever the viewport changes. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | { `handler`: (`viewport`: [`ViewportState`](../Viewport/ViewportState.md)) => `void`; } | - |
+| `args.handler` | (`viewport`: [`ViewportState`](../Viewport/ViewportState.md)) => `void` | This callback is called with the current viewport state whenever the viewport changes. |
 
 ### Returns
 
@@ -2663,7 +2663,7 @@ unsubscribe();
 
 ## onViewportMoveEnd()
 
-> **onViewportMoveEnd**(`args`: \{ `handler`: (`viewport`: [`ViewportState`](../Viewport/ViewportState.md)) => `void`; }): `VoidFunction`
+> **onViewportMoveEnd**(`args`: { `handler`: (`viewport`: [`ViewportState`](../Viewport/ViewportState.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when the viewport move ends, which is when the user
 stops dragging or zooming the map, animations have finished, or inertial
@@ -2671,10 +2671,10 @@ dragging ends.
 
 ### Parameters
 
-| Parameter      | Type                                                                                     |
-| -------------- | ---------------------------------------------------------------------------------------- |
-| `args`         | \{ `handler`: (`viewport`: [`ViewportState`](../Viewport/ViewportState.md)) => `void`; } |
-| `args.handler` | (`viewport`: [`ViewportState`](../Viewport/ViewportState.md)) => `void`                  |
+| Parameter | Type |
+| ------ | ------ |
+| `args` | { `handler`: (`viewport`: [`ViewportState`](../Viewport/ViewportState.md)) => `void`; } |
+| `args.handler` | (`viewport`: [`ViewportState`](../Viewport/ViewportState.md)) => `void` |
 
 ### Returns
 
@@ -2697,7 +2697,7 @@ unsubscribe();
 
 ## onMapIdle()
 
-> **onMapIdle**(`args`: \{ `handler`: () => `void`; }): `VoidFunction`
+> **onMapIdle**(`args`: { `handler`: () => `void`; }): `VoidFunction`
 
 Adds a listener for when the map is idle, which is defined as:
 
@@ -2708,10 +2708,10 @@ Adds a listener for when the map is idle, which is defined as:
 
 ### Parameters
 
-| Parameter      | Type                          |
-| -------------- | ----------------------------- |
-| `args`         | \{ `handler`: () => `void`; } |
-| `args.handler` | () => `void`                  |
+| Parameter | Type |
+| ------ | ------ |
+| `args` | { `handler`: () => `void`; } |
+| `args.handler` | () => `void` |
 
 ### Returns
 

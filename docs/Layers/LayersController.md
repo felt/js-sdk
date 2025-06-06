@@ -14,19 +14,19 @@ visibility toggled.
 
 ## getLayer()
 
-> **getLayer**(`id`: `string`): `Promise`\<`null` | [`Layer`](Layer.md)>
+> **getLayer**(`id`: `string`): `Promise`<`null` | [`Layer`](Layer.md)>
 
 Get a single layer from the map by its id.
 
 ### Parameters
 
-| Parameter | Type     | Description                          |
-| --------- | -------- | ------------------------------------ |
-| `id`      | `string` | The id of the layer you want to get. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | `string` | The id of the layer you want to get. |
 
 ### Returns
 
-`Promise`\<`null` | [`Layer`](Layer.md)>
+`Promise`<`null` | [`Layer`](Layer.md)>
 
 The requested layer.
 
@@ -40,20 +40,20 @@ const layer = await felt.getLayer("layer-1");
 
 ## getLayers()
 
-> **getLayers**(`constraint`?: [`GetLayersConstraint`](GetLayersConstraint.md)): `Promise`\<(`null` | [`Layer`](Layer.md))\[]>
+> **getLayers**(`constraint?`: [`GetLayersConstraint`](GetLayersConstraint.md)): `Promise`<(`null` | [`Layer`](Layer.md))\[]>
 
 Gets layers from the map, according to the constraints supplied. If no
 constraints are supplied, all layers will be returned.
 
 ### Parameters
 
-| Parameter     | Type                                            | Description                                                   |
-| ------------- | ----------------------------------------------- | ------------------------------------------------------------- |
-| `constraint`? | [`GetLayersConstraint`](GetLayersConstraint.md) | The constraints to apply to the layers returned from the map. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `constraint?` | [`GetLayersConstraint`](GetLayersConstraint.md) | The constraints to apply to the layers returned from the map. |
 
 ### Returns
 
-`Promise`\<(`null` | [`Layer`](Layer.md))\[]>
+`Promise`<(`null` | [`Layer`](Layer.md))\[]>
 
 All layers on the map.
 
@@ -73,19 +73,19 @@ const layers = await felt.getLayers();
 
 ## setLayerVisibility()
 
-> **setLayerVisibility**(`visibility`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`\<`void`>
+> **setLayerVisibility**(`visibility`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`<`void`>
 
 Hide or show layers with the given ids.
 
 ### Parameters
 
-| Parameter    | Type                                                        |
-| ------------ | ----------------------------------------------------------- |
+| Parameter | Type |
+| ------ | ------ |
 | `visibility` | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -97,7 +97,7 @@ felt.setLayerVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
 
 ## setLayerStyle()
 
-> **setLayerStyle**(`params`: \{ `id`: `string`; `style`: `object`; }): `Promise`\<`void`>
+> **setLayerStyle**(`params`: { `id`: `string`; `style`: `object`; }): `Promise`<`void`>
 
 Set the style for a layer using FSL, the Felt Style Language.
 
@@ -113,15 +113,15 @@ in the rejected promise value.
 
 ### Parameters
 
-| Parameter      | Type                                    | Description                               |
-| -------------- | --------------------------------------- | ----------------------------------------- |
-| `params`       | \{ `id`: `string`; `style`: `object`; } | -                                         |
-| `params.id`    | `string`                                | The id of the layer to set the style for. |
-| `params.style` | `object`                                | The style to set for the layer.           |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `params` | { `id`: `string`; `style`: `object`; } | - |
+| `params.id` | `string` | The id of the layer to set the style for. |
+| `params.style` | `object` | The style to set for the layer. |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -142,19 +142,19 @@ felt.setLayerStyle({ id: "layer-1", style: {
 
 ## setLayerLegendVisibility()
 
-> **setLayerLegendVisibility**(`params`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`\<`void`>
+> **setLayerLegendVisibility**(`params`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`<`void`>
 
 Hide or show layers with the given ids from the legend.
 
 ### Parameters
 
-| Parameter | Type                                                        |
-| --------- | ----------------------------------------------------------- |
-| `params`  | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -166,19 +166,19 @@ felt.setLayerLegendVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] 
 
 ## createLayersFromGeoJson()
 
-> **createLayersFromGeoJson**(`params`: [`CreateLayersFromGeoJsonParams`](CreateLayersFromGeoJsonParams.md)): `Promise`\<`null` | \{ `layerGroup`: [`LayerGroup`](LayerGroup.md); `layers`: [`Layer`](Layer.md)\[]; }>
+> **createLayersFromGeoJson**(`params`: [`CreateLayersFromGeoJsonParams`](CreateLayersFromGeoJsonParams.md)): `Promise`<`null` | { `layerGroup`: [`LayerGroup`](LayerGroup.md); `layers`: [`Layer`](Layer.md)\[]; }>
 
 Adds layers to the map from file or URL sources.
 
 ### Parameters
 
-| Parameter | Type                                                                |
-| --------- | ------------------------------------------------------------------- |
-| `params`  | [`CreateLayersFromGeoJsonParams`](CreateLayersFromGeoJsonParams.md) |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | [`CreateLayersFromGeoJsonParams`](CreateLayersFromGeoJsonParams.md) |
 
 ### Returns
 
-`Promise`\<`null` | \{ `layerGroup`: [`LayerGroup`](LayerGroup.md); `layers`: [`Layer`](Layer.md)\[]; }>
+`Promise`<`null` | { `layerGroup`: [`LayerGroup`](LayerGroup.md); `layers`: [`Layer`](Layer.md)\[]; }>
 
 The layer groups that were created.
 
@@ -211,7 +211,7 @@ const layerFromUrl = await felt.createLayersFromGeoJson({
 
 ## updateLayer()
 
-> **updateLayer**(`params`: [`UpdateLayerParams`](UpdateLayerParams.md)): `Promise`\<[`Layer`](Layer.md)>
+> **updateLayer**(`params`: [`UpdateLayerParams`](UpdateLayerParams.md)): `Promise`<[`Layer`](Layer.md)>
 
 Update a layer by passing a subset of the layer's properties.
 
@@ -220,13 +220,13 @@ type to see which properties can be updated.
 
 ### Parameters
 
-| Parameter | Type                                        |
-| --------- | ------------------------------------------- |
-| `params`  | [`UpdateLayerParams`](UpdateLayerParams.md) |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | [`UpdateLayerParams`](UpdateLayerParams.md) |
 
 ### Returns
 
-`Promise`\<[`Layer`](Layer.md)>
+`Promise`<[`Layer`](Layer.md)>
 
 ### Example
 
@@ -242,19 +242,19 @@ await felt.updateLayer({
 
 ## deleteLayer()
 
-> **deleteLayer**(`id`: `string`): `Promise`\<`void`>
+> **deleteLayer**(`id`: `string`): `Promise`<`void`>
 
 Delete a layer from the map by its id.
 
 ### Parameters
 
-| Parameter | Type     |
-| --------- | -------- |
-| `id`      | `string` |
+| Parameter | Type |
+| ------ | ------ |
+| `id` | `string` |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Remarks
 
@@ -270,19 +270,19 @@ await felt.deleteLayer("layer-1");
 
 ## getLayerGroup()
 
-> **getLayerGroup**(`id`: `string`): `Promise`\<`null` | [`LayerGroup`](LayerGroup.md)>
+> **getLayerGroup**(`id`: `string`): `Promise`<`null` | [`LayerGroup`](LayerGroup.md)>
 
 Get a layer group from the map by its id.
 
 ### Parameters
 
-| Parameter | Type     |
-| --------- | -------- |
-| `id`      | `string` |
+| Parameter | Type |
+| ------ | ------ |
+| `id` | `string` |
 
 ### Returns
 
-`Promise`\<`null` | [`LayerGroup`](LayerGroup.md)>
+`Promise`<`null` | [`LayerGroup`](LayerGroup.md)>
 
 The requested layer group.
 
@@ -296,20 +296,20 @@ const layerGroup = await felt.getLayerGroup("layer-group-1");
 
 ## getLayerGroups()
 
-> **getLayerGroups**(`constraint`?: [`GetLayerGroupsConstraint`](GetLayerGroupsConstraint.md)): `Promise`\<(`null` | [`LayerGroup`](LayerGroup.md))\[]>
+> **getLayerGroups**(`constraint?`: [`GetLayerGroupsConstraint`](GetLayerGroupsConstraint.md)): `Promise`<(`null` | [`LayerGroup`](LayerGroup.md))\[]>
 
 Gets layer groups from the map, according to the constraints supplied. If no
 constraints are supplied, all layer groups will be returned in rendering order.
 
 ### Parameters
 
-| Parameter     | Type                                                      | Description                                                         |
-| ------------- | --------------------------------------------------------- | ------------------------------------------------------------------- |
-| `constraint`? | [`GetLayerGroupsConstraint`](GetLayerGroupsConstraint.md) | The constraints to apply to the layer groups returned from the map. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `constraint?` | [`GetLayerGroupsConstraint`](GetLayerGroupsConstraint.md) | The constraints to apply to the layer groups returned from the map. |
 
 ### Returns
 
-`Promise`\<(`null` | [`LayerGroup`](LayerGroup.md))\[]>
+`Promise`<(`null` | [`LayerGroup`](LayerGroup.md))\[]>
 
 The requested layer groups.
 
@@ -323,19 +323,19 @@ const layerGroups = await felt.getLayerGroups({ ids: ["layer-group-1", "layer-gr
 
 ## setLayerGroupVisibility()
 
-> **setLayerGroupVisibility**(`visibility`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`\<`void`>
+> **setLayerGroupVisibility**(`visibility`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`<`void`>
 
 Hide or show layer groups with the given ids.
 
 ### Parameters
 
-| Parameter    | Type                                                        |
-| ------------ | ----------------------------------------------------------- |
+| Parameter | Type |
+| ------ | ------ |
 | `visibility` | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -347,19 +347,19 @@ felt.setLayerGroupVisibility({ show: ["layer-group-1", "layer-group-2"], hide: [
 
 ## setLayerGroupLegendVisibility()
 
-> **setLayerGroupLegendVisibility**(`params`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`\<`void`>
+> **setLayerGroupLegendVisibility**(`params`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`<`void`>
 
 Hide or show layer groups with the given ids from the legend.
 
 ### Parameters
 
-| Parameter | Type                                                        |
-| --------- | ----------------------------------------------------------- |
-| `params`  | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -371,19 +371,19 @@ felt.setLayerGroupLegendVisibility({ show: ["layer-1", "layer-2"], hide: ["layer
 
 ## getLegendItem()
 
-> **getLegendItem**(`id`: [`LegendItemIdentifier`](LegendItemIdentifier.md)): `Promise`\<`null` | [`LegendItem`](LegendItem.md)>
+> **getLegendItem**(`id`: [`LegendItemIdentifier`](LegendItemIdentifier.md)): `Promise`<`null` | [`LegendItem`](LegendItem.md)>
 
 Allows you to get the state of a single legend item.
 
 ### Parameters
 
-| Parameter | Type                                              |
-| --------- | ------------------------------------------------- |
-| `id`      | [`LegendItemIdentifier`](LegendItemIdentifier.md) |
+| Parameter | Type |
+| ------ | ------ |
+| `id` | [`LegendItemIdentifier`](LegendItemIdentifier.md) |
 
 ### Returns
 
-`Promise`\<`null` | [`LegendItem`](LegendItem.md)>
+`Promise`<`null` | [`LegendItem`](LegendItem.md)>
 
 ### Example
 
@@ -398,7 +398,7 @@ const legendItem = await felt.getLegendItem({
 
 ## getLegendItems()
 
-> **getLegendItems**(`constraint`?: [`LegendItemsConstraint`](LegendItemsConstraint.md)): `Promise`\<(`null` | [`LegendItem`](LegendItem.md))\[]>
+> **getLegendItems**(`constraint?`: [`LegendItemsConstraint`](LegendItemsConstraint.md)): `Promise`<(`null` | [`LegendItem`](LegendItem.md))\[]>
 
 Allows you to obtain the state of several legend items, by passing in
 constraints describing which legend items you want.
@@ -407,13 +407,13 @@ If you do not pass any constraints, you will receive all legend items.
 
 ### Parameters
 
-| Parameter     | Type                                                |
-| ------------- | --------------------------------------------------- |
-| `constraint`? | [`LegendItemsConstraint`](LegendItemsConstraint.md) |
+| Parameter | Type |
+| ------ | ------ |
+| `constraint?` | [`LegendItemsConstraint`](LegendItemsConstraint.md) |
 
 ### Returns
 
-`Promise`\<(`null` | [`LegendItem`](LegendItem.md))\[]>
+`Promise`<(`null` | [`LegendItem`](LegendItem.md))\[]>
 
 ### Example
 
@@ -425,21 +425,21 @@ const legendItems = await felt.getLegendItems({layerId: "layer-1"});
 
 ## setLegendItemVisibility()
 
-> **setLegendItemVisibility**(`visibility`: \{ `show`: [`LegendItemIdentifier`](LegendItemIdentifier.md)\[]; `hide`: [`LegendItemIdentifier`](LegendItemIdentifier.md)\[]; }): `Promise`\<`void`>
+> **setLegendItemVisibility**(`visibility`: { `show?`: [`LegendItemIdentifier`](LegendItemIdentifier.md)\[]; `hide?`: [`LegendItemIdentifier`](LegendItemIdentifier.md)\[]; }): `Promise`<`void`>
 
 Hide or show legend items with the given identifiers.
 
 ### Parameters
 
-| Parameter          | Type                                                                                                                             |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
-| `visibility`       | \{ `show`: [`LegendItemIdentifier`](LegendItemIdentifier.md)\[]; `hide`: [`LegendItemIdentifier`](LegendItemIdentifier.md)\[]; } |
-| `visibility.show`? | [`LegendItemIdentifier`](LegendItemIdentifier.md)\[]                                                                             |
-| `visibility.hide`? | [`LegendItemIdentifier`](LegendItemIdentifier.md)\[]                                                                             |
+| Parameter | Type |
+| ------ | ------ |
+| `visibility` | { `show?`: [`LegendItemIdentifier`](LegendItemIdentifier.md)\[]; `hide?`: [`LegendItemIdentifier`](LegendItemIdentifier.md)\[]; } |
+| `visibility.show?` | [`LegendItemIdentifier`](LegendItemIdentifier.md)\[] |
+| `visibility.hide?` | [`LegendItemIdentifier`](LegendItemIdentifier.md)\[] |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -454,19 +454,19 @@ felt.setLegendItemVisibility({
 
 ## getLayerFilters()
 
-> **getLayerFilters**(`layerId`: `string`): `Promise`\<`null` | [`LayerFilters`](LayerFilters.md)>
+> **getLayerFilters**(`layerId`: `string`): `Promise`<`null` | [`LayerFilters`](LayerFilters.md)>
 
 Get the filters for a layer.
 
 ### Parameters
 
-| Parameter | Type     |
-| --------- | -------- |
+| Parameter | Type |
+| ------ | ------ |
 | `layerId` | `string` |
 
 ### Returns
 
-`Promise`\<`null` | [`LayerFilters`](LayerFilters.md)>
+`Promise`<`null` | [`LayerFilters`](LayerFilters.md)>
 
 ### Remarks
 
@@ -484,22 +484,22 @@ console.log(filters.combined, filters.style, filters.ephemeral, filters.componen
 
 ## setLayerFilters()
 
-> **setLayerFilters**(`params`: \{ `layerId`: `string`; `filters`: [`Filters`](Filters.md); `note`: `string`; }): `Promise`\<`void`>
+> **setLayerFilters**(`params`: { `layerId`: `string`; `filters`: [`Filters`](Filters.md); `note?`: `string`; }): `Promise`<`void`>
 
 Sets the **ephemeral** filters for a layer.
 
 ### Parameters
 
-| Parameter        | Type                                                                            | Description                                                                                                                                                          |
-| ---------------- | ------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `params`         | \{ `layerId`: `string`; `filters`: [`Filters`](Filters.md); `note`: `string`; } | -                                                                                                                                                                    |
-| `params.layerId` | `string`                                                                        | The layer that you want to set the filters for.                                                                                                                      |
-| `params.filters` | [`Filters`](Filters.md)                                                         | The filters to set for the layer. This will replace any ephemeral filters that are currently set for the layer.                                                      |
-| `params.note`?   | `string`                                                                        | A note to display on the layer legend when this filter is applied. When the note is shown, a reset button will also be shown, allowing the user to clear the filter. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `params` | { `layerId`: `string`; `filters`: [`Filters`](Filters.md); `note?`: `string`; } | - |
+| `params.layerId` | `string` | The layer that you want to set the filters for. |
+| `params.filters` | [`Filters`](Filters.md) | The filters to set for the layer. This will replace any ephemeral filters that are currently set for the layer. |
+| `params.note?` | `string` | A note to display on the layer legend when this filter is applied. When the note is shown, a reset button will also be shown, allowing the user to clear the filter. |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -514,19 +514,19 @@ await felt.setLayerFilters({
 
 ## getLayerBoundaries()
 
-> **getLayerBoundaries**(`layerId`: `string`): `Promise`\<`null` | [`LayerBoundaries`](LayerBoundaries.md)>
+> **getLayerBoundaries**(`layerId`: `string`): `Promise`<`null` | [`LayerBoundaries`](LayerBoundaries.md)>
 
 Get the spatial boundaries that are filtering a layer.
 
 ### Parameters
 
-| Parameter | Type     |
-| --------- | -------- |
+| Parameter | Type |
+| ------ | ------ |
 | `layerId` | `string` |
 
 ### Returns
 
-`Promise`\<`null` | [`LayerBoundaries`](LayerBoundaries.md)>
+`Promise`<`null` | [`LayerBoundaries`](LayerBoundaries.md)>
 
 ### Remarks
 
@@ -549,21 +549,21 @@ console.log(boundaries?.ephemeral);
 
 ## setLayerBoundary()
 
-> **setLayerBoundary**(`params`: \{ `layerIds`: `string`\[]; `boundary`: `null` | [`GeometryFilter`](GeometryFilter.md); }): `Promise`\<`void`>
+> **setLayerBoundary**(`params`: { `layerIds`: `string`\[]; `boundary`: `null` | [`GeometryFilter`](GeometryFilter.md); }): `Promise`<`void`>
 
 Set the [\`ephemeral\`](LayerBoundaries.md#ephemeral) boundary for one or more layers.
 
 ### Parameters
 
-| Parameter         | Type                                                                                       | Description                                                                                    |
-| ----------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
-| `params`          | \{ `layerIds`: `string`\[]; `boundary`: `null` \| [`GeometryFilter`](GeometryFilter.md); } | -                                                                                              |
-| `params.layerIds` | `string`\[]                                                                                | The ids of the layers to set the boundary for.                                                 |
-| `params.boundary` | `null` \| [`GeometryFilter`](GeometryFilter.md)                                            | The boundary to set for the layer. Passing `null` clears the ephemeral boundary for the layer. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `params` | { `layerIds`: `string`\[]; `boundary`: `null` | [`GeometryFilter`](GeometryFilter.md); } | - |
+| `params.layerIds` | `string`\[] | The ids of the layers to set the boundary for. |
+| `params.boundary` | `null` | [`GeometryFilter`](GeometryFilter.md) | The boundary to set for the layer. Passing `null` clears the ephemeral boundary for the layer. |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -578,7 +578,7 @@ await felt.setLayerBoundary({
 
 ## getRenderedFeatures()
 
-> **getRenderedFeatures**(`params`?: [`GetRenderedFeaturesConstraint`](GetRenderedFeaturesConstraint.md)): `Promise`\<[`LayerFeature`](LayerFeature.md)\[]>
+> **getRenderedFeatures**(`params?`: [`GetRenderedFeaturesConstraint`](GetRenderedFeaturesConstraint.md)): `Promise`<[`LayerFeature`](LayerFeature.md)\[]>
 
 Get the features that are currently **rendered** on the map in the viewport.
 
@@ -589,13 +589,13 @@ features are omitted from what is rendered on the screen.
 
 ### Parameters
 
-| Parameter | Type                                                                | Description                                                     |
-| --------- | ------------------------------------------------------------------- | --------------------------------------------------------------- |
-| `params`? | [`GetRenderedFeaturesConstraint`](GetRenderedFeaturesConstraint.md) | The constraints to apply to the features returned from the map. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `params?` | [`GetRenderedFeaturesConstraint`](GetRenderedFeaturesConstraint.md) | The constraints to apply to the features returned from the map. |
 
 ### Returns
 
-`Promise`\<[`LayerFeature`](LayerFeature.md)\[]>
+`Promise`<[`LayerFeature`](LayerFeature.md)\[]>
 
 ### Example
 
@@ -607,7 +607,7 @@ const features = await felt.getRenderedFeatures();
 
 ## getFeature()
 
-> **getFeature**(`params`: \{ `id`: `string` | `number`; `layerId`: `string`; }): `Promise`\<`null` | [`LayerFeature`](LayerFeature.md)>
+> **getFeature**(`params`: { `id`: `string` | `number`; `layerId`: `string`; }): `Promise`<`null` | [`LayerFeature`](LayerFeature.md)>
 
 Get a feature from the map by its ID and layer ID.
 
@@ -619,15 +619,15 @@ but you know the ID of the feature you need.
 
 ### Parameters
 
-| Parameter        | Type                                                  |
-| ---------------- | ----------------------------------------------------- |
-| `params`         | \{ `id`: `string` \| `number`; `layerId`: `string`; } |
-| `params.id`      | `string` \| `number`                                  |
-| `params.layerId` | `string`                                              |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | { `id`: `string` | `number`; `layerId`: `string`; } |
+| `params.id` | `string` | `number` |
+| `params.layerId` | `string` |
 
 ### Returns
 
-`Promise`\<`null` | [`LayerFeature`](LayerFeature.md)>
+`Promise`<`null` | [`LayerFeature`](LayerFeature.md)>
 
 ### Example
 
@@ -639,25 +639,25 @@ const feature = await felt.getFeature({ layerId: "layer-1", id: 123 });
 
 ## getFeatures()
 
-> **getFeatures**(`params`: \{ `layerId`: `string`; `filters`: [`Filters`](Filters.md); `sorting`: [`SortConfig`](../Shared/SortConfig.md); `boundary`: [`GeometryFilter`](GeometryFilter.md); `search`: `string`; `pagination`: `null` | `string`; }): `Promise`\<\{ `features`: [`LayerFeature`](LayerFeature.md)\[]; `count`: `number`; `previousPage`: `null` | `string`; `nextPage`: `null` | `string`; }>
+> **getFeatures**(`params`: { `layerId`: `string`; `filters?`: [`Filters`](Filters.md); `sorting?`: [`SortConfig`](../Shared/SortConfig.md); `boundary?`: [`GeometryFilter`](GeometryFilter.md); `search?`: `string`; `pagination?`: `null` | `string`; }): `Promise`<{ `features`: [`LayerFeature`](LayerFeature.md)\[]; `count`: `number`; `previousPage`: `null` | `string`; `nextPage`: `null` | `string`; }>
 
 Get a list of layer features.
 
 ### Parameters
 
-| Parameter            | Type                                                                                                                                                                                                                       | Description                                                                                                  |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| `params`             | \{ `layerId`: `string`; `filters`: [`Filters`](Filters.md); `sorting`: [`SortConfig`](../Shared/SortConfig.md); `boundary`: [`GeometryFilter`](GeometryFilter.md); `search`: `string`; `pagination`: `null` \| `string`; } | -                                                                                                            |
-| `params.layerId`     | `string`                                                                                                                                                                                                                   | The ID of the layer to get features from.                                                                    |
-| `params.filters`?    | [`Filters`](Filters.md)                                                                                                                                                                                                    | Filters to be applied. These filters will merge with layer's own filters.                                    |
-| `params.sorting`?    | [`SortConfig`](../Shared/SortConfig.md)                                                                                                                                                                                    | Attribute to sort by.                                                                                        |
-| `params.boundary`?   | [`GeometryFilter`](GeometryFilter.md)                                                                                                                                                                                      | The spatial boundary to be applied.                                                                          |
-| `params.search`?     | `string`                                                                                                                                                                                                                   | Search term to search by. Search is case-insensitive and looks for matches across all feature properties.    |
-| `params.pagination`? | `null` \| `string`                                                                                                                                                                                                         | Pagination token. It comes from either the `previousPage` or `nextPage` properties of the previous response. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `params` | { `layerId`: `string`; `filters?`: [`Filters`](Filters.md); `sorting?`: [`SortConfig`](../Shared/SortConfig.md); `boundary?`: [`GeometryFilter`](GeometryFilter.md); `search?`: `string`; `pagination?`: `null` | `string`; } | - |
+| `params.layerId` | `string` | The ID of the layer to get features from. |
+| `params.filters?` | [`Filters`](Filters.md) | Filters to be applied. These filters will merge with layer's own filters. |
+| `params.sorting?` | [`SortConfig`](../Shared/SortConfig.md) | Attribute to sort by. |
+| `params.boundary?` | [`GeometryFilter`](GeometryFilter.md) | The spatial boundary to be applied. |
+| `params.search?` | `string` | Search term to search by. Search is case-insensitive and looks for matches across all feature properties. |
+| `params.pagination?` | `null` | `string` | Pagination token. It comes from either the `previousPage` or `nextPage` properties of the previous response. |
 
 ### Returns
 
-`Promise`\<\{ `features`: [`LayerFeature`](LayerFeature.md)\[]; `count`: `number`; `previousPage`: `null` | `string`; `nextPage`: `null` | `string`; }>
+`Promise`<{ `features`: [`LayerFeature`](LayerFeature.md)\[]; `count`: `number`; `previousPage`: `null` | `string`; `nextPage`: `null` | `string`; }>
 
 The response is an object which contains:
 
@@ -698,7 +698,7 @@ if (page1Response.nextPage) {
 
 ## getGeoJsonFeature()
 
-> **getGeoJsonFeature**(`params`: \{ `id`: `string` | `number`; `layerId`: `string`; }): `Promise`\<`null` | [`GeoJsonFeature`](../Shared/GeoJsonFeature.md)>
+> **getGeoJsonFeature**(`params`: { `id`: `string` | `number`; `layerId`: `string`; }): `Promise`<`null` | [`GeoJsonFeature`](../Shared/GeoJsonFeature.md)>
 
 Get a feature in GeoJSON format from the map by its ID and layer ID.
 
@@ -708,15 +708,15 @@ long time to return, and may return a very large object.
 
 ### Parameters
 
-| Parameter        | Type                                                  |
-| ---------------- | ----------------------------------------------------- |
-| `params`         | \{ `id`: `string` \| `number`; `layerId`: `string`; } |
-| `params.id`      | `string` \| `number`                                  |
-| `params.layerId` | `string`                                              |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | { `id`: `string` | `number`; `layerId`: `string`; } |
+| `params.id` | `string` | `number` |
+| `params.layerId` | `string` |
 
 ### Returns
 
-`Promise`\<`null` | [`GeoJsonFeature`](../Shared/GeoJsonFeature.md)>
+`Promise`<`null` | [`GeoJsonFeature`](../Shared/GeoJsonFeature.md)>
 
 ### Example
 
@@ -728,19 +728,19 @@ const feature = await felt.getGeoJsonFeature({ layerId: "layer-1", id: 123 });
 
 ## getCategoryData()
 
-> **getCategoryData**(`params`: [`GetLayerCategoriesParams`](GetLayerCategoriesParams.md)): `Promise`\<[`GetLayerCategoriesGroup`](GetLayerCategoriesGroup.md)\[]>
+> **getCategoryData**(`params`: [`GetLayerCategoriesParams`](GetLayerCategoriesParams.md)): `Promise`<[`GetLayerCategoriesGroup`](GetLayerCategoriesGroup.md)\[]>
 
 Gets values from a layer grouped by a given attribute.
 
 ### Parameters
 
-| Parameter | Type                                                      |
-| --------- | --------------------------------------------------------- |
-| `params`  | [`GetLayerCategoriesParams`](GetLayerCategoriesParams.md) |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | [`GetLayerCategoriesParams`](GetLayerCategoriesParams.md) |
 
 ### Returns
 
-`Promise`\<[`GetLayerCategoriesGroup`](GetLayerCategoriesGroup.md)\[]>
+`Promise`<[`GetLayerCategoriesGroup`](GetLayerCategoriesGroup.md)\[]>
 
 ### Remarks
 
@@ -804,19 +804,19 @@ const newBuildingDensityByNeighborhood = await felt.getCategoryData({
 
 ## getHistogramData()
 
-> **getHistogramData**(`params`: [`GetLayerHistogramParams`](GetLayerHistogramParams.md)): `Promise`\<[`GetLayerHistogramBin`](GetLayerHistogramBin.md)\[]>
+> **getHistogramData**(`params`: [`GetLayerHistogramParams`](GetLayerHistogramParams.md)): `Promise`<[`GetLayerHistogramBin`](GetLayerHistogramBin.md)\[]>
 
 Gets a histogram of values from a layer for a given attribute.
 
 ### Parameters
 
-| Parameter | Type                                                    |
-| --------- | ------------------------------------------------------- |
-| `params`  | [`GetLayerHistogramParams`](GetLayerHistogramParams.md) |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | [`GetLayerHistogramParams`](GetLayerHistogramParams.md) |
 
 ### Returns
 
-`Promise`\<[`GetLayerHistogramBin`](GetLayerHistogramBin.md)\[]>
+`Promise`<[`GetLayerHistogramBin`](GetLayerHistogramBin.md)\[]>
 
 ### Remarks
 
@@ -872,25 +872,25 @@ const newBuildingHeights = await felt.getHistogramData({
 
 ## getAggregates()
 
-> **getAggregates**\<`T`>(`params`: [`GetLayerCalculationParams`](GetLayerCalculationParams.md)\<`T`>): `Promise`\<`Record`\<`T`, `null` | `number`>>
+> **getAggregates**<`T`>(`params`: [`GetLayerCalculationParams`](GetLayerCalculationParams.md)<`T`>): `Promise`<`Record`<`T`, `null` | `number`>>
 
 Calculates a single aggregate value for a layer based on the provided configuration.
 
 ### Type Parameters
 
-| Type Parameter                                                                    |
-| --------------------------------------------------------------------------------- |
-| `T` *extends* `"avg"` \| `"max"` \| `"min"` \| `"sum"` \| `"median"` \| `"count"` |
+| Type Parameter |
+| ------ |
+| `T` *extends* `"avg"` | `"max"` | `"min"` | `"sum"` | `"median"` | `"count"` |
 
 ### Parameters
 
-| Parameter | Type                                                              |
-| --------- | ----------------------------------------------------------------- |
-| `params`  | [`GetLayerCalculationParams`](GetLayerCalculationParams.md)\<`T`> |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | [`GetLayerCalculationParams`](GetLayerCalculationParams.md)<`T`> |
 
 ### Returns
 
-`Promise`\<`Record`\<`T`, `null` | `number`>>
+`Promise`<`Record`<`T`, `null` | `number`>>
 
 ### Remarks
 
@@ -935,19 +935,19 @@ const maxNewBuildingHeight = await felt.getAggregates({
 
 ## getPrecomputedAggregates()
 
-> **getPrecomputedAggregates**(`params`: [`GetLayerPrecomputedCalculationParams`](GetLayerPrecomputedCalculationParams.md)): `Promise`\<\{ `avg`: `null` | `number`; `max`: `null` | `number`; `min`: `null` | `number`; `sum`: `null` | `number`; `count`: `null` | `number`; }>
+> **getPrecomputedAggregates**(`params`: [`GetLayerPrecomputedCalculationParams`](GetLayerPrecomputedCalculationParams.md)): `Promise`<{ `avg`: `null` | `number`; `max`: `null` | `number`; `min`: `null` | `number`; `sum`: `null` | `number`; `count`: `null` | `number`; }>
 
 Calculates aggregates for spatial cells of a layer.
 
 ### Parameters
 
-| Parameter | Type                                                                              |
-| --------- | --------------------------------------------------------------------------------- |
-| `params`  | [`GetLayerPrecomputedCalculationParams`](GetLayerPrecomputedCalculationParams.md) |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | [`GetLayerPrecomputedCalculationParams`](GetLayerPrecomputedCalculationParams.md) |
 
 ### Returns
 
-`Promise`\<\{ `avg`: `null` | `number`; `max`: `null` | `number`; `min`: `null` | `number`; `sum`: `null` | `number`; `count`: `null` | `number`; }>
+`Promise`<{ `avg`: `null` | `number`; `max`: `null` | `number`; `min`: `null` | `number`; `sum`: `null` | `number`; `count`: `null` | `number`; }>
 
 ### Remarks
 
@@ -972,19 +972,19 @@ const aggregates = await felt.getPrecomputedAggregates({
 
 ## getLayerSchema()
 
-> **getLayerSchema**(`layerId`: `string`): `Promise`\<[`LayerSchema`](LayerSchema.md)>
+> **getLayerSchema**(`layerId`: `string`): `Promise`<[`LayerSchema`](LayerSchema.md)>
 
 Get the schema for a layer.
 
 ### Parameters
 
-| Parameter | Type     |
-| --------- | -------- |
+| Parameter | Type |
+| ------ | ------ |
 | `layerId` | `string` |
 
 ### Returns
 
-`Promise`\<[`LayerSchema`](LayerSchema.md)>
+`Promise`<[`LayerSchema`](LayerSchema.md)>
 
 ### Remarks
 
@@ -1005,18 +1005,18 @@ const attributeIds = schema.attributes.map((attr) => attr.id);
 
 ## onLayerChange()
 
-> **onLayerChange**(`args`: \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`LayerChangeCallbackParams`](LayerChangeCallbackParams.md)) => `void`; }): `VoidFunction`
+> **onLayerChange**(`args`: { `options`: { `id`: `string`; }; `handler`: (`change`: [`LayerChangeCallbackParams`](LayerChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when a layer changes.
 
 ### Parameters
 
-| Parameter         | Type                                                                                                                                | Description                                        |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| `args`            | \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`LayerChangeCallbackParams`](LayerChangeCallbackParams.md)) => `void`; } | -                                                  |
-| `args.options`    | \{ `id`: `string`; }                                                                                                                | -                                                  |
-| `args.options.id` | `string`                                                                                                                            | The id of the layer to listen for changes to.      |
-| `args.handler`    | (`change`: [`LayerChangeCallbackParams`](LayerChangeCallbackParams.md)) => `void`                                                   | The handler that is called when the layer changes. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | { `options`: { `id`: `string`; }; `handler`: (`change`: [`LayerChangeCallbackParams`](LayerChangeCallbackParams.md)) => `void`; } | - |
+| `args.options` | { `id`: `string`; } | - |
+| `args.options.id` | `string` | The id of the layer to listen for changes to. |
+| `args.handler` | (`change`: [`LayerChangeCallbackParams`](LayerChangeCallbackParams.md)) => `void` | The handler that is called when the layer changes. |
 
 ### Returns
 
@@ -1040,18 +1040,18 @@ unsubscribe();
 
 ## onLayerGroupChange()
 
-> **onLayerGroupChange**(`args`: \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`LayerGroupChangeCallbackParams`](LayerGroupChangeCallbackParams.md)) => `void`; }): `VoidFunction`
+> **onLayerGroupChange**(`args`: { `options`: { `id`: `string`; }; `handler`: (`change`: [`LayerGroupChangeCallbackParams`](LayerGroupChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when a layer group changes.
 
 ### Parameters
 
-| Parameter         | Type                                                                                                                                          |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `args`            | \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`LayerGroupChangeCallbackParams`](LayerGroupChangeCallbackParams.md)) => `void`; } |
-| `args.options`    | \{ `id`: `string`; }                                                                                                                          |
-| `args.options.id` | `string`                                                                                                                                      |
-| `args.handler`    | (`change`: [`LayerGroupChangeCallbackParams`](LayerGroupChangeCallbackParams.md)) => `void`                                                   |
+| Parameter | Type |
+| ------ | ------ |
+| `args` | { `options`: { `id`: `string`; }; `handler`: (`change`: [`LayerGroupChangeCallbackParams`](LayerGroupChangeCallbackParams.md)) => `void`; } |
+| `args.options` | { `id`: `string`; } |
+| `args.options.id` | `string` |
+| `args.handler` | (`change`: [`LayerGroupChangeCallbackParams`](LayerGroupChangeCallbackParams.md)) => `void` |
 
 ### Returns
 
@@ -1075,17 +1075,17 @@ unsubscribe();
 
 ## onLegendItemChange()
 
-> **onLegendItemChange**(`args`: \{ `options`: [`LegendItemIdentifier`](LegendItemIdentifier.md); `handler`: (`change`: [`LegendItemChangeCallbackParams`](LegendItemChangeCallbackParams.md)) => `void`; }): `VoidFunction`
+> **onLegendItemChange**(`args`: { `options`: [`LegendItemIdentifier`](LegendItemIdentifier.md); `handler`: (`change`: [`LegendItemChangeCallbackParams`](LegendItemChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when a legend item changes.
 
 ### Parameters
 
-| Parameter      | Type                                                                                                                                                                       |
-| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `args`         | \{ `options`: [`LegendItemIdentifier`](LegendItemIdentifier.md); `handler`: (`change`: [`LegendItemChangeCallbackParams`](LegendItemChangeCallbackParams.md)) => `void`; } |
-| `args.options` | [`LegendItemIdentifier`](LegendItemIdentifier.md)                                                                                                                          |
-| `args.handler` | (`change`: [`LegendItemChangeCallbackParams`](LegendItemChangeCallbackParams.md)) => `void`                                                                                |
+| Parameter | Type |
+| ------ | ------ |
+| `args` | { `options`: [`LegendItemIdentifier`](LegendItemIdentifier.md); `handler`: (`change`: [`LegendItemChangeCallbackParams`](LegendItemChangeCallbackParams.md)) => `void`; } |
+| `args.options` | [`LegendItemIdentifier`](LegendItemIdentifier.md) |
+| `args.handler` | (`change`: [`LegendItemChangeCallbackParams`](LegendItemChangeCallbackParams.md)) => `void` |
 
 ### Returns
 
@@ -1109,18 +1109,18 @@ unsubscribe();
 
 ## onLayerFiltersChange()
 
-> **onLayerFiltersChange**(`params`: \{ `options`: \{ `layerId`: `string`; }; `handler`: (`change`: [`LayerFilters`](LayerFilters.md)) => `void`; }): `VoidFunction`
+> **onLayerFiltersChange**(`params`: { `options`: { `layerId`: `string`; }; `handler`: (`change`: [`LayerFilters`](LayerFilters.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when a layer's filters change.
 
 ### Parameters
 
-| Parameter                | Type                                                                                                           |
-| ------------------------ | -------------------------------------------------------------------------------------------------------------- |
-| `params`                 | \{ `options`: \{ `layerId`: `string`; }; `handler`: (`change`: [`LayerFilters`](LayerFilters.md)) => `void`; } |
-| `params.options`         | \{ `layerId`: `string`; }                                                                                      |
-| `params.options.layerId` | `string`                                                                                                       |
-| `params.handler`         | (`change`: [`LayerFilters`](LayerFilters.md)) => `void`                                                        |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | { `options`: { `layerId`: `string`; }; `handler`: (`change`: [`LayerFilters`](LayerFilters.md)) => `void`; } |
+| `params.options` | { `layerId`: `string`; } |
+| `params.options.layerId` | `string` |
+| `params.handler` | (`change`: [`LayerFilters`](LayerFilters.md)) => `void` |
 
 ### Returns
 
@@ -1157,18 +1157,18 @@ unsubscribe();
 
 ## onLayerBoundariesChange()
 
-> **onLayerBoundariesChange**(`params`: \{ `options`: \{ `layerId`: `string`; }; `handler`: (`boundaries`: `null` | [`LayerBoundaries`](LayerBoundaries.md)) => `void`; }): `VoidFunction`
+> **onLayerBoundariesChange**(`params`: { `options`: { `layerId`: `string`; }; `handler`: (`boundaries`: `null` | [`LayerBoundaries`](LayerBoundaries.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when a layer's spatial boundaries change.
 
 ### Parameters
 
-| Parameter                | Type                                                                                                                               | Description                                            |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
-| `params`                 | \{ `options`: \{ `layerId`: `string`; }; `handler`: (`boundaries`: `null` \| [`LayerBoundaries`](LayerBoundaries.md)) => `void`; } | -                                                      |
-| `params.options`         | \{ `layerId`: `string`; }                                                                                                          | -                                                      |
-| `params.options.layerId` | `string`                                                                                                                           | The id of the layer to listen for boundary changes on. |
-| `params.handler`         | (`boundaries`: `null` \| [`LayerBoundaries`](LayerBoundaries.md)) => `void`                                                        | A function that is called when the boundaries change.  |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `params` | { `options`: { `layerId`: `string`; }; `handler`: (`boundaries`: `null` | [`LayerBoundaries`](LayerBoundaries.md)) => `void`; } | - |
+| `params.options` | { `layerId`: `string`; } | - |
+| `params.options.layerId` | `string` | The id of the layer to listen for boundary changes on. |
+| `params.handler` | (`boundaries`: `null` | [`LayerBoundaries`](LayerBoundaries.md)) => `void` | A function that is called when the boundaries change. |
 
 ### Returns
 

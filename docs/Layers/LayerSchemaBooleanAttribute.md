@@ -52,11 +52,11 @@ Indicates this is a boolean attribute.
 
 ## sampleValues
 
-> **sampleValues**: \{ `value`: `boolean`; `count`: `number`; }\[]
+> **sampleValues**: { `value`: `boolean`; `count`: `number`; }\[]
 
 A representative sample of boolean values for this attribute and their frequency.
 
-| Name    | Type      |
-| ------- | --------- |
+| Name | Type |
+| ------ | ------ |
 | `value` | `boolean` |
-| `count` | `number`  |
+| `count` | `number` |

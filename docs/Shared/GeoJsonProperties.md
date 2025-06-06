@@ -1,5 +1,5 @@
 ***
 
-> **GeoJsonProperties**: `Record`\<`string`, `unknown`>
+> **GeoJsonProperties** = `Record`<`string`, `unknown`>
 
 A GeoJSON properties object.

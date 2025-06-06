@@ -43,7 +43,7 @@
   },
 
   "outputFileStrategy": "members",
-  "flattenOutputFiles": false,
+  "router": "structure",
   "theme": "customTheme",
   "readme": "./src/docs_api_readme_prepend.md",
   "mergeReadme": true

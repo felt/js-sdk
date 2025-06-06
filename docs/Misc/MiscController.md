@@ -8,13 +8,13 @@
 
 ## getMapDetails()
 
-> **getMapDetails**(): `Promise`\<[`MapDetails`](MapDetails.md)>
+> **getMapDetails**(): `Promise`<[`MapDetails`](MapDetails.md)>
 
 Gets the details of the map.
 
 ### Returns
 
-`Promise`\<[`MapDetails`](MapDetails.md)>
+`Promise`<[`MapDetails`](MapDetails.md)>
 
 ### Example
 

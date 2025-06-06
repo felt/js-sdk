@@ -52,12 +52,12 @@ Indicates this is a numeric attribute.
 
 ## sampleValues
 
-> **sampleValues**: \{ `value`: `number`; `count`: `number`; }\[]
+> **sampleValues**: { `value`: `number`; `count`: `number`; }\[]
 
 A small sample of values for this attribute and their frequency.
 
-| Name    | Type     |
-| ------- | -------- |
+| Name | Type |
+| ------ | ------ |
 | `value` | `number` |
 | `count` | `number` |
 

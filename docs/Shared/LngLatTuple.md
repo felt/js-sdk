@@ -1,6 +1,6 @@
 ***
 
-> **LngLatTuple**: \[`number`, `number`]
+> **LngLatTuple** = \[`number`, `number`]
 
 A tuple representing a longitude and latitude coordinate.
 

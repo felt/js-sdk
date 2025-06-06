@@ -7,7 +7,7 @@ provided, all rendered features will be returned.
 
 ## areaQuery?
 
-> `optional` **areaQuery**: \{ `coordinates`: [`LatLng`](../Shared/LatLng.md); } | \{ `boundary`: \[`number`, `number`, `number`, `number`]; }
+> `optional` **areaQuery**: { `coordinates`: [`LatLng`](../Shared/LatLng.md); } | { `boundary`: \[`number`, `number`, `number`, `number`]; }
 
 The area to query for rendered features. This can be specific coordinates or a [FeltBoundary](../Shared/FeltBoundary.md). If omitted, the entire viewport will be queried.
 

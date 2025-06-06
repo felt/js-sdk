@@ -14,7 +14,7 @@ The panel to add.
 
 ## placement?
 
-> `optional` **placement**: \{ `after`: `string`; } | \{ `before`: `string`; } | \{ `at`: `"start"` | `"end"`; }
+> `optional` **placement**: { `after`: `string`; } | { `before`: `string`; } | { `at`: `"start"` | `"end"`; }
 
 The placement of the panel on the right sidebar stack.
 

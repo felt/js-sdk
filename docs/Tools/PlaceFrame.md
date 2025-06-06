@@ -1,3 +1,3 @@
 ***
 
-> **PlaceFrame**: `"frame-circle"` | `"frame-square"` | `null`
+> **PlaceFrame** = `"frame-circle"` | `"frame-square"` | `null`

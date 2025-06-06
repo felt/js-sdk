@@ -1,6 +1,6 @@
 ***
 
-> **LayerSchemaAttribute**: [`LayerSchemaNumericAttribute`](LayerSchemaNumericAttribute.md) | [`LayerSchemaTextAttribute`](LayerSchemaTextAttribute.md) | [`LayerSchemaBooleanAttribute`](LayerSchemaBooleanAttribute.md) | [`LayerSchemaDateAttribute`](LayerSchemaDateAttribute.md) | [`LayerSchemaDateTimeAttribute`](LayerSchemaDateTimeAttribute.md)
+> **LayerSchemaAttribute** = [`LayerSchemaNumericAttribute`](LayerSchemaNumericAttribute.md) | [`LayerSchemaTextAttribute`](LayerSchemaTextAttribute.md) | [`LayerSchemaBooleanAttribute`](LayerSchemaBooleanAttribute.md) | [`LayerSchemaDateAttribute`](LayerSchemaDateAttribute.md) | [`LayerSchemaDateTimeAttribute`](LayerSchemaDateTimeAttribute.md)
 
 A single attribute from the layer schema.
 

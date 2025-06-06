@@ -1,10 +1,10 @@
 ***
 
-> **MapDetails**: \{ `id`: `string`; `title`: `string`; `description`: `string` | `null`; }
+> **MapDetails** = { `id`: `string`; `title`: `string`; `description`: `string` | `null`; }
 
 The details of a map.
 
-# Type declaration
+# Properties
 
 ## id
 
@@ -12,11 +12,15 @@ The details of a map.
 
 The id of the map.
 
+***
+
 ## title
 
 > **title**: `string`
 
 The title of the map.
+
+***
 
 ## description
 

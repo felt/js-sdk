@@ -20,8 +20,8 @@
 
 ### Parameters
 
-| Parameter | Type         |
-| --------- | ------------ |
+| Parameter | Type |
+| ------ | ------ |
 | ...`args` | `unknown`\[] |
 
 ### Returns
@@ -36,8 +36,8 @@
 
 ### Parameters
 
-| Parameter | Type         |
-| --------- | ------------ |
+| Parameter | Type |
+| ------ | ------ |
 | ...`args` | `unknown`\[] |
 
 ### Returns
@@ -58,8 +58,8 @@
 
 ### Parameters
 
-| Parameter | Type         |
-| --------- | ------------ |
+| Parameter | Type |
+| ------ | ------ |
 | ...`args` | `unknown`\[] |
 
 ### Returns

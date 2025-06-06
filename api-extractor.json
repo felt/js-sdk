@@ -424,12 +424,12 @@
 
       "ae-unresolved-link": {
         "logLevel": "none"
-      }
+      },
 
-      // "ae-extra-release-tag": {
-      //   "logLevel": "warning",
-      //   "addToApiReportFile": true
-      // },
+      "ae-missing-release-tag": {
+        "logLevel": "none",
+        "addToApiReportFile": false
+      }
       //
       // . . .
     },

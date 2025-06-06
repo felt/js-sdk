@@ -1,12 +1,12 @@
 ***
 
-Use the [Felt](Felt.md) object to embed a new iframe, or connect to an existing embedded
+Use the [Felt](Main/Felt.md) object to embed a new iframe, or connect to an existing embedded
 iframe.
 
 Once you have connected to a Felt map (either by embedding or connecting to an existing
-iframe), you can use the [FeltController](FeltController.md) object to control the map.
+iframe), you can use the [FeltController](Main/FeltController.md) object to control the map.
 
-To see what you can do with the map, see the documentation for the [FeltController](FeltController.md)
+To see what you can do with the map, see the documentation for the [FeltController](Main/FeltController.md)
 interface and its constituent controllers.
 
 # Example
@@ -28,9 +28,9 @@ await map.setViewport({
 
 # Controller
 
-* [FeltController](FeltController.md)
+* [FeltController](Main/FeltController.md)
 
 # Instantiation
 
-* [FeltEmbedOptions](FeltEmbedOptions.md)
-* [Felt](Felt.md)
+* [FeltEmbedOptions](Main/FeltEmbedOptions.md)
+* [Felt](Main/Felt.md)

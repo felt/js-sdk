@@ -46,9 +46,14 @@ export interface UISelectElementCreate
     > {
   /**
    * Event handler for when the value of the select changes.
-   *
-   * @param args
-   * @param args.value - The new value of the select.
    */
-  onChange: (args: { value: string }) => void;
+  onChange: (
+    /**/
+    args: {
+      /**
+       * The new value of the select.
+       */
+      value: string;
+    },
+  ) => void;
 }

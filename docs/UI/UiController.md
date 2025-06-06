@@ -24,9 +24,9 @@ by clicking on a button.
 
 ### Parameters
 
-| Parameter | Type                                                        | Description                   |
-| --------- | ----------------------------------------------------------- | ----------------------------- |
-| `args`    | [`CreateActionTriggerParams`](CreateActionTriggerParams.md) | The arguments for the method. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | [`CreateActionTriggerParams`](CreateActionTriggerParams.md) | The arguments for the method. |
 
 ### Returns
 
@@ -60,9 +60,9 @@ Action trigger to update is identified by the `id` property.
 
 ### Parameters
 
-| Parameter | Type                                                        | Description                   |
-| --------- | ----------------------------------------------------------- | ----------------------------- |
-| `args`    | [`UpdateActionTriggerParams`](UpdateActionTriggerParams.md) | The action trigger to update. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | [`UpdateActionTriggerParams`](UpdateActionTriggerParams.md) | The action trigger to update. |
 
 ### Returns
 
@@ -91,9 +91,9 @@ Deletes an action trigger.
 
 ### Parameters
 
-| Parameter | Type     | Description                             |
-| --------- | -------- | --------------------------------------- |
-| `id`      | `string` | The id of the action trigger to delete. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | `string` | The id of the action trigger to delete. |
 
 ### Returns
 
@@ -125,8 +125,8 @@ Panels have two sections:
 By default, the panel will be added to the end of the stack but you can
 specify a placement to add it at a specific position in the stack.
 
-Once created, you can add elements to the panel by using the [createPanelElements](UiController.md#createpanelelements) method or
-perform partial updates of elements by using the [updatePanelElements](UiController.md#updatepanelelements) method.
+Once created, you can add elements to the panel by using the [createPanelElements](#createpanelelements) method or
+perform partial updates of elements by using the [updatePanelElements](#updatepanelelements) method.
 
 When adding a panel, its id is optional as well as its elements' ids.
 It is recommended to provide an id for the panel and its elements to make
@@ -134,9 +134,9 @@ it easier to update or delete them later.
 
 ### Parameters
 
-| Parameter | Type                                        | Description                   |
-| --------- | ------------------------------------------- | ----------------------------- |
-| `args`    | [`CreatePanelParams`](CreatePanelParams.md) | The arguments for the method. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | [`CreatePanelParams`](CreatePanelParams.md) | The arguments for the method. |
 
 ### Returns
 
@@ -186,9 +186,9 @@ Panel to update is identified by the `id` property.
 
 ### Parameters
 
-| Parameter | Type                                        | Description          |
-| --------- | ------------------------------------------- | -------------------- |
-| `panel`   | [`UpdatePanelParams`](UpdatePanelParams.md) | The panel to update. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `panel` | [`UpdatePanelParams`](UpdatePanelParams.md) | The panel to update. |
 
 ### Returns
 
@@ -199,7 +199,7 @@ Panel to update is identified by the `id` property.
 Properties provided will override the existing properties.
 Override is done at Panel level, so if you want to update a specific element,
 you need to provide the entire element. For partial updates of elements, use
-[updatePanelElements](UiController.md#updatepanelelements) instead.
+[updatePanelElements](#updatepanelelements) instead.
 
 ### Example
 
@@ -220,9 +220,9 @@ Deletes a panel.
 
 ### Parameters
 
-| Parameter | Type     | Description                    |
-| --------- | -------- | ------------------------------ |
-| `id`      | `string` | The id of the panel to delete. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | `string` | The id of the panel to delete. |
 
 ### Returns
 
@@ -244,9 +244,9 @@ Creates elements in a panel.
 
 ### Parameters
 
-| Parameter | Type                                                        | Description                   |
-| --------- | ----------------------------------------------------------- | ----------------------------- |
-| `args`    | [`CreatePanelElementsParams`](CreatePanelElementsParams.md) | The arguments for the method. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | [`CreatePanelElementsParams`](CreatePanelElementsParams.md) | The arguments for the method. |
 
 ### Returns
 
@@ -277,9 +277,9 @@ Updates an element in a panel.
 
 ### Parameters
 
-| Parameter | Type                                                        | Description                   |
-| --------- | ----------------------------------------------------------- | ----------------------------- |
-| `args`    | [`UpdatePanelElementsParams`](UpdatePanelElementsParams.md) | The arguments for the method. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | [`UpdatePanelElementsParams`](UpdatePanelElementsParams.md) | The arguments for the method. |
 
 ### Returns
 
@@ -306,9 +306,9 @@ Deletes elements from a panel.
 
 ### Parameters
 
-| Parameter | Type                                                        | Description                   |
-| --------- | ----------------------------------------------------------- | ----------------------------- |
-| `args`    | [`DeletePanelElementsParams`](DeletePanelElementsParams.md) | The arguments for the method. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | [`DeletePanelElementsParams`](DeletePanelElementsParams.md) | The arguments for the method. |
 
 ### Returns
 
@@ -333,8 +333,8 @@ Updates the UI controls on the embedded map.
 
 ### Parameters
 
-| Parameter  | Type                                        | Description             |
-| ---------- | ------------------------------------------- | ----------------------- |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
 | `controls` | [`UiControlsOptions`](UiControlsOptions.md) | The controls to update. |
 
 ### Returns
@@ -375,8 +375,8 @@ will still be selected when clicked.
 
 ### Parameters
 
-| Parameter | Type                                                      |
-| --------- | --------------------------------------------------------- |
+| Parameter | Type |
+| ------ | ------ |
 | `options` | [`OnMapInteractionsOptions`](OnMapInteractionsOptions.md) |
 
 ### Returns
@@ -397,21 +397,21 @@ await felt.setOnMapInteractionsUi({
 
 ## showLayerDataTable()
 
-> **showLayerDataTable**(`params`?: \{ `layerId`: `string`; `sorting`: [`SortConfig`](../Shared/SortConfig.md); }): `Promise`\<`void`>
+> **showLayerDataTable**(`params?`: { `layerId`: `string`; `sorting?`: [`SortConfig`](../Shared/SortConfig.md); }): `Promise`<`void`>
 
 Shows a data table view for the specified layer, optionally sorted by a given attribute.
 
 ### Parameters
 
-| Parameter         | Type                                                                          |
-| ----------------- | ----------------------------------------------------------------------------- |
-| `params`?         | \{ `layerId`: `string`; `sorting`: [`SortConfig`](../Shared/SortConfig.md); } |
-| `params.layerId`? | `string`                                                                      |
-| `params.sorting`? | [`SortConfig`](../Shared/SortConfig.md)                                       |
+| Parameter | Type |
+| ------ | ------ |
+| `params?` | { `layerId`: `string`; `sorting?`: [`SortConfig`](../Shared/SortConfig.md); } |
+| `params.layerId?` | `string` |
+| `params.sorting?` | [`SortConfig`](../Shared/SortConfig.md) |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -438,13 +438,13 @@ await felt.showLayerDataTable();
 
 ## hideLayerDataTable()
 
-> **hideLayerDataTable**(): `Promise`\<`void`>
+> **hideLayerDataTable**(): `Promise`<`void`>
 
 Hides the data table.
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 

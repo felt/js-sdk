@@ -1,13 +1,13 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
-  uiElementBaseClonableSchema,
+  type UIElementBase,
+  type UIElementBaseCreateParams,
   uiElementBaseCreateSchema,
   uiElementBaseSchema,
-  type UIElementLifecycle,
 } from "./base";
 
-const uiButtonElementBaseSchema = z.object({
+export const uiButtonElementSchema = uiElementBaseSchema.extend({
   type: z.literal("Button"),
 
   /**
@@ -35,31 +35,81 @@ const uiButtonElementBaseSchema = z.object({
    * @defaultValue `false`
    */
   disabled: z.boolean().optional(),
+
+  onClick: z.function().returns(z.void()),
 });
 
-export const uiButtonElementSchemas = {
-  read: uiElementBaseSchema
-    .extend(uiButtonElementBaseSchema.shape)
-    .extend({ onClick: z.function().returns(z.void()) }),
-  create: uiElementBaseCreateSchema
-    .extend(uiButtonElementBaseSchema.shape)
-    .extend({ onClick: z.function().returns(z.void()) }),
-  clonable: uiElementBaseClonableSchema
-    .extend(uiButtonElementBaseSchema.shape)
+/**
+ * Represents a button element in a panel.
+ *
+ * @example
+ * ```typescript
+ * {
+ *   type: "Button",
+ *   label: "Click me",
+ *   onClick: () => alert("Button clicked"),
+ * }
+ */
+export interface UIButtonElement
+  extends UIElementBase,
+    Omit<
+      zInfer<typeof uiButtonElementSchema>,
+      "onClick" | "onCreate" | "onDestroy"
+    > {
+  /**
+   * The action to perform when the button is clicked.
+   */
+  onClick: () => void;
+}
+
+const uiButtonElementCreateSchm = uiButtonElementSchema.extend(
+  uiElementBaseCreateSchema.params.shape,
+);
+
+export const uiButtonElementCreateSchema = {
+  params: uiButtonElementCreateSchm,
+  clonable: uiButtonElementCreateSchm
+    .extend(uiElementBaseCreateSchema.clonable.shape)
     .extend({ onClick: z.string() }),
 };
 
 /**
- * Represents a button element in a panel.
+ * The parameters for creating a button element.
+ *
+ * See {@link UIButtonElement} for more details.
+ *
+ * @remarks
+ * `id` is optional but recommended if you want to be able to perform updates.
  */
 export interface UIButtonElementCreate
-  extends UIElementLifecycle,
-    Omit<
-      zInfer<typeof uiButtonElementSchemas.create>,
-      "onCreate" | "onDestroy"
-    > {
-  /**
-   * Event handler for when the button is clicked.
-   */
-  onClick: () => void;
-}
+  extends Omit<UIButtonElement, "id">,
+    UIElementBaseCreateParams {}
+
+export interface UIButtonElementCreateClonableParams
+  extends zInfer<typeof uiButtonElementCreateSchema.clonable> {}
+
+const uiButtonElementUpdateSchm = uiButtonElementCreateSchema.params
+  .partial()
+  .required({ id: true, type: true });
+
+export const uiButtonElementUpdateSchema = {
+  params: uiButtonElementUpdateSchm,
+  clonable: uiButtonElementUpdateSchm.extend(
+    uiElementBaseCreateSchema.clonable.required({ id: true }).shape,
+  ),
+};
+
+/**
+ * The parameters for updating a button element.
+ *
+ * See {@link UIButtonElement} for more details.
+ *
+ * @remarks
+ * `id` and `type` are required to identify the element to update.
+ */
+export interface UIButtonElementUpdate
+  extends Omit<Partial<UIButtonElementCreate>, "type" | "id">,
+    Pick<UIButtonElement, "type" | "id"> {}
+
+export interface UIButtonElementUpdateClonable
+  extends zInfer<typeof uiButtonElementUpdateSchema.clonable> {}

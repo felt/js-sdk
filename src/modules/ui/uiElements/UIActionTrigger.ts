@@ -2,7 +2,6 @@ import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import type { UiController } from "../controller";
 import {
-  uiElementBaseClonableSchema,
   uiElementBaseCreateSchema,
   uiElementBaseSchema,
   type UIElementLifecycle,
@@ -22,15 +21,15 @@ const uiActionTriggerBaseSchema = z.object({
   disabled: z.boolean().optional(),
 });
 
-export const uiActionTriggerSchemas = {
+export const uiActionTriggerSchema = {
   read: uiElementBaseSchema
     .extend(uiActionTriggerBaseSchema.shape)
     .extend({ onTrigger: z.function().returns(z.void()) }),
-  create: uiElementBaseCreateSchema
+  create: uiElementBaseCreateSchema.params
     .extend(uiActionTriggerBaseSchema.shape)
     .extend({ type: z.undefined() }) // using partial() causes JSDoc to not appear
     .extend({ onTrigger: z.function().returns(z.void()) }),
-  clonable: uiElementBaseClonableSchema
+  clonable: uiElementBaseCreateSchema.clonable
     .extend(uiActionTriggerBaseSchema.shape)
     .extend({ type: z.undefined() })
     .extend({ onTrigger: z.string() }),
@@ -43,7 +42,7 @@ export const uiActionTriggerSchemas = {
 export interface UIActionTriggerCreate
   extends UIElementLifecycle,
     Omit<
-      zInfer<typeof uiActionTriggerSchemas.create>,
+      zInfer<typeof uiActionTriggerSchema.create>,
       "onCreate" | "onDestroy"
     > {
   /**

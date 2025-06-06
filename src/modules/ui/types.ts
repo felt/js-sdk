@@ -1,33 +1,32 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import type { UiController } from "./controller";
+import type { UIElementBase } from "./uiElements/base";
 import type { PlacementForUIElement } from "./uiElements/placementForUiElement";
 import { placementForUiElementSchema } from "./uiElements/placementForUiElement";
 import {
-  uiActionTriggerSchemas,
+  uiActionTriggerSchema,
   type UIActionTriggerCreate,
 } from "./uiElements/UIActionTrigger";
 import {
-  uiFlexibleSpaceElementSchemas,
+  uiFlexibleSpaceElementCreateSchema,
   type UIFlexibleSpaceElementCreate,
 } from "./uiElements/UIFlexibleSpaceElement";
-import type {
-  UIPanelCreate,
-  UIPanelElementsCreate,
-} from "./uiElements/UIPanel";
+import { uiPanelCreateSchema, type UIPanelCreate } from "./uiElements/UIPanel";
 import {
-  uiPanelElementsSchemas,
-  uiPanelElementsUpdateSchemas,
-  uiPanelSchemas,
-} from "./uiElements/UIPanel";
+  uiPanelElementsCreateSchema,
+  uiPanelElementsUpdateSchema,
+  type UIPanelElementsCreate,
+  type UIPanelElementsUpdate,
+} from "./uiElements/uiPanelElementsSchemas";
 
 const CreateActionTriggerParamsSchema = z.object({
-  actionTrigger: uiActionTriggerSchemas.create,
+  actionTrigger: uiActionTriggerSchema.create,
   placement: placementForUiElementSchema.optional(),
 });
 
 export const CreateActionTriggerParamsClonableSchema = z.object({
-  actionTrigger: uiActionTriggerSchemas.clonable,
+  actionTrigger: uiActionTriggerSchema.clonable,
   placement: placementForUiElementSchema.optional(),
 });
 
@@ -37,12 +36,12 @@ export interface CreateActionTriggerParams
   placement?: PlacementForUIElement;
 }
 
-const UpdateActionTriggerParamsSchema = uiActionTriggerSchemas.create
+const UpdateActionTriggerParamsSchema = uiActionTriggerSchema.create
   .partial()
   .required({ id: true });
 
 export const UpdateActionTriggerParamsClonableSchema =
-  uiActionTriggerSchemas.clonable.partial().required({ id: true });
+  uiActionTriggerSchema.clonable.partial().required({ id: true });
 
 /**
  * @public
@@ -53,7 +52,7 @@ export interface UpdateActionTriggerParams
 }
 
 const CreatePanelParamsSchema = z.object({
-  panel: uiPanelSchemas.create,
+  panel: uiPanelCreateSchema.params,
   placement: placementForUiElementSchema.optional(),
 });
 
@@ -78,11 +77,15 @@ export interface CreatePanelParams
 }
 
 export const CreatePanelParamsClonableSchema = z.object({
-  panel: uiPanelSchemas.clonable,
+  panel: uiPanelCreateSchema.clonable,
   placement: placementForUiElementSchema.optional(),
 });
 
-const UpdatePanelParamsSchema = uiPanelSchemas.create
+export const UpdatePanelParamsSchema = uiPanelCreateSchema.params
+  .partial()
+  .required({ id: true });
+
+export const UpdatePanelClonableSchema = uiPanelCreateSchema.clonable
   .partial()
   .required({ id: true });
 
@@ -90,22 +93,16 @@ const UpdatePanelParamsSchema = uiPanelSchemas.create
  * @public
  */
 export interface UpdatePanelParams
-  extends zInfer<typeof UpdatePanelParamsSchema> {
-  body?: CreatePanelParams["panel"]["body"];
-  footer?: CreatePanelParams["panel"]["footer"];
-}
-
-export const UpdatePanelClonableSchema = uiPanelSchemas.clonable
-  .partial()
-  .required({ id: true });
+  extends Omit<Partial<UIPanelCreate>, "id">,
+    UIElementBase {}
 
 const CreatePanelElementsParamsSchema = z.object({
   panelId: z.string(),
   elements: z.array(
     z.object({
       element: z.union([
-        uiPanelElementsSchemas.create,
-        uiFlexibleSpaceElementSchemas.create,
+        uiPanelElementsCreateSchema.params,
+        uiFlexibleSpaceElementCreateSchema.params,
       ]),
       container: z
         .union([
@@ -154,8 +151,8 @@ export const CreatePanelElementsClonableSchema = z.object({
   elements: z.array(
     z.object({
       element: z.union([
-        uiPanelElementsSchemas.clonable,
-        uiFlexibleSpaceElementSchemas.clonable,
+        uiPanelElementsCreateSchema.clonable,
+        uiFlexibleSpaceElementCreateSchema.clonable,
       ]),
       container: z
         .union([
@@ -175,37 +172,24 @@ const UpdatePanelElementsParamsSchema = z.object({
    */
   panelId: z.string(),
 
-  elements: z.record(
-    z.string(),
-    z.union([
-      uiPanelElementsUpdateSchemas.create,
-      uiFlexibleSpaceElementSchemas.create,
-    ]),
-  ),
+  elements: z.array(z.object({ element: uiPanelElementsUpdateSchema.params })),
 });
 
 /**
  * @public
  */
 export interface UpdatePanelElementsParams
-  extends zInfer<typeof UpdatePanelElementsParamsSchema> {
+  extends Omit<zInfer<typeof UpdatePanelElementsParamsSchema>, "elements"> {
   /**
    * Dictionary of element IDs to the element to update.
    */
-  elements: Record<
-    string,
-    UIPanelElementsCreate | UIFlexibleSpaceElementCreate
-  >;
+  elements: Array<{ element: UIPanelElementsUpdate }>;
 }
 
 export const UpdatePanelElementsParamsClonableSchema = z.object({
   panelId: z.string(),
-  elements: z.record(
-    z.string(),
-    z.union([
-      uiPanelElementsUpdateSchemas.clonable,
-      uiFlexibleSpaceElementSchemas.clonable,
-    ]),
+  elements: z.array(
+    z.object({ element: uiPanelElementsUpdateSchema.clonable }),
   ),
 });
 

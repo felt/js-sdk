@@ -1,6 +1,12 @@
 ***
 
-Represents a button element in a panel.
+The parameters for creating a button element.
+
+See [UIButtonElement](UIButtonElement.md) for more details.
+
+# Remarks
+
+`id` is optional but recommended if you want to be able to perform updates.
 
 # Properties
 
@@ -22,7 +28,7 @@ The label to display in the button.
 
 > **onClick**: () => `void`
 
-Event handler for when the button is clicked.
+The action to perform when the button is clicked.
 
 ### Returns
 
@@ -86,3 +92,16 @@ A function to call when the element is destroyed.
 ## id?
 
 > `optional` **id**: `string`
+
+The ID of the element.
+
+### Remarks
+
+If not provided, the element will be assigned a random ID, but it is recommended to provide it
+to perform further updates on the element.
+
+If provided, it must be unique within the UI.
+
+### Default Value
+
+`undefined`

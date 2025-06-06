@@ -18,24 +18,55 @@ export type {
 
 export type { PlacementForUIElement } from "./uiElements/placementForUiElement";
 
+export type { UIPanel, UIPanelCreate } from "./uiElements/UIPanel";
+
 export type {
-  UIPanelCreate,
+  UIButtonElement,
+  UIButtonElementCreate,
+  UIButtonElementUpdate,
+} from "./uiElements/UIButtonElement";
+
+export type {
+  UITextElement,
+  UITextElementCreate,
+  UITextElementUpdate,
+} from "./uiElements/UITextElement";
+
+export type {
+  UIButtonGroupElement,
+  UIButtonGroupElementCreate,
+  UIButtonGroupElementUpdate,
+} from "./uiElements/UIButtonGroupElement";
+
+export type {
+  UIFlexibleSpaceElement,
+  UIFlexibleSpaceElementCreate,
+  UIFlexibleSpaceElementUpdate,
+} from "./uiElements/UIFlexibleSpaceElement";
+
+export type {
+  UIDividerElement,
+  UIDividerElementCreate,
+  UIDividerElementUpdate,
+} from "./uiElements/UIDividerElement";
+
+export type {
+  UITextInputElement,
+  UITextInputElementCreate,
+  UITextInputElementUpdate,
+} from "./uiElements/UITextInputElement";
+
+export type {
+  UISelectElement,
+  UISelectElementCreate,
+  UISelectElementUpdate,
+} from "./uiElements/UISelectElement";
+
+export type {
+  UIPanelElements,
   UIPanelElementsCreate,
-} from "./uiElements/UIPanel";
-
-export type { UIButtonElementCreate } from "./uiElements/UIButtonElement";
-
-export type { UIButtonGroupElementCreate } from "./uiElements/UIButtonGroupElement";
-
-export type { UIDividerElementCreate } from "./uiElements/UIDividerElement";
-
-export type { UIFlexibleSpaceElementCreate } from "./uiElements/UIFlexibleSpaceElement";
-
-export type { UISelectElementCreate } from "./uiElements/UISelectElement";
-
-export type { UITextElementCreate } from "./uiElements/UITextElement";
-
-export type { UITextInputElementCreate } from "./uiElements/UITextInputElement";
+  UIPanelElementsUpdate,
+} from "./uiElements/uiPanelElementsSchemas";
 
 export type { UIActionTriggerCreate } from "./uiElements/UIActionTrigger";
 

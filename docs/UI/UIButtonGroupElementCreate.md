@@ -1,10 +1,12 @@
 ***
 
-Represents a button group element in a panel.
+The parameters for creating a button group element.
+
+See [UIButtonGroupElement](UIButtonGroupElement.md) for more details.
 
 # Remarks
 
-This element is used to group buttons and text elements together.
+`id` is optional but recommended if you want to be able to perform updates.
 
 # Properties
 
@@ -16,7 +18,9 @@ This element is used to group buttons and text elements together.
 
 ## items
 
-> **items**: ([`UIButtonElementCreate`](UIButtonElementCreate.md) | [`UITextElementCreate`](UITextElementCreate.md) | [`UIFlexibleSpaceElementCreate`](UIFlexibleSpaceElementCreate.md))\[]
+> **items**: ([`UIFlexibleSpaceElementCreate`](UIFlexibleSpaceElementCreate.md) | [`UIButtonElementCreate`](UIButtonElementCreate.md) | [`UITextElementCreate`](UITextElementCreate.md))\[]
+
+The items to add to the button group.
 
 ***
 
@@ -28,7 +32,7 @@ The alignment of the button group.
 
 ### Default Value
 
-`"start"`
+`"end"`
 
 ***
 
@@ -59,3 +63,16 @@ A function to call when the element is destroyed.
 ## id?
 
 > `optional` **id**: `string`
+
+The ID of the element.
+
+### Remarks
+
+If not provided, the element will be assigned a random ID, but it is recommended to provide it
+to perform further updates on the element.
+
+If provided, it must be unique within the UI.
+
+### Default Value
+
+`undefined`

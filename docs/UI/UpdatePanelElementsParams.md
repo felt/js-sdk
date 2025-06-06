@@ -12,6 +12,10 @@ The ID of the panel to update.
 
 ## elements
 
-> **elements**: `Record`\<`string`, [`UIFlexibleSpaceElementCreate`](UIFlexibleSpaceElementCreate.md) | [`UIPanelElementsCreate`](UIPanelElementsCreate.md)>
+> **elements**: \{ `element`: [`UIPanelElementsUpdate`](UIPanelElementsUpdate.md); }\[]
 
 Dictionary of element IDs to the element to update.
+
+| Name      | Type                                                |
+| --------- | --------------------------------------------------- |
+| `element` | [`UIPanelElementsUpdate`](UIPanelElementsUpdate.md) |

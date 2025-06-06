@@ -1,12 +1,38 @@
 ***
 
-The parameters for creating a select element.
-
-See [UISelectElement](UISelectElement.md) for more details.
+Represents a select element in a panel.
 
 # Remarks
 
-`id` is optional but recommended if you want to be able to perform updates.
+`options` property is required.
+`label` property is displayed above the select and used for screen readers.
+`value` property is optional, for empty value use `undefined`.
+`placeholder` property is displayed in the select when no value is selected.
+`search` property is used to enable searching through the options.
+`onChange` property is used to handle the value change event.
+
+# Examples
+
+```typescript
+{
+  type: "Select",
+  options: [{ label: "Option 1", value: "option1" }, { label: "Option 2", value: "option2" }],
+  value: undefined,
+  placeholder: "Select an option",
+  onChange: (args) => console.log(args.value),
+}
+```
+
+```typescript
+{
+  type: "Select",
+  options: [{ label: "Option 1", value: "option1" }, { label: "Option 2", value: "option2" }],
+  value: "option1",
+  placeholder: "Select an option",
+  search: true,
+  onChange: (args) => console.log(args.value),
+}
+```
 
 # Properties
 
@@ -45,6 +71,14 @@ The function to call when the value of the select changes.
 ### Returns
 
 `void`
+
+***
+
+## id
+
+> **id**: `string`
+
+The ID of the element.
 
 ***
 
@@ -97,25 +131,6 @@ A function to call when the element is destroyed.
 ### Returns
 
 `void`
-
-***
-
-## id?
-
-> `optional` **id**: `string`
-
-The ID of the element.
-
-### Remarks
-
-If not provided, the element will be assigned a random ID, but it is recommended to provide it
-to perform further updates on the element.
-
-If provided, it must be unique within the UI.
-
-### Default Value
-
-`undefined`
 
 ***
 

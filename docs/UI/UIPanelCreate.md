@@ -1,11 +1,14 @@
 ***
 
-The panel to add to the map by using the [UiController.createPanel](UiController.md#createpanel) method.
+The parameters for creating a panel by using [UiController.createPanel](UiController.md#createpanel).
+
+# See
+
+[UIPanel](UIPanel.md) for more information about panels.
 
 # Remarks
 
-For the sake of convenience, the `id` of the panel and its elements are optional,
-but it is recommended to provide them if you want to be able to perform updates.
+`id` is optional but recommended if you want to be able to perform updates.
 
 # Properties
 
@@ -17,25 +20,11 @@ The elements to add to the panel body.
 
 ***
 
-## type?
-
-> `optional` **type**: `"Panel"`
-
-***
-
 ## title?
 
 > `optional` **title**: `string`
 
 The title to display in the panel header.
-
-***
-
-## footer?
-
-> `optional` **footer**: [`UIPanelElementsCreate`](UIPanelElementsCreate.md)\[]
-
-The elements to add to the panel footer.
 
 ***
 
@@ -51,17 +40,25 @@ A function to call when panel's close button is clicked.
 
 ***
 
+## type?
+
+> `optional` **type**: `"Panel"`
+
+***
+
+## footer?
+
+> `optional` **footer**: [`UIPanelElementsCreate`](UIPanelElementsCreate.md)\[]
+
+The elements to add to the panel footer.
+
+***
+
 ## onCreate()?
 
-> `optional` **onCreate**: (...`args`: `unknown`\[]) => `void`
+> `optional` **onCreate**: () => `void`
 
 A function to call when the element is created.
-
-### Parameters
-
-| Parameter | Type         | Description                                  |
-| --------- | ------------ | -------------------------------------------- |
-| ...`args` | `unknown`\[] | This function doesn't receive any parameters |
 
 ### Returns
 
@@ -71,15 +68,9 @@ A function to call when the element is created.
 
 ## onDestroy()?
 
-> `optional` **onDestroy**: (...`args`: `unknown`\[]) => `void`
+> `optional` **onDestroy**: () => `void`
 
 A function to call when the element is destroyed.
-
-### Parameters
-
-| Parameter | Type         | Description                                  |
-| --------- | ------------ | -------------------------------------------- |
-| ...`args` | `unknown`\[] | This function doesn't receive any parameters |
 
 ### Returns
 
@@ -90,3 +81,16 @@ A function to call when the element is destroyed.
 ## id?
 
 > `optional` **id**: `string`
+
+The ID of the element.
+
+### Remarks
+
+If not provided, the element will be assigned a random ID, but it is recommended to provide it
+to perform further updates on the element.
+
+If provided, it must be unique within the UI.
+
+### Default Value
+
+`undefined`

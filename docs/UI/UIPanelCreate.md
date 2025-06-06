@@ -59,8 +59,8 @@ A function to call when the element is created.
 
 ### Parameters
 
-| Parameter | Type         | Description                                  |
-| --------- | ------------ | -------------------------------------------- |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
 | ...`args` | `unknown`\[] | This function doesn't receive any parameters |
 
 ### Returns
@@ -77,8 +77,8 @@ A function to call when the element is destroyed.
 
 ### Parameters
 
-| Parameter | Type         | Description                                  |
-| --------- | ------------ | -------------------------------------------- |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
 | ...`args` | `unknown`\[] | This function doesn't receive any parameters |
 
 ### Returns

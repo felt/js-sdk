@@ -10,4 +10,4 @@
 
 ## placement?
 
-> `optional` **placement**: \{ `after`: `string`; } | \{ `before`: `string`; } | \{ `at`: `"start"` | `"end"`; }
+> `optional` **placement**: { `after`: `string`; } | { `before`: `string`; } | { `at`: `"start"` | `"end"`; }

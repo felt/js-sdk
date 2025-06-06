@@ -28,16 +28,16 @@ The placeholder text to display in the input.
 
 ## onChange()?
 
-> `optional` **onChange**: (`args`: \{ `value`: `string`; }) => `void`
+> `optional` **onChange**: (`args`: { `value`: `string`; }) => `void`
 
 Event handler for when the value of the input changes.
 
 ### Parameters
 
-| Parameter    | Type                    | Description                 |
-| ------------ | ----------------------- | --------------------------- |
-| `args`       | \{ `value`: `string`; } |                             |
-| `args.value` | `string`                | The new value of the input. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | { `value`: `string`; } |  |
+| `args.value` | `string` | The new value of the input. |
 
 ### Returns
 
@@ -47,16 +47,16 @@ Event handler for when the value of the input changes.
 
 ## onBlur()?
 
-> `optional` **onBlur**: (`args`: \{ `value`: `string`; }) => `void`
+> `optional` **onBlur**: (`args`: { `value`: `string`; }) => `void`
 
 Event handler for when the input loses focus.
 
 ### Parameters
 
-| Parameter    | Type                    | Description                                 |
-| ------------ | ----------------------- | ------------------------------------------- |
-| `args`       | \{ `value`: `string`; } |                                             |
-| `args.value` | `string`                | The input value when the input loses focus. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | { `value`: `string`; } |  |
+| `args.value` | `string` | The input value when the input loses focus. |
 
 ### Returns
 
@@ -66,16 +66,16 @@ Event handler for when the input loses focus.
 
 ## onFocus()?
 
-> `optional` **onFocus**: (`args`: \{ `value`: `string`; }) => `void`
+> `optional` **onFocus**: (`args`: { `value`: `string`; }) => `void`
 
 Event handler for when the input gains focus.
 
 ### Parameters
 
-| Parameter    | Type                    | Description                                 |
-| ------------ | ----------------------- | ------------------------------------------- |
-| `args`       | \{ `value`: `string`; } |                                             |
-| `args.value` | `string`                | The input value when the input gains focus. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | { `value`: `string`; } |  |
+| `args.value` | `string` | The input value when the input gains focus. |
 
 ### Returns
 

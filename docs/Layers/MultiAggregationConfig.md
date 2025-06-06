@@ -5,9 +5,9 @@ returned at once.
 
 # Type Parameters
 
-| Type Parameter                                                         |
-| ---------------------------------------------------------------------- |
-| `T` *extends* [`AggregationMethod`](AggregationMethod.md) \| `"count"` |
+| Type Parameter |
+| ------ |
+| `T` *extends* [`AggregationMethod`](AggregationMethod.md) | `"count"` |
 
 # Properties
 

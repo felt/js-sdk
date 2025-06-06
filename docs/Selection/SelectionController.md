@@ -10,13 +10,13 @@ The Selection controller allows you to listen for changes to the selection on th
 
 ## getSelection()
 
-> **getSelection**(): `Promise`\<[`EntityNode`](EntityNode.md)\[]>
+> **getSelection**(): `Promise`<[`EntityNode`](EntityNode.md)\[]>
 
 Gets the current selection as a list of entity identifiers.
 
 ### Returns
 
-`Promise`\<[`EntityNode`](EntityNode.md)\[]>
+`Promise`<[`EntityNode`](EntityNode.md)\[]>
 
 ### Example
 
@@ -28,20 +28,20 @@ const selection = await felt.getSelection();
 
 ## selectFeature()
 
-> **selectFeature**(`params`: [`FeatureSelection`](FeatureSelection.md)): `Promise`\<`void`>
+> **selectFeature**(`params`: [`FeatureSelection`](FeatureSelection.md)): `Promise`<`void`>
 
 Selects a feature on a layer. This will show the feature's popup, modal or
 sidebar (if configured) and highlight the feature.
 
 ### Parameters
 
-| Parameter | Type                                      |
-| --------- | ----------------------------------------- |
-| `params`  | [`FeatureSelection`](FeatureSelection.md) |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | [`FeatureSelection`](FeatureSelection.md) |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -58,21 +58,21 @@ felt.selectFeature({
 
 ## clearSelection()
 
-> **clearSelection**(`params`?: \{ `features`: `boolean`; `elements`: `boolean`; }): `Promise`\<`void`>
+> **clearSelection**(`params?`: { `features?`: `boolean`; `elements?`: `boolean`; }): `Promise`<`void`>
 
 Clears the current selection. This clears the selection of
 
 ### Parameters
 
-| Parameter          | Type                                               | Description                                                                                                 |
-| ------------------ | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `params`?          | \{ `features`: `boolean`; `elements`: `boolean`; } | The parameters to clear the selection. If this is not provided, both features and elements will be cleared. |
-| `params.features`? | `boolean`                                          | Whether to clear the features from the selection.                                                           |
-| `params.elements`? | `boolean`                                          | Whether to clear the elements from the selection.                                                           |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `params?` | { `features?`: `boolean`; `elements?`: `boolean`; } | The parameters to clear the selection. If this is not provided, both features and elements will be cleared. |
+| `params.features?` | `boolean` | Whether to clear the features from the selection. |
+| `params.elements?` | `boolean` | Whether to clear the elements from the selection. |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -98,16 +98,16 @@ felt.clearSelection({ elements: true });
 
 ## onSelectionChange()
 
-> **onSelectionChange**(`params`: \{ `handler`: (`change`: \{ `selection`: [`EntityNode`](EntityNode.md)\[]; }) => `void`; }): `VoidFunction`
+> **onSelectionChange**(`params`: { `handler`: (`change`: { `selection`: [`EntityNode`](EntityNode.md)\[]; }) => `void`; }): `VoidFunction`
 
 Adds a listener for when the selection changes.
 
 ### Parameters
 
-| Parameter        | Type                                                                                       |
-| ---------------- | ------------------------------------------------------------------------------------------ |
-| `params`         | \{ `handler`: (`change`: \{ `selection`: [`EntityNode`](EntityNode.md)\[]; }) => `void`; } |
-| `params.handler` | (`change`: \{ `selection`: [`EntityNode`](EntityNode.md)\[]; }) => `void`                  |
+| Parameter | Type |
+| ------ | ------ |
+| `params` | { `handler`: (`change`: { `selection`: [`EntityNode`](EntityNode.md)\[]; }) => `void`; } |
+| `params.handler` | (`change`: { `selection`: [`EntityNode`](EntityNode.md)\[]; }) => `void` |
 
 ### Returns
 

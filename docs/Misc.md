@@ -4,8 +4,8 @@ The misc module for hard-to-categorize functionality.
 
 # Controller
 
-* [MiscController](MiscController.md)
+* [MiscController](Misc/MiscController.md)
 
 # Types
 
-* [MapDetails](MapDetails.md)
+* [MapDetails](Misc/MapDetails.md)

@@ -1,3 +1,3 @@
 ***
 
-> **ConfigurableToolType**: `Exclude`\<[`ToolType`](ToolType.md), `"link"`>
+> **ConfigurableToolType** = `Exclude`<[`ToolType`](ToolType.md), `"link"`>

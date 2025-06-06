@@ -1,6 +1,6 @@
 ***
 
-> **GeometryFilter**: [`FeltBoundary`](../Shared/FeltBoundary.md) | [`PolygonGeometry`](../Shared/PolygonGeometry.md) | [`MultiPolygonGeometry`](../Shared/MultiPolygonGeometry.md) | [`LngLatTuple`](../Shared/LngLatTuple.md)\[]
+> **GeometryFilter** = [`FeltBoundary`](../Shared/FeltBoundary.md) | [`PolygonGeometry`](../Shared/PolygonGeometry.md) | [`MultiPolygonGeometry`](../Shared/MultiPolygonGeometry.md) | [`LngLatTuple`](../Shared/LngLatTuple.md)\[]
 
 The common type for filtering data by a spatial boundary.
 

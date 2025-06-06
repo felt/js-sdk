@@ -1,6 +1,6 @@
 ***
 
-> **FilterTernary**: \[[`FilterTernary`](FilterTernary.md) | [`FilterExpression`](FilterExpression.md) | `null` | `boolean`, [`FilterLogicGate`](FilterLogicGate.md), [`FilterTernary`](FilterTernary.md) | [`FilterExpression`](FilterExpression.md) | `null` | `boolean`]
+> **FilterTernary** = \[`FilterTernary` | [`FilterExpression`](FilterExpression.md) | `null` | `boolean`, [`FilterLogicGate`](FilterLogicGate.md), `FilterTernary` | [`FilterExpression`](FilterExpression.md) | `null` | `boolean`]
 
 A `FilterTernary` is a tree structure for combining expressions with logical operators.
 

@@ -16,10 +16,10 @@ This element is used to select a single option from a list of options.
 
 ## options
 
-> **options**: \{ `label`: `string`; `value`: `string`; }\[]
+> **options**: { `label`: `string`; `value`: `string`; }\[]
 
-| Name    | Type     |
-| ------- | -------- |
+| Name | Type |
+| ------ | ------ |
 | `label` | `string` |
 | `value` | `string` |
 
@@ -27,16 +27,16 @@ This element is used to select a single option from a list of options.
 
 ## onChange()
 
-> **onChange**: (`args`: \{ `value`: `string`; }) => `void`
+> **onChange**: (`args`: { `value`: `string`; }) => `void`
 
 Event handler for when the value of the select changes.
 
 ### Parameters
 
-| Parameter    | Type                    | Description                  |
-| ------------ | ----------------------- | ---------------------------- |
-| `args`       | \{ `value`: `string`; } |                              |
-| `args.value` | `string`                | The new value of the select. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | { `value`: `string`; } |  |
+| `args.value` | `string` | The new value of the select. |
 
 ### Returns
 

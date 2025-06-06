@@ -6,12 +6,12 @@ The parameters for the [\`setViewport\`](ViewportController.md#setviewport) meth
 
 ## center?
 
-> `optional` **center**: \{ `latitude`: `number`; `longitude`: `number`; }
+> `optional` **center**: { `latitude`: `number`; `longitude`: `number`; }
 
-| Name        | Type     | Default value |
-| ----------- | -------- | ------------- |
-| `latitude`  | `number` | Latitude      |
-| `longitude` | `number` | Longitude     |
+| Name | Type | Default value |
+| ------ | ------ | ------ |
+| `latitude` | `number` | `Latitude` |
+| `longitude` | `number` | `Longitude` |
 
 ***
 

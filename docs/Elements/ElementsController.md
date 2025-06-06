@@ -11,19 +11,19 @@ map, and make changes to their visibility.
 
 ## getElement()
 
-> **getElement**(`id`: `string`): `Promise`\<`null` | [`Element`](Element.md)>
+> **getElement**(`id`: `string`): `Promise`<`null` | [`Element`](Element.md)>
 
 Get a single element from the map by its id.
 
 ### Parameters
 
-| Parameter | Type     | Description                            |
-| --------- | -------- | -------------------------------------- |
-| `id`      | `string` | The id of the element you want to get. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | `string` | The id of the element you want to get. |
 
 ### Returns
 
-`Promise`\<`null` | [`Element`](Element.md)>
+`Promise`<`null` | [`Element`](Element.md)>
 
 The requested element.
 
@@ -37,7 +37,7 @@ const element = await felt.getElement("element-1");
 
 ## getElementGeometry()
 
-> **getElementGeometry**(`id`: `string`): `Promise`\<`null` | [`GeoJsonGeometry`](../Shared/GeoJsonGeometry.md)>
+> **getElementGeometry**(`id`: `string`): `Promise`<`null` | [`GeoJsonGeometry`](../Shared/GeoJsonGeometry.md)>
 
 Get the geometry of an element in GeoJSON geometry format.
 
@@ -58,13 +58,13 @@ property of the element, with some differences:
 
 ### Parameters
 
-| Parameter | Type     | Description                                            |
-| --------- | -------- | ------------------------------------------------------ |
-| `id`      | `string` | The id of the element you want to get the geometry of. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | `string` | The id of the element you want to get the geometry of. |
 
 ### Returns
 
-`Promise`\<`null` | [`GeoJsonGeometry`](../Shared/GeoJsonGeometry.md)>
+`Promise`<`null` | [`GeoJsonGeometry`](../Shared/GeoJsonGeometry.md)>
 
 ### Example
 
@@ -77,20 +77,20 @@ console.log(geometry?.type, geometry?.coordinates);
 
 ## getElements()
 
-> **getElements**(`constraint`?: [`GetElementsConstraint`](GetElementsConstraint.md)): `Promise`\<(`null` | [`Element`](Element.md))\[]>
+> **getElements**(`constraint?`: [`GetElementsConstraint`](GetElementsConstraint.md)): `Promise`<(`null` | [`Element`](Element.md))\[]>
 
 Gets elements from the map, according to the constraints supplied. If no
 constraints are supplied, all elements will be returned.
 
 ### Parameters
 
-| Parameter     | Type                                                | Description                                                     |
-| ------------- | --------------------------------------------------- | --------------------------------------------------------------- |
-| `constraint`? | [`GetElementsConstraint`](GetElementsConstraint.md) | The constraints to apply to the elements returned from the map. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `constraint?` | [`GetElementsConstraint`](GetElementsConstraint.md) | The constraints to apply to the elements returned from the map. |
 
 ### Returns
 
-`Promise`\<(`null` | [`Element`](Element.md))\[]>
+`Promise`<(`null` | [`Element`](Element.md))\[]>
 
 All elements on the map.
 
@@ -110,19 +110,19 @@ const elements = await felt.getElements();
 
 ## getElementGroup()
 
-> **getElementGroup**(`id`: `string`): `Promise`\<`null` | [`ElementGroup`](ElementGroup.md)>
+> **getElementGroup**(`id`: `string`): `Promise`<`null` | [`ElementGroup`](ElementGroup.md)>
 
 Get an element group from the map by its id.
 
 ### Parameters
 
-| Parameter | Type     |
-| --------- | -------- |
-| `id`      | `string` |
+| Parameter | Type |
+| ------ | ------ |
+| `id` | `string` |
 
 ### Returns
 
-`Promise`\<`null` | [`ElementGroup`](ElementGroup.md)>
+`Promise`<`null` | [`ElementGroup`](ElementGroup.md)>
 
 The requested element group.
 
@@ -136,20 +136,20 @@ const elementGroup = await felt.getElementGroup("element-group-1");
 
 ## getElementGroups()
 
-> **getElementGroups**(`constraint`?: [`GetElementGroupsConstraint`](GetElementGroupsConstraint.md)): `Promise`\<(`null` | [`ElementGroup`](ElementGroup.md))\[]>
+> **getElementGroups**(`constraint?`: [`GetElementGroupsConstraint`](GetElementGroupsConstraint.md)): `Promise`<(`null` | [`ElementGroup`](ElementGroup.md))\[]>
 
 Gets element groups from the map, according to the filters supplied. If no
 constraints are supplied, all element groups will be returned in rendering order.
 
 ### Parameters
 
-| Parameter     | Type                                                          | Description                                                           |
-| ------------- | ------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `constraint`? | [`GetElementGroupsConstraint`](GetElementGroupsConstraint.md) | The constraints to apply to the element groups returned from the map. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `constraint?` | [`GetElementGroupsConstraint`](GetElementGroupsConstraint.md) | The constraints to apply to the element groups returned from the map. |
 
 ### Returns
 
-`Promise`\<(`null` | [`ElementGroup`](ElementGroup.md))\[]>
+`Promise`<(`null` | [`ElementGroup`](ElementGroup.md))\[]>
 
 The requested element groups.
 
@@ -163,19 +163,19 @@ const elementGroups = await felt.getElementGroups({ ids: ["element-group-1", "el
 
 ## setElementGroupVisibility()
 
-> **setElementGroupVisibility**(`visibility`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`\<`void`>
+> **setElementGroupVisibility**(`visibility`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`<`void`>
 
 Hide or show element groups with the given ids.
 
 ### Parameters
 
-| Parameter    | Type                                                        |
-| ------------ | ----------------------------------------------------------- |
+| Parameter | Type |
+| ------ | ------ |
 | `visibility` | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -187,19 +187,19 @@ felt.setElementGroupVisibility({ show: ["element-group-1", "element-group-2"], h
 
 ## createElement()
 
-> **createElement**(`element`: [`ElementCreate`](ElementCreate.md)): `Promise`\<[`Element`](Element.md)>
+> **createElement**(`element`: [`ElementCreate`](ElementCreate.md)): `Promise`<[`Element`](Element.md)>
 
 Create a new element on the map.
 
 ### Parameters
 
-| Parameter | Type                                |
-| --------- | ----------------------------------- |
+| Parameter | Type |
+| ------ | ------ |
 | `element` | [`ElementCreate`](ElementCreate.md) |
 
 ### Returns
 
-`Promise`\<[`Element`](Element.md)>
+`Promise`<[`Element`](Element.md)>
 
 ### Example
 
@@ -211,19 +211,19 @@ const element = await felt.createElement({ type: "Place", coordinates: [10, 10] 
 
 ## updateElement()
 
-> **updateElement**(`element`: [`ElementUpdate`](ElementUpdate.md)): `Promise`\<[`Element`](Element.md)>
+> **updateElement**(`element`: [`ElementUpdate`](ElementUpdate.md)): `Promise`<[`Element`](Element.md)>
 
 Update an element on the map.
 
 ### Parameters
 
-| Parameter | Type                                |
-| --------- | ----------------------------------- |
+| Parameter | Type |
+| ------ | ------ |
 | `element` | [`ElementUpdate`](ElementUpdate.md) |
 
 ### Returns
 
-`Promise`\<[`Element`](Element.md)>
+`Promise`<[`Element`](Element.md)>
 
 ### Example
 
@@ -246,19 +246,19 @@ await felt.updateElement({
 
 ## deleteElement()
 
-> **deleteElement**(`id`: `string`): `Promise`\<`void`>
+> **deleteElement**(`id`: `string`): `Promise`<`void`>
 
 Delete an element from the map.
 
 ### Parameters
 
-| Parameter | Type     |
-| --------- | -------- |
-| `id`      | `string` |
+| Parameter | Type |
+| ------ | ------ |
+| `id` | `string` |
 
 ### Returns
 
-`Promise`\<`void`>
+`Promise`<`void`>
 
 ### Example
 
@@ -270,16 +270,16 @@ await felt.deleteElement("element-1");
 
 ## onElementCreate()
 
-> **onElementCreate**(`args`: \{ `handler`: (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`; }): `VoidFunction`
+> **onElementCreate**(`args`: { `handler`: (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when an element is created.
 
 ### Parameters
 
-| Parameter      | Type                                                                                                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| -------------- | ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `args`         | \{ `handler`: (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`; } | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| `args.handler` | (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`                  | The handler that is called when an element is created. This will fire when elements are created programatically, or when the user starts creating an element with a drawing tool. When the user creates an element with a drawing tool, it can begin in an invalid state, such as if you've just placed a single point in a polygon. You can use the `isBeingCreated` property to determine if the element is still being created by a drawing tool. If you want to know when the element is finished being created, you can use the [\`onElementCreateEnd\`](ElementsController.md#onelementcreateend) listener. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | { `handler`: (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`; } | - |
+| `args.handler` | (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void` | The handler that is called when an element is created. This will fire when elements are created programatically, or when the user starts creating an element with a drawing tool. When the user creates an element with a drawing tool, it can begin in an invalid state, such as if you've just placed a single point in a polygon. You can use the `isBeingCreated` property to determine if the element is still being created by a drawing tool. If you want to know when the element is finished being created, you can use the [\`onElementCreateEnd\`](#onelementcreateend) listener. |
 
 ### Returns
 
@@ -302,11 +302,11 @@ unsubscribe();
 
 ## onElementCreateEnd()
 
-> **onElementCreateEnd**(`args`: \{ `handler`: (`params`: \{ `element`: [`Element`](Element.md); }) => `void`; }): `VoidFunction`
+> **onElementCreateEnd**(`args`: { `handler`: (`params`: { `element`: [`Element`](Element.md); }) => `void`; }): `VoidFunction`
 
 Listens for when a new element is finished being created by a drawing tool.
 
-This differs from the [\`onElementCreate\`](ElementsController.md#onelementcreate) listener, which fires whenever an
+This differs from the [\`onElementCreate\`](#onelementcreate) listener, which fires whenever an
 element is first created. This fires when the user finishes creating an element
 which could be after a series of interactions.
 
@@ -316,10 +316,10 @@ add the marker, type a label, then finally deselect the element.
 
 ### Parameters
 
-| Parameter      | Type                                                                            | Description                                    |
-| -------------- | ------------------------------------------------------------------------------- | ---------------------------------------------- |
-| `args`         | \{ `handler`: (`params`: \{ `element`: [`Element`](Element.md); }) => `void`; } | -                                              |
-| `args.handler` | (`params`: \{ `element`: [`Element`](Element.md); }) => `void`                  | The handler to call whenever this event fires. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | { `handler`: (`params`: { `element`: [`Element`](Element.md); }) => `void`; } | - |
+| `args.handler` | (`params`: { `element`: [`Element`](Element.md); }) => `void` | The handler to call whenever this event fires. |
 
 ### Returns
 
@@ -342,14 +342,14 @@ unsubscribe();
 
 ## onElementChange()
 
-> **onElementChange**(`args`: \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`; }): `VoidFunction`
+> **onElementChange**(`args`: { `options`: { `id`: `string`; }; `handler`: (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when an element changes.
 
 This will fire when an element is being edited, either on the map by the user
 or programatically.
 
-Like the [\`onElementCreate\`](ElementsController.md#onelementcreate) listener, this will fire when an element is
+Like the [\`onElementCreate\`](#onelementcreate) listener, this will fire when an element is
 still being created by a drawing tool.
 
 You can check the [\`isBeingCreated\`](ElementChangeCallbackParams.md#isbeingcreated) property to determine if the element is
@@ -357,12 +357,12 @@ still being created by a drawing tool.
 
 ### Parameters
 
-| Parameter         | Type                                                                                                                                    | Description                                          |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| `args`            | \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`; } | -                                                    |
-| `args.options`    | \{ `id`: `string`; }                                                                                                                    | -                                                    |
-| `args.options.id` | `string`                                                                                                                                | The id of the element to listen for changes to.      |
-| `args.handler`    | (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`                                                   | The handler that is called when the element changes. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | { `options`: { `id`: `string`; }; `handler`: (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`; } | - |
+| `args.options` | { `id`: `string`; } | - |
+| `args.options.id` | `string` | The id of the element to listen for changes to. |
+| `args.handler` | (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void` | The handler that is called when the element changes. |
 
 ### Returns
 
@@ -386,18 +386,18 @@ unsubscribe();
 
 ## onElementDelete()
 
-> **onElementDelete**(`args`: \{ `options`: \{ `id`: `string`; }; `handler`: () => `void`; }): `VoidFunction`
+> **onElementDelete**(`args`: { `options`: { `id`: `string`; }; `handler`: () => `void`; }): `VoidFunction`
 
 Adds a listener for when an element is deleted.
 
 ### Parameters
 
-| Parameter         | Type                                                           | Description                                             |
-| ----------------- | -------------------------------------------------------------- | ------------------------------------------------------- |
-| `args`            | \{ `options`: \{ `id`: `string`; }; `handler`: () => `void`; } | -                                                       |
-| `args.options`    | \{ `id`: `string`; }                                           | -                                                       |
-| `args.options.id` | `string`                                                       | The id of the element to listen for deletions of.       |
-| `args.handler`    | () => `void`                                                   | The handler that is called when the element is deleted. |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `args` | { `options`: { `id`: `string`; }; `handler`: () => `void`; } | - |
+| `args.options` | { `id`: `string`; } | - |
+| `args.options.id` | `string` | The id of the element to listen for deletions of. |
+| `args.handler` | () => `void` | The handler that is called when the element is deleted. |
 
 ### Returns
 
@@ -421,18 +421,18 @@ unsubscribe();
 
 ## onElementGroupChange()
 
-> **onElementGroupChange**(`args`: \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`ElementGroupChangeCallbackParams`](ElementGroupChangeCallbackParams.md)) => `void`; }): `VoidFunction`
+> **onElementGroupChange**(`args`: { `options`: { `id`: `string`; }; `handler`: (`change`: [`ElementGroupChangeCallbackParams`](ElementGroupChangeCallbackParams.md)) => `void`; }): `VoidFunction`
 
 Adds a listener for when an element group changes.
 
 ### Parameters
 
-| Parameter         | Type                                                                                                                                              |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `args`            | \{ `options`: \{ `id`: `string`; }; `handler`: (`change`: [`ElementGroupChangeCallbackParams`](ElementGroupChangeCallbackParams.md)) => `void`; } |
-| `args.options`    | \{ `id`: `string`; }                                                                                                                              |
-| `args.options.id` | `string`                                                                                                                                          |
-| `args.handler`    | (`change`: [`ElementGroupChangeCallbackParams`](ElementGroupChangeCallbackParams.md)) => `void`                                                   |
+| Parameter | Type |
+| ------ | ------ |
+| `args` | { `options`: { `id`: `string`; }; `handler`: (`change`: [`ElementGroupChangeCallbackParams`](ElementGroupChangeCallbackParams.md)) => `void`; } |
+| `args.options` | { `id`: `string`; } |
+| `args.options.id` | `string` |
+| `args.handler` | (`change`: [`ElementGroupChangeCallbackParams`](ElementGroupChangeCallbackParams.md)) => `void` |
 
 ### Returns
 

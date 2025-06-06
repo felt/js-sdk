@@ -27,13 +27,13 @@ const layers = await map.getLayers();
 
 ## Modules
 
-* [Elements](Elements/README.md)
-* [Interactions](Interactions/README.md)
-* [Layers](Layers/README.md)
-* [Main](Main/README.md)
-* [Misc](Misc/README.md)
-* [Selection](Selection/README.md)
-* [Shared](Shared/README.md)
-* [Tools](Tools/README.md)
-* [UI](UI/README.md)
-* [Viewport](Viewport/README.md)
+* [Elements](Elements.md)
+* [Interactions](Interactions.md)
+* [Layers](Layers.md)
+* [Main](Main.md)
+* [Misc](Misc.md)
+* [Selection](Selection.md)
+* [Shared](Shared.md)
+* [Tools](Tools.md)
+* [UI](UI.md)
+* [Viewport](Viewport.md)

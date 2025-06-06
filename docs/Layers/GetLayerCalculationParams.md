@@ -5,9 +5,9 @@ the [LayersController.getAggregates](LayersController.md#getaggregates) method.
 
 # Type Parameters
 
-| Type Parameter                                                         |
-| ---------------------------------------------------------------------- |
-| `T` *extends* [`AggregationMethod`](AggregationMethod.md) \| `"count"` |
+| Type Parameter |
+| ------ |
+| `T` *extends* [`AggregationMethod`](AggregationMethod.md) | `"count"` |
 
 # Properties
 
@@ -21,7 +21,7 @@ The ID of the layer to calculate an aggregate value for.
 
 ## aggregation
 
-> **aggregation**: [`MultiAggregationConfig`](MultiAggregationConfig.md)\<`T`>
+> **aggregation**: [`MultiAggregationConfig`](MultiAggregationConfig.md)<`T`>
 
 Specifies how to aggregate values within each category or bin. When omitted,
 features are counted. When specified, the chosen calculation (avg, sum, etc.)

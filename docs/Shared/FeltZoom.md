@@ -1,6 +1,6 @@
 ***
 
-> **FeltZoom**: `number`
+> **FeltZoom** = `number`
 
 The zoom level of the map.
 

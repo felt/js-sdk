@@ -46,7 +46,7 @@ Sets the description of the layer.
 
 ## geometryStyles?
 
-> `optional` **geometryStyles**: \{ `Point`: `object`; `Line`: `object`; `Polygon`: `object`; }
+> `optional` **geometryStyles**: { `Point?`: `object`; `Line?`: `object`; `Polygon?`: `object`; }
 
 The styles to apply to each geometry on the layer.
 
@@ -55,11 +55,11 @@ Each style should be a valid FSL style, as described in [Layer.style](LayerCommo
 These are optional, and if missing will use a default style determined by
 Felt, which you can consider to be undefined behaviour.
 
-| Name       | Type     |
-| ---------- | -------- |
-| `Point`?   | `object` |
-| `Line`?    | `object` |
-| `Polygon`? | `object` |
+| Name | Type |
+| ------ | ------ |
+| `Point?` | `object` |
+| `Line?` | `object` |
+| `Polygon?` | `object` |
 
 ### Example
 

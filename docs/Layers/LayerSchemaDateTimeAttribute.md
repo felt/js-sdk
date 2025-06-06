@@ -68,11 +68,11 @@ The latest datetime present for this attribute in ISO8601 format.
 
 ## sampleValues
 
-> **sampleValues**: \{ `value`: `string`; `count`: `number`; }\[]
+> **sampleValues**: { `value`: `string`; `count`: `number`; }\[]
 
 A representative sample of datetime values for this attribute and their frequency.
 
-| Name    | Type     |
-| ------- | -------- |
+| Name | Type |
+| ------ | ------ |
 | `value` | `string` |
 | `count` | `number` |

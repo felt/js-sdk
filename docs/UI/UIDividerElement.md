@@ -19,6 +19,7 @@ Divider element is useful to separate sections of a panel.
     { type: "TextInput", placeholder: "Enter your address", ... },
   ],
 }
+```
 
 # Properties
 
@@ -57,4 +58,3 @@ A function to call when the element is destroyed.
 ### Returns
 
 `void`
-```

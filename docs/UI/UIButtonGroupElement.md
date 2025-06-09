@@ -18,6 +18,7 @@ while button 2 is aligned to the end.
     { type: "Button", label: "Button 2", onClick: () => {} },
   ],
 }
+```
 
 # Properties
 
@@ -29,7 +30,7 @@ while button 2 is aligned to the end.
 
 ## items
 
-> **items**: ([`UIFlexibleSpaceElement`](UIFlexibleSpaceElement.md) \| [`UIButtonElement`](UIButtonElement.md) \| [`UITextElement`](UITextElement.md))[]
+> **items**: ([`UIFlexibleSpaceElement`](UIFlexibleSpaceElement.md) | [`UIButtonElement`](UIButtonElement.md) | [`UITextElement`](UITextElement.md))\[]
 
 The items to add to the button group.
 
@@ -45,7 +46,7 @@ The ID of the element.
 
 ## align?
 
-> `optional` **align**: `"start"` \| `"end"`
+> `optional` **align**: `"start"` | `"end"`
 
 The alignment of the button group.
 
@@ -76,4 +77,3 @@ A function to call when the element is destroyed.
 ### Returns
 
 `void`
-```

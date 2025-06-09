@@ -64,6 +64,7 @@ export const uiButtonGroupElementSchema = uiElementBaseSchema.extend({
  *     { type: "Button", label: "Button 2", onClick: () => {} },
  *   ],
  * }
+ * ```
  */
 export interface UIButtonGroupElement
   extends UIElementBase,

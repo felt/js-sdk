@@ -26,6 +26,7 @@ Represents a text input element in a panel.
   onChange: (args) => console.log(args.value),
   placeholder: "Enter your name",
 }
+```
 
 # Properties
 
@@ -61,16 +62,16 @@ The placeholder text to display in the input.
 
 ## onChange()?
 
-> `optional` **onChange**: (`args`: \{ `value`: `string`; \}) => `void`
+> `optional` **onChange**: (`args`: \{ `value`: `string`; }) => `void`
 
 The function to call when the value of the input changes.
 
 ### Parameters
 
-| Parameter | Type |
-| ------ | ------ |
-| `args` | \{ `value`: `string`; \} |
-| `args.value` | `string` |
+| Parameter    | Type                    |
+| ------------ | ----------------------- |
+| `args`       | \{ `value`: `string`; } |
+| `args.value` | `string`                |
 
 ### Returns
 
@@ -80,16 +81,16 @@ The function to call when the value of the input changes.
 
 ## onBlur()?
 
-> `optional` **onBlur**: (`args`: \{ `value`: `string`; \}) => `void`
+> `optional` **onBlur**: (`args`: \{ `value`: `string`; }) => `void`
 
 The function to call when the input is blurred.
 
 ### Parameters
 
-| Parameter | Type |
-| ------ | ------ |
-| `args` | \{ `value`: `string`; \} |
-| `args.value` | `string` |
+| Parameter    | Type                    |
+| ------------ | ----------------------- |
+| `args`       | \{ `value`: `string`; } |
+| `args.value` | `string`                |
 
 ### Returns
 
@@ -99,16 +100,16 @@ The function to call when the input is blurred.
 
 ## onFocus()?
 
-> `optional` **onFocus**: (`args`: \{ `value`: `string`; \}) => `void`
+> `optional` **onFocus**: (`args`: \{ `value`: `string`; }) => `void`
 
 The function to call when the input is focused.
 
 ### Parameters
 
-| Parameter | Type |
-| ------ | ------ |
-| `args` | \{ `value`: `string`; \} |
-| `args.value` | `string` |
+| Parameter    | Type                    |
+| ------------ | ----------------------- |
+| `args`       | \{ `value`: `string`; } |
+| `args.value` | `string`                |
 
 ### Returns
 
@@ -145,4 +146,3 @@ A function to call when the element is destroyed.
 > `optional` **label**: `string`
 
 Label text to display above the element and used for screen readers.
-```

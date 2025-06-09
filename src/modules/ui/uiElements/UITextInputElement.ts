@@ -65,6 +65,7 @@ export const uiTextInputElementSchema = uiLabelReadyElementSchema.extend({
  *   onChange: (args) => console.log(args.value),
  *   placeholder: "Enter your name",
  * }
+ * ```
  */
 export interface UITextInputElement
   extends UILabelReadyElement,

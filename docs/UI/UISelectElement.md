@@ -13,6 +13,8 @@ Represents a select element in a panel.
 
 # Examples
 
+### empty select
+
 ```typescript
 {
   type: "Select",
@@ -22,6 +24,8 @@ Represents a select element in a panel.
   onChange: (args) => console.log(args.value),
 }
 ```
+
+### with search
 
 ```typescript
 {

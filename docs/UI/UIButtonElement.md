@@ -10,6 +10,7 @@ Represents a button element in a panel.
   label: "Click me",
   onClick: () => alert("Button clicked"),
 }
+```
 
 # Properties
 
@@ -49,14 +50,14 @@ The ID of the element.
 
 ## variant?
 
-> `optional` **variant**: `"primary"` \| `"outlined"` \| `"transparent"` \| `"transparentThin"`
+> `optional` **variant**: `"primary"` | `"outlined"` | `"transparent"` | `"transparentThin"`
 
 The style variant of the button.
 
-- `"primary"`: A solid button with Felt's primary background color (pink).
-- `"outlined"`: A button with a border and no background color.
-- `"transparent"`: A button with no background color and no border.
-- `"transparentThin"`: Same as `transparent` but with lighter font weight.
+* `"primary"`: A solid button with Felt's primary background color (pink).
+* `"outlined"`: A button with a border and no background color.
+* `"transparent"`: A button with no background color and no border.
+* `"transparentThin"`: Same as `transparent` but with lighter font weight.
 
 ### Default Value
 
@@ -97,4 +98,3 @@ A function to call when the element is destroyed.
 ### Returns
 
 `void`
-```

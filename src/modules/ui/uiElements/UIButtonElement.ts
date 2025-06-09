@@ -51,6 +51,7 @@ export const uiButtonElementSchema = uiElementBaseSchema.extend({
  *   label: "Click me",
  *   onClick: () => alert("Button clicked"),
  * }
+ * ```
  */
 export interface UIButtonElement
   extends UIElementBase,

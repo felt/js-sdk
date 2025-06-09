@@ -31,6 +31,7 @@ export const uiDividerElementSchema = uiElementBaseSchema.extend({
  *     { type: "TextInput", placeholder: "Enter your address", ... },
  *   ],
  * }
+ * ```
  */
 export interface UIDividerElement
   extends UIElementBase,

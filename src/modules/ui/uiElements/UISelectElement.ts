@@ -51,7 +51,8 @@ export const uiSelectElementSchema = uiLabelReadyElementSchema.extend({
  * `search` property is used to enable searching through the options.
  * `onChange` property is used to handle the value change event.
  *
- * @example empty select
+ * @example
+ * #### empty select
  * ```typescript
  * {
  *   type: "Select",
@@ -62,7 +63,8 @@ export const uiSelectElementSchema = uiLabelReadyElementSchema.extend({
  * }
  * ```
  *
- * @example with search
+ * @example
+ * #### with search
  * ```typescript
  * {
  *   type: "Select",

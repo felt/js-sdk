@@ -1826,9 +1826,13 @@ Updates an element in a panel.
 ```typescript
 await felt.updatePanelElements({
   panelId: "panel-1",
-  elements: {
-    "element-1": { type: "Text", content: "Hello, world!" },
-  },
+  elements: [
+    {
+      id: "element-1",
+      type: "Text",
+      content: "Hello, world!",
+    },
+  ],
 });
 ```
 

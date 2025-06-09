@@ -1,78 +1,149 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
-  uiElementBaseClonableSchema,
+  makeUpdateSchema,
   uiElementBaseCreateSchema,
   uiElementBaseSchema,
-  type UIElementLifecycle,
+  type MakeUpdateSchema,
+  type UIElementBase,
+  type UIElementBaseCreateParams,
 } from "./base";
-import type { UIButtonElementCreate } from "./UIButtonElement";
-import { uiButtonElementSchemas } from "./UIButtonElement";
-import type { UIFlexibleSpaceElementCreate } from "./UIFlexibleSpaceElement";
-import { uiFlexibleSpaceElementSchemas } from "./UIFlexibleSpaceElement";
-import type { UITextElementCreate } from "./UITextElement";
-import { uiTextElementSchemas } from "./UITextElement";
+import {
+  uiButtonElementCreateSchema,
+  uiButtonElementSchema,
+  type UIButtonElement,
+  type UIButtonElementCreate,
+} from "./UIButtonElement";
+import {
+  uiFlexibleSpaceElementCreateSchema,
+  uiFlexibleSpaceElementSchema,
+  type UIFlexibleSpaceElement,
+  type UIFlexibleSpaceElementCreate,
+} from "./UIFlexibleSpaceElement";
+import {
+  uiTextElementCreateSchema,
+  uiTextElementSchema,
+  type UITextElement,
+  type UITextElementCreate,
+} from "./UITextElement";
 
-const uiButtonGroupElementBaseSchema = z.object({
+export const uiButtonGroupElementSchema = uiElementBaseSchema.extend({
   type: z.literal("ButtonGroup"),
 
   /**
    * The alignment of the button group.
    *
-   * @defaultValue `"start"`
+   * @defaultValue `"end"`
    */
   align: z.enum(["start", "end"]).optional(),
+
+  items: z.array(
+    z.union([
+      uiButtonElementSchema,
+      uiTextElementSchema,
+      uiFlexibleSpaceElementSchema,
+    ]),
+  ),
 });
 
-export const uiButtonGroupElementSchemas = {
-  read: uiElementBaseSchema
-    .extend(uiButtonGroupElementBaseSchema.shape)
+/**
+ * Represents a button group element in a panel.
+ * A button group is an horizontal container of buttons and text elements.
+ *
+ * @example
+ * Thanks to the FlexibleSpace element, button 1 and text 1 are aligned to the start of the panel,
+ * while button 2 is aligned to the end.
+ *
+ * ```typescript
+ * {
+ *   type: "ButtonGroup",
+ *   items: [
+ *     { type: "Button", label: "Button 1", onClick: () => {} },
+ *     { type: "Text", content: "Text 1" },
+ *     { type: "FlexibleSpace" },
+ *     { type: "Button", label: "Button 2", onClick: () => {} },
+ *   ],
+ * }
+ * ```
+ */
+export interface UIButtonGroupElement
+  extends UIElementBase,
+    Omit<zInfer<typeof uiButtonGroupElementSchema>, "onCreate" | "onDestroy"> {
+  /**
+   * The items to add to the button group.
+   */
+  items: Array<UIButtonElement | UITextElement | UIFlexibleSpaceElement>;
+}
+
+const uiButtonGroupElementCreateSchm = uiButtonGroupElementSchema
+  .extend(uiElementBaseCreateSchema.params.shape)
+  .omit({ items: true })
+  .extend({
+    items: z.array(
+      z.union([
+        uiButtonElementCreateSchema.params,
+        uiTextElementCreateSchema.params,
+        uiFlexibleSpaceElementCreateSchema.params,
+      ]),
+    ),
+  });
+
+export const uiButtonGroupElementCreateSchema = {
+  params: uiButtonGroupElementCreateSchm,
+  clonable: uiButtonGroupElementCreateSchm
+    .extend(uiElementBaseCreateSchema.clonable.shape)
     .extend({
       items: z.array(
         z.union([
-          uiButtonElementSchemas.read,
-          uiTextElementSchemas.read,
-          uiFlexibleSpaceElementSchemas.read,
-        ]),
-      ),
-    }),
-  create: uiElementBaseCreateSchema
-    .extend(uiButtonGroupElementBaseSchema.shape)
-    .extend({
-      items: z.array(
-        z.union([
-          uiButtonElementSchemas.create,
-          uiTextElementSchemas.create,
-          uiFlexibleSpaceElementSchemas.create,
-        ]),
-      ),
-    }),
-  clonable: uiElementBaseClonableSchema
-    .extend(uiButtonGroupElementBaseSchema.shape)
-    .extend({
-      items: z.array(
-        z.union([
-          uiButtonElementSchemas.clonable,
-          uiTextElementSchemas.clonable,
-          uiFlexibleSpaceElementSchemas.clonable,
+          uiButtonElementCreateSchema.clonable,
+          uiTextElementCreateSchema.clonable,
+          uiFlexibleSpaceElementCreateSchema.clonable,
         ]),
       ),
     }),
 };
 
 /**
- * Represents a button group element in a panel.
+ * The parameters for creating a button group element.
+ *
+ * See {@link UIButtonGroupElement} for more details.
  *
  * @remarks
- * This element is used to group buttons and text elements together.
+ * `id` is optional but recommended if you want to be able to perform updates.
  */
 export interface UIButtonGroupElementCreate
-  extends UIElementLifecycle,
-    Omit<
-      zInfer<typeof uiButtonGroupElementSchemas.create>,
-      "onCreate" | "onDestroy"
-    > {
+  extends Omit<UIButtonGroupElement, "id" | "items">,
+    UIElementBaseCreateParams {
+  /**
+   * The items to add to the button group.
+   */
   items: Array<
     UIButtonElementCreate | UITextElementCreate | UIFlexibleSpaceElementCreate
   >;
 }
+
+export const uiButtonGroupElementUpdateSchema = {
+  params: makeUpdateSchema(uiButtonGroupElementCreateSchema.params),
+  clonable: makeUpdateSchema(
+    uiButtonGroupElementCreateSchema.clonable.extend({
+      items: z.array(
+        z.union([
+          uiButtonElementCreateSchema.clonable,
+          uiTextElementCreateSchema.clonable,
+          uiFlexibleSpaceElementCreateSchema.clonable,
+        ]),
+      ),
+    }),
+  ),
+};
+
+/**
+ * The parameters for updating a button group element.
+ *
+ * See {@link UIButtonGroupElement} for more details.
+ *
+ * @remarks
+ * `id` and `type` are required to update the button group element.
+ */
+export interface UIButtonGroupElementUpdate
+  extends MakeUpdateSchema<UIButtonGroupElement, UIButtonGroupElementCreate> {}

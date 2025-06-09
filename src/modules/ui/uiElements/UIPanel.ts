@@ -1,98 +1,145 @@
-import type { UISelectElementCreate } from "./UISelectElement";
-
-import type { UIButtonGroupElementCreate } from "./UIButtonGroupElement";
-
-import type { UIButtonElementCreate } from "./UIButtonElement";
-
-import type { UITextElementCreate } from "./UITextElement";
-
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import type { UiController } from "../controller";
 import {
-  uiElementBaseClonableSchema,
   uiElementBaseCreateSchema,
   uiElementBaseSchema,
+  type UIElementBase,
+  type UIElementBaseCreateParams,
 } from "./base";
-import { uiButtonElementSchemas } from "./UIButtonElement";
-import { uiButtonGroupElementSchemas } from "./UIButtonGroupElement";
 import {
-  uiDividerElementSchemas,
-  type UIDividerElementCreate,
-} from "./UIDividerElement";
-import { uiSelectElementSchemas } from "./UISelectElement";
-import { uiTextElementSchemas } from "./UITextElement";
-import {
-  uiTextInputElementSchemas,
-  type UITextInputElementCreate,
-} from "./UITextInputElement";
+  uiPanelElementsCreateSchema,
+  uiPanelElementsSchema,
+  type UIPanelElements,
+  type UIPanelElementsCreate,
+} from "./uiPanelElementsSchemas";
 
-export const uiPanelElementsSchemas = {
-  read: z.discriminatedUnion("type", [
-    uiTextElementSchemas.read,
-    uiButtonElementSchemas.read,
-    uiTextInputElementSchemas.read,
-    uiDividerElementSchemas.read,
-    uiButtonGroupElementSchemas.read,
-    uiSelectElementSchemas.read,
-  ]),
-  create: z.discriminatedUnion("type", [
-    uiTextElementSchemas.create,
-    uiButtonElementSchemas.create,
-    uiTextInputElementSchemas.create,
-    uiDividerElementSchemas.create,
-    uiButtonGroupElementSchemas.create,
-    uiSelectElementSchemas.create,
-  ]),
-  clonable: z.discriminatedUnion("type", [
-    uiTextElementSchemas.clonable,
-    uiButtonElementSchemas.clonable,
-    uiTextInputElementSchemas.clonable,
-    uiDividerElementSchemas.clonable,
-    uiButtonGroupElementSchemas.clonable,
-    uiSelectElementSchemas.clonable,
-  ]),
-};
-
-const uiPanelBaseSchema = z.object({
+const uiPanelSchema = uiElementBaseSchema.extend({
   type: z.literal("Panel"),
 
   /**
    * The title to display in the panel header.
    */
   title: z.string().optional(),
+
+  /**
+   * The elements to add to the panel body.
+   */
+  body: z.array(uiPanelElementsSchema),
+
+  /**
+   * The elements to add to the panel footer.
+   */
+  footer: z.array(uiPanelElementsSchema).optional(),
+
+  onClose: z.function().returns(z.void()).optional(),
 });
 
-export const uiPanelSchemas = {
-  read: uiElementBaseSchema.extend(uiPanelBaseSchema.shape).extend({
-    onClose: z.function().returns(z.void()).optional(),
-    body: z.array(uiPanelElementsSchemas.read),
-    footer: z.array(uiPanelElementsSchemas.read).optional(),
-  }),
-  create: uiElementBaseCreateSchema
-    .extend(uiPanelBaseSchema.partial().shape)
-    .extend({
-      onClose: z.function().returns(z.void()).optional(),
-      body: z.array(uiPanelElementsSchemas.create),
-      footer: z.array(uiPanelElementsSchemas.create).optional(),
-    }),
-  clonable: uiElementBaseClonableSchema
-    .extend(uiPanelBaseSchema.partial().shape)
+/**
+ * Represents a panel in the UI.
+ * It can be added to the map by using the {@link UiController.createPanel} method.
+ *
+ * A panel is a container for other UI elements.
+ * It can have a title, a body, a footer as well as a close button.
+ *
+ * The body and footer are arrays of UI elements and turn into vertical stacks of elements.
+ * The close button is a button that can be used to close the panel.
+ *
+ * #### Body
+ * Body is the main content of the panel. It is scrollable which means
+ * that it can contain a lot of elements.
+ *
+ * #### Footer
+ * Footer is sticky to the bottom of the panel, and can be used to add actions to the panel (e.g. save, cancel, etc.).
+ * Normally, it should contain a `ButtonGroup` element with a `Cancel` and `Save` button. Using `ButtonGroup` is recommended
+ * because it will automatically align the buttons to the end of the panel giving it a nice look.
+ *
+ * @example
+ * #### basic
+ * ```typescript
+ * {
+ *   title: "My Panel",
+ *   body: [
+ *     { type: "Text", text: "Hello" },
+ *   ],
+ * });
+ * ```
+ *
+ * @example
+ * #### form
+ * ```typescript
+ * {
+ *   title: "My Panel",
+ *   body: [
+ *     { type: "Text", text: "Introduce your name and last name" },
+ *     { type: "TextInput", label: "Name", value: "", placeholder: "John", onChange: (value) => setName(value) },
+ *     { type: "TextInput", label: "Last name", value: "", placeholder: "Doe", onChange: (value) => setLastName(value) },
+ *   ],
+ *   footer: [
+ *     { type: "ButtonGroup", items: [
+ *       { type: "Button", label: "Reset", onClick: () => alert("Reset") },
+ *       { type: "Button", label: "Save", onClick: () => alert("Save") },
+ *     ] },
+ *   ],
+ * });
+ * ```
+ *
+ */
+export interface UIPanel
+  extends UIElementBase,
+    Omit<
+      zInfer<typeof uiPanelSchema>,
+      "onClose" | "body" | "footer" | "onCreate" | "onDestroy"
+    > {
+  /**
+   * The elements to add to the panel body.
+   */
+  body: UIPanelElements[];
+
+  /**
+   * The elements to add to the panel footer.
+   */
+  footer?: UIPanelElements[];
+
+  /**
+   * A function to call when panel's close button is clicked.
+   */
+  onClose?: () => void;
+}
+
+const uiPanelCreateSchm = uiPanelSchema
+  .extend(uiElementBaseCreateSchema.params.shape)
+  .partial({ type: true })
+  .omit({ body: true, footer: true })
+  .extend({
+    body: z.array(uiPanelElementsCreateSchema.params),
+    footer: z.array(uiPanelElementsCreateSchema.params).optional(),
+  });
+
+export const uiPanelCreateSchema = {
+  params: uiPanelCreateSchm,
+  clonable: uiPanelCreateSchm
+    .extend(uiElementBaseCreateSchema.clonable.shape)
     .extend({
       onClose: z.string().optional(),
-      body: z.array(uiPanelElementsSchemas.clonable),
-      footer: z.array(uiPanelElementsSchemas.clonable).optional(),
+      body: z.array(uiPanelElementsCreateSchema.clonable),
+      footer: z.array(uiPanelElementsCreateSchema.clonable).optional(),
     }),
 };
 
 /**
- * The panel to add to the map by using the {@link UiController.createPanel} method.
+ * The parameters for creating a panel by using {@link UiController.createPanel}.
+ *
+ * @see {@link UIPanel} for more information about panels.
  *
  * @remarks
- * For the sake of convenience, the `id` of the panel and its elements are optional,
- * but it is recommended to provide them if you want to be able to perform updates.
+ * `id` is optional but recommended if you want to be able to perform updates.
  */
-export interface UIPanelCreate extends zInfer<typeof uiPanelSchemas.create> {
+export interface UIPanelCreate
+  extends Omit<UIPanel, "id" | "body" | "footer" | "type">,
+    UIElementBaseCreateParams {
+  type?: "Panel";
+
   /**
    * The elements to add to the panel body.
    */
@@ -102,43 +149,4 @@ export interface UIPanelCreate extends zInfer<typeof uiPanelSchemas.create> {
    * The elements to add to the panel footer.
    */
   footer?: UIPanelElementsCreate[];
-
-  /**
-   * A function to call when panel's close button is clicked.
-   */
-  onClose?: () => void;
 }
-
-/**
- * This is a union of all the possible elements that can be added to a panel.
- *
- * @remarks
- * For the sake of convenience, `id` is optional but recommended if you want to be able to
- * perform updates.
- */
-export type UIPanelElementsCreate =
-  | UITextElementCreate
-  | UIButtonElementCreate
-  | UITextInputElementCreate
-  | UIDividerElementCreate
-  | UIButtonGroupElementCreate
-  | UISelectElementCreate;
-
-export const uiPanelElementsUpdateSchemas = {
-  create: z.discriminatedUnion("type", [
-    uiTextElementSchemas.create.partial().required({ type: true }),
-    uiButtonElementSchemas.create.partial().required({ type: true }),
-    uiTextInputElementSchemas.create.partial().required({ type: true }),
-    uiDividerElementSchemas.create.partial().required({ type: true }),
-    uiButtonGroupElementSchemas.create.partial().required({ type: true }),
-    uiSelectElementSchemas.create.partial().required({ type: true }),
-  ]),
-  clonable: z.discriminatedUnion("type", [
-    uiTextElementSchemas.clonable.partial().required({ type: true }),
-    uiButtonElementSchemas.clonable.partial().required({ type: true }),
-    uiTextInputElementSchemas.clonable.partial().required({ type: true }),
-    uiDividerElementSchemas.clonable.partial().required({ type: true }),
-    uiButtonGroupElementSchemas.clonable.partial().required({ type: true }),
-    uiSelectElementSchemas.clonable.partial().required({ type: true }),
-  ]),
-};

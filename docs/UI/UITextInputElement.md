@@ -1,12 +1,36 @@
 ***
 
-The parameters for creating a text input element.
-
-See [UITextInputElement](UITextInputElement.md) for more details.
+Represents a text input element in a panel.
 
 # Remarks
 
-`id` is optional but recommended if you want to be able to perform updates.
+`value` property is required, for empty value use `""`.
+`label` property is displayed above the input and used for screen readers.
+
+# Examples
+
+### empty input
+
+```typescript
+{
+  type: "TextInput",
+  value: "",
+  onChange: (args) => console.log(args.value),
+  placeholder: "Enter your name",
+}
+```
+
+### with label
+
+```typescript
+{
+  type: "TextInput",
+  label: "Name",
+  value: "Hello",
+  onChange: (args) => console.log(args.value),
+  placeholder: "Enter your name",
+}
+```
 
 # Properties
 
@@ -21,6 +45,14 @@ See [UITextInputElement](UITextInputElement.md) for more details.
 > **value**: `string`
 
 The value of the input. Use `""` for empty values.
+
+***
+
+## id
+
+> **id**: `string`
+
+The ID of the element.
 
 ***
 
@@ -110,25 +142,6 @@ A function to call when the element is destroyed.
 ### Returns
 
 `void`
-
-***
-
-## id?
-
-> `optional` **id**: `string`
-
-The ID of the element.
-
-### Remarks
-
-If not provided, the element will be assigned a random ID, but it is recommended to provide it
-to perform further updates on the element.
-
-If provided, it must be unique within the UI.
-
-### Default Value
-
-`undefined`
 
 ***
 

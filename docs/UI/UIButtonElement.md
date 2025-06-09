@@ -1,12 +1,16 @@
 ***
 
-The parameters for creating a button element.
+Represents a button element in a panel.
 
-See [UIButtonElement](UIButtonElement.md) for more details.
+# Example
 
-# Remarks
-
-`id` is optional but recommended if you want to be able to perform updates.
+```typescript
+{
+  type: "Button",
+  label: "Click me",
+  onClick: () => alert("Button clicked"),
+}
+```
 
 # Properties
 
@@ -33,6 +37,14 @@ The action to perform when the button is clicked.
 ### Returns
 
 `void`
+
+***
+
+## id
+
+> **id**: `string`
+
+The ID of the element.
 
 ***
 
@@ -86,22 +98,3 @@ A function to call when the element is destroyed.
 ### Returns
 
 `void`
-
-***
-
-## id?
-
-> `optional` **id**: `string`
-
-The ID of the element.
-
-### Remarks
-
-If not provided, the element will be assigned a random ID, but it is recommended to provide it
-to perform further updates on the element.
-
-If provided, it must be unique within the UI.
-
-### Default Value
-
-`undefined`

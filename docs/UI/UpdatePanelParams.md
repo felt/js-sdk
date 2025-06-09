@@ -6,6 +6,28 @@
 
 > **id**: `string`
 
+The ID of the element.
+
+***
+
+## title?
+
+> `optional` **title**: `string`
+
+The title to display in the panel header.
+
+***
+
+## onClose()?
+
+> `optional` **onClose**: () => `void`
+
+A function to call when panel's close button is clicked.
+
+### Returns
+
+`void`
+
 ***
 
 ## type?
@@ -14,15 +36,27 @@
 
 ***
 
+## body?
+
+> `optional` **body**: [`UIPanelElementsCreate`](UIPanelElementsCreate.md)\[]
+
+The elements to add to the panel body.
+
+***
+
+## footer?
+
+> `optional` **footer**: [`UIPanelElementsCreate`](UIPanelElementsCreate.md)\[]
+
+The elements to add to the panel footer.
+
+***
+
 ## onCreate()?
 
-> `optional` **onCreate**: (...`args`: `unknown`\[]) => `void`
+> `optional` **onCreate**: () => `void`
 
-### Parameters
-
-| Parameter | Type         |
-| --------- | ------------ |
-| ...`args` | `unknown`\[] |
+A function to call when the element is created.
 
 ### Returns
 
@@ -32,48 +66,10 @@
 
 ## onDestroy()?
 
-> `optional` **onDestroy**: (...`args`: `unknown`\[]) => `void`
+> `optional` **onDestroy**: () => `void`
 
-### Parameters
-
-| Parameter | Type         |
-| --------- | ------------ |
-| ...`args` | `unknown`\[] |
+A function to call when the element is destroyed.
 
 ### Returns
 
 `void`
-
-***
-
-## title?
-
-> `optional` **title**: `string`
-
-***
-
-## onClose()?
-
-> `optional` **onClose**: (...`args`: `unknown`\[]) => `void`
-
-### Parameters
-
-| Parameter | Type         |
-| --------- | ------------ |
-| ...`args` | `unknown`\[] |
-
-### Returns
-
-`void`
-
-***
-
-## body?
-
-> `optional` **body**: [`UIPanelElementsCreate`](UIPanelElementsCreate.md)\[]
-
-***
-
-## footer?
-
-> `optional` **footer**: [`UIPanelElementsCreate`](UIPanelElementsCreate.md)\[]

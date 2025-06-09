@@ -268,15 +268,19 @@ export interface UiController {
    *
    * @param args - The arguments for the method.
    * @param args.panelId - The id of the panel to update the element in.
-   * @param args.elements - Dictionary of elements to update with their id as key and the element properties to change as value.
+   * @param args.elements - Array of elements to update (`id` and `type` are required to identify the element to update).
    *
    * @example
    * ```typescript
    * await felt.updatePanelElements({
    *   panelId: "panel-1",
-   *   elements: {
-   *     "element-1": { type: "Text", content: "Hello, world!" },
-   *   },
+   *   elements: [
+   *     {
+   *       id: "element-1",
+   *       type: "Text",
+   *       content: "Hello, world!",
+   *     },
+   *   ],
    * });
    * ```
    */

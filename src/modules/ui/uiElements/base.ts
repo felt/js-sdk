@@ -102,3 +102,27 @@ export const uiLabelReadyElementCreateSchema = {
 export interface UILabelReadyElementCreateParams
   extends Omit<UILabelReadyElement, "id">,
     UIElementBaseCreateParams {}
+
+export function makeUpdateSchema<
+  TShape extends z.ZodRawShape & {
+    id: z.ZodOptional<z.ZodString>;
+    type: z.ZodType;
+  },
+>(schema: z.ZodObject<TShape>) {
+  return schema.partial().extend({
+    id: z.string(),
+    type: schema.shape.type,
+  }) as z.ZodObject<{
+    [K in keyof TShape]: K extends "id"
+      ? z.ZodString
+      : K extends "type"
+        ? TShape["type"]
+        : z.ZodOptional<TShape[K]>;
+  }>;
+}
+
+export type MakeUpdateSchema<
+  TElement extends { id: string; type: string },
+  TElementCreate extends { id?: string; type: string },
+> = Omit<Partial<TElementCreate>, "id" | "type"> &
+  Pick<TElement, "id" | "type">;

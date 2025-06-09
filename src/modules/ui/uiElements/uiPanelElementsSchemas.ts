@@ -18,6 +18,7 @@ import {
 import {
   uiDividerElementCreateSchema,
   uiDividerElementSchema,
+  uiDividerElementUpdateSchema,
   type UIDividerElement,
   type UIDividerElementCreate,
   type UIDividerElementUpdate,
@@ -91,6 +92,7 @@ export const uiPanelElementsUpdateSchema = {
     uiTextInputElementUpdateSchema.params,
     uiSelectElementUpdateSchema.params,
     uiFlexibleSpaceElementUpdateSchema.params,
+    uiDividerElementUpdateSchema.params,
   ]),
   clonable: z.discriminatedUnion("type", [
     uiButtonElementUpdateSchema.clonable,
@@ -99,6 +101,7 @@ export const uiPanelElementsUpdateSchema = {
     uiTextInputElementUpdateSchema.clonable,
     uiSelectElementUpdateSchema.clonable,
     uiFlexibleSpaceElementUpdateSchema.clonable,
+    uiDividerElementUpdateSchema.clonable,
   ]),
 };
 
@@ -134,7 +137,7 @@ export type UIPanelElementsUpdate =
   | UIButtonElementUpdate
   | UITextElementUpdate
   | UIButtonGroupElementUpdate
-  | UIDividerElementUpdate
   | UITextInputElementUpdate
   | UISelectElementUpdate
-  | UIFlexibleSpaceElementUpdate;
+  | UIFlexibleSpaceElementUpdate
+  | UIDividerElementUpdate;

@@ -1,6 +1,8 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
+  type MakeUpdateSchema,
+  makeUpdateSchema,
   type UIElementBase,
   type UIElementBaseCreateParams,
   uiElementBaseCreateSchema,
@@ -85,18 +87,9 @@ export interface UIButtonElementCreate
   extends Omit<UIButtonElement, "id">,
     UIElementBaseCreateParams {}
 
-export interface UIButtonElementCreateClonableParams
-  extends zInfer<typeof uiButtonElementCreateSchema.clonable> {}
-
-const uiButtonElementUpdateSchm = uiButtonElementCreateSchema.params
-  .partial()
-  .required({ id: true, type: true });
-
 export const uiButtonElementUpdateSchema = {
-  params: uiButtonElementUpdateSchm,
-  clonable: uiButtonElementUpdateSchm.extend(
-    uiElementBaseCreateSchema.clonable.required({ id: true }).shape,
-  ),
+  params: makeUpdateSchema(uiButtonElementCreateSchema.params),
+  clonable: makeUpdateSchema(uiButtonElementCreateSchema.clonable),
 };
 
 /**
@@ -108,8 +101,4 @@ export const uiButtonElementUpdateSchema = {
  * `id` and `type` are required to identify the element to update.
  */
 export interface UIButtonElementUpdate
-  extends Omit<Partial<UIButtonElementCreate>, "type" | "id">,
-    Pick<UIButtonElement, "type" | "id"> {}
-
-export interface UIButtonElementUpdateClonable
-  extends zInfer<typeof uiButtonElementUpdateSchema.clonable> {}
+  extends MakeUpdateSchema<UIButtonElement, UIButtonElementCreate> {}

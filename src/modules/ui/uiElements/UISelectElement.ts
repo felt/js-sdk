@@ -1,8 +1,10 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
+  makeUpdateSchema,
   uiLabelReadyElementCreateSchema,
   uiLabelReadyElementSchema,
+  type MakeUpdateSchema,
   type UILabelReadyElement,
   type UILabelReadyElementCreateParams,
 } from "./base";
@@ -107,15 +109,9 @@ export interface UISelectElementCreate
   extends Omit<UISelectElement, "id">,
     UILabelReadyElementCreateParams {}
 
-const uiSelectElementUpdateSchm = uiSelectElementCreateSchema.params
-  .partial()
-  .required({ id: true, type: true });
-
 export const uiSelectElementUpdateSchema = {
-  params: uiSelectElementUpdateSchm,
-  clonable: uiSelectElementUpdateSchm.extend(
-    uiLabelReadyElementCreateSchema.clonable.required({ id: true }).shape,
-  ),
+  params: makeUpdateSchema(uiSelectElementCreateSchema.params),
+  clonable: makeUpdateSchema(uiSelectElementCreateSchema.clonable),
 };
 
 /**
@@ -127,5 +123,4 @@ export const uiSelectElementUpdateSchema = {
  * `id` and `type` are required to identify the element to update.
  */
 export interface UISelectElementUpdate
-  extends Omit<Partial<UISelectElementCreate>, "type" | "id">,
-    Pick<UISelectElement, "type" | "id"> {}
+  extends MakeUpdateSchema<UISelectElement, UISelectElementCreate> {}

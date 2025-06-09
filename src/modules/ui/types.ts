@@ -81,10 +81,6 @@ export const CreatePanelParamsClonableSchema = z.object({
   placement: placementForUiElementSchema.optional(),
 });
 
-export const UpdatePanelParamsSchema = uiPanelCreateSchema.params
-  .partial()
-  .required({ id: true });
-
 export const UpdatePanelClonableSchema = uiPanelCreateSchema.clonable
   .partial()
   .required({ id: true });

@@ -4,174 +4,191 @@
 
 ```ts
 
-import { au as AggregatedGridConfig } from './controller-DBbjoRaF.js';
-import { av as AggregationConfig } from './controller-DBbjoRaF.js';
-import { aw as AggregationMethod } from './controller-DBbjoRaF.js';
-import { C as CircleElementCreate } from './controller-DBbjoRaF.js';
-import { a as CircleElementRead } from './controller-DBbjoRaF.js';
-import { b as CircleElementUpdate } from './controller-DBbjoRaF.js';
-import { b8 as CircleToolSettings } from './controller-DBbjoRaF.js';
-import { b9 as ConfigurableToolType } from './controller-DBbjoRaF.js';
-import { ax as CountGridConfig } from './controller-DBbjoRaF.js';
-import { bp as CreateActionTriggerParams } from './controller-DBbjoRaF.js';
-import { K as CreateLayersFromGeoJsonParams } from './controller-DBbjoRaF.js';
-import { bq as CreatePanelElementsParams } from './controller-DBbjoRaF.js';
-import { br as CreatePanelParams } from './controller-DBbjoRaF.js';
-import { O as DataOnlyLayer } from './controller-DBbjoRaF.js';
-import { bs as DeletePanelElementsParams } from './controller-DBbjoRaF.js';
-import { E as Element_2 } from './controller-DBbjoRaF.js';
-import { c as ElementChangeCallbackParams } from './controller-DBbjoRaF.js';
-import { d as ElementCreate } from './controller-DBbjoRaF.js';
-import { e as ElementGroup } from './controller-DBbjoRaF.js';
-import { f as ElementGroupChangeCallbackParams } from './controller-DBbjoRaF.js';
-import { aM as ElementGroupNode } from './controller-DBbjoRaF.js';
-import { aN as ElementNode } from './controller-DBbjoRaF.js';
-import { B as ElementsController } from './controller-DBbjoRaF.js';
-import { g as ElementUpdate } from './controller-DBbjoRaF.js';
-import { aO as EntityNode } from './controller-DBbjoRaF.js';
-import { aP as FeatureNode } from './controller-DBbjoRaF.js';
-import { aQ as FeatureSelection } from './controller-DBbjoRaF.js';
-import { aU as FeltBoundary } from './controller-DBbjoRaF.js';
-import { F as FeltController } from './controller-DBbjoRaF.js';
-import { Q as FeltTiledVectorSource } from './controller-DBbjoRaF.js';
-import { aV as FeltZoom } from './controller-DBbjoRaF.js';
-import { an as FilterExpression } from './controller-DBbjoRaF.js';
-import { ao as FilterLogicGate } from './controller-DBbjoRaF.js';
-import { aq as Filters } from './controller-DBbjoRaF.js';
-import { ap as FilterTernary } from './controller-DBbjoRaF.js';
-import { R as GeoJsonDataVectorSource } from './controller-DBbjoRaF.js';
-import { aW as GeoJsonFeature } from './controller-DBbjoRaF.js';
-import { S as GeoJsonFileVectorSource } from './controller-DBbjoRaF.js';
-import { aX as GeoJsonGeometry } from './controller-DBbjoRaF.js';
-import { aY as GeoJsonProperties } from './controller-DBbjoRaF.js';
-import { W as GeoJsonUrlVectorSource } from './controller-DBbjoRaF.js';
-import { ar as GeometryFilter } from './controller-DBbjoRaF.js';
-import { G as GetElementGroupsConstraint } from './controller-DBbjoRaF.js';
-import { h as GetElementsConstraint } from './controller-DBbjoRaF.js';
-import { ay as GetLayerCalculationParams } from './controller-DBbjoRaF.js';
-import { az as GetLayerCategoriesGroup } from './controller-DBbjoRaF.js';
-import { aA as GetLayerCategoriesParams } from './controller-DBbjoRaF.js';
-import { X as GetLayerGroupsConstraint } from './controller-DBbjoRaF.js';
-import { aB as GetLayerHistogramBin } from './controller-DBbjoRaF.js';
-import { aC as GetLayerHistogramParams } from './controller-DBbjoRaF.js';
-import { aD as GetLayerPrecomputedCalculationParams } from './controller-DBbjoRaF.js';
-import { Y as GetLayersConstraint } from './controller-DBbjoRaF.js';
-import { Z as GetRenderedFeaturesConstraint } from './controller-DBbjoRaF.js';
-import { aE as GridConfig } from './controller-DBbjoRaF.js';
-import { aF as GridType } from './controller-DBbjoRaF.js';
-import { H as HighlighterElementCreate } from './controller-DBbjoRaF.js';
-import { i as HighlighterElementRead } from './controller-DBbjoRaF.js';
-import { j as HighlighterElementUpdate } from './controller-DBbjoRaF.js';
-import { ba as HighlighterToolSettings } from './controller-DBbjoRaF.js';
-import { I as ImageElementCreate } from './controller-DBbjoRaF.js';
-import { k as ImageElementRead } from './controller-DBbjoRaF.js';
-import { l as ImageElementUpdate } from './controller-DBbjoRaF.js';
-import { bb as InputToolSettings } from './controller-DBbjoRaF.js';
-import { J as InteractionsController } from './controller-DBbjoRaF.js';
-import { aZ as LatLng } from './controller-DBbjoRaF.js';
-import { _ as Layer } from './controller-DBbjoRaF.js';
-import { as as LayerBoundaries } from './controller-DBbjoRaF.js';
-import { $ as LayerChangeCallbackParams } from './controller-DBbjoRaF.js';
-import { a0 as LayerCommon } from './controller-DBbjoRaF.js';
-import { ad as LayerFeature } from './controller-DBbjoRaF.js';
-import { at as LayerFilters } from './controller-DBbjoRaF.js';
-import { a1 as LayerGroup } from './controller-DBbjoRaF.js';
-import { a2 as LayerGroupChangeCallbackParams } from './controller-DBbjoRaF.js';
-import { aR as LayerGroupNode } from './controller-DBbjoRaF.js';
-import { aS as LayerNode } from './controller-DBbjoRaF.js';
-import { a3 as LayerProcessingStatus } from './controller-DBbjoRaF.js';
-import { af as LayerSchema } from './controller-DBbjoRaF.js';
-import { ag as LayerSchemaAttribute } from './controller-DBbjoRaF.js';
-import { ah as LayerSchemaBooleanAttribute } from './controller-DBbjoRaF.js';
-import { ai as LayerSchemaCommonAttribute } from './controller-DBbjoRaF.js';
-import { aj as LayerSchemaDateAttribute } from './controller-DBbjoRaF.js';
-import { ak as LayerSchemaDateTimeAttribute } from './controller-DBbjoRaF.js';
-import { al as LayerSchemaNumericAttribute } from './controller-DBbjoRaF.js';
-import { am as LayerSchemaTextAttribute } from './controller-DBbjoRaF.js';
-import { aJ as LayersController } from './controller-DBbjoRaF.js';
-import { a4 as LegendItem } from './controller-DBbjoRaF.js';
-import { a5 as LegendItemChangeCallbackParams } from './controller-DBbjoRaF.js';
-import { a6 as LegendItemIdentifier } from './controller-DBbjoRaF.js';
-import { a7 as LegendItemsConstraint } from './controller-DBbjoRaF.js';
-import { a_ as LineStringGeometry } from './controller-DBbjoRaF.js';
-import { bc as LineToolSettings } from './controller-DBbjoRaF.js';
-import { L as LinkElementRead } from './controller-DBbjoRaF.js';
-import { a$ as LngLatTuple } from './controller-DBbjoRaF.js';
-import { aK as MapDetails } from './controller-DBbjoRaF.js';
-import { D as MapInteractionEvent } from './controller-DBbjoRaF.js';
-import { M as MarkerElementCreate } from './controller-DBbjoRaF.js';
-import { m as MarkerElementRead } from './controller-DBbjoRaF.js';
-import { n as MarkerElementUpdate } from './controller-DBbjoRaF.js';
-import { bd as MarkerToolSettings } from './controller-DBbjoRaF.js';
-import { aL as MiscController } from './controller-DBbjoRaF.js';
-import { aG as MultiAggregationConfig } from './controller-DBbjoRaF.js';
-import { b0 as MultiLineStringGeometry } from './controller-DBbjoRaF.js';
-import { b1 as MultiPointGeometry } from './controller-DBbjoRaF.js';
-import { b2 as MultiPolygonGeometry } from './controller-DBbjoRaF.js';
-import { N as NoteElementCreate } from './controller-DBbjoRaF.js';
-import { o as NoteElementRead } from './controller-DBbjoRaF.js';
-import { p as NoteElementUpdate } from './controller-DBbjoRaF.js';
-import { be as NoteToolSettings } from './controller-DBbjoRaF.js';
-import { bt as OnMapInteractionsOptions } from './controller-DBbjoRaF.js';
-import { P as PathElementCreate } from './controller-DBbjoRaF.js';
-import { q as PathElementRead } from './controller-DBbjoRaF.js';
-import { r as PathElementUpdate } from './controller-DBbjoRaF.js';
-import { bf as PinToolSettings } from './controller-DBbjoRaF.js';
-import { s as PlaceElementCreate } from './controller-DBbjoRaF.js';
-import { t as PlaceElementRead } from './controller-DBbjoRaF.js';
-import { u as PlaceElementUpdate } from './controller-DBbjoRaF.js';
-import { bg as PlaceFrame } from './controller-DBbjoRaF.js';
-import { bx as PlacementForUIElement } from './controller-DBbjoRaF.js';
-import { bh as PlaceSymbol } from './controller-DBbjoRaF.js';
-import { b3 as PointGeometry } from './controller-DBbjoRaF.js';
-import { v as PolygonElementCreate } from './controller-DBbjoRaF.js';
-import { w as PolygonElementRead } from './controller-DBbjoRaF.js';
-import { x as PolygonElementUpdate } from './controller-DBbjoRaF.js';
-import { b4 as PolygonGeometry } from './controller-DBbjoRaF.js';
-import { bi as PolygonToolSettings } from './controller-DBbjoRaF.js';
-import { aH as PrecomputedAggregationMethod } from './controller-DBbjoRaF.js';
-import { a8 as RasterBand } from './controller-DBbjoRaF.js';
-import { a9 as RasterLayer } from './controller-DBbjoRaF.js';
-import { aa as RasterLayerSource } from './controller-DBbjoRaF.js';
-import { ae as RasterValue } from './controller-DBbjoRaF.js';
-import { bj as RouteToolSettings } from './controller-DBbjoRaF.js';
-import { aT as SelectionController } from './controller-DBbjoRaF.js';
-import { bJ as SetViewportCenterZoomParams } from './controller-DBbjoRaF.js';
-import { b5 as SetVisibilityRequest } from './controller-DBbjoRaF.js';
-import { b6 as SortConfig } from './controller-DBbjoRaF.js';
-import { b7 as SortDirection } from './controller-DBbjoRaF.js';
-import { T as TextElementCreate } from './controller-DBbjoRaF.js';
-import { y as TextElementRead } from './controller-DBbjoRaF.js';
-import { A as TextElementUpdate } from './controller-DBbjoRaF.js';
-import { bk as TextToolSettings } from './controller-DBbjoRaF.js';
-import { bo as ToolsController } from './controller-DBbjoRaF.js';
-import { bl as ToolSettingsChangeEvent } from './controller-DBbjoRaF.js';
-import { bm as ToolSettingsMap } from './controller-DBbjoRaF.js';
-import { bn as ToolType } from './controller-DBbjoRaF.js';
-import { bH as UIActionTriggerCreate } from './controller-DBbjoRaF.js';
-import { bA as UIButtonElementCreate } from './controller-DBbjoRaF.js';
-import { bB as UIButtonGroupElementCreate } from './controller-DBbjoRaF.js';
-import { bI as UiController } from './controller-DBbjoRaF.js';
-import { U as UiControlsOptions } from './controller-DBbjoRaF.js';
-import { bC as UIDividerElementCreate } from './controller-DBbjoRaF.js';
-import { bD as UIFlexibleSpaceElementCreate } from './controller-DBbjoRaF.js';
-import { by as UIPanelCreate } from './controller-DBbjoRaF.js';
-import { bz as UIPanelElementsCreate } from './controller-DBbjoRaF.js';
-import { bE as UISelectElementCreate } from './controller-DBbjoRaF.js';
-import { bF as UITextElementCreate } from './controller-DBbjoRaF.js';
-import { bG as UITextInputElementCreate } from './controller-DBbjoRaF.js';
-import { bu as UpdateActionTriggerParams } from './controller-DBbjoRaF.js';
-import { ab as UpdateLayerParams } from './controller-DBbjoRaF.js';
-import { bv as UpdatePanelElementsParams } from './controller-DBbjoRaF.js';
-import { bw as UpdatePanelParams } from './controller-DBbjoRaF.js';
-import { aI as ValueConfiguration } from './controller-DBbjoRaF.js';
-import { ac as VectorLayer } from './controller-DBbjoRaF.js';
-import { V as ViewportCenterZoom } from './controller-DBbjoRaF.js';
-import { bK as ViewportConstraints } from './controller-DBbjoRaF.js';
-import { bN as ViewportController } from './controller-DBbjoRaF.js';
-import { bL as ViewportFitBoundsParams } from './controller-DBbjoRaF.js';
-import { bM as ViewportState } from './controller-DBbjoRaF.js';
-import { z } from './controller-DBbjoRaF.js';
+import { au as AggregatedGridConfig } from './controller-OP_V-2l_.js';
+import { av as AggregationConfig } from './controller-OP_V-2l_.js';
+import { aw as AggregationMethod } from './controller-OP_V-2l_.js';
+import { C as CircleElementCreate } from './controller-OP_V-2l_.js';
+import { a as CircleElementRead } from './controller-OP_V-2l_.js';
+import { b as CircleElementUpdate } from './controller-OP_V-2l_.js';
+import { b8 as CircleToolSettings } from './controller-OP_V-2l_.js';
+import { b9 as ConfigurableToolType } from './controller-OP_V-2l_.js';
+import { ax as CountGridConfig } from './controller-OP_V-2l_.js';
+import { bp as CreateActionTriggerParams } from './controller-OP_V-2l_.js';
+import { K as CreateLayersFromGeoJsonParams } from './controller-OP_V-2l_.js';
+import { bq as CreatePanelElementsParams } from './controller-OP_V-2l_.js';
+import { br as CreatePanelParams } from './controller-OP_V-2l_.js';
+import { O as DataOnlyLayer } from './controller-OP_V-2l_.js';
+import { bs as DeletePanelElementsParams } from './controller-OP_V-2l_.js';
+import { E as Element_2 } from './controller-OP_V-2l_.js';
+import { c as ElementChangeCallbackParams } from './controller-OP_V-2l_.js';
+import { d as ElementCreate } from './controller-OP_V-2l_.js';
+import { e as ElementGroup } from './controller-OP_V-2l_.js';
+import { f as ElementGroupChangeCallbackParams } from './controller-OP_V-2l_.js';
+import { aM as ElementGroupNode } from './controller-OP_V-2l_.js';
+import { aN as ElementNode } from './controller-OP_V-2l_.js';
+import { B as ElementsController } from './controller-OP_V-2l_.js';
+import { g as ElementUpdate } from './controller-OP_V-2l_.js';
+import { aO as EntityNode } from './controller-OP_V-2l_.js';
+import { aP as FeatureNode } from './controller-OP_V-2l_.js';
+import { aQ as FeatureSelection } from './controller-OP_V-2l_.js';
+import { aU as FeltBoundary } from './controller-OP_V-2l_.js';
+import { F as FeltController } from './controller-OP_V-2l_.js';
+import { Q as FeltTiledVectorSource } from './controller-OP_V-2l_.js';
+import { aV as FeltZoom } from './controller-OP_V-2l_.js';
+import { an as FilterExpression } from './controller-OP_V-2l_.js';
+import { ao as FilterLogicGate } from './controller-OP_V-2l_.js';
+import { aq as Filters } from './controller-OP_V-2l_.js';
+import { ap as FilterTernary } from './controller-OP_V-2l_.js';
+import { R as GeoJsonDataVectorSource } from './controller-OP_V-2l_.js';
+import { aW as GeoJsonFeature } from './controller-OP_V-2l_.js';
+import { S as GeoJsonFileVectorSource } from './controller-OP_V-2l_.js';
+import { aX as GeoJsonGeometry } from './controller-OP_V-2l_.js';
+import { aY as GeoJsonProperties } from './controller-OP_V-2l_.js';
+import { W as GeoJsonUrlVectorSource } from './controller-OP_V-2l_.js';
+import { ar as GeometryFilter } from './controller-OP_V-2l_.js';
+import { G as GetElementGroupsConstraint } from './controller-OP_V-2l_.js';
+import { h as GetElementsConstraint } from './controller-OP_V-2l_.js';
+import { ay as GetLayerCalculationParams } from './controller-OP_V-2l_.js';
+import { az as GetLayerCategoriesGroup } from './controller-OP_V-2l_.js';
+import { aA as GetLayerCategoriesParams } from './controller-OP_V-2l_.js';
+import { X as GetLayerGroupsConstraint } from './controller-OP_V-2l_.js';
+import { aB as GetLayerHistogramBin } from './controller-OP_V-2l_.js';
+import { aC as GetLayerHistogramParams } from './controller-OP_V-2l_.js';
+import { aD as GetLayerPrecomputedCalculationParams } from './controller-OP_V-2l_.js';
+import { Y as GetLayersConstraint } from './controller-OP_V-2l_.js';
+import { Z as GetRenderedFeaturesConstraint } from './controller-OP_V-2l_.js';
+import { aE as GridConfig } from './controller-OP_V-2l_.js';
+import { aF as GridType } from './controller-OP_V-2l_.js';
+import { H as HighlighterElementCreate } from './controller-OP_V-2l_.js';
+import { i as HighlighterElementRead } from './controller-OP_V-2l_.js';
+import { j as HighlighterElementUpdate } from './controller-OP_V-2l_.js';
+import { ba as HighlighterToolSettings } from './controller-OP_V-2l_.js';
+import { I as ImageElementCreate } from './controller-OP_V-2l_.js';
+import { k as ImageElementRead } from './controller-OP_V-2l_.js';
+import { l as ImageElementUpdate } from './controller-OP_V-2l_.js';
+import { bb as InputToolSettings } from './controller-OP_V-2l_.js';
+import { J as InteractionsController } from './controller-OP_V-2l_.js';
+import { aZ as LatLng } from './controller-OP_V-2l_.js';
+import { _ as Layer } from './controller-OP_V-2l_.js';
+import { as as LayerBoundaries } from './controller-OP_V-2l_.js';
+import { $ as LayerChangeCallbackParams } from './controller-OP_V-2l_.js';
+import { a0 as LayerCommon } from './controller-OP_V-2l_.js';
+import { ad as LayerFeature } from './controller-OP_V-2l_.js';
+import { at as LayerFilters } from './controller-OP_V-2l_.js';
+import { a1 as LayerGroup } from './controller-OP_V-2l_.js';
+import { a2 as LayerGroupChangeCallbackParams } from './controller-OP_V-2l_.js';
+import { aR as LayerGroupNode } from './controller-OP_V-2l_.js';
+import { aS as LayerNode } from './controller-OP_V-2l_.js';
+import { a3 as LayerProcessingStatus } from './controller-OP_V-2l_.js';
+import { af as LayerSchema } from './controller-OP_V-2l_.js';
+import { ag as LayerSchemaAttribute } from './controller-OP_V-2l_.js';
+import { ah as LayerSchemaBooleanAttribute } from './controller-OP_V-2l_.js';
+import { ai as LayerSchemaCommonAttribute } from './controller-OP_V-2l_.js';
+import { aj as LayerSchemaDateAttribute } from './controller-OP_V-2l_.js';
+import { ak as LayerSchemaDateTimeAttribute } from './controller-OP_V-2l_.js';
+import { al as LayerSchemaNumericAttribute } from './controller-OP_V-2l_.js';
+import { am as LayerSchemaTextAttribute } from './controller-OP_V-2l_.js';
+import { aJ as LayersController } from './controller-OP_V-2l_.js';
+import { a4 as LegendItem } from './controller-OP_V-2l_.js';
+import { a5 as LegendItemChangeCallbackParams } from './controller-OP_V-2l_.js';
+import { a6 as LegendItemIdentifier } from './controller-OP_V-2l_.js';
+import { a7 as LegendItemsConstraint } from './controller-OP_V-2l_.js';
+import { a_ as LineStringGeometry } from './controller-OP_V-2l_.js';
+import { bc as LineToolSettings } from './controller-OP_V-2l_.js';
+import { L as LinkElementRead } from './controller-OP_V-2l_.js';
+import { a$ as LngLatTuple } from './controller-OP_V-2l_.js';
+import { aK as MapDetails } from './controller-OP_V-2l_.js';
+import { D as MapInteractionEvent } from './controller-OP_V-2l_.js';
+import { M as MarkerElementCreate } from './controller-OP_V-2l_.js';
+import { m as MarkerElementRead } from './controller-OP_V-2l_.js';
+import { n as MarkerElementUpdate } from './controller-OP_V-2l_.js';
+import { bd as MarkerToolSettings } from './controller-OP_V-2l_.js';
+import { aL as MiscController } from './controller-OP_V-2l_.js';
+import { aG as MultiAggregationConfig } from './controller-OP_V-2l_.js';
+import { b0 as MultiLineStringGeometry } from './controller-OP_V-2l_.js';
+import { b1 as MultiPointGeometry } from './controller-OP_V-2l_.js';
+import { b2 as MultiPolygonGeometry } from './controller-OP_V-2l_.js';
+import { N as NoteElementCreate } from './controller-OP_V-2l_.js';
+import { o as NoteElementRead } from './controller-OP_V-2l_.js';
+import { p as NoteElementUpdate } from './controller-OP_V-2l_.js';
+import { be as NoteToolSettings } from './controller-OP_V-2l_.js';
+import { bt as OnMapInteractionsOptions } from './controller-OP_V-2l_.js';
+import { P as PathElementCreate } from './controller-OP_V-2l_.js';
+import { q as PathElementRead } from './controller-OP_V-2l_.js';
+import { r as PathElementUpdate } from './controller-OP_V-2l_.js';
+import { bf as PinToolSettings } from './controller-OP_V-2l_.js';
+import { s as PlaceElementCreate } from './controller-OP_V-2l_.js';
+import { t as PlaceElementRead } from './controller-OP_V-2l_.js';
+import { u as PlaceElementUpdate } from './controller-OP_V-2l_.js';
+import { bg as PlaceFrame } from './controller-OP_V-2l_.js';
+import { bx as PlacementForUIElement } from './controller-OP_V-2l_.js';
+import { bh as PlaceSymbol } from './controller-OP_V-2l_.js';
+import { b3 as PointGeometry } from './controller-OP_V-2l_.js';
+import { v as PolygonElementCreate } from './controller-OP_V-2l_.js';
+import { w as PolygonElementRead } from './controller-OP_V-2l_.js';
+import { x as PolygonElementUpdate } from './controller-OP_V-2l_.js';
+import { b4 as PolygonGeometry } from './controller-OP_V-2l_.js';
+import { bi as PolygonToolSettings } from './controller-OP_V-2l_.js';
+import { aH as PrecomputedAggregationMethod } from './controller-OP_V-2l_.js';
+import { a8 as RasterBand } from './controller-OP_V-2l_.js';
+import { a9 as RasterLayer } from './controller-OP_V-2l_.js';
+import { aa as RasterLayerSource } from './controller-OP_V-2l_.js';
+import { ae as RasterValue } from './controller-OP_V-2l_.js';
+import { bj as RouteToolSettings } from './controller-OP_V-2l_.js';
+import { aT as SelectionController } from './controller-OP_V-2l_.js';
+import { b_ as SetViewportCenterZoomParams } from './controller-OP_V-2l_.js';
+import { b5 as SetVisibilityRequest } from './controller-OP_V-2l_.js';
+import { b6 as SortConfig } from './controller-OP_V-2l_.js';
+import { b7 as SortDirection } from './controller-OP_V-2l_.js';
+import { T as TextElementCreate } from './controller-OP_V-2l_.js';
+import { y as TextElementRead } from './controller-OP_V-2l_.js';
+import { A as TextElementUpdate } from './controller-OP_V-2l_.js';
+import { bk as TextToolSettings } from './controller-OP_V-2l_.js';
+import { bo as ToolsController } from './controller-OP_V-2l_.js';
+import { bl as ToolSettingsChangeEvent } from './controller-OP_V-2l_.js';
+import { bm as ToolSettingsMap } from './controller-OP_V-2l_.js';
+import { bn as ToolType } from './controller-OP_V-2l_.js';
+import { bY as UIActionTriggerCreate } from './controller-OP_V-2l_.js';
+import { bA as UIButtonElement } from './controller-OP_V-2l_.js';
+import { bB as UIButtonElementCreate } from './controller-OP_V-2l_.js';
+import { bC as UIButtonElementUpdate } from './controller-OP_V-2l_.js';
+import { bG as UIButtonGroupElement } from './controller-OP_V-2l_.js';
+import { bH as UIButtonGroupElementCreate } from './controller-OP_V-2l_.js';
+import { bI as UIButtonGroupElementUpdate } from './controller-OP_V-2l_.js';
+import { bZ as UiController } from './controller-OP_V-2l_.js';
+import { U as UiControlsOptions } from './controller-OP_V-2l_.js';
+import { bM as UIDividerElement } from './controller-OP_V-2l_.js';
+import { bN as UIDividerElementCreate } from './controller-OP_V-2l_.js';
+import { bO as UIDividerElementUpdate } from './controller-OP_V-2l_.js';
+import { bJ as UIFlexibleSpaceElement } from './controller-OP_V-2l_.js';
+import { bK as UIFlexibleSpaceElementCreate } from './controller-OP_V-2l_.js';
+import { bL as UIFlexibleSpaceElementUpdate } from './controller-OP_V-2l_.js';
+import { by as UIPanel } from './controller-OP_V-2l_.js';
+import { bz as UIPanelCreate } from './controller-OP_V-2l_.js';
+import { bV as UIPanelElements } from './controller-OP_V-2l_.js';
+import { bW as UIPanelElementsCreate } from './controller-OP_V-2l_.js';
+import { bX as UIPanelElementsUpdate } from './controller-OP_V-2l_.js';
+import { bS as UISelectElement } from './controller-OP_V-2l_.js';
+import { bT as UISelectElementCreate } from './controller-OP_V-2l_.js';
+import { bU as UISelectElementUpdate } from './controller-OP_V-2l_.js';
+import { bD as UITextElement } from './controller-OP_V-2l_.js';
+import { bE as UITextElementCreate } from './controller-OP_V-2l_.js';
+import { bF as UITextElementUpdate } from './controller-OP_V-2l_.js';
+import { bP as UITextInputElement } from './controller-OP_V-2l_.js';
+import { bQ as UITextInputElementCreate } from './controller-OP_V-2l_.js';
+import { bR as UITextInputElementUpdate } from './controller-OP_V-2l_.js';
+import { bu as UpdateActionTriggerParams } from './controller-OP_V-2l_.js';
+import { ab as UpdateLayerParams } from './controller-OP_V-2l_.js';
+import { bv as UpdatePanelElementsParams } from './controller-OP_V-2l_.js';
+import { bw as UpdatePanelParams } from './controller-OP_V-2l_.js';
+import { aI as ValueConfiguration } from './controller-OP_V-2l_.js';
+import { ac as VectorLayer } from './controller-OP_V-2l_.js';
+import { V as ViewportCenterZoom } from './controller-OP_V-2l_.js';
+import { b$ as ViewportConstraints } from './controller-OP_V-2l_.js';
+import { c2 as ViewportController } from './controller-OP_V-2l_.js';
+import { c0 as ViewportFitBoundsParams } from './controller-OP_V-2l_.js';
+import { c1 as ViewportState } from './controller-OP_V-2l_.js';
+import { z } from './controller-OP_V-2l_.js';
 import { z as z_2 } from 'zod';
 
 export { AggregatedGridConfig }
@@ -569,27 +586,61 @@ export { ToolType }
 
 export { UIActionTriggerCreate }
 
+export { UIButtonElement }
+
 export { UIButtonElementCreate }
 
+export { UIButtonElementUpdate }
+
+export { UIButtonGroupElement }
+
 export { UIButtonGroupElementCreate }
+
+export { UIButtonGroupElementUpdate }
 
 export { UiController }
 
 export { UiControlsOptions }
 
+export { UIDividerElement }
+
 export { UIDividerElementCreate }
+
+export { UIDividerElementUpdate }
+
+export { UIFlexibleSpaceElement }
 
 export { UIFlexibleSpaceElementCreate }
 
+export { UIFlexibleSpaceElementUpdate }
+
+export { UIPanel }
+
 export { UIPanelCreate }
+
+export { UIPanelElements }
 
 export { UIPanelElementsCreate }
 
+export { UIPanelElementsUpdate }
+
+export { UISelectElement }
+
 export { UISelectElementCreate }
+
+export { UISelectElementUpdate }
+
+export { UITextElement }
 
 export { UITextElementCreate }
 
+export { UITextElementUpdate }
+
+export { UITextInputElement }
+
 export { UITextInputElementCreate }
+
+export { UITextInputElementUpdate }
 
 export { UpdateActionTriggerParams }
 

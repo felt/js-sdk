@@ -148,7 +148,3 @@ export interface UIPanelCreate
    */
   footer?: UIPanelElementsCreate[];
 }
-
-export type UIPanelCreateClonableParams = zInfer<
-  typeof uiPanelCreateSchema.clonable
->;

@@ -1,8 +1,10 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
+  makeUpdateSchema,
   uiElementBaseCreateSchema,
   uiElementBaseSchema,
+  type MakeUpdateSchema,
   type UIElementBase,
   type UIElementBaseCreateParams,
 } from "./base";
@@ -100,18 +102,9 @@ export interface UITextElementCreate
   extends Omit<UITextElement, "id">,
     UIElementBaseCreateParams {}
 
-export interface UITextElementCreateClonableParams
-  extends zInfer<typeof uiTextElementCreateSchema.clonable> {}
-
-const uiTextElementUpdateSchm = uiTextElementCreateSchema.params
-  .partial()
-  .required({ id: true, type: true });
-
 export const uiTextElementUpdateSchema = {
-  params: uiTextElementUpdateSchm,
-  clonable: uiTextElementUpdateSchm.extend(
-    uiElementBaseCreateSchema.clonable.required({ id: true }).shape,
-  ),
+  params: makeUpdateSchema(uiTextElementCreateSchema.params),
+  clonable: makeUpdateSchema(uiTextElementCreateSchema.clonable),
 };
 
 /**
@@ -123,5 +116,4 @@ export const uiTextElementUpdateSchema = {
  * `id` and `type` are required to identify the element to update.
  */
 export interface UITextElementUpdate
-  extends Omit<Partial<UITextElementCreate>, "type" | "id">,
-    Pick<UITextElement, "type" | "id"> {}
+  extends MakeUpdateSchema<UITextElement, UITextElementCreate> {}

@@ -1,8 +1,10 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
+  makeUpdateSchema,
   uiLabelReadyElementCreateSchema,
   uiLabelReadyElementSchema,
+  type MakeUpdateSchema,
   type UILabelReadyElement,
   type UILabelReadyElementCreateParams,
 } from "./base";
@@ -113,15 +115,9 @@ export interface UITextInputElementCreate
   extends Omit<UITextInputElement, "id">,
     UILabelReadyElementCreateParams {}
 
-const uiTextInputElementUpdateSchm = uiTextInputElementCreateSchema.params
-  .partial()
-  .required({ id: true, type: true });
-
 export const uiTextInputElementUpdateSchema = {
-  params: uiTextInputElementUpdateSchm,
-  clonable: uiTextInputElementUpdateSchm.extend(
-    uiLabelReadyElementCreateSchema.clonable.required({ id: true }).shape,
-  ),
+  params: makeUpdateSchema(uiTextInputElementCreateSchema.params),
+  clonable: makeUpdateSchema(uiTextInputElementCreateSchema.clonable),
 };
 
 /**
@@ -133,5 +129,4 @@ export const uiTextInputElementUpdateSchema = {
  * `id` and `type` are required to identify the element to update.
  */
 export interface UITextInputElementUpdate
-  extends Omit<Partial<UITextInputElementCreate>, "type" | "id">,
-    Pick<UITextInputElement, "type" | "id"> {}
+  extends MakeUpdateSchema<UITextInputElement, UITextInputElementCreate> {}

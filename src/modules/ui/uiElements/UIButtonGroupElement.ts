@@ -1,8 +1,10 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
+  makeUpdateSchema,
   uiElementBaseCreateSchema,
   uiElementBaseSchema,
+  type MakeUpdateSchema,
   type UIElementBase,
   type UIElementBaseCreateParams,
 } from "./base";
@@ -119,15 +121,10 @@ export interface UIButtonGroupElementCreate
   >;
 }
 
-const uiButtonGroupElementUpdateSchm = uiButtonGroupElementCreateSchema.params
-  .partial()
-  .required({ id: true, type: true });
-
 export const uiButtonGroupElementUpdateSchema = {
-  params: uiButtonGroupElementUpdateSchm,
-  clonable: uiButtonGroupElementUpdateSchm
-    .extend(uiElementBaseCreateSchema.clonable.required({ id: true }).shape)
-    .extend({
+  params: makeUpdateSchema(uiButtonGroupElementCreateSchema.params),
+  clonable: makeUpdateSchema(
+    uiButtonGroupElementCreateSchema.clonable.extend({
       items: z.array(
         z.union([
           uiButtonElementCreateSchema.clonable,
@@ -136,6 +133,7 @@ export const uiButtonGroupElementUpdateSchema = {
         ]),
       ),
     }),
+  ),
 };
 
 /**
@@ -147,9 +145,4 @@ export const uiButtonGroupElementUpdateSchema = {
  * `id` and `type` are required to update the button group element.
  */
 export interface UIButtonGroupElementUpdate
-  extends Omit<Partial<UIButtonGroupElementCreate>, "type" | "id">,
-    Pick<UIButtonGroupElement, "type" | "id"> {}
-
-export type UIButtonGroupElementUpdateClonable = zInfer<
-  typeof uiButtonGroupElementUpdateSchema.clonable
->;
+  extends MakeUpdateSchema<UIButtonGroupElement, UIButtonGroupElementCreate> {}

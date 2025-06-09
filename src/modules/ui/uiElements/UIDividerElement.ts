@@ -1,6 +1,8 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
+  type MakeUpdateSchema,
+  makeUpdateSchema,
   type UIElementBase,
   type UIElementBaseCreateParams,
   uiElementBaseCreateSchema,
@@ -55,15 +57,9 @@ export interface UIDividerElementCreate
   extends Omit<UIDividerElement, "id">,
     UIElementBaseCreateParams {}
 
-const uiDividerElementUpdateSchm = uiDividerElementCreateSchema.params
-  .partial()
-  .required({ id: true, type: true });
-
 export const uiDividerElementUpdateSchema = {
-  params: uiDividerElementUpdateSchm,
-  clonable: uiDividerElementUpdateSchm.extend(
-    uiElementBaseCreateSchema.clonable.required({ id: true }).shape,
-  ),
+  params: makeUpdateSchema(uiDividerElementCreateSchema.params),
+  clonable: makeUpdateSchema(uiDividerElementCreateSchema.clonable),
 };
 
 /**
@@ -75,5 +71,4 @@ export const uiDividerElementUpdateSchema = {
  * `id` and `type` are required to identify the element to update.
  */
 export interface UIDividerElementUpdate
-  extends Omit<Partial<UIDividerElementCreate>, "type" | "id">,
-    Pick<UIDividerElement, "type" | "id"> {}
+  extends MakeUpdateSchema<UIDividerElement, UIDividerElementCreate> {}

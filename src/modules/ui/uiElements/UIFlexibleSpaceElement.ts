@@ -1,8 +1,10 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
+  makeUpdateSchema,
   uiElementBaseCreateSchema,
   uiElementBaseSchema,
+  type MakeUpdateSchema,
   type UIElementBase,
   type UIElementBaseCreateParams,
 } from "./base";
@@ -56,16 +58,9 @@ export interface UIFlexibleSpaceElementCreate
   extends Omit<UIFlexibleSpaceElement, "id">,
     UIElementBaseCreateParams {}
 
-const uiFlexibleSpaceElementUpdateSchm =
-  uiFlexibleSpaceElementCreateSchema.params
-    .partial()
-    .required({ id: true, type: true });
-
 export const uiFlexibleSpaceElementUpdateSchema = {
-  params: uiFlexibleSpaceElementUpdateSchm,
-  clonable: uiFlexibleSpaceElementUpdateSchm.extend(
-    uiElementBaseCreateSchema.clonable.required({ id: true }).shape,
-  ),
+  params: makeUpdateSchema(uiFlexibleSpaceElementCreateSchema.params),
+  clonable: makeUpdateSchema(uiFlexibleSpaceElementCreateSchema.clonable),
 };
 
 /**
@@ -77,5 +72,7 @@ export const uiFlexibleSpaceElementUpdateSchema = {
  * `id` and `type` are required to identify the element to update.
  */
 export interface UIFlexibleSpaceElementUpdate
-  extends Omit<Partial<UIFlexibleSpaceElementCreate>, "type" | "id">,
-    Pick<UIFlexibleSpaceElement, "type" | "id"> {}
+  extends MakeUpdateSchema<
+    UIFlexibleSpaceElement,
+    UIFlexibleSpaceElementCreate
+  > {}

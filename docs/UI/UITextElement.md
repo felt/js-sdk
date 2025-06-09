@@ -5,12 +5,16 @@ Markdown is supported.
 
 # Examples
 
+### simple
+
 ```typescript
 {
   type: "Text",
   content: "Hello, world!",
 }
 ```
+
+### with links
 
 ```typescript
 {
@@ -19,12 +23,16 @@ Markdown is supported.
 }
 ```
 
+### markdown
+
 ```typescript
 {
   type: "Text",
   content: "**Hello**, _world_!",
 }
 ```
+
+### complex markdown
 
 Complex markdown syntax is supported like tables, images, quotes, etc.
 

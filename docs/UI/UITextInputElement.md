@@ -9,6 +9,8 @@ Represents a text input element in a panel.
 
 # Examples
 
+### empty input
+
 ```typescript
 {
   type: "TextInput",
@@ -17,6 +19,8 @@ Represents a text input element in a panel.
   placeholder: "Enter your name",
 }
 ```
+
+### with label
 
 ```typescript
 {

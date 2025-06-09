@@ -54,7 +54,8 @@ const uiPanelSchema = uiElementBaseSchema.extend({
  * Normally, it should contain a `ButtonGroup` element with a `Cancel` and `Save` button. Using `ButtonGroup` is recommended
  * because it will automatically align the buttons to the end of the panel giving it a nice look.
  *
- * @example Basic
+ * @example
+ * #### basic
  * ```typescript
  * {
  *   title: "My Panel",
@@ -64,7 +65,8 @@ const uiPanelSchema = uiElementBaseSchema.extend({
  * });
  * ```
  *
- * @example Form
+ * @example
+ * #### form
  * ```typescript
  * {
  *   title: "My Panel",

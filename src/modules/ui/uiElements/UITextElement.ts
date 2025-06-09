@@ -22,7 +22,8 @@ export const uiTextElementSchema = uiElementBaseSchema.extend({
  * Represents a text element in a panel.
  * Markdown is supported.
  *
- * @example Simple
+ * @example
+ * #### simple
  * ```typescript
  * {
  *   type: "Text",
@@ -30,7 +31,8 @@ export const uiTextElementSchema = uiElementBaseSchema.extend({
  * }
  * ```
  *
- * @example With links
+ * @example
+ * #### with links
  * ```typescript
  * {
  *   type: "Text",
@@ -38,7 +40,8 @@ export const uiTextElementSchema = uiElementBaseSchema.extend({
  * }
  * ```
  *
- * @example Markdown
+ * @example
+ * #### markdown
  * ```typescript
  * {
  *   type: "Text",
@@ -46,7 +49,8 @@ export const uiTextElementSchema = uiElementBaseSchema.extend({
  * }
  * ```
  *
- * @example Markdown
+ * @example
+ * #### complex markdown
  * Complex markdown syntax is supported like tables, images, quotes, etc.
  * ```typescript
  * {

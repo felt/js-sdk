@@ -22,6 +22,8 @@ because it will automatically align the buttons to the end of the panel giving i
 
 # Examples
 
+### basic
+
 ```typescript
 {
   title: "My Panel",
@@ -30,6 +32,8 @@ because it will automatically align the buttons to the end of the panel giving i
   ],
 });
 ```
+
+### form
 
 ```typescript
 {

@@ -46,7 +46,8 @@ export const uiTextInputElementSchema = uiLabelReadyElementSchema.extend({
  * `value` property is required, for empty value use `""`.
  * `label` property is displayed above the input and used for screen readers.
  *
- * @example empty input
+ * @example
+ * #### empty input
  * ```typescript
  * {
  *   type: "TextInput",
@@ -56,7 +57,8 @@ export const uiTextInputElementSchema = uiLabelReadyElementSchema.extend({
  * }
  * ```
  *
- * @example with label
+ * @example
+ * #### with label
  * ```typescript
  * {
  *   type: "TextInput",

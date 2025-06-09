@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.7.0-next.9
+
+### Minor Changes
+
+* b87393f: Better docs, types and method consistency for Custom Panels API
+
 ## 1.7.0-next.8
 
 ### Patch Changes

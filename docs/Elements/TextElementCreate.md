@@ -137,7 +137,7 @@ the current zoom of the map when you call `createElement`.
 
 ## align?
 
-> `optional` **align**: `"left"` | `"center"` | `"right"`
+> `optional` **align**: `"center"` | `"left"` | `"right"`
 
 The alignment of the text, either `left`, `center` or `right`.
 

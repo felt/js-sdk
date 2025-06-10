@@ -147,7 +147,7 @@ The text in the element.
 
 ## align?
 
-> `optional` **align**: `"left"` | `"center"` | `"right"`
+> `optional` **align**: `"center"` | `"left"` | `"right"`
 
 The alignment of the text, either `left`, `center` or `right`.
 

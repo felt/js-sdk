@@ -26,7 +26,7 @@ The color of the element in some CSS-like format.
 
 ## align
 
-> **align**: `"left"` | `"center"` | `"right"`
+> **align**: `"center"` | `"left"` | `"right"`
 
 The alignment of the text, either `left`, `center` or `right`.
 

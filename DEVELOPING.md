@@ -88,6 +88,10 @@ There are various checks in the `check` script to ensure that:
 - `zod` isn't accidentally included in the client bundle
 - the `handler` correctly receives every message that the client can send
 
+Finally, add a changeset for your changes:
+
+1. Run `npm run changeset` and choose patch, minor, or major depending on your change.
+
 ### Adding support to Felt
 
 Once you have added your new SDK functionality, you need to make sure Felt handles these new messages

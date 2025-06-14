@@ -1,6 +1,6 @@
-import type { LayersController } from "~/modules/layers";
+import type { LayersController } from "~/modules/layers/controller";
 import type { FeltController } from "~/modules/main/controller";
-import type { SelectionController } from "~/modules/selection";
+import type { SelectionController } from "~/modules/selection/controller";
 import type {
   FeltBoundary,
   GeoJsonFeature,

@@ -4482,10 +4482,12 @@ The operations to use on the values from the features in the layer
 
 > `optional` **attribute**: `string`
 
-The attribute to use for the aggregation when aggregations other than "count" are used.
+The attribute ID to use for the aggregation when aggregations other than "count" are used.
 
 This can be omitted if the only aggregation is "count", but must be a numeric attribute
 otherwise.
+
+Use `getLayerSchema` to get the attributes available for a layer.
 
 ## ValueConfiguration
 
@@ -7259,7 +7261,7 @@ const avgHomeValue = await felt.getAggregates({
   layerId: "buildings",
   boundary: [-122.43, 47.60, -122.33, 47.62],  // neighborhood boundary
   aggregation: {
-    method: "avg",
+    methods: ["avg"],
     attribute: "assessed_value"
   }
 });
@@ -7269,7 +7271,7 @@ const maxNewBuildingHeight = await felt.getAggregates({
   layerId: "buildings",
   filters: ["year_built", "gte", 2000],
   aggregation: {
-    method: "max",
+    methods: ["max"],
     attribute: "height"
   }
 });
@@ -7902,9 +7904,13 @@ The arguments for the method.
 ```typescript
 await felt.updatePanelElements({
   panelId: "panel-1",
-  elements: {
-    "element-1": { type: "Text", content: "Hello, world!" },
-  },
+  elements: [
+    {
+      id: "element-1",
+      type: "Text",
+      content: "Hello, world!",
+    },
+  ],
 });
 ```
 
@@ -10037,19 +10043,45 @@ The placement of the panel on the right sidebar stack.
 
 > **id**: `string`
 
+The ID of the element.
+
+#### title?
+
+> `optional` **title**: `string`
+
+The title to display in the panel header.
+
+#### onClose()?
+
+> `optional` **onClose**: () => `void`
+
+A function to call when panel's close button is clicked.
+
+##### Returns
+
+`void`
+
 #### type?
 
 > `optional` **type**: `"Panel"`
 
+#### body?
+
+> `optional` **body**: [`UIPanelElementsCreate`](client.md#uipanelelementscreate)\[]
+
+The elements to add to the panel body.
+
+#### footer?
+
+> `optional` **footer**: [`UIPanelElementsCreate`](client.md#uipanelelementscreate)\[]
+
+The elements to add to the panel footer.
+
 #### onCreate()?
 
-> `optional` **onCreate**: (...`args`) => `void`
+> `optional` **onCreate**: () => `void`
 
-##### Parameters
-
-##### args
-
-...`unknown`\[]
+A function to call when the element is created.
 
 ##### Returns
 
@@ -10057,43 +10089,13 @@ The placement of the panel on the right sidebar stack.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: (...`args`) => `void`
+> `optional` **onDestroy**: () => `void`
 
-##### Parameters
-
-##### args
-
-...`unknown`\[]
+A function to call when the element is destroyed.
 
 ##### Returns
 
 `void`
-
-#### title?
-
-> `optional` **title**: `string`
-
-#### onClose()?
-
-> `optional` **onClose**: (...`args`) => `void`
-
-##### Parameters
-
-##### args
-
-...`unknown`\[]
-
-##### Returns
-
-`void`
-
-#### body?
-
-> `optional` **body**: [`UIPanelElementsCreate`](client.md#uipanelelementscreate)\[]
-
-#### footer?
-
-> `optional` **footer**: [`UIPanelElementsCreate`](client.md#uipanelelementscreate)\[]
 
 ## CreatePanelElementsParams
 
@@ -10145,9 +10147,13 @@ The ID of the panel to update.
 
 #### elements
 
-> **elements**: `Record`\<`string`, [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIPanelElementsCreate`](client.md#uipanelelementscreate)>
+> **elements**: `object`\[]
 
 Dictionary of element IDs to the element to update.
+
+##### element
+
+> **element**: [`UIPanelElementsUpdate`](client.md#uipanelelementsupdate)
 
 ## DeletePanelElementsParams
 
@@ -10331,6 +10337,10 @@ The function to call when the action trigger is triggered.
 
 `void`
 
+#### id?
+
+> `optional` **id**: `string`
+
 #### disabled?
 
 > `optional` **disabled**: `boolean`
@@ -10361,13 +10371,19 @@ A function to call when the element is destroyed.
 
 `void`
 
-#### id?
-
-> `optional` **id**: `string`
-
-## UIButtonElementCreate
+## UIButtonElement
 
 Represents a button element in a panel.
+
+### Example
+
+```typescript
+{
+  type: "Button",
+  label: "Click me",
+  onClick: () => alert("Button clicked"),
+}
+```
 
 ### Properties
 
@@ -10385,7 +10401,90 @@ The label to display in the button.
 
 > **onClick**: () => `void`
 
-Event handler for when the button is clicked.
+The action to perform when the button is clicked.
+
+##### Returns
+
+`void`
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### variant?
+
+> `optional` **variant**: `"primary"` | `"outlined"` | `"transparent"` | `"transparentThin"`
+
+The style variant of the button.
+
+* `"primary"`: A solid button with Felt's primary background color (pink).
+* `"outlined"`: A button with a border and no background color.
+* `"transparent"`: A button with no background color and no border.
+* `"transparentThin"`: Same as `transparent` but with lighter font weight.
+
+##### Default Value
+
+`"primary"`
+
+#### disabled?
+
+> `optional` **disabled**: `boolean`
+
+Whether the button is disabled.
+
+##### Default Value
+
+`false`
+
+#### onCreate()?
+
+> `optional` **onCreate**: () => `void`
+
+A function to call when the element is created.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: () => `void`
+
+A function to call when the element is destroyed.
+
+##### Returns
+
+`void`
+
+## UIButtonElementCreate
+
+The parameters for creating a button element.
+
+See [UIButtonElement](client.md#uibuttonelement) for more details.
+
+### Remarks
+
+`id` is optional but recommended if you want to be able to perform updates.
+
+### Properties
+
+#### type
+
+> **type**: `"Button"`
+
+#### label
+
+> **label**: `string`
+
+The label to display in the button.
+
+#### onClick()
+
+> **onClick**: () => `void`
+
+The action to perform when the button is clicked.
 
 ##### Returns
 
@@ -10440,13 +10539,123 @@ A function to call when the element is destroyed.
 
 > `optional` **id**: `string`
 
-## UIButtonGroupElementCreate
+The ID of the element.
 
-Represents a button group element in a panel.
+##### Remarks
+
+If not provided, the element will be assigned a random ID, but it is recommended to provide it
+to perform further updates on the element.
+
+If provided, it must be unique within the UI.
+
+##### Default Value
+
+`undefined`
+
+## UIButtonElementUpdate
+
+The parameters for updating a button element.
+
+See [UIButtonElement](client.md#uibuttonelement) for more details.
 
 ### Remarks
 
-This element is used to group buttons and text elements together.
+`id` and `type` are required to identify the element to update.
+
+### Properties
+
+#### type
+
+> **type**: `"Button"`
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### label?
+
+> `optional` **label**: `string`
+
+The label to display in the button.
+
+#### variant?
+
+> `optional` **variant**: `"primary"` | `"outlined"` | `"transparent"` | `"transparentThin"`
+
+The style variant of the button.
+
+* `"primary"`: A solid button with Felt's primary background color (pink).
+* `"outlined"`: A button with a border and no background color.
+* `"transparent"`: A button with no background color and no border.
+* `"transparentThin"`: Same as `transparent` but with lighter font weight.
+
+##### Default Value
+
+`"primary"`
+
+#### disabled?
+
+> `optional` **disabled**: `boolean`
+
+Whether the button is disabled.
+
+##### Default Value
+
+`false`
+
+#### onClick()?
+
+> `optional` **onClick**: () => `void`
+
+The action to perform when the button is clicked.
+
+##### Returns
+
+`void`
+
+#### onCreate()?
+
+> `optional` **onCreate**: () => `void`
+
+A function to call when the element is created.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: () => `void`
+
+A function to call when the element is destroyed.
+
+##### Returns
+
+`void`
+
+## UIButtonGroupElement
+
+Represents a button group element in a panel.
+A button group is an horizontal container of buttons and text elements.
+
+### Example
+
+Thanks to the FlexibleSpace element, button 1 and text 1 are aligned to the start of the panel,
+while button 2 is aligned to the end.
+
+```typescript
+{
+  type: "ButtonGroup",
+  items: [
+    { type: "Button", label: "Button 1", onClick: () => {} },
+    { type: "Text", content: "Text 1" },
+    { type: "FlexibleSpace" },
+    { type: "Button", label: "Button 2", onClick: () => {} },
+  ],
+}
+```
 
 ### Properties
 
@@ -10456,7 +10665,15 @@ This element is used to group buttons and text elements together.
 
 #### items
 
-> **items**: ([`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate))\[]
+> **items**: ([`UIFlexibleSpaceElement`](client.md#uiflexiblespaceelement) | [`UIButtonElement`](client.md#uibuttonelement) | [`UITextElement`](client.md#uitextelement))\[]
+
+The items to add to the button group.
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
 
 #### align?
 
@@ -10466,7 +10683,59 @@ The alignment of the button group.
 
 ##### Default Value
 
-`"start"`
+`"end"`
+
+#### onCreate()?
+
+> `optional` **onCreate**: () => `void`
+
+A function to call when the element is created.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: () => `void`
+
+A function to call when the element is destroyed.
+
+##### Returns
+
+`void`
+
+## UIButtonGroupElementCreate
+
+The parameters for creating a button group element.
+
+See [UIButtonGroupElement](client.md#uibuttongroupelement) for more details.
+
+### Remarks
+
+`id` is optional but recommended if you want to be able to perform updates.
+
+### Properties
+
+#### type
+
+> **type**: `"ButtonGroup"`
+
+#### items
+
+> **items**: ([`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate))\[]
+
+The items to add to the button group.
+
+#### align?
+
+> `optional` **align**: `"start"` | `"end"`
+
+The alignment of the button group.
+
+##### Default Value
+
+`"end"`
 
 #### onCreate()?
 
@@ -10492,13 +10761,141 @@ A function to call when the element is destroyed.
 
 > `optional` **id**: `string`
 
-## UIDividerElementCreate
+The ID of the element.
 
-Represents a divider element in a panel.
+##### Remarks
+
+If not provided, the element will be assigned a random ID, but it is recommended to provide it
+to perform further updates on the element.
+
+If provided, it must be unique within the UI.
+
+##### Default Value
+
+`undefined`
+
+## UIButtonGroupElementUpdate
+
+The parameters for updating a button group element.
+
+See [UIButtonGroupElement](client.md#uibuttongroupelement) for more details.
 
 ### Remarks
 
+`id` and `type` are required to update the button group element.
+
+### Properties
+
+#### type
+
+> **type**: `"ButtonGroup"`
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### align?
+
+> `optional` **align**: `"start"` | `"end"`
+
+The alignment of the button group.
+
+##### Default Value
+
+`"end"`
+
+#### items?
+
+> `optional` **items**: ([`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate))\[]
+
+The items to add to the button group.
+
+#### onCreate()?
+
+> `optional` **onCreate**: () => `void`
+
+A function to call when the element is created.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: () => `void`
+
+A function to call when the element is destroyed.
+
+##### Returns
+
+`void`
+
+## UIDividerElement
+
+Represents a divider element in a panel.
 This element is used to separate other elements in a panel.
+It is rendered as a gray horizontal line of 1px height.
+
+### Example
+
+Divider element is useful to separate sections of a panel.
+
+```typescript
+{
+  body: [
+    { type: "Text", content: "Contact" },
+    { type: "TextInput", placeholder: "Enter your name", ... },
+    { type: "TextInput", placeholder: "Enter your email", ... },
+    { type: "Divider" },
+    { type: "Text", content: "Address" },
+    { type: "TextInput", placeholder: "Enter your address", ... },
+  ],
+}
+```
+
+### Properties
+
+#### type
+
+> **type**: `"Divider"`
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### onCreate()?
+
+> `optional` **onCreate**: () => `void`
+
+A function to call when the element is created.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: () => `void`
+
+A function to call when the element is destroyed.
+
+##### Returns
+
+`void`
+
+## UIDividerElementCreate
+
+The parameters for creating a divider element.
+
+See [UIDividerElement](client.md#uidividerelement) for more details.
+
+### Remarks
+
+`id` is optional but recommended if you want to be able to delete the element.
 
 ### Properties
 
@@ -10530,9 +10927,120 @@ A function to call when the element is destroyed.
 
 > `optional` **id**: `string`
 
+The ID of the element.
+
+##### Remarks
+
+If not provided, the element will be assigned a random ID, but it is recommended to provide it
+to perform further updates on the element.
+
+If provided, it must be unique within the UI.
+
+##### Default Value
+
+`undefined`
+
+## UIDividerElementUpdate
+
+The parameters for updating a divider element.
+
+See [UIDividerElement](client.md#uidividerelement) for more details.
+
+### Remarks
+
+`id` and `type` are required to identify the element to update.
+
+### Properties
+
+#### type
+
+> **type**: `"Divider"`
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### onCreate()?
+
+> `optional` **onCreate**: () => `void`
+
+A function to call when the element is created.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: () => `void`
+
+A function to call when the element is destroyed.
+
+##### Returns
+
+`void`
+
+## UIFlexibleSpaceElement
+
+Represents a flexible space element in a button group.
+Useful to customize the spacing between button group items.
+
+### Example
+
+Buttons with a flexible space between makes them more visually separated.
+
+```typescript
+{
+  type: "ButtonGroup",
+  items: [
+    { type: "Button", label: "Button 1", onClick: () => {} },
+    { type: "FlexibleSpace" },
+    { type: "Button", label: "Button 2", onClick: () => {} },
+  ],
+}
+```
+
+### Properties
+
+#### type
+
+> **type**: `"FlexibleSpace"`
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### onCreate()?
+
+> `optional` **onCreate**: () => `void`
+
+A function to call when the element is created.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: () => `void`
+
+A function to call when the element is destroyed.
+
+##### Returns
+
+`void`
+
 ## UIFlexibleSpaceElementCreate
 
-Only accepted for [UIButtonGroupElementCreate](client.md#uibuttongroupelementcreate) elements.
+The parameters for creating a flexible space element.
+
+### Remarks
+
+`id` is optional but recommended if you want to be able to perform updates.
 
 ### Properties
 
@@ -10564,26 +11072,132 @@ A function to call when the element is destroyed.
 
 > `optional` **id**: `string`
 
-## UIPanelCreate
+The ID of the element.
 
-The panel to add to the map by using the [UiController.createPanel](client.md#createpanel) method.
+##### Remarks
+
+If not provided, the element will be assigned a random ID, but it is recommended to provide it
+to perform further updates on the element.
+
+If provided, it must be unique within the UI.
+
+##### Default Value
+
+`undefined`
+
+## UIFlexibleSpaceElementUpdate
+
+The parameters for updating a flexible space element.
+
+See [UIFlexibleSpaceElement](client.md#uiflexiblespaceelement) for more details.
 
 ### Remarks
 
-For the sake of convenience, the `id` of the panel and its elements are optional,
-but it is recommended to provide them if you want to be able to perform updates.
+`id` and `type` are required to identify the element to update.
 
 ### Properties
 
+#### type
+
+> **type**: `"FlexibleSpace"`
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### onCreate()?
+
+> `optional` **onCreate**: () => `void`
+
+A function to call when the element is created.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: () => `void`
+
+A function to call when the element is destroyed.
+
+##### Returns
+
+`void`
+
+## UIPanel
+
+Represents a panel in the UI.
+It can be added to the map by using the [UiController.createPanel](client.md#createpanel) method.
+
+A panel is a container for other UI elements.
+It can have a title, a body, a footer as well as a close button.
+
+The body and footer are arrays of UI elements and turn into vertical stacks of elements.
+The close button is a button that can be used to close the panel.
+
+### Body
+
+Body is the main content of the panel. It is scrollable which means
+that it can contain a lot of elements.
+
+### Footer
+
+Footer is sticky to the bottom of the panel, and can be used to add actions to the panel (e.g. save, cancel, etc.).
+Normally, it should contain a `ButtonGroup` element with a `Cancel` and `Save` button. Using `ButtonGroup` is recommended
+because it will automatically align the buttons to the end of the panel giving it a nice look.
+
+### Examples
+
+### basic
+
+```typescript
+{
+  title: "My Panel",
+  body: [
+    { type: "Text", text: "Hello" },
+  ],
+});
+```
+
+### form
+
+```typescript
+{
+  title: "My Panel",
+  body: [
+    { type: "Text", text: "Introduce your name and last name" },
+    { type: "TextInput", label: "Name", value: "", placeholder: "John", onChange: (value) => setName(value) },
+    { type: "TextInput", label: "Last name", value: "", placeholder: "Doe", onChange: (value) => setLastName(value) },
+  ],
+  footer: [
+    { type: "ButtonGroup", items: [
+      { type: "Button", label: "Reset", onClick: () => alert("Reset") },
+      { type: "Button", label: "Save", onClick: () => alert("Save") },
+    ] },
+  ],
+});
+```
+
+### Properties
+
+#### type
+
+> **type**: `"Panel"`
+
 #### body
 
-> **body**: [`UIPanelElementsCreate`](client.md#uipanelelementscreate)\[]
+> **body**: [`UIPanelElements`](client.md#uipanelelements)\[]
 
 The elements to add to the panel body.
 
-#### type?
+#### id
 
-> `optional` **type**: `"Panel"`
+> **id**: `string`
+
+The ID of the element.
 
 #### title?
 
@@ -10593,7 +11207,7 @@ The title to display in the panel header.
 
 #### footer?
 
-> `optional` **footer**: [`UIPanelElementsCreate`](client.md#uipanelelementscreate)\[]
+> `optional` **footer**: [`UIPanelElements`](client.md#uipanelelements)\[]
 
 The elements to add to the panel footer.
 
@@ -10609,17 +11223,9 @@ A function to call when panel's close button is clicked.
 
 #### onCreate()?
 
-> `optional` **onCreate**: (...`args`) => `void`
+> `optional` **onCreate**: () => `void`
 
 A function to call when the element is created.
-
-##### Parameters
-
-##### args
-
-...`unknown`\[]
-
-This function doesn't receive any parameters
 
 ##### Returns
 
@@ -10627,83 +11233,59 @@ This function doesn't receive any parameters
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: (...`args`) => `void`
+> `optional` **onDestroy**: () => `void`
 
 A function to call when the element is destroyed.
 
-##### Parameters
-
-##### args
-
-...`unknown`\[]
-
-This function doesn't receive any parameters
-
 ##### Returns
 
 `void`
 
-#### id?
+## UIPanelCreate
 
-> `optional` **id**: `string`
+The parameters for creating a panel by using [UiController.createPanel](client.md#createpanel).
 
-## UISelectElementCreate
+### See
 
-Represents a selector element in a panel.
+[UIPanel](client.md#uipanel) for more information about panels.
 
 ### Remarks
 
-This element is used to select a single option from a list of options.
+`id` is optional but recommended if you want to be able to perform updates.
 
 ### Properties
 
-#### type
+#### body
 
-> **type**: `"Select"`
+> **body**: [`UIPanelElementsCreate`](client.md#uipanelelementscreate)\[]
 
-#### options
+The elements to add to the panel body.
 
-> **options**: `object`\[]
+#### title?
 
-##### label
+> `optional` **title**: `string`
 
-> **label**: `string`
+The title to display in the panel header.
 
-##### value
+#### onClose()?
 
-> **value**: `string`
+> `optional` **onClose**: () => `void`
 
-#### onChange()
-
-> **onChange**: (`args`) => `void`
-
-Event handler for when the value of the select changes.
-
-##### Parameters
-
-##### args
-
-##### value
-
-`string`
-
-The new value of the select.
+A function to call when panel's close button is clicked.
 
 ##### Returns
 
 `void`
 
-#### value?
+#### type?
 
-> `optional` **value**: `string`
+> `optional` **type**: `"Panel"`
 
-#### search?
+#### footer?
 
-> `optional` **search**: `boolean`
+> `optional` **footer**: [`UIPanelElementsCreate`](client.md#uipanelelementscreate)\[]
 
-#### placeholder?
-
-> `optional` **placeholder**: `string`
+The elements to add to the panel footer.
 
 #### onCreate()?
 
@@ -10729,15 +11311,478 @@ A function to call when the element is destroyed.
 
 > `optional` **id**: `string`
 
+The ID of the element.
+
+##### Remarks
+
+If not provided, the element will be assigned a random ID, but it is recommended to provide it
+to perform further updates on the element.
+
+If provided, it must be unique within the UI.
+
+##### Default Value
+
+`undefined`
+
+## UISelectElement
+
+Represents a select element in a panel.
+
+### Remarks
+
+`options` property is required.
+`label` property is displayed above the select and used for screen readers.
+`value` property is optional, for empty value use `undefined`.
+`placeholder` property is displayed in the select when no value is selected.
+`search` property is used to enable searching through the options.
+`onChange` property is used to handle the value change event.
+
+### Examples
+
+### empty select
+
+```typescript
+{
+  type: "Select",
+  options: [{ label: "Option 1", value: "option1" }, { label: "Option 2", value: "option2" }],
+  value: undefined,
+  placeholder: "Select an option",
+  onChange: (args) => console.log(args.value),
+}
+```
+
+### with search
+
+```typescript
+{
+  type: "Select",
+  options: [{ label: "Option 1", value: "option1" }, { label: "Option 2", value: "option2" }],
+  value: "option1",
+  placeholder: "Select an option",
+  search: true,
+  onChange: (args) => console.log(args.value),
+}
+```
+
+### Properties
+
+#### type
+
+> **type**: `"Select"`
+
+#### options
+
+> **options**: `object`\[]
+
+The options to display in the select.
+
+##### label
+
+> **label**: `string`
+
+##### value
+
+> **value**: `string`
+
+#### onChange()
+
+> **onChange**: (`args`) => `void`
+
+The function to call when the value of the select changes.
+
+##### Parameters
+
+##### args
+
+##### value
+
+`string`
+
+##### Returns
+
+`void`
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### value?
+
+> `optional` **value**: `string`
+
+The value of the select.
+
+#### placeholder?
+
+> `optional` **placeholder**: `string`
+
+The placeholder text to display in the select.
+
+#### search?
+
+> `optional` **search**: `boolean`
+
+Whether the select should allow searching through the options.
+
+##### Default Value
+
+`false`
+
+#### onCreate()?
+
+> `optional` **onCreate**: () => `void`
+
+A function to call when the element is created.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: () => `void`
+
+A function to call when the element is destroyed.
+
+##### Returns
+
+`void`
+
 #### label?
 
 > `optional` **label**: `string`
 
 Label text to display above the element and used for screen readers.
 
-## UITextElementCreate
+## UISelectElementCreate
+
+The parameters for creating a select element.
+
+See [UISelectElement](client.md#uiselectelement) for more details.
+
+### Remarks
+
+`id` is optional but recommended if you want to be able to perform updates.
+
+### Properties
+
+#### type
+
+> **type**: `"Select"`
+
+#### options
+
+> **options**: `object`\[]
+
+The options to display in the select.
+
+##### label
+
+> **label**: `string`
+
+##### value
+
+> **value**: `string`
+
+#### onChange()
+
+> **onChange**: (`args`) => `void`
+
+The function to call when the value of the select changes.
+
+##### Parameters
+
+##### args
+
+##### value
+
+`string`
+
+##### Returns
+
+`void`
+
+#### value?
+
+> `optional` **value**: `string`
+
+The value of the select.
+
+#### placeholder?
+
+> `optional` **placeholder**: `string`
+
+The placeholder text to display in the select.
+
+#### search?
+
+> `optional` **search**: `boolean`
+
+Whether the select should allow searching through the options.
+
+##### Default Value
+
+`false`
+
+#### onCreate()?
+
+> `optional` **onCreate**: () => `void`
+
+A function to call when the element is created.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: () => `void`
+
+A function to call when the element is destroyed.
+
+##### Returns
+
+`void`
+
+#### id?
+
+> `optional` **id**: `string`
+
+The ID of the element.
+
+##### Remarks
+
+If not provided, the element will be assigned a random ID, but it is recommended to provide it
+to perform further updates on the element.
+
+If provided, it must be unique within the UI.
+
+##### Default Value
+
+`undefined`
+
+#### label?
+
+> `optional` **label**: `string`
+
+Label text to display above the element and used for screen readers.
+
+## UISelectElementUpdate
+
+The parameters for updating a select element.
+
+See [UISelectElement](client.md#uiselectelement) for more details.
+
+### Remarks
+
+`id` and `type` are required to identify the element to update.
+
+### Properties
+
+#### type
+
+> **type**: `"Select"`
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### options?
+
+> `optional` **options**: `object`\[]
+
+The options to display in the select.
+
+##### label
+
+> **label**: `string`
+
+##### value
+
+> **value**: `string`
+
+#### value?
+
+> `optional` **value**: `string`
+
+The value of the select.
+
+#### placeholder?
+
+> `optional` **placeholder**: `string`
+
+The placeholder text to display in the select.
+
+#### search?
+
+> `optional` **search**: `boolean`
+
+Whether the select should allow searching through the options.
+
+##### Default Value
+
+`false`
+
+#### onChange()?
+
+> `optional` **onChange**: (`args`) => `void`
+
+The function to call when the value of the select changes.
+
+##### Parameters
+
+##### args
+
+##### value
+
+`string`
+
+##### Returns
+
+`void`
+
+#### onCreate()?
+
+> `optional` **onCreate**: () => `void`
+
+A function to call when the element is created.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: () => `void`
+
+A function to call when the element is destroyed.
+
+##### Returns
+
+`void`
+
+#### label?
+
+> `optional` **label**: `string`
+
+Label text to display above the element and used for screen readers.
+
+## UITextElement
 
 Represents a text element in a panel.
+Markdown is supported.
+
+### Examples
+
+### simple
+
+```typescript
+{
+  type: "Text",
+  content: "Hello, world!",
+}
+```
+
+### with links
+
+```typescript
+{
+  type: "Text",
+  content: "Fill the form https://www.google.com.",
+}
+```
+
+### markdown
+
+```typescript
+{
+  type: "Text",
+  content: "**Hello**, _world_!",
+}
+```
+
+### complex markdown
+
+Complex markdown syntax is supported like tables, images, quotes, etc.
+
+```typescript
+{
+  type: "Text",
+  content: `
+
+# Heading
+
+This is a paragraph.
+
+## Subheading
+
+This is a paragraph.
+
+| Name | Age |
+| ---- | --- |
+| John | 25 |
+| Jane | 30 |
+
+![Image](https://via.placeholder.com/150)
+
+> This is a quote.
+
+[Link](https://www.google.com)
+`,
+}
+```
+
+### Properties
+
+#### type
+
+> **type**: `"Text"`
+
+#### content
+
+> **content**: `string`
+
+The text to display in the element.
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### onCreate()?
+
+> `optional` **onCreate**: () => `void`
+
+A function to call when the element is created.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: () => `void`
+
+A function to call when the element is destroyed.
+
+##### Returns
+
+`void`
+
+## UITextElementCreate
+
+The parameters for creating a text element.
+
+See [UITextElement](client.md#uitextelement) for more details.
+
+### Remarks
+
+`id` is optional but recommended if you want to be able to perform updates.
 
 ### Properties
 
@@ -10775,9 +11820,214 @@ A function to call when the element is destroyed.
 
 > `optional` **id**: `string`
 
+The ID of the element.
+
+##### Remarks
+
+If not provided, the element will be assigned a random ID, but it is recommended to provide it
+to perform further updates on the element.
+
+If provided, it must be unique within the UI.
+
+##### Default Value
+
+`undefined`
+
+## UITextElementUpdate
+
+The parameters for updating a text element.
+
+See [UITextElement](client.md#uitextelement) for more details.
+
+### Remarks
+
+`id` and `type` are required to identify the element to update.
+
+### Properties
+
+#### type
+
+> **type**: `"Text"`
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### content?
+
+> `optional` **content**: `string`
+
+The text to display in the element.
+
+#### onCreate()?
+
+> `optional` **onCreate**: () => `void`
+
+A function to call when the element is created.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: () => `void`
+
+A function to call when the element is destroyed.
+
+##### Returns
+
+`void`
+
+## UITextInputElement
+
+Represents a text input element in a panel.
+
+### Remarks
+
+`value` property is required, for empty value use `""`.
+`label` property is displayed above the input and used for screen readers.
+
+### Examples
+
+### empty input
+
+```typescript
+{
+  type: "TextInput",
+  value: "",
+  onChange: (args) => console.log(args.value),
+  placeholder: "Enter your name",
+}
+```
+
+### with label
+
+```typescript
+{
+  type: "TextInput",
+  label: "Name",
+  value: "Hello",
+  onChange: (args) => console.log(args.value),
+  placeholder: "Enter your name",
+}
+```
+
+### Properties
+
+#### type
+
+> **type**: `"TextInput"`
+
+#### value
+
+> **value**: `string`
+
+The value of the input. Use `""` for empty values.
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### placeholder?
+
+> `optional` **placeholder**: `string`
+
+The placeholder text to display in the input.
+
+#### onChange()?
+
+> `optional` **onChange**: (`args`) => `void`
+
+The function to call when the value of the input changes.
+
+##### Parameters
+
+##### args
+
+##### value
+
+`string`
+
+##### Returns
+
+`void`
+
+#### onBlur()?
+
+> `optional` **onBlur**: (`args`) => `void`
+
+The function to call when the input is blurred.
+
+##### Parameters
+
+##### args
+
+##### value
+
+`string`
+
+##### Returns
+
+`void`
+
+#### onFocus()?
+
+> `optional` **onFocus**: (`args`) => `void`
+
+The function to call when the input is focused.
+
+##### Parameters
+
+##### args
+
+##### value
+
+`string`
+
+##### Returns
+
+`void`
+
+#### onCreate()?
+
+> `optional` **onCreate**: () => `void`
+
+A function to call when the element is created.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: () => `void`
+
+A function to call when the element is destroyed.
+
+##### Returns
+
+`void`
+
+#### label?
+
+> `optional` **label**: `string`
+
+Label text to display above the element and used for screen readers.
+
 ## UITextInputElementCreate
 
-Represents a text input element.
+The parameters for creating a text input element.
+
+See [UITextInputElement](client.md#uitextinputelement) for more details.
+
+### Remarks
+
+`id` is optional but recommended if you want to be able to perform updates.
 
 ### Properties
 
@@ -10801,7 +12051,7 @@ The placeholder text to display in the input.
 
 > `optional` **onChange**: (`args`) => `void`
 
-Event handler for when the value of the input changes.
+The function to call when the value of the input changes.
 
 ##### Parameters
 
@@ -10810,8 +12060,6 @@ Event handler for when the value of the input changes.
 ##### value
 
 `string`
-
-The new value of the input.
 
 ##### Returns
 
@@ -10821,7 +12069,7 @@ The new value of the input.
 
 > `optional` **onBlur**: (`args`) => `void`
 
-Event handler for when the input loses focus.
+The function to call when the input is blurred.
 
 ##### Parameters
 
@@ -10830,8 +12078,6 @@ Event handler for when the input loses focus.
 ##### value
 
 `string`
-
-The input value when the input loses focus.
 
 ##### Returns
 
@@ -10841,7 +12087,7 @@ The input value when the input loses focus.
 
 > `optional` **onFocus**: (`args`) => `void`
 
-Event handler for when the input gains focus.
+The function to call when the input is focused.
 
 ##### Parameters
 
@@ -10850,8 +12096,6 @@ Event handler for when the input gains focus.
 ##### value
 
 `string`
-
-The input value when the input gains focus.
 
 ##### Returns
 
@@ -10880,6 +12124,133 @@ A function to call when the element is destroyed.
 #### id?
 
 > `optional` **id**: `string`
+
+The ID of the element.
+
+##### Remarks
+
+If not provided, the element will be assigned a random ID, but it is recommended to provide it
+to perform further updates on the element.
+
+If provided, it must be unique within the UI.
+
+##### Default Value
+
+`undefined`
+
+#### label?
+
+> `optional` **label**: `string`
+
+Label text to display above the element and used for screen readers.
+
+## UITextInputElementUpdate
+
+The parameters for updating a text input element.
+
+See [UITextInputElement](client.md#uitextinputelement) for more details.
+
+### Remarks
+
+`id` and `type` are required to identify the element to update.
+
+### Properties
+
+#### type
+
+> **type**: `"TextInput"`
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### value?
+
+> `optional` **value**: `string`
+
+The value of the input. Use `""` for empty values.
+
+#### placeholder?
+
+> `optional` **placeholder**: `string`
+
+The placeholder text to display in the input.
+
+#### onChange()?
+
+> `optional` **onChange**: (`args`) => `void`
+
+The function to call when the value of the input changes.
+
+##### Parameters
+
+##### args
+
+##### value
+
+`string`
+
+##### Returns
+
+`void`
+
+#### onBlur()?
+
+> `optional` **onBlur**: (`args`) => `void`
+
+The function to call when the input is blurred.
+
+##### Parameters
+
+##### args
+
+##### value
+
+`string`
+
+##### Returns
+
+`void`
+
+#### onFocus()?
+
+> `optional` **onFocus**: (`args`) => `void`
+
+The function to call when the input is focused.
+
+##### Parameters
+
+##### args
+
+##### value
+
+`string`
+
+##### Returns
+
+`void`
+
+#### onCreate()?
+
+> `optional` **onCreate**: () => `void`
+
+A function to call when the element is created.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: () => `void`
+
+A function to call when the element is destroyed.
+
+##### Returns
+
+`void`
 
 #### label?
 
@@ -11404,17 +12775,6 @@ The result of listening for changes to the settings of each tool.
 
 > **PlaceSymbol**: `"dot"` | `"square"` | `"diamond"` | `"triangle"` | `"x"` | `"plus"` | `"circle-line"` | `"circle-slash"` | `"star"` | `"heart"` | `"hexagon"` | `"octagon"` | `"pedestrian"` | `"bicycle"` | `"wheelchair"` | `"airport"` | `"car"` | `"bus"` | `"train"` | `"truck"` | `"ferry"` | `"sailboat"` | `"electric-service"` | `"gas-service"` | `"blood-clinic"` | `"badge"` | `"traffic-light"` | `"traffic-cone"` | `"road-sign-caution"` | `"person"` | `"restroom"` | `"house"` | `"work"` | `"letter"` | `"hotel"` | `"factory"` | `"hospital"` | `"religious-facility"` | `"school"` | `"government"` | `"university"` | `"bank"` | `"landmark"` | `"museum"` | `"clothing"` | `"shopping"` | `"store"` | `"bar"` | `"pub"` | `"cafe"` | `"food"` | `"park"` | `"amusement-park"` | `"camping-tent"` | `"cabin"` | `"picnic"` | `"water-refill"` | `"trailhead"` | `"guidepost"` | `"viewpoint"` | `"camera"` | `"us-football"` | `"football"` | `"tennis"` | `"binoculars"` | `"swimming"` | `"zap"` | `"battery-full"` | `"battery-half"` | `"battery-low"` | `"boom"` | `"radar"` | `"wind-turbine"` | `"solar-panel"` | `"antenna"` | `"telephone-pole"` | `"oil-well"` | `"oil-barrel"` | `"railroad-track"` | `"bridge"` | `"lighthouse"` | `"lock-closed"` | `"lock-open"` | `"wifi"` | `"trash"` | `"recycle"` | `"tree"` | `"flower"` | `"leaf"` | `"fire"` | `"mountain"` | `"snowy-mountain"` | `"volcano"` | `"island"` | `"wave"` | `"hot-springs"` | `"water"` | `"lake"` | `"ocean"` | `"animal"` | `"bird"` | `"duck"` | `"dog"` | `"fish"` | `"beach"` | `"wetland"` | `"sun"` | `"moon"` | `"cloud"` | `"partial-sun"` | `"rain"` | `"lightning"` | `"snowflake"` | `"wind"` | `"snow"` | `"fog"` | `"sleet"` | `"hurricane"` | `"warning"` | `"parking"` | `"info"` | `"circle-exclamation"` | `"circle-triangle"` | `"circle-x"` | `"circle-plus"` | `` `:${string}:` `` & `object`
 
-## UIPanelElementsCreate
-
-> **UIPanelElementsCreate**: [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UIButtonGroupElementCreate`](client.md#uibuttongroupelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate)
-
-This is a union of all the possible elements that can be added to a panel.
-
-### Remarks
-
-For the sake of convenience, `id` is optional but recommended if you want to be able to
-perform updates.
-
 ## PlacementForUIElement
 
 > **PlacementForUIElement**: \{ `after`: `string`; } | \{ `before`: `string`; } | \{ `at`: `"start"` | `"end"`; }
@@ -11423,6 +12783,30 @@ Used in [UiController.createPanel](client.md#createpanel) to specify the positio
 and in [UiController.createPanelElements](client.md#createpanelelements) to specify the position of an element in a panel.
 
 In both cases, the default value is `{ at: "end" }`.
+
+## UIPanelElements
+
+> **UIPanelElements**: [`UIButtonElement`](client.md#uibuttonelement) | [`UITextElement`](client.md#uitextelement) | [`UIButtonGroupElement`](client.md#uibuttongroupelement) | [`UIDividerElement`](client.md#uidividerelement) | [`UITextInputElement`](client.md#uitextinputelement) | [`UISelectElement`](client.md#uiselectelement)
+
+## UIPanelElementsCreate
+
+> **UIPanelElementsCreate**: [`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIButtonGroupElementCreate`](client.md#uibuttongroupelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate)
+
+This is a union of all the possible elements that can be created inside panel's body or footer.
+
+### Remarks
+
+For the sake of convenience, `id` is optional but recommended if you want to be able to perform updates.
+
+## UIPanelElementsUpdate
+
+> **UIPanelElementsUpdate**: [`UIButtonElementUpdate`](client.md#uibuttonelementupdate) | [`UITextElementUpdate`](client.md#uitextelementupdate) | [`UIButtonGroupElementUpdate`](client.md#uibuttongroupelementupdate) | [`UITextInputElementUpdate`](client.md#uitextinputelementupdate) | [`UISelectElementUpdate`](client.md#uiselectelementupdate) | [`UIFlexibleSpaceElementUpdate`](client.md#uiflexiblespaceelementupdate) | [`UIDividerElementUpdate`](client.md#uidividerelementupdate)
+
+This is a union of all the possible elements that can be updated inside panel's body or footer (excluding Divider and FlexibleSpace elements because they cannot be updated).
+
+### Remarks
+
+`id` and `type` are required to identify the element to update.
 
 ## Felt
 

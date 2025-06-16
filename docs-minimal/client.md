@@ -7621,30 +7621,22 @@ const unsubscribe = felt.onToolSettingsChange({
 unsubscribe();
 ```
 
-#### addPanel()
+#### createActionTrigger()
 
-> **addPanel**(`args`): `void`
+> **createActionTrigger**(`args`): `void`
 
-Adds a panel.
-Panels are rendered on the right side of the map.
+Creates an action trigger.
+Action triggers are rendered on map's left sidebar as a button,
+similar to other map extensions like measure and spatial filter.
 
-By default, the panel will be added to the end of the stack but you can
-specify a placement to add it at a specific position in the stack.
-
-When adding a panel, its id is optional as well as its elements' ids.
-It is recommended to provide an id for the panel and its elements to make
-it easier to update or delete them later.
-
-Panels have two sections:
-
-* `items` - Body of the panel, scrollable.
-* `footer` - It sticks to the bottom of the panel, useful to add submit buttons.
+The goal of action triggers is to allow users to perform actions on the map
+by clicking on a button.
 
 ##### Parameters
 
 ##### args
 
-[`AddPanelInput`](client.md#addpanelinput)
+[`CreateActionTriggerParams`](client.md#createactiontriggerparams)
 
 The arguments for the method.
 
@@ -7655,11 +7647,121 @@ The arguments for the method.
 ##### Example
 
 ```typescript
-await felt.addPanel({
+await felt.createActionTrigger({
+  actionTrigger: {
+    id: "layerTurnPurple", // not required but useful for further updates
+    label: "Turn layer purple",
+    onTrigger: async () => {
+      await felt.setLayerStyle("layer-1", { ..., paint: { color: "purple" } });
+    },
+    disabled: false, // optional, defaults to false
+  },
+  placement: { at: "start" }, // optional, defaults to { at: "end" }
+});
+```
+
+#### updateActionTrigger()
+
+> **updateActionTrigger**(`args`): `void`
+
+Updates an action trigger.
+
+Action trigger to update is identified by the `id` property.
+
+##### Parameters
+
+##### args
+
+[`UpdateActionTriggerParams`](client.md#updateactiontriggerparams)
+
+The action trigger to update.
+
+##### Returns
+
+`void`
+
+##### Remarks
+
+Properties provided will override the existing properties.
+
+##### Example
+
+```typescript
+await felt.updateActionTrigger({
+  id: "layerTurnPurple",
+  label: "Turn layer points purple", // only label changes
+});
+```
+
+#### deleteActionTrigger()
+
+> **deleteActionTrigger**(`id`): `void`
+
+Deletes an action trigger.
+
+##### Parameters
+
+##### id
+
+`string`
+
+The id of the action trigger to delete.
+
+##### Returns
+
+`void`
+
+##### Example
+
+```typescript
+await felt.deleteActionTrigger("layerTurnPurple");
+```
+
+#### createPanel()
+
+> **createPanel**(`args`): `void`
+
+Creates a panel on map's right sidebar.
+
+Panels are useful to extend Felt UI for your own use cases (e.g. a form, a settings panel, etc.)
+by using Felt UI elements (e.g. Text, Button, etc.). This way the user experience is consistent
+with the rest of Felt.
+
+Panels have two sections:
+
+* `body` - Body of the panel, scrollable.
+* `footer` - It sticks to the bottom of the panel, useful to add submit buttons.
+
+By default, the panel will be added to the end of the stack but you can
+specify a placement to add it at a specific position in the stack.
+
+Once created, you can add elements to the panel by using the [createPanelElements](client.md#createpanelelements) method or
+perform partial updates of elements by using the [updatePanelElements](client.md#updatepanelelements) method.
+
+When adding a panel, its id is optional as well as its elements' ids.
+It is recommended to provide an id for the panel and its elements to make
+it easier to update or delete them later.
+
+##### Parameters
+
+##### args
+
+[`CreatePanelParams`](client.md#createpanelparams)
+
+The arguments for the method.
+
+##### Returns
+
+`void`
+
+##### Example
+
+```typescript
+await felt.createPanel({
    panel: {
       id: "panel-1", // not required but useful for further updates
       title: "My Panel",
-      items: [
+      body: [
          {
             type: "Text",
             content: "Hello, world!",
@@ -7696,7 +7798,7 @@ Panel to update is identified by the `id` property.
 
 ##### panel
 
-[`UpdatePanelElementInput`](client.md#updatepanelelementinput)
+[`UpdatePanelParams`](client.md#updatepanelparams)
 
 The panel to update.
 
@@ -7744,17 +7846,17 @@ The id of the panel to delete.
 await felt.deletePanel("panel-1");
 ```
 
-#### addPanelElements()
+#### createPanelElements()
 
-> **addPanelElements**(`args`): `void`
+> **createPanelElements**(`args`): `void`
 
-Adds elements to a panel.
+Creates elements in a panel.
 
 ##### Parameters
 
 ##### args
 
-[`AddPanelElementsInput`](client.md#addpanelelementsinput)
+[`CreatePanelElementsParams`](client.md#createpanelelementsparams)
 
 The arguments for the method.
 
@@ -7765,12 +7867,12 @@ The arguments for the method.
 ##### Example
 
 ```typescript
-await felt.addPanelElements({
+await felt.createPanelElements({
   panelId: "panel-1",
   elements: [
     {
       element: { type: "Text", content: "Hello, world!" },
-      on: "items",
+      container: "body",
       placement: { at: "start" },
     },
   ],
@@ -7787,7 +7889,7 @@ Updates an element in a panel.
 
 ##### args
 
-[`UpdatePanelElementsInput`](client.md#updatepanelelementsinput)
+[`UpdatePanelElementsParams`](client.md#updatepanelelementsparams)
 
 The arguments for the method.
 
@@ -7816,7 +7918,7 @@ Deletes elements from a panel.
 
 ##### args
 
-[`DeletePanelElements`](client.md#deletepanelelements-1)
+[`DeletePanelElementsParams`](client.md#deletepanelelementsparams)
 
 The arguments for the method.
 
@@ -9839,15 +9941,81 @@ The style of the text, either `italic`, `light`, `regular` or `caps`.
 "regular"
 ```
 
-## AddPanelInput
+## CreateActionTriggerParams
 
-The input for adding a panel to the map by using [UiController.addPanel](client.md#addpanel).
+### Properties
+
+#### actionTrigger
+
+> **actionTrigger**: [`UIActionTriggerCreate`](client.md#uiactiontriggercreate)
+
+#### placement?
+
+> `optional` **placement**: \{ `after`: `string`; } | \{ `before`: `string`; } | \{ `at`: `"start"` | `"end"`; }
+
+## UpdateActionTriggerParams
+
+### Properties
+
+#### id
+
+> **id**: `string`
+
+#### label?
+
+> `optional` **label**: `string`
+
+The label of the action trigger.
+
+#### disabled?
+
+> `optional` **disabled**: `boolean`
+
+Whether the action trigger is disabled or not.
+
+#### type?
+
+> `optional` **type**: `undefined`
+
+#### onTrigger()?
+
+> `optional` **onTrigger**: () => `void`
+
+The function to call when the action trigger is triggered.
+
+##### Returns
+
+`void`
+
+#### onCreate()?
+
+> `optional` **onCreate**: () => `void`
+
+A function to call when the element is created.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: () => `void`
+
+A function to call when the element is destroyed.
+
+##### Returns
+
+`void`
+
+## CreatePanelParams
+
+The parameters for adding a panel to the map by using [UiController.createPanel](client.md#createpanel).
 
 ### Properties
 
 #### panel
 
-> **panel**: [`UIPanelInput`](client.md#uipanelinput)
+> **panel**: [`UIPanelCreate`](client.md#uipanelcreate)
 
 The panel to add.
 
@@ -9861,7 +10029,7 @@ The placement of the panel on the right sidebar stack.
 
 `{ at: "end" }`
 
-## UpdatePanelElementInput
+## UpdatePanelParams
 
 ### Properties
 
@@ -9919,15 +10087,15 @@ The placement of the panel on the right sidebar stack.
 
 `void`
 
-#### items?
+#### body?
 
-> `optional` **items**: [`UIPanelElementsInput`](client.md#uipanelelementsinput)\[]
+> `optional` **body**: [`UIPanelElementsCreate`](client.md#uipanelelementscreate)\[]
 
 #### footer?
 
-> `optional` **footer**: [`UIPanelElementsInput`](client.md#uipanelelementsinput)\[]
+> `optional` **footer**: [`UIPanelElementsCreate`](client.md#uipanelelementscreate)\[]
 
-## AddPanelElementsInput
+## CreatePanelElementsParams
 
 ### Properties
 
@@ -9941,31 +10109,31 @@ The placement of the panel on the right sidebar stack.
 
 ##### element
 
-> **element**: [`UIFlexibleSpaceElementInput`](client.md#uiflexiblespaceelementinput) | [`UIPanelElementsInput`](client.md#uipanelelementsinput)
+> **element**: [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIPanelElementsCreate`](client.md#uipanelelementscreate)
 
-##### on?
+##### container?
 
-> `optional` **on**: `"footer"` | `"items"` | \{ `id`: `string`; }
+> `optional` **container**: `"footer"` | `"body"` | \{ `id`: `string`; }
 
 The section of the panel to add the element to.
-It can be either one of the top-level sections of the panel (`"items"` or `"footer"`)
+It can be either one of the top-level sections of the panel (`"body"` or `"footer"`)
 or a specific container (like `ButtonGroup`) in the panel (`{ id: string }`).
 
 ##### Default Value
 
-`"items"`
+`"body"`
 
 ##### placement?
 
 > `optional` **placement**: \{ `after`: `string`; } | \{ `before`: `string`; } | \{ `at`: `"start"` | `"end"`; }
 
-The placement of the element in the target container (based on the `on` property).
+The placement of the element in the target container (based on the `container` property).
 
 ##### Default Value
 
 `{ at: "end" }`
 
-## UpdatePanelElementsInput
+## UpdatePanelElementsParams
 
 ### Properties
 
@@ -9977,11 +10145,11 @@ The ID of the panel to update.
 
 #### elements
 
-> **elements**: `Record`\<`string`, [`UIFlexibleSpaceElementInput`](client.md#uiflexiblespaceelementinput) | [`UIPanelElementsInput`](client.md#uipanelelementsinput)>
+> **elements**: `Record`\<`string`, [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIPanelElementsCreate`](client.md#uipanelelementscreate)>
 
 Dictionary of element IDs to the element to update.
 
-## DeletePanelElements
+## DeletePanelElementsParams
 
 ### Properties
 
@@ -10140,7 +10308,64 @@ in a new tab or window.
 Set this to `false` to prevent clicking on an image element from opening the image
 in a lightbox.
 
-## UIButtonElementInput
+## UIActionTriggerCreate
+
+Represents an action trigger.
+It can be added to the map by using the [UiController.createActionTrigger](client.md#createactiontrigger) method.
+
+### Properties
+
+#### label
+
+> **label**: `string`
+
+The label of the action trigger.
+
+#### onTrigger()
+
+> **onTrigger**: () => `void`
+
+The function to call when the action trigger is triggered.
+
+##### Returns
+
+`void`
+
+#### disabled?
+
+> `optional` **disabled**: `boolean`
+
+Whether the action trigger is disabled or not.
+
+#### type?
+
+> `optional` **type**: `undefined`
+
+#### onCreate()?
+
+> `optional` **onCreate**: () => `void`
+
+A function to call when the element is created.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: () => `void`
+
+A function to call when the element is destroyed.
+
+##### Returns
+
+`void`
+
+#### id?
+
+> `optional` **id**: `string`
+
+## UIButtonElementCreate
 
 Represents a button element in a panel.
 
@@ -10215,7 +10440,7 @@ A function to call when the element is destroyed.
 
 > `optional` **id**: `string`
 
-## UIButtonGroupElementInput
+## UIButtonGroupElementCreate
 
 Represents a button group element in a panel.
 
@@ -10231,7 +10456,7 @@ This element is used to group buttons and text elements together.
 
 #### items
 
-> **items**: ([`UIButtonElementInput`](client.md#uibuttonelementinput) | [`UITextElementInput`](client.md#uitextelementinput) | [`UIFlexibleSpaceElementInput`](client.md#uiflexiblespaceelementinput))\[]
+> **items**: ([`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate))\[]
 
 #### align?
 
@@ -10267,7 +10492,7 @@ A function to call when the element is destroyed.
 
 > `optional` **id**: `string`
 
-## UIDividerElementInput
+## UIDividerElementCreate
 
 Represents a divider element in a panel.
 
@@ -10305,9 +10530,9 @@ A function to call when the element is destroyed.
 
 > `optional` **id**: `string`
 
-## UIFlexibleSpaceElementInput
+## UIFlexibleSpaceElementCreate
 
-Only accepted for [UIButtonGroupElementInput](client.md#uibuttongroupelementinput) elements.
+Only accepted for [UIButtonGroupElementCreate](client.md#uibuttongroupelementcreate) elements.
 
 ### Properties
 
@@ -10339,9 +10564,9 @@ A function to call when the element is destroyed.
 
 > `optional` **id**: `string`
 
-## UIPanelInput
+## UIPanelCreate
 
-The input panel to add to the map by using the [UiController.addPanel](client.md#addpanel) method.
+The panel to add to the map by using the [UiController.createPanel](client.md#createpanel) method.
 
 ### Remarks
 
@@ -10350,9 +10575,9 @@ but it is recommended to provide them if you want to be able to perform updates.
 
 ### Properties
 
-#### items
+#### body
 
-> **items**: [`UIPanelElementsInput`](client.md#uipanelelementsinput)\[]
+> **body**: [`UIPanelElementsCreate`](client.md#uipanelelementscreate)\[]
 
 The elements to add to the panel body.
 
@@ -10368,7 +10593,7 @@ The title to display in the panel header.
 
 #### footer?
 
-> `optional` **footer**: [`UIPanelElementsInput`](client.md#uipanelelementsinput)\[]
+> `optional` **footer**: [`UIPanelElementsCreate`](client.md#uipanelelementscreate)\[]
 
 The elements to add to the panel footer.
 
@@ -10422,7 +10647,7 @@ This function doesn't receive any parameters
 
 > `optional` **id**: `string`
 
-## UISelectElementInput
+## UISelectElementCreate
 
 Represents a selector element in a panel.
 
@@ -10510,7 +10735,7 @@ A function to call when the element is destroyed.
 
 Label text to display above the element and used for screen readers.
 
-## UITextElementInput
+## UITextElementCreate
 
 Represents a text element in a panel.
 
@@ -10550,7 +10775,7 @@ A function to call when the element is destroyed.
 
 > `optional` **id**: `string`
 
-## UITextInputElementInput
+## UITextInputElementCreate
 
 Represents a text input element.
 
@@ -11179,9 +11404,9 @@ The result of listening for changes to the settings of each tool.
 
 > **PlaceSymbol**: `"dot"` | `"square"` | `"diamond"` | `"triangle"` | `"x"` | `"plus"` | `"circle-line"` | `"circle-slash"` | `"star"` | `"heart"` | `"hexagon"` | `"octagon"` | `"pedestrian"` | `"bicycle"` | `"wheelchair"` | `"airport"` | `"car"` | `"bus"` | `"train"` | `"truck"` | `"ferry"` | `"sailboat"` | `"electric-service"` | `"gas-service"` | `"blood-clinic"` | `"badge"` | `"traffic-light"` | `"traffic-cone"` | `"road-sign-caution"` | `"person"` | `"restroom"` | `"house"` | `"work"` | `"letter"` | `"hotel"` | `"factory"` | `"hospital"` | `"religious-facility"` | `"school"` | `"government"` | `"university"` | `"bank"` | `"landmark"` | `"museum"` | `"clothing"` | `"shopping"` | `"store"` | `"bar"` | `"pub"` | `"cafe"` | `"food"` | `"park"` | `"amusement-park"` | `"camping-tent"` | `"cabin"` | `"picnic"` | `"water-refill"` | `"trailhead"` | `"guidepost"` | `"viewpoint"` | `"camera"` | `"us-football"` | `"football"` | `"tennis"` | `"binoculars"` | `"swimming"` | `"zap"` | `"battery-full"` | `"battery-half"` | `"battery-low"` | `"boom"` | `"radar"` | `"wind-turbine"` | `"solar-panel"` | `"antenna"` | `"telephone-pole"` | `"oil-well"` | `"oil-barrel"` | `"railroad-track"` | `"bridge"` | `"lighthouse"` | `"lock-closed"` | `"lock-open"` | `"wifi"` | `"trash"` | `"recycle"` | `"tree"` | `"flower"` | `"leaf"` | `"fire"` | `"mountain"` | `"snowy-mountain"` | `"volcano"` | `"island"` | `"wave"` | `"hot-springs"` | `"water"` | `"lake"` | `"ocean"` | `"animal"` | `"bird"` | `"duck"` | `"dog"` | `"fish"` | `"beach"` | `"wetland"` | `"sun"` | `"moon"` | `"cloud"` | `"partial-sun"` | `"rain"` | `"lightning"` | `"snowflake"` | `"wind"` | `"snow"` | `"fog"` | `"sleet"` | `"hurricane"` | `"warning"` | `"parking"` | `"info"` | `"circle-exclamation"` | `"circle-triangle"` | `"circle-x"` | `"circle-plus"` | `` `:${string}:` `` & `object`
 
-## UIPanelElementsInput
+## UIPanelElementsCreate
 
-> **UIPanelElementsInput**: [`UITextElementInput`](client.md#uitextelementinput) | [`UIButtonElementInput`](client.md#uibuttonelementinput) | [`UITextInputElementInput`](client.md#uitextinputelementinput) | [`UIDividerElementInput`](client.md#uidividerelementinput) | [`UIButtonGroupElementInput`](client.md#uibuttongroupelementinput) | [`UISelectElementInput`](client.md#uiselectelementinput)
+> **UIPanelElementsCreate**: [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UIButtonGroupElementCreate`](client.md#uibuttongroupelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate)
 
 This is a union of all the possible elements that can be added to a panel.
 
@@ -11194,8 +11419,8 @@ perform updates.
 
 > **PlacementForUIElement**: \{ `after`: `string`; } | \{ `before`: `string`; } | \{ `at`: `"start"` | `"end"`; }
 
-Used in [UiController.addPanel](client.md#addpanel) to specify the position of a panel in the stack
-and in [UiController.addPanelElements](client.md#addpanelelements) to specify the position of an element in a panel.
+Used in [UiController.createPanel](client.md#createpanel) to specify the position of a panel in the stack
+and in [UiController.createPanelElements](client.md#createpanelelements) to specify the position of an element in a panel.
 
 In both cases, the default value is `{ at: "end" }`.
 

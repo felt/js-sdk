@@ -38,11 +38,12 @@ export function listenerMessageNoParams<TEventName extends string>(
 type FeltControllerFunctions = Omit<FeltController, "iframe">;
 export type Method<
   TRequest extends { type: keyof FeltControllerFunctions; params?: any },
+  TResponse = UnwrapPromise<
+    ReturnType<FeltControllerFunctions[TRequest["type"]]>
+  >,
 > = {
   request: TRequest;
-  response: UnwrapPromise<
-    ReturnType<FeltControllerFunctions[TRequest["type"]]>
-  >;
+  response: TResponse;
 };
 
 export type Listener<TOptions, TParams> = {

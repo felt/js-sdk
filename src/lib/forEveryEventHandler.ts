@@ -25,6 +25,15 @@ function forEveryKey<T extends object>(
     }
   }
 }
+
+function isCapitalLetter(str: string) {
+  return str[0]?.toUpperCase() === str[0];
+}
+
+function isEventKey(key: string) {
+  return key.startsWith("on") && isCapitalLetter(key.slice(2));
+}
+
 /**
  * Deeply inspects an object for event handlers and calls the provided function for each one.
  *
@@ -33,18 +42,15 @@ function forEveryKey<T extends object>(
  * @param obj - The object to iterate over.
  * @param fn - The function to call for each key-value pair.
  */
-
 export function forEveryEventHandler<T extends object>(
   obj: T,
-  fn: (key: string, value: Function, obj: object) => void,
+  fn: (key: string, value: unknown, obj: object) => void,
 ) {
   if (typeof obj !== "object") return;
   if (obj === null) return;
 
   forEveryKey(obj, (key, value, object) => {
-    if (typeof value !== "function") return;
-    if (!key.startsWith("on")) return;
-
+    if (!isEventKey(key)) return;
     fn(key, value, object);
   });
 }

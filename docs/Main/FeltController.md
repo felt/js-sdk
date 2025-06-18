@@ -1645,7 +1645,7 @@ await felt.deleteActionTrigger("layerTurnPurple");
 
 ## createPanel()
 
-> **createPanel**(`args`: [`CreatePanelParams`](../UI/CreatePanelParams.md)): `void`
+> **createPanel**(`args`: [`CreatePanelParams`](../UI/CreatePanelParams.md)): `Promise`\<[`UIPanel`](../UI/UIPanel.md)>
 
 Creates a panel on map's right sidebar.
 
@@ -1676,7 +1676,7 @@ it easier to update or delete them later.
 
 ### Returns
 
-`void`
+`Promise`\<[`UIPanel`](../UI/UIPanel.md)>
 
 ### Example
 
@@ -1714,7 +1714,7 @@ await felt.createPanel({
 
 ## updatePanel()
 
-> **updatePanel**(`panel`: [`UpdatePanelParams`](../UI/UpdatePanelParams.md)): `void`
+> **updatePanel**(`panel`: [`UpdatePanelParams`](../UI/UpdatePanelParams.md)): `Promise`\<[`UIPanel`](../UI/UIPanel.md)>
 
 Updates a panel.
 
@@ -1728,7 +1728,7 @@ Panel to update is identified by the `id` property.
 
 ### Returns
 
-`void`
+`Promise`\<[`UIPanel`](../UI/UIPanel.md)>
 
 ### Remarks
 
@@ -1774,7 +1774,7 @@ await felt.deletePanel("panel-1");
 
 ## createPanelElements()
 
-> **createPanelElements**(`args`: [`CreatePanelElementsParams`](../UI/CreatePanelElementsParams.md)): `void`
+> **createPanelElements**(`args`: [`CreatePanelElementsParams`](../UI/CreatePanelElementsParams.md)): `Promise`\<[`UIPanel`](../UI/UIPanel.md)>
 
 Creates elements in a panel.
 
@@ -1786,7 +1786,7 @@ Creates elements in a panel.
 
 ### Returns
 
-`void`
+`Promise`\<[`UIPanel`](../UI/UIPanel.md)>
 
 ### Example
 
@@ -1807,7 +1807,7 @@ await felt.createPanelElements({
 
 ## updatePanelElements()
 
-> **updatePanelElements**(`args`: [`UpdatePanelElementsParams`](../UI/UpdatePanelElementsParams.md)): `void`
+> **updatePanelElements**(`args`: [`UpdatePanelElementsParams`](../UI/UpdatePanelElementsParams.md)): `Promise`\<[`UIPanel`](../UI/UIPanel.md)>
 
 Updates an element in a panel.
 
@@ -1819,7 +1819,7 @@ Updates an element in a panel.
 
 ### Returns
 
-`void`
+`Promise`\<[`UIPanel`](../UI/UIPanel.md)>
 
 ### Example
 
@@ -1828,9 +1828,11 @@ await felt.updatePanelElements({
   panelId: "panel-1",
   elements: [
     {
-      id: "element-1",
-      type: "Text",
-      content: "Hello, world!",
+      element: {
+        id: "element-1",
+        type: "Text",
+        content: "Hello, world!",
+      },
     },
   ],
 });

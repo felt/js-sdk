@@ -11,6 +11,7 @@ import type {
   UpdatePanelElementsParams,
   UpdatePanelParams,
 } from "./types";
+import type { UIActionTriggerCreate } from "./uiElements/UIActionTrigger";
 import type { UIPanel } from "./uiElements/UIPanel";
 
 /**
@@ -49,11 +50,13 @@ export const uiController = (
 
   createActionTrigger: methodWithListeners<
     "createActionTrigger",
-    CreateActionTriggerParams
+    CreateActionTriggerParams,
+    UIActionTriggerCreate
   >(feltWindow, "createActionTrigger"),
   updateActionTrigger: methodWithListeners<
     "updateActionTrigger",
-    UpdateActionTriggerParams
+    UpdateActionTriggerParams,
+    UIActionTriggerCreate
   >(feltWindow, "updateActionTrigger"),
   deleteActionTrigger: method(feltWindow, "deleteActionTrigger"),
 });
@@ -99,7 +102,9 @@ export interface UiController {
    * });
    * ```
    */
-  createActionTrigger(args: CreateActionTriggerParams): void;
+  createActionTrigger(
+    args: CreateActionTriggerParams,
+  ): Promise<UIActionTriggerCreate>;
 
   /**
    * Updates an action trigger.
@@ -119,7 +124,9 @@ export interface UiController {
    * });
    * ```
    */
-  updateActionTrigger(args: UpdateActionTriggerParams): void;
+  updateActionTrigger(
+    args: UpdateActionTriggerParams,
+  ): Promise<UIActionTriggerCreate>;
 
   /**
    * Deletes an action trigger.

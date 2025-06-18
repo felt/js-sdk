@@ -13,7 +13,7 @@ the visibility of UI components like the data table.
 
 ## createActionTrigger()
 
-> **createActionTrigger**(`args`: [`CreateActionTriggerParams`](CreateActionTriggerParams.md)): `void`
+> **createActionTrigger**(`args`: [`CreateActionTriggerParams`](CreateActionTriggerParams.md)): `Promise`\<[`UIActionTriggerCreate`](UIActionTriggerCreate.md)>
 
 Creates an action trigger.
 Action triggers are rendered on map's left sidebar as a button,
@@ -30,7 +30,7 @@ by clicking on a button.
 
 ### Returns
 
-`void`
+`Promise`\<[`UIActionTriggerCreate`](UIActionTriggerCreate.md)>
 
 ### Example
 
@@ -52,7 +52,7 @@ await felt.createActionTrigger({
 
 ## updateActionTrigger()
 
-> **updateActionTrigger**(`args`: [`UpdateActionTriggerParams`](UpdateActionTriggerParams.md)): `void`
+> **updateActionTrigger**(`args`: [`UpdateActionTriggerParams`](UpdateActionTriggerParams.md)): `Promise`\<[`UIActionTriggerCreate`](UIActionTriggerCreate.md)>
 
 Updates an action trigger.
 
@@ -66,7 +66,7 @@ Action trigger to update is identified by the `id` property.
 
 ### Returns
 
-`void`
+`Promise`\<[`UIActionTriggerCreate`](UIActionTriggerCreate.md)>
 
 ### Remarks
 

@@ -2,7 +2,7 @@ import type { AllModules } from "~/modules/main/schema";
 import type { Listener } from "./builders";
 import { type TransportableError } from "./errors";
 import { forEveryEventHandler } from "./forEveryEventHandler";
-import type { PromiseOrNot, UnionToIntersection } from "./utils";
+import type { PromiseOrNot, UnionToIntersection, UnwrapPromise } from "./utils";
 
 export type FeltHandlers = {
   methods: FeltMethodHandlers;
@@ -173,23 +173,30 @@ export function method<TKey extends keyof MethodSpec>(
   };
 }
 
+const eventIdToFunction: Record<string, Function> = {};
+
 export function methodWithListeners<
   TKey extends keyof MethodSpec,
   TUserFacingParams extends object,
+  TResponse = UnwrapPromise<ReturnType<FeltMethod<TKey>>>,
 >(
   feltWindow: Pick<Window, "postMessage">,
   type: TKey,
-): (params: TUserFacingParams) => ReturnType<FeltMethod<TKey>> {
+): (params: TUserFacingParams) => Promise<TResponse> {
   const methodRes = method(feltWindow, type);
   const genericEventListener = listener(feltWindow, "onGenericEvent");
 
   return async (userFacingParams) => {
     const destroyListeners: VoidFunction[] = [];
 
-    forEveryEventHandler(userFacingParams, (key, handler, object) => {
+    forEveryEventHandler(userFacingParams, (key, maybeHandler, object) => {
+      if (typeof maybeHandler !== "function") return;
+
       const eventId = crypto.randomUUID();
 
       (object as Record<string, unknown>)[key] = eventId;
+
+      eventIdToFunction[eventId] = maybeHandler;
 
       const unsubscribe = genericEventListener({
         handler: (event) => {
@@ -199,7 +206,7 @@ export function methodWithListeners<
               unsubscribe();
               break;
             default:
-              handler(event);
+              maybeHandler(event);
           }
         },
         options: { id: eventId },
@@ -213,7 +220,16 @@ export function methodWithListeners<
     const clonableParams = userFacingParams as unknown as OneMethod<TKey>;
     const response = await methodRes(clonableParams);
 
-    return response;
+    if (typeof response === "object" && response !== null) {
+      forEveryEventHandler(response, (key, eventId, object) => {
+        if (typeof eventId !== "string") return;
+        const handler = eventIdToFunction[eventId];
+        if (!handler) return;
+        (object as Record<string, unknown>)[key] = handler;
+      });
+    }
+
+    return response as TResponse;
   };
 }
 

@@ -1,5 +1,16 @@
 # @feltmaps/js-sdk
 
+## 1.7.0-next.10
+
+### Minor Changes
+
+* aff926a: Return UIPanel on custom panel API methods
+* 1e8e6f1: Return UIActionTrigger on custom action trigger API methods
+
+### Patch Changes
+
+* 475c98e: Update getAggregates + MultiAggregationConfig docs
+
 ## 1.7.0-next.9
 
 ### Minor Changes

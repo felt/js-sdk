@@ -1549,7 +1549,7 @@ unsubscribe();
 
 ## createActionTrigger()
 
-> **createActionTrigger**(`args`: [`CreateActionTriggerParams`](../UI/CreateActionTriggerParams.md)): `void`
+> **createActionTrigger**(`args`: [`CreateActionTriggerParams`](../UI/CreateActionTriggerParams.md)): `Promise`\<[`UIActionTriggerCreate`](../UI/UIActionTriggerCreate.md)>
 
 Creates an action trigger.
 Action triggers are rendered on map's left sidebar as a button,
@@ -1566,7 +1566,7 @@ by clicking on a button.
 
 ### Returns
 
-`void`
+`Promise`\<[`UIActionTriggerCreate`](../UI/UIActionTriggerCreate.md)>
 
 ### Example
 
@@ -1588,7 +1588,7 @@ await felt.createActionTrigger({
 
 ## updateActionTrigger()
 
-> **updateActionTrigger**(`args`: [`UpdateActionTriggerParams`](../UI/UpdateActionTriggerParams.md)): `void`
+> **updateActionTrigger**(`args`: [`UpdateActionTriggerParams`](../UI/UpdateActionTriggerParams.md)): `Promise`\<[`UIActionTriggerCreate`](../UI/UIActionTriggerCreate.md)>
 
 Updates an action trigger.
 
@@ -1602,7 +1602,7 @@ Action trigger to update is identified by the `id` property.
 
 ### Returns
 
-`void`
+`Promise`\<[`UIActionTriggerCreate`](../UI/UIActionTriggerCreate.md)>
 
 ### Remarks
 

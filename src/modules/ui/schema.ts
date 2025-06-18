@@ -14,6 +14,7 @@ import {
   UpdatePanelClonableSchema,
   UpdatePanelElementsParamsClonableSchema,
 } from "./types";
+import type { uiPanelCreateSchema } from "./uiElements/UIPanel";
 
 const CreateActionTriggerMessage = methodMessage(
   "createActionTrigger",
@@ -109,12 +110,24 @@ export type UiSchema = {
     updateActionTrigger: Method<zInfer<typeof UpdateActionTriggerMessage>>;
     deleteActionTrigger: Method<zInfer<typeof DeleteActionTriggerMessage>>;
 
-    createPanel: Method<zInfer<typeof CreatePanelMessage>>;
-    updatePanel: Method<zInfer<typeof UpdatePanelMessage>>;
+    createPanel: Method<
+      zInfer<typeof CreatePanelMessage>,
+      zInfer<typeof uiPanelCreateSchema.clonable>
+    >;
+    updatePanel: Method<
+      zInfer<typeof UpdatePanelMessage>,
+      zInfer<typeof uiPanelCreateSchema.clonable>
+    >;
     deletePanel: Method<zInfer<typeof DeletePanelMessage>>;
 
-    createPanelElements: Method<zInfer<typeof CreatePanelElementsMessage>>;
-    updatePanelElements: Method<zInfer<typeof UpdatePanelElementsMessage>>;
+    createPanelElements: Method<
+      zInfer<typeof CreatePanelElementsMessage>,
+      zInfer<typeof uiPanelCreateSchema.clonable>
+    >;
+    updatePanelElements: Method<
+      zInfer<typeof UpdatePanelElementsMessage>,
+      zInfer<typeof uiPanelCreateSchema.clonable>
+    >;
     deletePanelElements: Method<zInfer<typeof DeletePanelElementsMessage>>;
 
     updateUiControls: Method<zInfer<typeof UiControlsMessage>>;

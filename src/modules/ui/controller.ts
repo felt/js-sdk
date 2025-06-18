@@ -11,6 +11,7 @@ import type {
   UpdatePanelElementsParams,
   UpdatePanelParams,
 } from "./types";
+import type { UIPanel } from "./uiElements/UIPanel";
 
 /**
  * @ignore
@@ -24,11 +25,11 @@ export const uiController = (
   showLayerDataTable: method(feltWindow, "showLayerDataTable"),
   hideLayerDataTable: method(feltWindow, "hideLayerDataTable"),
 
-  createPanel: methodWithListeners<"createPanel", CreatePanelParams>(
+  createPanel: methodWithListeners<"createPanel", CreatePanelParams, UIPanel>(
     feltWindow,
     "createPanel",
   ),
-  updatePanel: methodWithListeners<"updatePanel", UpdatePanelParams>(
+  updatePanel: methodWithListeners<"updatePanel", UpdatePanelParams, UIPanel>(
     feltWindow,
     "updatePanel",
   ),
@@ -36,11 +37,13 @@ export const uiController = (
 
   createPanelElements: methodWithListeners<
     "createPanelElements",
-    CreatePanelElementsParams
+    CreatePanelElementsParams,
+    UIPanel
   >(feltWindow, "createPanelElements"),
   updatePanelElements: methodWithListeners<
     "updatePanelElements",
-    UpdatePanelElementsParams
+    UpdatePanelElementsParams,
+    UIPanel
   >(feltWindow, "updatePanelElements"),
   deletePanelElements: method(feltWindow, "deletePanelElements"),
 
@@ -190,7 +193,7 @@ export interface UiController {
    * });
    * ```
    */
-  createPanel(args: CreatePanelParams): void;
+  createPanel(args: CreatePanelParams): Promise<UIPanel>;
 
   /**
    * Updates a panel.
@@ -212,7 +215,7 @@ export interface UiController {
    * });
    * ```
    */
-  updatePanel(panel: UpdatePanelParams): void;
+  updatePanel(panel: UpdatePanelParams): Promise<UIPanel>;
 
   /**
    * Deletes a panel.
@@ -261,7 +264,7 @@ export interface UiController {
    * });
    * ```
    */
-  createPanelElements(args: CreatePanelElementsParams): void;
+  createPanelElements(args: CreatePanelElementsParams): Promise<UIPanel>;
 
   /**
    * Updates an element in a panel.
@@ -276,15 +279,17 @@ export interface UiController {
    *   panelId: "panel-1",
    *   elements: [
    *     {
-   *       id: "element-1",
-   *       type: "Text",
-   *       content: "Hello, world!",
+   *       element: {
+   *         id: "element-1",
+   *         type: "Text",
+   *         content: "Hello, world!",
+   *       },
    *     },
    *   ],
    * });
    * ```
    */
-  updatePanelElements(args: UpdatePanelElementsParams): void;
+  updatePanelElements(args: UpdatePanelElementsParams): Promise<UIPanel>;
 
   /**
    * Deletes elements from a panel.

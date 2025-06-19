@@ -109,3 +109,22 @@ Whether or not the scale bar is shown in an embedded map.
 ```ts
 true
 ```
+
+***
+
+## showToolInspector?
+
+> `optional` **showToolInspector**: `boolean`
+
+Whether or not the Felt Tool Inspector is shown when a tool is enabled in an embedded map.
+
+### Remarks
+
+The Felt Tool Inspector is a panel that lets the user configure the tool that is currently
+enabled on the map.
+
+### Default Value
+
+```ts
+false
+```

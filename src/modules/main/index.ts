@@ -57,6 +57,7 @@ export const Felt = {
         geolocation: false,
         zoomControls: true,
         scaleBar: true,
+        showToolInspector: false,
       },
       initialViewport: undefined,
       origin: "https://felt.com",
@@ -76,6 +77,7 @@ export const Felt = {
       geolocation: "geolocation",
       zoomControls: "zoomControls",
       scaleBar: "scaleBar",
+      showToolInspector: "showToolInspector",
     };
 
     const uiControlsOptions = {

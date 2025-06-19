@@ -278,6 +278,17 @@ export const UiControlsOptionsSchema = z.object({
    * @defaultValue true
    */
   scaleBar: z.boolean().optional(),
+
+  /**
+   * Whether or not the Felt Tool Inspector is shown when a tool is enabled in an embedded map.
+   *
+   * @remarks
+   * The Felt Tool Inspector is a panel that lets the user configure the tool that is currently
+   * enabled on the map.
+   *
+   * @defaultValue false
+   */
+  showToolInspector: z.boolean().optional(),
 });
 
 /**

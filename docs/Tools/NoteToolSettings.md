@@ -49,3 +49,15 @@ The style of the text, either `italic`, `light`, `regular` or `caps`.
 ```ts
 "regular"
 ```
+
+***
+
+## showInspector
+
+> **showInspector**: `boolean`
+
+Whether to show the tool inspector.
+
+### Default Value
+
+`false`

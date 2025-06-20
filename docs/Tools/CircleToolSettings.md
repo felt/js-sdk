@@ -91,3 +91,15 @@ The opacity of the circle's fill.
 ```ts
 0.25
 ```
+
+***
+
+## showInspector
+
+> **showInspector**: `boolean`
+
+Whether to show the tool inspector.
+
+### Default Value
+
+`false`

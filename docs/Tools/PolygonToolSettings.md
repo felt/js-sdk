@@ -91,3 +91,15 @@ Whether to show an area marker on the polygon.
 ```ts
 false
 ```
+
+***
+
+## showInspector
+
+> **showInspector**: `boolean`
+
+Whether to show the tool inspector.
+
+### Default Value
+
+`false`

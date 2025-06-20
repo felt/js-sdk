@@ -33,6 +33,18 @@ only available for non-emoji symbols.
 
 ***
 
+## showInspector
+
+> **showInspector**: `boolean`
+
+Whether to show the tool inspector.
+
+### Default Value
+
+`false`
+
+***
+
 ## symbol
 
 > **symbol**: [`PlaceSymbol`](PlaceSymbol.md)

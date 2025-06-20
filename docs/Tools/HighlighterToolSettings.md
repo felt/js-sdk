@@ -52,6 +52,18 @@ The opacity of the highlighter, between 0 and 1.
 
 ***
 
+## showInspector
+
+> **showInspector**: `boolean`
+
+Whether to show the tool inspector.
+
+### Default Value
+
+`false`
+
+***
+
 ## size
 
 > **size**: `number`

@@ -110,3 +110,15 @@ only available if the `routingMode` is set.
 ```ts
 false
 ```
+
+***
+
+## showInspector
+
+> **showInspector**: `boolean`
+
+Whether to show the tool inspector.
+
+### Default Value
+
+`false`

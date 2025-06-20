@@ -50,3 +50,15 @@ the actual size of the marker.
 ```ts
 10
 ```
+
+***
+
+## showInspector
+
+> **showInspector**: `boolean`
+
+Whether to show the tool inspector.
+
+### Default Value
+
+`false`

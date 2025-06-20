@@ -77,3 +77,15 @@ Whether a distance marker is shown at the midpoint of the path.
 ```ts
 false
 ```
+
+***
+
+## showInspector
+
+> **showInspector**: `boolean`
+
+Whether to show the tool inspector.
+
+### Default Value
+
+`false`

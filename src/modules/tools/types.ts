@@ -41,16 +41,26 @@ export type ToolType =
   | "text";
 export type ConfigurableToolType = Exclude<ToolType, "link">;
 
+interface ShowToolInspectorSettings {
+  /**
+   * Whether to show the tool inspector.
+   *
+   * @defaultValue `false`
+   */
+  showInspector: boolean;
+}
+
 const PinToolSettingsSchema = PlaceCreateSchema.pick({
   color: true,
   symbol: true,
   frame: true,
 })
-  .extend({
-    afterCreation: z.enum(["enter name", "add another", "select"]),
-  })
+  .extend({ afterCreation: z.enum(["enter name", "add another", "select"]) })
   .required();
-export interface PinToolSettings extends zInfer<typeof PinToolSettingsSchema> {
+
+export interface PinToolSettings
+  extends zInfer<typeof PinToolSettingsSchema>,
+    ShowToolInspectorSettings {
   symbol: PlaceSymbol;
 
   /**
@@ -72,8 +82,10 @@ const LineToolSettingsSchema = PathCreateSchema.pick({
   strokeStyle: true,
   distanceMarker: true,
 }).required();
+
 export interface LineToolSettings
-  extends zInfer<typeof LineToolSettingsSchema> {}
+  extends zInfer<typeof LineToolSettingsSchema>,
+    ShowToolInspectorSettings {}
 
 const RouteToolSettingsSchema = PathCreateSchema.pick({
   color: true,
@@ -84,8 +96,10 @@ const RouteToolSettingsSchema = PathCreateSchema.pick({
   distanceMarker: true,
   endCaps: true,
 }).required();
+
 export interface RouteToolSettings
-  extends zInfer<typeof RouteToolSettingsSchema> {}
+  extends zInfer<typeof RouteToolSettingsSchema>,
+    ShowToolInspectorSettings {}
 
 const PolygonToolSettingsSchema = PolygonCreateSchema.pick({
   color: true,
@@ -96,7 +110,8 @@ const PolygonToolSettingsSchema = PolygonCreateSchema.pick({
   areaMarker: true,
 }).required();
 export interface PolygonToolSettings
-  extends zInfer<typeof PolygonToolSettingsSchema> {}
+  extends zInfer<typeof PolygonToolSettingsSchema>,
+    ShowToolInspectorSettings {}
 
 const CircleToolSettingsSchema = CircleCreateSchema.pick({
   color: true,
@@ -107,7 +122,8 @@ const CircleToolSettingsSchema = CircleCreateSchema.pick({
   radiusMarker: true,
 }).required();
 export interface CircleToolSettings
-  extends zInfer<typeof CircleToolSettingsSchema> {}
+  extends zInfer<typeof CircleToolSettingsSchema>,
+    ShowToolInspectorSettings {}
 
 const MarkerToolSettingsSchema = MarkerCreateSchema.pick({
   color: true,
@@ -115,19 +131,19 @@ const MarkerToolSettingsSchema = MarkerCreateSchema.pick({
   size: true,
 }).required();
 export interface MarkerToolSettings
-  extends zInfer<typeof MarkerToolSettingsSchema> {}
+  extends zInfer<typeof MarkerToolSettingsSchema>,
+    ShowToolInspectorSettings {}
 
 const HighlighterToolSettingsSchema = HighlighterCreateSchema.pick({
   color: true,
   opacity: true,
   renderHoles: true,
 })
-  .extend({
-    size: z.number().min(0).max(200),
-  })
+  .extend({ size: z.number().min(0).max(200) })
   .required();
 export interface HighlighterToolSettings
-  extends zInfer<typeof HighlighterToolSettingsSchema> {}
+  extends zInfer<typeof HighlighterToolSettingsSchema>,
+    ShowToolInspectorSettings {}
 
 const TextToolSettingsSchema = TextCreateSchema.pick({
   color: true,
@@ -135,7 +151,8 @@ const TextToolSettingsSchema = TextCreateSchema.pick({
   style: true,
 }).required();
 export interface TextToolSettings
-  extends zInfer<typeof TextToolSettingsSchema> {}
+  extends zInfer<typeof TextToolSettingsSchema>,
+    ShowToolInspectorSettings {}
 
 const NoteToolSettingsSchema = NoteCreateSchema.pick({
   color: true,
@@ -143,23 +160,49 @@ const NoteToolSettingsSchema = NoteCreateSchema.pick({
   style: true,
 }).required();
 export interface NoteToolSettings
-  extends zInfer<typeof NoteToolSettingsSchema> {}
+  extends zInfer<typeof NoteToolSettingsSchema>,
+    ShowToolInspectorSettings {}
 
 export const InputToolSettingsSchema = z.discriminatedUnion("tool", [
   // GEOGRAPHIC TOOLS
-  PinToolSettingsSchema.partial().extend({ tool: z.literal("pin") }),
-  LineToolSettingsSchema.partial().extend({ tool: z.literal("line") }),
-  RouteToolSettingsSchema.partial().extend({ tool: z.literal("route") }),
-  PolygonToolSettingsSchema.partial().extend({ tool: z.literal("polygon") }),
-  CircleToolSettingsSchema.partial().extend({ tool: z.literal("circle") }),
+  PinToolSettingsSchema.partial().extend({
+    tool: z.literal("pin"),
+    showInspector: z.boolean().optional(),
+  }),
+  LineToolSettingsSchema.partial().extend({
+    tool: z.literal("line"),
+    showInspector: z.boolean().optional(),
+  }),
+  RouteToolSettingsSchema.partial().extend({
+    tool: z.literal("route"),
+    showInspector: z.boolean().optional(),
+  }),
+  PolygonToolSettingsSchema.partial().extend({
+    tool: z.literal("polygon"),
+    showInspector: z.boolean().optional(),
+  }),
+  CircleToolSettingsSchema.partial().extend({
+    tool: z.literal("circle"),
+    showInspector: z.boolean().optional(),
+  }),
 
   // ANNOTATION TOOLS
-  MarkerToolSettingsSchema.partial().extend({ tool: z.literal("marker") }),
+  MarkerToolSettingsSchema.partial().extend({
+    tool: z.literal("marker"),
+    showInspector: z.boolean().optional(),
+  }),
   HighlighterToolSettingsSchema.partial().extend({
     tool: z.literal("highlighter"),
+    showInspector: z.boolean().optional(),
   }),
-  TextToolSettingsSchema.partial().extend({ tool: z.literal("text") }),
-  NoteToolSettingsSchema.partial().extend({ tool: z.literal("note") }),
+  TextToolSettingsSchema.partial().extend({
+    tool: z.literal("text"),
+    showInspector: z.boolean().optional(),
+  }),
+  NoteToolSettingsSchema.partial().extend({
+    tool: z.literal("note"),
+    showInspector: z.boolean().optional(),
+  }),
 ]);
 
 /**

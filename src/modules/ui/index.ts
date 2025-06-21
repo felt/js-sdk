@@ -70,4 +70,4 @@ export type {
 
 export type { UIActionTriggerCreate } from "./uiElements/UIActionTrigger";
 
-export type { UiController } from "./controller";
+// export type { UiController } from "./controller";

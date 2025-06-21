@@ -1,0 +1,50 @@
+{
+  "$schema": "https://typedoc-plugin-markdown.org/schema.json",
+  "disableSources": true,
+  "out": "./docs-minimal",
+  "entryPoints": ["src/client.ts"],
+  "sort": ["kind", "required-first", "source-order"],
+  "plugin": [
+    "typedoc-plugin-zod",
+    "typedoc-plugin-markdown",
+    "typedoc-plugin-remark",
+    "./minimalTheme.mjs"
+  ],
+  "projectDocuments": ["./CHANGELOG.md"],
+  "groupOrder": ["Controller", "Methods", "Interfaces", "Type Aliases"],
+  "cleanOutputDir": true,
+  "indexFormat": "list",
+  "parametersFormat": "list",
+  "interfacePropertiesFormat": "list",
+  "classPropertiesFormat": "list",
+  "enumMembersFormat": "list",
+  "typeDeclarationFormat": "list",
+  "propertyMembersFormat": "list",
+
+  "expandParameters": false,
+  "expandObjects": false,
+
+  "categoryOrder": ["Controller", "*"],
+
+  "hideBreadcrumbs": true,
+  "hidePageHeader": true,
+  "hidePageTitle": true,
+  "hideGroupHeadings": true,
+
+  "treatWarningsAsErrors": false,
+
+  // don't enable this, because it breaks references to some types on some pages,
+  // even though it gives us nice syntax highlighting.
+  "useCodeBlocks": false,
+
+  "tableColumnSettings": {
+    "hideInherited": true,
+    "hideDefaults": false
+  },
+
+  "outputFileStrategy": "modules",
+  "flattenOutputFiles": false,
+  "theme": "customTheme",
+  "readme": "./src/docs_api_readme_prepend.md",
+  "mergeReadme": true
+}

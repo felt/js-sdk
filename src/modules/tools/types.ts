@@ -41,6 +41,8 @@ export type ToolType =
   | "text";
 export type ConfigurableToolType = Exclude<ToolType, "link">;
 
+const showToolInspector = { showInspector: z.boolean().optional() } as const;
+
 interface ShowToolInspectorSettings {
   /**
    * Whether to show the tool inspector.
@@ -167,41 +169,41 @@ export const InputToolSettingsSchema = z.discriminatedUnion("tool", [
   // GEOGRAPHIC TOOLS
   PinToolSettingsSchema.partial().extend({
     tool: z.literal("pin"),
-    showInspector: z.boolean().optional(),
+    ...showToolInspector,
   }),
   LineToolSettingsSchema.partial().extend({
     tool: z.literal("line"),
-    showInspector: z.boolean().optional(),
+    ...showToolInspector,
   }),
   RouteToolSettingsSchema.partial().extend({
     tool: z.literal("route"),
-    showInspector: z.boolean().optional(),
+    ...showToolInspector,
   }),
   PolygonToolSettingsSchema.partial().extend({
     tool: z.literal("polygon"),
-    showInspector: z.boolean().optional(),
+    ...showToolInspector,
   }),
   CircleToolSettingsSchema.partial().extend({
     tool: z.literal("circle"),
-    showInspector: z.boolean().optional(),
+    ...showToolInspector,
   }),
 
   // ANNOTATION TOOLS
   MarkerToolSettingsSchema.partial().extend({
     tool: z.literal("marker"),
-    showInspector: z.boolean().optional(),
+    ...showToolInspector,
   }),
   HighlighterToolSettingsSchema.partial().extend({
     tool: z.literal("highlighter"),
-    showInspector: z.boolean().optional(),
+    ...showToolInspector,
   }),
   TextToolSettingsSchema.partial().extend({
     tool: z.literal("text"),
-    showInspector: z.boolean().optional(),
+    ...showToolInspector,
   }),
   NoteToolSettingsSchema.partial().extend({
     tool: z.literal("note"),
-    showInspector: z.boolean().optional(),
+    ...showToolInspector,
   }),
 ]);
 

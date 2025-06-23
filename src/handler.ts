@@ -52,9 +52,12 @@ export function createMessageHandler(
       return;
     }
 
+    const messagePort1 = message.ports[0];
+    if (!messagePort1) return;
+
     const { data } = result;
     if (data.type === "felt.ready") {
-      message.ports[0]?.postMessage(true);
+      messagePort1.postMessage(true);
     } else if (data.type === "felt.addListener") {
       if (data.event.eventName === "") {
         // we had to add a fake event to keep zod quiet so now we need
@@ -62,18 +65,31 @@ export function createMessageHandler(
         throw new Error("felt.addListener eventName cannot be empty");
       }
 
+      const handler = (e: unknown) => {
+        return new Promise((resolve) => {
+          const originalOnmessage = messagePort1.onmessage;
+          const bindedOnMessage = messagePort1.onmessage?.bind(messagePort1);
+          messagePort1.onmessage = (...args) => {
+            bindedOnMessage?.(...args);
+            const data = args[0].data;
+            if (data.type === "response") {
+              resolve(data.response);
+            }
+            messagePort1.onmessage = originalOnmessage;
+          };
+
+          messagePort1.postMessage(e);
+        });
+      };
+
       const payload =
         "options" in data.event
           ? {
               options: "options" in data.event ? data.event.options : undefined,
-              handler: (e: unknown) => {
-                message.ports[0]?.postMessage(e);
-              },
+              handler,
             }
           : {
-              handler: (e: unknown) => {
-                message.ports[0]?.postMessage(e);
-              },
+              handler,
             };
 
       const unsubscribe = (handlers.listeners as any)[data.event.eventName](

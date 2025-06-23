@@ -114,12 +114,13 @@ export function listener<TEventName extends keyof ListenerSpec>(
       [messageChannel.port2],
     );
 
-    messageChannel.port1.onmessage = (event) => {
+    messageChannel.port1.onmessage = async (event) => {
       // we cannot send errors down the message channel - listeners unfortunately cannot have invalid
       // messages thrown or rejected, because their only communication mechanism is the message channel,
       // and that is only designed to receive successful events.
       if (!isErrorMessage(event)) {
-        handler(event.data);
+        const response = await handler(event.data);
+        messageChannel.port1.postMessage({ type: "response", response });
       }
     };
 
@@ -206,7 +207,7 @@ export function methodWithListeners<
               unsubscribe();
               break;
             default:
-              maybeHandler(event);
+              return maybeHandler(event);
           }
         },
         options: { id: eventId },

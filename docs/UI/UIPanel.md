@@ -33,6 +33,30 @@ because it will automatically align the buttons to the end of the panel giving i
 });
 ```
 
+### optional close confirmation
+
+```typescript
+{
+  title: "My Panel",
+  closable: true,
+  onClickClose: () => {
+    const shouldClose = confirm("Are you sure you want to close the panel?");
+    return shouldClose;
+  },
+  body: [ ... ],
+});
+```
+
+### do not allow closing the panel
+
+```typescript
+{
+  title: "My Panel",
+  closable: false,
+  body: [ ... ],
+});
+```
+
 ### form
 
 ```typescript
@@ -84,6 +108,19 @@ The title to display in the panel header.
 
 ***
 
+## closable?
+
+> `optional` **closable**: `boolean`
+
+Whether the panel can be closed.
+If `true`, a close button will be displayed in the panel header.
+
+### Default Value
+
+`false`
+
+***
+
 ## footer?
 
 > `optional` **footer**: [`UIPanelElements`](UIPanelElements.md)\[]
@@ -92,15 +129,21 @@ The elements to add to the panel footer.
 
 ***
 
-## onClose()?
+## onClickClose()?
 
-> `optional` **onClose**: () => `void`
+> `optional` **onClickClose**: () => [`PromiseOrNot`](PromiseOrNot.md)\<`boolean` | `void`>
 
 A function to call when panel's close button is clicked.
+By default, when panel's close button is clicked, the panel will be closed.
+In order to prevent default behavior, you can return `false` from the function.
 
 ### Returns
 
-`void`
+[`PromiseOrNot`](PromiseOrNot.md)\<`boolean` | `void`>
+
+### Remarks
+
+Panel's close button is only visible if `closable` is `true`.
 
 ***
 

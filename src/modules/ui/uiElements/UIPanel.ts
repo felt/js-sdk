@@ -1,5 +1,5 @@
 import { z } from "zod";
-import type { zInfer } from "~/lib/utils";
+import type { PromiseOrNot, zInfer } from "~/lib/utils";
 import type { UiController } from "../controller";
 import {
   uiElementBaseCreateSchema,
@@ -32,7 +32,23 @@ const uiPanelSchema = uiElementBaseSchema.extend({
    */
   footer: z.array(uiPanelElementsSchema).optional(),
 
-  onClose: z.function().returns(z.void()).optional(),
+  /**
+   * Whether the panel can be closed.
+   * If `true`, a close button will be displayed in the panel header.
+   * @defaultValue `false`
+   */
+  closable: z.boolean().optional(),
+
+  onClickClose: z
+    .function()
+    .returns(
+      z.union([
+        z.boolean(),
+        z.void(),
+        z.promise(z.union([z.boolean(), z.void()])),
+      ]),
+    )
+    .optional(),
 });
 
 /**
@@ -66,6 +82,30 @@ const uiPanelSchema = uiElementBaseSchema.extend({
  * ```
  *
  * @example
+ * #### optional close confirmation
+ * ```typescript
+ * {
+ *   title: "My Panel",
+ *   closable: true,
+ *   onClickClose: () => {
+ *     const shouldClose = confirm("Are you sure you want to close the panel?");
+ *     return shouldClose;
+ *   },
+ *   body: [ ... ],
+ * });
+ * ```
+ *
+ * @example
+ * #### do not allow closing the panel
+ * ```typescript
+ * {
+ *   title: "My Panel",
+ *   closable: false,
+ *   body: [ ... ],
+ * });
+ * ```
+ *
+ * @example
  * #### form
  * ```typescript
  * {
@@ -89,7 +129,7 @@ export interface UIPanel
   extends UIElementBase,
     Omit<
       zInfer<typeof uiPanelSchema>,
-      "onClose" | "body" | "footer" | "onCreate" | "onDestroy"
+      "onClickClose" | "body" | "footer" | "onCreate" | "onDestroy"
     > {
   /**
    * The elements to add to the panel body.
@@ -103,8 +143,13 @@ export interface UIPanel
 
   /**
    * A function to call when panel's close button is clicked.
+   * By default, when panel's close button is clicked, the panel will be closed.
+   * In order to prevent default behavior, you can return `false` from the function.
+   *
+   * @remarks
+   * Panel's close button is only visible if `closable` is `true`.
    */
-  onClose?: () => void;
+  onClickClose?: () => PromiseOrNot<boolean | void>;
 }
 
 const uiPanelCreateSchm = uiPanelSchema
@@ -121,7 +166,7 @@ export const uiPanelCreateSchema = {
   clonable: uiPanelCreateSchm
     .extend(uiElementBaseCreateSchema.clonable.shape)
     .extend({
-      onClose: z.string().optional(),
+      onClickClose: z.string().optional(),
       body: z.array(uiPanelElementsCreateSchema.clonable),
       footer: z.array(uiPanelElementsCreateSchema.clonable).optional(),
     }),

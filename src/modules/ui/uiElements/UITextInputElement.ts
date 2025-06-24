@@ -24,17 +24,17 @@ export const uiTextInputElementSchema = uiLabelReadyElementSchema.extend({
 
   onChange: z
     .function()
-    .args(z.object({ value: z.string() }))
+    .args(z.object({ value: z.string(), id: z.string() }))
     .returns(z.void())
     .optional(),
   onBlur: z
     .function()
-    .args(z.object({ value: z.string() }))
+    .args(z.object({ value: z.string(), id: z.string() }))
     .returns(z.void())
     .optional(),
   onFocus: z
     .function()
-    .args(z.object({ value: z.string() }))
+    .args(z.object({ value: z.string(), id: z.string() }))
     .returns(z.void())
     .optional(),
 });
@@ -77,18 +77,30 @@ export interface UITextInputElement
     > {
   /**
    * The function to call when the value of the input changes.
+   *
+   * @param args - The arguments passed to the function.
+   * @param args.value - The value of the input.
+   * @param args.id - The id of the input element.
    */
-  onChange?: (args: { value: string }) => void;
+  onChange?: (args: { value: string; id: string }) => void;
 
   /**
    * The function to call when the input is blurred.
+   *
+   * @param args - The arguments passed to the function.
+   * @param args.value - The value of the input.
+   * @param args.id - The id of the input element.
    */
-  onBlur?: (args: { value: string }) => void;
+  onBlur?: (args: { value: string; id: string }) => void;
 
   /**
    * The function to call when the input is focused.
+   *
+   * @param args - The arguments passed to the function.
+   * @param args.value - The value of the input.
+   * @param args.id - The id of the input element.
    */
-  onFocus?: (args: { value: string }) => void;
+  onFocus?: (args: { value: string; id: string }) => void;
 }
 
 const uiTextInputElementCreateSchm = uiTextInputElementSchema.extend(

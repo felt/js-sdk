@@ -32,7 +32,11 @@ const uiPanelSchema = uiElementBaseSchema.extend({
    */
   footer: z.array(uiPanelElementsSchema).optional(),
 
-  onClickClose: z.function().returns(z.void()).optional(),
+  onClickClose: z
+    .function()
+    .args(z.object({ id: z.string() }))
+    .returns(z.void())
+    .optional(),
 });
 
 /**
@@ -116,8 +120,11 @@ export interface UIPanel
 
   /**
    * A function to call when panel's close button is clicked.
+   *
+   * @param args - The arguments passed to the function.
+   * @param args.id - The id of the panel.
    */
-  onClickClose?: () => void;
+  onClickClose?: (args: { id: string }) => void;
 }
 
 const uiPanelCreateSchm = uiPanelSchema

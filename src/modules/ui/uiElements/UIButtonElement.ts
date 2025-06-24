@@ -38,7 +38,10 @@ export const uiButtonElementSchema = uiElementBaseSchema.extend({
    */
   disabled: z.boolean().optional(),
 
-  onClick: z.function().returns(z.void()),
+  onClick: z
+    .function()
+    .args(z.object({ id: z.string() }))
+    .returns(z.void()),
 });
 
 /**
@@ -61,8 +64,11 @@ export interface UIButtonElement
     > {
   /**
    * The action to perform when the button is clicked.
+   *
+   * @param args - The arguments passed to the function.
+   * @param args.id - The id of the button.
    */
-  onClick: () => void;
+  onClick: (args: { id: string }) => void;
 }
 
 const uiButtonElementCreateSchm = uiButtonElementSchema.extend(

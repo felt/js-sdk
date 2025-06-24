@@ -26,9 +26,16 @@ The text to display in the element.
 
 ## onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`: \{ `id`: `string`; }) => `void`
 
 A function to call when the element is created.
+
+### Parameters
+
+| Parameter | Type                 | Description                           |
+| --------- | -------------------- | ------------------------------------- |
+| `args`    | \{ `id`: `string`; } | The arguments passed to the function. |
+| `args.id` | `string`             | The id of the element.                |
 
 ### Returns
 
@@ -38,9 +45,16 @@ A function to call when the element is created.
 
 ## onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`: \{ `id`: `string`; }) => `void`
 
 A function to call when the element is destroyed.
+
+### Parameters
+
+| Parameter | Type                 | Description                           |
+| --------- | -------------------- | ------------------------------------- |
+| `args`    | \{ `id`: `string`; } | The arguments passed to the function. |
+| `args.id` | `string`             | The id of the element.                |
 
 ### Returns
 

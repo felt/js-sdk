@@ -36,7 +36,7 @@ export const uiSelectElementSchema = uiLabelReadyElementSchema.extend({
 
   onChange: z
     .function()
-    .args(z.object({ value: z.string() }))
+    .args(z.object({ value: z.string(), id: z.string() }))
     .returns(z.void()),
 });
 
@@ -84,8 +84,12 @@ export interface UISelectElement
     > {
   /**
    * The function to call when the value of the select changes.
+   *
+   * @param args - The arguments passed to the function.
+   * @param args.value - The value of the select.
+   * @param args.id - The id of the select element.
    */
-  onChange: (args: { value: string }) => void;
+  onChange: (args: { value: string; id: string }) => void;
 }
 
 const uiSelectElementCreateSchm = uiSelectElementSchema.extend(

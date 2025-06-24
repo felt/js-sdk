@@ -7,27 +7,41 @@ const uiElementLifecycleSchema = z.object({
    *
    * @param args - This function doesn't receive any parameters
    */
-  onCreate: z.function().args().returns(z.void()).optional(),
+  onCreate: z
+    .function()
+    .args(z.object({ id: z.string() }))
+    .returns(z.void())
+    .optional(),
 
   /**
    * A function to call when the element is destroyed.
    *
    * @param args - This function doesn't receive any parameters
    */
-  onDestroy: z.function().args().returns(z.void()).optional(),
+  onDestroy: z
+    .function()
+    .args(z.object({ id: z.string() }))
+    .returns(z.void())
+    .optional(),
 });
 
 export interface UIElementLifecycle
   extends zInfer<typeof uiElementLifecycleSchema> {
   /**
    * A function to call when the element is created.
+   *
+   * @param args - The arguments passed to the function.
+   * @param args.id - The id of the element.
    */
-  onCreate?: () => void;
+  onCreate?: (args: { id: string }) => void;
 
   /**
    * A function to call when the element is destroyed.
+   *
+   * @param args - The arguments passed to the function.
+   * @param args.id - The id of the element.
    */
-  onDestroy?: () => void;
+  onDestroy?: (args: { id: string }) => void;
 }
 
 const uiElementLifecycleClonableSchema = z.object({
@@ -39,21 +53,13 @@ export const uiElementBaseSchema = uiElementLifecycleSchema.extend({
   id: z.string(),
 });
 
-export interface UIElementBase extends zInfer<typeof uiElementBaseSchema> {
+export interface UIElementBase
+  extends Omit<zInfer<typeof uiElementBaseSchema>, "onCreate" | "onDestroy">,
+    UIElementLifecycle {
   /**
    * The ID of the element.
    */
   id: string;
-
-  /**
-   * A function to call when the element is created.
-   */
-  onCreate?: () => void;
-
-  /**
-   * A function to call when the element is destroyed.
-   */
-  onDestroy?: () => void;
 }
 
 const uiElementBaseCreateSchm = uiElementBaseSchema.partial({ id: true });

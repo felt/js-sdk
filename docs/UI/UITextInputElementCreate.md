@@ -34,16 +34,17 @@ The placeholder text to display in the input.
 
 ## onChange()?
 
-> `optional` **onChange**: (`args`: \{ `value`: `string`; }) => `void`
+> `optional` **onChange**: (`args`: \{ `value`: `string`; `id`: `string`; }) => `void`
 
 The function to call when the value of the input changes.
 
 ### Parameters
 
-| Parameter    | Type                    |
-| ------------ | ----------------------- |
-| `args`       | \{ `value`: `string`; } |
-| `args.value` | `string`                |
+| Parameter    | Type                                    | Description                           |
+| ------------ | --------------------------------------- | ------------------------------------- |
+| `args`       | \{ `value`: `string`; `id`: `string`; } | The arguments passed to the function. |
+| `args.value` | `string`                                | The value of the input.               |
+| `args.id`    | `string`                                | The id of the input element.          |
 
 ### Returns
 
@@ -53,16 +54,17 @@ The function to call when the value of the input changes.
 
 ## onBlur()?
 
-> `optional` **onBlur**: (`args`: \{ `value`: `string`; }) => `void`
+> `optional` **onBlur**: (`args`: \{ `value`: `string`; `id`: `string`; }) => `void`
 
 The function to call when the input is blurred.
 
 ### Parameters
 
-| Parameter    | Type                    |
-| ------------ | ----------------------- |
-| `args`       | \{ `value`: `string`; } |
-| `args.value` | `string`                |
+| Parameter    | Type                                    | Description                           |
+| ------------ | --------------------------------------- | ------------------------------------- |
+| `args`       | \{ `value`: `string`; `id`: `string`; } | The arguments passed to the function. |
+| `args.value` | `string`                                | The value of the input.               |
+| `args.id`    | `string`                                | The id of the input element.          |
 
 ### Returns
 
@@ -72,16 +74,17 @@ The function to call when the input is blurred.
 
 ## onFocus()?
 
-> `optional` **onFocus**: (`args`: \{ `value`: `string`; }) => `void`
+> `optional` **onFocus**: (`args`: \{ `value`: `string`; `id`: `string`; }) => `void`
 
 The function to call when the input is focused.
 
 ### Parameters
 
-| Parameter    | Type                    |
-| ------------ | ----------------------- |
-| `args`       | \{ `value`: `string`; } |
-| `args.value` | `string`                |
+| Parameter    | Type                                    | Description                           |
+| ------------ | --------------------------------------- | ------------------------------------- |
+| `args`       | \{ `value`: `string`; `id`: `string`; } | The arguments passed to the function. |
+| `args.value` | `string`                                | The value of the input.               |
+| `args.id`    | `string`                                | The id of the input element.          |
 
 ### Returns
 
@@ -91,9 +94,16 @@ The function to call when the input is focused.
 
 ## onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`: \{ `id`: `string`; }) => `void`
 
 A function to call when the element is created.
+
+### Parameters
+
+| Parameter | Type                 | Description                           |
+| --------- | -------------------- | ------------------------------------- |
+| `args`    | \{ `id`: `string`; } | The arguments passed to the function. |
+| `args.id` | `string`             | The id of the element.                |
 
 ### Returns
 
@@ -103,9 +113,16 @@ A function to call when the element is created.
 
 ## onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`: \{ `id`: `string`; }) => `void`
 
 A function to call when the element is destroyed.
+
+### Parameters
+
+| Parameter | Type                 | Description                           |
+| --------- | -------------------- | ------------------------------------- |
+| `args`    | \{ `id`: `string`; } | The arguments passed to the function. |
+| `args.id` | `string`             | The id of the element.                |
 
 ### Returns
 

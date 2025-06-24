@@ -7,7 +7,11 @@ A panel is a container for other UI elements.
 It can have a title, a body, a footer as well as a close button.
 
 The body and footer are arrays of UI elements and turn into vertical stacks of elements.
-The close button is a button that can be used to close the panel.
+
+The close button is a button rendered in the top right corner of the panel that can be
+used to close the panel and is only visible if `onClickClose` is provided.
+Usually, you want to call [UiController.deletePanel](UiController.md#deletepanel) when the close button is clicked,
+e.g. `onClickClose: () => felt.deletePanel("my-panel")`.
 
 ### Body
 
@@ -30,11 +34,20 @@ because it will automatically align the buttons to the end of the panel giving i
   body: [
     { type: "Text", text: "Hello" },
   ],
-});
+}
 ```
 
-### form
+### closable
 
+````typescript
+{
+  id: "my-panel",
+  title: "My Panel",
+  onClickClose: () => felt.deletePanel("my-panel"),
+}
+
+@example
+### form
 ```typescript
 {
   title: "My Panel",
@@ -49,8 +62,8 @@ because it will automatically align the buttons to the end of the panel giving i
       { type: "Button", label: "Save", onClick: () => alert("Save") },
     ] },
   ],
-});
-```
+}
+````
 
 # Properties
 
@@ -92,9 +105,9 @@ The elements to add to the panel footer.
 
 ***
 
-## onClose()?
+## onClickClose()?
 
-> `optional` **onClose**: () => `void`
+> `optional` **onClickClose**: () => `void`
 
 A function to call when panel's close button is clicked.
 

@@ -32,7 +32,7 @@ const uiPanelSchema = uiElementBaseSchema.extend({
    */
   footer: z.array(uiPanelElementsSchema).optional(),
 
-  onClose: z.function().returns(z.void()).optional(),
+  onClickClose: z.function().returns(z.void()).optional(),
 });
 
 /**
@@ -43,7 +43,11 @@ const uiPanelSchema = uiElementBaseSchema.extend({
  * It can have a title, a body, a footer as well as a close button.
  *
  * The body and footer are arrays of UI elements and turn into vertical stacks of elements.
- * The close button is a button that can be used to close the panel.
+ *
+ * The close button is a button rendered in the top right corner of the panel that can be
+ * used to close the panel and is only visible if `onClickClose` is provided.
+ * Usually, you want to call {@link UiController.deletePanel} when the close button is clicked,
+ * e.g. `onClickClose: () => felt.deletePanel("my-panel")`.
  *
  * #### Body
  * Body is the main content of the panel. It is scrollable which means
@@ -62,8 +66,17 @@ const uiPanelSchema = uiElementBaseSchema.extend({
  *   body: [
  *     { type: "Text", text: "Hello" },
  *   ],
- * });
+ * }
  * ```
+ *
+ * @example
+ * #### closable
+ * ```typescript
+ * {
+ *   id: "my-panel",
+ *   title: "My Panel",
+ *   onClickClose: () => felt.deletePanel("my-panel"),
+ * }
  *
  * @example
  * #### form
@@ -81,7 +94,7 @@ const uiPanelSchema = uiElementBaseSchema.extend({
  *       { type: "Button", label: "Save", onClick: () => alert("Save") },
  *     ] },
  *   ],
- * });
+ * }
  * ```
  *
  */
@@ -89,7 +102,7 @@ export interface UIPanel
   extends UIElementBase,
     Omit<
       zInfer<typeof uiPanelSchema>,
-      "onClose" | "body" | "footer" | "onCreate" | "onDestroy"
+      "onClickClose" | "body" | "footer" | "onCreate" | "onDestroy"
     > {
   /**
    * The elements to add to the panel body.
@@ -104,7 +117,7 @@ export interface UIPanel
   /**
    * A function to call when panel's close button is clicked.
    */
-  onClose?: () => void;
+  onClickClose?: () => void;
 }
 
 const uiPanelCreateSchm = uiPanelSchema
@@ -121,7 +134,7 @@ export const uiPanelCreateSchema = {
   clonable: uiPanelCreateSchm
     .extend(uiElementBaseCreateSchema.clonable.shape)
     .extend({
-      onClose: z.string().optional(),
+      onClickClose: z.string().optional(),
       body: z.array(uiPanelElementsCreateSchema.clonable),
       footer: z.array(uiPanelElementsCreateSchema.clonable).optional(),
     }),

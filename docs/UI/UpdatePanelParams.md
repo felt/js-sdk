@@ -18,9 +18,9 @@ The title to display in the panel header.
 
 ***
 
-## onClose()?
+## onClickClose()?
 
-> `optional` **onClose**: () => `void`
+> `optional` **onClickClose**: () => `void`
 
 A function to call when panel's close button is clicked.
 

@@ -30,9 +30,16 @@ The label to display in the button.
 
 ## onClick()
 
-> **onClick**: () => `void`
+> **onClick**: (`args`: \{ `id`: `string`; }) => `void`
 
 The action to perform when the button is clicked.
+
+### Parameters
+
+| Parameter | Type                 | Description                           |
+| --------- | -------------------- | ------------------------------------- |
+| `args`    | \{ `id`: `string`; } | The arguments passed to the function. |
+| `args.id` | `string`             | The id of the button.                 |
 
 ### Returns
 
@@ -79,9 +86,16 @@ Whether the button is disabled.
 
 ## onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`: \{ `id`: `string`; }) => `void`
 
 A function to call when the element is created.
+
+### Parameters
+
+| Parameter | Type                 | Description                           |
+| --------- | -------------------- | ------------------------------------- |
+| `args`    | \{ `id`: `string`; } | The arguments passed to the function. |
+| `args.id` | `string`             | The id of the element.                |
 
 ### Returns
 
@@ -91,9 +105,16 @@ A function to call when the element is created.
 
 ## onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`: \{ `id`: `string`; }) => `void`
 
 A function to call when the element is destroyed.
+
+### Parameters
+
+| Parameter | Type                 | Description                           |
+| --------- | -------------------- | ------------------------------------- |
+| `args`    | \{ `id`: `string`; } | The arguments passed to the function. |
+| `args.id` | `string`             | The id of the element.                |
 
 ### Returns
 

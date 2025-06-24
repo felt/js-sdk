@@ -22,13 +22,21 @@ const uiActionTriggerBaseSchema = z.object({
 });
 
 export const uiActionTriggerSchema = {
-  read: uiElementBaseSchema
-    .extend(uiActionTriggerBaseSchema.shape)
-    .extend({ onTrigger: z.function().returns(z.void()) }),
+  read: uiElementBaseSchema.extend(uiActionTriggerBaseSchema.shape).extend({
+    onTrigger: z
+      .function()
+      .args(z.object({ id: z.string() }))
+      .returns(z.void()),
+  }),
   create: uiElementBaseCreateSchema.params
     .extend(uiActionTriggerBaseSchema.shape)
     .extend({ type: z.undefined() }) // using partial() causes JSDoc to not appear
-    .extend({ onTrigger: z.function().returns(z.void()) }),
+    .extend({
+      onTrigger: z
+        .function()
+        .args(z.object({ id: z.string() }))
+        .returns(z.void()),
+    }),
   clonable: uiElementBaseCreateSchema.clonable
     .extend(uiActionTriggerBaseSchema.shape)
     .extend({ type: z.undefined() })
@@ -47,6 +55,9 @@ export interface UIActionTriggerCreate
     > {
   /**
    * The function to call when the action trigger is triggered.
+   *
+   * @param args - The arguments passed to the function.
+   * @param args.id - The id of the action trigger.
    */
-  onTrigger: () => void;
+  onTrigger: (args: { id: string }) => void;
 }

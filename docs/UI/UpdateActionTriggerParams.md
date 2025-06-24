@@ -32,9 +32,16 @@ Whether the action trigger is disabled or not.
 
 ## onTrigger()?
 
-> `optional` **onTrigger**: () => `void`
+> `optional` **onTrigger**: (`args`: \{ `id`: `string`; }) => `void`
 
 The function to call when the action trigger is triggered.
+
+### Parameters
+
+| Parameter | Type                 | Description                           |
+| --------- | -------------------- | ------------------------------------- |
+| `args`    | \{ `id`: `string`; } | The arguments passed to the function. |
+| `args.id` | `string`             | The id of the action trigger.         |
 
 ### Returns
 
@@ -44,9 +51,16 @@ The function to call when the action trigger is triggered.
 
 ## onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`: \{ `id`: `string`; }) => `void`
 
 A function to call when the element is created.
+
+### Parameters
+
+| Parameter | Type                 | Description                           |
+| --------- | -------------------- | ------------------------------------- |
+| `args`    | \{ `id`: `string`; } | The arguments passed to the function. |
+| `args.id` | `string`             | The id of the element.                |
 
 ### Returns
 
@@ -56,9 +70,16 @@ A function to call when the element is created.
 
 ## onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`: \{ `id`: `string`; }) => `void`
 
 A function to call when the element is destroyed.
+
+### Parameters
+
+| Parameter | Type                 | Description                           |
+| --------- | -------------------- | ------------------------------------- |
+| `args`    | \{ `id`: `string`; } | The arguments passed to the function. |
+| `args.id` | `string`             | The id of the element.                |
 
 ### Returns
 

@@ -56,7 +56,7 @@ import {
 
 // only elements that can be added to the panel root (body or footer)
 // this excludes FlexibleSpace element because it is a button group-specific element
-export const uiPanelElementsSchema = z.discriminatedUnion("type", [
+export const uiPanelElementSchema = z.discriminatedUnion("type", [
   uiButtonElementSchema,
   uiTextElementSchema,
   uiButtonGroupElementSchema,
@@ -65,7 +65,7 @@ export const uiPanelElementsSchema = z.discriminatedUnion("type", [
   uiSelectElementSchema,
 ]);
 
-export const uiPanelElementsCreateSchema = {
+export const uiPanelElementCreateSchema = {
   params: z.discriminatedUnion("type", [
     uiButtonElementCreateSchema.params,
     uiTextElementCreateSchema.params,
@@ -84,7 +84,7 @@ export const uiPanelElementsCreateSchema = {
   ]),
 };
 
-export const uiPanelElementsUpdateSchema = {
+export const uiPanelElementUpdateSchema = {
   params: z.discriminatedUnion("type", [
     uiButtonElementUpdateSchema.params,
     uiTextElementUpdateSchema.params,
@@ -105,7 +105,7 @@ export const uiPanelElementsUpdateSchema = {
   ]),
 };
 
-export type UIPanelElements =
+export type UIPanelElement =
   | UIButtonElement
   | UITextElement
   | UIButtonGroupElement
@@ -119,7 +119,7 @@ export type UIPanelElements =
  * @remarks
  * For the sake of convenience, `id` is optional but recommended if you want to be able to perform updates.
  */
-export type UIPanelElementsCreate =
+export type UIPanelElementCreate =
   | UIButtonElementCreate
   | UITextElementCreate
   | UIButtonGroupElementCreate
@@ -133,7 +133,7 @@ export type UIPanelElementsCreate =
  * @remarks
  * `id` and `type` are required to identify the element to update.
  */
-export type UIPanelElementsUpdate =
+export type UIPanelElementUpdate =
   | UIButtonElementUpdate
   | UITextElementUpdate
   | UIButtonGroupElementUpdate

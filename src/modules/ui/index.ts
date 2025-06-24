@@ -63,10 +63,10 @@ export type {
 } from "./uiElements/UISelectElement";
 
 export type {
-  UIPanelElements,
-  UIPanelElementsCreate,
-  UIPanelElementsUpdate,
-} from "./uiElements/uiPanelElementsSchemas";
+  UIPanelElement,
+  UIPanelElementCreate,
+  UIPanelElementUpdate,
+} from "./uiElements/uiPanelElementSchemas";
 
 export type { UIActionTriggerCreate } from "./uiElements/UIActionTrigger";
 

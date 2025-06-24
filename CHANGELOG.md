@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.7.0-next.11
+
+### Minor Changes
+
+- 6ce4a76: Rename UIPanel onClose to onClickClose
+
 ## 1.7.0-next.10
 
 ### Minor Changes

@@ -75,7 +75,7 @@ because it will automatically align the buttons to the end of the panel giving i
 
 ## body
 
-> **body**: [`UIPanelElements`](UIPanelElements.md)\[]
+> **body**: [`UIPanelElement`](UIPanelElement.md)\[]
 
 The elements to add to the panel body.
 
@@ -99,7 +99,7 @@ The title to display in the panel header.
 
 ## footer?
 
-> `optional` **footer**: [`UIPanelElements`](UIPanelElements.md)\[]
+> `optional` **footer**: [`UIPanelElement`](UIPanelElement.md)\[]
 
 The elements to add to the panel footer.
 

@@ -46,6 +46,6 @@ UI features such as the legend and the full screen button.
 # Type Aliases
 
 * [PlacementForUIElement](PlacementForUIElement.md)
-* [UIPanelElements](UIPanelElements.md)
-* [UIPanelElementsCreate](UIPanelElementsCreate.md)
-* [UIPanelElementsUpdate](UIPanelElementsUpdate.md)
+* [UIPanelElement](UIPanelElement.md)
+* [UIPanelElementCreate](UIPanelElementCreate.md)
+* [UIPanelElementUpdate](UIPanelElementUpdate.md)

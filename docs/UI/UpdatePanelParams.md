@@ -45,7 +45,7 @@ A function to call when panel's close button is clicked.
 
 ## body?
 
-> `optional` **body**: [`UIPanelElementsCreate`](UIPanelElementsCreate.md)\[]
+> `optional` **body**: [`UIPanelElementCreate`](UIPanelElementCreate.md)\[]
 
 The elements to add to the panel body.
 
@@ -53,7 +53,7 @@ The elements to add to the panel body.
 
 ## footer?
 
-> `optional` **footer**: [`UIPanelElementsCreate`](UIPanelElementsCreate.md)\[]
+> `optional` **footer**: [`UIPanelElementCreate`](UIPanelElementCreate.md)\[]
 
 The elements to add to the panel footer.
 

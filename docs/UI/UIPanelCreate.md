@@ -14,7 +14,7 @@ The parameters for creating a panel by using [UiController.createPanel](UiContro
 
 ## body
 
-> **body**: [`UIPanelElementsCreate`](UIPanelElementsCreate.md)\[]
+> **body**: [`UIPanelElementCreate`](UIPanelElementCreate.md)\[]
 
 The elements to add to the panel body.
 
@@ -55,7 +55,7 @@ A function to call when panel's close button is clicked.
 
 ## footer?
 
-> `optional` **footer**: [`UIPanelElementsCreate`](UIPanelElementsCreate.md)\[]
+> `optional` **footer**: [`UIPanelElementCreate`](UIPanelElementCreate.md)\[]
 
 The elements to add to the panel footer.
 

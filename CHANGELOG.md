@@ -1,5 +1,15 @@
 # @feltmaps/js-sdk
 
+## 1.7.0-next.13
+
+### Minor Changes
+
+- 535e539: Include element id on every custom ui callback args
+
+### Patch Changes
+
+- 2fd720d: Use singular for custom ui types
+
 ## 1.7.0-next.12
 
 ### Minor Changes

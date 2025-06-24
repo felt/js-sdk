@@ -8,11 +8,11 @@ import {
   type UIElementBaseCreateParams,
 } from "./base";
 import {
-  uiPanelElementsCreateSchema,
-  uiPanelElementsSchema,
-  type UIPanelElements,
-  type UIPanelElementsCreate,
-} from "./uiPanelElementsSchemas";
+  uiPanelElementCreateSchema,
+  uiPanelElementSchema,
+  type UIPanelElement,
+  type UIPanelElementCreate,
+} from "./uiPanelElementSchemas";
 
 const uiPanelSchema = uiElementBaseSchema.extend({
   type: z.literal("Panel"),
@@ -25,12 +25,12 @@ const uiPanelSchema = uiElementBaseSchema.extend({
   /**
    * The elements to add to the panel body.
    */
-  body: z.array(uiPanelElementsSchema),
+  body: z.array(uiPanelElementSchema),
 
   /**
    * The elements to add to the panel footer.
    */
-  footer: z.array(uiPanelElementsSchema).optional(),
+  footer: z.array(uiPanelElementSchema).optional(),
 
   onClickClose: z
     .function()
@@ -111,12 +111,12 @@ export interface UIPanel
   /**
    * The elements to add to the panel body.
    */
-  body: UIPanelElements[];
+  body: UIPanelElement[];
 
   /**
    * The elements to add to the panel footer.
    */
-  footer?: UIPanelElements[];
+  footer?: UIPanelElement[];
 
   /**
    * A function to call when panel's close button is clicked.
@@ -132,8 +132,8 @@ const uiPanelCreateSchm = uiPanelSchema
   .partial({ type: true })
   .omit({ body: true, footer: true })
   .extend({
-    body: z.array(uiPanelElementsCreateSchema.params),
-    footer: z.array(uiPanelElementsCreateSchema.params).optional(),
+    body: z.array(uiPanelElementCreateSchema.params),
+    footer: z.array(uiPanelElementCreateSchema.params).optional(),
   });
 
 export const uiPanelCreateSchema = {
@@ -142,8 +142,8 @@ export const uiPanelCreateSchema = {
     .extend(uiElementBaseCreateSchema.clonable.shape)
     .extend({
       onClickClose: z.string().optional(),
-      body: z.array(uiPanelElementsCreateSchema.clonable),
-      footer: z.array(uiPanelElementsCreateSchema.clonable).optional(),
+      body: z.array(uiPanelElementCreateSchema.clonable),
+      footer: z.array(uiPanelElementCreateSchema.clonable).optional(),
     }),
 };
 
@@ -163,10 +163,10 @@ export interface UIPanelCreate
   /**
    * The elements to add to the panel body.
    */
-  body: UIPanelElementsCreate[];
+  body: UIPanelElementCreate[];
 
   /**
    * The elements to add to the panel footer.
    */
-  footer?: UIPanelElementsCreate[];
+  footer?: UIPanelElementCreate[];
 }

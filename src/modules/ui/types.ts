@@ -14,11 +14,11 @@ import {
 } from "./uiElements/UIFlexibleSpaceElement";
 import { uiPanelCreateSchema, type UIPanelCreate } from "./uiElements/UIPanel";
 import {
-  uiPanelElementsCreateSchema,
-  uiPanelElementsUpdateSchema,
-  type UIPanelElementsCreate,
-  type UIPanelElementsUpdate,
-} from "./uiElements/uiPanelElementsSchemas";
+  uiPanelElementCreateSchema,
+  uiPanelElementUpdateSchema,
+  type UIPanelElementCreate,
+  type UIPanelElementUpdate,
+} from "./uiElements/uiPanelElementSchemas";
 
 const CreateActionTriggerParamsSchema = z.object({
   actionTrigger: uiActionTriggerSchema.create,
@@ -97,7 +97,7 @@ const CreatePanelElementsParamsSchema = z.object({
   elements: z.array(
     z.object({
       element: z.union([
-        uiPanelElementsCreateSchema.params,
+        uiPanelElementCreateSchema.params,
         uiFlexibleSpaceElementCreateSchema.params,
       ]),
       container: z
@@ -118,7 +118,7 @@ const CreatePanelElementsParamsSchema = z.object({
 export interface CreatePanelElementsParams
   extends zInfer<typeof CreatePanelElementsParamsSchema> {
   elements: Array<{
-    element: UIPanelElementsCreate | UIFlexibleSpaceElementCreate;
+    element: UIPanelElementCreate | UIFlexibleSpaceElementCreate;
 
     /**
      * The section of the panel to add the element to.
@@ -147,7 +147,7 @@ export const CreatePanelElementsClonableSchema = z.object({
   elements: z.array(
     z.object({
       element: z.union([
-        uiPanelElementsCreateSchema.clonable,
+        uiPanelElementCreateSchema.clonable,
         uiFlexibleSpaceElementCreateSchema.clonable,
       ]),
       container: z
@@ -168,7 +168,7 @@ const UpdatePanelElementsParamsSchema = z.object({
    */
   panelId: z.string(),
 
-  elements: z.array(z.object({ element: uiPanelElementsUpdateSchema.params })),
+  elements: z.array(z.object({ element: uiPanelElementUpdateSchema.params })),
 });
 
 /**
@@ -179,14 +179,12 @@ export interface UpdatePanelElementsParams
   /**
    * Dictionary of element IDs to the element to update.
    */
-  elements: Array<{ element: UIPanelElementsUpdate }>;
+  elements: Array<{ element: UIPanelElementUpdate }>;
 }
 
 export const UpdatePanelElementsParamsClonableSchema = z.object({
   panelId: z.string(),
-  elements: z.array(
-    z.object({ element: uiPanelElementsUpdateSchema.clonable }),
-  ),
+  elements: z.array(z.object({ element: uiPanelElementUpdateSchema.clonable })),
 });
 
 /**

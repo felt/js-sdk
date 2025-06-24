@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.7.0-next.12
+
+### Minor Changes
+
+- b848937: Add tool setting to hide/show inspector
+
 ## 1.7.0-next.11
 
 ### Minor Changes

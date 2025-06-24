@@ -70,10 +70,11 @@ export function createMessageHandler(
           const originalOnmessage = messagePort1.onmessage;
           const bindedOnMessage = messagePort1.onmessage?.bind(messagePort1);
           messagePort1.onmessage = (...args) => {
-            bindedOnMessage?.(...args);
             const data = args[0].data;
             if (data.type === "response") {
               resolve(data.response);
+            } else {
+              bindedOnMessage?.(...args);
             }
             messagePort1.onmessage = originalOnmessage;
           };

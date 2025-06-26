@@ -7625,7 +7625,7 @@ unsubscribe();
 
 #### createActionTrigger()
 
-> **createActionTrigger**(`args`): `void`
+> **createActionTrigger**(`args`): `Promise`\<[`UIActionTriggerCreate`](client.md#uiactiontriggercreate)>
 
 Creates an action trigger.
 Action triggers are rendered on map's left sidebar as a button,
@@ -7644,7 +7644,7 @@ The arguments for the method.
 
 ##### Returns
 
-`void`
+`Promise`\<[`UIActionTriggerCreate`](client.md#uiactiontriggercreate)>
 
 ##### Example
 
@@ -7664,7 +7664,7 @@ await felt.createActionTrigger({
 
 #### updateActionTrigger()
 
-> **updateActionTrigger**(`args`): `void`
+> **updateActionTrigger**(`args`): `Promise`\<[`UIActionTriggerCreate`](client.md#uiactiontriggercreate)>
 
 Updates an action trigger.
 
@@ -7680,7 +7680,7 @@ The action trigger to update.
 
 ##### Returns
 
-`void`
+`Promise`\<[`UIActionTriggerCreate`](client.md#uiactiontriggercreate)>
 
 ##### Remarks
 
@@ -7721,7 +7721,7 @@ await felt.deleteActionTrigger("layerTurnPurple");
 
 #### createPanel()
 
-> **createPanel**(`args`): `void`
+> **createPanel**(`args`): `Promise`\<[`UIPanel`](client.md#uipanel)>
 
 Creates a panel on map's right sidebar.
 
@@ -7754,7 +7754,7 @@ The arguments for the method.
 
 ##### Returns
 
-`void`
+`Promise`\<[`UIPanel`](client.md#uipanel)>
 
 ##### Example
 
@@ -7790,7 +7790,7 @@ await felt.createPanel({
 
 #### updatePanel()
 
-> **updatePanel**(`panel`): `void`
+> **updatePanel**(`panel`): `Promise`\<[`UIPanel`](client.md#uipanel)>
 
 Updates a panel.
 
@@ -7806,7 +7806,7 @@ The panel to update.
 
 ##### Returns
 
-`void`
+`Promise`\<[`UIPanel`](client.md#uipanel)>
 
 ##### Remarks
 
@@ -7850,7 +7850,7 @@ await felt.deletePanel("panel-1");
 
 #### createPanelElements()
 
-> **createPanelElements**(`args`): `void`
+> **createPanelElements**(`args`): `Promise`\<[`UIPanel`](client.md#uipanel)>
 
 Creates elements in a panel.
 
@@ -7864,7 +7864,7 @@ The arguments for the method.
 
 ##### Returns
 
-`void`
+`Promise`\<[`UIPanel`](client.md#uipanel)>
 
 ##### Example
 
@@ -7883,7 +7883,7 @@ await felt.createPanelElements({
 
 #### updatePanelElements()
 
-> **updatePanelElements**(`args`): `void`
+> **updatePanelElements**(`args`): `Promise`\<[`UIPanel`](client.md#uipanel)>
 
 Updates an element in a panel.
 
@@ -7897,7 +7897,7 @@ The arguments for the method.
 
 ##### Returns
 
-`void`
+`Promise`\<[`UIPanel`](client.md#uipanel)>
 
 ##### Example
 
@@ -7906,9 +7906,11 @@ await felt.updatePanelElements({
   panelId: "panel-1",
   elements: [
     {
-      id: "element-1",
-      type: "Text",
-      content: "Hello, world!",
+      element: {
+        id: "element-1",
+        type: "Text",
+        content: "Hello, world!",
+      },
     },
   ],
 });
@@ -9382,6 +9384,16 @@ The color of the element in some CSS-like format.
 The frame that is rendered around the Place's symbol. This is
 only available for non-emoji symbols.
 
+#### showInspector
+
+> **showInspector**: `boolean`
+
+Whether to show the tool inspector.
+
+##### Default Value
+
+`false`
+
 #### symbol
 
 > **symbol**: [`PlaceSymbol`](client.md#placesymbol)
@@ -9480,6 +9492,16 @@ Whether a distance marker is shown at the midpoint of the path.
 ```ts
 false
 ```
+
+#### showInspector
+
+> **showInspector**: `boolean`
+
+Whether to show the tool inspector.
+
+##### Default Value
+
+`false`
 
 ## RouteToolSettings
 
@@ -9582,6 +9604,16 @@ only available if the `routingMode` is set.
 false
 ```
 
+#### showInspector
+
+> **showInspector**: `boolean`
+
+Whether to show the tool inspector.
+
+##### Default Value
+
+`false`
+
 ## PolygonToolSettings
 
 ### Properties
@@ -9665,6 +9697,16 @@ Whether to show an area marker on the polygon.
 ```ts
 false
 ```
+
+#### showInspector
+
+> **showInspector**: `boolean`
+
+Whether to show the tool inspector.
+
+##### Default Value
+
+`false`
 
 ## CircleToolSettings
 
@@ -9750,6 +9792,16 @@ The opacity of the circle's fill.
 0.25
 ```
 
+#### showInspector
+
+> **showInspector**: `boolean`
+
+Whether to show the tool inspector.
+
+##### Default Value
+
+`false`
+
 ## MarkerToolSettings
 
 ### Properties
@@ -9799,6 +9851,16 @@ the actual size of the marker.
 10
 ```
 
+#### showInspector
+
+> **showInspector**: `boolean`
+
+Whether to show the tool inspector.
+
+##### Default Value
+
+`false`
+
 ## HighlighterToolSettings
 
 ### Properties
@@ -9846,6 +9908,16 @@ The opacity of the highlighter, between 0 and 1.
 ```ts
 0.5
 ```
+
+#### showInspector
+
+> **showInspector**: `boolean`
+
+Whether to show the tool inspector.
+
+##### Default Value
+
+`false`
 
 #### size
 
@@ -9899,6 +9971,16 @@ The style of the text, either `italic`, `light`, `regular` or `caps`.
 "regular"
 ```
 
+#### showInspector
+
+> **showInspector**: `boolean`
+
+Whether to show the tool inspector.
+
+##### Default Value
+
+`false`
+
 ## NoteToolSettings
 
 ### Properties
@@ -9947,6 +10029,16 @@ The style of the text, either `italic`, `light`, `regular` or `caps`.
 "regular"
 ```
 
+#### showInspector
+
+> **showInspector**: `boolean`
+
+Whether to show the tool inspector.
+
+##### Default Value
+
+`false`
+
 ## CreateActionTriggerParams
 
 ### Properties
@@ -9985,9 +10077,21 @@ Whether the action trigger is disabled or not.
 
 #### onTrigger()?
 
-> `optional` **onTrigger**: () => `void`
+> `optional` **onTrigger**: (`args`) => `void`
 
 The function to call when the action trigger is triggered.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the action trigger.
 
 ##### Returns
 
@@ -9995,9 +10099,21 @@ The function to call when the action trigger is triggered.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -10005,9 +10121,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -10051,11 +10179,23 @@ The ID of the element.
 
 The title to display in the panel header.
 
-#### onClose()?
+#### onClickClose()?
 
-> `optional` **onClose**: () => `void`
+> `optional` **onClickClose**: (`args`) => `void`
 
 A function to call when panel's close button is clicked.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the panel.
 
 ##### Returns
 
@@ -10067,21 +10207,33 @@ A function to call when panel's close button is clicked.
 
 #### body?
 
-> `optional` **body**: [`UIPanelElementsCreate`](client.md#uipanelelementscreate)\[]
+> `optional` **body**: [`UIPanelElementCreate`](client.md#uipanelelementcreate)\[]
 
 The elements to add to the panel body.
 
 #### footer?
 
-> `optional` **footer**: [`UIPanelElementsCreate`](client.md#uipanelelementscreate)\[]
+> `optional` **footer**: [`UIPanelElementCreate`](client.md#uipanelelementcreate)\[]
 
 The elements to add to the panel footer.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -10089,9 +10241,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -10111,7 +10275,7 @@ A function to call when the element is destroyed.
 
 ##### element
 
-> **element**: [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIPanelElementsCreate`](client.md#uipanelelementscreate)
+> **element**: [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIPanelElementCreate`](client.md#uipanelelementcreate)
 
 ##### container?
 
@@ -10153,7 +10317,7 @@ Dictionary of element IDs to the element to update.
 
 ##### element
 
-> **element**: [`UIPanelElementsUpdate`](client.md#uipanelelementsupdate)
+> **element**: [`UIPanelElementUpdate`](client.md#uipanelelementupdate)
 
 ## DeletePanelElementsParams
 
@@ -10329,9 +10493,21 @@ The label of the action trigger.
 
 #### onTrigger()
 
-> **onTrigger**: () => `void`
+> **onTrigger**: (`args`) => `void`
 
 The function to call when the action trigger is triggered.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the action trigger.
 
 ##### Returns
 
@@ -10353,9 +10529,21 @@ Whether the action trigger is disabled or not.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -10363,9 +10551,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -10399,9 +10599,21 @@ The label to display in the button.
 
 #### onClick()
 
-> **onClick**: () => `void`
+> **onClick**: (`args`) => `void`
 
 The action to perform when the button is clicked.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the button.
 
 ##### Returns
 
@@ -10440,9 +10652,21 @@ Whether the button is disabled.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -10450,9 +10674,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -10482,9 +10718,21 @@ The label to display in the button.
 
 #### onClick()
 
-> **onClick**: () => `void`
+> **onClick**: (`args`) => `void`
 
 The action to perform when the button is clicked.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the button.
 
 ##### Returns
 
@@ -10517,9 +10765,21 @@ Whether the button is disabled.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -10527,9 +10787,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -10607,9 +10879,21 @@ Whether the button is disabled.
 
 #### onClick()?
 
-> `optional` **onClick**: () => `void`
+> `optional` **onClick**: (`args`) => `void`
 
 The action to perform when the button is clicked.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the button.
 
 ##### Returns
 
@@ -10617,9 +10901,21 @@ The action to perform when the button is clicked.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -10627,9 +10923,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -10687,9 +10995,21 @@ The alignment of the button group.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -10697,9 +11017,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -10739,9 +11071,21 @@ The alignment of the button group.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -10749,9 +11093,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -10814,9 +11170,21 @@ The items to add to the button group.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -10824,9 +11192,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -10869,9 +11249,21 @@ The ID of the element.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -10879,9 +11271,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -10905,9 +11309,21 @@ See [UIDividerElement](client.md#uidividerelement) for more details.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -10915,9 +11331,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -10964,9 +11392,21 @@ The ID of the element.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -10974,9 +11414,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -11016,9 +11468,21 @@ The ID of the element.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -11026,9 +11490,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -11050,9 +11526,21 @@ The parameters for creating a flexible space element.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -11060,9 +11548,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -11109,9 +11609,21 @@ The ID of the element.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -11119,9 +11631,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -11136,7 +11660,11 @@ A panel is a container for other UI elements.
 It can have a title, a body, a footer as well as a close button.
 
 The body and footer are arrays of UI elements and turn into vertical stacks of elements.
-The close button is a button that can be used to close the panel.
+
+The close button is a button rendered in the top right corner of the panel that can be
+used to close the panel and is only visible if `onClickClose` is provided.
+Usually, you want to call [UiController.deletePanel](client.md#deletepanel) when the close button is clicked,
+e.g. `onClickClose: () => felt.deletePanel("my-panel")`.
 
 ### Body
 
@@ -11159,11 +11687,20 @@ because it will automatically align the buttons to the end of the panel giving i
   body: [
     { type: "Text", text: "Hello" },
   ],
-});
+}
 ```
 
-### form
+### closable
 
+````typescript
+{
+  id: "my-panel",
+  title: "My Panel",
+  onClickClose: () => felt.deletePanel("my-panel"),
+}
+
+@example
+### form
 ```typescript
 {
   title: "My Panel",
@@ -11178,8 +11715,8 @@ because it will automatically align the buttons to the end of the panel giving i
       { type: "Button", label: "Save", onClick: () => alert("Save") },
     ] },
   ],
-});
-```
+}
+````
 
 ### Properties
 
@@ -11189,7 +11726,7 @@ because it will automatically align the buttons to the end of the panel giving i
 
 #### body
 
-> **body**: [`UIPanelElements`](client.md#uipanelelements)\[]
+> **body**: [`UIPanelElement`](client.md#uipanelelement)\[]
 
 The elements to add to the panel body.
 
@@ -11207,15 +11744,27 @@ The title to display in the panel header.
 
 #### footer?
 
-> `optional` **footer**: [`UIPanelElements`](client.md#uipanelelements)\[]
+> `optional` **footer**: [`UIPanelElement`](client.md#uipanelelement)\[]
 
 The elements to add to the panel footer.
 
-#### onClose()?
+#### onClickClose()?
 
-> `optional` **onClose**: () => `void`
+> `optional` **onClickClose**: (`args`) => `void`
 
 A function to call when panel's close button is clicked.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the panel.
 
 ##### Returns
 
@@ -11223,9 +11772,21 @@ A function to call when panel's close button is clicked.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -11233,9 +11794,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -11257,7 +11830,7 @@ The parameters for creating a panel by using [UiController.createPanel](client.m
 
 #### body
 
-> **body**: [`UIPanelElementsCreate`](client.md#uipanelelementscreate)\[]
+> **body**: [`UIPanelElementCreate`](client.md#uipanelelementcreate)\[]
 
 The elements to add to the panel body.
 
@@ -11267,11 +11840,23 @@ The elements to add to the panel body.
 
 The title to display in the panel header.
 
-#### onClose()?
+#### onClickClose()?
 
-> `optional` **onClose**: () => `void`
+> `optional` **onClickClose**: (`args`) => `void`
 
 A function to call when panel's close button is clicked.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the panel.
 
 ##### Returns
 
@@ -11283,15 +11868,27 @@ A function to call when panel's close button is clicked.
 
 #### footer?
 
-> `optional` **footer**: [`UIPanelElementsCreate`](client.md#uipanelelementscreate)\[]
+> `optional` **footer**: [`UIPanelElementCreate`](client.md#uipanelelementcreate)\[]
 
 The elements to add to the panel footer.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -11299,9 +11896,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -11394,9 +12003,19 @@ The function to call when the value of the select changes.
 
 ##### args
 
+The arguments passed to the function.
+
 ##### value
 
 `string`
+
+The value of the select.
+
+##### id
+
+`string`
+
+The id of the select element.
 
 ##### Returns
 
@@ -11432,9 +12051,21 @@ Whether the select should allow searching through the options.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -11442,9 +12073,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -11496,9 +12139,19 @@ The function to call when the value of the select changes.
 
 ##### args
 
+The arguments passed to the function.
+
 ##### value
 
 `string`
+
+The value of the select.
+
+##### id
+
+`string`
+
+The id of the select element.
 
 ##### Returns
 
@@ -11528,9 +12181,21 @@ Whether the select should allow searching through the options.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -11538,9 +12203,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -11637,9 +12314,19 @@ The function to call when the value of the select changes.
 
 ##### args
 
+The arguments passed to the function.
+
 ##### value
 
 `string`
+
+The value of the select.
+
+##### id
+
+`string`
+
+The id of the select element.
 
 ##### Returns
 
@@ -11647,9 +12334,21 @@ The function to call when the value of the select changes.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -11657,9 +12356,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -11756,9 +12467,21 @@ The ID of the element.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -11766,9 +12489,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -11798,9 +12533,21 @@ The text to display in the element.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -11808,9 +12555,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -11863,9 +12622,21 @@ The text to display in the element.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -11873,9 +12644,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -11949,9 +12732,19 @@ The function to call when the value of the input changes.
 
 ##### args
 
+The arguments passed to the function.
+
 ##### value
 
 `string`
+
+The value of the input.
+
+##### id
+
+`string`
+
+The id of the input element.
 
 ##### Returns
 
@@ -11967,9 +12760,19 @@ The function to call when the input is blurred.
 
 ##### args
 
+The arguments passed to the function.
+
 ##### value
 
 `string`
+
+The value of the input.
+
+##### id
+
+`string`
+
+The id of the input element.
 
 ##### Returns
 
@@ -11985,9 +12788,19 @@ The function to call when the input is focused.
 
 ##### args
 
+The arguments passed to the function.
+
 ##### value
 
 `string`
+
+The value of the input.
+
+##### id
+
+`string`
+
+The id of the input element.
 
 ##### Returns
 
@@ -11995,9 +12808,21 @@ The function to call when the input is focused.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -12005,9 +12830,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -12057,9 +12894,19 @@ The function to call when the value of the input changes.
 
 ##### args
 
+The arguments passed to the function.
+
 ##### value
 
 `string`
+
+The value of the input.
+
+##### id
+
+`string`
+
+The id of the input element.
 
 ##### Returns
 
@@ -12075,9 +12922,19 @@ The function to call when the input is blurred.
 
 ##### args
 
+The arguments passed to the function.
+
 ##### value
 
 `string`
+
+The value of the input.
+
+##### id
+
+`string`
+
+The id of the input element.
 
 ##### Returns
 
@@ -12093,9 +12950,19 @@ The function to call when the input is focused.
 
 ##### args
 
+The arguments passed to the function.
+
 ##### value
 
 `string`
+
+The value of the input.
+
+##### id
+
+`string`
+
+The id of the input element.
 
 ##### Returns
 
@@ -12103,9 +12970,21 @@ The function to call when the input is focused.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -12113,9 +12992,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -12188,9 +13079,19 @@ The function to call when the value of the input changes.
 
 ##### args
 
+The arguments passed to the function.
+
 ##### value
 
 `string`
+
+The value of the input.
+
+##### id
+
+`string`
+
+The id of the input element.
 
 ##### Returns
 
@@ -12206,9 +13107,19 @@ The function to call when the input is blurred.
 
 ##### args
 
+The arguments passed to the function.
+
 ##### value
 
 `string`
+
+The value of the input.
+
+##### id
+
+`string`
+
+The id of the input element.
 
 ##### Returns
 
@@ -12224,9 +13135,19 @@ The function to call when the input is focused.
 
 ##### args
 
+The arguments passed to the function.
+
 ##### value
 
 `string`
+
+The value of the input.
+
+##### id
+
+`string`
+
+The id of the input element.
 
 ##### Returns
 
@@ -12234,9 +13155,21 @@ The function to call when the input is focused.
 
 #### onCreate()?
 
-> `optional` **onCreate**: () => `void`
+> `optional` **onCreate**: (`args`) => `void`
 
 A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -12244,9 +13177,21 @@ A function to call when the element is created.
 
 #### onDestroy()?
 
-> `optional` **onDestroy**: () => `void`
+> `optional` **onDestroy**: (`args`) => `void`
 
 A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -12784,13 +13729,13 @@ and in [UiController.createPanelElements](client.md#createpanelelements) to spec
 
 In both cases, the default value is `{ at: "end" }`.
 
-## UIPanelElements
+## UIPanelElement
 
-> **UIPanelElements**: [`UIButtonElement`](client.md#uibuttonelement) | [`UITextElement`](client.md#uitextelement) | [`UIButtonGroupElement`](client.md#uibuttongroupelement) | [`UIDividerElement`](client.md#uidividerelement) | [`UITextInputElement`](client.md#uitextinputelement) | [`UISelectElement`](client.md#uiselectelement)
+> **UIPanelElement**: [`UIButtonElement`](client.md#uibuttonelement) | [`UITextElement`](client.md#uitextelement) | [`UIButtonGroupElement`](client.md#uibuttongroupelement) | [`UIDividerElement`](client.md#uidividerelement) | [`UITextInputElement`](client.md#uitextinputelement) | [`UISelectElement`](client.md#uiselectelement)
 
-## UIPanelElementsCreate
+## UIPanelElementCreate
 
-> **UIPanelElementsCreate**: [`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIButtonGroupElementCreate`](client.md#uibuttongroupelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate)
+> **UIPanelElementCreate**: [`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIButtonGroupElementCreate`](client.md#uibuttongroupelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate)
 
 This is a union of all the possible elements that can be created inside panel's body or footer.
 
@@ -12798,9 +13743,9 @@ This is a union of all the possible elements that can be created inside panel's 
 
 For the sake of convenience, `id` is optional but recommended if you want to be able to perform updates.
 
-## UIPanelElementsUpdate
+## UIPanelElementUpdate
 
-> **UIPanelElementsUpdate**: [`UIButtonElementUpdate`](client.md#uibuttonelementupdate) | [`UITextElementUpdate`](client.md#uitextelementupdate) | [`UIButtonGroupElementUpdate`](client.md#uibuttongroupelementupdate) | [`UITextInputElementUpdate`](client.md#uitextinputelementupdate) | [`UISelectElementUpdate`](client.md#uiselectelementupdate) | [`UIFlexibleSpaceElementUpdate`](client.md#uiflexiblespaceelementupdate) | [`UIDividerElementUpdate`](client.md#uidividerelementupdate)
+> **UIPanelElementUpdate**: [`UIButtonElementUpdate`](client.md#uibuttonelementupdate) | [`UITextElementUpdate`](client.md#uitextelementupdate) | [`UIButtonGroupElementUpdate`](client.md#uibuttongroupelementupdate) | [`UITextInputElementUpdate`](client.md#uitextinputelementupdate) | [`UISelectElementUpdate`](client.md#uiselectelementupdate) | [`UIFlexibleSpaceElementUpdate`](client.md#uiflexiblespaceelementupdate) | [`UIDividerElementUpdate`](client.md#uidividerelementupdate)
 
 This is a union of all the possible elements that can be updated inside panel's body or footer (excluding Divider and FlexibleSpace elements because they cannot be updated).
 

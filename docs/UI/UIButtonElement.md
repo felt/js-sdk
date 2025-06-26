@@ -2,7 +2,11 @@
 
 Represents a button element in a panel.
 
-<img src="../_media/button-showcase.png" alt="Button variants" style="max-width: 100%;" />
+<figure>
+  <img src="../_media/button-showcase.png" alt="Button variants" />
+
+  <figcaption>Button variants</figcaption>
+</figure>
 
 # Example
 

@@ -45,18 +45,42 @@ The action to perform when the button is clicked.
 
 ## variant?
 
-> `optional` **variant**: `"primary"` | `"outlined"` | `"transparent"` | `"transparentThin"`
+> `optional` **variant**: `"filled"` | `"transparent"` | `"outlined"` | `"transparentThin"` | `"outlinedThin"`
 
 The style variant of the button.
 
-* `"primary"`: A solid button with Felt's primary background color (pink).
-* `"outlined"`: A button with a border and no background color.
-* `"transparent"`: A button with no background color and no border.
-* `"transparentThin"`: Same as `transparent` but with lighter font weight.
+* `"filled"`: a button with background.
+  * `background` color is based on button's `tint` (defaults to `default` tint)
+* `"transparent"`: a transparent button that gets a subtle dark background when hovered.
+  * `text` color is based on button's `tint` (defaults to `default` tint)
+* `"outlined"`: a transparent button with a border.
+  * `text` and `border` colors are based on button's `tint` (defaults to `default` tint)
+
+Thin variants: styles are the same as the regular variants, but with lighter font weight.
+
+* `"transparentThin"`
+* `"outlinedThin"`
 
 ### Default Value
 
-`"primary"`
+`"filled"`
+
+***
+
+## tint?
+
+> `optional` **tint**: `"default"` | `"primary"` | `"accent"` | `"danger"`
+
+The tint of the button.
+
+* `"primary"`: Felt's primary color (pink).
+* `"default"`: Felt's theme-based light/dark colors.
+* `"accent"`: Felt's accent color (blue).
+* `"danger"`: Felt's danger color (red).
+
+### Default Value
+
+`"default"`
 
 ***
 

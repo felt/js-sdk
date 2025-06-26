@@ -71,7 +71,7 @@ export const uiButtonElementSchema = uiElementBaseSchema.extend({
 /**
  * Represents a button element in a panel.
  *
- * <img src="./img/button-showcase.png" alt="Button variants" />
+ * <img src="./img/button-showcase.png" alt="Button variants" style="max-width: 100%;" />
  *
  * @example
  * ```typescript

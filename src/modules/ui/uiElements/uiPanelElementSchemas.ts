@@ -28,6 +28,14 @@ import {
   type UIFlexibleSpaceElementUpdate,
 } from "./UIFlexibleSpaceElement";
 import {
+  uiGridContainerElementCreateSchema,
+  uiGridContainerElementSchema,
+  uiGridContainerElementUpdateSchema,
+  type UIGridContainerElement,
+  type UIGridContainerElementCreate,
+  type UIGridContainerElementUpdate,
+} from "./UIGridContainerElement";
+import {
   uiSelectElementCreateSchema,
   uiSelectElementSchema,
   uiSelectElementUpdateSchema,
@@ -56,32 +64,46 @@ import {
 
 // only elements that can be added to the panel root (body or footer)
 // this excludes FlexibleSpace element because it is a button group-specific element
-export const uiPanelElementSchema = z.discriminatedUnion("type", [
-  uiButtonElementSchema,
-  uiTextElementSchema,
-  uiButtonGroupElementSchema,
-  uiDividerElementSchema,
-  uiTextInputElementSchema,
-  uiSelectElementSchema,
-]);
-
-export const uiPanelElementCreateSchema = {
-  params: z.discriminatedUnion("type", [
-    uiButtonElementCreateSchema.params,
-    uiTextElementCreateSchema.params,
-    uiButtonGroupElementCreateSchema.params,
-    uiDividerElementCreateSchema.params,
-    uiTextInputElementCreateSchema.params,
-    uiSelectElementCreateSchema.params,
+export const uiPanelElementSchema: z.ZodType<UIPanelElement> = z.lazy(() =>
+  z.discriminatedUnion("type", [
+    uiButtonElementSchema,
+    uiTextElementSchema,
+    uiButtonGroupElementSchema,
+    uiDividerElementSchema,
+    uiTextInputElementSchema,
+    uiSelectElementSchema,
+    uiGridContainerElementSchema,
   ]),
-  clonable: z.discriminatedUnion("type", [
+);
+
+const uiPanelElementCreateParamsSchema: z.ZodType<UIPanelElementCreate> =
+  z.lazy(() =>
+    z.discriminatedUnion("type", [
+      uiButtonElementCreateSchema.params,
+      uiTextElementCreateSchema.params,
+      uiButtonGroupElementCreateSchema.params,
+      uiDividerElementCreateSchema.params,
+      uiTextInputElementCreateSchema.params,
+      uiSelectElementCreateSchema.params,
+      uiGridContainerElementCreateSchema.params,
+    ]),
+  );
+
+const uiPanelElementCreateClonableSchema = z.lazy(() =>
+  z.discriminatedUnion("type", [
     uiButtonElementCreateSchema.clonable,
     uiTextElementCreateSchema.clonable,
     uiButtonGroupElementCreateSchema.clonable,
     uiDividerElementCreateSchema.clonable,
     uiTextInputElementCreateSchema.clonable,
     uiSelectElementCreateSchema.clonable,
+    uiGridContainerElementCreateSchema.clonable,
   ]),
+) as z.ZodType<UIPanelElementCreate>;
+
+export const uiPanelElementCreateSchema = {
+  params: uiPanelElementCreateParamsSchema,
+  clonable: uiPanelElementCreateClonableSchema,
 };
 
 export const uiPanelElementUpdateSchema = {
@@ -93,6 +115,7 @@ export const uiPanelElementUpdateSchema = {
     uiSelectElementUpdateSchema.params,
     uiFlexibleSpaceElementUpdateSchema.params,
     uiDividerElementUpdateSchema.params,
+    uiGridContainerElementUpdateSchema.params,
   ]),
   clonable: z.discriminatedUnion("type", [
     uiButtonElementUpdateSchema.clonable,
@@ -102,6 +125,7 @@ export const uiPanelElementUpdateSchema = {
     uiSelectElementUpdateSchema.clonable,
     uiFlexibleSpaceElementUpdateSchema.clonable,
     uiDividerElementUpdateSchema.clonable,
+    uiGridContainerElementUpdateSchema.clonable,
   ]),
 };
 
@@ -111,7 +135,8 @@ export type UIPanelElement =
   | UIButtonGroupElement
   | UIDividerElement
   | UITextInputElement
-  | UISelectElement;
+  | UISelectElement
+  | UIGridContainerElement;
 
 /**
  * This is a union of all the possible elements that can be created inside panel's body or footer.
@@ -125,7 +150,8 @@ export type UIPanelElementCreate =
   | UIButtonGroupElementCreate
   | UIDividerElementCreate
   | UITextInputElementCreate
-  | UISelectElementCreate;
+  | UISelectElementCreate
+  | UIGridContainerElementCreate;
 
 /**
  * This is a union of all the possible elements that can be updated inside panel's body or footer (excluding Divider and FlexibleSpace elements because they cannot be updated).
@@ -140,4 +166,5 @@ export type UIPanelElementUpdate =
   | UITextInputElementUpdate
   | UISelectElementUpdate
   | UIFlexibleSpaceElementUpdate
-  | UIDividerElementUpdate;
+  | UIDividerElementUpdate
+  | UIGridContainerElementUpdate;

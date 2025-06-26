@@ -1,38 +1,30 @@
 ***
 
-The parameters for creating a button group element.
+The parameters for creating a grid container element.
 
-See [UIButtonGroupElement](UIButtonGroupElement.md) for more details.
-
-# Remarks
-
-`id` is optional but recommended if you want to be able to perform updates.
+See [UIGridContainerElement](UIGridContainerElement.md) for more details.
 
 # Properties
 
 ## type
 
-> **type**: `"ButtonGroup"`
+> **type**: `"grid"`
 
 ***
 
 ## items
 
-> **items**: ([`UIButtonElementCreate`](UIButtonElementCreate.md) | [`UITextElementCreate`](UITextElementCreate.md) | [`UIFlexibleSpaceElementCreate`](UIFlexibleSpaceElementCreate.md))\[]
+> **items**: [`UIPanelElementCreate`](UIPanelElementCreate.md)\[]
 
-The items to add to the button group.
+The items to add to the grid container.
 
 ***
 
-## align?
+## grid?
 
-> `optional` **align**: `"start"` | `"end"`
+> `optional` **grid**: `string`
 
-The alignment of the button group.
-
-### Default Value
-
-`"end"`
+The grid to use for the container.
 
 ***
 

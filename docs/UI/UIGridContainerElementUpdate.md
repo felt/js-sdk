@@ -1,38 +1,42 @@
 ***
 
-The parameters for creating a button group element.
+The parameters for updating a grid container element.
 
-See [UIButtonGroupElement](UIButtonGroupElement.md) for more details.
+See [UIGridContainerElement](UIGridContainerElement.md) for more details.
 
 # Remarks
 
-`id` is optional but recommended if you want to be able to perform updates.
+`id` and `type` are required to identify the element to update.
 
 # Properties
 
 ## type
 
-> **type**: `"ButtonGroup"`
+> **type**: `"grid"`
 
 ***
 
-## items
+## id
 
-> **items**: ([`UIButtonElementCreate`](UIButtonElementCreate.md) | [`UITextElementCreate`](UITextElementCreate.md) | [`UIFlexibleSpaceElementCreate`](UIFlexibleSpaceElementCreate.md))\[]
+> **id**: `string`
 
-The items to add to the button group.
+The ID of the element.
 
 ***
 
-## align?
+## grid?
 
-> `optional` **align**: `"start"` | `"end"`
+> `optional` **grid**: `string`
 
-The alignment of the button group.
+The grid to use for the container.
 
-### Default Value
+***
 
-`"end"`
+## items?
+
+> `optional` **items**: [`UIPanelElementCreate`](UIPanelElementCreate.md)\[]
+
+The items to add to the grid container.
 
 ***
 
@@ -71,22 +75,3 @@ A function to call when the element is destroyed.
 ### Returns
 
 `void`
-
-***
-
-## id?
-
-> `optional` **id**: `string`
-
-The ID of the element.
-
-### Remarks
-
-If not provided, the element will be assigned a random ID, but it is recommended to provide it
-to perform further updates on the element.
-
-If provided, it must be unique within the UI.
-
-### Default Value
-
-`undefined`

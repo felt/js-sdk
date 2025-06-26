@@ -27,21 +27,9 @@ export const uiButtonElementSchema = uiElementBaseSchema.extend({
    * - `"outlined"`: a transparent button with a border.
    *   - `text` and `border` colors are based on button's `tint` (defaults to `default` tint)
    *
-   * Thin variants: styles are the same as the regular variants, but with lighter font weight.
-   * - `"transparentThin"`
-   * - `"outlinedThin"`
-   *
    * @defaultValue `"filled"`
    */
-  variant: z
-    .enum([
-      "filled",
-      "transparent",
-      "outlined",
-      "transparentThin",
-      "outlinedThin",
-    ])
-    .optional(),
+  variant: z.enum(["filled", "transparent", "outlined"]).optional(),
 
   /**
    * The tint of the button.

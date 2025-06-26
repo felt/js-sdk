@@ -34,7 +34,7 @@ The label to display in the button.
 
 ## variant?
 
-> `optional` **variant**: `"filled"` | `"transparent"` | `"outlined"` | `"transparentThin"` | `"outlinedThin"`
+> `optional` **variant**: `"filled"` | `"transparent"` | `"outlined"`
 
 The style variant of the button.
 
@@ -44,11 +44,6 @@ The style variant of the button.
   * `text` color is based on button's `tint` (defaults to `default` tint)
 * `"outlined"`: a transparent button with a border.
   * `text` and `border` colors are based on button's `tint` (defaults to `default` tint)
-
-Thin variants: styles are the same as the regular variants, but with lighter font weight.
-
-* `"transparentThin"`
-* `"outlinedThin"`
 
 ### Default Value
 

@@ -2,4 +2,4 @@
 "@feltmaps/js-sdk": minor
 ---
 
-Add new variants and tint to UIButtonElement
+Add new variants, drop thin variants and add tint prop to UIButtonElement

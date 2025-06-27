@@ -22,6 +22,22 @@ export const uiGridContainerElementSchema = uiElementBaseSchema.extend({
 
   /**
    * The grid to use for the container.
+   * It is the exact same as CSS's shorthand property `grid`.
+   *
+   * @example
+   * #### horizontal stack
+   *
+   * two columns, the first column is 50px wide, the second column takes the remaining space
+   * ```typescript
+   * {
+   *   type: "Grid",
+   *   grid: "auto-flow / 50px 1fr",
+   *   items: [...]
+   * }
+   * ```
+   *
+   * @see {@link https://developer.mozilla.org/en-US/docs/Web/CSS/grid} for more details.
+   *
    */
   grid: z.string().optional(),
 
@@ -29,13 +45,84 @@ export const uiGridContainerElementSchema = uiElementBaseSchema.extend({
 });
 
 /**
- * Represents a grid container element in a panel.
- * A grid container is a container that displays its children in a grid layout.
+ * Represents a container with a grid layout in a panel.
+ *
+ * By default, the grid items are vertically stacked,
+ * but you can change the grid to use a different layout by
+ * setting the `grid` property to a different value.
+ *
+ * `grid` property is the exact same as CSS's shorthand property `grid`.
+ * [See the MDN documentation for more details](https://developer.mozilla.org/en-US/docs/Web/CSS/grid).
  *
  * @example
+ * #### horizontal stack
+ *
+ * <figure>
+ * <img src="./img/grid-horizontal-stack.png" alt="Horizontal stack" />
+ * <figcaption>Two columns, each sharing 50% of the container width</figcaption>
+ * </figure>
+ *
  * ```typescript
  * {
- *   type: "grid",
+ *   type: "Grid",
+ *   grid: "auto-flow / 1fr 1fr",
+ *   items: [
+ *     { type: "TextInput", label: "Name", value: "" },
+ *     { type: "TextInput", label: "Last name", value: "" },
+ *   ],
+ * }
+ * ```
+ *
+ * You can understand {@link UIPanelElement} `body` and `footer` properties
+ * as the grid containers using default vertical stack layout.
+ *
+ * `FlexibleSpace` element is a handy solution to allow more control over grid layout.
+ *
+ * @example
+ * #### flexible space to right align the input
+ *
+ * <figure>
+ * <img src="./img/grid-flexible-space.png" alt="Flexible space to right align the input" />
+ * <figcaption>FlexibleSpace renders a flexible space that takes 50% of the container width</figcaption>
+ * </figure>
+ *
+ * ```typescript
+ * {
+ *   type: "Grid",
+ *   grid: "auto-flow / 1fr 1fr",
+ *   items: [
+ *     { type: "FlexibleSpace" },
+ *     { type: "TextInput", label: "An input" , value: "" },
+ *   ],
+ * }
+ * ```
+ *
+ * @example
+ *
+ * Grid containers can be nested to create more complex layouts.
+ *
+ * @example
+ * #### nested grid containers
+ *
+ * <figure>
+ * <img src="./img/grid-nested.png" alt="Nested grid containers" />
+ * <figcaption>Nested grid containers</figcaption>
+ * </figure>
+ *
+ * ```typescript
+ * {
+ *   type: "Grid",
+ *   grid: "auto-flow / 1fr 1fr",
+ *   items: [
+ *     { type: "Button", label: "Top left", onClick: () => {} },
+ *     {
+ *       type: "Grid",
+ *       items: [
+ *         { type: "Button", label: "Top left", onClick: () => {} },
+ *         { type: "Button", label: "Bottom right", onClick: () => {} },
+ *       ],
+ *     },
+ *   ],
  * }
  */
 export interface UIGridContainerElement

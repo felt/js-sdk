@@ -14,7 +14,7 @@ A grid container is a container that displays its children in a grid layout.
 
 ## type
 
-> **type**: `"grid"`
+> **type**: `"Grid"`
 
 ***
 

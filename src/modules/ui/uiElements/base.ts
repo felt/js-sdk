@@ -49,6 +49,12 @@ const uiElementLifecycleClonableSchema = z.object({
   onDestroy: z.string().optional(),
 });
 
+export interface UIElementLifecycleClonable
+  extends zInfer<typeof uiElementLifecycleClonableSchema> {
+  onCreate?: string;
+  onDestroy?: string;
+}
+
 export const uiElementBaseSchema = uiElementLifecycleSchema.extend({
   id: z.string(),
 });
@@ -108,6 +114,17 @@ export const uiLabelReadyElementCreateSchema = {
 export interface UILabelReadyElementCreateParams
   extends Omit<UILabelReadyElement, "id">,
     UIElementBaseCreateParams {}
+
+// turn every function value into a string
+export type MakeClonableSchema<
+  TElementCreate extends { id?: string; type: string },
+> = {
+  [K in keyof TElementCreate]: TElementCreate[K] extends Function
+    ? string
+    : TElementCreate[K] extends Function | undefined
+      ? string | undefined
+      : TElementCreate[K];
+};
 
 export function makeUpdateSchema<
   TShape extends z.ZodRawShape & {

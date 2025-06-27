@@ -4,6 +4,7 @@ import {
   makeUpdateSchema,
   uiElementBaseCreateSchema,
   uiElementBaseSchema,
+  type MakeClonableSchema,
   type MakeUpdateSchema,
   type UIElementBase,
   type UIElementBaseCreateParams,
@@ -57,6 +58,9 @@ export const uiFlexibleSpaceElementCreateSchema = {
 export interface UIFlexibleSpaceElementCreate
   extends Omit<UIFlexibleSpaceElement, "id">,
     UIElementBaseCreateParams {}
+
+export type UIFlexibleSpaceElementCreateClonable =
+  MakeClonableSchema<UIFlexibleSpaceElementCreate>;
 
 export const uiFlexibleSpaceElementUpdateSchema = {
   params: makeUpdateSchema(uiFlexibleSpaceElementCreateSchema.params),

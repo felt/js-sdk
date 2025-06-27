@@ -111,6 +111,9 @@ export interface UIButtonElementCreate
   extends Omit<UIButtonElement, "id">,
     UIElementBaseCreateParams {}
 
+export interface UIButtonElementCreateClonable
+  extends MakeClonableSchema<UIButtonElementCreate> {}
+
 export const uiButtonElementUpdateSchema = {
   params: makeUpdateSchema(uiButtonElementCreateSchema.params),
   clonable: makeUpdateSchema(uiButtonElementCreateSchema.clonable),

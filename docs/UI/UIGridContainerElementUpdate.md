@@ -12,7 +12,7 @@ See [UIGridContainerElement](UIGridContainerElement.md) for more details.
 
 ## type
 
-> **type**: `"grid"`
+> **type**: `"Grid"`
 
 ***
 

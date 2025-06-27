@@ -1,22 +1,24 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
-  makeUpdateSchema,
-  uiElementBaseCreateSchema,
-  uiElementBaseSchema,
-  type MakeUpdateSchema,
-  type UIElementBase,
-  type UIElementBaseCreateParams,
+    makeUpdateSchema,
+    uiElementBaseCreateSchema,
+    uiElementBaseSchema,
+    type MakeClonableSchema,
+    type MakeUpdateSchema,
+    type UIElementBase,
+    type UIElementBaseCreateParams,
 } from "./base";
 import {
-  uiPanelElementCreateSchema,
-  uiPanelElementSchema,
-  type UIPanelElement,
-  type UIPanelElementCreate,
+    uiPanelElementCreateSchema,
+    uiPanelElementSchema,
+    type UIPanelElement,
+    type UIPanelElementCreate,
+    type UIPanelElementCreateClonable,
 } from "./uiPanelElementSchemas";
 
 export const uiGridContainerElementSchema = uiElementBaseSchema.extend({
-  type: z.literal("grid"),
+  type: z.literal("Grid"),
 
   /**
    * The grid to use for the container.
@@ -74,6 +76,11 @@ export interface UIGridContainerElementCreate
    */
   items: Array<UIPanelElementCreate>;
 }
+
+export type UIGridContainerElementCreateClonable = Omit<
+  MakeClonableSchema<UIGridContainerElementCreate>,
+  "items"
+> & { items: Array<UIPanelElementCreateClonable> };
 
 export const uiGridContainerElementUpdateSchema = {
   params: makeUpdateSchema(uiGridContainerElementCreateSchema.params),

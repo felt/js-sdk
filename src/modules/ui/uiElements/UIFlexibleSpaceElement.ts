@@ -15,14 +15,46 @@ export const uiFlexibleSpaceElementSchema = uiElementBaseSchema.extend({
 });
 
 /**
- * Represents a flexible space element in a button group.
- * Useful to customize the spacing between button group items.
+ * Represents a flexible space element in a container.
+ *
+ * When rendered...
+ *
+ * - inside {@link UIGridContainerElement}, it will add extra gap between items. It can be controlled by `grid` property.
+ * - inside {@link UIPanelElement} `body` or `footer`, since they work as vertically stacks, it will add extra gap between items.
+ * - inside {@link UIButtonGroupElement}, it will take the remaining space.
  *
  * @example
  * Buttons with a flexible space between makes them more visually separated.
  * ```typescript
  * {
  *   type: "ButtonGroup",
+ *   items: [
+ *     { type: "Button", label: "Button 1", onClick: () => {} },
+ *     { type: "FlexibleSpace" },
+ *     { type: "Button", label: "Button 2", onClick: () => {} },
+ *   ],
+ * }
+ * ```
+ *
+ * @example
+ * Paragraphs with a flexible space between makes them more visually separated.
+ * ```typescript
+ * {
+ *   type: "Panel",
+ *   body: [
+ *     { type: "Paragraph", text: "Paragraph 1" },
+ *     { type: "FlexibleSpace" },
+ *     { type: "Paragraph", text: "Paragraph 2" },
+ *   ],
+ * }
+ * ```
+ *
+ * @example
+ * Horizontal stack of buttons with a flexible space between makes them more visually separated.
+ * ```typescript
+ * {
+ *   type: "Grid",
+ *   grid: "auto-flow / auto 1fr auto",
  *   items: [
  *     { type: "Button", label: "Button 1", onClick: () => {} },
  *     { type: "FlexibleSpace" },

@@ -20,16 +20,28 @@ export const uiButtonElementSchema = uiElementBaseSchema.extend({
   /**
    * The style variant of the button.
    *
-   * - `"primary"`: A solid button with Felt's primary background color (pink).
-   * - `"outlined"`: A button with a border and no background color.
-   * - `"transparent"`: A button with no background color and no border.
-   * - `"transparentThin"`: Same as `transparent` but with lighter font weight.
+   * - `"filled"`: a button with background.
+   *   - `background` color is based on button's `tint` (defaults to `default` tint)
+   * - `"transparent"`: a transparent button that gets a subtle dark background when hovered.
+   *   - `text` color is based on button's `tint` (defaults to `default` tint)
+   * - `"outlined"`: a transparent button with a border.
+   *   - `text` and `border` colors are based on button's `tint` (defaults to `default` tint)
    *
-   * @defaultValue `"primary"`
+   * @defaultValue `"filled"`
    */
-  variant: z
-    .enum(["primary", "outlined", "transparent", "transparentThin"])
-    .optional(),
+  variant: z.enum(["filled", "transparent", "outlined"]).optional(),
+
+  /**
+   * The tint of the button.
+   *
+   * - `"default"`: Felt's theme-based light/dark colors.
+   * - `"primary"`: Felt's primary color (pink).
+   * - `"accent"`: Felt's accent color (blue).
+   * - `"danger"`: Felt's danger color (red).
+   *
+   * @defaultValue `"default"`
+   */
+  tint: z.enum(["default", "primary", "accent", "danger"]).optional(),
 
   /**
    * Whether the button is disabled.
@@ -46,6 +58,11 @@ export const uiButtonElementSchema = uiElementBaseSchema.extend({
 
 /**
  * Represents a button element in a panel.
+ *
+ * <figure>
+ * <img src="./img/button-showcase.png" alt="Button variants" />
+ * <figcaption>Button variants</figcaption>
+ * </figure>
  *
  * @example
  * ```typescript

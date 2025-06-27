@@ -9,9 +9,16 @@ setting the `grid` property to a different value.
 `grid` property is the exact same as CSS's shorthand property `grid`.
 [See the MDN documentation for more details](https://developer.mozilla.org/en-US/docs/Web/CSS/grid).
 
+You can understand [UIPanelElement](UIPanelElement.md) `body` and `footer` properties
+as grid containers using default vertical stack layout.
+
+### Horizontal stack
+
+As part of CSS Grid Layout capabilities it is possible to create a horizontal stack.
+
 # Examples
 
-### horizontal stack
+#### Equal width columns
 
 <figure>
   <img src="../_media/grid-horizontal-stack.png" alt="Horizontal stack" />
@@ -30,17 +37,16 @@ setting the `grid` property to a different value.
 }
 ```
 
-You can understand [UIPanelElement](UIPanelElement.md) `body` and `footer` properties
-as the grid containers using default vertical stack layout.
+### `FlexibleSpace` element
 
 `FlexibleSpace` element is a handy solution to allow more control over grid layout.
 
-### flexible space to right align the input
+#### to right align the input
 
 <figure>
   <img src="../_media/grid-flexible-space.png" alt="Flexible space to right align the input" />
 
-  <figcaption>FlexibleSpace renders a flexible space that takes 50% of the container width</figcaption>
+  <figcaption>Flexible space takes 50% of the container width</figcaption>
 </figure>
 
 ```typescript
@@ -54,11 +60,9 @@ as the grid containers using default vertical stack layout.
 }
 ```
 
-```ts
-Grid containers can be nested to create more complex layouts.
-```
+### Nested grid containers
 
-### nested grid containers
+Grid containers can be nested to create more complex layouts.
 
 <figure>
   <img src="../_media/grid-nested.png" alt="Nested grid containers" />
@@ -66,7 +70,7 @@ Grid containers can be nested to create more complex layouts.
   <figcaption>Nested grid containers</figcaption>
 </figure>
 
-````typescript
+```typescript
 {
   type: "Grid",
   grid: "auto-flow / 1fr 1fr",
@@ -81,6 +85,7 @@ Grid containers can be nested to create more complex layouts.
     },
   ],
 }
+```
 
 # Properties
 
@@ -92,7 +97,7 @@ Grid containers can be nested to create more complex layouts.
 
 ## items
 
-> **items**: [`UIPanelElement`](UIPanelElement.md)[]
+> **items**: [`UIPanelElement`](UIPanelElement.md)\[]
 
 The items to add to the grid container.
 Multiple grid containers can be nested to create more complex layouts.
@@ -119,13 +124,14 @@ It is the exact same as CSS's shorthand property `grid`.
 ### horizontal stack
 
 two columns, the first column is 50px wide, the second column takes the remaining space
+
 ```typescript
 {
   type: "Grid",
   grid: "auto-flow / 50px 1fr",
   items: [...]
 }
-````
+```
 
 ### See
 

@@ -54,8 +54,16 @@ export const uiGridContainerElementSchema = uiElementBaseSchema.extend({
  * `grid` property is the exact same as CSS's shorthand property `grid`.
  * [See the MDN documentation for more details](https://developer.mozilla.org/en-US/docs/Web/CSS/grid).
  *
+ * You can understand {@link UIPanelElement} `body` and `footer` properties
+ * as grid containers using default vertical stack layout.
+ *
+ * #### Horizontal stack
+ *
+ * As part of CSS Grid Layout capabilities it is possible to create a horizontal stack.
+ *
  * @example
- * #### horizontal stack
+ *
+ * ##### Equal width columns
  *
  * <figure>
  * <img src="./img/grid-horizontal-stack.png" alt="Horizontal stack" />
@@ -73,17 +81,16 @@ export const uiGridContainerElementSchema = uiElementBaseSchema.extend({
  * }
  * ```
  *
- * You can understand {@link UIPanelElement} `body` and `footer` properties
- * as the grid containers using default vertical stack layout.
+ * #### `FlexibleSpace` element
  *
  * `FlexibleSpace` element is a handy solution to allow more control over grid layout.
  *
  * @example
- * #### flexible space to right align the input
+ * ##### to right align the input
  *
  * <figure>
  * <img src="./img/grid-flexible-space.png" alt="Flexible space to right align the input" />
- * <figcaption>FlexibleSpace renders a flexible space that takes 50% of the container width</figcaption>
+ * <figcaption>Flexible space takes 50% of the container width</figcaption>
  * </figure>
  *
  * ```typescript
@@ -97,12 +104,11 @@ export const uiGridContainerElementSchema = uiElementBaseSchema.extend({
  * }
  * ```
  *
- * @example
+ * #### Nested grid containers
  *
  * Grid containers can be nested to create more complex layouts.
  *
  * @example
- * #### nested grid containers
  *
  * <figure>
  * <img src="./img/grid-nested.png" alt="Nested grid containers" />
@@ -124,6 +130,7 @@ export const uiGridContainerElementSchema = uiElementBaseSchema.extend({
  *     },
  *   ],
  * }
+ * ```
  */
 export interface UIGridContainerElement
   extends UIElementBase,

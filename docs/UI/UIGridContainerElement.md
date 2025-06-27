@@ -12,13 +12,13 @@ setting the `grid` property to a different value.
 You can understand [UIPanelElement](UIPanelElement.md) `body` and `footer` properties
 as grid containers using default vertical stack layout.
 
-### Horizontal stack
+## Horizontal stack
 
 As part of CSS Grid Layout capabilities it is possible to create a horizontal stack.
 
 # Examples
 
-#### Equal width columns
+### Equal width columns
 
 <figure>
   <img src="../_media/grid-horizontal-stack.png" alt="Horizontal stack" />
@@ -37,11 +37,11 @@ As part of CSS Grid Layout capabilities it is possible to create a horizontal st
 }
 ```
 
-### `FlexibleSpace` element
+## `FlexibleSpace` element
 
 `FlexibleSpace` element is a handy solution to allow more control over grid layout.
 
-#### to right align the input
+### to right align the input
 
 <figure>
   <img src="../_media/grid-flexible-space.png" alt="Flexible space to right align the input" />
@@ -60,7 +60,7 @@ As part of CSS Grid Layout capabilities it is possible to create a horizontal st
 }
 ```
 
-### Nested grid containers
+## Nested grid containers
 
 Grid containers can be nested to create more complex layouts.
 

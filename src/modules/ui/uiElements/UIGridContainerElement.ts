@@ -57,13 +57,13 @@ export const uiGridContainerElementSchema = uiElementBaseSchema.extend({
  * You can understand {@link UIPanelElement} `body` and `footer` properties
  * as grid containers using default vertical stack layout.
  *
- * #### Horizontal stack
+ * ### Horizontal stack
  *
  * As part of CSS Grid Layout capabilities it is possible to create a horizontal stack.
  *
  * @example
  *
- * ##### Equal width columns
+ * #### Equal width columns
  *
  * <figure>
  * <img src="./img/grid-horizontal-stack.png" alt="Horizontal stack" />
@@ -81,12 +81,12 @@ export const uiGridContainerElementSchema = uiElementBaseSchema.extend({
  * }
  * ```
  *
- * #### `FlexibleSpace` element
+ * ### `FlexibleSpace` element
  *
  * `FlexibleSpace` element is a handy solution to allow more control over grid layout.
  *
  * @example
- * ##### to right align the input
+ * #### to right align the input
  *
  * <figure>
  * <img src="./img/grid-flexible-space.png" alt="Flexible space to right align the input" />
@@ -104,7 +104,7 @@ export const uiGridContainerElementSchema = uiElementBaseSchema.extend({
  * }
  * ```
  *
- * #### Nested grid containers
+ * ### Nested grid containers
  *
  * Grid containers can be nested to create more complex layouts.
  *

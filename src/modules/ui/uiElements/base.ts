@@ -49,12 +49,6 @@ const uiElementLifecycleClonableSchema = z.object({
   onDestroy: z.string().optional(),
 });
 
-export interface UIElementLifecycleClonable
-  extends zInfer<typeof uiElementLifecycleClonableSchema> {
-  onCreate?: string;
-  onDestroy?: string;
-}
-
 export const uiElementBaseSchema = uiElementLifecycleSchema.extend({
   id: z.string(),
 });

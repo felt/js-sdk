@@ -27,7 +27,12 @@ import {
   type UIDividerElementUpdate,
 } from "./UIDividerElement";
 import {
+  uiFlexibleSpaceElementCreateSchema,
+  uiFlexibleSpaceElementSchema,
   uiFlexibleSpaceElementUpdateSchema,
+  type UIFlexibleSpaceElement,
+  type UIFlexibleSpaceElementCreate,
+  type UIFlexibleSpaceElementCreateClonable,
   type UIFlexibleSpaceElementUpdate,
 } from "./UIFlexibleSpaceElement";
 import {
@@ -80,34 +85,31 @@ export const uiPanelElementSchema: z.ZodType<UIPanelElement> = z.lazy(() =>
     uiTextInputElementSchema,
     uiSelectElementSchema,
     uiGridContainerElementSchema,
+    uiFlexibleSpaceElementSchema,
   ]),
 );
 
-const uiPanelElementCreateParamsSchema: z.ZodType<UIPanelElementCreate> =
-  z.lazy(() =>
-    z.discriminatedUnion("type", [
-      uiButtonElementCreateSchema.params,
-      uiTextElementCreateSchema.params,
-      uiButtonGroupElementCreateSchema.params,
-      uiDividerElementCreateSchema.params,
-      uiTextInputElementCreateSchema.params,
-      uiSelectElementCreateSchema.params,
-      uiGridContainerElementCreateSchema.params,
-    ]),
-  );
+const uiPanelElementCreateParamsSchema = z.discriminatedUnion("type", [
+  uiButtonElementCreateSchema.params,
+  uiTextElementCreateSchema.params,
+  uiButtonGroupElementCreateSchema.params,
+  uiDividerElementCreateSchema.params,
+  uiTextInputElementCreateSchema.params,
+  uiSelectElementCreateSchema.params,
+  uiGridContainerElementCreateSchema.params,
+  uiFlexibleSpaceElementCreateSchema.params,
+]);
 
-const uiPanelElementCreateClonableSchema: z.ZodType<UIPanelElementCreateClonable> =
-  z.lazy(() =>
-    z.discriminatedUnion("type", [
-      uiButtonElementCreateSchema.clonable,
-      uiTextElementCreateSchema.clonable,
-      uiButtonGroupElementCreateSchema.clonable,
-      uiDividerElementCreateSchema.clonable,
-      uiTextInputElementCreateSchema.clonable,
-      uiSelectElementCreateSchema.clonable,
-      uiGridContainerElementCreateSchema.clonable,
-    ]),
-  );
+const uiPanelElementCreateClonableSchema = z.discriminatedUnion("type", [
+  uiButtonElementCreateSchema.clonable,
+  uiTextElementCreateSchema.clonable,
+  uiButtonGroupElementCreateSchema.clonable,
+  uiDividerElementCreateSchema.clonable,
+  uiTextInputElementCreateSchema.clonable,
+  uiSelectElementCreateSchema.clonable,
+  uiGridContainerElementCreateSchema.clonable,
+  uiFlexibleSpaceElementCreateSchema.clonable,
+]);
 
 export const uiPanelElementCreateSchema = {
   params: uiPanelElementCreateParamsSchema,
@@ -121,9 +123,9 @@ export const uiPanelElementUpdateSchema = {
     uiButtonGroupElementUpdateSchema.params,
     uiTextInputElementUpdateSchema.params,
     uiSelectElementUpdateSchema.params,
-    uiFlexibleSpaceElementUpdateSchema.params,
     uiDividerElementUpdateSchema.params,
     uiGridContainerElementUpdateSchema.params,
+    uiFlexibleSpaceElementUpdateSchema.params,
   ]),
   clonable: z.discriminatedUnion("type", [
     uiButtonElementUpdateSchema.clonable,
@@ -131,9 +133,9 @@ export const uiPanelElementUpdateSchema = {
     uiButtonGroupElementUpdateSchema.clonable,
     uiTextInputElementUpdateSchema.clonable,
     uiSelectElementUpdateSchema.clonable,
-    uiFlexibleSpaceElementUpdateSchema.clonable,
     uiDividerElementUpdateSchema.clonable,
     uiGridContainerElementUpdateSchema.clonable,
+    uiFlexibleSpaceElementUpdateSchema.clonable,
   ]),
 };
 
@@ -144,7 +146,8 @@ export type UIPanelElement =
   | UIDividerElement
   | UITextInputElement
   | UISelectElement
-  | UIGridContainerElement;
+  | UIGridContainerElement
+  | UIFlexibleSpaceElement;
 
 /**
  * This is a union of all the possible elements that can be created inside panel's body or footer.
@@ -159,7 +162,8 @@ export type UIPanelElementCreate =
   | UIDividerElementCreate
   | UITextInputElementCreate
   | UISelectElementCreate
-  | UIGridContainerElementCreate;
+  | UIGridContainerElementCreate
+  | UIFlexibleSpaceElementCreate;
 
 export type UIPanelElementCreateClonable =
   | UIButtonElementCreateClonable
@@ -168,7 +172,8 @@ export type UIPanelElementCreateClonable =
   | UIDividerElementCreateClonable
   | UITextInputElementCreateClonable
   | UISelectElementCreateClonable
-  | UIGridContainerElementCreateClonable;
+  | UIGridContainerElementCreateClonable
+  | UIFlexibleSpaceElementCreateClonable;
 
 /**
  * This is a union of all the possible elements that can be updated inside panel's body or footer (excluding Divider and FlexibleSpace elements because they cannot be updated).
@@ -182,6 +187,6 @@ export type UIPanelElementUpdate =
   | UIButtonGroupElementUpdate
   | UITextInputElementUpdate
   | UISelectElementUpdate
-  | UIFlexibleSpaceElementUpdate
   | UIDividerElementUpdate
-  | UIGridContainerElementUpdate;
+  | UIGridContainerElementUpdate
+  | UIFlexibleSpaceElementUpdate;

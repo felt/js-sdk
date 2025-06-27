@@ -1,6 +1,6 @@
 ***
 
-> **UIPanelElementCreate**: [`UIButtonElementCreate`](UIButtonElementCreate.md) | [`UITextElementCreate`](UITextElementCreate.md) | [`UIButtonGroupElementCreate`](UIButtonGroupElementCreate.md) | [`UIDividerElementCreate`](UIDividerElementCreate.md) | [`UITextInputElementCreate`](UITextInputElementCreate.md) | [`UISelectElementCreate`](UISelectElementCreate.md) | [`UIGridContainerElementCreate`](UIGridContainerElementCreate.md)
+> **UIPanelElementCreate**: [`UIButtonElementCreate`](UIButtonElementCreate.md) | [`UITextElementCreate`](UITextElementCreate.md) | [`UIButtonGroupElementCreate`](UIButtonGroupElementCreate.md) | [`UIDividerElementCreate`](UIDividerElementCreate.md) | [`UITextInputElementCreate`](UITextInputElementCreate.md) | [`UISelectElementCreate`](UISelectElementCreate.md) | [`UIGridContainerElementCreate`](UIGridContainerElementCreate.md) | [`UIFlexibleSpaceElementCreate`](UIFlexibleSpaceElementCreate.md)
 
 This is a union of all the possible elements that can be created inside panel's body or footer.
 

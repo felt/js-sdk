@@ -51,16 +51,26 @@ export interface UIGridContainerElement
   items: Array<UIPanelElement>;
 }
 
+const itemsCreateSchema: z.ZodType<Array<UIPanelElementCreate>> = z.lazy(() =>
+  z.array(uiPanelElementCreateSchema.params),
+);
+
 const uiGridContainerElementCreateSchm = uiGridContainerElementSchema
   .extend(uiElementBaseCreateSchema.params.shape)
   .omit({ items: true })
-  .extend({ items: z.array(uiPanelElementCreateSchema.params) });
+  .extend({ items: itemsCreateSchema });
+
+const itemsClonableSchema: z.ZodType<Array<UIPanelElementCreateClonable>> =
+  z.lazy(() => z.array(uiPanelElementCreateSchema.clonable));
+
+const uiGridContainerElementCreateClonableSchema =
+  uiGridContainerElementCreateSchm
+    .extend(uiElementBaseCreateSchema.clonable.shape)
+    .extend({ items: itemsClonableSchema });
 
 export const uiGridContainerElementCreateSchema = {
   params: uiGridContainerElementCreateSchm,
-  clonable: uiGridContainerElementCreateSchm
-    .extend(uiElementBaseCreateSchema.clonable.shape)
-    .extend({ items: z.array(uiPanelElementCreateSchema.clonable) }),
+  clonable: uiGridContainerElementCreateClonableSchema,
 };
 
 /**

@@ -16,8 +16,6 @@ as grid containers using default vertical stack layout.
 
 As part of CSS Grid Layout capabilities it is possible to create a horizontal stack.
 
-# Examples
-
 ### Equal width columns
 
 <figure>
@@ -37,9 +35,12 @@ As part of CSS Grid Layout capabilities it is possible to create a horizontal st
 }
 ```
 
-## `FlexibleSpace` element
+## FlexibleSpace element
 
 `FlexibleSpace` element is a handy solution to allow more control over grid layout.
+
+If `grid` is not set, `FlexibleSpace` will add some space between the items.
+By using `grid` property it is possible to control FlexibleSpace's size.
 
 ### to right align the input
 
@@ -56,6 +57,28 @@ As part of CSS Grid Layout capabilities it is possible to create a horizontal st
   items: [
     { type: "FlexibleSpace" },
     { type: "TextInput", label: "An input" , value: "" },
+  ],
+}
+```
+
+### two columns of buttons with space between them
+
+<figure>
+  <img src="../_media/grid-two-groups-of-buttons.png" alt="Two groups of buttons" />
+
+  <figcaption>Two groups of buttons</figcaption>
+</figure>
+
+```typescript
+{
+  type: "Grid",
+  grid: "auto-flow / auto auto 1fr auto auto",
+  items: [
+    { type: "Button", label: "A" , onClick: () => {} },
+    { type: "Button", label: "B" , onClick: () => {} },
+    { type: "FlexibleSpace" },
+    { type: "Button", label: "C" , onClick: () => {} },
+    { type: "Button", label: "D" , onClick: () => {} },
   ],
 }
 ```

@@ -61,8 +61,6 @@ export const uiGridContainerElementSchema = uiElementBaseSchema.extend({
  *
  * As part of CSS Grid Layout capabilities it is possible to create a horizontal stack.
  *
- * @example
- *
  * #### Equal width columns
  *
  * <figure>
@@ -81,11 +79,13 @@ export const uiGridContainerElementSchema = uiElementBaseSchema.extend({
  * }
  * ```
  *
- * ### `FlexibleSpace` element
+ * ### FlexibleSpace element
  *
  * `FlexibleSpace` element is a handy solution to allow more control over grid layout.
- *
- * @example
+ * 
+ * If `grid` is not set, `FlexibleSpace` will add some space between the items.
+ * By using `grid` property it is possible to control FlexibleSpace's size.
+
  * #### to right align the input
  *
  * <figure>
@@ -103,12 +103,32 @@ export const uiGridContainerElementSchema = uiElementBaseSchema.extend({
  *   ],
  * }
  * ```
+ * 
+ * #### two columns of buttons with space between them
+ * 
+ * <figure>
+ * <img src="./img/grid-two-groups-of-buttons.png" alt="Two groups of buttons" />
+ * <figcaption>Two groups of buttons</figcaption>
+ * </figure>
+ * 
+ * 
+ * ```typescript
+ * {
+ *   type: "Grid",
+ *   grid: "auto-flow / auto auto 1fr auto auto",
+ *   items: [
+ *     { type: "Button", label: "A" , onClick: () => {} },
+ *     { type: "Button", label: "B" , onClick: () => {} },
+ *     { type: "FlexibleSpace" },
+ *     { type: "Button", label: "C" , onClick: () => {} },
+ *     { type: "Button", label: "D" , onClick: () => {} },
+ *   ],
+ * }
+ * ```
  *
  * ### Nested grid containers
  *
  * Grid containers can be nested to create more complex layouts.
- *
- * @example
  *
  * <figure>
  * <img src="./img/grid-nested.png" alt="Nested grid containers" />

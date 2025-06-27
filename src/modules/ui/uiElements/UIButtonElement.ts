@@ -1,7 +1,6 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
-  type MakeClonableSchema,
   type MakeUpdateSchema,
   makeUpdateSchema,
   type UIElementBase,

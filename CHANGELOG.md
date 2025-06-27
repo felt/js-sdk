@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.7.0-next.14
+
+### Minor Changes
+
+- 0754363: Add new variants, drop thin variants and add tint prop to UIButtonElement
+
 ## 1.7.0-next.13
 
 ### Minor Changes

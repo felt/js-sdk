@@ -1,6 +1,7 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
+  type MakeClonableSchema,
   type MakeUpdateSchema,
   makeUpdateSchema,
   type UIElementBase,
@@ -34,14 +35,14 @@ export const uiButtonElementSchema = uiElementBaseSchema.extend({
   /**
    * The tint of the button.
    *
-   * - `"primary"`: Felt's primary color (pink).
    * - `"default"`: Felt's theme-based light/dark colors.
+   * - `"primary"`: Felt's primary color (pink).
    * - `"accent"`: Felt's accent color (blue).
    * - `"danger"`: Felt's danger color (red).
    *
    * @defaultValue `"default"`
    */
-  tint: z.enum(["primary", "default", "accent", "danger"]).optional(),
+  tint: z.enum(["default", "primary", "accent", "danger"]).optional(),
 
   /**
    * Whether the button is disabled.

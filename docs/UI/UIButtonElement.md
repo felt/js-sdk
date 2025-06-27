@@ -86,8 +86,8 @@ The style variant of the button.
 
 The tint of the button.
 
-* `"primary"`: Felt's primary color (pink).
 * `"default"`: Felt's theme-based light/dark colors.
+* `"primary"`: Felt's primary color (pink).
 * `"accent"`: Felt's accent color (blue).
 * `"danger"`: Felt's danger color (red).
 

@@ -30,7 +30,7 @@ while button 2 is aligned to the end.
 
 ## items
 
-> **items**: ([`UIFlexibleSpaceElement`](UIFlexibleSpaceElement.md) | [`UIButtonElement`](UIButtonElement.md) | [`UITextElement`](UITextElement.md))\[]
+> **items**: ([`UIButtonElement`](UIButtonElement.md) | [`UITextElement`](UITextElement.md) | [`UIFlexibleSpaceElement`](UIFlexibleSpaceElement.md))\[]
 
 The items to add to the button group.
 

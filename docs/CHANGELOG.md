@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.7.0-next.16
+
+### Minor Changes
+
+* f73dccf: Remove UIButtonGroupElement from custom ui panel
+
 ## 1.7.0-next.15
 
 ### Minor Changes

@@ -53,7 +53,7 @@ two columns, the first column is 50px wide, the second column takes the remainin
 
 ## items?
 
-> `optional` **items**: [`UIPanelElementCreate`](UIPanelElementCreate.md)\[]
+> `optional` **items**: ([`UIButtonElementCreate`](UIButtonElementCreate.md) | [`UITextElementCreate`](UITextElementCreate.md) | [`UIButtonGroupElementCreate`](UIButtonGroupElementCreate.md) | [`UIDividerElementCreate`](UIDividerElementCreate.md) | [`UITextInputElementCreate`](UITextInputElementCreate.md) | [`UISelectElementCreate`](UISelectElementCreate.md) | [`UIFlexibleSpaceElementCreate`](UIFlexibleSpaceElementCreate.md))\[]
 
 The items to add to the grid container.
 

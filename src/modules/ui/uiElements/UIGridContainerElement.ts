@@ -1,5 +1,4 @@
 import { z } from "zod";
-import type { zInfer } from "~/lib/utils";
 import {
   makeUpdateSchema,
   uiElementBaseCreateSchema,
@@ -17,31 +16,32 @@ import {
   type UIPanelElementCreateClonable,
 } from "./uiPanelElementSchemas";
 
+const itemsSchema = z.lazy(() =>
+  z.array(uiPanelElementSchema.refine((data) => data.type !== "Grid")),
+) as z.ZodType<Array<Exclude<UIPanelElement, { type: "Grid" }>>>;
+
+const itemsCreateSchema = z.lazy(() =>
+  z.array(
+    uiPanelElementCreateSchema.params.refine((data) => data.type !== "Grid"),
+  ),
+) as z.ZodType<Array<Exclude<UIPanelElementCreate, { type: "Grid" }>>>;
+
+type ItemCreateClonableType = Exclude<
+  UIPanelElementCreateClonable,
+  { type: "Grid" }
+>;
+const itemsCreateClonableSchema = z.lazy(() =>
+  z.array(
+    uiPanelElementCreateSchema.clonable.refine((data) => data.type !== "Grid"),
+  ),
+) as z.ZodType<Array<ItemCreateClonableType>>;
+
 export const uiGridContainerElementSchema = uiElementBaseSchema.extend({
   type: z.literal("Grid"),
 
-  /**
-   * The grid to use for the container.
-   * It is the exact same as CSS's shorthand property `grid`.
-   *
-   * @example
-   * #### horizontal stack
-   *
-   * two columns, the first column is 50px wide, the second column takes the remaining space
-   * ```typescript
-   * {
-   *   type: "Grid",
-   *   grid: "auto-flow / 50px 1fr",
-   *   items: [...]
-   * }
-   * ```
-   *
-   * @see {@link https://developer.mozilla.org/en-US/docs/Web/CSS/grid} for more details.
-   *
-   */
   grid: z.string().optional(),
 
-  items: z.array(uiPanelElementSchema),
+  items: itemsSchema,
 });
 
 /**
@@ -54,7 +54,7 @@ export const uiGridContainerElementSchema = uiElementBaseSchema.extend({
  * `grid` property is the exact same as CSS's shorthand property `grid`.
  * [See the MDN documentation for more details](https://developer.mozilla.org/en-US/docs/Web/CSS/grid).
  *
- * You can understand {@link UIPanelElement} `body` and `footer` properties
+ * You can understand {@link UIPanel} `body` and `footer` properties
  * as grid containers using default vertical stack layout.
  *
  * ### Horizontal stack
@@ -125,62 +125,46 @@ export const uiGridContainerElementSchema = uiElementBaseSchema.extend({
  *   ],
  * }
  * ```
- *
- * ### Nested grid containers
- *
- * Grid containers can be nested to create more complex layouts.
- *
- * <figure>
- * <img src="./img/grid-nested.png" alt="Nested grid containers" />
- * <figcaption>Nested grid containers</figcaption>
- * </figure>
- *
- * ```typescript
- * {
- *   type: "Grid",
- *   grid: "auto-flow / 1fr 1fr",
- *   items: [
- *     { type: "Button", label: "Top left", onClick: () => {} },
- *     {
- *       type: "Grid",
- *       items: [
- *         { type: "Button", label: "Top left", onClick: () => {} },
- *         { type: "Button", label: "Bottom right", onClick: () => {} },
- *       ],
- *     },
- *   ],
- * }
- * ```
  */
-export interface UIGridContainerElement
-  extends UIElementBase,
-    Omit<
-      zInfer<typeof uiGridContainerElementSchema>,
-      "onCreate" | "onDestroy" | "items"
-    > {
+export interface UIGridContainerElement extends UIElementBase {
+  type: "Grid";
+
+  /**
+   * The grid to use for the container.
+   * It is the exact same as CSS's shorthand property `grid`.
+   *
+   * @example
+   * #### horizontal stack
+   *
+   * two columns, the first column is 50px wide, the second column takes the remaining space
+   * ```typescript
+   * {
+   *   type: "Grid",
+   *   grid: "auto-flow / 50px 1fr",
+   *   items: [...]
+   * }
+   * ```
+   *
+   * @see {@link https://developer.mozilla.org/en-US/docs/Web/CSS/grid} for more details.
+   *
+   */
+  grid?: string;
+
   /**
    * The items to add to the grid container.
-   * Multiple grid containers can be nested to create more complex layouts.
    */
-  items: Array<UIPanelElement>;
+  items: Array<Exclude<UIPanelElement, { type: "Grid" }>>;
 }
-
-const itemsCreateSchema: z.ZodType<Array<UIPanelElementCreate>> = z.lazy(() =>
-  z.array(uiPanelElementCreateSchema.params),
-);
 
 const uiGridContainerElementCreateSchm = uiGridContainerElementSchema
   .extend(uiElementBaseCreateSchema.params.shape)
   .omit({ items: true })
   .extend({ items: itemsCreateSchema });
 
-const itemsClonableSchema: z.ZodType<Array<UIPanelElementCreateClonable>> =
-  z.lazy(() => z.array(uiPanelElementCreateSchema.clonable));
-
 const uiGridContainerElementCreateClonableSchema =
   uiGridContainerElementCreateSchm
     .extend(uiElementBaseCreateSchema.clonable.shape)
-    .extend({ items: itemsClonableSchema });
+    .extend({ items: itemsCreateClonableSchema });
 
 export const uiGridContainerElementCreateSchema = {
   params: uiGridContainerElementCreateSchm,
@@ -198,13 +182,15 @@ export interface UIGridContainerElementCreate
   /**
    * The items to add to the grid container.
    */
-  items: Array<UIPanelElementCreate>;
+  items: Array<Exclude<UIPanelElementCreate, { type: "Grid" }>>;
 }
 
 export type UIGridContainerElementCreateClonable = Omit<
   MakeClonableSchema<UIGridContainerElementCreate>,
   "items"
-> & { items: Array<UIPanelElementCreateClonable> };
+> & {
+  items: Array<ItemCreateClonableType>;
+};
 
 export const uiGridContainerElementUpdateSchema = {
   params: makeUpdateSchema(uiGridContainerElementCreateSchema.params),

@@ -9,7 +9,7 @@ setting the `grid` property to a different value.
 `grid` property is the exact same as CSS's shorthand property `grid`.
 [See the MDN documentation for more details](https://developer.mozilla.org/en-US/docs/Web/CSS/grid).
 
-You can understand [UIPanelElement](UIPanelElement.md) `body` and `footer` properties
+You can understand [UIPanel](UIPanel.md) `body` and `footer` properties
 as grid containers using default vertical stack layout.
 
 ## Horizontal stack
@@ -83,33 +83,6 @@ By using `grid` property it is possible to control FlexibleSpace's size.
 }
 ```
 
-## Nested grid containers
-
-Grid containers can be nested to create more complex layouts.
-
-<figure>
-  <img src="../_media/grid-nested.png" alt="Nested grid containers" />
-
-  <figcaption>Nested grid containers</figcaption>
-</figure>
-
-```typescript
-{
-  type: "Grid",
-  grid: "auto-flow / 1fr 1fr",
-  items: [
-    { type: "Button", label: "Top left", onClick: () => {} },
-    {
-      type: "Grid",
-      items: [
-        { type: "Button", label: "Top left", onClick: () => {} },
-        { type: "Button", label: "Bottom right", onClick: () => {} },
-      ],
-    },
-  ],
-}
-```
-
 # Properties
 
 ## type
@@ -120,10 +93,9 @@ Grid containers can be nested to create more complex layouts.
 
 ## items
 
-> **items**: [`UIPanelElement`](UIPanelElement.md)\[]
+> **items**: ([`UIButtonElement`](UIButtonElement.md) | [`UITextElement`](UITextElement.md) | [`UIButtonGroupElement`](UIButtonGroupElement.md) | [`UIDividerElement`](UIDividerElement.md) | [`UITextInputElement`](UITextInputElement.md) | [`UISelectElement`](UISelectElement.md) | [`UIFlexibleSpaceElement`](UIFlexibleSpaceElement.md))\[]
 
 The items to add to the grid container.
-Multiple grid containers can be nested to create more complex layouts.
 
 ***
 

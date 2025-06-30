@@ -14,7 +14,7 @@ See [UIGridContainerElement](UIGridContainerElement.md) for more details.
 
 ## items
 
-> **items**: [`UIPanelElementCreate`](UIPanelElementCreate.md)\[]
+> **items**: ([`UIButtonElementCreate`](UIButtonElementCreate.md) | [`UITextElementCreate`](UITextElementCreate.md) | [`UIButtonGroupElementCreate`](UIButtonGroupElementCreate.md) | [`UIDividerElementCreate`](UIDividerElementCreate.md) | [`UITextInputElementCreate`](UITextInputElementCreate.md) | [`UISelectElementCreate`](UISelectElementCreate.md) | [`UIFlexibleSpaceElementCreate`](UIFlexibleSpaceElementCreate.md))\[]
 
 The items to add to the grid container.
 

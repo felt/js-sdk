@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.7.0-next.15
+
+### Minor Changes
+
+* 27cc597: Add UIGridContainerElement to custom ui panel
+
 ## 1.7.0-next.14
 
 ### Minor Changes

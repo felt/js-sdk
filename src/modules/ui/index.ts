@@ -6,8 +6,8 @@
  */
 export type {
   CreateActionTriggerParams,
+  CreateOrUpdatePanelParams,
   CreatePanelElementsParams,
-  CreatePanelParams,
   DeletePanelElementsParams,
   UiOnMapInteractionsOptions as OnMapInteractionsOptions,
   UiControlsOptions,
@@ -18,7 +18,7 @@ export type {
 
 export type { PlacementForUIElement } from "./uiElements/placementForUiElement";
 
-export type { UIPanel, UIPanelCreate } from "./uiElements/UIPanel";
+export type { UIPanel, UIPanelCreateOrUpdate } from "./uiElements/UIPanel";
 
 export type {
   UIButtonElement,

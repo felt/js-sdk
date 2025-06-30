@@ -1,7 +1,7 @@
 ***
 
 Represents a panel in the UI.
-It can be added to the map by using the [UiController.createPanel](UiController.md#createpanel) method.
+It can be added to the map by using the [UiController.createOrUpdatePanel](UiController.md#createorupdatepanel) method.
 
 A panel is a container for other UI elements.
 It can have a title, a body, a footer as well as a close button.
@@ -76,19 +76,15 @@ Footer is sticky to the bottom of the panel, and can be used to add actions to t
 
 ***
 
-## body
-
-> **body**: [`UIPanelElement`](UIPanelElement.md)\[]
-
-The elements to add to the panel body.
-
-***
-
 ## id
 
 > **id**: `string`
 
-The ID of the element.
+The ID of the panel obtained from [UiController.createPanelId](UiController.md#createpanelid).
+
+### Remarks
+
+Custom IDs are not supported.
 
 ***
 
@@ -97,6 +93,14 @@ The ID of the element.
 > `optional` **title**: `string`
 
 The title to display in the panel header.
+
+***
+
+## body?
+
+> `optional` **body**: [`UIPanelElement`](UIPanelElement.md)\[]
+
+The elements to add to the panel body.
 
 ***
 

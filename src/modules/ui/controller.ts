@@ -2,14 +2,13 @@ import { method, methodWithListeners } from "~/lib/interface";
 import type { SortConfig } from "~/modules/shared/types";
 import type {
   CreateActionTriggerParams,
+  CreateOrUpdatePanelParams,
   CreatePanelElementsParams,
-  CreatePanelParams,
   DeletePanelElementsParams,
   UiControlsOptions,
   UiOnMapInteractionsOptions,
   UpdateActionTriggerParams,
   UpdatePanelElementsParams,
-  UpdatePanelParams,
 } from "./types";
 import type { UIActionTriggerCreate } from "./uiElements/UIActionTrigger";
 import type { UIPanel } from "./uiElements/UIPanel";
@@ -26,14 +25,13 @@ export const uiController = (
   showLayerDataTable: method(feltWindow, "showLayerDataTable"),
   hideLayerDataTable: method(feltWindow, "hideLayerDataTable"),
 
-  createPanel: methodWithListeners<"createPanel", CreatePanelParams, UIPanel>(
-    feltWindow,
-    "createPanel",
-  ),
-  updatePanel: methodWithListeners<"updatePanel", UpdatePanelParams, UIPanel>(
-    feltWindow,
-    "updatePanel",
-  ),
+  createPanelId: method(feltWindow, "createPanelId"),
+  createOrUpdatePanel: methodWithListeners<
+    "createOrUpdatePanel",
+    CreateOrUpdatePanelParams,
+    UIPanel
+  >(feltWindow, "createOrUpdatePanel"),
+
   deletePanel: method(feltWindow, "deletePanel"),
 
   createPanelElements: methodWithListeners<
@@ -141,6 +139,16 @@ export interface UiController {
   deleteActionTrigger(id: string): void;
 
   /**
+   * Creates a panel ID.
+   *
+   * @example
+   * ```typescript
+   * const panelId = await felt.createPanelId();
+   * ```
+   */
+  createPanelId(): Promise<string>;
+
+  /**
    * Creates a panel on map's right sidebar.
    *
    * Panels are useful to extend Felt UI for your own use cases (e.g. a form, a settings panel, etc.)
@@ -171,9 +179,11 @@ export interface UiController {
    *
    * @example
    * ```typescript
-   * await felt.createPanel({
+   * const id = await felt.createPanelId();
+   *
+   * await felt.createOrUpdatePanel({
    *    panel: {
-   *       id: "panel-1", // not required but useful for further updates
+   *       id,
    *       title: "My Panel",
    *       body: [
    *          {
@@ -200,7 +210,7 @@ export interface UiController {
    * });
    * ```
    */
-  createPanel(args: CreatePanelParams): Promise<UIPanel>;
+  createOrUpdatePanel(args: CreateOrUpdatePanelParams): Promise<UIPanel>;
 
   /**
    * Updates a panel.
@@ -222,7 +232,7 @@ export interface UiController {
    * });
    * ```
    */
-  updatePanel(panel: UpdatePanelParams): Promise<UIPanel>;
+  // updatePanel(panel: UpdatePanelParams): Promise<UIPanel>;
 
   /**
    * Deletes a panel.
@@ -260,7 +270,7 @@ export interface UiController {
    * @example
    * ```typescript
    * await felt.createPanelElements({
-   *   panelId: "panel-1",
+   *   panelId,
    *   elements: [
    *     {
    *       element: { type: "Text", content: "Hello, world!" },
@@ -283,7 +293,7 @@ export interface UiController {
    * @example
    * ```typescript
    * await felt.updatePanelElements({
-   *   panelId: "panel-1",
+   *   panelId,
    *   elements: [
    *     {
    *       element: {
@@ -307,7 +317,7 @@ export interface UiController {
    * @example
    * ```typescript
    * await felt.deletePanelElements({
-   *   panelId: "panel-1",
+   *   panelId,
    *   elements: ["element-1", "element-2"],
    * });
    * ```

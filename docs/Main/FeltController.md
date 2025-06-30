@@ -1643,9 +1643,27 @@ await felt.deleteActionTrigger("layerTurnPurple");
 
 ***
 
-## createPanel()
+## createPanelId()
 
-> **createPanel**(`args`: [`CreatePanelParams`](../UI/CreatePanelParams.md)): `Promise`\<[`UIPanel`](../UI/UIPanel.md)>
+> **createPanelId**(): `Promise`\<`string`>
+
+Creates a panel ID.
+
+### Returns
+
+`Promise`\<`string`>
+
+### Example
+
+```typescript
+const panelId = await felt.createPanelId();
+```
+
+***
+
+## createOrUpdatePanel()
+
+> **createOrUpdatePanel**(`args`: [`CreateOrUpdatePanelParams`](../UI/CreateOrUpdatePanelParams.md)): `Promise`\<[`UIPanel`](../UI/UIPanel.md)>
 
 Creates a panel on map's right sidebar.
 
@@ -1670,9 +1688,9 @@ it easier to update or delete them later.
 
 ### Parameters
 
-| Parameter | Type                                              | Description                   |
-| --------- | ------------------------------------------------- | ----------------------------- |
-| `args`    | [`CreatePanelParams`](../UI/CreatePanelParams.md) | The arguments for the method. |
+| Parameter | Type                                                              | Description                   |
+| --------- | ----------------------------------------------------------------- | ----------------------------- |
+| `args`    | [`CreateOrUpdatePanelParams`](../UI/CreateOrUpdatePanelParams.md) | The arguments for the method. |
 
 ### Returns
 
@@ -1681,9 +1699,11 @@ it easier to update or delete them later.
 ### Example
 
 ```typescript
-await felt.createPanel({
+const id = await felt.createPanelId();
+
+await felt.createOrUpdatePanel({
    panel: {
-      id: "panel-1", // not required but useful for further updates
+      id,
       title: "My Panel",
       body: [
          {
@@ -1707,42 +1727,6 @@ await felt.createPanel({
       ],
    },
    placement: { at: "start" }, // add the panel to the start of the stack
-});
-```
-
-***
-
-## updatePanel()
-
-> **updatePanel**(`panel`: [`UpdatePanelParams`](../UI/UpdatePanelParams.md)): `Promise`\<[`UIPanel`](../UI/UIPanel.md)>
-
-Updates a panel.
-
-Panel to update is identified by the `id` property.
-
-### Parameters
-
-| Parameter | Type                                              | Description          |
-| --------- | ------------------------------------------------- | -------------------- |
-| `panel`   | [`UpdatePanelParams`](../UI/UpdatePanelParams.md) | The panel to update. |
-
-### Returns
-
-`Promise`\<[`UIPanel`](../UI/UIPanel.md)>
-
-### Remarks
-
-Properties provided will override the existing properties.
-Override is done at Panel level, so if you want to update a specific element,
-you need to provide the entire element. For partial updates of elements, use
-[updatePanelElements](../UI/UiController.md#updatepanelelements) instead.
-
-### Example
-
-```typescript
-await felt.updatePanel({
-  id: "panel-1",
-  title: "A new title for my panel", // only title changes
 });
 ```
 
@@ -1792,7 +1776,7 @@ Creates elements in a panel.
 
 ```typescript
 await felt.createPanelElements({
-  panelId: "panel-1",
+  panelId,
   elements: [
     {
       element: { type: "Text", content: "Hello, world!" },
@@ -1825,7 +1809,7 @@ Updates an element in a panel.
 
 ```typescript
 await felt.updatePanelElements({
-  panelId: "panel-1",
+  panelId,
   elements: [
     {
       element: {
@@ -1860,7 +1844,7 @@ Deletes elements from a panel.
 
 ```typescript
 await felt.deletePanelElements({
-  panelId: "panel-1",
+  panelId,
   elements: ["element-1", "element-2"],
 });
 ```

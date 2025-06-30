@@ -9,15 +9,6 @@ import {
   type UIButtonElementUpdate,
 } from "./UIButtonElement";
 import {
-  uiButtonGroupElementCreateSchema,
-  uiButtonGroupElementSchema,
-  uiButtonGroupElementUpdateSchema,
-  type UIButtonGroupElement,
-  type UIButtonGroupElementCreate,
-  type UIButtonGroupElementCreateClonable,
-  type UIButtonGroupElementUpdate,
-} from "./UIButtonGroupElement";
-import {
   uiDividerElementCreateSchema,
   uiDividerElementSchema,
   uiDividerElementUpdateSchema,
@@ -76,7 +67,6 @@ export const uiPanelElementSchema: z.ZodType<UIPanelElement> =
   z.discriminatedUnion("type", [
     uiButtonElementSchema,
     uiTextElementSchema,
-    uiButtonGroupElementSchema,
     uiDividerElementSchema,
     uiTextInputElementSchema,
     uiSelectElementSchema,
@@ -89,7 +79,6 @@ const uiPanelElementCreateParamsSchema: z.ZodType<UIPanelElementCreate> =
   z.discriminatedUnion("type", [
     uiButtonElementCreateSchema.params,
     uiTextElementCreateSchema.params,
-    uiButtonGroupElementCreateSchema.params,
     uiDividerElementCreateSchema.params,
     uiTextInputElementCreateSchema.params,
     uiSelectElementCreateSchema.params,
@@ -102,7 +91,6 @@ const uiPanelElementCreateClonableSchema: z.ZodType<UIPanelElementCreateClonable
   z.discriminatedUnion("type", [
     uiButtonElementCreateSchema.clonable,
     uiTextElementCreateSchema.clonable,
-    uiButtonGroupElementCreateSchema.clonable,
     uiDividerElementCreateSchema.clonable,
     uiTextInputElementCreateSchema.clonable,
     uiSelectElementCreateSchema.clonable,
@@ -120,7 +108,6 @@ export const uiPanelElementUpdateSchema = {
   params: z.discriminatedUnion("type", [
     uiButtonElementUpdateSchema.params,
     uiTextElementUpdateSchema.params,
-    uiButtonGroupElementUpdateSchema.params,
     uiTextInputElementUpdateSchema.params,
     uiSelectElementUpdateSchema.params,
     uiDividerElementUpdateSchema.params,
@@ -131,7 +118,6 @@ export const uiPanelElementUpdateSchema = {
   clonable: z.discriminatedUnion("type", [
     uiButtonElementUpdateSchema.clonable,
     uiTextElementUpdateSchema.clonable,
-    uiButtonGroupElementUpdateSchema.clonable,
     uiTextInputElementUpdateSchema.clonable,
     uiSelectElementUpdateSchema.clonable,
     uiDividerElementUpdateSchema.clonable,
@@ -144,7 +130,6 @@ export const uiPanelElementUpdateSchema = {
 export type UIPanelElement =
   | UIButtonElement
   | UITextElement
-  | UIButtonGroupElement
   | UIDividerElement
   | UITextInputElement
   | UISelectElement
@@ -160,7 +145,6 @@ export type UIPanelElement =
 export type UIPanelElementCreate =
   | UIButtonElementCreate
   | UITextElementCreate
-  | UIButtonGroupElementCreate
   | UIDividerElementCreate
   | UITextInputElementCreate
   | UISelectElementCreate
@@ -170,7 +154,6 @@ export type UIPanelElementCreate =
 export type UIPanelElementCreateClonable =
   | UIButtonElementCreateClonable
   | UITextElementCreateClonable
-  | UIButtonGroupElementCreateClonable
   | UIDividerElementCreateClonable
   | UITextInputElementCreateClonable
   | UISelectElementCreateClonable
@@ -186,7 +169,6 @@ export type UIPanelElementCreateClonable =
 export type UIPanelElementUpdate =
   | UIButtonElementUpdate
   | UITextElementUpdate
-  | UIButtonGroupElementUpdate
   | UITextInputElementUpdate
   | UISelectElementUpdate
   | UIDividerElementUpdate

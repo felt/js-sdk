@@ -117,7 +117,7 @@ export interface CreatePanelElementsParams
     /**
      * The section of the panel to add the element to.
      * It can be either one of the top-level sections of the panel (`"body"` or `"footer"`)
-     * or a specific container (like `ButtonGroup`) in the panel (`{ id: string }`).
+     * or a specific container (like {@link UIGridContainerElement}) in the panel (`{ id: string }`).
      *
      * @defaultValue `"body"`
      */

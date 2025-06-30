@@ -21,8 +21,6 @@ that it can contain a lot of elements.
 ### Footer
 
 Footer is sticky to the bottom of the panel, and can be used to add actions to the panel (e.g. save, cancel, etc.).
-Normally, it should contain a `ButtonGroup` element with a `Cancel` and `Save` button. Using `ButtonGroup` is recommended
-because it will automatically align the buttons to the end of the panel giving it a nice look.
 
 # Examples
 
@@ -57,10 +55,15 @@ because it will automatically align the buttons to the end of the panel giving i
     { type: "TextInput", label: "Last name", value: "", placeholder: "Doe", onChange: (value) => setLastName(value) },
   ],
   footer: [
-    { type: "ButtonGroup", items: [
-      { type: "Button", label: "Reset", onClick: () => alert("Reset") },
-      { type: "Button", label: "Save", onClick: () => alert("Save") },
-    ] },
+    {
+      type: "Grid",
+      grid: "auto-flow / 1fr auto auto",
+      items: [
+        { type: "FlexibleSpace" }, // this will make the buttons to be aligned to the end of the panel
+        { type: "Button", label: "Reset", onClick: () => alert("Reset") },
+        { type: "Button", label: "Save", onClick: () => alert("Save") },
+      ],
+    },
   ],
 }
 ````

@@ -93,7 +93,7 @@ By using `grid` property it is possible to control FlexibleSpace's size.
 
 ## items
 
-> **items**: ([`UIButtonElement`](UIButtonElement.md) | [`UITextElement`](UITextElement.md) | [`UIButtonGroupElement`](UIButtonGroupElement.md) | [`UIDividerElement`](UIDividerElement.md) | [`UITextInputElement`](UITextInputElement.md) | [`UISelectElement`](UISelectElement.md) | [`UIFlexibleSpaceElement`](UIFlexibleSpaceElement.md))\[]
+> **items**: ([`UIButtonElement`](UIButtonElement.md) | [`UITextElement`](UITextElement.md) | [`UIDividerElement`](UIDividerElement.md) | [`UITextInputElement`](UITextInputElement.md) | [`UISelectElement`](UISelectElement.md) | [`UIFlexibleSpaceElement`](UIFlexibleSpaceElement.md))\[]
 
 The items to add to the grid container.
 

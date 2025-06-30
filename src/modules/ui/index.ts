@@ -33,12 +33,6 @@ export type {
 } from "./uiElements/UITextElement";
 
 export type {
-  UIButtonGroupElement,
-  UIButtonGroupElementCreate,
-  UIButtonGroupElementUpdate,
-} from "./uiElements/UIButtonGroupElement";
-
-export type {
   UIFlexibleSpaceElement,
   UIFlexibleSpaceElementCreate,
   UIFlexibleSpaceElementUpdate,

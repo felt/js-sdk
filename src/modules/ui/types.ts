@@ -8,10 +8,7 @@ import {
   uiActionTriggerSchema,
   type UIActionTriggerCreate,
 } from "./uiElements/UIActionTrigger";
-import {
-  uiFlexibleSpaceElementCreateSchema,
-  type UIFlexibleSpaceElementCreate,
-} from "./uiElements/UIFlexibleSpaceElement";
+import { type UIFlexibleSpaceElementCreate } from "./uiElements/UIFlexibleSpaceElement";
 import { uiPanelCreateSchema, type UIPanelCreate } from "./uiElements/UIPanel";
 import {
   uiPanelElementCreateSchema,
@@ -96,10 +93,7 @@ const CreatePanelElementsParamsSchema = z.object({
   panelId: z.string(),
   elements: z.array(
     z.object({
-      element: z.union([
-        uiPanelElementCreateSchema.params,
-        uiFlexibleSpaceElementCreateSchema.params,
-      ]),
+      element: uiPanelElementCreateSchema.params,
       container: z
         .union([
           z.literal("body"),
@@ -146,10 +140,7 @@ export const CreatePanelElementsClonableSchema = z.object({
   panelId: z.string(),
   elements: z.array(
     z.object({
-      element: z.union([
-        uiPanelElementCreateSchema.clonable,
-        uiFlexibleSpaceElementCreateSchema.clonable,
-      ]),
+      element: uiPanelElementCreateSchema.clonable,
       container: z
         .union([
           z.literal("body"),

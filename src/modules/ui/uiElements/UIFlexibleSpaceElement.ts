@@ -21,20 +21,6 @@ export const uiFlexibleSpaceElementSchema = uiElementBaseSchema.extend({
  *
  * - inside {@link UIGridContainerElement}, it will add extra gap between items. It can be controlled by `grid` property.
  * - inside {@link UIPanelElement} `body` or `footer`, since they work as vertically stacks, it will add extra gap between items.
- * - inside {@link UIButtonGroupElement}, it will take the remaining space.
- *
- * @example
- * Buttons with a flexible space between makes them more visually separated.
- * ```typescript
- * {
- *   type: "ButtonGroup",
- *   items: [
- *     { type: "Button", label: "Button 1", onClick: () => {} },
- *     { type: "FlexibleSpace" },
- *     { type: "Button", label: "Button 2", onClick: () => {} },
- *   ],
- * }
- * ```
  *
  * @example
  * Paragraphs with a flexible space between makes them more visually separated.

@@ -6,22 +6,8 @@ When rendered...
 
 * inside [UIGridContainerElement](UIGridContainerElement.md), it will add extra gap between items. It can be controlled by `grid` property.
 * inside [UIPanelElement](UIPanelElement.md) `body` or `footer`, since they work as vertically stacks, it will add extra gap between items.
-* inside [UIButtonGroupElement](UIButtonGroupElement.md), it will take the remaining space.
 
 # Examples
-
-Buttons with a flexible space between makes them more visually separated.
-
-```typescript
-{
-  type: "ButtonGroup",
-  items: [
-    { type: "Button", label: "Button 1", onClick: () => {} },
-    { type: "FlexibleSpace" },
-    { type: "Button", label: "Button 2", onClick: () => {} },
-  ],
-}
-```
 
 Paragraphs with a flexible space between makes them more visually separated.
 

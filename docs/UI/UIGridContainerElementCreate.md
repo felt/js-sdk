@@ -1,38 +1,49 @@
 ***
 
-The parameters for creating a button group element.
+The parameters for creating a grid container element.
 
-See [UIButtonGroupElement](UIButtonGroupElement.md) for more details.
-
-# Remarks
-
-`id` is optional but recommended if you want to be able to perform updates.
+See [UIGridContainerElement](UIGridContainerElement.md) for more details.
 
 # Properties
 
 ## type
 
-> **type**: `"ButtonGroup"`
+> **type**: `"Grid"`
 
 ***
 
 ## items
 
-> **items**: ([`UIButtonElementCreate`](UIButtonElementCreate.md) | [`UITextElementCreate`](UITextElementCreate.md) | [`UIFlexibleSpaceElementCreate`](UIFlexibleSpaceElementCreate.md))\[]
+> **items**: ([`UIButtonElementCreate`](UIButtonElementCreate.md) | [`UITextElementCreate`](UITextElementCreate.md) | [`UIButtonGroupElementCreate`](UIButtonGroupElementCreate.md) | [`UIDividerElementCreate`](UIDividerElementCreate.md) | [`UITextInputElementCreate`](UITextInputElementCreate.md) | [`UISelectElementCreate`](UISelectElementCreate.md) | [`UIFlexibleSpaceElementCreate`](UIFlexibleSpaceElementCreate.md))\[]
 
-The items to add to the button group.
+The items to add to the grid container.
 
 ***
 
-## align?
+## grid?
 
-> `optional` **align**: `"start"` | `"end"`
+> `optional` **grid**: `string`
 
-The alignment of the button group.
+The grid to use for the container.
+It is the exact same as CSS's shorthand property `grid`.
 
-### Default Value
+### Example
 
-`"end"`
+### horizontal stack
+
+two columns, the first column is 50px wide, the second column takes the remaining space
+
+```typescript
+{
+  type: "Grid",
+  grid: "auto-flow / 50px 1fr",
+  items: [...]
+}
+```
+
+### See
+
+[https://developer.mozilla.org/en-US/docs/Web/CSS/grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid) for more details.
 
 ***
 

@@ -1,6 +1,7 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
+  type MakeClonableSchema,
   type MakeUpdateSchema,
   makeUpdateSchema,
   type UIElementBase,
@@ -110,6 +111,9 @@ export const uiButtonElementCreateSchema = {
 export interface UIButtonElementCreate
   extends Omit<UIButtonElement, "id">,
     UIElementBaseCreateParams {}
+
+export interface UIButtonElementCreateClonable
+  extends MakeClonableSchema<UIButtonElementCreate> {}
 
 export const uiButtonElementUpdateSchema = {
   params: makeUpdateSchema(uiButtonElementCreateSchema.params),

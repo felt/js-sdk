@@ -4,6 +4,7 @@ import {
   makeUpdateSchema,
   uiLabelReadyElementCreateSchema,
   uiLabelReadyElementSchema,
+  type MakeClonableSchema,
   type MakeUpdateSchema,
   type UILabelReadyElement,
   type UILabelReadyElementCreateParams,
@@ -114,6 +115,9 @@ export const uiSelectElementCreateSchema = {
 export interface UISelectElementCreate
   extends Omit<UISelectElement, "id">,
     UILabelReadyElementCreateParams {}
+
+export type UISelectElementCreateClonable =
+  MakeClonableSchema<UISelectElementCreate>;
 
 export const uiSelectElementUpdateSchema = {
   params: makeUpdateSchema(uiSelectElementCreateSchema.params),

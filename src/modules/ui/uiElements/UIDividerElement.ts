@@ -1,6 +1,7 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
+  type MakeClonableSchema,
   type MakeUpdateSchema,
   makeUpdateSchema,
   type UIElementBase,
@@ -57,6 +58,9 @@ export const uiDividerElementCreateSchema = {
 export interface UIDividerElementCreate
   extends Omit<UIDividerElement, "id">,
     UIElementBaseCreateParams {}
+
+export type UIDividerElementCreateClonable =
+  MakeClonableSchema<UIDividerElementCreate>;
 
 export const uiDividerElementUpdateSchema = {
   params: makeUpdateSchema(uiDividerElementCreateSchema.params),

@@ -68,6 +68,12 @@ export type {
   UIPanelElementUpdate,
 } from "./uiElements/uiPanelElementSchemas";
 
+export type {
+  UIGridContainerElement,
+  UIGridContainerElementCreate,
+  UIGridContainerElementUpdate,
+} from "./uiElements/UIGridContainerElement";
+
 export type { UIActionTriggerCreate } from "./uiElements/UIActionTrigger";
 
 export type { UiController } from "./controller";

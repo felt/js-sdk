@@ -4,6 +4,7 @@ import {
   makeUpdateSchema,
   uiElementBaseCreateSchema,
   uiElementBaseSchema,
+  type MakeClonableSchema,
   type MakeUpdateSchema,
   type UIElementBase,
   type UIElementBaseCreateParams,
@@ -13,18 +14,21 @@ import {
   uiButtonElementSchema,
   type UIButtonElement,
   type UIButtonElementCreate,
+  type UIButtonElementCreateClonable,
 } from "./UIButtonElement";
 import {
   uiFlexibleSpaceElementCreateSchema,
   uiFlexibleSpaceElementSchema,
   type UIFlexibleSpaceElement,
   type UIFlexibleSpaceElementCreate,
+  type UIFlexibleSpaceElementCreateClonable,
 } from "./UIFlexibleSpaceElement";
 import {
   uiTextElementCreateSchema,
   uiTextElementSchema,
   type UITextElement,
   type UITextElementCreate,
+  type UITextElementCreateClonable,
 } from "./UITextElement";
 
 export const uiButtonGroupElementSchema = uiElementBaseSchema.extend({
@@ -121,6 +125,17 @@ export interface UIButtonGroupElementCreate
     UIButtonElementCreate | UITextElementCreate | UIFlexibleSpaceElementCreate
   >;
 }
+
+export type UIButtonGroupElementCreateClonable = Omit<
+  MakeClonableSchema<UIButtonGroupElementCreate>,
+  "items"
+> & {
+  items: Array<
+    | UIButtonElementCreateClonable
+    | UITextElementCreateClonable
+    | UIFlexibleSpaceElementCreateClonable
+  >;
+};
 
 export const uiButtonGroupElementUpdateSchema = {
   params: makeUpdateSchema(uiButtonGroupElementCreateSchema.params),

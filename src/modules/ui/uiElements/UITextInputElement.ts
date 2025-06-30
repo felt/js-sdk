@@ -4,6 +4,7 @@ import {
   makeUpdateSchema,
   uiLabelReadyElementCreateSchema,
   uiLabelReadyElementSchema,
+  type MakeClonableSchema,
   type MakeUpdateSchema,
   type UILabelReadyElement,
   type UILabelReadyElementCreateParams,
@@ -129,6 +130,9 @@ export const uiTextInputElementCreateSchema = {
 export interface UITextInputElementCreate
   extends Omit<UITextInputElement, "id">,
     UILabelReadyElementCreateParams {}
+
+export type UITextInputElementCreateClonable =
+  MakeClonableSchema<UITextInputElementCreate>;
 
 export const uiTextInputElementUpdateSchema = {
   params: makeUpdateSchema(uiTextInputElementCreateSchema.params),

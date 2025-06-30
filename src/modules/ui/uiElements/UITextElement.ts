@@ -4,6 +4,7 @@ import {
   makeUpdateSchema,
   uiElementBaseCreateSchema,
   uiElementBaseSchema,
+  type MakeClonableSchema,
   type MakeUpdateSchema,
   type UIElementBase,
   type UIElementBaseCreateParams,
@@ -105,6 +106,9 @@ export const uiTextElementCreateSchema = {
 export interface UITextElementCreate
   extends Omit<UITextElement, "id">,
     UIElementBaseCreateParams {}
+
+export type UITextElementCreateClonable =
+  MakeClonableSchema<UITextElementCreate>;
 
 export const uiTextElementUpdateSchema = {
   params: makeUpdateSchema(uiTextElementCreateSchema.params),

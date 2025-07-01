@@ -12,7 +12,6 @@ UI features such as the legend and the full screen button.
 * [CreateActionTriggerParams](CreateActionTriggerParams.md)
 * [UpdateActionTriggerParams](UpdateActionTriggerParams.md)
 * [CreateOrUpdatePanelParams](CreateOrUpdatePanelParams.md)
-* [UpdatePanelParams](UpdatePanelParams.md)
 * [CreatePanelElementsParams](CreatePanelElementsParams.md)
 * [UpdatePanelElementsParams](UpdatePanelElementsParams.md)
 * [DeletePanelElementsParams](DeletePanelElementsParams.md)

@@ -155,7 +155,7 @@ export const uiPanelCreateSchema = {
     .required({ id: true })
     .extend({
       onClickClose: z.string().optional(),
-      body: z.array(uiPanelElementCreateSchema.clonable),
+      body: z.array(uiPanelElementCreateSchema.clonable).optional(),
       footer: z.array(uiPanelElementCreateSchema.clonable).optional(),
     }),
 };

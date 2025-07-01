@@ -13,7 +13,6 @@ export type {
   UiControlsOptions,
   UpdateActionTriggerParams,
   UpdatePanelElementsParams,
-  UpdatePanelParams,
 } from "./types";
 
 export type { PlacementForUIElement } from "./uiElements/placementForUiElement";

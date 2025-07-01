@@ -1,7 +1,6 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import type { UiController } from "./controller";
-import type { UIElementBase } from "./uiElements/base";
 import type { PlacementForUIElement } from "./uiElements/placementForUiElement";
 import { placementForUiElementSchema } from "./uiElements/placementForUiElement";
 import {
@@ -80,17 +79,6 @@ export const CreateOrUpdatePanelParamsClonableSchema = z.object({
   panel: uiPanelCreateSchema.clonable,
   initialPlacement: placementForUiElementSchema.optional(),
 });
-
-export const UpdatePanelClonableSchema = uiPanelCreateSchema.clonable
-  .partial()
-  .required({ id: true });
-
-/**
- * @public
- */
-export interface UpdatePanelParams
-  extends Omit<Partial<UIPanelCreateOrUpdate>, "id">,
-    UIElementBase {}
 
 const CreatePanelElementsParamsSchema = z.object({
   panelId: z.string(),

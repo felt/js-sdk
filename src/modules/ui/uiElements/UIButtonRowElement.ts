@@ -38,27 +38,36 @@ export const uiButtonRowElementSchema = uiElementBaseSchema.extend({
  *
  * #### Start alignment
  *
+ * <figure>
+ * <img src="./img/button-row-start-alignment.png" alt="Start alignment" />
+ * <figcaption>Start alignment</figcaption>
+ * </figure>
+ *
  * ```typescript
  * {
  *   type: "ButtonRow",
  *   align: "start", // default value
  *   items: [
- *     { type: "Button", label: "Button 1" },
- *     { type: "Button", label: "Button 2" },
+ *     { type: "Button", label: "Button 1", onClick: () => {} },
+ *     { type: "Button", label: "Button 2", onClick: () => {} },
  *   ],
  * }
  * ```
  *
  * #### End alignment
  *
+ * <figure>
+ * <img src="./img/button-row-end-alignment.png" alt="End alignment" />
+ * <figcaption>End alignment</figcaption>
+ * </figure>
  *
  * ```typescript
  * {
  *   type: "ButtonRow",
  *   align: "end",
  *   items: [
- *     { type: "Button", label: "Button 1" },
- *     { type: "Button", label: "Button 2" },
+ *     { type: "Button", label: "Button 1", onClick: () => {} },
+ *     { type: "Button", label: "Button 2", onClick: () => {} },
  *   ],
  * }
  * ```
@@ -67,38 +76,53 @@ export const uiButtonRowElementSchema = uiElementBaseSchema.extend({
  *
  * When buttons overflow the container, they are wrapped to the next line.
  *
+ * <figure>
+ * <img src="./img/button-row-overflow.png" alt="Overflow" />
+ * <figcaption>Overflow</figcaption>
+ * </figure>
+ *
  * ```typescript
  * {
  *   type: "ButtonRow",
  *   items: [
- *     { type: "Button", label: "Button with a very long text" },
- *     { type: "Button", label: "Button 2" },
- *     { type: "Button", label: "Button 3" },
+ *     { type: "Button", label: "Button with a very long text", onClick: () => {} },
+ *     { type: "Button", label: "Button 2", onClick: () => {} },
+ *     { type: "Button", label: "Button 3", onClick: () => {} },
  *   ],
  * }
  * ```
  *
  * #### With Grid container
  *
+ * {@link UIGridContainerElement}, as a generic container, can render {@link UIButtonRowElement} as well.
+ *
+ * In this example, the combination of {@link UIGridContainerElement} and {@link UIButtonRowElement} is used to layout a footer
+ * where the buttons are aligned to the end of the container and the text is at the start.
+ *
+ * <figure>
+ * <img src="./img/button-row-with-grid-container.png" alt="With Grid container" />
+ * <figcaption>With Grid container</figcaption>
+ * </figure>
+ *
  * ```typescript
  * {
  *   type: "Grid",
+ *   grid: "auto-flow / 1fr auto",
  *   rowItemsJustify: "space-between",
+ *   rowItemsAlign: "center",
  *   items: [
- *     {
- *       type: "Text",
- *       context: "Do you want to save the changes?",
- *     },
+ *     { type: "Text", content: "Continue?" },
  *     {
  *       type: "ButtonRow",
+ *       align: "end",
  *       items: [
- *         { type: "Button", variant: "transparent", label: "Cancel" },
- *         { type: "Button", variant: "filled", tint: "primary", label: "Save" },
- *       ],
+ *         { type: "Button", variant: "transparent", label: "Cancel", onClick: () => {} },
+ *         { type: "Button", variant: "filled", tint: "primary", label: "Continue", onClick: () => {} },
+ *       ]
  *     },
  *   ],
  * }
- *
+ * ```
  */
 export interface UIButtonRowElement extends UIElementBase {
   type: "ButtonRow";

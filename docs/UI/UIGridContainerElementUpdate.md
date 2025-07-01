@@ -51,6 +51,32 @@ two columns, the first column is 50px wide, the second column takes the remainin
 
 ***
 
+## rowItemsAlign?
+
+> `optional` **rowItemsAlign**: `"center"` | `"start"` | `"end"`
+
+The alignment of the items in the grid.
+Only takes effect on horizontal stacks.
+
+### Default Value
+
+`"start"`
+
+***
+
+## rowItemsJustify?
+
+> `optional` **rowItemsJustify**: `"center"` | `"start"` | `"end"` | `"space-between"` | `"space-around"` | `"space-evenly"`
+
+The justification of the items in the grid.
+Only takes effect on horizontal stacks.
+
+### Default Value
+
+`"start"`
+
+***
+
 ## items?
 
 > `optional` **items**: ([`UIButtonElementCreate`](UIButtonElementCreate.md) | [`UITextElementCreate`](UITextElementCreate.md) | [`UIDividerElementCreate`](UIDividerElementCreate.md) | [`UITextInputElementCreate`](UITextInputElementCreate.md) | [`UISelectElementCreate`](UISelectElementCreate.md) | [`UIFlexibleSpaceElementCreate`](UIFlexibleSpaceElementCreate.md))\[]

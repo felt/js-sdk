@@ -63,12 +63,12 @@ export const uiSelectElementSchema = uiLabelReadyElementSchema.extend({
  *   onChange: (args) => console.log(args.value),
  * }
  * ```
- * 
+ *
  * @example
  * #### with label
  * `label` is displayed above the select and used for screen readers.
  * `placeholder` is displayed in the select when no value is selected.
- * 
+ *
  * ```typescript
  * {
  *   type: "Select",

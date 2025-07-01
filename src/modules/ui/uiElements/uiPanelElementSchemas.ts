@@ -9,6 +9,15 @@ import {
   type UIButtonElementUpdate,
 } from "./UIButtonElement";
 import {
+  uiButtonRowElementCreateSchema,
+  uiButtonRowElementSchema,
+  uiButtonRowElementUpdateSchema,
+  type UIButtonRowElement,
+  type UIButtonRowElementCreate,
+  type UIButtonRowElementCreateClonable,
+  type UIButtonRowElementUpdate,
+} from "./UIButtonRowElement";
+import {
   uiDividerElementCreateSchema,
   uiDividerElementSchema,
   uiDividerElementUpdateSchema,
@@ -71,6 +80,7 @@ export const uiPanelElementSchema: z.ZodType<UIPanelElement> =
     uiTextInputElementSchema,
     uiSelectElementSchema,
     uiFlexibleSpaceElementSchema,
+    uiButtonRowElementSchema,
 
     uiGridContainerElementSchema,
   ]);
@@ -83,6 +93,7 @@ const uiPanelElementCreateParamsSchema: z.ZodType<UIPanelElementCreate> =
     uiTextInputElementCreateSchema.params,
     uiSelectElementCreateSchema.params,
     uiFlexibleSpaceElementCreateSchema.params,
+    uiButtonRowElementCreateSchema.params,
 
     uiGridContainerElementCreateSchema.params,
   ]);
@@ -95,6 +106,7 @@ const uiPanelElementCreateClonableSchema: z.ZodType<UIPanelElementCreateClonable
     uiTextInputElementCreateSchema.clonable,
     uiSelectElementCreateSchema.clonable,
     uiFlexibleSpaceElementCreateSchema.clonable,
+    uiButtonRowElementCreateSchema.clonable,
 
     uiGridContainerElementCreateSchema.clonable,
   ]);
@@ -112,6 +124,7 @@ export const uiPanelElementUpdateSchema = {
     uiSelectElementUpdateSchema.params,
     uiDividerElementUpdateSchema.params,
     uiFlexibleSpaceElementUpdateSchema.params,
+    uiButtonRowElementUpdateSchema.params,
 
     uiGridContainerElementUpdateSchema.params,
   ]),
@@ -122,6 +135,7 @@ export const uiPanelElementUpdateSchema = {
     uiSelectElementUpdateSchema.clonable,
     uiDividerElementUpdateSchema.clonable,
     uiFlexibleSpaceElementUpdateSchema.clonable,
+    uiButtonRowElementUpdateSchema.clonable,
 
     uiGridContainerElementUpdateSchema.clonable,
   ]),
@@ -134,6 +148,7 @@ export type UIPanelElement =
   | UITextInputElement
   | UISelectElement
   | UIFlexibleSpaceElement
+  | UIButtonRowElement
   | UIGridContainerElement;
 
 /**
@@ -149,6 +164,7 @@ export type UIPanelElementCreate =
   | UITextInputElementCreate
   | UISelectElementCreate
   | UIFlexibleSpaceElementCreate
+  | UIButtonRowElementCreate
   | UIGridContainerElementCreate;
 
 export type UIPanelElementCreateClonable =
@@ -158,6 +174,7 @@ export type UIPanelElementCreateClonable =
   | UITextInputElementCreateClonable
   | UISelectElementCreateClonable
   | UIFlexibleSpaceElementCreateClonable
+  | UIButtonRowElementCreateClonable
   | UIGridContainerElementCreateClonable;
 
 /**
@@ -172,5 +189,6 @@ export type UIPanelElementUpdate =
   | UITextInputElementUpdate
   | UISelectElementUpdate
   | UIDividerElementUpdate
+  | UIButtonRowElementUpdate
   | UIGridContainerElementUpdate
   | UIFlexibleSpaceElementUpdate;

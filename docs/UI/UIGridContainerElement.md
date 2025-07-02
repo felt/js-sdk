@@ -16,6 +16,16 @@ as grid containers using default vertical stack layout.
 
 As part of CSS Grid Layout capabilities it is possible to create a horizontal stack.
 
+### Alignment & Distribution
+
+On horizontal stacks, it is possible to align and distribute the items.
+
+`verticalAlignment` is used to align the items vertically. By default, items are aligned to the top of the container.
+It follows the same values as CSS's `align-items` property. See [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items) for more details.
+
+`horizontalDistribution` is used to justify the items horizontally. By default, items are justified to the start of the container.
+It follows the same values as CSS's `justify-content` property. See [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content) for more details.
+
 ### Equal width columns
 
 <figure>
@@ -131,6 +141,32 @@ two columns, the first column is 50px wide, the second column takes the remainin
 ### See
 
 [https://developer.mozilla.org/en-US/docs/Web/CSS/grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid) for more details.
+
+***
+
+## verticalAlignment?
+
+> `optional` **verticalAlignment**: `"center"` | `"top"` | `"bottom"`
+
+The alignment of the items in the grid.
+Only takes effect on horizontal stacks.
+
+### Default Value
+
+`"top"`
+
+***
+
+## horizontalDistribution?
+
+> `optional` **horizontalDistribution**: `"center"` | `"start"` | `"end"` | `"space-between"` | `"space-around"` | `"space-evenly"`
+
+The distribution of the items in the grid.
+Only takes effect on horizontal stacks.
+
+### Default Value
+
+`"start"`
 
 ***
 

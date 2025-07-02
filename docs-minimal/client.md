@@ -7719,36 +7719,58 @@ The id of the action trigger to delete.
 await felt.deleteActionTrigger("layerTurnPurple");
 ```
 
-#### createPanel()
+#### createPanelId()
 
-> **createPanel**(`args`): `Promise`\<[`UIPanel`](client.md#uipanel)>
+> **createPanelId**(): `Promise`\<`string`>
 
-Creates a panel on map's right sidebar.
+Creates a panel ID.
 
-Panels are useful to extend Felt UI for your own use cases (e.g. a form, a settings panel, etc.)
-by using Felt UI elements (e.g. Text, Button, etc.). This way the user experience is consistent
-with the rest of Felt.
+In order to create a panel using [createOrUpdatePanel](client.md#createorupdatepanel), you need to create a panel ID first.
+
+##### Returns
+
+`Promise`\<`string`>
+
+##### Example
+
+```typescript
+const panelId = await felt.createPanelId();
+```
+
+#### createOrUpdatePanel()
+
+> **createOrUpdatePanel**(`args`): `Promise`\<[`UIPanel`](client.md#uipanel)>
+
+Creates or updates a panel.
+
+Panels are rendered on map's right sidebar and are useful to extend Felt UI for your own use cases
+(e.g. a form, a settings panel, etc.) using Felt UI elements (e.g. Text, Button, etc.).
+This way it is possible to cover new use cases while keeping the user experience consistent with the rest of Felt.
+
+A panel is identified by its ID and must come from [createPanelId](client.md#createpanelid).
+Custom IDs are not supported in order to prevent conflicts with other panels.
 
 Panels have two sections:
 
 * `body` - Body of the panel, scrollable.
 * `footer` - It sticks to the bottom of the panel, useful to add submit buttons.
 
-By default, the panel will be added to the end of the stack but you can
-specify a placement to add it at a specific position in the stack.
+Regarding panel placement, by default it is added to the end of the panels stack but you can
+specify a different placement by using the `initialPlacement` parameter.
+This placement cannot be updated later.
 
-Once created, you can add elements to the panel by using the [createPanelElements](client.md#createpanelelements) method or
-perform partial updates of elements by using the [updatePanelElements](client.md#updatepanelelements) method.
-
-When adding a panel, its id is optional as well as its elements' ids.
-It is recommended to provide an id for the panel and its elements to make
+When adding a panel, its elements' ids are optional though it is recommended to make
 it easier to update or delete them later.
+
+Once created, you can add elements to the panel by using the [createPanelElements](client.md#createpanelelements) method,
+perform partial updates of elements by using the [updatePanelElements](client.md#updatepanelelements) method or
+delete elements by using the [deletePanelElements](client.md#deletepanelelements) method.
 
 ##### Parameters
 
 ##### args
 
-[`CreatePanelParams`](client.md#createpanelparams)
+[`CreateOrUpdatePanelParams`](client.md#createorupdatepanelparams)
 
 The arguments for the method.
 
@@ -7759,9 +7781,11 @@ The arguments for the method.
 ##### Example
 
 ```typescript
-await felt.createPanel({
+const id = await felt.createPanelId();
+
+await felt.createOrUpdatePanel({
    panel: {
-      id: "panel-1", // not required but useful for further updates
+      id,
       title: "My Panel",
       body: [
          {
@@ -7784,43 +7808,7 @@ await felt.createPanel({
          },
       ],
    },
-   placement: { at: "start" }, // add the panel to the start of the stack
-});
-```
-
-#### updatePanel()
-
-> **updatePanel**(`panel`): `Promise`\<[`UIPanel`](client.md#uipanel)>
-
-Updates a panel.
-
-Panel to update is identified by the `id` property.
-
-##### Parameters
-
-##### panel
-
-[`UpdatePanelParams`](client.md#updatepanelparams)
-
-The panel to update.
-
-##### Returns
-
-`Promise`\<[`UIPanel`](client.md#uipanel)>
-
-##### Remarks
-
-Properties provided will override the existing properties.
-Override is done at Panel level, so if you want to update a specific element,
-you need to provide the entire element. For partial updates of elements, use
-[updatePanelElements](client.md#updatepanelelements) instead.
-
-##### Example
-
-```typescript
-await felt.updatePanel({
-  id: "panel-1",
-  title: "A new title for my panel", // only title changes
+   initialPlacement: { at: "start" }, // when added, the panel will be added to the start of the stack
 });
 ```
 
@@ -7870,7 +7858,7 @@ The arguments for the method.
 
 ```typescript
 await felt.createPanelElements({
-  panelId: "panel-1",
+  panelId,
   elements: [
     {
       element: { type: "Text", content: "Hello, world!" },
@@ -7903,7 +7891,7 @@ The arguments for the method.
 
 ```typescript
 await felt.updatePanelElements({
-  panelId: "panel-1",
+  panelId,
   elements: [
     {
       element: {
@@ -7938,7 +7926,7 @@ The arguments for the method.
 
 ```typescript
 await felt.deletePanelElements({
-  panelId: "panel-1",
+  panelId,
   elements: ["element-1", "element-2"],
 });
 ```
@@ -10141,15 +10129,15 @@ The id of the element.
 
 `void`
 
-## CreatePanelParams
+## CreateOrUpdatePanelParams
 
-The parameters for adding a panel to the map by using [UiController.createPanel](client.md#createpanel).
+The parameters for creating or updating a panel by using [UiController.createOrUpdatePanel](client.md#createorupdatepanel).
 
 ### Properties
 
 #### panel
 
-> **panel**: [`UIPanelCreate`](client.md#uipanelcreate)
+> **panel**: [`UIPanelCreateOrUpdate`](client.md#uipanelcreateorupdate)
 
 The panel to add.
 
@@ -10157,109 +10145,15 @@ The panel to add.
 
 > `optional` **placement**: \{ `after`: `string`; } | \{ `before`: `string`; } | \{ `at`: `"start"` | `"end"`; }
 
+#### initialPlacement?
+
+> `optional` **initialPlacement**: \{ `after`: `string`; } | \{ `before`: `string`; } | \{ `at`: `"start"` | `"end"`; }
+
 The placement of the panel on the right sidebar stack.
 
 ##### Default Value
 
 `{ at: "end" }`
-
-## UpdatePanelParams
-
-### Properties
-
-#### id
-
-> **id**: `string`
-
-The ID of the element.
-
-#### title?
-
-> `optional` **title**: `string`
-
-The title to display in the panel header.
-
-#### onClickClose()?
-
-> `optional` **onClickClose**: (`args`) => `void`
-
-A function to call when panel's close button is clicked.
-
-##### Parameters
-
-##### args
-
-The arguments passed to the function.
-
-##### id
-
-`string`
-
-The id of the panel.
-
-##### Returns
-
-`void`
-
-#### type?
-
-> `optional` **type**: `"Panel"`
-
-#### body?
-
-> `optional` **body**: [`UIPanelElementCreate`](client.md#uipanelelementcreate)\[]
-
-The elements to add to the panel body.
-
-#### footer?
-
-> `optional` **footer**: [`UIPanelElementCreate`](client.md#uipanelelementcreate)\[]
-
-The elements to add to the panel footer.
-
-#### onCreate()?
-
-> `optional` **onCreate**: (`args`) => `void`
-
-A function to call when the element is created.
-
-##### Parameters
-
-##### args
-
-The arguments passed to the function.
-
-##### id
-
-`string`
-
-The id of the element.
-
-##### Returns
-
-`void`
-
-#### onDestroy()?
-
-> `optional` **onDestroy**: (`args`) => `void`
-
-A function to call when the element is destroyed.
-
-##### Parameters
-
-##### args
-
-The arguments passed to the function.
-
-##### id
-
-`string`
-
-The id of the element.
-
-##### Returns
-
-`void`
 
 ## CreatePanelElementsParams
 
@@ -11000,6 +10894,389 @@ The id of the element.
 
 `void`
 
+## UIButtonRowElement
+
+Represents a row of buttons.
+
+It is useful to group buttons together and align them.
+
+Unlike on [UIGridContainerElement](client.md#uigridcontainerelement), buttons do not expand to fill the container.
+Instead, they use the space they need and are wrapped to the next line when they overflow.
+
+## Label
+
+A label can be added to the button row using the `label` property.
+
+<figure>
+  <img src="_media/button-row-label.png" alt="Label" />
+
+  <figcaption>Label</figcaption>
+</figure>
+
+```typescript
+{
+  type: "ButtonRow",
+  label: "Zoom control",
+  items: [
+    { type: "Button", label: "Increase", onClick: () => {} },
+    { type: "Button", label: "Decrease", onClick: () => {} },
+  ],
+}
+```
+
+## Alignment
+
+It is possible to align the button row to the start or end of the container using the `align` property.
+
+### Start alignment
+
+<figure>
+  <img src="_media/button-row-start-alignment.png" alt="Start alignment" />
+
+  <figcaption>Start alignment</figcaption>
+</figure>
+
+```typescript
+{
+  type: "ButtonRow",
+  align: "start", // default value
+  items: [
+    { type: "Button", label: "Button 1", onClick: () => {} },
+    { type: "Button", label: "Button 2", onClick: () => {} },
+  ],
+}
+```
+
+### End alignment
+
+<figure>
+  <img src="_media/button-row-end-alignment.png" alt="End alignment" />
+
+  <figcaption>End alignment</figcaption>
+</figure>
+
+```typescript
+{
+  type: "ButtonRow",
+  align: "end",
+  items: [
+    { type: "Button", label: "Button 1", onClick: () => {} },
+    { type: "Button", label: "Button 2", onClick: () => {} },
+  ],
+}
+```
+
+## Overflow
+
+When buttons overflow the container, they are wrapped to the next line.
+
+<figure>
+  <img src="_media/button-row-overflow.png" alt="Overflow" />
+
+  <figcaption>Overflow</figcaption>
+</figure>
+
+```typescript
+{
+  type: "ButtonRow",
+  items: [
+    { type: "Button", label: "Button with a very long text", onClick: () => {} },
+    { type: "Button", label: "Button 2", onClick: () => {} },
+    { type: "Button", label: "Button 3", onClick: () => {} },
+  ],
+}
+```
+
+## With Grid container
+
+[UIGridContainerElement](client.md#uigridcontainerelement), as a generic container, can render [UIButtonRowElement](client.md#uibuttonrowelement) as well.
+
+In this example, the combination of [UIGridContainerElement](client.md#uigridcontainerelement) and [UIButtonRowElement](client.md#uibuttonrowelement) is used to layout a footer
+where the buttons are aligned to the end of the container and the text is at the start.
+
+<figure>
+  <img src="_media/button-row-with-grid-container.png" alt="With Grid container" />
+
+  <figcaption>With Grid container</figcaption>
+</figure>
+
+```typescript
+{
+  type: "Grid",
+  grid: "auto-flow / 1fr auto",
+  rowItemsJustify: "space-between",
+  rowItemsAlign: "center",
+  items: [
+    { type: "Text", content: "Continue?" },
+    {
+      type: "ButtonRow",
+      align: "end",
+      items: [
+        { type: "Button", variant: "transparent", label: "Cancel", onClick: () => {} },
+        { type: "Button", variant: "filled", tint: "primary", label: "Continue", onClick: () => {} },
+      ]
+    },
+  ],
+}
+```
+
+### Properties
+
+#### type
+
+> **type**: `"ButtonRow"`
+
+#### items
+
+> **items**: [`UIButtonElement`](client.md#uibuttonelement)\[]
+
+The items to add to the button row.
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### align?
+
+> `optional` **align**: `"start"` | `"end"`
+
+The alignment of the button row.
+
+##### Default Value
+
+`"start"`
+
+#### onCreate()?
+
+> `optional` **onCreate**: (`args`) => `void`
+
+A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: (`args`) => `void`
+
+A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### label?
+
+> `optional` **label**: `string`
+
+Label text to display above the element and used for screen readers.
+
+## UIButtonRowElementCreate
+
+The parameters for creating a button row element.
+
+See [UIButtonRowElement](client.md#uibuttonrowelement) for more details.
+
+### Properties
+
+#### type
+
+> **type**: `"ButtonRow"`
+
+#### items
+
+> **items**: [`UIButtonElementCreate`](client.md#uibuttonelementcreate)\[]
+
+The items to add to the button row.
+
+#### align?
+
+> `optional` **align**: `"start"` | `"end"`
+
+The alignment of the button row.
+
+##### Default Value
+
+`"start"`
+
+#### onCreate()?
+
+> `optional` **onCreate**: (`args`) => `void`
+
+A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: (`args`) => `void`
+
+A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### id?
+
+> `optional` **id**: `string`
+
+The ID of the element.
+
+##### Remarks
+
+If not provided, the element will be assigned a random ID, but it is recommended to provide it
+to perform further updates on the element.
+
+If provided, it must be unique within the UI.
+
+##### Default Value
+
+`undefined`
+
+#### label?
+
+> `optional` **label**: `string`
+
+Label text to display above the element and used for screen readers.
+
+## UIButtonRowElementUpdate
+
+The parameters for updating a button row element.
+
+See [UIButtonRowElement](client.md#uibuttonrowelement) for more details.
+
+### Properties
+
+#### type
+
+> **type**: `"ButtonRow"`
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### align?
+
+> `optional` **align**: `"start"` | `"end"`
+
+The alignment of the button row.
+
+##### Default Value
+
+`"start"`
+
+#### items?
+
+> `optional` **items**: [`UIButtonElementCreate`](client.md#uibuttonelementcreate)\[]
+
+The items to add to the button row.
+
+#### onCreate()?
+
+> `optional` **onCreate**: (`args`) => `void`
+
+A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: (`args`) => `void`
+
+A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### label?
+
+> `optional` **label**: `string`
+
+Label text to display above the element and used for screen readers.
+
 ## UIDividerElement
 
 Represents a divider element in a panel.
@@ -11475,6 +11752,16 @@ as grid containers using default vertical stack layout.
 
 As part of CSS Grid Layout capabilities it is possible to create a horizontal stack.
 
+### Alignment & Distribution
+
+On horizontal stacks, it is possible to align and distribute the items.
+
+`verticalAlignment` is used to align the items vertically. By default, items are aligned to the top of the container.
+It follows the same values as CSS's `align-items` property. See [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items) for more details.
+
+`horizontalDistribution` is used to justify the items horizontally. By default, items are justified to the start of the container.
+It follows the same values as CSS's `justify-content` property. See [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content) for more details.
+
 ### Equal width columns
 
 <figure>
@@ -11550,7 +11837,7 @@ By using `grid` property it is possible to control FlexibleSpace's size.
 
 #### items
 
-> **items**: ([`UIButtonElement`](client.md#uibuttonelement) | [`UITextElement`](client.md#uitextelement) | [`UIDividerElement`](client.md#uidividerelement) | [`UITextInputElement`](client.md#uitextinputelement) | [`UISelectElement`](client.md#uiselectelement) | [`UIFlexibleSpaceElement`](client.md#uiflexiblespaceelement))\[]
+> **items**: ([`UIButtonElement`](client.md#uibuttonelement) | [`UITextElement`](client.md#uitextelement) | [`UIDividerElement`](client.md#uidividerelement) | [`UITextInputElement`](client.md#uitextinputelement) | [`UISelectElement`](client.md#uiselectelement) | [`UIFlexibleSpaceElement`](client.md#uiflexiblespaceelement) | [`UIButtonRowElement`](client.md#uibuttonrowelement))\[]
 
 The items to add to the grid container.
 
@@ -11584,6 +11871,28 @@ two columns, the first column is 50px wide, the second column takes the remainin
 ##### See
 
 [https://developer.mozilla.org/en-US/docs/Web/CSS/grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid) for more details.
+
+#### verticalAlignment?
+
+> `optional` **verticalAlignment**: `"center"` | `"top"` | `"bottom"`
+
+The alignment of the items in the grid.
+Only takes effect on horizontal stacks.
+
+##### Default Value
+
+`"top"`
+
+#### horizontalDistribution?
+
+> `optional` **horizontalDistribution**: `"center"` | `"start"` | `"end"` | `"space-between"` | `"space-around"` | `"space-evenly"`
+
+The distribution of the items in the grid.
+Only takes effect on horizontal stacks.
+
+##### Default Value
+
+`"start"`
 
 #### onCreate()?
 
@@ -11643,7 +11952,7 @@ See [UIGridContainerElement](client.md#uigridcontainerelement) for more details.
 
 #### items
 
-> **items**: ([`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate) | [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate))\[]
+> **items**: ([`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate) | [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIButtonRowElementCreate`](client.md#uibuttonrowelementcreate))\[]
 
 The items to add to the grid container.
 
@@ -11671,6 +11980,28 @@ two columns, the first column is 50px wide, the second column takes the remainin
 ##### See
 
 [https://developer.mozilla.org/en-US/docs/Web/CSS/grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid) for more details.
+
+#### verticalAlignment?
+
+> `optional` **verticalAlignment**: `"center"` | `"top"` | `"bottom"`
+
+The alignment of the items in the grid.
+Only takes effect on horizontal stacks.
+
+##### Default Value
+
+`"top"`
+
+#### horizontalDistribution?
+
+> `optional` **horizontalDistribution**: `"center"` | `"start"` | `"end"` | `"space-between"` | `"space-around"` | `"space-evenly"`
+
+The distribution of the items in the grid.
+Only takes effect on horizontal stacks.
+
+##### Default Value
+
+`"start"`
 
 #### onCreate()?
 
@@ -11780,9 +12111,31 @@ two columns, the first column is 50px wide, the second column takes the remainin
 
 [https://developer.mozilla.org/en-US/docs/Web/CSS/grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid) for more details.
 
+#### verticalAlignment?
+
+> `optional` **verticalAlignment**: `"center"` | `"top"` | `"bottom"`
+
+The alignment of the items in the grid.
+Only takes effect on horizontal stacks.
+
+##### Default Value
+
+`"top"`
+
+#### horizontalDistribution?
+
+> `optional` **horizontalDistribution**: `"center"` | `"start"` | `"end"` | `"space-between"` | `"space-around"` | `"space-evenly"`
+
+The distribution of the items in the grid.
+Only takes effect on horizontal stacks.
+
+##### Default Value
+
+`"start"`
+
 #### items?
 
-> `optional` **items**: ([`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate) | [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate))\[]
+> `optional` **items**: ([`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate) | [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIButtonRowElementCreate`](client.md#uibuttonrowelementcreate))\[]
 
 The items to add to the grid container.
 
@@ -11833,7 +12186,7 @@ The id of the element.
 ## UIPanel
 
 Represents a panel in the UI.
-It can be added to the map by using the [UiController.createPanel](client.md#createpanel) method.
+It can be added to the map by using the [UiController.createOrUpdatePanel](client.md#createorupdatepanel) method.
 
 A panel is a container for other UI elements.
 It can have a title, a body, a footer as well as a close button.
@@ -11906,23 +12259,27 @@ Footer is sticky to the bottom of the panel, and can be used to add actions to t
 
 > **type**: `"Panel"`
 
-#### body
-
-> **body**: [`UIPanelElement`](client.md#uipanelelement)\[]
-
-The elements to add to the panel body.
-
 #### id
 
 > **id**: `string`
 
-The ID of the element.
+The ID of the panel obtained from [UiController.createPanelId](client.md#createpanelid).
+
+##### Remarks
+
+Custom IDs are not supported.
 
 #### title?
 
 > `optional` **title**: `string`
 
 The title to display in the panel header.
+
+#### body?
+
+> `optional` **body**: [`UIPanelElement`](client.md#uipanelelement)\[]
+
+The elements to add to the panel body.
 
 #### footer?
 
@@ -11996,25 +12353,25 @@ The id of the element.
 
 `void`
 
-## UIPanelCreate
+## UIPanelCreateOrUpdate
 
-The parameters for creating a panel by using [UiController.createPanel](client.md#createpanel).
+The parameters for creating a panel by using [UiController.createOrUpdatePanel](client.md#createorupdatepanel).
 
 ### See
 
 [UIPanel](client.md#uipanel) for more information about panels.
 
-### Remarks
-
-`id` is optional but recommended if you want to be able to perform updates.
-
 ### Properties
 
-#### body
+#### id
 
-> **body**: [`UIPanelElementCreate`](client.md#uipanelelementcreate)\[]
+> **id**: `string`
 
-The elements to add to the panel body.
+The ID of the panel obtained from [UiController.createPanelId](client.md#createpanelid).
+
+##### Remarks
+
+Custom IDs are not supported.
 
 #### title?
 
@@ -12047,6 +12404,12 @@ The id of the panel.
 #### type?
 
 > `optional` **type**: `"Panel"`
+
+#### body?
+
+> `optional` **body**: [`UIPanelElementCreate`](client.md#uipanelelementcreate)\[]
+
+The elements to add to the panel body.
 
 #### footer?
 
@@ -12098,23 +12461,6 @@ The id of the element.
 
 `void`
 
-#### id?
-
-> `optional` **id**: `string`
-
-The ID of the element.
-
-##### Remarks
-
-If not provided, the element will be assigned a random ID, but it is recommended to provide it
-to perform further updates on the element.
-
-If provided, it must be unique within the UI.
-
-##### Default Value
-
-`undefined`
-
 ## UISelectElement
 
 Represents a select element in a panel.
@@ -12138,6 +12484,22 @@ Represents a select element in a panel.
   options: [{ label: "Option 1", value: "option1" }, { label: "Option 2", value: "option2" }],
   value: undefined,
   placeholder: "Select an option",
+  onChange: (args) => console.log(args.value),
+}
+```
+
+### with label
+
+`label` is displayed above the select and used for screen readers.
+`placeholder` is displayed in the select when no value is selected.
+
+```typescript
+{
+  type: "Select",
+  label: "Fruit",
+  options: [{ label: "Apple", value: "apple" }, { label: "Banana", value: "banana" }],
+  value: undefined,
+  placeholder: "Select a fruit",
   onChange: (args) => console.log(args.value),
 }
 ```
@@ -13906,18 +14268,18 @@ The result of listening for changes to the settings of each tool.
 
 > **PlacementForUIElement**: \{ `after`: `string`; } | \{ `before`: `string`; } | \{ `at`: `"start"` | `"end"`; }
 
-Used in [UiController.createPanel](client.md#createpanel) to specify the position of a panel in the stack
+Used in [UiController.createOrUpdatePanel](client.md#createorupdatepanel) to specify the position of a panel in the stack
 and in [UiController.createPanelElements](client.md#createpanelelements) to specify the position of an element in a panel.
 
 In both cases, the default value is `{ at: "end" }`.
 
 ## UIPanelElement
 
-> **UIPanelElement**: [`UIButtonElement`](client.md#uibuttonelement) | [`UITextElement`](client.md#uitextelement) | [`UIDividerElement`](client.md#uidividerelement) | [`UITextInputElement`](client.md#uitextinputelement) | [`UISelectElement`](client.md#uiselectelement) | [`UIFlexibleSpaceElement`](client.md#uiflexiblespaceelement) | [`UIGridContainerElement`](client.md#uigridcontainerelement)
+> **UIPanelElement**: [`UIButtonElement`](client.md#uibuttonelement) | [`UITextElement`](client.md#uitextelement) | [`UIDividerElement`](client.md#uidividerelement) | [`UITextInputElement`](client.md#uitextinputelement) | [`UISelectElement`](client.md#uiselectelement) | [`UIFlexibleSpaceElement`](client.md#uiflexiblespaceelement) | [`UIButtonRowElement`](client.md#uibuttonrowelement) | [`UIGridContainerElement`](client.md#uigridcontainerelement)
 
 ## UIPanelElementCreate
 
-> **UIPanelElementCreate**: [`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate) | [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIGridContainerElementCreate`](client.md#uigridcontainerelementcreate)
+> **UIPanelElementCreate**: [`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate) | [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIButtonRowElementCreate`](client.md#uibuttonrowelementcreate) | [`UIGridContainerElementCreate`](client.md#uigridcontainerelementcreate)
 
 This is a union of all the possible elements that can be created inside panel's body or footer.
 
@@ -13927,7 +14289,7 @@ For the sake of convenience, `id` is optional but recommended if you want to be 
 
 ## UIPanelElementUpdate
 
-> **UIPanelElementUpdate**: [`UIButtonElementUpdate`](client.md#uibuttonelementupdate) | [`UITextElementUpdate`](client.md#uitextelementupdate) | [`UITextInputElementUpdate`](client.md#uitextinputelementupdate) | [`UISelectElementUpdate`](client.md#uiselectelementupdate) | [`UIDividerElementUpdate`](client.md#uidividerelementupdate) | [`UIGridContainerElementUpdate`](client.md#uigridcontainerelementupdate) | [`UIFlexibleSpaceElementUpdate`](client.md#uiflexiblespaceelementupdate)
+> **UIPanelElementUpdate**: [`UIButtonElementUpdate`](client.md#uibuttonelementupdate) | [`UITextElementUpdate`](client.md#uitextelementupdate) | [`UITextInputElementUpdate`](client.md#uitextinputelementupdate) | [`UISelectElementUpdate`](client.md#uiselectelementupdate) | [`UIDividerElementUpdate`](client.md#uidividerelementupdate) | [`UIButtonRowElementUpdate`](client.md#uibuttonrowelementupdate) | [`UIGridContainerElementUpdate`](client.md#uigridcontainerelementupdate) | [`UIFlexibleSpaceElementUpdate`](client.md#uiflexiblespaceelementupdate)
 
 This is a union of all the possible elements that can be updated inside panel's body or footer (excluding Divider and FlexibleSpace elements because they cannot be updated).
 

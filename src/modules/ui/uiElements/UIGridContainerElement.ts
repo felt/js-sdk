@@ -41,6 +41,18 @@ export const uiGridContainerElementSchema = uiElementBaseSchema.extend({
 
   grid: z.string().optional(),
 
+  verticalAlignment: z.enum(["top", "center", "bottom"]).optional(),
+  horizontalDistribution: z
+    .enum([
+      "start",
+      "center",
+      "end",
+      "space-between",
+      "space-around",
+      "space-evenly",
+    ])
+    .optional(),
+
   items: itemsSchema,
 });
 
@@ -60,6 +72,16 @@ export const uiGridContainerElementSchema = uiElementBaseSchema.extend({
  * ### Horizontal stack
  *
  * As part of CSS Grid Layout capabilities it is possible to create a horizontal stack.
+ *
+ * #### Alignment & Distribution
+ * 
+ * On horizontal stacks, it is possible to align and distribute the items.
+ * 
+ * `verticalAlignment` is used to align the items vertically. By default, items are aligned to the top of the container.
+ * It follows the same values as CSS's `align-items` property. See [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items) for more details.
+ * 
+ * `horizontalDistribution` is used to justify the items horizontally. By default, items are justified to the start of the container.
+ * It follows the same values as CSS's `justify-content` property. See [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content) for more details.
  *
  * #### Equal width columns
  *
@@ -149,6 +171,28 @@ export interface UIGridContainerElement extends UIElementBase {
    *
    */
   grid?: string;
+
+  /**
+   * The alignment of the items in the grid.
+   * Only takes effect on horizontal stacks.
+   *
+   * @defaultValue `"top"`
+   */
+  verticalAlignment?: "top" | "center" | "bottom";
+
+  /**
+   * The distribution of the items in the grid.
+   * Only takes effect on horizontal stacks.
+   *
+   * @defaultValue `"start"`
+   */
+  horizontalDistribution?:
+    | "start"
+    | "center"
+    | "end"
+    | "space-between"
+    | "space-around"
+    | "space-evenly";
 
   /**
    * The items to add to the grid container.

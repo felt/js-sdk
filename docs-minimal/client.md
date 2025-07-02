@@ -10275,7 +10275,7 @@ The id of the element.
 
 ##### element
 
-> **element**: [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIPanelElementCreate`](client.md#uipanelelementcreate)
+> **element**: [`UIPanelElementCreate`](client.md#uipanelelementcreate)
 
 ##### container?
 
@@ -10283,7 +10283,7 @@ The id of the element.
 
 The section of the panel to add the element to.
 It can be either one of the top-level sections of the panel (`"body"` or `"footer"`)
-or a specific container (like `ButtonGroup`) in the panel (`{ id: string }`).
+or a specific container (like [UIGridContainerElement](client.md#uigridcontainerelement)) in the panel (`{ id: string }`).
 
 ##### Default Value
 
@@ -10575,6 +10575,12 @@ The id of the element.
 
 Represents a button element in a panel.
 
+<figure>
+  <img src="_media/button-showcase.png" alt="Button variants" />
+
+  <figcaption>Button variants</figcaption>
+</figure>
+
 ### Example
 
 ```typescript
@@ -10627,18 +10633,35 @@ The ID of the element.
 
 #### variant?
 
-> `optional` **variant**: `"primary"` | `"outlined"` | `"transparent"` | `"transparentThin"`
+> `optional` **variant**: `"outlined"` | `"transparent"` | `"filled"`
 
 The style variant of the button.
 
-* `"primary"`: A solid button with Felt's primary background color (pink).
-* `"outlined"`: A button with a border and no background color.
-* `"transparent"`: A button with no background color and no border.
-* `"transparentThin"`: Same as `transparent` but with lighter font weight.
+* `"filled"`: a button with background.
+  * `background` color is based on button's `tint` (defaults to `default` tint)
+* `"transparent"`: a transparent button that gets a subtle dark background when hovered.
+  * `text` color is based on button's `tint` (defaults to `default` tint)
+* `"outlined"`: a transparent button with a border.
+  * `text` and `border` colors are based on button's `tint` (defaults to `default` tint)
 
 ##### Default Value
 
-`"primary"`
+`"filled"`
+
+#### tint?
+
+> `optional` **tint**: `"default"` | `"primary"` | `"accent"` | `"danger"`
+
+The tint of the button.
+
+* `"default"`: Felt's theme-based light/dark colors.
+* `"primary"`: Felt's primary color (pink).
+* `"accent"`: Felt's accent color (blue).
+* `"danger"`: Felt's danger color (red).
+
+##### Default Value
+
+`"default"`
 
 #### disabled?
 
@@ -10740,18 +10763,35 @@ The id of the button.
 
 #### variant?
 
-> `optional` **variant**: `"primary"` | `"outlined"` | `"transparent"` | `"transparentThin"`
+> `optional` **variant**: `"outlined"` | `"transparent"` | `"filled"`
 
 The style variant of the button.
 
-* `"primary"`: A solid button with Felt's primary background color (pink).
-* `"outlined"`: A button with a border and no background color.
-* `"transparent"`: A button with no background color and no border.
-* `"transparentThin"`: Same as `transparent` but with lighter font weight.
+* `"filled"`: a button with background.
+  * `background` color is based on button's `tint` (defaults to `default` tint)
+* `"transparent"`: a transparent button that gets a subtle dark background when hovered.
+  * `text` color is based on button's `tint` (defaults to `default` tint)
+* `"outlined"`: a transparent button with a border.
+  * `text` and `border` colors are based on button's `tint` (defaults to `default` tint)
 
 ##### Default Value
 
-`"primary"`
+`"filled"`
+
+#### tint?
+
+> `optional` **tint**: `"default"` | `"primary"` | `"accent"` | `"danger"`
+
+The tint of the button.
+
+* `"default"`: Felt's theme-based light/dark colors.
+* `"primary"`: Felt's primary color (pink).
+* `"accent"`: Felt's accent color (blue).
+* `"danger"`: Felt's danger color (red).
+
+##### Default Value
+
+`"default"`
 
 #### disabled?
 
@@ -10854,18 +10894,35 @@ The label to display in the button.
 
 #### variant?
 
-> `optional` **variant**: `"primary"` | `"outlined"` | `"transparent"` | `"transparentThin"`
+> `optional` **variant**: `"outlined"` | `"transparent"` | `"filled"`
 
 The style variant of the button.
 
-* `"primary"`: A solid button with Felt's primary background color (pink).
-* `"outlined"`: A button with a border and no background color.
-* `"transparent"`: A button with no background color and no border.
-* `"transparentThin"`: Same as `transparent` but with lighter font weight.
+* `"filled"`: a button with background.
+  * `background` color is based on button's `tint` (defaults to `default` tint)
+* `"transparent"`: a transparent button that gets a subtle dark background when hovered.
+  * `text` color is based on button's `tint` (defaults to `default` tint)
+* `"outlined"`: a transparent button with a border.
+  * `text` and `border` colors are based on button's `tint` (defaults to `default` tint)
 
 ##### Default Value
 
-`"primary"`
+`"filled"`
+
+#### tint?
+
+> `optional` **tint**: `"default"` | `"primary"` | `"accent"` | `"danger"`
+
+The tint of the button.
+
+* `"default"`: Felt's theme-based light/dark colors.
+* `"primary"`: Felt's primary color (pink).
+* `"accent"`: Felt's accent color (blue).
+* `"danger"`: Felt's danger color (red).
+
+##### Default Value
+
+`"default"`
 
 #### disabled?
 
@@ -10898,275 +10955,6 @@ The id of the button.
 ##### Returns
 
 `void`
-
-#### onCreate()?
-
-> `optional` **onCreate**: (`args`) => `void`
-
-A function to call when the element is created.
-
-##### Parameters
-
-##### args
-
-The arguments passed to the function.
-
-##### id
-
-`string`
-
-The id of the element.
-
-##### Returns
-
-`void`
-
-#### onDestroy()?
-
-> `optional` **onDestroy**: (`args`) => `void`
-
-A function to call when the element is destroyed.
-
-##### Parameters
-
-##### args
-
-The arguments passed to the function.
-
-##### id
-
-`string`
-
-The id of the element.
-
-##### Returns
-
-`void`
-
-## UIButtonGroupElement
-
-Represents a button group element in a panel.
-A button group is an horizontal container of buttons and text elements.
-
-### Example
-
-Thanks to the FlexibleSpace element, button 1 and text 1 are aligned to the start of the panel,
-while button 2 is aligned to the end.
-
-```typescript
-{
-  type: "ButtonGroup",
-  items: [
-    { type: "Button", label: "Button 1", onClick: () => {} },
-    { type: "Text", content: "Text 1" },
-    { type: "FlexibleSpace" },
-    { type: "Button", label: "Button 2", onClick: () => {} },
-  ],
-}
-```
-
-### Properties
-
-#### type
-
-> **type**: `"ButtonGroup"`
-
-#### items
-
-> **items**: ([`UIFlexibleSpaceElement`](client.md#uiflexiblespaceelement) | [`UIButtonElement`](client.md#uibuttonelement) | [`UITextElement`](client.md#uitextelement))\[]
-
-The items to add to the button group.
-
-#### id
-
-> **id**: `string`
-
-The ID of the element.
-
-#### align?
-
-> `optional` **align**: `"start"` | `"end"`
-
-The alignment of the button group.
-
-##### Default Value
-
-`"end"`
-
-#### onCreate()?
-
-> `optional` **onCreate**: (`args`) => `void`
-
-A function to call when the element is created.
-
-##### Parameters
-
-##### args
-
-The arguments passed to the function.
-
-##### id
-
-`string`
-
-The id of the element.
-
-##### Returns
-
-`void`
-
-#### onDestroy()?
-
-> `optional` **onDestroy**: (`args`) => `void`
-
-A function to call when the element is destroyed.
-
-##### Parameters
-
-##### args
-
-The arguments passed to the function.
-
-##### id
-
-`string`
-
-The id of the element.
-
-##### Returns
-
-`void`
-
-## UIButtonGroupElementCreate
-
-The parameters for creating a button group element.
-
-See [UIButtonGroupElement](client.md#uibuttongroupelement) for more details.
-
-### Remarks
-
-`id` is optional but recommended if you want to be able to perform updates.
-
-### Properties
-
-#### type
-
-> **type**: `"ButtonGroup"`
-
-#### items
-
-> **items**: ([`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate))\[]
-
-The items to add to the button group.
-
-#### align?
-
-> `optional` **align**: `"start"` | `"end"`
-
-The alignment of the button group.
-
-##### Default Value
-
-`"end"`
-
-#### onCreate()?
-
-> `optional` **onCreate**: (`args`) => `void`
-
-A function to call when the element is created.
-
-##### Parameters
-
-##### args
-
-The arguments passed to the function.
-
-##### id
-
-`string`
-
-The id of the element.
-
-##### Returns
-
-`void`
-
-#### onDestroy()?
-
-> `optional` **onDestroy**: (`args`) => `void`
-
-A function to call when the element is destroyed.
-
-##### Parameters
-
-##### args
-
-The arguments passed to the function.
-
-##### id
-
-`string`
-
-The id of the element.
-
-##### Returns
-
-`void`
-
-#### id?
-
-> `optional` **id**: `string`
-
-The ID of the element.
-
-##### Remarks
-
-If not provided, the element will be assigned a random ID, but it is recommended to provide it
-to perform further updates on the element.
-
-If provided, it must be unique within the UI.
-
-##### Default Value
-
-`undefined`
-
-## UIButtonGroupElementUpdate
-
-The parameters for updating a button group element.
-
-See [UIButtonGroupElement](client.md#uibuttongroupelement) for more details.
-
-### Remarks
-
-`id` and `type` are required to update the button group element.
-
-### Properties
-
-#### type
-
-> **type**: `"ButtonGroup"`
-
-#### id
-
-> **id**: `string`
-
-The ID of the element.
-
-#### align?
-
-> `optional` **align**: `"start"` | `"end"`
-
-The alignment of the button group.
-
-##### Default Value
-
-`"end"`
-
-#### items?
-
-> `optional` **items**: ([`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate))\[]
-
-The items to add to the button group.
 
 #### onCreate()?
 
@@ -11436,16 +11224,34 @@ The id of the element.
 
 ## UIFlexibleSpaceElement
 
-Represents a flexible space element in a button group.
-Useful to customize the spacing between button group items.
+Represents a flexible space element in a container.
 
-### Example
+When rendered...
 
-Buttons with a flexible space between makes them more visually separated.
+* inside [UIGridContainerElement](client.md#uigridcontainerelement), it will add extra gap between items. It can be controlled by `grid` property.
+* inside [UIPanelElement](client.md#uipanelelement) `body` or `footer`, since they work as vertically stacks, it will add extra gap between items.
+
+### Examples
+
+Paragraphs with a flexible space between makes them more visually separated.
 
 ```typescript
 {
-  type: "ButtonGroup",
+  type: "Panel",
+  body: [
+    { type: "Paragraph", text: "Paragraph 1" },
+    { type: "FlexibleSpace" },
+    { type: "Paragraph", text: "Paragraph 2" },
+  ],
+}
+```
+
+Horizontal stack of buttons with a flexible space between makes them more visually separated.
+
+```typescript
+{
+  type: "Grid",
+  grid: "auto-flow / auto 1fr auto",
   items: [
     { type: "Button", label: "Button 1", onClick: () => {} },
     { type: "FlexibleSpace" },
@@ -11651,6 +11457,379 @@ The id of the element.
 
 `void`
 
+## UIGridContainerElement
+
+Represents a container with a grid layout in a panel.
+
+By default, the grid items are vertically stacked,
+but you can change the grid to use a different layout by
+setting the `grid` property to a different value.
+
+`grid` property is the exact same as CSS's shorthand property `grid`.
+[See the MDN documentation for more details](https://developer.mozilla.org/en-US/docs/Web/CSS/grid).
+
+You can understand [UIPanel](client.md#uipanel) `body` and `footer` properties
+as grid containers using default vertical stack layout.
+
+## Horizontal stack
+
+As part of CSS Grid Layout capabilities it is possible to create a horizontal stack.
+
+### Equal width columns
+
+<figure>
+  <img src="_media/grid-horizontal-stack.png" alt="Horizontal stack" />
+
+  <figcaption>Two columns, each sharing 50% of the container width</figcaption>
+</figure>
+
+```typescript
+{
+  type: "Grid",
+  grid: "auto-flow / 1fr 1fr",
+  items: [
+    { type: "TextInput", label: "Name", value: "" },
+    { type: "TextInput", label: "Last name", value: "" },
+  ],
+}
+```
+
+## FlexibleSpace element
+
+`FlexibleSpace` element is a handy solution to allow more control over grid layout.
+
+If `grid` is not set, `FlexibleSpace` will add some space between the items.
+By using `grid` property it is possible to control FlexibleSpace's size.
+
+### to right align the input
+
+<figure>
+  <img src="_media/grid-flexible-space.png" alt="Flexible space to right align the input" />
+
+  <figcaption>Flexible space takes 50% of the container width</figcaption>
+</figure>
+
+```typescript
+{
+  type: "Grid",
+  grid: "auto-flow / 1fr 1fr",
+  items: [
+    { type: "FlexibleSpace" },
+    { type: "TextInput", label: "An input" , value: "" },
+  ],
+}
+```
+
+### two columns of buttons with space between them
+
+<figure>
+  <img src="_media/grid-two-groups-of-buttons.png" alt="Two groups of buttons" />
+
+  <figcaption>Two groups of buttons</figcaption>
+</figure>
+
+```typescript
+{
+  type: "Grid",
+  grid: "auto-flow / auto auto 1fr auto auto",
+  items: [
+    { type: "Button", label: "A" , onClick: () => {} },
+    { type: "Button", label: "B" , onClick: () => {} },
+    { type: "FlexibleSpace" },
+    { type: "Button", label: "C" , onClick: () => {} },
+    { type: "Button", label: "D" , onClick: () => {} },
+  ],
+}
+```
+
+### Properties
+
+#### type
+
+> **type**: `"Grid"`
+
+#### items
+
+> **items**: ([`UIButtonElement`](client.md#uibuttonelement) | [`UITextElement`](client.md#uitextelement) | [`UIDividerElement`](client.md#uidividerelement) | [`UITextInputElement`](client.md#uitextinputelement) | [`UISelectElement`](client.md#uiselectelement) | [`UIFlexibleSpaceElement`](client.md#uiflexiblespaceelement))\[]
+
+The items to add to the grid container.
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### grid?
+
+> `optional` **grid**: `string`
+
+The grid to use for the container.
+It is the exact same as CSS's shorthand property `grid`.
+
+##### Example
+
+### horizontal stack
+
+two columns, the first column is 50px wide, the second column takes the remaining space
+
+```typescript
+{
+  type: "Grid",
+  grid: "auto-flow / 50px 1fr",
+  items: [...]
+}
+```
+
+##### See
+
+[https://developer.mozilla.org/en-US/docs/Web/CSS/grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid) for more details.
+
+#### onCreate()?
+
+> `optional` **onCreate**: (`args`) => `void`
+
+A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: (`args`) => `void`
+
+A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+## UIGridContainerElementCreate
+
+The parameters for creating a grid container element.
+
+See [UIGridContainerElement](client.md#uigridcontainerelement) for more details.
+
+### Properties
+
+#### type
+
+> **type**: `"Grid"`
+
+#### items
+
+> **items**: ([`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate) | [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate))\[]
+
+The items to add to the grid container.
+
+#### grid?
+
+> `optional` **grid**: `string`
+
+The grid to use for the container.
+It is the exact same as CSS's shorthand property `grid`.
+
+##### Example
+
+### horizontal stack
+
+two columns, the first column is 50px wide, the second column takes the remaining space
+
+```typescript
+{
+  type: "Grid",
+  grid: "auto-flow / 50px 1fr",
+  items: [...]
+}
+```
+
+##### See
+
+[https://developer.mozilla.org/en-US/docs/Web/CSS/grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid) for more details.
+
+#### onCreate()?
+
+> `optional` **onCreate**: (`args`) => `void`
+
+A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: (`args`) => `void`
+
+A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### id?
+
+> `optional` **id**: `string`
+
+The ID of the element.
+
+##### Remarks
+
+If not provided, the element will be assigned a random ID, but it is recommended to provide it
+to perform further updates on the element.
+
+If provided, it must be unique within the UI.
+
+##### Default Value
+
+`undefined`
+
+## UIGridContainerElementUpdate
+
+The parameters for updating a grid container element.
+
+See [UIGridContainerElement](client.md#uigridcontainerelement) for more details.
+
+### Remarks
+
+`id` and `type` are required to identify the element to update.
+
+### Properties
+
+#### type
+
+> **type**: `"Grid"`
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### grid?
+
+> `optional` **grid**: `string`
+
+The grid to use for the container.
+It is the exact same as CSS's shorthand property `grid`.
+
+##### Example
+
+### horizontal stack
+
+two columns, the first column is 50px wide, the second column takes the remaining space
+
+```typescript
+{
+  type: "Grid",
+  grid: "auto-flow / 50px 1fr",
+  items: [...]
+}
+```
+
+##### See
+
+[https://developer.mozilla.org/en-US/docs/Web/CSS/grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid) for more details.
+
+#### items?
+
+> `optional` **items**: ([`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate) | [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate))\[]
+
+The items to add to the grid container.
+
+#### onCreate()?
+
+> `optional` **onCreate**: (`args`) => `void`
+
+A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: (`args`) => `void`
+
+A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
 ## UIPanel
 
 Represents a panel in the UI.
@@ -11674,8 +11853,6 @@ that it can contain a lot of elements.
 ### Footer
 
 Footer is sticky to the bottom of the panel, and can be used to add actions to the panel (e.g. save, cancel, etc.).
-Normally, it should contain a `ButtonGroup` element with a `Cancel` and `Save` button. Using `ButtonGroup` is recommended
-because it will automatically align the buttons to the end of the panel giving it a nice look.
 
 ### Examples
 
@@ -11710,10 +11887,15 @@ because it will automatically align the buttons to the end of the panel giving i
     { type: "TextInput", label: "Last name", value: "", placeholder: "Doe", onChange: (value) => setLastName(value) },
   ],
   footer: [
-    { type: "ButtonGroup", items: [
-      { type: "Button", label: "Reset", onClick: () => alert("Reset") },
-      { type: "Button", label: "Save", onClick: () => alert("Save") },
-    ] },
+    {
+      type: "Grid",
+      grid: "auto-flow / 1fr auto auto",
+      items: [
+        { type: "FlexibleSpace" }, // this will make the buttons to be aligned to the end of the panel
+        { type: "Button", label: "Reset", onClick: () => alert("Reset") },
+        { type: "Button", label: "Save", onClick: () => alert("Save") },
+      ],
+    },
   ],
 }
 ````
@@ -13731,11 +13913,11 @@ In both cases, the default value is `{ at: "end" }`.
 
 ## UIPanelElement
 
-> **UIPanelElement**: [`UIButtonElement`](client.md#uibuttonelement) | [`UITextElement`](client.md#uitextelement) | [`UIButtonGroupElement`](client.md#uibuttongroupelement) | [`UIDividerElement`](client.md#uidividerelement) | [`UITextInputElement`](client.md#uitextinputelement) | [`UISelectElement`](client.md#uiselectelement)
+> **UIPanelElement**: [`UIButtonElement`](client.md#uibuttonelement) | [`UITextElement`](client.md#uitextelement) | [`UIDividerElement`](client.md#uidividerelement) | [`UITextInputElement`](client.md#uitextinputelement) | [`UISelectElement`](client.md#uiselectelement) | [`UIFlexibleSpaceElement`](client.md#uiflexiblespaceelement) | [`UIGridContainerElement`](client.md#uigridcontainerelement)
 
 ## UIPanelElementCreate
 
-> **UIPanelElementCreate**: [`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIButtonGroupElementCreate`](client.md#uibuttongroupelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate)
+> **UIPanelElementCreate**: [`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate) | [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIGridContainerElementCreate`](client.md#uigridcontainerelementcreate)
 
 This is a union of all the possible elements that can be created inside panel's body or footer.
 
@@ -13745,7 +13927,7 @@ For the sake of convenience, `id` is optional but recommended if you want to be 
 
 ## UIPanelElementUpdate
 
-> **UIPanelElementUpdate**: [`UIButtonElementUpdate`](client.md#uibuttonelementupdate) | [`UITextElementUpdate`](client.md#uitextelementupdate) | [`UIButtonGroupElementUpdate`](client.md#uibuttongroupelementupdate) | [`UITextInputElementUpdate`](client.md#uitextinputelementupdate) | [`UISelectElementUpdate`](client.md#uiselectelementupdate) | [`UIFlexibleSpaceElementUpdate`](client.md#uiflexiblespaceelementupdate) | [`UIDividerElementUpdate`](client.md#uidividerelementupdate)
+> **UIPanelElementUpdate**: [`UIButtonElementUpdate`](client.md#uibuttonelementupdate) | [`UITextElementUpdate`](client.md#uitextelementupdate) | [`UITextInputElementUpdate`](client.md#uitextinputelementupdate) | [`UISelectElementUpdate`](client.md#uiselectelementupdate) | [`UIDividerElementUpdate`](client.md#uidividerelementupdate) | [`UIGridContainerElementUpdate`](client.md#uigridcontainerelementupdate) | [`UIFlexibleSpaceElementUpdate`](client.md#uiflexiblespaceelementupdate)
 
 This is a union of all the possible elements that can be updated inside panel's body or footer (excluding Divider and FlexibleSpace elements because they cannot be updated).
 

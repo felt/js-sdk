@@ -1,5 +1,23 @@
 # @feltmaps/js-sdk
 
+## 1.7.0-next.19
+
+### Minor Changes
+
+* 2688f9c: Add UIButtonRowElement to custom ui panel
+
+## 1.7.0-next.18
+
+### Minor Changes
+
+* 0b06e28: Add support for align and distribute items on grid container
+
+## 1.7.0-next.17
+
+### Minor Changes
+
+* bd1952f: Merge create and update panel methods and require using createPanelId
+
 ## 1.7.0-next.16
 
 ### Minor Changes

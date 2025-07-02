@@ -1,12 +1,12 @@
 import { z } from "zod";
 import {
   makeUpdateSchema,
-  uiElementBaseCreateSchema,
-  uiElementBaseSchema,
+  uiLabelReadyElementCreateSchema,
+  uiLabelReadyElementSchema,
   type MakeClonableSchema,
   type MakeUpdateSchema,
-  type UIElementBase,
-  type UIElementBaseCreateParams,
+  type UILabelReadyElement,
+  type UILabelReadyElementCreateParams,
 } from "./base";
 import {
   uiButtonElementCreateSchema,
@@ -16,7 +16,7 @@ import {
   type UIButtonElementCreateClonable,
 } from "./UIButtonElement";
 
-export const uiButtonRowElementSchema = uiElementBaseSchema.extend({
+export const uiButtonRowElementSchema = uiLabelReadyElementSchema.extend({
   type: z.literal("ButtonRow"),
 
   align: z.enum(["start", "end"]).optional(),
@@ -124,7 +124,7 @@ export const uiButtonRowElementSchema = uiElementBaseSchema.extend({
  * }
  * ```
  */
-export interface UIButtonRowElement extends UIElementBase {
+export interface UIButtonRowElement extends UILabelReadyElement {
   type: "ButtonRow";
 
   /**
@@ -141,12 +141,12 @@ export interface UIButtonRowElement extends UIElementBase {
 }
 
 const uiButtonRowElementCreateSchm = uiButtonRowElementSchema
-  .extend(uiElementBaseCreateSchema.params.shape)
+  .extend(uiLabelReadyElementCreateSchema.params.shape)
   .omit({ items: true })
   .extend({ items: z.array(uiButtonElementCreateSchema.params) });
 
 const uiButtonRowElementCreateClonableSchema = uiButtonRowElementCreateSchm
-  .extend(uiElementBaseCreateSchema.clonable.shape)
+  .extend(uiLabelReadyElementCreateSchema.clonable.shape)
   .extend({ items: z.array(uiButtonElementCreateSchema.clonable) });
 
 export const uiButtonRowElementCreateSchema = {
@@ -161,7 +161,7 @@ export const uiButtonRowElementCreateSchema = {
  */
 export interface UIButtonRowElementCreate
   extends Omit<UIButtonRowElement, "id" | "items">,
-    UIElementBaseCreateParams {
+    UILabelReadyElementCreateParams {
   /**
    * The items to add to the button row.
    */

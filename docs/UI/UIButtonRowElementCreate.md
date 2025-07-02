@@ -86,3 +86,11 @@ If provided, it must be unique within the UI.
 ### Default Value
 
 `undefined`
+
+***
+
+## label?
+
+> `optional` **label**: `string`
+
+Label text to display above the element and used for screen readers.

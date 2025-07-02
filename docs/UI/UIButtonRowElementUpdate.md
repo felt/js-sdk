@@ -75,3 +75,11 @@ A function to call when the element is destroyed.
 ### Returns
 
 `void`
+
+***
+
+## label?
+
+> `optional` **label**: `string`
+
+Label text to display above the element and used for screen readers.

@@ -5,13 +5,12 @@ import type { zInfer } from "~/lib/utils";
 import { SortConfigSchema } from "../shared/types";
 import {
   CreateActionTriggerParamsClonableSchema,
+  CreateOrUpdatePanelParamsClonableSchema,
   CreatePanelElementsClonableSchema,
-  CreatePanelParamsClonableSchema,
   DeletePanelElementsParamsSchema,
   UiControlsOptionsSchema,
   UiOnMapInteractionsOptionsSchema,
   UpdateActionTriggerParamsClonableSchema,
-  UpdatePanelClonableSchema,
   UpdatePanelElementsParamsClonableSchema,
 } from "./types";
 import type { uiActionTriggerSchema } from "./uiElements/UIActionTrigger";
@@ -32,14 +31,13 @@ const DeleteActionTriggerMessage = methodMessage(
   z.string(),
 );
 
-const CreatePanelMessage = methodMessage(
-  "createPanel",
-  CreatePanelParamsClonableSchema,
+const CreatePanelIdMessage = methodMessage("createPanelId", z.void());
+
+const CreateOrUpdatePanelMessage = methodMessage(
+  "createOrUpdatePanel",
+  CreateOrUpdatePanelParamsClonableSchema,
 );
-const UpdatePanelMessage = methodMessage(
-  "updatePanel",
-  UpdatePanelClonableSchema,
-);
+
 const DeletePanelMessage = methodMessage("deletePanel", z.string());
 
 const CreatePanelElementsMessage = methodMessage(
@@ -88,8 +86,8 @@ export const uiSchema = {
     UpdateActionTriggerMessage,
     DeleteActionTriggerMessage,
 
-    CreatePanelMessage,
-    UpdatePanelMessage,
+    CreatePanelIdMessage,
+    CreateOrUpdatePanelMessage,
     DeletePanelMessage,
 
     CreatePanelElementsMessage,
@@ -117,12 +115,9 @@ export type UiSchema = {
     >;
     deleteActionTrigger: Method<zInfer<typeof DeleteActionTriggerMessage>>;
 
-    createPanel: Method<
-      zInfer<typeof CreatePanelMessage>,
-      zInfer<typeof uiPanelCreateSchema.clonable>
-    >;
-    updatePanel: Method<
-      zInfer<typeof UpdatePanelMessage>,
+    createPanelId: Method<zInfer<typeof CreatePanelIdMessage>>;
+    createOrUpdatePanel: Method<
+      zInfer<typeof CreateOrUpdatePanelMessage>,
       zInfer<typeof uiPanelCreateSchema.clonable>
     >;
     deletePanel: Method<zInfer<typeof DeletePanelMessage>>;

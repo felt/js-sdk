@@ -25,7 +25,7 @@ const uiPanelSchema = uiElementBaseSchema.extend({
   /**
    * The elements to add to the panel body.
    */
-  body: z.array(uiPanelElementSchema),
+  body: z.array(uiPanelElementSchema).optional(),
 
   /**
    * The elements to add to the panel footer.
@@ -41,7 +41,7 @@ const uiPanelSchema = uiElementBaseSchema.extend({
 
 /**
  * Represents a panel in the UI.
- * It can be added to the map by using the {@link UiController.createPanel} method.
+ * It can be added to the map by using the {@link UiController.createOrUpdatePanel} method.
  *
  * A panel is a container for other UI elements.
  * It can have a title, a body, a footer as well as a close button.
@@ -109,12 +109,20 @@ export interface UIPanel
   extends UIElementBase,
     Omit<
       zInfer<typeof uiPanelSchema>,
-      "onClickClose" | "body" | "footer" | "onCreate" | "onDestroy"
+      "onClickClose" | "body" | "footer" | "onCreate" | "onDestroy" | "id"
     > {
+  /**
+   * The ID of the panel obtained from {@link UiController.createPanelId}.
+   *
+   * @remarks
+   * Custom IDs are not supported.
+   */
+  id: string;
+
   /**
    * The elements to add to the panel body.
    */
-  body: UIPanelElement[];
+  body?: UIPanelElement[];
 
   /**
    * The elements to add to the panel footer.
@@ -132,10 +140,11 @@ export interface UIPanel
 
 const uiPanelCreateSchm = uiPanelSchema
   .extend(uiElementBaseCreateSchema.params.shape)
+  .required({ id: true })
   .partial({ type: true })
   .omit({ body: true, footer: true })
   .extend({
-    body: z.array(uiPanelElementCreateSchema.params),
+    body: z.array(uiPanelElementCreateSchema.params).optional(),
     footer: z.array(uiPanelElementCreateSchema.params).optional(),
   });
 
@@ -143,30 +152,28 @@ export const uiPanelCreateSchema = {
   params: uiPanelCreateSchm,
   clonable: uiPanelCreateSchm
     .extend(uiElementBaseCreateSchema.clonable.shape)
+    .required({ id: true })
     .extend({
       onClickClose: z.string().optional(),
-      body: z.array(uiPanelElementCreateSchema.clonable),
+      body: z.array(uiPanelElementCreateSchema.clonable).optional(),
       footer: z.array(uiPanelElementCreateSchema.clonable).optional(),
     }),
 };
 
 /**
- * The parameters for creating a panel by using {@link UiController.createPanel}.
+ * The parameters for creating a panel by using {@link UiController.createOrUpdatePanel}.
  *
  * @see {@link UIPanel} for more information about panels.
- *
- * @remarks
- * `id` is optional but recommended if you want to be able to perform updates.
  */
-export interface UIPanelCreate
-  extends Omit<UIPanel, "id" | "body" | "footer" | "type">,
-    UIElementBaseCreateParams {
+export interface UIPanelCreateOrUpdate
+  extends Omit<UIPanel, "body" | "footer" | "type">,
+    Omit<UIElementBaseCreateParams, "id"> {
   type?: "Panel";
 
   /**
    * The elements to add to the panel body.
    */
-  body: UIPanelElementCreate[];
+  body?: UIPanelElementCreate[];
 
   /**
    * The elements to add to the panel footer.

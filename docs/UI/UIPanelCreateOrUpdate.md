@@ -1,22 +1,22 @@
 ***
 
-The parameters for creating a panel by using [UiController.createPanel](UiController.md#createpanel).
+The parameters for creating a panel by using [UiController.createOrUpdatePanel](UiController.md#createorupdatepanel).
 
 # See
 
 [UIPanel](UIPanel.md) for more information about panels.
 
-# Remarks
-
-`id` is optional but recommended if you want to be able to perform updates.
-
 # Properties
 
-## body
+## id
 
-> **body**: [`UIPanelElementCreate`](UIPanelElementCreate.md)\[]
+> **id**: `string`
 
-The elements to add to the panel body.
+The ID of the panel obtained from [UiController.createPanelId](UiController.md#createpanelid).
+
+### Remarks
+
+Custom IDs are not supported.
 
 ***
 
@@ -50,6 +50,14 @@ A function to call when panel's close button is clicked.
 ## type?
 
 > `optional` **type**: `"Panel"`
+
+***
+
+## body?
+
+> `optional` **body**: [`UIPanelElementCreate`](UIPanelElementCreate.md)\[]
+
+The elements to add to the panel body.
 
 ***
 
@@ -96,22 +104,3 @@ A function to call when the element is destroyed.
 ### Returns
 
 `void`
-
-***
-
-## id?
-
-> `optional` **id**: `string`
-
-The ID of the element.
-
-### Remarks
-
-If not provided, the element will be assigned a random ID, but it is recommended to provide it
-to perform further updates on the element.
-
-If provided, it must be unique within the UI.
-
-### Default Value
-
-`undefined`

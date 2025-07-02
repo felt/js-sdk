@@ -41,8 +41,8 @@ export const uiGridContainerElementSchema = uiElementBaseSchema.extend({
 
   grid: z.string().optional(),
 
-  rowItemsAlign: z.enum(["start", "center", "end"]).optional(),
-  rowItemsJustify: z
+  verticalAlignment: z.enum(["top", "center", "bottom"]).optional(),
+  horizontalDistribution: z
     .enum([
       "start",
       "center",
@@ -73,14 +73,14 @@ export const uiGridContainerElementSchema = uiElementBaseSchema.extend({
  *
  * As part of CSS Grid Layout capabilities it is possible to create a horizontal stack.
  *
- * #### Alignment & Justification
+ * #### Alignment & Distribution
  * 
- * On horizontal stacks, it is possible to align and justify the items.
+ * On horizontal stacks, it is possible to align and distribute the items.
  * 
- * `rowItemsAlign` is used to align the items vertically. By default, items are aligned to the top of the container.
+ * `verticalAlignment` is used to align the items vertically. By default, items are aligned to the top of the container.
  * It follows the same values as CSS's `align-items` property. See [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items) for more details.
  * 
- * `rowItemsJustify` is used to justify the items horizontally. By default, items are justified to the start of the container.
+ * `horizontalDistribution` is used to justify the items horizontally. By default, items are justified to the start of the container.
  * It follows the same values as CSS's `justify-content` property. See [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content) for more details.
  *
  * #### Equal width columns
@@ -176,17 +176,17 @@ export interface UIGridContainerElement extends UIElementBase {
    * The alignment of the items in the grid.
    * Only takes effect on horizontal stacks.
    *
-   * @defaultValue `"start"`
+   * @defaultValue `"top"`
    */
-  rowItemsAlign?: "start" | "center" | "end";
+  verticalAlignment?: "top" | "center" | "bottom";
 
   /**
-   * The justification of the items in the grid.
+   * The distribution of the items in the grid.
    * Only takes effect on horizontal stacks.
    *
    * @defaultValue `"start"`
    */
-  rowItemsJustify?:
+  horizontalDistribution?:
     | "start"
     | "center"
     | "end"

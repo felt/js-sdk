@@ -51,24 +51,24 @@ two columns, the first column is 50px wide, the second column takes the remainin
 
 ***
 
-## rowItemsAlign?
+## verticalAlignment?
 
-> `optional` **rowItemsAlign**: `"center"` | `"start"` | `"end"`
+> `optional` **verticalAlignment**: `"center"` | `"top"` | `"bottom"`
 
 The alignment of the items in the grid.
 Only takes effect on horizontal stacks.
 
 ### Default Value
 
-`"start"`
+`"top"`
 
 ***
 
-## rowItemsJustify?
+## horizontalDistribution?
 
-> `optional` **rowItemsJustify**: `"center"` | `"start"` | `"end"` | `"space-between"` | `"space-around"` | `"space-evenly"`
+> `optional` **horizontalDistribution**: `"center"` | `"start"` | `"end"` | `"space-between"` | `"space-around"` | `"space-evenly"`
 
-The justification of the items in the grid.
+The distribution of the items in the grid.
 Only takes effect on horizontal stacks.
 
 ### Default Value

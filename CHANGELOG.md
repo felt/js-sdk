@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.7.0-next.19
+
+### Minor Changes
+
+- 2688f9c: Add UIButtonRowElement to custom ui panel
+
 ## 1.7.0-next.18
 
 ### Minor Changes

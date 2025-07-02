@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.7.0-next.18
+
+### Minor Changes
+
+* 0b06e28: Add support for align and distribute items on grid container
+
 ## 1.7.0-next.17
 
 ### Minor Changes

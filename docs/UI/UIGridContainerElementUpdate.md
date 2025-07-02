@@ -79,7 +79,7 @@ Only takes effect on horizontal stacks.
 
 ## items?
 
-> `optional` **items**: ([`UIButtonElementCreate`](UIButtonElementCreate.md) | [`UITextElementCreate`](UITextElementCreate.md) | [`UIDividerElementCreate`](UIDividerElementCreate.md) | [`UITextInputElementCreate`](UITextInputElementCreate.md) | [`UISelectElementCreate`](UISelectElementCreate.md) | [`UIFlexibleSpaceElementCreate`](UIFlexibleSpaceElementCreate.md))\[]
+> `optional` **items**: ([`UIButtonElementCreate`](UIButtonElementCreate.md) | [`UITextElementCreate`](UITextElementCreate.md) | [`UIDividerElementCreate`](UIDividerElementCreate.md) | [`UITextInputElementCreate`](UITextInputElementCreate.md) | [`UISelectElementCreate`](UISelectElementCreate.md) | [`UIFlexibleSpaceElementCreate`](UIFlexibleSpaceElementCreate.md) | [`UIButtonRowElementCreate`](UIButtonRowElementCreate.md))\[]
 
 The items to add to the grid container.
 

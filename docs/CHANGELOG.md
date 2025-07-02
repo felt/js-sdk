@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.7.0-next.17
+
+### Minor Changes
+
+* bd1952f: Merge create and update panel methods and require using createPanelId
+
 ## 1.7.0-next.16
 
 ### Minor Changes

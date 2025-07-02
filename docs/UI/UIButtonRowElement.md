@@ -7,9 +7,30 @@ It is useful to group buttons together and align them.
 Unlike on [UIGridContainerElement](UIGridContainerElement.md), buttons do not expand to fill the container.
 Instead, they use the space they need and are wrapped to the next line when they overflow.
 
+## Label
+
+A label can be added to the button row using the `label` property.
+
+<figure>
+  <img src="../_media/button-row-label.png" alt="Label" />
+
+  <figcaption>Label</figcaption>
+</figure>
+
+```typescript
+{
+  type: "ButtonRow",
+  label: "Zoom control",
+  items: [
+    { type: "Button", label: "Increase", onClick: () => {} },
+    { type: "Button", label: "Decrease", onClick: () => {} },
+  ],
+}
+```
+
 ## Alignment
 
-It is possible to align the button row to the start or end of the container.
+It is possible to align the button row to the start or end of the container using the `align` property.
 
 ### Start alignment
 
@@ -49,7 +70,7 @@ It is possible to align the button row to the start or end of the container.
 }
 ```
 
-### Overflow
+## Overflow
 
 When buttons overflow the container, they are wrapped to the next line.
 
@@ -70,7 +91,7 @@ When buttons overflow the container, they are wrapped to the next line.
 }
 ```
 
-### With Grid container
+## With Grid container
 
 [UIGridContainerElement](UIGridContainerElement.md), as a generic container, can render [UIButtonRowElement](UIButtonRowElement.md) as well.
 

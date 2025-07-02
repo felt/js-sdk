@@ -32,9 +32,29 @@ export const uiButtonRowElementSchema = uiLabelReadyElementSchema.extend({
  * Unlike on {@link UIGridContainerElement}, buttons do not expand to fill the container.
  * Instead, they use the space they need and are wrapped to the next line when they overflow.
  *
+ * ### Label
+ *
+ * A label can be added to the button row using the `label` property.
+ *
+ * <figure>
+ * <img src="./img/button-row-label.png" alt="Label" />
+ * <figcaption>Label</figcaption>
+ * </figure>
+ *
+ * ```typescript
+ * {
+ *   type: "ButtonRow",
+ *   label: "Zoom control",
+ *   items: [
+ *     { type: "Button", label: "Increase", onClick: () => {} },
+ *     { type: "Button", label: "Decrease", onClick: () => {} },
+ *   ],
+ * }
+ * ```
+ *
  * ### Alignment
  *
- * It is possible to align the button row to the start or end of the container.
+ * It is possible to align the button row to the start or end of the container using the `align` property.
  *
  * #### Start alignment
  *
@@ -72,7 +92,7 @@ export const uiButtonRowElementSchema = uiLabelReadyElementSchema.extend({
  * }
  * ```
  *
- * #### Overflow
+ * ### Overflow
  *
  * When buttons overflow the container, they are wrapped to the next line.
  *
@@ -92,7 +112,7 @@ export const uiButtonRowElementSchema = uiLabelReadyElementSchema.extend({
  * }
  * ```
  *
- * #### With Grid container
+ * ### With Grid container
  *
  * {@link UIGridContainerElement}, as a generic container, can render {@link UIButtonRowElement} as well.
  *

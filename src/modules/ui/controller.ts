@@ -2,14 +2,13 @@ import { method, methodWithListeners } from "~/lib/interface";
 import type { SortConfig } from "~/modules/shared/types";
 import type {
   CreateActionTriggerParams,
+  CreateOrUpdatePanelParams,
   CreatePanelElementsParams,
-  CreatePanelParams,
   DeletePanelElementsParams,
   UiControlsOptions,
   UiOnMapInteractionsOptions,
   UpdateActionTriggerParams,
   UpdatePanelElementsParams,
-  UpdatePanelParams,
 } from "./types";
 import type { UIActionTriggerCreate } from "./uiElements/UIActionTrigger";
 import type { UIPanel } from "./uiElements/UIPanel";
@@ -26,14 +25,13 @@ export const uiController = (
   showLayerDataTable: method(feltWindow, "showLayerDataTable"),
   hideLayerDataTable: method(feltWindow, "hideLayerDataTable"),
 
-  createPanel: methodWithListeners<"createPanel", CreatePanelParams, UIPanel>(
-    feltWindow,
-    "createPanel",
-  ),
-  updatePanel: methodWithListeners<"updatePanel", UpdatePanelParams, UIPanel>(
-    feltWindow,
-    "updatePanel",
-  ),
+  createPanelId: method(feltWindow, "createPanelId"),
+  createOrUpdatePanel: methodWithListeners<
+    "createOrUpdatePanel",
+    CreateOrUpdatePanelParams,
+    UIPanel
+  >(feltWindow, "createOrUpdatePanel"),
+
   deletePanel: method(feltWindow, "deletePanel"),
 
   createPanelElements: methodWithListeners<
@@ -141,29 +139,45 @@ export interface UiController {
   deleteActionTrigger(id: string): void;
 
   /**
-   * Creates a panel on map's right sidebar.
+   * Creates a panel ID.
    *
-   * Panels are useful to extend Felt UI for your own use cases (e.g. a form, a settings panel, etc.)
-   * by using Felt UI elements (e.g. Text, Button, etc.). This way the user experience is consistent
-   * with the rest of Felt.
+   * In order to create a panel using {@link createOrUpdatePanel}, you need to create a panel ID first.
+   *
+   * @example
+   * ```typescript
+   * const panelId = await felt.createPanelId();
+   * ```
+   */
+  createPanelId(): Promise<string>;
+
+  /**
+   * Creates or updates a panel.
+   *
+   * Panels are rendered on map's right sidebar and are useful to extend Felt UI for your own use cases
+   * (e.g. a form, a settings panel, etc.) using Felt UI elements (e.g. Text, Button, etc.).
+   * This way it is possible to cover new use cases while keeping the user experience consistent with the rest of Felt.
+   *
+   * A panel is identified by its ID and must come from {@link createPanelId}.
+   * Custom IDs are not supported in order to prevent conflicts with other panels.
    *
    * Panels have two sections:
    *  - `body` - Body of the panel, scrollable.
    *  - `footer` - It sticks to the bottom of the panel, useful to add submit buttons.
    *
-   * By default, the panel will be added to the end of the stack but you can
-   * specify a placement to add it at a specific position in the stack.
+   * Regarding panel placement, by default it is added to the end of the panels stack but you can
+   * specify a different placement by using the `initialPlacement` parameter.
+   * This placement cannot be updated later.
    *
-   * Once created, you can add elements to the panel by using the {@link createPanelElements} method or
-   * perform partial updates of elements by using the {@link updatePanelElements} method.
-   *
-   * When adding a panel, its id is optional as well as its elements' ids.
-   * It is recommended to provide an id for the panel and its elements to make
+   * When adding a panel, its elements' ids are optional though it is recommended to make
    * it easier to update or delete them later.
+   *
+   * Once created, you can add elements to the panel by using the {@link createPanelElements} method,
+   * perform partial updates of elements by using the {@link updatePanelElements} method or
+   * delete elements by using the {@link deletePanelElements} method.
    *
    * @param args - The arguments for the method.
    * @param args.panel - The panel to add.
-   * @param args.placement - The placement of the panel. Optional. Defaults to `{ at: "end" }`.
+   * @param args.initialPlacement - The placement of the panel when added. Optional. Defaults to `{ at: "end" }`.
    * - `{ at: "start" }` - Add the panel to the start of the stack.
    * - `{ at: "end" }` - Add the panel to the end of the stack.
    * - `{ after: "panel-1" }` - Add the panel after the panel with the id `panel-1`.
@@ -171,9 +185,11 @@ export interface UiController {
    *
    * @example
    * ```typescript
-   * await felt.createPanel({
+   * const id = await felt.createPanelId();
+   *
+   * await felt.createOrUpdatePanel({
    *    panel: {
-   *       id: "panel-1", // not required but useful for further updates
+   *       id,
    *       title: "My Panel",
    *       body: [
    *          {
@@ -196,33 +212,11 @@ export interface UiController {
    *          },
    *       ],
    *    },
-   *    placement: { at: "start" }, // add the panel to the start of the stack
+   *    initialPlacement: { at: "start" }, // when added, the panel will be added to the start of the stack
    * });
    * ```
    */
-  createPanel(args: CreatePanelParams): Promise<UIPanel>;
-
-  /**
-   * Updates a panel.
-   *
-   * Panel to update is identified by the `id` property.
-   *
-   * @remarks
-   * Properties provided will override the existing properties.
-   * Override is done at Panel level, so if you want to update a specific element,
-   * you need to provide the entire element. For partial updates of elements, use
-   * {@link updatePanelElements} instead.
-   *
-   * @param panel - The panel to update.
-   * @example
-   * ```typescript
-   * await felt.updatePanel({
-   *   id: "panel-1",
-   *   title: "A new title for my panel", // only title changes
-   * });
-   * ```
-   */
-  updatePanel(panel: UpdatePanelParams): Promise<UIPanel>;
+  createOrUpdatePanel(args: CreateOrUpdatePanelParams): Promise<UIPanel>;
 
   /**
    * Deletes a panel.
@@ -260,7 +254,7 @@ export interface UiController {
    * @example
    * ```typescript
    * await felt.createPanelElements({
-   *   panelId: "panel-1",
+   *   panelId,
    *   elements: [
    *     {
    *       element: { type: "Text", content: "Hello, world!" },
@@ -283,7 +277,7 @@ export interface UiController {
    * @example
    * ```typescript
    * await felt.updatePanelElements({
-   *   panelId: "panel-1",
+   *   panelId,
    *   elements: [
    *     {
    *       element: {
@@ -307,7 +301,7 @@ export interface UiController {
    * @example
    * ```typescript
    * await felt.deletePanelElements({
-   *   panelId: "panel-1",
+   *   panelId,
    *   elements: ["element-1", "element-2"],
    * });
    * ```

@@ -1,7 +1,6 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import type { UiController } from "./controller";
-import type { UIElementBase } from "./uiElements/base";
 import type { PlacementForUIElement } from "./uiElements/placementForUiElement";
 import { placementForUiElementSchema } from "./uiElements/placementForUiElement";
 import {
@@ -9,7 +8,10 @@ import {
   type UIActionTriggerCreate,
 } from "./uiElements/UIActionTrigger";
 import { type UIFlexibleSpaceElementCreate } from "./uiElements/UIFlexibleSpaceElement";
-import { uiPanelCreateSchema, type UIPanelCreate } from "./uiElements/UIPanel";
+import {
+  uiPanelCreateSchema,
+  type UIPanelCreateOrUpdate,
+} from "./uiElements/UIPanel";
 import {
   uiPanelElementCreateSchema,
   uiPanelElementUpdateSchema,
@@ -48,46 +50,35 @@ export interface UpdateActionTriggerParams
   id: zInfer<typeof UpdateActionTriggerParamsSchema>["id"];
 }
 
-const CreatePanelParamsSchema = z.object({
+const CreateOrUpdatePanelParamsSchema = z.object({
   panel: uiPanelCreateSchema.params,
   placement: placementForUiElementSchema.optional(),
 });
 
 /**
- * The parameters for adding a panel to the map by using {@link UiController.createPanel}.
+ * The parameters for creating or updating a panel by using {@link UiController.createOrUpdatePanel}.
  *
  * @public
  */
-export interface CreatePanelParams
-  extends zInfer<typeof CreatePanelParamsSchema> {
+export interface CreateOrUpdatePanelParams
+  extends zInfer<typeof CreateOrUpdatePanelParamsSchema> {
   /**
    * The panel to add.
    */
-  panel: UIPanelCreate;
+  panel: UIPanelCreateOrUpdate;
 
   /**
    * The placement of the panel on the right sidebar stack.
    *
    * @defaultValue `{ at: "end" }`
    */
-  placement?: PlacementForUIElement;
+  initialPlacement?: PlacementForUIElement;
 }
 
-export const CreatePanelParamsClonableSchema = z.object({
+export const CreateOrUpdatePanelParamsClonableSchema = z.object({
   panel: uiPanelCreateSchema.clonable,
-  placement: placementForUiElementSchema.optional(),
+  initialPlacement: placementForUiElementSchema.optional(),
 });
-
-export const UpdatePanelClonableSchema = uiPanelCreateSchema.clonable
-  .partial()
-  .required({ id: true });
-
-/**
- * @public
- */
-export interface UpdatePanelParams
-  extends Omit<Partial<UIPanelCreate>, "id">,
-    UIElementBase {}
 
 const CreatePanelElementsParamsSchema = z.object({
   panelId: z.string(),

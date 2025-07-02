@@ -11,8 +11,7 @@ UI features such as the legend and the full screen button.
 
 * [CreateActionTriggerParams](CreateActionTriggerParams.md)
 * [UpdateActionTriggerParams](UpdateActionTriggerParams.md)
-* [CreatePanelParams](CreatePanelParams.md)
-* [UpdatePanelParams](UpdatePanelParams.md)
+* [CreateOrUpdatePanelParams](CreateOrUpdatePanelParams.md)
 * [CreatePanelElementsParams](CreatePanelElementsParams.md)
 * [UpdatePanelElementsParams](UpdatePanelElementsParams.md)
 * [DeletePanelElementsParams](DeletePanelElementsParams.md)
@@ -32,7 +31,7 @@ UI features such as the legend and the full screen button.
 * [UIGridContainerElementCreate](UIGridContainerElementCreate.md)
 * [UIGridContainerElementUpdate](UIGridContainerElementUpdate.md)
 * [UIPanel](UIPanel.md)
-* [UIPanelCreate](UIPanelCreate.md)
+* [UIPanelCreateOrUpdate](UIPanelCreateOrUpdate.md)
 * [UISelectElement](UISelectElement.md)
 * [UISelectElementCreate](UISelectElementCreate.md)
 * [UISelectElementUpdate](UISelectElementUpdate.md)

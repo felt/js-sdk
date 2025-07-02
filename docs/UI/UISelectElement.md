@@ -25,6 +25,22 @@ Represents a select element in a panel.
 }
 ```
 
+### with label
+
+`label` is displayed above the select and used for screen readers.
+`placeholder` is displayed in the select when no value is selected.
+
+```typescript
+{
+  type: "Select",
+  label: "Fruit",
+  options: [{ label: "Apple", value: "apple" }, { label: "Banana", value: "banana" }],
+  value: undefined,
+  placeholder: "Select a fruit",
+  onChange: (args) => console.log(args.value),
+}
+```
+
 ### with search
 
 ```typescript

@@ -73,6 +73,24 @@ export type {
   UIButtonRowElementUpdate,
 } from "./uiElements/UIButtonRowElement";
 
+export type {
+  UICheckboxGroupElement,
+  UICheckboxGroupElementCreate,
+  UICheckboxGroupElementUpdate,
+} from "./uiElements/UICheckboxGroupElement";
+
+export type {
+  UIRadioGroupElement,
+  UIRadioGroupElementCreate,
+  UIRadioGroupElementUpdate,
+} from "./uiElements/UIRadioGroupElement";
+
+export type {
+  UIToggleGroupElement,
+  UIToggleGroupElementCreate,
+  UIToggleGroupElementUpdate,
+} from "./uiElements/UIToggleGroupElement";
+
 export type { UIActionTriggerCreate } from "./uiElements/UIActionTrigger";
 
 export type { UiController } from "./controller";

@@ -18,6 +18,15 @@ import {
   type UIButtonRowElementUpdate,
 } from "./UIButtonRowElement";
 import {
+  uiCheckboxGroupElementCreateSchema,
+  uiCheckboxGroupElementSchema,
+  uiCheckboxGroupElementUpdateSchema,
+  type UICheckboxGroupElement,
+  type UICheckboxGroupElementCreate,
+  type UICheckboxGroupElementCreateClonable,
+  type UICheckboxGroupElementUpdate,
+} from "./UICheckboxGroupElement";
+import {
   uiDividerElementCreateSchema,
   uiDividerElementSchema,
   uiDividerElementUpdateSchema,
@@ -45,6 +54,15 @@ import {
   type UIGridContainerElementUpdate,
 } from "./UIGridContainerElement";
 import {
+  uiRadioGroupElementCreateSchema,
+  uiRadioGroupElementSchema,
+  uiRadioGroupElementUpdateSchema,
+  type UIRadioGroupElement,
+  type UIRadioGroupElementCreate,
+  type UIRadioGroupElementCreateClonable,
+  type UIRadioGroupElementUpdate,
+} from "./UIRadioGroupElement";
+import {
   uiSelectElementCreateSchema,
   uiSelectElementSchema,
   uiSelectElementUpdateSchema,
@@ -71,6 +89,15 @@ import {
   type UITextInputElementCreateClonable,
   type UITextInputElementUpdate,
 } from "./UITextInputElement";
+import {
+  uiToggleGroupElementCreateSchema,
+  uiToggleGroupElementSchema,
+  uiToggleGroupElementUpdateSchema,
+  type UIToggleGroupElement,
+  type UIToggleGroupElementCreate,
+  type UIToggleGroupElementCreateClonable,
+  type UIToggleGroupElementUpdate,
+} from "./UIToggleGroupElement";
 
 export const uiPanelElementSchema: z.ZodType<UIPanelElement> =
   z.discriminatedUnion("type", [
@@ -81,6 +108,9 @@ export const uiPanelElementSchema: z.ZodType<UIPanelElement> =
     uiSelectElementSchema,
     uiFlexibleSpaceElementSchema,
     uiButtonRowElementSchema,
+    uiCheckboxGroupElementSchema,
+    uiRadioGroupElementSchema,
+    uiToggleGroupElementSchema,
 
     uiGridContainerElementSchema,
   ]);
@@ -94,6 +124,9 @@ const uiPanelElementCreateParamsSchema: z.ZodType<UIPanelElementCreate> =
     uiSelectElementCreateSchema.params,
     uiFlexibleSpaceElementCreateSchema.params,
     uiButtonRowElementCreateSchema.params,
+    uiCheckboxGroupElementCreateSchema.params,
+    uiRadioGroupElementCreateSchema.params,
+    uiToggleGroupElementCreateSchema.params,
 
     uiGridContainerElementCreateSchema.params,
   ]);
@@ -107,6 +140,9 @@ const uiPanelElementCreateClonableSchema: z.ZodType<UIPanelElementCreateClonable
     uiSelectElementCreateSchema.clonable,
     uiFlexibleSpaceElementCreateSchema.clonable,
     uiButtonRowElementCreateSchema.clonable,
+    uiCheckboxGroupElementCreateSchema.clonable,
+    uiRadioGroupElementCreateSchema.clonable,
+    uiToggleGroupElementCreateSchema.clonable,
 
     uiGridContainerElementCreateSchema.clonable,
   ]);
@@ -125,6 +161,9 @@ export const uiPanelElementUpdateSchema = {
     uiDividerElementUpdateSchema.params,
     uiFlexibleSpaceElementUpdateSchema.params,
     uiButtonRowElementUpdateSchema.params,
+    uiCheckboxGroupElementUpdateSchema.params,
+    uiRadioGroupElementUpdateSchema.params,
+    uiToggleGroupElementUpdateSchema.params,
 
     uiGridContainerElementUpdateSchema.params,
   ]),
@@ -136,6 +175,9 @@ export const uiPanelElementUpdateSchema = {
     uiDividerElementUpdateSchema.clonable,
     uiFlexibleSpaceElementUpdateSchema.clonable,
     uiButtonRowElementUpdateSchema.clonable,
+    uiCheckboxGroupElementUpdateSchema.clonable,
+    uiRadioGroupElementUpdateSchema.clonable,
+    uiToggleGroupElementUpdateSchema.clonable,
 
     uiGridContainerElementUpdateSchema.clonable,
   ]),
@@ -149,6 +191,9 @@ export type UIPanelElement =
   | UISelectElement
   | UIFlexibleSpaceElement
   | UIButtonRowElement
+  | UICheckboxGroupElement
+  | UIRadioGroupElement
+  | UIToggleGroupElement
   | UIGridContainerElement;
 
 /**
@@ -165,6 +210,9 @@ export type UIPanelElementCreate =
   | UISelectElementCreate
   | UIFlexibleSpaceElementCreate
   | UIButtonRowElementCreate
+  | UICheckboxGroupElementCreate
+  | UIRadioGroupElementCreate
+  | UIToggleGroupElementCreate
   | UIGridContainerElementCreate;
 
 export type UIPanelElementCreateClonable =
@@ -175,6 +223,9 @@ export type UIPanelElementCreateClonable =
   | UISelectElementCreateClonable
   | UIFlexibleSpaceElementCreateClonable
   | UIButtonRowElementCreateClonable
+  | UICheckboxGroupElementCreateClonable
+  | UIRadioGroupElementCreateClonable
+  | UIToggleGroupElementCreateClonable
   | UIGridContainerElementCreateClonable;
 
 /**
@@ -190,5 +241,8 @@ export type UIPanelElementUpdate =
   | UISelectElementUpdate
   | UIDividerElementUpdate
   | UIButtonRowElementUpdate
+  | UICheckboxGroupElementUpdate
+  | UIRadioGroupElementUpdate
+  | UIToggleGroupElementUpdate
   | UIGridContainerElementUpdate
   | UIFlexibleSpaceElementUpdate;

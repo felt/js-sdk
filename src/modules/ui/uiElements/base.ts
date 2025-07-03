@@ -143,3 +143,10 @@ export type MakeUpdateSchema<
   TElementCreate extends { id?: string; type: string },
 > = Omit<Partial<TElementCreate>, "id" | "type"> &
   Pick<TElement, "id" | "type">;
+
+export const uiControlOptionSchema = z.object({
+  label: z.string(),
+  value: z.string(),
+});
+
+export type UIControlOption = zInfer<typeof uiControlOptionSchema>;

@@ -2,7 +2,33 @@
 
 The parameters for creating a radio group element.
 
-Every group is labeled using `label` property and it can contain one or more radioes.
+The radio group is a control that allows the user to select a single value from a list of options.
+
+As a control, the radio group can have a label displayed above the radioes.
+
+If no value is provided, `value` is `undefined`, the radio group will be empty.
+
+<figure>
+  <img src="../_media/radio-group-basic.png" alt="Radio group basic" />
+
+  <figcaption>
+    A radio buttons group with a label
+  </figcaption>
+</figure>
+
+```typescript
+{
+  type: "RadioGroup",
+  label: "Select a side",
+  options: [
+    { label: "🍟", value: "fries" },
+    { label: "🍚", value: "rice" },
+    { label: "🥗", value: "salad" },
+  ],
+  value: "rice",
+  onChange: ({ value, id }) => { }
+}
+```
 
 # Properties
 

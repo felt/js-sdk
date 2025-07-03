@@ -2,7 +2,34 @@
 
 The parameters for creating a checkbox group element.
 
-Every group is labeled using `label` property and it can contain one or more checkboxes.
+The checkbox group is a control that allows the user to select one or more values from a list of options.
+
+As a control, the checkbox group can have a label displayed above the checkboxes.
+
+If no value is provided, `value` is `[]`, the checkbox group will be empty.
+
+<figure>
+  <img src="../_media/checkbox-group-basic.png" alt="Checkbox group basic" />
+
+  <figcaption>
+    A checkbox group with a label
+  </figcaption>
+</figure>
+
+```typescript
+{
+  type: "CheckboxGroup",
+  label: "Select your hobbies",
+  options: [
+    { label: "👾 Video games", value: "gaming" },
+    { label: "🎨 Art", value: "art" },
+    { label: "🎤 Singing", value: "singing" },
+    { label: "🎬 Movies", value: "movies" },
+  ],
+  value: ["gaming", "art"],
+  onChange: ({ value, id }) => { }
+}
+```
 
 # Properties
 

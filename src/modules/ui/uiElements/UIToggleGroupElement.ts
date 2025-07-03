@@ -45,7 +45,71 @@ export const uiToggleGroupElementSchema = uiLabelReadyElementSchema.extend({
 /**
  * The parameters for creating a toggle group element.
  *
- * Every group is labeled using `label` property and it can contain one or more togglees.
+ * ### Options
+ *
+ * The options to display in the toggle group are defined using the `options` property.
+ * It can contain one or more options and each option renders a toggle.
+ *
+ * <figure>
+ * <img src="./img/toggle-group-basic.png" alt="Toggle group basic" />
+ * <figcaption>
+ * A group with a single option
+ * </figcaption>
+ * </figure>
+ *
+ * ```typescript
+ * {
+ *   type: "ToggleGroup",
+ *   options: [{ label: "Option A", value: "optionA" }],
+ *   value: [],
+ *   onChange: ({ value, id }) => { }
+ * }
+ * ```
+ *
+ * ### Alignment
+ *
+ * By default, the toggles are aligned to the start of the group,
+ * but it can be changed to `end` by setting the `alignment` property to `end`.
+ *
+ * <figure>
+ * <img src="./img/toggle-group-end-alignment.png" alt="Toggle group end alignment" />
+ * <figcaption>
+ * The toggles are aligned to the end
+ * </figcaption>
+ * </figure>
+ *
+ * ```typescript
+ * {
+ *   type: "ToggleGroup",
+ *   alignment: "end",
+ *   label: "All options",
+ *   options: [
+ *     { label: "Option A", value: "optionA" },
+ *     { label: "Option B", value: "optionB" },
+ *   ],
+ *   value: ["optionA"],
+ *   onChange: ({ value, id }) => { }
+ * }
+ * ```
+ *
+ * ### Label
+ *
+ * As a control, the toggle group can have a label displayed above the toggles.
+ *
+ * <img src="./img/toggle-group-with-label.png" alt="Toggle group with label" />
+ *
+ * ```typescript
+ * {
+ *   type: "ToggleGroup",
+ *   label: "All options",
+ *   options: [
+ *     { label: "Option A", value: "optionA" },
+ *     { label: "Option B", value: "optionB" },
+ *   ],
+ *   value: ["optionA"],
+ *   onChange: ({ value, id }) => { }
+ * }
+ * ```
  */
 export interface UIToggleGroupElement
   extends UILabelReadyElement,

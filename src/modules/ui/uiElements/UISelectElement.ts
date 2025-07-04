@@ -2,11 +2,12 @@ import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
   makeUpdateSchema,
-  uiControlOptionSchema,
+  uiControlElementOptionSchema,
   uiLabelReadyElementCreateSchema,
   uiLabelReadyElementSchema,
   type MakeClonableSchema,
   type MakeUpdateSchema,
+  type UIControlElementOption,
   type UILabelReadyElement,
   type UILabelReadyElementCreateParams,
 } from "./base";
@@ -17,7 +18,7 @@ export const uiSelectElementSchema = uiLabelReadyElementSchema.extend({
   /**
    * The options to display in the select.
    */
-  options: z.array(uiControlOptionSchema),
+  options: z.array(uiControlElementOptionSchema),
 
   /**
    * The value of the select.
@@ -98,8 +99,13 @@ export interface UISelectElement
   extends UILabelReadyElement,
     Omit<
       zInfer<typeof uiSelectElementSchema>,
-      "onChange" | "onCreate" | "onDestroy"
+      "onChange" | "onCreate" | "onDestroy" | "options"
     > {
+  /**
+   * The options to display in the select.
+   */
+  options: Array<UIControlElementOption>;
+
   /**
    * The function to call when the value of the select changes.
    *

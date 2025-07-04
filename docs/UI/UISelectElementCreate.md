@@ -18,15 +18,9 @@ See [UISelectElement](UISelectElement.md) for more details.
 
 ## options
 
-> **options**: \{ `label`: `string`; `value`: `string`; `disabled`: `boolean`; }\[]
+> **options**: [`UIControlElementOption`](UIControlElementOption.md)\[]
 
 The options to display in the select.
-
-| Name        | Type      |
-| ----------- | --------- |
-| `label`     | `string`  |
-| `value`     | `string`  |
-| `disabled`? | `boolean` |
 
 ***
 

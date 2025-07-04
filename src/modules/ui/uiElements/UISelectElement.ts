@@ -7,6 +7,7 @@ import {
   uiLabelReadyElementSchema,
   type MakeClonableSchema,
   type MakeUpdateSchema,
+  type UIControlElementOption,
   type UILabelReadyElement,
   type UILabelReadyElementCreateParams,
 } from "./base";
@@ -98,8 +99,13 @@ export interface UISelectElement
   extends UILabelReadyElement,
     Omit<
       zInfer<typeof uiSelectElementSchema>,
-      "onChange" | "onCreate" | "onDestroy"
+      "onChange" | "onCreate" | "onDestroy" | "options"
     > {
+  /**
+   * The options to display in the select.
+   */
+  options: Array<UIControlElementOption>;
+
   /**
    * The function to call when the value of the select changes.
    *

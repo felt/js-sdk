@@ -91,7 +91,7 @@ export type {
   UIToggleGroupElementUpdate,
 } from "./uiElements/UIToggleGroupElement";
 
-export type { UIControlElementOption as UIControlOption } from "./uiElements/base";
+export type { UIControlElementOption } from "./uiElements/base";
 
 export type { UIActionTriggerCreate } from "./uiElements/UIActionTrigger";
 

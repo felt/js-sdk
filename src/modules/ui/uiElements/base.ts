@@ -143,3 +143,18 @@ export type MakeUpdateSchema<
   TElementCreate extends { id?: string; type: string },
 > = Omit<Partial<TElementCreate>, "id" | "type"> &
   Pick<TElement, "id" | "type">;
+
+export const uiControlOptionSchema = z.object({
+  label: z.string(),
+  value: z.string(),
+});
+
+/**
+ * An option to display in a control.
+ *
+ * @example
+ * ```typescript
+ * { label: "Option A", value: "optionA" }
+ * ```
+ */
+export interface UIControlOption extends zInfer<typeof uiControlOptionSchema> {}

@@ -2,6 +2,7 @@ import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
   makeUpdateSchema,
+  uiControlOptionSchema,
   uiLabelReadyElementCreateSchema,
   uiLabelReadyElementSchema,
   type MakeClonableSchema,
@@ -16,7 +17,7 @@ export const uiSelectElementSchema = uiLabelReadyElementSchema.extend({
   /**
    * The options to display in the select.
    */
-  options: z.array(z.object({ label: z.string(), value: z.string() })),
+  options: z.array(uiControlOptionSchema),
 
   /**
    * The value of the select.

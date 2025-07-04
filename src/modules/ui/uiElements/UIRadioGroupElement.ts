@@ -2,17 +2,17 @@ import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
   makeUpdateSchema,
-  uiControlOptionSchema,
+  uiControlElementOptionSchema,
   uiLabelReadyElementCreateSchema,
   uiLabelReadyElementSchema,
   type MakeClonableSchema,
   type MakeUpdateSchema,
-  type UIControlOption,
+  type UIControlElementOption,
   type UILabelReadyElement,
   type UILabelReadyElementCreateParams,
 } from "./base";
 
-const valueSchema = uiControlOptionSchema.shape.value.optional();
+const valueSchema = uiControlElementOptionSchema.shape.value.optional();
 
 export const uiRadioGroupElementSchema = uiLabelReadyElementSchema.extend({
   type: z.literal("RadioGroup"),
@@ -20,7 +20,7 @@ export const uiRadioGroupElementSchema = uiLabelReadyElementSchema.extend({
   /**
    * The options to display in the radio group.
    */
-  options: z.array(uiControlOptionSchema),
+  options: z.array(uiControlElementOptionSchema),
 
   /**
    * The value of the radio group.
@@ -74,7 +74,7 @@ export interface UIRadioGroupElement
   /**
    * The options to display in the radio group.
    */
-  options: Array<UIControlOption>;
+  options: Array<UIControlElementOption>;
 
   /**
    * The function to call when the value of the radio group changes.
@@ -84,7 +84,7 @@ export interface UIRadioGroupElement
    * @param args.id - The id of the radio group element.
    */
   onChange: (args: {
-    value: UIControlOption["value"] | undefined;
+    value: UIControlElementOption["value"] | undefined;
     id: string;
   }) => void;
 }

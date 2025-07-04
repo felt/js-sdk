@@ -144,17 +144,34 @@ export type MakeUpdateSchema<
 > = Omit<Partial<TElementCreate>, "id" | "type"> &
   Pick<TElement, "id" | "type">;
 
-export const uiControlOptionSchema = z.object({
+export const uiControlElementOptionSchema = z.object({
   label: z.string(),
   value: z.string(),
+  disabled: z.boolean().optional(),
 });
 
 /**
- * An option to display in a control.
+ * An option to display in a control element.
+ *
+ * Control elements are elements that allow the user to select one or more values from a list of options.
+ * This includes:
+ * - {@link UIRadioGroupElement}
+ * - {@link UICheckboxGroupElement}
+ * - {@link UIToggleGroupElement}
+ * - {@link UISelectElement}
+ *
+ * The option can be disabled by setting the `disabled` property to `true`.
  *
  * @example
  * ```typescript
  * { label: "Option A", value: "optionA" }
  * ```
+ *
+ * @example
+ * A disabled option
+ * ```typescript
+ * { label: "Option A", value: "optionA", disabled: true }
+ * ```
  */
-export interface UIControlOption extends zInfer<typeof uiControlOptionSchema> {}
+export interface UIControlElementOption
+  extends zInfer<typeof uiControlElementOptionSchema> {}

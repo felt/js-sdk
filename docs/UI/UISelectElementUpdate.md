@@ -26,14 +26,15 @@ The ID of the element.
 
 ## options?
 
-> `optional` **options**: \{ `label`: `string`; `value`: `string`; }\[]
+> `optional` **options**: \{ `label`: `string`; `value`: `string`; `disabled`: `boolean`; }\[]
 
 The options to display in the select.
 
-| Name    | Type     |
-| ------- | -------- |
-| `label` | `string` |
-| `value` | `string` |
+| Name        | Type      |
+| ----------- | --------- |
+| `label`     | `string`  |
+| `value`     | `string`  |
+| `disabled`? | `boolean` |
 
 ***
 

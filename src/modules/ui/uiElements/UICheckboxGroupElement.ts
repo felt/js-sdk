@@ -2,17 +2,17 @@ import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import {
   makeUpdateSchema,
-  uiControlOptionSchema,
+  uiControlElementOptionSchema,
   uiLabelReadyElementCreateSchema,
   uiLabelReadyElementSchema,
   type MakeClonableSchema,
   type MakeUpdateSchema,
-  type UIControlOption,
+  type UIControlElementOption,
   type UILabelReadyElement,
   type UILabelReadyElementCreateParams,
 } from "./base";
 
-const valueSchema = z.array(uiControlOptionSchema.shape.value);
+const valueSchema = z.array(uiControlElementOptionSchema.shape.value);
 
 export const uiCheckboxGroupElementSchema = uiLabelReadyElementSchema.extend({
   type: z.literal("CheckboxGroup"),
@@ -20,7 +20,7 @@ export const uiCheckboxGroupElementSchema = uiLabelReadyElementSchema.extend({
   /**
    * The options to display in the checkbox group.
    */
-  options: z.array(uiControlOptionSchema),
+  options: z.array(uiControlElementOptionSchema),
 
   /**
    * The value of the checkbox group.
@@ -75,7 +75,7 @@ export interface UICheckboxGroupElement
   /**
    * The options to display in the checkbox group.
    */
-  options: Array<UIControlOption>;
+  options: Array<UIControlElementOption>;
 
   /**
    * The function to call when the value of the checkbox group changes.
@@ -85,7 +85,7 @@ export interface UICheckboxGroupElement
    * @param args.id - The id of the checkbox group element.
    */
   onChange: (args: {
-    value: Array<UIControlOption["value"]>;
+    value: Array<UIControlElementOption["value"]>;
     id: string;
   }) => void;
 }

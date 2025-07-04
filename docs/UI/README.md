@@ -24,6 +24,9 @@ UI features such as the legend and the full screen button.
 * [UIButtonRowElement](UIButtonRowElement.md)
 * [UIButtonRowElementCreate](UIButtonRowElementCreate.md)
 * [UIButtonRowElementUpdate](UIButtonRowElementUpdate.md)
+* [UICheckboxGroupElement](UICheckboxGroupElement.md)
+* [UICheckboxGroupElementCreate](UICheckboxGroupElementCreate.md)
+* [UICheckboxGroupElementUpdate](UICheckboxGroupElementUpdate.md)
 * [UIDividerElement](UIDividerElement.md)
 * [UIDividerElementCreate](UIDividerElementCreate.md)
 * [UIDividerElementUpdate](UIDividerElementUpdate.md)
@@ -35,6 +38,9 @@ UI features such as the legend and the full screen button.
 * [UIGridContainerElementUpdate](UIGridContainerElementUpdate.md)
 * [UIPanel](UIPanel.md)
 * [UIPanelCreateOrUpdate](UIPanelCreateOrUpdate.md)
+* [UIRadioGroupElement](UIRadioGroupElement.md)
+* [UIRadioGroupElementCreate](UIRadioGroupElementCreate.md)
+* [UIRadioGroupElementUpdate](UIRadioGroupElementUpdate.md)
 * [UISelectElement](UISelectElement.md)
 * [UISelectElementCreate](UISelectElementCreate.md)
 * [UISelectElementUpdate](UISelectElementUpdate.md)
@@ -44,6 +50,10 @@ UI features such as the legend and the full screen button.
 * [UITextInputElement](UITextInputElement.md)
 * [UITextInputElementCreate](UITextInputElementCreate.md)
 * [UITextInputElementUpdate](UITextInputElementUpdate.md)
+* [UIToggleGroupElement](UIToggleGroupElement.md)
+* [UIToggleGroupElementCreate](UIToggleGroupElementCreate.md)
+* [UIToggleGroupElementUpdate](UIToggleGroupElementUpdate.md)
+* [UIControlOption](UIControlOption.md)
 
 # Type Aliases
 

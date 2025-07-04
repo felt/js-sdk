@@ -14,14 +14,9 @@ See [UIRadioGroupElement](UIRadioGroupElement.md) for more details.
 
 ## options
 
-> **options**: \{ `label`: `string`; `value`: `string`; }\[]
+> **options**: [`UIControlOption`](UIControlOption.md)\[]
 
 The options to display in the radio group.
-
-| Name    | Type     |
-| ------- | -------- |
-| `label` | `string` |
-| `value` | `string` |
 
 ***
 

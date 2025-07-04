@@ -12,19 +12,6 @@ See [UIToggleGroupElement](UIToggleGroupElement.md) for more details.
 
 ***
 
-## options
-
-> **options**: \{ `label`: `string`; `value`: `string`; }\[]
-
-The options to display in the toggle group.
-
-| Name    | Type     |
-| ------- | -------- |
-| `label` | `string` |
-| `value` | `string` |
-
-***
-
 ## value
 
 > **value**: `string`\[] = `valueSchema`
@@ -34,6 +21,14 @@ The value of the toggle group.
 ### Default Value
 
 `[]`
+
+***
+
+## options
+
+> **options**: [`UIControlOption`](UIControlOption.md)\[]
+
+The options to display in the toggle group.
 
 ***
 

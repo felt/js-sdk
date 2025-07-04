@@ -20,19 +20,6 @@ The ID of the element.
 
 ***
 
-## options?
-
-> `optional` **options**: \{ `label`: `string`; `value`: `string`; }\[]
-
-The options to display in the checkbox group.
-
-| Name    | Type     |
-| ------- | -------- |
-| `label` | `string` |
-| `value` | `string` |
-
-***
-
 ## value?
 
 > `optional` **value**: `string`\[] = `valueSchema`
@@ -42,6 +29,14 @@ The value of the checkbox group.
 ### Default Value
 
 `[]`
+
+***
+
+## options?
+
+> `optional` **options**: [`UIControlOption`](UIControlOption.md)\[]
+
+The options to display in the checkbox group.
 
 ***
 

@@ -70,8 +70,13 @@ export interface UICheckboxGroupElement
   extends UILabelReadyElement,
     Omit<
       zInfer<typeof uiCheckboxGroupElementSchema>,
-      "onChange" | "onCreate" | "onDestroy"
+      "onChange" | "onCreate" | "onDestroy" | "options"
     > {
+  /**
+   * The options to display in the checkbox group.
+   */
+  options: Array<UIControlOption>;
+
   /**
    * The function to call when the value of the checkbox group changes.
    *

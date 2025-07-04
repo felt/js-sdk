@@ -40,14 +40,9 @@ If no value is provided, `value` is `undefined`, the radio group will be empty.
 
 ## options
 
-> **options**: \{ `label`: `string`; `value`: `string`; }\[]
+> **options**: [`UIControlOption`](UIControlOption.md)\[]
 
 The options to display in the radio group.
-
-| Name    | Type     |
-| ------- | -------- |
-| `label` | `string` |
-| `value` | `string` |
 
 ***
 

@@ -69,8 +69,13 @@ export interface UIRadioGroupElement
   extends UILabelReadyElement,
     Omit<
       zInfer<typeof uiRadioGroupElementSchema>,
-      "onChange" | "onCreate" | "onDestroy"
+      "onChange" | "onCreate" | "onDestroy" | "options"
     > {
+  /**
+   * The options to display in the radio group.
+   */
+  options: Array<UIControlOption>;
+
   /**
    * The function to call when the value of the radio group changes.
    *

@@ -32,19 +32,6 @@ The alignment of the toggle group.
 
 ***
 
-## options?
-
-> `optional` **options**: \{ `label`: `string`; `value`: `string`; }\[]
-
-The options to display in the toggle group.
-
-| Name    | Type     |
-| ------- | -------- |
-| `label` | `string` |
-| `value` | `string` |
-
-***
-
 ## value?
 
 > `optional` **value**: `string`\[] = `valueSchema`
@@ -54,6 +41,14 @@ The value of the toggle group.
 ### Default Value
 
 `[]`
+
+***
+
+## options?
+
+> `optional` **options**: [`UIControlOption`](UIControlOption.md)\[]
+
+The options to display in the toggle group.
 
 ***
 

@@ -53,6 +53,7 @@ UI features such as the legend and the full screen button.
 * [UIToggleGroupElement](UIToggleGroupElement.md)
 * [UIToggleGroupElementCreate](UIToggleGroupElementCreate.md)
 * [UIToggleGroupElementUpdate](UIToggleGroupElementUpdate.md)
+* [UIControlOption](UIControlOption.md)
 
 # Type Aliases
 

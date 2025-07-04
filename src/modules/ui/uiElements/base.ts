@@ -149,4 +149,12 @@ export const uiControlOptionSchema = z.object({
   value: z.string(),
 });
 
-export type UIControlOption = zInfer<typeof uiControlOptionSchema>;
+/**
+ * An option to display in a control.
+ *
+ * @example
+ * ```typescript
+ * { label: "Option A", value: "optionA" }
+ * ```
+ */
+export interface UIControlOption extends zInfer<typeof uiControlOptionSchema> {}

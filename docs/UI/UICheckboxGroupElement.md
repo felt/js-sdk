@@ -39,19 +39,6 @@ If no value is provided, `value` is `[]`, the checkbox group will be empty.
 
 ***
 
-## options
-
-> **options**: \{ `label`: `string`; `value`: `string`; }\[]
-
-The options to display in the checkbox group.
-
-| Name    | Type     |
-| ------- | -------- |
-| `label` | `string` |
-| `value` | `string` |
-
-***
-
 ## value
 
 > **value**: `string`\[] = `valueSchema`
@@ -61,6 +48,14 @@ The value of the checkbox group.
 ### Default Value
 
 `[]`
+
+***
+
+## options
+
+> **options**: [`UIControlOption`](UIControlOption.md)\[]
+
+The options to display in the checkbox group.
 
 ***
 

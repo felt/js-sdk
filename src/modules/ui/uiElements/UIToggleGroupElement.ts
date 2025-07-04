@@ -24,9 +24,6 @@ export const uiToggleGroupElementSchema = uiLabelReadyElementSchema.extend({
    */
   alignment: z.enum(["start", "end"]).optional(),
 
-  /**
-   * The options to display in the toggle group.
-   */
   options: z.array(uiControlOptionSchema),
 
   /**
@@ -115,8 +112,13 @@ export interface UIToggleGroupElement
   extends UILabelReadyElement,
     Omit<
       zInfer<typeof uiToggleGroupElementSchema>,
-      "onChange" | "onCreate" | "onDestroy"
+      "onChange" | "onCreate" | "onDestroy" | "options"
     > {
+  /**
+   * The options to display in the toggle group.
+   */
+  options: Array<UIControlOption>;
+
   /**
    * The function to call when the value of the toggle group changes.
    *

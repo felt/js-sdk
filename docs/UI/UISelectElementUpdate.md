@@ -24,19 +24,6 @@ The ID of the element.
 
 ***
 
-## options?
-
-> `optional` **options**: \{ `label`: `string`; `value`: `string`; }\[]
-
-The options to display in the select.
-
-| Name    | Type     |
-| ------- | -------- |
-| `label` | `string` |
-| `value` | `string` |
-
-***
-
 ## value?
 
 > `optional` **value**: `string`
@@ -62,6 +49,14 @@ Whether the select should allow searching through the options.
 ### Default Value
 
 `false`
+
+***
+
+## options?
+
+> `optional` **options**: [`UIControlElementOption`](UIControlElementOption.md)\[]
+
+The options to display in the select.
 
 ***
 

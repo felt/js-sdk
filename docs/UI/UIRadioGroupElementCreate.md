@@ -14,7 +14,7 @@ See [UIRadioGroupElement](UIRadioGroupElement.md) for more details.
 
 ## options
 
-> **options**: [`UIControlOption`](UIControlOption.md)\[]
+> **options**: [`UIControlElementOption`](UIControlElementOption.md)\[]
 
 The options to display in the radio group.
 

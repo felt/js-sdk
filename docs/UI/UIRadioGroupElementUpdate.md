@@ -34,7 +34,7 @@ The value of the radio group.
 
 ## options?
 
-> `optional` **options**: [`UIControlOption`](UIControlOption.md)\[]
+> `optional` **options**: [`UIControlElementOption`](UIControlElementOption.md)\[]
 
 The options to display in the radio group.
 

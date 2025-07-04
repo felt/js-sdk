@@ -46,7 +46,7 @@ The value of the toggle group.
 
 ## options?
 
-> `optional` **options**: [`UIControlOption`](UIControlOption.md)\[]
+> `optional` **options**: [`UIControlElementOption`](UIControlElementOption.md)\[]
 
 The options to display in the toggle group.
 

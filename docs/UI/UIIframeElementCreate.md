@@ -26,7 +26,7 @@ The URL of the iframe.
 
 ## height?
 
-> `optional` **height**: `number`
+> `optional` **height**: `string` | `number`
 
 The height of the iframe.
 

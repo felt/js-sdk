@@ -18,7 +18,7 @@ export const uiIframeElementSchema = uiElementBaseSchema.extend({
    *
    * If not provided, the height will be automatically calculated following a 16:9 ratio.
    */
-  height: z.number().optional(),
+  height: z.number().or(z.string()).optional(),
 
   /**
    * The URL of the iframe.
@@ -29,12 +29,31 @@ export const uiIframeElementSchema = uiElementBaseSchema.extend({
 /**
  * Represents an iframe element in a panel.
  *
- * @example
+ * The height of the iframe can be set by using the `height` property
+ * either as a number or a string (e.g. "100px" or "50%").
+ *
+ * By default, the height is calculated following a 16:9 ratio.
+ *
+ * <figure>
+ * <img src="./img/iframe-basic.png" alt="Iframe showing an example website" />
+ * <figcaption>
+ * Iframe with default height (16:9)
+ * </figcaption>
+ * </figure>
+ *
  * ```typescript
- * {
- *   type: "Iframe",
- *   url: "https://www.google.com",
- * }
+ * { type: "Iframe", url: "https://www.example.com" }
+ * ```
+ *
+ * <figure>
+ * <img src="./img/iframe-custom-height.png" alt="Iframe showing an example website with a custom height" />
+ * <figcaption>
+ * Iframe with custom height
+ * </figcaption>
+ * </figure>
+ *
+ * ```typescript
+ * { type: "Iframe", url: "https://www.example.com", height: 300 }
  * ```
  */
 export interface UIIframeElement

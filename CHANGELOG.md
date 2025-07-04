@@ -1,5 +1,12 @@
 # @feltmaps/js-sdk
 
+## 1.7.0-next.20
+
+### Minor Changes
+
+- f2fcd2a: Add checkbox, radio and toggle controls to custom ui panel
+- c16c55a: Support disabled on custom ui control option
+
 ## 1.7.0-next.19
 
 ### Minor Changes

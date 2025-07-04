@@ -11277,6 +11277,380 @@ The id of the element.
 
 Label text to display above the element and used for screen readers.
 
+## UICheckboxGroupElement
+
+The parameters for creating a checkbox group element.
+
+The checkbox group is a control that allows the user to select one or more values from a list of options.
+
+As a control, the checkbox group can have a label displayed above the checkboxes.
+
+If no value is provided, `value` is `[]`, the checkbox group will be empty.
+
+<figure>
+  <img src="_media/checkbox-group-basic.png" alt="Checkbox group basic" />
+
+  <figcaption>
+    A checkbox group with a label
+  </figcaption>
+</figure>
+
+```typescript
+{
+  type: "CheckboxGroup",
+  label: "Select your hobbies",
+  options: [
+    { label: "👾 Video games", value: "gaming" },
+    { label: "🎨 Art", value: "art" },
+    { label: "🎤 Singing", value: "singing" },
+    { label: "🎬 Movies", value: "movies" },
+  ],
+  value: ["gaming", "art"],
+  onChange: ({ value, id }) => { }
+}
+```
+
+### Properties
+
+#### type
+
+> **type**: `"CheckboxGroup"`
+
+#### value
+
+> **value**: `string`\[] = `valueSchema`
+
+The value of the checkbox group.
+
+##### Default Value
+
+`[]`
+
+#### options
+
+> **options**: [`UIControlElementOption`](client.md#uicontrolelementoption)\[]
+
+The options to display in the checkbox group.
+
+#### onChange()
+
+> **onChange**: (`args`) => `void`
+
+The function to call when the value of the checkbox group changes.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### value
+
+`string`\[]
+
+Array of the selected values.
+
+##### id
+
+`string`
+
+The id of the checkbox group element.
+
+##### Returns
+
+`void`
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### onCreate()?
+
+> `optional` **onCreate**: (`args`) => `void`
+
+A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: (`args`) => `void`
+
+A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### label?
+
+> `optional` **label**: `string`
+
+Label text to display above the element and used for screen readers.
+
+## UICheckboxGroupElementCreate
+
+The parameters for creating a checkbox group element.
+
+See [UICheckboxGroupElement](client.md#uicheckboxgroupelement) for more details.
+
+### Properties
+
+#### type
+
+> **type**: `"CheckboxGroup"`
+
+#### value
+
+> **value**: `string`\[] = `valueSchema`
+
+The value of the checkbox group.
+
+##### Default Value
+
+`[]`
+
+#### options
+
+> **options**: [`UIControlElementOption`](client.md#uicontrolelementoption)\[]
+
+The options to display in the checkbox group.
+
+#### onChange()
+
+> **onChange**: (`args`) => `void`
+
+The function to call when the value of the checkbox group changes.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### value
+
+`string`\[]
+
+Array of the selected values.
+
+##### id
+
+`string`
+
+The id of the checkbox group element.
+
+##### Returns
+
+`void`
+
+#### onCreate()?
+
+> `optional` **onCreate**: (`args`) => `void`
+
+A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: (`args`) => `void`
+
+A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### id?
+
+> `optional` **id**: `string`
+
+The ID of the element.
+
+##### Remarks
+
+If not provided, the element will be assigned a random ID, but it is recommended to provide it
+to perform further updates on the element.
+
+If provided, it must be unique within the UI.
+
+##### Default Value
+
+`undefined`
+
+#### label?
+
+> `optional` **label**: `string`
+
+Label text to display above the element and used for screen readers.
+
+## UICheckboxGroupElementUpdate
+
+The parameters for updating a checkbox group element.
+
+See [UICheckboxGroupElement](client.md#uicheckboxgroupelement) for more details.
+
+### Properties
+
+#### type
+
+> **type**: `"CheckboxGroup"`
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### value?
+
+> `optional` **value**: `string`\[] = `valueSchema`
+
+The value of the checkbox group.
+
+##### Default Value
+
+`[]`
+
+#### options?
+
+> `optional` **options**: [`UIControlElementOption`](client.md#uicontrolelementoption)\[]
+
+The options to display in the checkbox group.
+
+#### onChange()?
+
+> `optional` **onChange**: (`args`) => `void`
+
+The function to call when the value of the checkbox group changes.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### value
+
+`string`\[]
+
+Array of the selected values.
+
+##### id
+
+`string`
+
+The id of the checkbox group element.
+
+##### Returns
+
+`void`
+
+#### onCreate()?
+
+> `optional` **onCreate**: (`args`) => `void`
+
+A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: (`args`) => `void`
+
+A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### label?
+
+> `optional` **label**: `string`
+
+Label text to display above the element and used for screen readers.
+
 ## UIDividerElement
 
 Represents a divider element in a panel.
@@ -11837,7 +12211,7 @@ By using `grid` property it is possible to control FlexibleSpace's size.
 
 #### items
 
-> **items**: ([`UIButtonElement`](client.md#uibuttonelement) | [`UITextElement`](client.md#uitextelement) | [`UIDividerElement`](client.md#uidividerelement) | [`UITextInputElement`](client.md#uitextinputelement) | [`UISelectElement`](client.md#uiselectelement) | [`UIFlexibleSpaceElement`](client.md#uiflexiblespaceelement) | [`UIButtonRowElement`](client.md#uibuttonrowelement))\[]
+> **items**: ([`UIButtonElement`](client.md#uibuttonelement) | [`UITextElement`](client.md#uitextelement) | [`UIDividerElement`](client.md#uidividerelement) | [`UITextInputElement`](client.md#uitextinputelement) | [`UISelectElement`](client.md#uiselectelement) | [`UIFlexibleSpaceElement`](client.md#uiflexiblespaceelement) | [`UIButtonRowElement`](client.md#uibuttonrowelement) | [`UICheckboxGroupElement`](client.md#uicheckboxgroupelement) | [`UIRadioGroupElement`](client.md#uiradiogroupelement) | [`UIToggleGroupElement`](client.md#uitogglegroupelement))\[]
 
 The items to add to the grid container.
 
@@ -11952,7 +12326,7 @@ See [UIGridContainerElement](client.md#uigridcontainerelement) for more details.
 
 #### items
 
-> **items**: ([`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate) | [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIButtonRowElementCreate`](client.md#uibuttonrowelementcreate))\[]
+> **items**: ([`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate) | [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIButtonRowElementCreate`](client.md#uibuttonrowelementcreate) | [`UICheckboxGroupElementCreate`](client.md#uicheckboxgroupelementcreate) | [`UIRadioGroupElementCreate`](client.md#uiradiogroupelementcreate) | [`UIToggleGroupElementCreate`](client.md#uitogglegroupelementcreate))\[]
 
 The items to add to the grid container.
 
@@ -12135,7 +12509,7 @@ Only takes effect on horizontal stacks.
 
 #### items?
 
-> `optional` **items**: ([`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate) | [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIButtonRowElementCreate`](client.md#uibuttonrowelementcreate))\[]
+> `optional` **items**: ([`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate) | [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIButtonRowElementCreate`](client.md#uibuttonrowelementcreate) | [`UICheckboxGroupElementCreate`](client.md#uicheckboxgroupelementcreate) | [`UIRadioGroupElementCreate`](client.md#uiradiogroupelementcreate) | [`UIToggleGroupElementCreate`](client.md#uitogglegroupelementcreate))\[]
 
 The items to add to the grid container.
 
@@ -12461,6 +12835,379 @@ The id of the element.
 
 `void`
 
+## UIRadioGroupElement
+
+The parameters for creating a radio group element.
+
+The radio group is a control that allows the user to select a single value from a list of options.
+
+As a control, the radio group can have a label displayed above the radioes.
+
+If no value is provided, `value` is `undefined`, the radio group will be empty.
+
+<figure>
+  <img src="_media/radio-group-basic.png" alt="Radio group basic" />
+
+  <figcaption>
+    A radio buttons group with a label
+  </figcaption>
+</figure>
+
+```typescript
+{
+  type: "RadioGroup",
+  label: "Select a side",
+  options: [
+    { label: "🍟", value: "fries" },
+    { label: "🍚", value: "rice" },
+    { label: "🥗", value: "salad" },
+  ],
+  value: "rice",
+  onChange: ({ value, id }) => { }
+}
+```
+
+### Properties
+
+#### type
+
+> **type**: `"RadioGroup"`
+
+#### options
+
+> **options**: [`UIControlElementOption`](client.md#uicontrolelementoption)\[]
+
+The options to display in the radio group.
+
+#### onChange()
+
+> **onChange**: (`args`) => `void`
+
+The function to call when the value of the radio group changes.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### value
+
+`undefined` | `string`
+
+The selected value.
+
+##### id
+
+`string`
+
+The id of the radio group element.
+
+##### Returns
+
+`void`
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### value?
+
+> `optional` **value**: `string` = `valueSchema`
+
+The value of the radio group.
+
+##### Default Value
+
+`undefined`
+
+#### onCreate()?
+
+> `optional` **onCreate**: (`args`) => `void`
+
+A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: (`args`) => `void`
+
+A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### label?
+
+> `optional` **label**: `string`
+
+Label text to display above the element and used for screen readers.
+
+## UIRadioGroupElementCreate
+
+The parameters for creating a radio group element.
+
+See [UIRadioGroupElement](client.md#uiradiogroupelement) for more details.
+
+### Properties
+
+#### type
+
+> **type**: `"RadioGroup"`
+
+#### options
+
+> **options**: [`UIControlElementOption`](client.md#uicontrolelementoption)\[]
+
+The options to display in the radio group.
+
+#### onChange()
+
+> **onChange**: (`args`) => `void`
+
+The function to call when the value of the radio group changes.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### value
+
+`undefined` | `string`
+
+The selected value.
+
+##### id
+
+`string`
+
+The id of the radio group element.
+
+##### Returns
+
+`void`
+
+#### value?
+
+> `optional` **value**: `string` = `valueSchema`
+
+The value of the radio group.
+
+##### Default Value
+
+`undefined`
+
+#### onCreate()?
+
+> `optional` **onCreate**: (`args`) => `void`
+
+A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: (`args`) => `void`
+
+A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### id?
+
+> `optional` **id**: `string`
+
+The ID of the element.
+
+##### Remarks
+
+If not provided, the element will be assigned a random ID, but it is recommended to provide it
+to perform further updates on the element.
+
+If provided, it must be unique within the UI.
+
+##### Default Value
+
+`undefined`
+
+#### label?
+
+> `optional` **label**: `string`
+
+Label text to display above the element and used for screen readers.
+
+## UIRadioGroupElementUpdate
+
+The parameters for updating a radio group element.
+
+See [UIRadioGroupElement](client.md#uiradiogroupelement) for more details.
+
+### Properties
+
+#### type
+
+> **type**: `"RadioGroup"`
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### value?
+
+> `optional` **value**: `string` = `valueSchema`
+
+The value of the radio group.
+
+##### Default Value
+
+`undefined`
+
+#### options?
+
+> `optional` **options**: [`UIControlElementOption`](client.md#uicontrolelementoption)\[]
+
+The options to display in the radio group.
+
+#### onChange()?
+
+> `optional` **onChange**: (`args`) => `void`
+
+The function to call when the value of the radio group changes.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### value
+
+`undefined` | `string`
+
+The selected value.
+
+##### id
+
+`string`
+
+The id of the radio group element.
+
+##### Returns
+
+`void`
+
+#### onCreate()?
+
+> `optional` **onCreate**: (`args`) => `void`
+
+A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: (`args`) => `void`
+
+A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### label?
+
+> `optional` **label**: `string`
+
+Label text to display above the element and used for screen readers.
+
 ## UISelectElement
 
 Represents a select element in a panel.
@@ -12525,17 +13272,9 @@ Represents a select element in a panel.
 
 #### options
 
-> **options**: `object`\[]
+> **options**: [`UIControlElementOption`](client.md#uicontrolelementoption)\[]
 
 The options to display in the select.
-
-##### label
-
-> **label**: `string`
-
-##### value
-
-> **value**: `string`
 
 #### onChange()
 
@@ -12661,17 +13400,9 @@ See [UISelectElement](client.md#uiselectelement) for more details.
 
 #### options
 
-> **options**: `object`\[]
+> **options**: [`UIControlElementOption`](client.md#uicontrolelementoption)\[]
 
 The options to display in the select.
-
-##### label
-
-> **label**: `string`
-
-##### value
-
-> **value**: `string`
 
 #### onChange()
 
@@ -12812,20 +13543,6 @@ See [UISelectElement](client.md#uiselectelement) for more details.
 
 The ID of the element.
 
-#### options?
-
-> `optional` **options**: `object`\[]
-
-The options to display in the select.
-
-##### label
-
-> **label**: `string`
-
-##### value
-
-> **value**: `string`
-
 #### value?
 
 > `optional` **value**: `string`
@@ -12847,6 +13564,12 @@ Whether the select should allow searching through the options.
 ##### Default Value
 
 `false`
+
+#### options?
+
+> `optional` **options**: [`UIControlElementOption`](client.md#uicontrolelementoption)\[]
+
+The options to display in the select.
 
 #### onChange()?
 
@@ -13747,6 +14470,489 @@ The id of the element.
 
 Label text to display above the element and used for screen readers.
 
+## UIToggleGroupElement
+
+The parameters for creating a toggle group element.
+
+## Options
+
+The options to display in the toggle group are defined using the `options` property.
+It can contain one or more options and each option renders a toggle.
+
+<figure>
+  <img src="_media/toggle-group-basic.png" alt="Toggle group basic" />
+
+  <figcaption>
+    A group with a single option
+  </figcaption>
+</figure>
+
+```typescript
+{
+  type: "ToggleGroup",
+  options: [{ label: "Option A", value: "optionA" }],
+  value: [],
+  onChange: ({ value, id }) => { }
+}
+```
+
+## Alignment
+
+By default, the toggles are aligned to the start of the group,
+but it can be changed to `end` by setting the `alignment` property to `end`.
+
+<figure>
+  <img src="_media/toggle-group-end-alignment.png" alt="Toggle group end alignment" />
+
+  <figcaption>
+    The toggles are aligned to the end
+  </figcaption>
+</figure>
+
+```typescript
+{
+  type: "ToggleGroup",
+  alignment: "end",
+  label: "All options",
+  options: [
+    { label: "Option A", value: "optionA" },
+    { label: "Option B", value: "optionB" },
+  ],
+  value: ["optionA"],
+  onChange: ({ value, id }) => { }
+}
+```
+
+## Label
+
+As a control, the toggle group can have a label displayed above the toggles.
+
+<img src="_media/toggle-group-with-label.png" alt="Toggle group with label" />
+
+```typescript
+{
+  type: "ToggleGroup",
+  label: "All options",
+  options: [
+    { label: "Option A", value: "optionA" },
+    { label: "Option B", value: "optionB" },
+  ],
+  value: ["optionA"],
+  onChange: ({ value, id }) => { }
+}
+```
+
+### Properties
+
+#### type
+
+> **type**: `"ToggleGroup"`
+
+#### value
+
+> **value**: `string`\[] = `valueSchema`
+
+The value of the toggle group.
+
+##### Default Value
+
+`[]`
+
+#### options
+
+> **options**: [`UIControlElementOption`](client.md#uicontrolelementoption)\[]
+
+The options to display in the toggle group.
+
+#### onChange()
+
+> **onChange**: (`args`) => `void`
+
+The function to call when the value of the toggle group changes.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### value
+
+`string`\[]
+
+Array of the selected values.
+
+##### id
+
+`string`
+
+The id of the toggle group element.
+
+##### Returns
+
+`void`
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### alignment?
+
+> `optional` **alignment**: `"start"` | `"end"`
+
+The alignment of the toggle group.
+
+##### Default Value
+
+`"start"`
+
+#### onCreate()?
+
+> `optional` **onCreate**: (`args`) => `void`
+
+A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: (`args`) => `void`
+
+A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### label?
+
+> `optional` **label**: `string`
+
+Label text to display above the element and used for screen readers.
+
+## UIToggleGroupElementCreate
+
+The parameters for creating a toggle group element.
+
+See [UIToggleGroupElement](client.md#uitogglegroupelement) for more details.
+
+### Properties
+
+#### type
+
+> **type**: `"ToggleGroup"`
+
+#### value
+
+> **value**: `string`\[] = `valueSchema`
+
+The value of the toggle group.
+
+##### Default Value
+
+`[]`
+
+#### options
+
+> **options**: [`UIControlElementOption`](client.md#uicontrolelementoption)\[]
+
+The options to display in the toggle group.
+
+#### onChange()
+
+> **onChange**: (`args`) => `void`
+
+The function to call when the value of the toggle group changes.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### value
+
+`string`\[]
+
+Array of the selected values.
+
+##### id
+
+`string`
+
+The id of the toggle group element.
+
+##### Returns
+
+`void`
+
+#### alignment?
+
+> `optional` **alignment**: `"start"` | `"end"`
+
+The alignment of the toggle group.
+
+##### Default Value
+
+`"start"`
+
+#### onCreate()?
+
+> `optional` **onCreate**: (`args`) => `void`
+
+A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: (`args`) => `void`
+
+A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### id?
+
+> `optional` **id**: `string`
+
+The ID of the element.
+
+##### Remarks
+
+If not provided, the element will be assigned a random ID, but it is recommended to provide it
+to perform further updates on the element.
+
+If provided, it must be unique within the UI.
+
+##### Default Value
+
+`undefined`
+
+#### label?
+
+> `optional` **label**: `string`
+
+Label text to display above the element and used for screen readers.
+
+## UIToggleGroupElementUpdate
+
+The parameters for updating a toggle group element.
+
+See [UIToggleGroupElement](client.md#uitogglegroupelement) for more details.
+
+### Properties
+
+#### type
+
+> **type**: `"ToggleGroup"`
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### alignment?
+
+> `optional` **alignment**: `"start"` | `"end"`
+
+The alignment of the toggle group.
+
+##### Default Value
+
+`"start"`
+
+#### value?
+
+> `optional` **value**: `string`\[] = `valueSchema`
+
+The value of the toggle group.
+
+##### Default Value
+
+`[]`
+
+#### options?
+
+> `optional` **options**: [`UIControlElementOption`](client.md#uicontrolelementoption)\[]
+
+The options to display in the toggle group.
+
+#### onChange()?
+
+> `optional` **onChange**: (`args`) => `void`
+
+The function to call when the value of the toggle group changes.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### value
+
+`string`\[]
+
+Array of the selected values.
+
+##### id
+
+`string`
+
+The id of the toggle group element.
+
+##### Returns
+
+`void`
+
+#### onCreate()?
+
+> `optional` **onCreate**: (`args`) => `void`
+
+A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: (`args`) => `void`
+
+A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### label?
+
+> `optional` **label**: `string`
+
+Label text to display above the element and used for screen readers.
+
+## UIControlElementOption
+
+An option to display in a control element.
+
+Control elements are elements that allow the user to select one or more values from a list of options.
+This includes:
+
+* [UIRadioGroupElement](client.md#uiradiogroupelement)
+* [UICheckboxGroupElement](client.md#uicheckboxgroupelement)
+* [UIToggleGroupElement](client.md#uitogglegroupelement)
+* [UISelectElement](client.md#uiselectelement)
+
+The option can be disabled by setting the `disabled` property to `true`.
+
+### Examples
+
+```typescript
+{ label: "Option A", value: "optionA" }
+```
+
+A disabled option
+
+```typescript
+{ label: "Option A", value: "optionA", disabled: true }
+```
+
+### Properties
+
+#### label
+
+> **label**: `string`
+
+#### value
+
+> **value**: `string`
+
+#### disabled?
+
+> `optional` **disabled**: `boolean`
+
 ## ViewportCenterZoom
 
 The input type for setting the viewport to a particular center and zoom.
@@ -14275,11 +15481,11 @@ In both cases, the default value is `{ at: "end" }`.
 
 ## UIPanelElement
 
-> **UIPanelElement**: [`UIButtonElement`](client.md#uibuttonelement) | [`UITextElement`](client.md#uitextelement) | [`UIDividerElement`](client.md#uidividerelement) | [`UITextInputElement`](client.md#uitextinputelement) | [`UISelectElement`](client.md#uiselectelement) | [`UIFlexibleSpaceElement`](client.md#uiflexiblespaceelement) | [`UIButtonRowElement`](client.md#uibuttonrowelement) | [`UIGridContainerElement`](client.md#uigridcontainerelement)
+> **UIPanelElement**: [`UIButtonElement`](client.md#uibuttonelement) | [`UITextElement`](client.md#uitextelement) | [`UIDividerElement`](client.md#uidividerelement) | [`UITextInputElement`](client.md#uitextinputelement) | [`UISelectElement`](client.md#uiselectelement) | [`UIFlexibleSpaceElement`](client.md#uiflexiblespaceelement) | [`UIButtonRowElement`](client.md#uibuttonrowelement) | [`UICheckboxGroupElement`](client.md#uicheckboxgroupelement) | [`UIRadioGroupElement`](client.md#uiradiogroupelement) | [`UIToggleGroupElement`](client.md#uitogglegroupelement) | [`UIGridContainerElement`](client.md#uigridcontainerelement)
 
 ## UIPanelElementCreate
 
-> **UIPanelElementCreate**: [`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate) | [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIButtonRowElementCreate`](client.md#uibuttonrowelementcreate) | [`UIGridContainerElementCreate`](client.md#uigridcontainerelementcreate)
+> **UIPanelElementCreate**: [`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate) | [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIButtonRowElementCreate`](client.md#uibuttonrowelementcreate) | [`UICheckboxGroupElementCreate`](client.md#uicheckboxgroupelementcreate) | [`UIRadioGroupElementCreate`](client.md#uiradiogroupelementcreate) | [`UIToggleGroupElementCreate`](client.md#uitogglegroupelementcreate) | [`UIGridContainerElementCreate`](client.md#uigridcontainerelementcreate)
 
 This is a union of all the possible elements that can be created inside panel's body or footer.
 
@@ -14289,7 +15495,7 @@ For the sake of convenience, `id` is optional but recommended if you want to be 
 
 ## UIPanelElementUpdate
 
-> **UIPanelElementUpdate**: [`UIButtonElementUpdate`](client.md#uibuttonelementupdate) | [`UITextElementUpdate`](client.md#uitextelementupdate) | [`UITextInputElementUpdate`](client.md#uitextinputelementupdate) | [`UISelectElementUpdate`](client.md#uiselectelementupdate) | [`UIDividerElementUpdate`](client.md#uidividerelementupdate) | [`UIButtonRowElementUpdate`](client.md#uibuttonrowelementupdate) | [`UIGridContainerElementUpdate`](client.md#uigridcontainerelementupdate) | [`UIFlexibleSpaceElementUpdate`](client.md#uiflexiblespaceelementupdate)
+> **UIPanelElementUpdate**: [`UIButtonElementUpdate`](client.md#uibuttonelementupdate) | [`UITextElementUpdate`](client.md#uitextelementupdate) | [`UITextInputElementUpdate`](client.md#uitextinputelementupdate) | [`UISelectElementUpdate`](client.md#uiselectelementupdate) | [`UIDividerElementUpdate`](client.md#uidividerelementupdate) | [`UIButtonRowElementUpdate`](client.md#uibuttonrowelementupdate) | [`UICheckboxGroupElementUpdate`](client.md#uicheckboxgroupelementupdate) | [`UIRadioGroupElementUpdate`](client.md#uiradiogroupelementupdate) | [`UIToggleGroupElementUpdate`](client.md#uitogglegroupelementupdate) | [`UIGridContainerElementUpdate`](client.md#uigridcontainerelementupdate) | [`UIFlexibleSpaceElementUpdate`](client.md#uiflexiblespaceelementupdate)
 
 This is a union of all the possible elements that can be updated inside panel's body or footer (excluding Divider and FlexibleSpace elements because they cannot be updated).
 

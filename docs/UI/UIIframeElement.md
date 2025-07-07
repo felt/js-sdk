@@ -3,7 +3,7 @@
 Represents an iframe element in a panel.
 
 The height of the iframe can be set by using the `height` property
-either as a number or a string (e.g. "100px" or "50%").
+either as a number (measured in pixels) or a string (e.g. “100px” or “50%“).
 
 By default, the height is calculated following a 16:9 ratio.
 

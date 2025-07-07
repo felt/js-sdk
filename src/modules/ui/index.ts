@@ -91,6 +91,12 @@ export type {
   UIToggleGroupElementUpdate,
 } from "./uiElements/UIToggleGroupElement";
 
+export type {
+  UIIframeElement,
+  UIIframeElementCreate,
+  UIIframeElementUpdate,
+} from "./uiElements/UIIframeElement";
+
 export type { UIControlElementOption } from "./uiElements/base";
 
 export type { UIActionTriggerCreate } from "./uiElements/UIActionTrigger";

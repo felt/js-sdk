@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.7.0-next.21
+
+### Minor Changes
+
+* 4c4ebfd: Add UIIframeElement to custom ui panel
+
 ## 1.7.0-next.20
 
 ### Minor Changes

@@ -907,7 +907,10 @@ it performs that calculation (average, sum, etc.) on the specified attribute.
 // Count all residential buildings
 const residentialCount = await felt.getAggregates({
   layerId: "buildings",
-  filters: ["type", "eq", "residential"]
+  filters: ["type", "eq", "residential"],
+  aggregation: {
+    methods: ["count"],
+  }
 });
 
 // Calculate average home value in a specific neighborhood

@@ -938,7 +938,10 @@ export interface LayersController {
    * // Count all residential buildings
    * const residentialCount = await felt.getAggregates({
    *   layerId: "buildings",
-   *   filters: ["type", "eq", "residential"]
+   *   filters: ["type", "eq", "residential"],
+   *   aggregation: {
+   *     methods: ["count"],
+   *   }
    * });
    *
    * // Calculate average home value in a specific neighborhood

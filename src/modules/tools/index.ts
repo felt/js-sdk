@@ -1,6 +1,6 @@
 /**
  * The Tools part of the Felt SDK allows you to let users draw elements on the map
- * by programatically selecting a tool for them.
+ * by programmatically selecting a tool for them.
  *
  * You can also set the settings for individual tools, to allow you to change the
  * styling of the resulting element.
@@ -21,7 +21,7 @@
  * felt.setTool(null);
  * ```
  *
- * > To create elements programatically, use the {@link ElementsController} instead.
+ * > To create elements programmatically, use the {@link ElementsController} instead.
  *
  * @module Tools
  */

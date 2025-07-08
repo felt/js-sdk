@@ -758,7 +758,7 @@ export interface ElementChangeCallbackParams {
    *
    * If the user is editing an existing element, this will be false.
    *
-   * For elements that are created programatically, this will be false.
+   * For elements that are created programmatically, this will be false.
    */
   isBeingCreated: boolean;
 }

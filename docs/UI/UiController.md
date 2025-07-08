@@ -37,10 +37,10 @@ by clicking on a button.
 ```typescript
 await felt.createActionTrigger({
   actionTrigger: {
-    id: "layerTurnPurple", // not required but useful for further updates
-    label: "Turn layer purple",
+    id: "enablePolygonTool", // optional. Required if you want to update the action trigger later
+    label: "Draw polygon",
     onTrigger: async () => {
-      await felt.setLayerStyle("layer-1", { ..., paint: { color: "purple" } });
+      felt.setTool("polygon");
     },
     disabled: false, // optional, defaults to false
   },
@@ -76,8 +76,8 @@ Properties provided will override the existing properties.
 
 ```typescript
 await felt.updateActionTrigger({
-  id: "layerTurnPurple",
-  label: "Turn layer points purple", // only label changes
+  id: "enablePolygonTool",
+  label: "Enable polygon tool", // only label changes
 });
 ```
 
@@ -102,7 +102,7 @@ Deletes an action trigger.
 ### Example
 
 ```typescript
-await felt.deleteActionTrigger("layerTurnPurple");
+await felt.deleteActionTrigger("enablePolygonTool");
 ```
 
 ***
@@ -133,34 +133,38 @@ const panelId = await felt.createPanelId();
 
 Creates or updates a panel.
 
-Panels are rendered on map's right sidebar and are useful to extend Felt UI for your own use cases
-(e.g. a form, a settings panel, etc.) using Felt UI elements (e.g. Text, Button, etc.).
-This way it is possible to cover new use cases while keeping the user experience consistent with the rest of Felt.
+Panels are rendered on the map's right sidebar and allow you to extend Felt UI
+for your own use cases using Felt UI elements (e.g., Text, Button, etc.).
 
-A panel is identified by its ID and must come from [createPanelId](UiController.md#createpanelid).
-Custom IDs are not supported in order to prevent conflicts with other panels.
+A panel is identified by its ID, which must be created using [createPanelId](UiController.md#createpanelid).
+Custom IDs are not supported to prevent conflicts with other panels.
 
-Panels have two sections:
+Panels have two main sections:
 
-* `body` - Body of the panel, scrollable.
-* `footer` - It sticks to the bottom of the panel, useful to add submit buttons.
+* `body` - The main content area of the panel, which is scrollable.
+* `footer` - A section that sticks to the bottom of the panel, useful for
+  action buttons like "Submit" or "Cancel".
 
-Regarding panel placement, by default it is added to the end of the panels stack but you can
-specify a different placement by using the `initialPlacement` parameter.
-This placement cannot be updated later.
+Panel placement is controlled by the `initialPlacement` parameter. By default,
+panels are added to the end of the panel stack, but you can specify a different
+placement. Note that this placement cannot be changed after the panel is created.
 
-When adding a panel, its elements' ids are optional though it is recommended to make
-it easier to update or delete them later.
+Element IDs are required for targeted updates and deletions using the other
+panel management methods. For complete panel refreshes with this method,
+element IDs are optional but recommended for consistency.
 
-Once created, you can add elements to the panel by using the [createPanelElements](UiController.md#createpanelelements) method,
-perform partial updates of elements by using the [updatePanelElements](UiController.md#updatepanelelements) method or
-delete elements by using the [deletePanelElements](UiController.md#deletepanelelements) method.
+For dynamic content management, consider these approaches:
+
+* Use this method for complete panel refreshes (replaces all content)
+* Use [createPanelElements](UiController.md#createpanelelements) to add new elements to existing panels
+* Use [updatePanelElements](UiController.md#updatepanelelements) to modify specific existing elements
+* Use [deletePanelElements](UiController.md#deletepanelelements) to remove specific elements
 
 ### Parameters
 
-| Parameter | Type                                                        | Description                   |
-| --------- | ----------------------------------------------------------- | ----------------------------- |
-| `args`    | [`CreateOrUpdatePanelParams`](CreateOrUpdatePanelParams.md) | The arguments for the method. |
+| Parameter | Type                                                        | Description                                       |
+| --------- | ----------------------------------------------------------- | ------------------------------------------------- |
+| `args`    | [`CreateOrUpdatePanelParams`](CreateOrUpdatePanelParams.md) | The arguments for creating or updating the panel. |
 
 ### Returns
 
@@ -169,34 +173,36 @@ delete elements by using the [deletePanelElements](UiController.md#deletepanelel
 ### Example
 
 ```typescript
-const id = await felt.createPanelId();
+// 1. Create panel ID first (required)
+const panelId = await felt.createPanelId();
 
+// 2. Define reusable elements
+const SELECT = { id: "layer-select", type: "Select", label: "Layer", options: [...] };
+const ANALYZE_BTN = { id: "analyze-btn", type: "Button", label: "Analyze", onClick: handleAnalyze };
+const STATUS_TEXT = { id: "status-text", type: "Text", content: "" };
+const CLEAR_BTN = { id: "clear-btn", type: "Button", label: "Clear", onClick: handleClear };
+
+// 3. Initial state
 await felt.createOrUpdatePanel({
-   panel: {
-      id,
-      title: "My Panel",
-      body: [
-         {
-            type: "Text",
-            content: "Hello, world!",
-         },
-         {
-            type: "TextInput",
-            label: "Name",
-            placeholder: "Enter your name",
-            value: "",
-            onChange: ({ value }) => setName(value),
-         },
-      ],
-      footer: [
-         {
-            type: "Button",
-            label: "Submit",
-            onClick: () => submitForm(),
-         },
-      ],
-   },
-   initialPlacement: { at: "start" }, // when added, the panel will be added to the start of the stack
+  panel: { id: panelId, title: "Data Analyzer", body: [SELECT, ANALYZE_BTN] }
+});
+
+// 4. Loading state (replaces entire panel)
+await felt.createOrUpdatePanel({
+  panel: { 
+    id: panelId, 
+    title: "Data Analyzer", 
+    body: [SELECT, ANALYZE_BTN, { ...STATUS_TEXT, content: "Loading..." }] 
+  }
+});
+
+// 5. Results state (replaces entire panel)
+await felt.createOrUpdatePanel({
+  panel: { 
+    id: panelId, 
+    title: "Data Analyzer", 
+    body: [SELECT, ANALYZE_BTN, { ...STATUS_TEXT, content: "**Results:**\n- Found 150 features" }, CLEAR_BTN] 
+  }
 });
 ```
 

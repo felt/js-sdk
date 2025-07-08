@@ -274,22 +274,36 @@ export interface UiController {
   createPanelElements(args: CreatePanelElementsParams): Promise<UIPanel>;
 
   /**
-   * Updates an element in a panel.
+   * Updates an existing element in a panel. This method can only update elements that
+   * already exist in the panel and have an ID.
    *
    * @param args - The arguments for the method.
    * @param args.panelId - The id of the panel to update the element in.
-   * @param args.elements - Array of elements to update (`id` and `type` are required to identify the element to update).
+   * @param args.elements - Array of elements to update. Each element must have an `id` and `type` 
+   *   to identify which existing element to update. The element must already exist in the panel.
    *
    * @example
    * ```typescript
+   * // 1. Create panel with initial elements
+   * const panelId = await felt.createPanelId();
+   * const STATUS_TEXT = { id: "status-text", type: "Text", content: "Ready" };
+   * 
+   * await felt.createOrUpdatePanel({
+   *   panel: {
+   *     id: panelId,
+   *     title: "My Panel",
+   *     body: [STATUS_TEXT]
+   *   }
+   * });
+   * 
+   * // 2. Update the existing element
    * await felt.updatePanelElements({
    *   panelId,
    *   elements: [
    *     {
    *       element: {
-   *         id: "element-1",
-   *         type: "Text",
-   *         content: "Hello, world!",
+   *         ...STATUS_TEXT,                    // Reuse the same element structure
+   *         content: "Updated content"         // Only change what needs updating
    *       },
    *     },
    *   ],

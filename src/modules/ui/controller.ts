@@ -191,33 +191,33 @@ export interface UiController {
    * ```typescript
    * // 1. Create panel ID first (required)
    * const panelId = await felt.createPanelId();
-   * 
+   *
    * // 2. Define reusable elements
    * const SELECT = { id: "layer-select", type: "Select", label: "Layer", options: [...] };
    * const ANALYZE_BTN = { id: "analyze-btn", type: "Button", label: "Analyze", onClick: handleAnalyze };
    * const STATUS_TEXT = { id: "status-text", type: "Text", content: "" };
    * const CLEAR_BTN = { id: "clear-btn", type: "Button", label: "Clear", onClick: handleClear };
-   * 
+   *
    * // 3. Initial state
    * await felt.createOrUpdatePanel({
    *   panel: { id: panelId, title: "Data Analyzer", body: [SELECT, ANALYZE_BTN] }
    * });
-   * 
+   *
    * // 4. Loading state (replaces entire panel)
    * await felt.createOrUpdatePanel({
-   *   panel: { 
-   *     id: panelId, 
-   *     title: "Data Analyzer", 
-   *     body: [SELECT, ANALYZE_BTN, { ...STATUS_TEXT, content: "Loading..." }] 
+   *   panel: {
+   *     id: panelId,
+   *     title: "Data Analyzer",
+   *     body: [SELECT, ANALYZE_BTN, { ...STATUS_TEXT, content: "Loading..." }]
    *   }
    * });
-   * 
+   *
    * // 5. Results state (replaces entire panel)
    * await felt.createOrUpdatePanel({
-   *   panel: { 
-   *     id: panelId, 
-   *     title: "Data Analyzer", 
-   *     body: [SELECT, ANALYZE_BTN, { ...STATUS_TEXT, content: "**Results:**\n- Found 150 features" }, CLEAR_BTN] 
+   *   panel: {
+   *     id: panelId,
+   *     title: "Data Analyzer",
+   *     body: [SELECT, ANALYZE_BTN, { ...STATUS_TEXT, content: "**Results:**\n- Found 150 features" }, CLEAR_BTN]
    *   }
    * });
    * ```
@@ -279,7 +279,7 @@ export interface UiController {
    *
    * @param args - The arguments for the method.
    * @param args.panelId - The id of the panel to update the element in.
-   * @param args.elements - Array of elements to update. Each element must have an `id` and `type` 
+   * @param args.elements - Array of elements to update. Each element must have an `id` and `type`
    *   to identify which existing element to update. The element must already exist in the panel.
    *
    * @example
@@ -287,7 +287,7 @@ export interface UiController {
    * // 1. Create panel with initial elements
    * const panelId = await felt.createPanelId();
    * const STATUS_TEXT = { id: "status-text", type: "Text", content: "Ready" };
-   * 
+   *
    * await felt.createOrUpdatePanel({
    *   panel: {
    *     id: panelId,
@@ -295,7 +295,7 @@ export interface UiController {
    *     body: [STATUS_TEXT]
    *   }
    * });
-   * 
+   *
    * // 2. Update the existing element
    * await felt.updatePanelElements({
    *   panelId,

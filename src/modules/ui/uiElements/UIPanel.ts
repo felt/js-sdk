@@ -48,7 +48,7 @@ const uiPanelSchema = uiElementBaseSchema.extend({
  * #### Body
  * Main content area that scrolls when content exceeds available space.
  *
- * #### Footer  
+ * #### Footer
  * Sticky bottom section for action buttons (e.g., Save, Cancel).
  *
  * #### Close Button
@@ -59,7 +59,7 @@ const uiPanelSchema = uiElementBaseSchema.extend({
  * ```typescript
  * // 1. Create panel ID
  * const panelId = await felt.createPanelId();
- * 
+ *
  * // 2. Create panel with close button and footer
  * await felt.createOrUpdatePanel({
  *   panel: {

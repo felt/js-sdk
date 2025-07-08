@@ -206,78 +206,78 @@ import { cg as ViewportState } from './controller-DDPUbeQ-.js';
 import { z } from './controller-DDPUbeQ-.js';
 import { z as z_2 } from 'zod';
 
-export { AggregatedGridConfig }
+export { AggregatedGridConfig_2 as AggregatedGridConfig }
 
-export { AggregationConfig }
+export { AggregationConfig_2 as AggregationConfig }
 
-export { AggregationMethod }
+export { AggregationMethod_2 as AggregationMethod }
 
-export { CircleElementCreate }
+export { CircleElementCreate_2 as CircleElementCreate }
 
-export { CircleElementRead }
+export { CircleElementRead_2 as CircleElementRead }
 
-export { CircleElementUpdate }
+export { CircleElementUpdate_2 as CircleElementUpdate }
 
-export { CircleToolSettings }
+export { CircleToolSettings_2 as CircleToolSettings }
 
-export { ConfigurableToolType }
+export { ConfigurableToolType_2 as ConfigurableToolType }
 
-export { CountGridConfig }
+export { CountGridConfig_2 as CountGridConfig }
 
 export { CreateActionTriggerParams }
 
-export { CreateLayersFromGeoJsonParams }
+export { CreateLayersFromGeoJsonParams_2 as CreateLayersFromGeoJsonParams }
 
 export { CreateOrUpdatePanelParams }
 
 export { CreatePanelElementsParams }
 
-export { DataOnlyLayer }
+export { DataOnlyLayer_2 as DataOnlyLayer }
 
 export { DeletePanelElementsParams }
 
 export { Element_2 as Element }
 
-export { ElementChangeCallbackParams }
+export { ElementChangeCallbackParams_2 as ElementChangeCallbackParams }
 
-export { ElementCreate }
+export { ElementCreate_2 as ElementCreate }
 
-export { ElementGroup }
+export { ElementGroup_2 as ElementGroup }
 
-export { ElementGroupChangeCallbackParams }
+export { ElementGroupChangeCallbackParams_2 as ElementGroupChangeCallbackParams }
 
-export { ElementGroupNode }
+export { ElementGroupNode_2 as ElementGroupNode }
 
-export { ElementNode }
+export { ElementNode_2 as ElementNode }
 
-export { ElementsController }
+export { ElementsController_2 as ElementsController }
 
-export { ElementUpdate }
+export { ElementUpdate_2 as ElementUpdate }
 
-export { EntityNode }
+export { EntityNode_2 as EntityNode }
 
-export { FeatureNode }
+export { FeatureNode_2 as FeatureNode }
 
-export { FeatureSelection }
+export { FeatureSelection_2 as FeatureSelection }
 
 // @public
 export const Felt: {
-    embed(container: HTMLElement, mapId: string, options?: FeltEmbedOptions): Promise<FeltController>;
-    connect(feltWindow: Pick<Window, "postMessage">): Promise<FeltController>;
+    embed(container: HTMLElement, mapId: string, options?: FeltEmbedOptions): Promise<FeltController_2>;
+    connect(feltWindow: Pick<Window, "postMessage">): Promise<FeltController_2>;
 };
 
-export { FeltBoundary }
+export { FeltBoundary_2 as FeltBoundary }
 
-export { FeltController }
+export { FeltController_2 as FeltController }
 
 // Warning: (ae-forgotten-export) The symbol "FeltEmbedOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public
 export interface FeltEmbedOptions extends z<typeof FeltEmbedOptionsSchema> {
     // (undocumented)
-    initialViewport?: ViewportCenterZoom;
+    initialViewport?: ViewportCenterZoom_2;
     // (undocumented)
-    uiControls?: UiControlsOptions;
+    uiControls?: UiControlsOptions_2;
 }
 
 // @internal (undocumented)
@@ -369,235 +369,235 @@ const FeltEmbedOptionsSchema: z_2.ZodObject<{
     } | undefined;
 }>;
 
-export { FeltTiledVectorSource }
+export { FeltTiledVectorSource_2 as FeltTiledVectorSource }
 
-export { FeltZoom }
+export { FeltZoom_2 as FeltZoom }
 
-export { FilterExpression }
+export { FilterExpression_2 as FilterExpression }
 
-export { FilterLogicGate }
+export { FilterLogicGate_2 as FilterLogicGate }
 
-export { Filters }
+export { Filters_2 as Filters }
 
-export { FilterTernary }
+export { FilterTernary_2 as FilterTernary }
 
-export { GeoJsonDataVectorSource }
+export { GeoJsonDataVectorSource_2 as GeoJsonDataVectorSource }
 
-export { GeoJsonFeature }
+export { GeoJsonFeature_2 as GeoJsonFeature }
 
-export { GeoJsonFileVectorSource }
+export { GeoJsonFileVectorSource_2 as GeoJsonFileVectorSource }
 
-export { GeoJsonGeometry }
+export { GeoJsonGeometry_2 as GeoJsonGeometry }
 
-export { GeoJsonProperties }
+export { GeoJsonProperties_2 as GeoJsonProperties }
 
-export { GeoJsonUrlVectorSource }
+export { GeoJsonUrlVectorSource_2 as GeoJsonUrlVectorSource }
 
-export { GeometryFilter }
+export { GeometryFilter_2 as GeometryFilter }
 
-export { GetElementGroupsConstraint }
+export { GetElementGroupsConstraint_2 as GetElementGroupsConstraint }
 
-export { GetElementsConstraint }
+export { GetElementsConstraint_2 as GetElementsConstraint }
 
-export { GetLayerCalculationParams }
+export { GetLayerCalculationParams_2 as GetLayerCalculationParams }
 
-export { GetLayerCategoriesGroup }
+export { GetLayerCategoriesGroup_2 as GetLayerCategoriesGroup }
 
-export { GetLayerCategoriesParams }
+export { GetLayerCategoriesParams_2 as GetLayerCategoriesParams }
 
-export { GetLayerGroupsConstraint }
+export { GetLayerGroupsConstraint_2 as GetLayerGroupsConstraint }
 
-export { GetLayerHistogramBin }
+export { GetLayerHistogramBin_2 as GetLayerHistogramBin }
 
-export { GetLayerHistogramParams }
+export { GetLayerHistogramParams_2 as GetLayerHistogramParams }
 
-export { GetLayerPrecomputedCalculationParams }
+export { GetLayerPrecomputedCalculationParams_2 as GetLayerPrecomputedCalculationParams }
 
-export { GetLayersConstraint }
+export { GetLayersConstraint_2 as GetLayersConstraint }
 
-export { GetRenderedFeaturesConstraint }
+export { GetRenderedFeaturesConstraint_2 as GetRenderedFeaturesConstraint }
 
-export { GridConfig }
+export { GridConfig_2 as GridConfig }
 
-export { GridType }
+export { GridType_2 as GridType }
 
-export { HighlighterElementCreate }
+export { HighlighterElementCreate_2 as HighlighterElementCreate }
 
-export { HighlighterElementRead }
+export { HighlighterElementRead_2 as HighlighterElementRead }
 
-export { HighlighterElementUpdate }
+export { HighlighterElementUpdate_2 as HighlighterElementUpdate }
 
-export { HighlighterToolSettings }
+export { HighlighterToolSettings_2 as HighlighterToolSettings }
 
-export { ImageElementCreate }
+export { ImageElementCreate_2 as ImageElementCreate }
 
-export { ImageElementRead }
+export { ImageElementRead_2 as ImageElementRead }
 
-export { ImageElementUpdate }
+export { ImageElementUpdate_2 as ImageElementUpdate }
 
-export { InputToolSettings }
+export { InputToolSettings_2 as InputToolSettings }
 
-export { InteractionsController }
+export { InteractionsController_2 as InteractionsController }
 
-export { LatLng }
+export { LatLng_2 as LatLng }
 
-export { Layer }
+export { Layer_2 as Layer }
 
-export { LayerBoundaries }
+export { LayerBoundaries_2 as LayerBoundaries }
 
-export { LayerChangeCallbackParams }
+export { LayerChangeCallbackParams_2 as LayerChangeCallbackParams }
 
-export { LayerCommon }
+export { LayerCommon_2 as LayerCommon }
 
-export { LayerFeature }
+export { LayerFeature_2 as LayerFeature }
 
-export { LayerFilters }
+export { LayerFilters_2 as LayerFilters }
 
-export { LayerGroup }
+export { LayerGroup_2 as LayerGroup }
 
-export { LayerGroupChangeCallbackParams }
+export { LayerGroupChangeCallbackParams_2 as LayerGroupChangeCallbackParams }
 
-export { LayerGroupNode }
+export { LayerGroupNode_2 as LayerGroupNode }
 
-export { LayerNode }
+export { LayerNode_2 as LayerNode }
 
-export { LayerProcessingStatus }
+export { LayerProcessingStatus_2 as LayerProcessingStatus }
 
-export { LayerSchema }
+export { LayerSchema_2 as LayerSchema }
 
-export { LayerSchemaAttribute }
+export { LayerSchemaAttribute_2 as LayerSchemaAttribute }
 
-export { LayerSchemaBooleanAttribute }
+export { LayerSchemaBooleanAttribute_2 as LayerSchemaBooleanAttribute }
 
-export { LayerSchemaCommonAttribute }
+export { LayerSchemaCommonAttribute_2 as LayerSchemaCommonAttribute }
 
-export { LayerSchemaDateAttribute }
+export { LayerSchemaDateAttribute_2 as LayerSchemaDateAttribute }
 
-export { LayerSchemaDateTimeAttribute }
+export { LayerSchemaDateTimeAttribute_2 as LayerSchemaDateTimeAttribute }
 
-export { LayerSchemaNumericAttribute }
+export { LayerSchemaNumericAttribute_2 as LayerSchemaNumericAttribute }
 
-export { LayerSchemaTextAttribute }
+export { LayerSchemaTextAttribute_2 as LayerSchemaTextAttribute }
 
-export { LayersController }
+export { LayersController_2 as LayersController }
 
-export { LegendItem }
+export { LegendItem_2 as LegendItem }
 
-export { LegendItemChangeCallbackParams }
+export { LegendItemChangeCallbackParams_2 as LegendItemChangeCallbackParams }
 
-export { LegendItemIdentifier }
+export { LegendItemIdentifier_2 as LegendItemIdentifier }
 
-export { LegendItemsConstraint }
+export { LegendItemsConstraint_2 as LegendItemsConstraint }
 
-export { LineStringGeometry }
+export { LineStringGeometry_2 as LineStringGeometry }
 
-export { LineToolSettings }
+export { LineToolSettings_2 as LineToolSettings }
 
-export { LinkElementRead }
+export { LinkElementRead_2 as LinkElementRead }
 
-export { LngLatTuple }
+export { LngLatTuple_2 as LngLatTuple }
 
-export { MapDetails }
+export { MapDetails_2 as MapDetails }
 
-export { MapInteractionEvent }
+export { MapInteractionEvent_2 as MapInteractionEvent }
 
-export { MarkerElementCreate }
+export { MarkerElementCreate_2 as MarkerElementCreate }
 
-export { MarkerElementRead }
+export { MarkerElementRead_2 as MarkerElementRead }
 
-export { MarkerElementUpdate }
+export { MarkerElementUpdate_2 as MarkerElementUpdate }
 
-export { MarkerToolSettings }
+export { MarkerToolSettings_2 as MarkerToolSettings }
 
-export { MiscController }
+export { MiscController_2 as MiscController }
 
-export { MultiAggregationConfig }
+export { MultiAggregationConfig_2 as MultiAggregationConfig }
 
-export { MultiLineStringGeometry }
+export { MultiLineStringGeometry_2 as MultiLineStringGeometry }
 
-export { MultiPointGeometry }
+export { MultiPointGeometry_2 as MultiPointGeometry }
 
-export { MultiPolygonGeometry }
+export { MultiPolygonGeometry_2 as MultiPolygonGeometry }
 
-export { NoteElementCreate }
+export { NoteElementCreate_2 as NoteElementCreate }
 
-export { NoteElementRead }
+export { NoteElementRead_2 as NoteElementRead }
 
-export { NoteElementUpdate }
+export { NoteElementUpdate_2 as NoteElementUpdate }
 
-export { NoteToolSettings }
+export { NoteToolSettings_2 as NoteToolSettings }
 
 export { OnMapInteractionsOptions }
 
-export { PathElementCreate }
+export { PathElementCreate_2 as PathElementCreate }
 
-export { PathElementRead }
+export { PathElementRead_2 as PathElementRead }
 
-export { PathElementUpdate }
+export { PathElementUpdate_2 as PathElementUpdate }
 
-export { PinToolSettings }
+export { PinToolSettings_2 as PinToolSettings }
 
-export { PlaceElementCreate }
+export { PlaceElementCreate_2 as PlaceElementCreate }
 
-export { PlaceElementRead }
+export { PlaceElementRead_2 as PlaceElementRead }
 
-export { PlaceElementUpdate }
+export { PlaceElementUpdate_2 as PlaceElementUpdate }
 
-export { PlaceFrame }
+export { PlaceFrame_2 as PlaceFrame }
 
-export { PlacementForUIElement }
+export { PlacementForUIElement_2 as PlacementForUIElement }
 
-export { PlaceSymbol }
+export { PlaceSymbol_2 as PlaceSymbol }
 
-export { PointGeometry }
+export { PointGeometry_2 as PointGeometry }
 
-export { PolygonElementCreate }
+export { PolygonElementCreate_2 as PolygonElementCreate }
 
-export { PolygonElementRead }
+export { PolygonElementRead_2 as PolygonElementRead }
 
-export { PolygonElementUpdate }
+export { PolygonElementUpdate_2 as PolygonElementUpdate }
 
-export { PolygonGeometry }
+export { PolygonGeometry_2 as PolygonGeometry }
 
-export { PolygonToolSettings }
+export { PolygonToolSettings_2 as PolygonToolSettings }
 
-export { PrecomputedAggregationMethod }
+export { PrecomputedAggregationMethod_2 as PrecomputedAggregationMethod }
 
-export { RasterBand }
+export { RasterBand_2 as RasterBand }
 
-export { RasterLayer }
+export { RasterLayer_2 as RasterLayer }
 
-export { RasterLayerSource }
+export { RasterLayerSource_2 as RasterLayerSource }
 
-export { RasterValue }
+export { RasterValue_2 as RasterValue }
 
-export { RouteToolSettings }
+export { RouteToolSettings_2 as RouteToolSettings }
 
-export { SelectionController }
+export { SelectionController_2 as SelectionController }
 
-export { SetViewportCenterZoomParams }
+export { SetViewportCenterZoomParams_2 as SetViewportCenterZoomParams }
 
-export { SetVisibilityRequest }
+export { SetVisibilityRequest_2 as SetVisibilityRequest }
 
-export { SortConfig }
+export { SortConfig_2 as SortConfig }
 
-export { SortDirection }
+export { SortDirection_2 as SortDirection }
 
-export { TextElementCreate }
+export { TextElementCreate_2 as TextElementCreate }
 
-export { TextElementRead }
+export { TextElementRead_2 as TextElementRead }
 
-export { TextElementUpdate }
+export { TextElementUpdate_2 as TextElementUpdate }
 
-export { TextToolSettings }
+export { TextToolSettings_2 as TextToolSettings }
 
-export { ToolsController }
+export { ToolsController_2 as ToolsController }
 
-export { ToolSettingsChangeEvent }
+export { ToolSettingsChangeEvent_2 as ToolSettingsChangeEvent }
 
-export { ToolSettingsMap }
+export { ToolSettingsMap_2 as ToolSettingsMap }
 
-export { ToolType }
+export { ToolType_2 as ToolType }
 
 export { UIActionTriggerCreate }
 
@@ -621,9 +621,9 @@ export { UICheckboxGroupElementUpdate }
 
 export { UIControlElementOption }
 
-export { UiController }
+export { UiController_2 as UiController }
 
-export { UiControlsOptions }
+export { UiControlsOptions_2 as UiControlsOptions }
 
 export { UIDividerElement }
 
@@ -691,23 +691,23 @@ export { UIToggleGroupElementUpdate }
 
 export { UpdateActionTriggerParams }
 
-export { UpdateLayerParams }
+export { UpdateLayerParams_2 as UpdateLayerParams }
 
 export { UpdatePanelElementsParams }
 
-export { ValueConfiguration }
+export { ValueConfiguration_2 as ValueConfiguration }
 
-export { VectorLayer }
+export { VectorLayer_2 as VectorLayer }
 
-export { ViewportCenterZoom }
+export { ViewportCenterZoom_2 as ViewportCenterZoom }
 
-export { ViewportConstraints }
+export { ViewportConstraints_2 as ViewportConstraints }
 
-export { ViewportController }
+export { ViewportController_2 as ViewportController }
 
-export { ViewportFitBoundsParams }
+export { ViewportFitBoundsParams_2 as ViewportFitBoundsParams }
 
-export { ViewportState }
+export { ViewportState_2 as ViewportState }
 
 // (No @packageDocumentation comment for this package)
 

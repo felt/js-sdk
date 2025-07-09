@@ -45,7 +45,7 @@ The action to perform when the button is clicked.
 
 ## variant?
 
-> `optional` **variant**: `"outlined"` | `"transparent"` | `"filled"`
+> `optional` **variant**: `"filled"` | `"transparent"` | `"outlined"`
 
 The style variant of the button.
 

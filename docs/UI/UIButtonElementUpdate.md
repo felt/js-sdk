@@ -34,7 +34,7 @@ The label to display in the button.
 
 ## variant?
 
-> `optional` **variant**: `"outlined"` | `"transparent"` | `"filled"`
+> `optional` **variant**: `"filled"` | `"transparent"` | `"outlined"`
 
 The style variant of the button.
 

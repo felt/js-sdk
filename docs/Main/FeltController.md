@@ -1730,19 +1730,19 @@ await felt.createOrUpdatePanel({
 
 // 4. Loading state (replaces entire panel)
 await felt.createOrUpdatePanel({
-  panel: { 
-    id: panelId, 
-    title: "Data Analyzer", 
-    body: [SELECT, ANALYZE_BTN, { ...STATUS_TEXT, content: "Loading..." }] 
+  panel: {
+    id: panelId,
+    title: "Data Analyzer",
+    body: [SELECT, ANALYZE_BTN, { ...STATUS_TEXT, content: "Loading..." }]
   }
 });
 
 // 5. Results state (replaces entire panel)
 await felt.createOrUpdatePanel({
-  panel: { 
-    id: panelId, 
-    title: "Data Analyzer", 
-    body: [SELECT, ANALYZE_BTN, { ...STATUS_TEXT, content: "**Results:**\n- Found 150 features" }, CLEAR_BTN] 
+  panel: {
+    id: panelId,
+    title: "Data Analyzer",
+    body: [SELECT, ANALYZE_BTN, { ...STATUS_TEXT, content: "**Results:**\n- Found 150 features" }, CLEAR_BTN]
   }
 });
 ```

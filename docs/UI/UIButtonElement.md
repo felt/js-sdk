@@ -63,7 +63,7 @@ The ID of the element.
 
 ## variant?
 
-> `optional` **variant**: `"outlined"` | `"transparent"` | `"filled"`
+> `optional` **variant**: `"filled"` | `"transparent"` | `"outlined"`
 
 The style variant of the button.
 

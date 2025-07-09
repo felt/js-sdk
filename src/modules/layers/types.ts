@@ -266,7 +266,7 @@ const GeoJsonDataVectorSourceSchema = z.object({
 
 /**
  * A GeoJSON data source is a layer that is populated from GeoJSON data, such as
- * from a local file, or programatically-created data.
+ * from a local file, or programmatically-created data.
  *
  * @group Layer sources
  */

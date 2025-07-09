@@ -213,7 +213,7 @@ const element = await felt.createElement({ type: "Place", coordinates: [10, 10] 
 
 > **updateElement**(`element`: [`ElementUpdate`](ElementUpdate.md)): `Promise`\<[`Element`](Element.md)>
 
-Update an element on the map.
+Update an element on the map. The element type must be specified.
 
 ### Parameters
 
@@ -231,12 +231,14 @@ Update an element on the map.
 // Update a place element's coordinates
 await felt.updateElement({
   id: "element-1",
+  type: "Place",
   coordinates: [10, 20]
 });
 
 // Update a polygon's style
 await felt.updateElement({
   id: "element-2",
+  type: "Polygon",
   color: "#ABC123",
   fillOpacity: 0.5
 });
@@ -276,10 +278,10 @@ Adds a listener for when an element is created.
 
 ### Parameters
 
-| Parameter      | Type                                                                                                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| -------------- | ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `args`         | \{ `handler`: (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`; } | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| `args.handler` | (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`                  | The handler that is called when an element is created. This will fire when elements are created programatically, or when the user starts creating an element with a drawing tool. When the user creates an element with a drawing tool, it can begin in an invalid state, such as if you've just placed a single point in a polygon. You can use the `isBeingCreated` property to determine if the element is still being created by a drawing tool. If you want to know when the element is finished being created, you can use the [\`onElementCreateEnd\`](ElementsController.md#onelementcreateend) listener. |
+| Parameter      | Type                                                                                                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| -------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `args`         | \{ `handler`: (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`; } | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `args.handler` | (`change`: [`ElementChangeCallbackParams`](ElementChangeCallbackParams.md)) => `void`                  | The handler that is called when an element is created. This will fire when elements are created programmatically, or when the user starts creating an element with a drawing tool. When the user creates an element with a drawing tool, it can begin in an invalid state, such as if you've just placed a single point in a polygon. You can use the `isBeingCreated` property to determine if the element is still being created by a drawing tool. If you want to know when the element is finished being created, you can use the [\`onElementCreateEnd\`](ElementsController.md#onelementcreateend) listener. |
 
 ### Returns
 
@@ -291,7 +293,7 @@ A function to unsubscribe from the listener
 
 ```typescript
 const unsubscribe = felt.onElementCreate({
-  handler: (element) => console.log(element.id),
+  handler: ({isBeingCreated, element}) => console.log(element.id),
 });
 
 // later on...
@@ -330,7 +332,7 @@ A function to unsubscribe from the listener
 ### Example
 
 ```typescript
-const unsubscribe = felt.onToolCreatedElement({
+const unsubscribe = felt.onElementCreateEnd({
   handler: (params) => console.log(params),
 });
 
@@ -347,7 +349,7 @@ unsubscribe();
 Adds a listener for when an element changes.
 
 This will fire when an element is being edited, either on the map by the user
-or programatically.
+or programmatically.
 
 Like the [\`onElementCreate\`](ElementsController.md#onelementcreate) listener, this will fire when an element is
 still being created by a drawing tool.

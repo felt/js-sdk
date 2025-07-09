@@ -1,72 +1,57 @@
 ***
 
-Represents a panel in the UI.
-It can be added to the map by using the [UiController.createOrUpdatePanel](UiController.md#createorupdatepanel) method.
+A UI panel that can be added to the map using [UiController.createOrUpdatePanel](UiController.md#createorupdatepanel).
 
-A panel is a container for other UI elements.
-It can have a title, a body, a footer as well as a close button.
-
-The body and footer are arrays of UI elements and turn into vertical stacks of elements.
-
-The close button is a button rendered in the top right corner of the panel that can be
-used to close the panel and is only visible if `onClickClose` is provided.
-Usually, you want to call [UiController.deletePanel](UiController.md#deletepanel) when the close button is clicked,
-e.g. `onClickClose: () => felt.deletePanel("my-panel")`.
+Panels are containers for UI elements with title, body, footer, and close button.
+Body and footer elements are arranged in vertical stacks.
 
 ### Body
 
-Body is the main content of the panel. It is scrollable which means
-that it can contain a lot of elements.
+Main content area that scrolls when content exceeds available space.
 
 ### Footer
 
-Footer is sticky to the bottom of the panel, and can be used to add actions to the panel (e.g. save, cancel, etc.).
+Sticky bottom section for action buttons (e.g., Save, Cancel).
 
-# Examples
+### Close Button
 
-### basic
+Optional close icon in header. When `onClickClose` is provided, you must handle
+panel cleanup and removal.
+
+# Example
 
 ```typescript
-{
-  title: "My Panel",
-  body: [
-    { type: "Text", text: "Hello" },
-  ],
-}
+// 1. Create panel ID
+const panelId = await felt.createPanelId();
+
+// 2. Create panel with close button and footer
+await felt.createOrUpdatePanel({
+  panel: {
+    id: panelId,
+    title: "My Panel",
+    body: [
+      { type: "Text", content: "Hello, world!" },
+      { type: "TextInput", label: "Name", placeholder: "Enter your name" }
+    ],
+    footer: [
+      {
+        type: "ButtonRow",
+        align: "end",
+        items: [
+          { type: "Button", label: "Cancel", onClick: () => handleCancel() },
+          { type: "Button", label: "Save", onClick: () => handleSave() }
+        ]
+      }
+    ],
+    onClickClose: (args) => {
+      // Clean up any state or resources
+      cleanupResources();
+      // Close the panel
+      felt.deletePanel(panelId);
+    }
+  }
+});
 ```
-
-### closable
-
-````typescript
-{
-  id: "my-panel",
-  title: "My Panel",
-  onClickClose: () => felt.deletePanel("my-panel"),
-}
-
-@example
-### form
-```typescript
-{
-  title: "My Panel",
-  body: [
-    { type: "Text", text: "Introduce your name and last name" },
-    { type: "TextInput", label: "Name", value: "", placeholder: "John", onChange: (value) => setName(value) },
-    { type: "TextInput", label: "Last name", value: "", placeholder: "Doe", onChange: (value) => setLastName(value) },
-  ],
-  footer: [
-    {
-      type: "Grid",
-      grid: "auto-flow / 1fr auto auto",
-      items: [
-        { type: "FlexibleSpace" }, // this will make the buttons to be aligned to the end of the panel
-        { type: "Button", label: "Reset", onClick: () => alert("Reset") },
-        { type: "Button", label: "Save", onClick: () => alert("Save") },
-      ],
-    },
-  ],
-}
-````
 
 # Properties
 

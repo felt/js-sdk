@@ -164,7 +164,7 @@ export interface ElementsController {
    * @example
    * ```typescript
    * const unsubscribe = felt.onElementCreate({
-   *   handler: (element) => console.log(element.id),
+   *   handler: ({isBeingCreated, element}) => console.log(element.id),
    * });
    *
    * // later on...
@@ -175,7 +175,7 @@ export interface ElementsController {
     /**
      * The handler that is called when an element is created.
      *
-     * This will fire when elements are created programatically, or when the
+     * This will fire when elements are created programmatically, or when the
      * user starts creating an element with a drawing tool.
      *
      * When the user creates an element with a drawing tool, it can begin in
@@ -208,7 +208,7 @@ export interface ElementsController {
    * @event
    * @example
    * ```typescript
-   * const unsubscribe = felt.onToolCreatedElement({
+   * const unsubscribe = felt.onElementCreateEnd({
    *   handler: (params) => console.log(params),
    * });
    *
@@ -229,7 +229,7 @@ export interface ElementsController {
    * Adds a listener for when an element changes.
    *
    * This will fire when an element is being edited, either on the map by the user
-   * or programatically.
+   * or programmatically.
    *
    * Like the {@link ElementsController.onElementCreate | `onElementCreate`} listener, this will fire when an element is
    * still being created by a drawing tool.
@@ -336,19 +336,21 @@ export interface ElementsController {
   createElement(element: ElementCreate): Promise<Element>;
 
   /**
-   * Update an element on the map.
+   * Update an element on the map. The element type must be specified.
    *
    * @example
    * ```typescript
    * // Update a place element's coordinates
    * await felt.updateElement({
    *   id: "element-1",
+   *   type: "Place",
    *   coordinates: [10, 20]
    * });
    *
    * // Update a polygon's style
    * await felt.updateElement({
    *   id: "element-2",
+   *   type: "Polygon",
    *   color: "#ABC123",
    *   fillOpacity: 0.5
    * });

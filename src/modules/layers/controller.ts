@@ -209,7 +209,7 @@ export interface LayersController {
    * // first get the current style
    * const oldStyle = (await felt.getLayer("layer-1")).style;
    *
-   * felt.setLayerStyle({ id: "layer-1", style: {
+   * await felt.setLayerStyle({ id: "layer-1", style: {
    *   ...oldStyle,
    *   paint: {
    *     ...oldStyle.paint,
@@ -298,7 +298,7 @@ export interface LayersController {
    *
    * const layerFromUrl = await felt.createLayersFromGeoJson({
    *   source: {
-   *     sourceType: "geoJsonUrl",
+   *     type: "geoJsonUrl",
    *     url: "https://example.com/parcels.geojson",
    *   },
    *   name: "Parcels",

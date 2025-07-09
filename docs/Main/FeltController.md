@@ -218,7 +218,7 @@ const element = await felt.createElement({ type: "Place", coordinates: [10, 10] 
 
 > **updateElement**(`element`: [`ElementUpdate`](../Elements/ElementUpdate.md)): `Promise`\<[`Element`](../Elements/Element.md)>
 
-Update an element on the map.
+Update an element on the map. The element type must be specified.
 
 ### Parameters
 
@@ -236,12 +236,14 @@ Update an element on the map.
 // Update a place element's coordinates
 await felt.updateElement({
   id: "element-1",
+  type: "Place",
   coordinates: [10, 20]
 });
 
 // Update a polygon's style
 await felt.updateElement({
   id: "element-2",
+  type: "Polygon",
   color: "#ABC123",
   fillOpacity: 0.5
 });
@@ -390,7 +392,7 @@ in the rejected promise value.
 // first get the current style
 const oldStyle = (await felt.getLayer("layer-1")).style;
 
-felt.setLayerStyle({ id: "layer-1", style: {
+await felt.setLayerStyle({ id: "layer-1", style: {
   ...oldStyle,
   paint: {
     ...oldStyle.paint,
@@ -462,7 +464,7 @@ const layerFromFile = await felt.createLayersFromGeoJson({
 
 const layerFromUrl = await felt.createLayersFromGeoJson({
   source: {
-    sourceType: "geoJsonUrl",
+    type: "geoJsonUrl",
     url: "https://example.com/parcels.geojson",
   },
   name: "Parcels",
@@ -1342,7 +1344,7 @@ felt.selectFeature({
 
 > **clearSelection**(`params`?: \{ `features`: `boolean`; `elements`: `boolean`; }): `Promise`\<`void`>
 
-Clears the current selection. This clears the selection of
+Clears the current selection (elements, features or both)
 
 ### Parameters
 
@@ -1576,10 +1578,10 @@ by clicking on a button.
 ```typescript
 await felt.createActionTrigger({
   actionTrigger: {
-    id: "layerTurnPurple", // not required but useful for further updates
-    label: "Turn layer purple",
+    id: "enablePolygonTool", // optional. Required if you want to update the action trigger later
+    label: "Draw polygon",
     onTrigger: async () => {
-      await felt.setLayerStyle("layer-1", { ..., paint: { color: "purple" } });
+      felt.setTool("polygon");
     },
     disabled: false, // optional, defaults to false
   },
@@ -1615,8 +1617,8 @@ Properties provided will override the existing properties.
 
 ```typescript
 await felt.updateActionTrigger({
-  id: "layerTurnPurple",
-  label: "Turn layer points purple", // only label changes
+  id: "enablePolygonTool",
+  label: "Enable polygon tool", // only label changes
 });
 ```
 
@@ -1641,7 +1643,7 @@ Deletes an action trigger.
 ### Example
 
 ```typescript
-await felt.deleteActionTrigger("layerTurnPurple");
+await felt.deleteActionTrigger("enablePolygonTool");
 ```
 
 ***
@@ -1672,34 +1674,38 @@ const panelId = await felt.createPanelId();
 
 Creates or updates a panel.
 
-Panels are rendered on map's right sidebar and are useful to extend Felt UI for your own use cases
-(e.g. a form, a settings panel, etc.) using Felt UI elements (e.g. Text, Button, etc.).
-This way it is possible to cover new use cases while keeping the user experience consistent with the rest of Felt.
+Panels are rendered on the map's right sidebar and allow you to extend Felt UI
+for your own use cases using Felt UI elements (e.g., Text, Button, etc.).
 
-A panel is identified by its ID and must come from [createPanelId](../UI/UiController.md#createpanelid).
-Custom IDs are not supported in order to prevent conflicts with other panels.
+A panel is identified by its ID, which must be created using [createPanelId](../UI/UiController.md#createpanelid).
+Custom IDs are not supported to prevent conflicts with other panels.
 
-Panels have two sections:
+Panels have two main sections:
 
-* `body` - Body of the panel, scrollable.
-* `footer` - It sticks to the bottom of the panel, useful to add submit buttons.
+* `body` - The main content area of the panel, which is scrollable.
+* `footer` - A section that sticks to the bottom of the panel, useful for
+  action buttons like "Submit" or "Cancel".
 
-Regarding panel placement, by default it is added to the end of the panels stack but you can
-specify a different placement by using the `initialPlacement` parameter.
-This placement cannot be updated later.
+Panel placement is controlled by the `initialPlacement` parameter. By default,
+panels are added to the end of the panel stack, but you can specify a different
+placement. Note that this placement cannot be changed after the panel is created.
 
-When adding a panel, its elements' ids are optional though it is recommended to make
-it easier to update or delete them later.
+Element IDs are required for targeted updates and deletions using the other
+panel management methods. For complete panel refreshes with this method,
+element IDs are optional but recommended for consistency.
 
-Once created, you can add elements to the panel by using the [createPanelElements](../UI/UiController.md#createpanelelements) method,
-perform partial updates of elements by using the [updatePanelElements](../UI/UiController.md#updatepanelelements) method or
-delete elements by using the [deletePanelElements](../UI/UiController.md#deletepanelelements) method.
+For dynamic content management, consider these approaches:
+
+* Use this method for complete panel refreshes (replaces all content)
+* Use [createPanelElements](../UI/UiController.md#createpanelelements) to add new elements to existing panels
+* Use [updatePanelElements](../UI/UiController.md#updatepanelelements) to modify specific existing elements
+* Use [deletePanelElements](../UI/UiController.md#deletepanelelements) to remove specific elements
 
 ### Parameters
 
-| Parameter | Type                                                              | Description                   |
-| --------- | ----------------------------------------------------------------- | ----------------------------- |
-| `args`    | [`CreateOrUpdatePanelParams`](../UI/CreateOrUpdatePanelParams.md) | The arguments for the method. |
+| Parameter | Type                                                              | Description                                       |
+| --------- | ----------------------------------------------------------------- | ------------------------------------------------- |
+| `args`    | [`CreateOrUpdatePanelParams`](../UI/CreateOrUpdatePanelParams.md) | The arguments for creating or updating the panel. |
 
 ### Returns
 
@@ -1708,34 +1714,36 @@ delete elements by using the [deletePanelElements](../UI/UiController.md#deletep
 ### Example
 
 ```typescript
-const id = await felt.createPanelId();
+// 1. Create panel ID first (required)
+const panelId = await felt.createPanelId();
 
+// 2. Define reusable elements
+const SELECT = { id: "layer-select", type: "Select", label: "Layer", options: [...] };
+const ANALYZE_BTN = { id: "analyze-btn", type: "Button", label: "Analyze", onClick: handleAnalyze };
+const STATUS_TEXT = { id: "status-text", type: "Text", content: "" };
+const CLEAR_BTN = { id: "clear-btn", type: "Button", label: "Clear", onClick: handleClear };
+
+// 3. Initial state
 await felt.createOrUpdatePanel({
-   panel: {
-      id,
-      title: "My Panel",
-      body: [
-         {
-            type: "Text",
-            content: "Hello, world!",
-         },
-         {
-            type: "TextInput",
-            label: "Name",
-            placeholder: "Enter your name",
-            value: "",
-            onChange: ({ value }) => setName(value),
-         },
-      ],
-      footer: [
-         {
-            type: "Button",
-            label: "Submit",
-            onClick: () => submitForm(),
-         },
-      ],
-   },
-   initialPlacement: { at: "start" }, // when added, the panel will be added to the start of the stack
+  panel: { id: panelId, title: "Data Analyzer", body: [SELECT, ANALYZE_BTN] }
+});
+
+// 4. Loading state (replaces entire panel)
+await felt.createOrUpdatePanel({
+  panel: {
+    id: panelId,
+    title: "Data Analyzer",
+    body: [SELECT, ANALYZE_BTN, { ...STATUS_TEXT, content: "Loading..." }]
+  }
+});
+
+// 5. Results state (replaces entire panel)
+await felt.createOrUpdatePanel({
+  panel: {
+    id: panelId,
+    title: "Data Analyzer",
+    body: [SELECT, ANALYZE_BTN, { ...STATUS_TEXT, content: "**Results:**\n- Found 150 features" }, CLEAR_BTN]
+  }
 });
 ```
 
@@ -1802,7 +1810,8 @@ await felt.createPanelElements({
 
 > **updatePanelElements**(`args`: [`UpdatePanelElementsParams`](../UI/UpdatePanelElementsParams.md)): `Promise`\<[`UIPanel`](../UI/UIPanel.md)>
 
-Updates an element in a panel.
+Updates an existing element in a panel. This method can only update elements that
+already exist in the panel and have an ID.
 
 ### Parameters
 
@@ -1817,14 +1826,26 @@ Updates an element in a panel.
 ### Example
 
 ```typescript
+// 1. Create panel with initial elements
+const panelId = await felt.createPanelId();
+const STATUS_TEXT = { id: "status-text", type: "Text", content: "Ready" };
+
+await felt.createOrUpdatePanel({
+  panel: {
+    id: panelId,
+    title: "My Panel",
+    body: [STATUS_TEXT]
+  }
+});
+
+// 2. Update the existing element
 await felt.updatePanelElements({
   panelId,
   elements: [
     {
       element: {
-        id: "element-1",
-        type: "Text",
-        content: "Hello, world!",
+        ...STATUS_TEXT,                    // Reuse the same element structure
+        content: "Updated content"         // Only change what needs updating
       },
     },
   ],
@@ -2151,10 +2172,10 @@ Adds a listener for when an element is created.
 
 ### Parameters
 
-| Parameter      | Type                                                                                                               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| -------------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `args`         | \{ `handler`: (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`; } | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| `args.handler` | (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`                  | The handler that is called when an element is created. This will fire when elements are created programatically, or when the user starts creating an element with a drawing tool. When the user creates an element with a drawing tool, it can begin in an invalid state, such as if you've just placed a single point in a polygon. You can use the `isBeingCreated` property to determine if the element is still being created by a drawing tool. If you want to know when the element is finished being created, you can use the [\`onElementCreateEnd\`](../Elements/ElementsController.md#onelementcreateend) listener. |
+| Parameter      | Type                                                                                                               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| -------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `args`         | \{ `handler`: (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`; } | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `args.handler` | (`change`: [`ElementChangeCallbackParams`](../Elements/ElementChangeCallbackParams.md)) => `void`                  | The handler that is called when an element is created. This will fire when elements are created programmatically, or when the user starts creating an element with a drawing tool. When the user creates an element with a drawing tool, it can begin in an invalid state, such as if you've just placed a single point in a polygon. You can use the `isBeingCreated` property to determine if the element is still being created by a drawing tool. If you want to know when the element is finished being created, you can use the [\`onElementCreateEnd\`](../Elements/ElementsController.md#onelementcreateend) listener. |
 
 ### Returns
 
@@ -2166,7 +2187,7 @@ A function to unsubscribe from the listener
 
 ```typescript
 const unsubscribe = felt.onElementCreate({
-  handler: (element) => console.log(element.id),
+  handler: ({isBeingCreated, element}) => console.log(element.id),
 });
 
 // later on...
@@ -2205,7 +2226,7 @@ A function to unsubscribe from the listener
 ### Example
 
 ```typescript
-const unsubscribe = felt.onToolCreatedElement({
+const unsubscribe = felt.onElementCreateEnd({
   handler: (params) => console.log(params),
 });
 
@@ -2222,7 +2243,7 @@ unsubscribe();
 Adds a listener for when an element changes.
 
 This will fire when an element is being edited, either on the map by the user
-or programatically.
+or programmatically.
 
 Like the [\`onElementCreate\`](../Elements/ElementsController.md#onelementcreate) listener, this will fire when an element is
 still being created by a drawing tool.

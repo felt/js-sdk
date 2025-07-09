@@ -60,7 +60,7 @@ felt.selectFeature({
 
 > **clearSelection**(`params`?: \{ `features`: `boolean`; `elements`: `boolean`; }): `Promise`\<`void`>
 
-Clears the current selection. This clears the selection of
+Clears the current selection (elements, features or both)
 
 ### Parameters
 

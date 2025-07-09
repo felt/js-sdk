@@ -89,10 +89,10 @@ export interface UiController {
    * ```typescript
    * await felt.createActionTrigger({
    *   actionTrigger: {
-   *     id: "layerTurnPurple", // not required but useful for further updates
-   *     label: "Turn layer purple",
+   *     id: "enablePolygonTool", // optional. Required if you want to update the action trigger later
+   *     label: "Draw polygon",
    *     onTrigger: async () => {
-   *       await felt.setLayerStyle("layer-1", { ..., paint: { color: "purple" } });
+   *       felt.setTool("polygon");
    *     },
    *     disabled: false, // optional, defaults to false
    *   },
@@ -117,8 +117,8 @@ export interface UiController {
    * @example
    * ```typescript
    * await felt.updateActionTrigger({
-   *   id: "layerTurnPurple",
-   *   label: "Turn layer points purple", // only label changes
+   *   id: "enablePolygonTool",
+   *   label: "Enable polygon tool", // only label changes
    * });
    * ```
    */
@@ -133,7 +133,7 @@ export interface UiController {
    *
    * @example
    * ```typescript
-   * await felt.deleteActionTrigger("layerTurnPurple");
+   * await felt.deleteActionTrigger("enablePolygonTool");
    * ```
    */
   deleteActionTrigger(id: string): void;
@@ -153,66 +153,72 @@ export interface UiController {
   /**
    * Creates or updates a panel.
    *
-   * Panels are rendered on map's right sidebar and are useful to extend Felt UI for your own use cases
-   * (e.g. a form, a settings panel, etc.) using Felt UI elements (e.g. Text, Button, etc.).
-   * This way it is possible to cover new use cases while keeping the user experience consistent with the rest of Felt.
+   * Panels are rendered on the map's right sidebar and allow you to extend Felt UI
+   * for your own use cases using Felt UI elements (e.g., Text, Button, etc.).
    *
-   * A panel is identified by its ID and must come from {@link createPanelId}.
-   * Custom IDs are not supported in order to prevent conflicts with other panels.
+   * A panel is identified by its ID, which must be created using {@link createPanelId}.
+   * Custom IDs are not supported to prevent conflicts with other panels.
    *
-   * Panels have two sections:
-   *  - `body` - Body of the panel, scrollable.
-   *  - `footer` - It sticks to the bottom of the panel, useful to add submit buttons.
+   * Panels have two main sections:
+   *  - `body` - The main content area of the panel, which is scrollable.
+   *  - `footer` - A section that sticks to the bottom of the panel, useful for
+   *    action buttons like "Submit" or "Cancel".
    *
-   * Regarding panel placement, by default it is added to the end of the panels stack but you can
-   * specify a different placement by using the `initialPlacement` parameter.
-   * This placement cannot be updated later.
+   * Panel placement is controlled by the `initialPlacement` parameter. By default,
+   * panels are added to the end of the panel stack, but you can specify a different
+   * placement. Note that this placement cannot be changed after the panel is created.
    *
-   * When adding a panel, its elements' ids are optional though it is recommended to make
-   * it easier to update or delete them later.
+   * Element IDs are required for targeted updates and deletions using the other
+   * panel management methods. For complete panel refreshes with this method,
+   * element IDs are optional but recommended for consistency.
    *
-   * Once created, you can add elements to the panel by using the {@link createPanelElements} method,
-   * perform partial updates of elements by using the {@link updatePanelElements} method or
-   * delete elements by using the {@link deletePanelElements} method.
+   * For dynamic content management, consider these approaches:
+   *  - Use this method for complete panel refreshes (replaces all content)
+   *  - Use {@link createPanelElements} to add new elements to existing panels
+   *  - Use {@link updatePanelElements} to modify specific existing elements
+   *  - Use {@link deletePanelElements} to remove specific elements
    *
-   * @param args - The arguments for the method.
-   * @param args.panel - The panel to add.
-   * @param args.initialPlacement - The placement of the panel when added. Optional. Defaults to `{ at: "end" }`.
-   * - `{ at: "start" }` - Add the panel to the start of the stack.
-   * - `{ at: "end" }` - Add the panel to the end of the stack.
-   * - `{ after: "panel-1" }` - Add the panel after the panel with the id `panel-1`.
-   * - `{ before: "panel-1" }` - Add the panel before the panel with the id `panel-1`.
+   * @param args - The arguments for creating or updating the panel.
+   * @param args.panel - The panel configuration to create or update.
+   * @param args.initialPlacement - The placement of the panel when first added.
+   *   Optional. Defaults to `{ at: "end" }`.
+   *   - `{ at: "start" }` - Add the panel to the start of the stack.
+   *   - `{ at: "end" }` - Add the panel to the end of the stack.
+   *   - `{ after: "panel-1" }` - Add the panel after the panel with the id `panel-1`.
+   *   - `{ before: "panel-1" }` - Add the panel before the panel with the id `panel-1`.
    *
    * @example
    * ```typescript
-   * const id = await felt.createPanelId();
+   * // 1. Create panel ID first (required)
+   * const panelId = await felt.createPanelId();
    *
+   * // 2. Define reusable elements
+   * const SELECT = { id: "layer-select", type: "Select", label: "Layer", options: [...] };
+   * const ANALYZE_BTN = { id: "analyze-btn", type: "Button", label: "Analyze", onClick: handleAnalyze };
+   * const STATUS_TEXT = { id: "status-text", type: "Text", content: "" };
+   * const CLEAR_BTN = { id: "clear-btn", type: "Button", label: "Clear", onClick: handleClear };
+   *
+   * // 3. Initial state
    * await felt.createOrUpdatePanel({
-   *    panel: {
-   *       id,
-   *       title: "My Panel",
-   *       body: [
-   *          {
-   *             type: "Text",
-   *             content: "Hello, world!",
-   *          },
-   *          {
-   *             type: "TextInput",
-   *             label: "Name",
-   *             placeholder: "Enter your name",
-   *             value: "",
-   *             onChange: ({ value }) => setName(value),
-   *          },
-   *       ],
-   *       footer: [
-   *          {
-   *             type: "Button",
-   *             label: "Submit",
-   *             onClick: () => submitForm(),
-   *          },
-   *       ],
-   *    },
-   *    initialPlacement: { at: "start" }, // when added, the panel will be added to the start of the stack
+   *   panel: { id: panelId, title: "Data Analyzer", body: [SELECT, ANALYZE_BTN] }
+   * });
+   *
+   * // 4. Loading state (replaces entire panel)
+   * await felt.createOrUpdatePanel({
+   *   panel: {
+   *     id: panelId,
+   *     title: "Data Analyzer",
+   *     body: [SELECT, ANALYZE_BTN, { ...STATUS_TEXT, content: "Loading..." }]
+   *   }
+   * });
+   *
+   * // 5. Results state (replaces entire panel)
+   * await felt.createOrUpdatePanel({
+   *   panel: {
+   *     id: panelId,
+   *     title: "Data Analyzer",
+   *     body: [SELECT, ANALYZE_BTN, { ...STATUS_TEXT, content: "**Results:**\n- Found 150 features" }, CLEAR_BTN]
+   *   }
    * });
    * ```
    */
@@ -268,22 +274,36 @@ export interface UiController {
   createPanelElements(args: CreatePanelElementsParams): Promise<UIPanel>;
 
   /**
-   * Updates an element in a panel.
+   * Updates an existing element in a panel. This method can only update elements that
+   * already exist in the panel and have an ID.
    *
    * @param args - The arguments for the method.
    * @param args.panelId - The id of the panel to update the element in.
-   * @param args.elements - Array of elements to update (`id` and `type` are required to identify the element to update).
+   * @param args.elements - Array of elements to update. Each element must have an `id` and `type`
+   *   to identify which existing element to update. The element must already exist in the panel.
    *
    * @example
    * ```typescript
+   * // 1. Create panel with initial elements
+   * const panelId = await felt.createPanelId();
+   * const STATUS_TEXT = { id: "status-text", type: "Text", content: "Ready" };
+   *
+   * await felt.createOrUpdatePanel({
+   *   panel: {
+   *     id: panelId,
+   *     title: "My Panel",
+   *     body: [STATUS_TEXT]
+   *   }
+   * });
+   *
+   * // 2. Update the existing element
    * await felt.updatePanelElements({
    *   panelId,
    *   elements: [
    *     {
    *       element: {
-   *         id: "element-1",
-   *         type: "Text",
-   *         content: "Hello, world!",
+   *         ...STATUS_TEXT,                    // Reuse the same element structure
+   *         content: "Updated content"         // Only change what needs updating
    *       },
    *     },
    *   ],

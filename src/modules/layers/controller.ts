@@ -930,15 +930,18 @@ export interface LayersController {
    * averages, sums, etc. You can focus your calculation on specific areas or subsets
    * of your data using boundaries and filters.
    *
-   * When no aggregation is specified, it counts features. When an aggregation is provided,
-   * it performs that calculation (average, sum, etc.) on the specified attribute.
+   * When you request an aggregation other than count, you must specify an attribute to
+   * aggregate on.
    *
    * @example
    * ```typescript
    * // Count all residential buildings
    * const residentialCount = await felt.getAggregates({
    *   layerId: "buildings",
-   *   filters: ["type", "eq", "residential"]
+   *   filters: ["type", "eq", "residential"],
+   *   aggregation: {
+   *     methods: ["count"],
+   *   }
    * });
    *
    * // Calculate average home value in a specific neighborhood

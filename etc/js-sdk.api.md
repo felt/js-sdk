@@ -4,150 +4,150 @@
 
 ```ts
 
-import { au as AggregatedGridConfig_2 } from './controller-Bf6iA9-c.js';
-import { av as AggregationConfig_2 } from './controller-Bf6iA9-c.js';
-import { aw as AggregationMethod_2 } from './controller-Bf6iA9-c.js';
-import { C as CircleElementCreate_2 } from './controller-Bf6iA9-c.js';
-import { a as CircleElementRead_2 } from './controller-Bf6iA9-c.js';
-import { b as CircleElementUpdate_2 } from './controller-Bf6iA9-c.js';
-import { b8 as CircleToolSettings_2 } from './controller-Bf6iA9-c.js';
-import { b9 as ConfigurableToolType_2 } from './controller-Bf6iA9-c.js';
-import { ax as CountGridConfig_2 } from './controller-Bf6iA9-c.js';
+import { au as AggregatedGridConfig } from './controller-Bf6iA9-c.js';
+import { av as AggregationConfig } from './controller-Bf6iA9-c.js';
+import { aw as AggregationMethod } from './controller-Bf6iA9-c.js';
+import { C as CircleElementCreate } from './controller-Bf6iA9-c.js';
+import { a as CircleElementRead } from './controller-Bf6iA9-c.js';
+import { b as CircleElementUpdate } from './controller-Bf6iA9-c.js';
+import { b8 as CircleToolSettings } from './controller-Bf6iA9-c.js';
+import { b9 as ConfigurableToolType } from './controller-Bf6iA9-c.js';
+import { ax as CountGridConfig } from './controller-Bf6iA9-c.js';
 import { bp as CreateActionTriggerParams } from './controller-Bf6iA9-c.js';
-import { K as CreateLayersFromGeoJsonParams_2 } from './controller-Bf6iA9-c.js';
+import { K as CreateLayersFromGeoJsonParams } from './controller-Bf6iA9-c.js';
 import { bq as CreateOrUpdatePanelParams } from './controller-Bf6iA9-c.js';
 import { br as CreatePanelElementsParams } from './controller-Bf6iA9-c.js';
-import { O as DataOnlyLayer_2 } from './controller-Bf6iA9-c.js';
+import { O as DataOnlyLayer } from './controller-Bf6iA9-c.js';
 import { bs as DeletePanelElementsParams } from './controller-Bf6iA9-c.js';
 import { E as Element_2 } from './controller-Bf6iA9-c.js';
-import { c as ElementChangeCallbackParams_2 } from './controller-Bf6iA9-c.js';
-import { d as ElementCreate_2 } from './controller-Bf6iA9-c.js';
-import { e as ElementGroup_2 } from './controller-Bf6iA9-c.js';
-import { f as ElementGroupChangeCallbackParams_2 } from './controller-Bf6iA9-c.js';
-import { aM as ElementGroupNode_2 } from './controller-Bf6iA9-c.js';
-import { aN as ElementNode_2 } from './controller-Bf6iA9-c.js';
-import { B as ElementsController_2 } from './controller-Bf6iA9-c.js';
-import { g as ElementUpdate_2 } from './controller-Bf6iA9-c.js';
-import { aO as EntityNode_2 } from './controller-Bf6iA9-c.js';
-import { aP as FeatureNode_2 } from './controller-Bf6iA9-c.js';
-import { aQ as FeatureSelection_2 } from './controller-Bf6iA9-c.js';
-import { aU as FeltBoundary_2 } from './controller-Bf6iA9-c.js';
-import { F as FeltController_2 } from './controller-Bf6iA9-c.js';
-import { Q as FeltTiledVectorSource_2 } from './controller-Bf6iA9-c.js';
-import { aV as FeltZoom_2 } from './controller-Bf6iA9-c.js';
-import { an as FilterExpression_2 } from './controller-Bf6iA9-c.js';
-import { ao as FilterLogicGate_2 } from './controller-Bf6iA9-c.js';
-import { aq as Filters_2 } from './controller-Bf6iA9-c.js';
-import { ap as FilterTernary_2 } from './controller-Bf6iA9-c.js';
-import { R as GeoJsonDataVectorSource_2 } from './controller-Bf6iA9-c.js';
-import { aW as GeoJsonFeature_2 } from './controller-Bf6iA9-c.js';
-import { S as GeoJsonFileVectorSource_2 } from './controller-Bf6iA9-c.js';
-import { aX as GeoJsonGeometry_2 } from './controller-Bf6iA9-c.js';
-import { aY as GeoJsonProperties_2 } from './controller-Bf6iA9-c.js';
-import { W as GeoJsonUrlVectorSource_2 } from './controller-Bf6iA9-c.js';
-import { ar as GeometryFilter_2 } from './controller-Bf6iA9-c.js';
-import { G as GetElementGroupsConstraint_2 } from './controller-Bf6iA9-c.js';
-import { h as GetElementsConstraint_2 } from './controller-Bf6iA9-c.js';
-import { ay as GetLayerCalculationParams_2 } from './controller-Bf6iA9-c.js';
-import { az as GetLayerCategoriesGroup_2 } from './controller-Bf6iA9-c.js';
-import { aA as GetLayerCategoriesParams_2 } from './controller-Bf6iA9-c.js';
-import { X as GetLayerGroupsConstraint_2 } from './controller-Bf6iA9-c.js';
-import { aB as GetLayerHistogramBin_2 } from './controller-Bf6iA9-c.js';
-import { aC as GetLayerHistogramParams_2 } from './controller-Bf6iA9-c.js';
-import { aD as GetLayerPrecomputedCalculationParams_2 } from './controller-Bf6iA9-c.js';
-import { Y as GetLayersConstraint_2 } from './controller-Bf6iA9-c.js';
-import { Z as GetRenderedFeaturesConstraint_2 } from './controller-Bf6iA9-c.js';
-import { aE as GridConfig_2 } from './controller-Bf6iA9-c.js';
-import { aF as GridType_2 } from './controller-Bf6iA9-c.js';
-import { H as HighlighterElementCreate_2 } from './controller-Bf6iA9-c.js';
-import { i as HighlighterElementRead_2 } from './controller-Bf6iA9-c.js';
-import { j as HighlighterElementUpdate_2 } from './controller-Bf6iA9-c.js';
-import { ba as HighlighterToolSettings_2 } from './controller-Bf6iA9-c.js';
-import { I as ImageElementCreate_2 } from './controller-Bf6iA9-c.js';
-import { k as ImageElementRead_2 } from './controller-Bf6iA9-c.js';
-import { l as ImageElementUpdate_2 } from './controller-Bf6iA9-c.js';
-import { bb as InputToolSettings_2 } from './controller-Bf6iA9-c.js';
-import { J as InteractionsController_2 } from './controller-Bf6iA9-c.js';
-import { aZ as LatLng_2 } from './controller-Bf6iA9-c.js';
-import { _ as Layer_2 } from './controller-Bf6iA9-c.js';
-import { as as LayerBoundaries_2 } from './controller-Bf6iA9-c.js';
-import { $ as LayerChangeCallbackParams_2 } from './controller-Bf6iA9-c.js';
-import { a0 as LayerCommon_2 } from './controller-Bf6iA9-c.js';
-import { ad as LayerFeature_2 } from './controller-Bf6iA9-c.js';
-import { at as LayerFilters_2 } from './controller-Bf6iA9-c.js';
-import { a1 as LayerGroup_2 } from './controller-Bf6iA9-c.js';
-import { a2 as LayerGroupChangeCallbackParams_2 } from './controller-Bf6iA9-c.js';
-import { aR as LayerGroupNode_2 } from './controller-Bf6iA9-c.js';
-import { aS as LayerNode_2 } from './controller-Bf6iA9-c.js';
-import { a3 as LayerProcessingStatus_2 } from './controller-Bf6iA9-c.js';
-import { af as LayerSchema_2 } from './controller-Bf6iA9-c.js';
-import { ag as LayerSchemaAttribute_2 } from './controller-Bf6iA9-c.js';
-import { ah as LayerSchemaBooleanAttribute_2 } from './controller-Bf6iA9-c.js';
-import { ai as LayerSchemaCommonAttribute_2 } from './controller-Bf6iA9-c.js';
-import { aj as LayerSchemaDateAttribute_2 } from './controller-Bf6iA9-c.js';
-import { ak as LayerSchemaDateTimeAttribute_2 } from './controller-Bf6iA9-c.js';
-import { al as LayerSchemaNumericAttribute_2 } from './controller-Bf6iA9-c.js';
-import { am as LayerSchemaTextAttribute_2 } from './controller-Bf6iA9-c.js';
-import { aJ as LayersController_2 } from './controller-Bf6iA9-c.js';
-import { a4 as LegendItem_2 } from './controller-Bf6iA9-c.js';
-import { a5 as LegendItemChangeCallbackParams_2 } from './controller-Bf6iA9-c.js';
-import { a6 as LegendItemIdentifier_2 } from './controller-Bf6iA9-c.js';
-import { a7 as LegendItemsConstraint_2 } from './controller-Bf6iA9-c.js';
-import { a_ as LineStringGeometry_2 } from './controller-Bf6iA9-c.js';
-import { bc as LineToolSettings_2 } from './controller-Bf6iA9-c.js';
-import { L as LinkElementRead_2 } from './controller-Bf6iA9-c.js';
-import { a$ as LngLatTuple_2 } from './controller-Bf6iA9-c.js';
-import { aK as MapDetails_2 } from './controller-Bf6iA9-c.js';
-import { D as MapInteractionEvent_2 } from './controller-Bf6iA9-c.js';
-import { M as MarkerElementCreate_2 } from './controller-Bf6iA9-c.js';
-import { m as MarkerElementRead_2 } from './controller-Bf6iA9-c.js';
-import { n as MarkerElementUpdate_2 } from './controller-Bf6iA9-c.js';
-import { bd as MarkerToolSettings_2 } from './controller-Bf6iA9-c.js';
-import { aL as MiscController_2 } from './controller-Bf6iA9-c.js';
-import { aG as MultiAggregationConfig_2 } from './controller-Bf6iA9-c.js';
-import { b0 as MultiLineStringGeometry_2 } from './controller-Bf6iA9-c.js';
-import { b1 as MultiPointGeometry_2 } from './controller-Bf6iA9-c.js';
-import { b2 as MultiPolygonGeometry_2 } from './controller-Bf6iA9-c.js';
-import { N as NoteElementCreate_2 } from './controller-Bf6iA9-c.js';
-import { o as NoteElementRead_2 } from './controller-Bf6iA9-c.js';
-import { p as NoteElementUpdate_2 } from './controller-Bf6iA9-c.js';
-import { be as NoteToolSettings_2 } from './controller-Bf6iA9-c.js';
+import { c as ElementChangeCallbackParams } from './controller-Bf6iA9-c.js';
+import { d as ElementCreate } from './controller-Bf6iA9-c.js';
+import { e as ElementGroup } from './controller-Bf6iA9-c.js';
+import { f as ElementGroupChangeCallbackParams } from './controller-Bf6iA9-c.js';
+import { aM as ElementGroupNode } from './controller-Bf6iA9-c.js';
+import { aN as ElementNode } from './controller-Bf6iA9-c.js';
+import { B as ElementsController } from './controller-Bf6iA9-c.js';
+import { g as ElementUpdate } from './controller-Bf6iA9-c.js';
+import { aO as EntityNode } from './controller-Bf6iA9-c.js';
+import { aP as FeatureNode } from './controller-Bf6iA9-c.js';
+import { aQ as FeatureSelection } from './controller-Bf6iA9-c.js';
+import { aU as FeltBoundary } from './controller-Bf6iA9-c.js';
+import { F as FeltController } from './controller-Bf6iA9-c.js';
+import { Q as FeltTiledVectorSource } from './controller-Bf6iA9-c.js';
+import { aV as FeltZoom } from './controller-Bf6iA9-c.js';
+import { an as FilterExpression } from './controller-Bf6iA9-c.js';
+import { ao as FilterLogicGate } from './controller-Bf6iA9-c.js';
+import { aq as Filters } from './controller-Bf6iA9-c.js';
+import { ap as FilterTernary } from './controller-Bf6iA9-c.js';
+import { R as GeoJsonDataVectorSource } from './controller-Bf6iA9-c.js';
+import { aW as GeoJsonFeature } from './controller-Bf6iA9-c.js';
+import { S as GeoJsonFileVectorSource } from './controller-Bf6iA9-c.js';
+import { aX as GeoJsonGeometry } from './controller-Bf6iA9-c.js';
+import { aY as GeoJsonProperties } from './controller-Bf6iA9-c.js';
+import { W as GeoJsonUrlVectorSource } from './controller-Bf6iA9-c.js';
+import { ar as GeometryFilter } from './controller-Bf6iA9-c.js';
+import { G as GetElementGroupsConstraint } from './controller-Bf6iA9-c.js';
+import { h as GetElementsConstraint } from './controller-Bf6iA9-c.js';
+import { ay as GetLayerCalculationParams } from './controller-Bf6iA9-c.js';
+import { az as GetLayerCategoriesGroup } from './controller-Bf6iA9-c.js';
+import { aA as GetLayerCategoriesParams } from './controller-Bf6iA9-c.js';
+import { X as GetLayerGroupsConstraint } from './controller-Bf6iA9-c.js';
+import { aB as GetLayerHistogramBin } from './controller-Bf6iA9-c.js';
+import { aC as GetLayerHistogramParams } from './controller-Bf6iA9-c.js';
+import { aD as GetLayerPrecomputedCalculationParams } from './controller-Bf6iA9-c.js';
+import { Y as GetLayersConstraint } from './controller-Bf6iA9-c.js';
+import { Z as GetRenderedFeaturesConstraint } from './controller-Bf6iA9-c.js';
+import { aE as GridConfig } from './controller-Bf6iA9-c.js';
+import { aF as GridType } from './controller-Bf6iA9-c.js';
+import { H as HighlighterElementCreate } from './controller-Bf6iA9-c.js';
+import { i as HighlighterElementRead } from './controller-Bf6iA9-c.js';
+import { j as HighlighterElementUpdate } from './controller-Bf6iA9-c.js';
+import { ba as HighlighterToolSettings } from './controller-Bf6iA9-c.js';
+import { I as ImageElementCreate } from './controller-Bf6iA9-c.js';
+import { k as ImageElementRead } from './controller-Bf6iA9-c.js';
+import { l as ImageElementUpdate } from './controller-Bf6iA9-c.js';
+import { bb as InputToolSettings } from './controller-Bf6iA9-c.js';
+import { J as InteractionsController } from './controller-Bf6iA9-c.js';
+import { aZ as LatLng } from './controller-Bf6iA9-c.js';
+import { _ as Layer } from './controller-Bf6iA9-c.js';
+import { as as LayerBoundaries } from './controller-Bf6iA9-c.js';
+import { $ as LayerChangeCallbackParams } from './controller-Bf6iA9-c.js';
+import { a0 as LayerCommon } from './controller-Bf6iA9-c.js';
+import { ad as LayerFeature } from './controller-Bf6iA9-c.js';
+import { at as LayerFilters } from './controller-Bf6iA9-c.js';
+import { a1 as LayerGroup } from './controller-Bf6iA9-c.js';
+import { a2 as LayerGroupChangeCallbackParams } from './controller-Bf6iA9-c.js';
+import { aR as LayerGroupNode } from './controller-Bf6iA9-c.js';
+import { aS as LayerNode } from './controller-Bf6iA9-c.js';
+import { a3 as LayerProcessingStatus } from './controller-Bf6iA9-c.js';
+import { af as LayerSchema } from './controller-Bf6iA9-c.js';
+import { ag as LayerSchemaAttribute } from './controller-Bf6iA9-c.js';
+import { ah as LayerSchemaBooleanAttribute } from './controller-Bf6iA9-c.js';
+import { ai as LayerSchemaCommonAttribute } from './controller-Bf6iA9-c.js';
+import { aj as LayerSchemaDateAttribute } from './controller-Bf6iA9-c.js';
+import { ak as LayerSchemaDateTimeAttribute } from './controller-Bf6iA9-c.js';
+import { al as LayerSchemaNumericAttribute } from './controller-Bf6iA9-c.js';
+import { am as LayerSchemaTextAttribute } from './controller-Bf6iA9-c.js';
+import { aJ as LayersController } from './controller-Bf6iA9-c.js';
+import { a4 as LegendItem } from './controller-Bf6iA9-c.js';
+import { a5 as LegendItemChangeCallbackParams } from './controller-Bf6iA9-c.js';
+import { a6 as LegendItemIdentifier } from './controller-Bf6iA9-c.js';
+import { a7 as LegendItemsConstraint } from './controller-Bf6iA9-c.js';
+import { a_ as LineStringGeometry } from './controller-Bf6iA9-c.js';
+import { bc as LineToolSettings } from './controller-Bf6iA9-c.js';
+import { L as LinkElementRead } from './controller-Bf6iA9-c.js';
+import { a$ as LngLatTuple } from './controller-Bf6iA9-c.js';
+import { aK as MapDetails } from './controller-Bf6iA9-c.js';
+import { D as MapInteractionEvent } from './controller-Bf6iA9-c.js';
+import { M as MarkerElementCreate } from './controller-Bf6iA9-c.js';
+import { m as MarkerElementRead } from './controller-Bf6iA9-c.js';
+import { n as MarkerElementUpdate } from './controller-Bf6iA9-c.js';
+import { bd as MarkerToolSettings } from './controller-Bf6iA9-c.js';
+import { aL as MiscController } from './controller-Bf6iA9-c.js';
+import { aG as MultiAggregationConfig } from './controller-Bf6iA9-c.js';
+import { b0 as MultiLineStringGeometry } from './controller-Bf6iA9-c.js';
+import { b1 as MultiPointGeometry } from './controller-Bf6iA9-c.js';
+import { b2 as MultiPolygonGeometry } from './controller-Bf6iA9-c.js';
+import { N as NoteElementCreate } from './controller-Bf6iA9-c.js';
+import { o as NoteElementRead } from './controller-Bf6iA9-c.js';
+import { p as NoteElementUpdate } from './controller-Bf6iA9-c.js';
+import { be as NoteToolSettings } from './controller-Bf6iA9-c.js';
 import { bt as OnMapInteractionsOptions } from './controller-Bf6iA9-c.js';
-import { P as PathElementCreate_2 } from './controller-Bf6iA9-c.js';
-import { q as PathElementRead_2 } from './controller-Bf6iA9-c.js';
-import { r as PathElementUpdate_2 } from './controller-Bf6iA9-c.js';
-import { bf as PinToolSettings_2 } from './controller-Bf6iA9-c.js';
-import { s as PlaceElementCreate_2 } from './controller-Bf6iA9-c.js';
-import { t as PlaceElementRead_2 } from './controller-Bf6iA9-c.js';
-import { u as PlaceElementUpdate_2 } from './controller-Bf6iA9-c.js';
-import { bg as PlaceFrame_2 } from './controller-Bf6iA9-c.js';
-import { bw as PlacementForUIElement_2 } from './controller-Bf6iA9-c.js';
-import { bh as PlaceSymbol_2 } from './controller-Bf6iA9-c.js';
-import { b3 as PointGeometry_2 } from './controller-Bf6iA9-c.js';
-import { v as PolygonElementCreate_2 } from './controller-Bf6iA9-c.js';
-import { w as PolygonElementRead_2 } from './controller-Bf6iA9-c.js';
-import { x as PolygonElementUpdate_2 } from './controller-Bf6iA9-c.js';
-import { b4 as PolygonGeometry_2 } from './controller-Bf6iA9-c.js';
-import { bi as PolygonToolSettings_2 } from './controller-Bf6iA9-c.js';
-import { aH as PrecomputedAggregationMethod_2 } from './controller-Bf6iA9-c.js';
-import { a8 as RasterBand_2 } from './controller-Bf6iA9-c.js';
-import { a9 as RasterLayer_2 } from './controller-Bf6iA9-c.js';
-import { aa as RasterLayerSource_2 } from './controller-Bf6iA9-c.js';
-import { ae as RasterValue_2 } from './controller-Bf6iA9-c.js';
-import { bj as RouteToolSettings_2 } from './controller-Bf6iA9-c.js';
-import { aT as SelectionController_2 } from './controller-Bf6iA9-c.js';
-import { cd as SetViewportCenterZoomParams_2 } from './controller-Bf6iA9-c.js';
-import { b5 as SetVisibilityRequest_2 } from './controller-Bf6iA9-c.js';
-import { b6 as SortConfig_2 } from './controller-Bf6iA9-c.js';
-import { b7 as SortDirection_2 } from './controller-Bf6iA9-c.js';
-import { T as TextElementCreate_2 } from './controller-Bf6iA9-c.js';
-import { y as TextElementRead_2 } from './controller-Bf6iA9-c.js';
-import { A as TextElementUpdate_2 } from './controller-Bf6iA9-c.js';
-import { bk as TextToolSettings_2 } from './controller-Bf6iA9-c.js';
-import { bo as ToolsController_2 } from './controller-Bf6iA9-c.js';
-import { bl as ToolSettingsChangeEvent_2 } from './controller-Bf6iA9-c.js';
-import { bm as ToolSettingsMap_2 } from './controller-Bf6iA9-c.js';
-import { bn as ToolType_2 } from './controller-Bf6iA9-c.js';
+import { P as PathElementCreate } from './controller-Bf6iA9-c.js';
+import { q as PathElementRead } from './controller-Bf6iA9-c.js';
+import { r as PathElementUpdate } from './controller-Bf6iA9-c.js';
+import { bf as PinToolSettings } from './controller-Bf6iA9-c.js';
+import { s as PlaceElementCreate } from './controller-Bf6iA9-c.js';
+import { t as PlaceElementRead } from './controller-Bf6iA9-c.js';
+import { u as PlaceElementUpdate } from './controller-Bf6iA9-c.js';
+import { bg as PlaceFrame } from './controller-Bf6iA9-c.js';
+import { bw as PlacementForUIElement } from './controller-Bf6iA9-c.js';
+import { bh as PlaceSymbol } from './controller-Bf6iA9-c.js';
+import { b3 as PointGeometry } from './controller-Bf6iA9-c.js';
+import { v as PolygonElementCreate } from './controller-Bf6iA9-c.js';
+import { w as PolygonElementRead } from './controller-Bf6iA9-c.js';
+import { x as PolygonElementUpdate } from './controller-Bf6iA9-c.js';
+import { b4 as PolygonGeometry } from './controller-Bf6iA9-c.js';
+import { bi as PolygonToolSettings } from './controller-Bf6iA9-c.js';
+import { aH as PrecomputedAggregationMethod } from './controller-Bf6iA9-c.js';
+import { a8 as RasterBand } from './controller-Bf6iA9-c.js';
+import { a9 as RasterLayer } from './controller-Bf6iA9-c.js';
+import { aa as RasterLayerSource } from './controller-Bf6iA9-c.js';
+import { ae as RasterValue } from './controller-Bf6iA9-c.js';
+import { bj as RouteToolSettings } from './controller-Bf6iA9-c.js';
+import { aT as SelectionController } from './controller-Bf6iA9-c.js';
+import { cd as SetViewportCenterZoomParams } from './controller-Bf6iA9-c.js';
+import { b5 as SetVisibilityRequest } from './controller-Bf6iA9-c.js';
+import { b6 as SortConfig } from './controller-Bf6iA9-c.js';
+import { b7 as SortDirection } from './controller-Bf6iA9-c.js';
+import { T as TextElementCreate } from './controller-Bf6iA9-c.js';
+import { y as TextElementRead } from './controller-Bf6iA9-c.js';
+import { A as TextElementUpdate } from './controller-Bf6iA9-c.js';
+import { bk as TextToolSettings } from './controller-Bf6iA9-c.js';
+import { bo as ToolsController } from './controller-Bf6iA9-c.js';
+import { bl as ToolSettingsChangeEvent } from './controller-Bf6iA9-c.js';
+import { bm as ToolSettingsMap } from './controller-Bf6iA9-c.js';
+import { bn as ToolType } from './controller-Bf6iA9-c.js';
 import { cb as UIActionTriggerCreate } from './controller-Bf6iA9-c.js';
 import { bz as UIButtonElement } from './controller-Bf6iA9-c.js';
 import { bA as UIButtonElementCreate } from './controller-Bf6iA9-c.js';
@@ -159,8 +159,8 @@ import { b_ as UICheckboxGroupElement } from './controller-Bf6iA9-c.js';
 import { b$ as UICheckboxGroupElementCreate } from './controller-Bf6iA9-c.js';
 import { c0 as UICheckboxGroupElementUpdate } from './controller-Bf6iA9-c.js';
 import { ca as UIControlElementOption } from './controller-Bf6iA9-c.js';
-import { cc as UiController_2 } from './controller-Bf6iA9-c.js';
-import { U as UiControlsOptions_2 } from './controller-Bf6iA9-c.js';
+import { cc as UiController } from './controller-Bf6iA9-c.js';
+import { U as UiControlsOptions } from './controller-Bf6iA9-c.js';
 import { bI as UIDividerElement } from './controller-Bf6iA9-c.js';
 import { bJ as UIDividerElementCreate } from './controller-Bf6iA9-c.js';
 import { bK as UIDividerElementUpdate } from './controller-Bf6iA9-c.js';
@@ -194,90 +194,90 @@ import { c4 as UIToggleGroupElement } from './controller-Bf6iA9-c.js';
 import { c5 as UIToggleGroupElementCreate } from './controller-Bf6iA9-c.js';
 import { c6 as UIToggleGroupElementUpdate } from './controller-Bf6iA9-c.js';
 import { bu as UpdateActionTriggerParams } from './controller-Bf6iA9-c.js';
-import { ab as UpdateLayerParams_2 } from './controller-Bf6iA9-c.js';
+import { ab as UpdateLayerParams } from './controller-Bf6iA9-c.js';
 import { bv as UpdatePanelElementsParams } from './controller-Bf6iA9-c.js';
-import { aI as ValueConfiguration_2 } from './controller-Bf6iA9-c.js';
-import { ac as VectorLayer_2 } from './controller-Bf6iA9-c.js';
-import { V as ViewportCenterZoom_2 } from './controller-Bf6iA9-c.js';
-import { ce as ViewportConstraints_2 } from './controller-Bf6iA9-c.js';
-import { ch as ViewportController_2 } from './controller-Bf6iA9-c.js';
-import { cf as ViewportFitBoundsParams_2 } from './controller-Bf6iA9-c.js';
-import { cg as ViewportState_2 } from './controller-Bf6iA9-c.js';
+import { aI as ValueConfiguration } from './controller-Bf6iA9-c.js';
+import { ac as VectorLayer } from './controller-Bf6iA9-c.js';
+import { V as ViewportCenterZoom } from './controller-Bf6iA9-c.js';
+import { ce as ViewportConstraints } from './controller-Bf6iA9-c.js';
+import { ch as ViewportController } from './controller-Bf6iA9-c.js';
+import { cf as ViewportFitBoundsParams } from './controller-Bf6iA9-c.js';
+import { cg as ViewportState } from './controller-Bf6iA9-c.js';
 import { z } from './controller-Bf6iA9-c.js';
 import { z as z_2 } from 'zod';
 
-export { AggregatedGridConfig_2 as AggregatedGridConfig }
+export { AggregatedGridConfig }
 
-export { AggregationConfig_2 as AggregationConfig }
+export { AggregationConfig }
 
-export { AggregationMethod_2 as AggregationMethod }
+export { AggregationMethod }
 
-export { CircleElementCreate_2 as CircleElementCreate }
+export { CircleElementCreate }
 
-export { CircleElementRead_2 as CircleElementRead }
+export { CircleElementRead }
 
-export { CircleElementUpdate_2 as CircleElementUpdate }
+export { CircleElementUpdate }
 
-export { CircleToolSettings_2 as CircleToolSettings }
+export { CircleToolSettings }
 
-export { ConfigurableToolType_2 as ConfigurableToolType }
+export { ConfigurableToolType }
 
-export { CountGridConfig_2 as CountGridConfig }
+export { CountGridConfig }
 
 export { CreateActionTriggerParams }
 
-export { CreateLayersFromGeoJsonParams_2 as CreateLayersFromGeoJsonParams }
+export { CreateLayersFromGeoJsonParams }
 
 export { CreateOrUpdatePanelParams }
 
 export { CreatePanelElementsParams }
 
-export { DataOnlyLayer_2 as DataOnlyLayer }
+export { DataOnlyLayer }
 
 export { DeletePanelElementsParams }
 
 export { Element_2 as Element }
 
-export { ElementChangeCallbackParams_2 as ElementChangeCallbackParams }
+export { ElementChangeCallbackParams }
 
-export { ElementCreate_2 as ElementCreate }
+export { ElementCreate }
 
-export { ElementGroup_2 as ElementGroup }
+export { ElementGroup }
 
-export { ElementGroupChangeCallbackParams_2 as ElementGroupChangeCallbackParams }
+export { ElementGroupChangeCallbackParams }
 
-export { ElementGroupNode_2 as ElementGroupNode }
+export { ElementGroupNode }
 
-export { ElementNode_2 as ElementNode }
+export { ElementNode }
 
-export { ElementsController_2 as ElementsController }
+export { ElementsController }
 
-export { ElementUpdate_2 as ElementUpdate }
+export { ElementUpdate }
 
-export { EntityNode_2 as EntityNode }
+export { EntityNode }
 
-export { FeatureNode_2 as FeatureNode }
+export { FeatureNode }
 
-export { FeatureSelection_2 as FeatureSelection }
+export { FeatureSelection }
 
 // @public
 export const Felt: {
-    embed(container: HTMLElement, mapId: string, options?: FeltEmbedOptions): Promise<FeltController_2>;
-    connect(feltWindow: Pick<Window, "postMessage">): Promise<FeltController_2>;
+    embed(container: HTMLElement, mapId: string, options?: FeltEmbedOptions): Promise<FeltController>;
+    connect(feltWindow: Pick<Window, "postMessage">): Promise<FeltController>;
 };
 
-export { FeltBoundary_2 as FeltBoundary }
+export { FeltBoundary }
 
-export { FeltController_2 as FeltController }
+export { FeltController }
 
 // Warning: (ae-forgotten-export) The symbol "FeltEmbedOptionsSchema" needs to be exported by the entry point client.d.ts
 //
 // @public
 export interface FeltEmbedOptions extends z<typeof FeltEmbedOptionsSchema> {
     // (undocumented)
-    initialViewport?: ViewportCenterZoom_2;
+    initialViewport?: ViewportCenterZoom;
     // (undocumented)
-    uiControls?: UiControlsOptions_2;
+    uiControls?: UiControlsOptions;
 }
 
 // @internal (undocumented)
@@ -369,235 +369,235 @@ const FeltEmbedOptionsSchema: z_2.ZodObject<{
     } | undefined;
 }>;
 
-export { FeltTiledVectorSource_2 as FeltTiledVectorSource }
+export { FeltTiledVectorSource }
 
-export { FeltZoom_2 as FeltZoom }
+export { FeltZoom }
 
-export { FilterExpression_2 as FilterExpression }
+export { FilterExpression }
 
-export { FilterLogicGate_2 as FilterLogicGate }
+export { FilterLogicGate }
 
-export { Filters_2 as Filters }
+export { Filters }
 
-export { FilterTernary_2 as FilterTernary }
+export { FilterTernary }
 
-export { GeoJsonDataVectorSource_2 as GeoJsonDataVectorSource }
+export { GeoJsonDataVectorSource }
 
-export { GeoJsonFeature_2 as GeoJsonFeature }
+export { GeoJsonFeature }
 
-export { GeoJsonFileVectorSource_2 as GeoJsonFileVectorSource }
+export { GeoJsonFileVectorSource }
 
-export { GeoJsonGeometry_2 as GeoJsonGeometry }
+export { GeoJsonGeometry }
 
-export { GeoJsonProperties_2 as GeoJsonProperties }
+export { GeoJsonProperties }
 
-export { GeoJsonUrlVectorSource_2 as GeoJsonUrlVectorSource }
+export { GeoJsonUrlVectorSource }
 
-export { GeometryFilter_2 as GeometryFilter }
+export { GeometryFilter }
 
-export { GetElementGroupsConstraint_2 as GetElementGroupsConstraint }
+export { GetElementGroupsConstraint }
 
-export { GetElementsConstraint_2 as GetElementsConstraint }
+export { GetElementsConstraint }
 
-export { GetLayerCalculationParams_2 as GetLayerCalculationParams }
+export { GetLayerCalculationParams }
 
-export { GetLayerCategoriesGroup_2 as GetLayerCategoriesGroup }
+export { GetLayerCategoriesGroup }
 
-export { GetLayerCategoriesParams_2 as GetLayerCategoriesParams }
+export { GetLayerCategoriesParams }
 
-export { GetLayerGroupsConstraint_2 as GetLayerGroupsConstraint }
+export { GetLayerGroupsConstraint }
 
-export { GetLayerHistogramBin_2 as GetLayerHistogramBin }
+export { GetLayerHistogramBin }
 
-export { GetLayerHistogramParams_2 as GetLayerHistogramParams }
+export { GetLayerHistogramParams }
 
-export { GetLayerPrecomputedCalculationParams_2 as GetLayerPrecomputedCalculationParams }
+export { GetLayerPrecomputedCalculationParams }
 
-export { GetLayersConstraint_2 as GetLayersConstraint }
+export { GetLayersConstraint }
 
-export { GetRenderedFeaturesConstraint_2 as GetRenderedFeaturesConstraint }
+export { GetRenderedFeaturesConstraint }
 
-export { GridConfig_2 as GridConfig }
+export { GridConfig }
 
-export { GridType_2 as GridType }
+export { GridType }
 
-export { HighlighterElementCreate_2 as HighlighterElementCreate }
+export { HighlighterElementCreate }
 
-export { HighlighterElementRead_2 as HighlighterElementRead }
+export { HighlighterElementRead }
 
-export { HighlighterElementUpdate_2 as HighlighterElementUpdate }
+export { HighlighterElementUpdate }
 
-export { HighlighterToolSettings_2 as HighlighterToolSettings }
+export { HighlighterToolSettings }
 
-export { ImageElementCreate_2 as ImageElementCreate }
+export { ImageElementCreate }
 
-export { ImageElementRead_2 as ImageElementRead }
+export { ImageElementRead }
 
-export { ImageElementUpdate_2 as ImageElementUpdate }
+export { ImageElementUpdate }
 
-export { InputToolSettings_2 as InputToolSettings }
+export { InputToolSettings }
 
-export { InteractionsController_2 as InteractionsController }
+export { InteractionsController }
 
-export { LatLng_2 as LatLng }
+export { LatLng }
 
-export { Layer_2 as Layer }
+export { Layer }
 
-export { LayerBoundaries_2 as LayerBoundaries }
+export { LayerBoundaries }
 
-export { LayerChangeCallbackParams_2 as LayerChangeCallbackParams }
+export { LayerChangeCallbackParams }
 
-export { LayerCommon_2 as LayerCommon }
+export { LayerCommon }
 
-export { LayerFeature_2 as LayerFeature }
+export { LayerFeature }
 
-export { LayerFilters_2 as LayerFilters }
+export { LayerFilters }
 
-export { LayerGroup_2 as LayerGroup }
+export { LayerGroup }
 
-export { LayerGroupChangeCallbackParams_2 as LayerGroupChangeCallbackParams }
+export { LayerGroupChangeCallbackParams }
 
-export { LayerGroupNode_2 as LayerGroupNode }
+export { LayerGroupNode }
 
-export { LayerNode_2 as LayerNode }
+export { LayerNode }
 
-export { LayerProcessingStatus_2 as LayerProcessingStatus }
+export { LayerProcessingStatus }
 
-export { LayerSchema_2 as LayerSchema }
+export { LayerSchema }
 
-export { LayerSchemaAttribute_2 as LayerSchemaAttribute }
+export { LayerSchemaAttribute }
 
-export { LayerSchemaBooleanAttribute_2 as LayerSchemaBooleanAttribute }
+export { LayerSchemaBooleanAttribute }
 
-export { LayerSchemaCommonAttribute_2 as LayerSchemaCommonAttribute }
+export { LayerSchemaCommonAttribute }
 
-export { LayerSchemaDateAttribute_2 as LayerSchemaDateAttribute }
+export { LayerSchemaDateAttribute }
 
-export { LayerSchemaDateTimeAttribute_2 as LayerSchemaDateTimeAttribute }
+export { LayerSchemaDateTimeAttribute }
 
-export { LayerSchemaNumericAttribute_2 as LayerSchemaNumericAttribute }
+export { LayerSchemaNumericAttribute }
 
-export { LayerSchemaTextAttribute_2 as LayerSchemaTextAttribute }
+export { LayerSchemaTextAttribute }
 
-export { LayersController_2 as LayersController }
+export { LayersController }
 
-export { LegendItem_2 as LegendItem }
+export { LegendItem }
 
-export { LegendItemChangeCallbackParams_2 as LegendItemChangeCallbackParams }
+export { LegendItemChangeCallbackParams }
 
-export { LegendItemIdentifier_2 as LegendItemIdentifier }
+export { LegendItemIdentifier }
 
-export { LegendItemsConstraint_2 as LegendItemsConstraint }
+export { LegendItemsConstraint }
 
-export { LineStringGeometry_2 as LineStringGeometry }
+export { LineStringGeometry }
 
-export { LineToolSettings_2 as LineToolSettings }
+export { LineToolSettings }
 
-export { LinkElementRead_2 as LinkElementRead }
+export { LinkElementRead }
 
-export { LngLatTuple_2 as LngLatTuple }
+export { LngLatTuple }
 
-export { MapDetails_2 as MapDetails }
+export { MapDetails }
 
-export { MapInteractionEvent_2 as MapInteractionEvent }
+export { MapInteractionEvent }
 
-export { MarkerElementCreate_2 as MarkerElementCreate }
+export { MarkerElementCreate }
 
-export { MarkerElementRead_2 as MarkerElementRead }
+export { MarkerElementRead }
 
-export { MarkerElementUpdate_2 as MarkerElementUpdate }
+export { MarkerElementUpdate }
 
-export { MarkerToolSettings_2 as MarkerToolSettings }
+export { MarkerToolSettings }
 
-export { MiscController_2 as MiscController }
+export { MiscController }
 
-export { MultiAggregationConfig_2 as MultiAggregationConfig }
+export { MultiAggregationConfig }
 
-export { MultiLineStringGeometry_2 as MultiLineStringGeometry }
+export { MultiLineStringGeometry }
 
-export { MultiPointGeometry_2 as MultiPointGeometry }
+export { MultiPointGeometry }
 
-export { MultiPolygonGeometry_2 as MultiPolygonGeometry }
+export { MultiPolygonGeometry }
 
-export { NoteElementCreate_2 as NoteElementCreate }
+export { NoteElementCreate }
 
-export { NoteElementRead_2 as NoteElementRead }
+export { NoteElementRead }
 
-export { NoteElementUpdate_2 as NoteElementUpdate }
+export { NoteElementUpdate }
 
-export { NoteToolSettings_2 as NoteToolSettings }
+export { NoteToolSettings }
 
 export { OnMapInteractionsOptions }
 
-export { PathElementCreate_2 as PathElementCreate }
+export { PathElementCreate }
 
-export { PathElementRead_2 as PathElementRead }
+export { PathElementRead }
 
-export { PathElementUpdate_2 as PathElementUpdate }
+export { PathElementUpdate }
 
-export { PinToolSettings_2 as PinToolSettings }
+export { PinToolSettings }
 
-export { PlaceElementCreate_2 as PlaceElementCreate }
+export { PlaceElementCreate }
 
-export { PlaceElementRead_2 as PlaceElementRead }
+export { PlaceElementRead }
 
-export { PlaceElementUpdate_2 as PlaceElementUpdate }
+export { PlaceElementUpdate }
 
-export { PlaceFrame_2 as PlaceFrame }
+export { PlaceFrame }
 
-export { PlacementForUIElement_2 as PlacementForUIElement }
+export { PlacementForUIElement }
 
-export { PlaceSymbol_2 as PlaceSymbol }
+export { PlaceSymbol }
 
-export { PointGeometry_2 as PointGeometry }
+export { PointGeometry }
 
-export { PolygonElementCreate_2 as PolygonElementCreate }
+export { PolygonElementCreate }
 
-export { PolygonElementRead_2 as PolygonElementRead }
+export { PolygonElementRead }
 
-export { PolygonElementUpdate_2 as PolygonElementUpdate }
+export { PolygonElementUpdate }
 
-export { PolygonGeometry_2 as PolygonGeometry }
+export { PolygonGeometry }
 
-export { PolygonToolSettings_2 as PolygonToolSettings }
+export { PolygonToolSettings }
 
-export { PrecomputedAggregationMethod_2 as PrecomputedAggregationMethod }
+export { PrecomputedAggregationMethod }
 
-export { RasterBand_2 as RasterBand }
+export { RasterBand }
 
-export { RasterLayer_2 as RasterLayer }
+export { RasterLayer }
 
-export { RasterLayerSource_2 as RasterLayerSource }
+export { RasterLayerSource }
 
-export { RasterValue_2 as RasterValue }
+export { RasterValue }
 
-export { RouteToolSettings_2 as RouteToolSettings }
+export { RouteToolSettings }
 
-export { SelectionController_2 as SelectionController }
+export { SelectionController }
 
-export { SetViewportCenterZoomParams_2 as SetViewportCenterZoomParams }
+export { SetViewportCenterZoomParams }
 
-export { SetVisibilityRequest_2 as SetVisibilityRequest }
+export { SetVisibilityRequest }
 
-export { SortConfig_2 as SortConfig }
+export { SortConfig }
 
-export { SortDirection_2 as SortDirection }
+export { SortDirection }
 
-export { TextElementCreate_2 as TextElementCreate }
+export { TextElementCreate }
 
-export { TextElementRead_2 as TextElementRead }
+export { TextElementRead }
 
-export { TextElementUpdate_2 as TextElementUpdate }
+export { TextElementUpdate }
 
-export { TextToolSettings_2 as TextToolSettings }
+export { TextToolSettings }
 
-export { ToolsController_2 as ToolsController }
+export { ToolsController }
 
-export { ToolSettingsChangeEvent_2 as ToolSettingsChangeEvent }
+export { ToolSettingsChangeEvent }
 
-export { ToolSettingsMap_2 as ToolSettingsMap }
+export { ToolSettingsMap }
 
-export { ToolType_2 as ToolType }
+export { ToolType }
 
 export { UIActionTriggerCreate }
 
@@ -621,9 +621,9 @@ export { UICheckboxGroupElementUpdate }
 
 export { UIControlElementOption }
 
-export { UiController_2 as UiController }
+export { UiController }
 
-export { UiControlsOptions_2 as UiControlsOptions }
+export { UiControlsOptions }
 
 export { UIDividerElement }
 
@@ -691,23 +691,23 @@ export { UIToggleGroupElementUpdate }
 
 export { UpdateActionTriggerParams }
 
-export { UpdateLayerParams_2 as UpdateLayerParams }
+export { UpdateLayerParams }
 
 export { UpdatePanelElementsParams }
 
-export { ValueConfiguration_2 as ValueConfiguration }
+export { ValueConfiguration }
 
-export { VectorLayer_2 as VectorLayer }
+export { VectorLayer }
 
-export { ViewportCenterZoom_2 as ViewportCenterZoom }
+export { ViewportCenterZoom }
 
-export { ViewportConstraints_2 as ViewportConstraints }
+export { ViewportConstraints }
 
-export { ViewportController_2 as ViewportController }
+export { ViewportController }
 
-export { ViewportFitBoundsParams_2 as ViewportFitBoundsParams }
+export { ViewportFitBoundsParams }
 
-export { ViewportState_2 as ViewportState }
+export { ViewportState }
 
 // (No @packageDocumentation comment for this package)
 

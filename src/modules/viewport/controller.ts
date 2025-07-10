@@ -35,6 +35,11 @@ export interface ViewportController {
   /**
    * Gets the current state of the viewport.
    *
+   * Use this method to retrieve the current center coordinates and zoom level
+   * of the map viewport.
+   *
+   * @returns A promise that resolves to the current viewport state.
+   *
    * @example
    * ```typescript
    * // Get current viewport state
@@ -50,6 +55,9 @@ export interface ViewportController {
   /**
    * Moves the map to the specified location.
    *
+   * Use this method to programmatically change the map's viewport to a specific
+   * location and zoom level. The map will animate to the new position.
+   *
    * @example
    * ```typescript
    * felt.setViewport({
@@ -62,6 +70,11 @@ export interface ViewportController {
 
   /**
    * Gets the current state of the viewport constraints.
+   *
+   * Use this method to retrieve the current viewport constraints, which limit
+   * where users can pan and zoom on the map.
+   *
+   * @returns A promise that resolves to the current viewport constraints, or `null` if no constraints are set.
    *
    * @example
    * ```typescript
@@ -82,6 +95,10 @@ export interface ViewportController {
 
   /**
    * Constrains the map viewport so it stays inside certain bounds and/or certain zoom levels.
+   *
+   * Use this method to limit where users can navigate on the map. This is useful
+   * for keeping users focused on a specific area or preventing them from zooming
+   * too far in or out.
    *
    * @example
    * ```typescript
@@ -119,6 +136,10 @@ export interface ViewportController {
   /**
    * Fits the map to the specified bounds.
    *
+   * Use this method to automatically adjust the viewport to show a specific
+   * geographic area. The map will calculate the appropriate center and zoom
+   * level to fit the bounds within the current map size.
+   *
    * @example
    * ```typescript
    * const west = -122.4194;
@@ -133,7 +154,10 @@ export interface ViewportController {
   /**
    * Adds a listener for when the viewport changes.
    *
-   * @returns A function to unsubscribe from the listener
+   * Use this to react to viewport changes, such as updating your UI or
+   * triggering other actions when users navigate the map.
+   *
+   * @returns A function to unsubscribe from the listener.
    *
    * @event
    * @example
@@ -161,7 +185,10 @@ export interface ViewportController {
    * stops dragging or zooming the map, animations have finished, or inertial
    * dragging ends.
    *
-   * @returns A function to unsubscribe from the listener
+   * Use this to react to the end of viewport changes, such as triggering
+   * data loading or analysis when users finish navigating.
+   *
+   * @returns A function to unsubscribe from the listener.
    *
    * @event
    * @example
@@ -185,7 +212,11 @@ export interface ViewportController {
    * - All tiles for the current viewport have been loaded
    * - Any fade transitions (e.g. for labels) have completed
    *
-   * @returns A function to unsubscribe from the listener
+   * Use this to perform actions when the map is completely stable and ready
+   * for user interaction, such as enabling certain features or triggering
+   * data analysis.
+   *
+   * @returns A function to unsubscribe from the listener.
    *
    * @event
    * @example

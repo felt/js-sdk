@@ -14,11 +14,15 @@ The Tools controller allows you to let users draw elements on the map.
 
 Sets the tool to use for drawing elements on the map.
 
+Use this method to programmatically activate drawing tools for users. When a tool
+is set, users can draw elements on the map using that tool. Set to `null` to
+deactivate all drawing tools.
+
 ### Parameters
 
-| Parameter | Type                                | Description      |
-| --------- | ----------------------------------- | ---------------- |
-| `tool`    | `null` \| [`ToolType`](ToolType.md) | The tool to set. |
+| Parameter | Type                                | Description                                         |
+| --------- | ----------------------------------- | --------------------------------------------------- |
+| `tool`    | `null` \| [`ToolType`](ToolType.md) | The tool to set, or `null` to deactivate all tools. |
 
 ### Returns
 
@@ -42,11 +46,13 @@ await felt.setTool(null);
 
 Gets the current tool, if any is in use.
 
+Use this method to check which drawing tool is currently active, if any.
+
 ### Returns
 
 `Promise`\<`null` | [`ToolType`](ToolType.md)>
 
-The current tool, or `null` if no tool is in use.
+A promise that resolves to the current tool, or `null` if no tool is in use.
 
 ### Example
 
@@ -62,6 +68,9 @@ const tool = await felt.getTool(); // "marker", "polygon", etc.
 
 Listens for changes to the current tool.
 
+Use this to react to tool changes, such as updating your UI to reflect
+the currently active drawing tool.
+
 ### Parameters
 
 | Parameter      | Type                                                                     | Description                                                              |
@@ -72,8 +81,6 @@ Listens for changes to the current tool.
 ### Returns
 
 `VoidFunction`
-
-A function to unsubscribe from the listener
 
 ### Example
 
@@ -94,11 +101,14 @@ unsubscribe();
 
 Sets the settings for the current tool.
 
+Use this method to configure how drawing tools behave, such as setting colors,
+stroke widths, or other tool-specific properties.
+
 ### Parameters
 
-| Parameter  | Type                                        | Description          |
-| ---------- | ------------------------------------------- | -------------------- |
-| `settings` | [`InputToolSettings`](InputToolSettings.md) | The settings to set. |
+| Parameter  | Type                                        | Description                                 |
+| ---------- | ------------------------------------------- | ------------------------------------------- |
+| `settings` | [`InputToolSettings`](InputToolSettings.md) | The settings to set for the specified tool. |
 
 ### Returns
 
@@ -120,7 +130,9 @@ await felt.setToolSettings({
 
 > **getToolSettings**\<`T`>(`tool`: `T`): `Promise`\<[`ToolSettingsMap`](ToolSettingsMap.md)\[`T`]>
 
-Gets the settings for the chosen tool
+Gets the settings for the chosen tool.
+
+Use this method to retrieve the current configuration of a drawing tool.
 
 ### Type Parameters
 
@@ -130,15 +142,15 @@ Gets the settings for the chosen tool
 
 ### Parameters
 
-| Parameter | Type |
-| --------- | ---- |
-| `tool`    | `T`  |
+| Parameter | Type | Description                   |
+| --------- | ---- | ----------------------------- |
+| `tool`    | `T`  | The tool to get settings for. |
 
 ### Returns
 
 `Promise`\<[`ToolSettingsMap`](ToolSettingsMap.md)\[`T`]>
 
-The settings for the chosen tool.
+A promise that resolves to the settings for the chosen tool.
 
 ### Example
 
@@ -154,6 +166,9 @@ const settings = await felt.getToolSettings("marker");
 
 Listens for changes to the settings on all tools.
 
+Use this to react to tool setting changes, such as updating your UI to
+reflect the current tool configuration.
+
 ### Parameters
 
 | Parameter      | Type                                                                                             |
@@ -165,7 +180,7 @@ Listens for changes to the settings on all tools.
 
 `VoidFunction`
 
-A function to unsubscribe from the listener
+A function to unsubscribe from the listener.
 
 ### Example
 

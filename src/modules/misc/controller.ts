@@ -8,12 +8,20 @@ export const miscController = (
 });
 
 /**
+ * The Misc controller provides access to miscellaneous map functionality
+ * that doesn't fit into other controller categories.
+ *
  * @group Controller
  * @public
  */
 export interface MiscController {
   /**
    * Gets the details of the map.
+   *
+   * Use this method to retrieve metadata about the current map, such as
+   * its title, description, and other map-level information.
+   *
+   * @returns A promise that resolves to the map details.
    *
    * @example
    * ```typescript

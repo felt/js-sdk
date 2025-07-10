@@ -1,5 +1,42 @@
 # @feltmaps/js-sdk
 
+## 1.7.0
+
+### Minor Changes
+
+- f40a75c: Update getPrecomputedAggregates types
+- 4c4ebfd: Add UIIframeElement to custom ui panel
+- b87393f: Better docs, types and method consistency for Custom Panels API
+- aff926a: Return UIPanel on custom panel API methods
+- f5ca219: Speed up initial Felt/SDK connection
+- 0b06e28: Add support for align and distribute items on grid container
+- bd1952f: Merge create and update panel methods and require using createPanelId
+- 27cc597: Add UIGridContainerElement to custom ui panel
+- f2fcd2a: Add checkbox, radio and toggle controls to custom ui panel
+- 15a35a5: Add method getPrecomputedAggregates
+- 6ce4a76: Rename UIPanel onClose to onClickClose
+- c16c55a: Support disabled on custom ui control option
+- 2688f9c: Add UIButtonRowElement to custom ui panel
+- 49d8895: Add Custom UI API for action triggers
+- 0754363: Add new variants, drop thin variants and add tint prop to UIButtonElement
+- 535e539: Include element id on every custom ui callback args
+- b848937: Add tool setting to hide/show inspector
+- 1e8e6f1: Return UIActionTrigger on custom action trigger API methods
+- 2b0f08f: Add Custom UI API for panels
+- f73dccf: Remove UIButtonGroupElement from custom ui panel
+
+### Patch Changes
+
+- 58bd6dd: Add isDeterministicId to LayerFeature
+- 07b27c6: Export bundled controller types file for consumption as single file
+- 41e1612: Update getAggregates examples to be correct
+- 475c98e: Update getAggregates + MultiAggregationConfig docs
+- ea5c7ff: Run patch on prepare, not install
+- 4c83cfe: Don't try to patch packages not in dev mode
+- 2008356: Documentation improvements
+- 2fd720d: Use singular for custom ui types
+- a1c6322: Make custom panel API consistent with other methods
+
 ## 1.6.0
 
 ### Minor Changes

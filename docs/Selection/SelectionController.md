@@ -14,9 +14,14 @@ The Selection controller allows you to listen for changes to the selection on th
 
 Gets the current selection as a list of entity identifiers.
 
+Use this method to retrieve the current selection state, which can include
+features, elements, or both types of entities.
+
 ### Returns
 
 `Promise`\<[`EntityNode`](EntityNode.md)\[]>
+
+A promise that resolves to an array of selected entity nodes.
 
 ### Example
 
@@ -33,6 +38,9 @@ const selection = await felt.getSelection();
 Selects a feature on a layer. This will show the feature's popup, modal or
 sidebar (if configured) and highlight the feature.
 
+Use this method to programmatically select features, which can be useful for
+highlighting specific data points or triggering feature-specific UI.
+
 ### Parameters
 
 | Parameter | Type                                      |
@@ -42,6 +50,8 @@ sidebar (if configured) and highlight the feature.
 ### Returns
 
 `Promise`\<`void`>
+
+A promise that resolves when the feature is selected.
 
 ### Example
 
@@ -60,7 +70,10 @@ felt.selectFeature({
 
 > **clearSelection**(`params`?: \{ `features`: `boolean`; `elements`: `boolean`; }): `Promise`\<`void`>
 
-Clears the current selection (elements, features or both)
+Clears the current selection (elements, features or both).
+
+Use this method to programmatically clear the current selection, which can
+be useful for resetting the map state or preparing for new selections.
 
 ### Parameters
 
@@ -73,6 +86,8 @@ Clears the current selection (elements, features or both)
 ### Returns
 
 `Promise`\<`void`>
+
+A promise that resolves when the selection is cleared.
 
 ### Example
 
@@ -102,6 +117,9 @@ felt.clearSelection({ elements: true });
 
 Adds a listener for when the selection changes.
 
+Use this to react to selection changes, such as updating your UI to reflect
+what is currently selected on the map.
+
 ### Parameters
 
 | Parameter        | Type                                                                                       |
@@ -113,7 +131,7 @@ Adds a listener for when the selection changes.
 
 `VoidFunction`
 
-A function to unsubscribe from the listener
+A function to unsubscribe from the listener.
 
 ### Example
 

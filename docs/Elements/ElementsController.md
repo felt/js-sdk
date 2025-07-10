@@ -15,6 +15,9 @@ map, and make changes to their visibility.
 
 Get a single element from the map by its id.
 
+Use this method when you know the specific ID of an element and want to retrieve
+its current state. This is more efficient than getting all elements and filtering.
+
 ### Parameters
 
 | Parameter | Type     | Description                            |
@@ -25,7 +28,7 @@ Get a single element from the map by its id.
 
 `Promise`\<`null` | [`Element`](Element.md)>
 
-The requested element.
+A promise that resolves to the requested element, or `null` if not found.
 
 ### Example
 
@@ -56,6 +59,9 @@ property of the element, with some differences:
 
 * Text, Note and Image elements do not return geometry, so will return `null`.
 
+Use this method when you need the geometric representation of an element for
+spatial analysis or visualization purposes.
+
 ### Parameters
 
 | Parameter | Type     | Description                                            |
@@ -65,6 +71,8 @@ property of the element, with some differences:
 ### Returns
 
 `Promise`\<`null` | [`GeoJsonGeometry`](../Shared/GeoJsonGeometry.md)>
+
+A promise that resolves to the element's geometry in GeoJSON format, or `null` if the element has no geometry.
 
 ### Example
 
@@ -82,17 +90,20 @@ console.log(geometry?.type, geometry?.coordinates);
 Gets elements from the map, according to the constraints supplied. If no
 constraints are supplied, all elements will be returned.
 
+Use this method to retrieve multiple elements, optionally filtered by constraints.
+This is useful for bulk operations or when you need to analyze all elements on the map.
+
 ### Parameters
 
-| Parameter     | Type                                                | Description                                                     |
-| ------------- | --------------------------------------------------- | --------------------------------------------------------------- |
-| `constraint`? | [`GetElementsConstraint`](GetElementsConstraint.md) | The constraints to apply to the elements returned from the map. |
+| Parameter     | Type                                                | Description                                                          |
+| ------------- | --------------------------------------------------- | -------------------------------------------------------------------- |
+| `constraint`? | [`GetElementsConstraint`](GetElementsConstraint.md) | Optional constraints to apply to the elements returned from the map. |
 
 ### Returns
 
 `Promise`\<(`null` | [`Element`](Element.md))\[]>
 
-All elements on the map.
+A promise that resolves to an array of elements, ordered by the order specified in Felt.
 
 ### Remarks
 
@@ -114,17 +125,20 @@ const elements = await felt.getElements();
 
 Get an element group from the map by its id.
 
+Element groups allow you to organize related elements together and control
+their visibility as a unit.
+
 ### Parameters
 
-| Parameter | Type     |
-| --------- | -------- |
-| `id`      | `string` |
+| Parameter | Type     | Description                                  |
+| --------- | -------- | -------------------------------------------- |
+| `id`      | `string` | The id of the element group you want to get. |
 
 ### Returns
 
 `Promise`\<`null` | [`ElementGroup`](ElementGroup.md)>
 
-The requested element group.
+A promise that resolves to the requested element group, or `null` if not found.
 
 ### Example
 
@@ -141,17 +155,20 @@ const elementGroup = await felt.getElementGroup("element-group-1");
 Gets element groups from the map, according to the filters supplied. If no
 constraints are supplied, all element groups will be returned in rendering order.
 
+Use this method to retrieve multiple element groups, optionally filtered by constraints.
+This is useful for bulk operations on element groups.
+
 ### Parameters
 
-| Parameter     | Type                                                          | Description                                                           |
-| ------------- | ------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `constraint`? | [`GetElementGroupsConstraint`](GetElementGroupsConstraint.md) | The constraints to apply to the element groups returned from the map. |
+| Parameter     | Type                                                          | Description                                                                |
+| ------------- | ------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `constraint`? | [`GetElementGroupsConstraint`](GetElementGroupsConstraint.md) | Optional constraints to apply to the element groups returned from the map. |
 
 ### Returns
 
 `Promise`\<(`null` | [`ElementGroup`](ElementGroup.md))\[]>
 
-The requested element groups.
+A promise that resolves to an array of element groups in rendering order.
 
 ### Example
 
@@ -167,15 +184,20 @@ const elementGroups = await felt.getElementGroups({ ids: ["element-group-1", "el
 
 Hide or show element groups with the given ids.
 
+Use this method to control the visibility of multiple element groups at once.
+This is more efficient than hiding/showing individual elements.
+
 ### Parameters
 
-| Parameter    | Type                                                        |
-| ------------ | ----------------------------------------------------------- |
-| `visibility` | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) |
+| Parameter    | Type                                                        | Description                                      |
+| ------------ | ----------------------------------------------------------- | ------------------------------------------------ |
+| `visibility` | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) | The visibility configuration for element groups. |
 
 ### Returns
 
 `Promise`\<`void`>
+
+A promise that resolves when the visibility changes are applied.
 
 ### Example
 
@@ -191,15 +213,20 @@ felt.setElementGroupVisibility({ show: ["element-group-1", "element-group-2"], h
 
 Create a new element on the map.
 
+Use this method to programmatically create elements on the map. Elements created
+via the SDK are only available to the current session and are not persisted.
+
 ### Parameters
 
-| Parameter | Type                                |
-| --------- | ----------------------------------- |
-| `element` | [`ElementCreate`](ElementCreate.md) |
+| Parameter | Type                                | Description                          |
+| --------- | ----------------------------------- | ------------------------------------ |
+| `element` | [`ElementCreate`](ElementCreate.md) | The element configuration to create. |
 
 ### Returns
 
 `Promise`\<[`Element`](Element.md)>
+
+A promise that resolves to the created element.
 
 ### Example
 
@@ -215,15 +242,20 @@ const element = await felt.createElement({ type: "Place", coordinates: [10, 10] 
 
 Update an element on the map. The element type must be specified.
 
+Use this method to modify existing elements. You can update properties like
+coordinates, styling, and metadata.
+
 ### Parameters
 
-| Parameter | Type                                |
-| --------- | ----------------------------------- |
-| `element` | [`ElementUpdate`](ElementUpdate.md) |
+| Parameter | Type                                | Description                       |
+| --------- | ----------------------------------- | --------------------------------- |
+| `element` | [`ElementUpdate`](ElementUpdate.md) | The element update configuration. |
 
 ### Returns
 
 `Promise`\<[`Element`](Element.md)>
+
+A promise that resolves to the updated element.
 
 ### Example
 
@@ -252,15 +284,19 @@ await felt.updateElement({
 
 Delete an element from the map.
 
+Use this method to remove elements from the map. This operation cannot be undone.
+
 ### Parameters
 
-| Parameter | Type     |
-| --------- | -------- |
-| `id`      | `string` |
+| Parameter | Type     | Description                      |
+| --------- | -------- | -------------------------------- |
+| `id`      | `string` | The id of the element to delete. |
 
 ### Returns
 
 `Promise`\<`void`>
+
+A promise that resolves when the element is deleted.
 
 ### Example
 
@@ -276,6 +312,18 @@ await felt.deleteElement("element-1");
 
 Adds a listener for when an element is created.
 
+This will fire when elements are created programmatically, or when the
+user starts creating an element with a drawing tool.
+
+When the user creates an element with a drawing tool, it can begin in
+an invalid state, such as if you've just placed a single point in a polygon.
+
+You can use the `isBeingCreated` property to determine if the element is
+still being created by a drawing tool.
+
+If you want to know when the element is finished being created, you can
+use the [\`onElementCreateEnd\`](ElementsController.md#onelementcreateend) listener.
+
 ### Parameters
 
 | Parameter      | Type                                                                                                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
@@ -287,7 +335,7 @@ Adds a listener for when an element is created.
 
 `VoidFunction`
 
-A function to unsubscribe from the listener
+A function to unsubscribe from the listener.
 
 ### Example
 
@@ -327,7 +375,7 @@ add the marker, type a label, then finally deselect the element.
 
 `VoidFunction`
 
-A function to unsubscribe from the listener
+A function to unsubscribe from the listener.
 
 ### Example
 
@@ -370,7 +418,7 @@ still being created by a drawing tool.
 
 `VoidFunction`
 
-A function to unsubscribe from the listener
+A function to unsubscribe from the listener.
 
 ### Example
 
@@ -392,6 +440,9 @@ unsubscribe();
 
 Adds a listener for when an element is deleted.
 
+Use this to react to element deletions, such as cleaning up related data
+or updating your application state.
+
 ### Parameters
 
 | Parameter         | Type                                                           | Description                                             |
@@ -405,7 +456,7 @@ Adds a listener for when an element is deleted.
 
 `VoidFunction`
 
-A function to unsubscribe from the listener
+A function to unsubscribe from the listener.
 
 ### Example
 
@@ -427,6 +478,9 @@ unsubscribe();
 
 Adds a listener for when an element group changes.
 
+Use this to react to changes in element groups, such as when elements are
+added to or removed from groups.
+
 ### Parameters
 
 | Parameter         | Type                                                                                                                                              |
@@ -440,7 +494,7 @@ Adds a listener for when an element group changes.
 
 `VoidFunction`
 
-A function to unsubscribe from the listener
+A function to unsubscribe from the listener.
 
 ### Example
 

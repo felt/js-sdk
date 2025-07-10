@@ -114,6 +114,7 @@ await felt.deleteActionTrigger("enablePolygonTool");
 Creates a panel ID.
 
 In order to create a panel using [createOrUpdatePanel](UiController.md#createorupdatepanel), you need to create a panel ID first.
+Panel IDs are automatically generated to prevent conflicts with other panels.
 
 ### Returns
 
@@ -238,6 +239,9 @@ await felt.deletePanel("panel-1");
 
 Creates elements in a panel.
 
+Use this method to add new elements to an existing panel without replacing
+the entire panel content. This is useful for dynamic UI updates.
+
 ### Parameters
 
 | Parameter | Type                                                        | Description                   |
@@ -271,6 +275,9 @@ await felt.createPanelElements({
 
 Updates an existing element in a panel. This method can only update elements that
 already exist in the panel and have an ID.
+
+Use this method to modify specific elements without replacing the entire panel.
+This is more efficient than using [createOrUpdatePanel](UiController.md#createorupdatepanel) for small changes.
 
 ### Parameters
 
@@ -319,6 +326,9 @@ await felt.updatePanelElements({
 
 Deletes elements from a panel.
 
+Use this method to remove specific elements from a panel without replacing
+the entire panel content.
+
 ### Parameters
 
 | Parameter | Type                                                        | Description                   |
@@ -345,6 +355,9 @@ await felt.deletePanelElements({
 > **updateUiControls**(`controls`: [`UiControlsOptions`](UiControlsOptions.md)): `void`
 
 Updates the UI controls on the embedded map.
+
+Use this method to show or hide various UI controls like the legend,
+full screen button, and other map interface elements.
 
 ### Parameters
 
@@ -416,13 +429,16 @@ await felt.setOnMapInteractionsUi({
 
 Shows a data table view for the specified layer, optionally sorted by a given attribute.
 
+The data table displays feature data in a tabular format, making it easy to
+browse and analyze layer data. You can control the initial sorting of the table.
+
 ### Parameters
 
-| Parameter         | Type                                                                          |
-| ----------------- | ----------------------------------------------------------------------------- |
-| `params`?         | \{ `layerId`: `string`; `sorting`: [`SortConfig`](../Shared/SortConfig.md); } |
-| `params.layerId`? | `string`                                                                      |
-| `params.sorting`? | [`SortConfig`](../Shared/SortConfig.md)                                       |
+| Parameter         | Type                                                                          | Description                                     |
+| ----------------- | ----------------------------------------------------------------------------- | ----------------------------------------------- |
+| `params`?         | \{ `layerId`: `string`; `sorting`: [`SortConfig`](../Shared/SortConfig.md); } | Optional parameters for showing the data table. |
+| `params.layerId`? | `string`                                                                      | The ID of the layer to show data for.           |
+| `params.sorting`? | [`SortConfig`](../Shared/SortConfig.md)                                       | Optional sorting configuration for the table.   |
 
 ### Returns
 

@@ -51,11 +51,16 @@ export interface ElementsController {
   /**
    * Get a single element from the map by its id.
    *
+   * Use this method when you know the specific ID of an element and want to retrieve
+   * its current state. This is more efficient than getting all elements and filtering.
+   *
+   * @param id - The id of the element you want to get.
+   * @returns A promise that resolves to the requested element, or `null` if not found.
+   *
    * @example
    * ```typescript
    * const element = await felt.getElement("element-1");
    * ```
-   * @returns The requested element.
    */
   getElement(
     /**
@@ -82,6 +87,11 @@ export interface ElementsController {
    *
    * - Text, Note and Image elements do not return geometry, so will return `null`.
    *
+   * Use this method when you need the geometric representation of an element for
+   * spatial analysis or visualization purposes.
+   *
+   * @param id - The id of the element you want to get the geometry of.
+   * @returns A promise that resolves to the element's geometry in GeoJSON format, or `null` if the element has no geometry.
    *
    * @example
    * ```typescript
@@ -100,6 +110,12 @@ export interface ElementsController {
    * Gets elements from the map, according to the constraints supplied. If no
    * constraints are supplied, all elements will be returned.
    *
+   * Use this method to retrieve multiple elements, optionally filtered by constraints.
+   * This is useful for bulk operations or when you need to analyze all elements on the map.
+   *
+   * @param constraint - Optional constraints to apply to the elements returned from the map.
+   * @returns A promise that resolves to an array of elements, ordered by the order specified in Felt.
+   *
    * @remarks The elements in the map, ordered by the order specified in Felt. This is not
    * necessarily the order that they are drawn in, as Felt draws points above
    * lines and lines above polygons, for instance.
@@ -108,7 +124,6 @@ export interface ElementsController {
    * ```typescript
    * const elements = await felt.getElements();
    * ```
-   * @returns All elements on the map.
    */
   getElements(
     /**
@@ -120,11 +135,16 @@ export interface ElementsController {
   /**
    * Get an element group from the map by its id.
    *
+   * Element groups allow you to organize related elements together and control
+   * their visibility as a unit.
+   *
+   * @param id - The id of the element group you want to get.
+   * @returns A promise that resolves to the requested element group, or `null` if not found.
+   *
    * @example
    * ```typescript
    * const elementGroup = await felt.getElementGroup("element-group-1");
    * ```
-   * @returns The requested element group.
    */
   getElementGroup(id: string): Promise<ElementGroup | null>;
 
@@ -132,11 +152,16 @@ export interface ElementsController {
    * Gets element groups from the map, according to the filters supplied. If no
    * constraints are supplied, all element groups will be returned in rendering order.
    *
+   * Use this method to retrieve multiple element groups, optionally filtered by constraints.
+   * This is useful for bulk operations on element groups.
+   *
+   * @param constraint - Optional constraints to apply to the element groups returned from the map.
+   * @returns A promise that resolves to an array of element groups in rendering order.
+   *
    * @example
    * ```typescript
    * const elementGroups = await felt.getElementGroups({ ids: ["element-group-1", "element-group-2"] });
    * ```
-   * @returns The requested element groups.
    */
   getElementGroups(
     /**
@@ -148,6 +173,12 @@ export interface ElementsController {
   /**
    * Hide or show element groups with the given ids.
    *
+   * Use this method to control the visibility of multiple element groups at once.
+   * This is more efficient than hiding/showing individual elements.
+   *
+   * @param visibility - The visibility configuration for element groups.
+   * @returns A promise that resolves when the visibility changes are applied.
+   *
    * @example
    * ```typescript
    * felt.setElementGroupVisibility({ show: ["element-group-1", "element-group-2"], hide: ["element-group-3"] });
@@ -158,7 +189,19 @@ export interface ElementsController {
   /**
    * Adds a listener for when an element is created.
    *
-   * @returns A function to unsubscribe from the listener
+   * This will fire when elements are created programmatically, or when the
+   * user starts creating an element with a drawing tool.
+   *
+   * When the user creates an element with a drawing tool, it can begin in
+   * an invalid state, such as if you've just placed a single point in a polygon.
+   *
+   * You can use the `isBeingCreated` property to determine if the element is
+   * still being created by a drawing tool.
+   *
+   * If you want to know when the element is finished being created, you can
+   * use the {@link ElementsController.onElementCreateEnd | `onElementCreateEnd`} listener.
+   *
+   * @returns A function to unsubscribe from the listener.
    *
    * @event
    * @example
@@ -203,7 +246,7 @@ export interface ElementsController {
    * finishes by pressing Enter or Escape. Or when creating a Place element, they
    * add the marker, type a label, then finally deselect the element.
    *
-   * @returns A function to unsubscribe from the listener
+   * @returns A function to unsubscribe from the listener.
    *
    * @event
    * @example
@@ -237,7 +280,7 @@ export interface ElementsController {
    * You can check the {@link ElementChangeCallbackParams.isBeingCreated | `isBeingCreated`} property to determine if the element is
    * still being created by a drawing tool.
    *
-   * @returns A function to unsubscribe from the listener
+   * @returns A function to unsubscribe from the listener.
    *
    * @event
    * @example
@@ -273,7 +316,10 @@ export interface ElementsController {
   /**
    * Adds a listener for when an element is deleted.
    *
-   * @returns A function to unsubscribe from the listener
+   * Use this to react to element deletions, such as cleaning up related data
+   * or updating your application state.
+   *
+   * @returns A function to unsubscribe from the listener.
    *
    * @event
    * @example
@@ -304,7 +350,10 @@ export interface ElementsController {
   /**
    * Adds a listener for when an element group changes.
    *
-   * @returns A function to unsubscribe from the listener
+   * Use this to react to changes in element groups, such as when elements are
+   * added to or removed from groups.
+   *
+   * @returns A function to unsubscribe from the listener.
    *
    * @event
    * @example
@@ -328,6 +377,12 @@ export interface ElementsController {
   /**
    * Create a new element on the map.
    *
+   * Use this method to programmatically create elements on the map. Elements created
+   * via the SDK are only available to the current session and are not persisted.
+   *
+   * @param element - The element configuration to create.
+   * @returns A promise that resolves to the created element.
+   *
    * @example
    * ```typescript
    * const element = await felt.createElement({ type: "Place", coordinates: [10, 10] });
@@ -337,6 +392,12 @@ export interface ElementsController {
 
   /**
    * Update an element on the map. The element type must be specified.
+   *
+   * Use this method to modify existing elements. You can update properties like
+   * coordinates, styling, and metadata.
+   *
+   * @param element - The element update configuration.
+   * @returns A promise that resolves to the updated element.
    *
    * @example
    * ```typescript
@@ -360,6 +421,11 @@ export interface ElementsController {
 
   /**
    * Delete an element from the map.
+   *
+   * Use this method to remove elements from the map. This operation cannot be undone.
+   *
+   * @param id - The id of the element to delete.
+   * @returns A promise that resolves when the element is deleted.
    *
    * @example
    * ```typescript

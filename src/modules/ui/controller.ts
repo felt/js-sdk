@@ -142,6 +142,7 @@ export interface UiController {
    * Creates a panel ID.
    *
    * In order to create a panel using {@link createOrUpdatePanel}, you need to create a panel ID first.
+   * Panel IDs are automatically generated to prevent conflicts with other panels.
    *
    * @example
    * ```typescript
@@ -238,6 +239,9 @@ export interface UiController {
   /**
    * Creates elements in a panel.
    *
+   * Use this method to add new elements to an existing panel without replacing
+   * the entire panel content. This is useful for dynamic UI updates.
+   *
    * @param args - The arguments for the method.
    * @param args.panelId - The id of the panel to add the elements to.
    * @param args.elements - The elements to add.
@@ -277,6 +281,9 @@ export interface UiController {
    * Updates an existing element in a panel. This method can only update elements that
    * already exist in the panel and have an ID.
    *
+   * Use this method to modify specific elements without replacing the entire panel.
+   * This is more efficient than using {@link createOrUpdatePanel} for small changes.
+   *
    * @param args - The arguments for the method.
    * @param args.panelId - The id of the panel to update the element in.
    * @param args.elements - Array of elements to update. Each element must have an `id` and `type`
@@ -315,6 +322,9 @@ export interface UiController {
   /**
    * Deletes elements from a panel.
    *
+   * Use this method to remove specific elements from a panel without replacing
+   * the entire panel content.
+   *
    * @param args - The arguments for the method.
    * @param args.panelId - The id of the panel to delete the elements from.
    * @param args.elements - The elements to delete.
@@ -331,6 +341,11 @@ export interface UiController {
   /**
    * Updates the UI controls on the embedded map.
    *
+   * Use this method to show or hide various UI controls like the legend,
+   * full screen button, and other map interface elements.
+   *
+   * @param controls - The controls to update.
+   *
    * @example
    * ```typescript
    * // Show some UI controls
@@ -345,8 +360,6 @@ export interface UiController {
    *   geolocation: false,
    * });
    * ```
-   *
-   * @param controls - The controls to update.
    */
   updateUiControls(controls: UiControlsOptions): void;
 
@@ -374,6 +387,13 @@ export interface UiController {
 
   /**
    * Shows a data table view for the specified layer, optionally sorted by a given attribute.
+   *
+   * The data table displays feature data in a tabular format, making it easy to
+   * browse and analyze layer data. You can control the initial sorting of the table.
+   *
+   * @param params - Optional parameters for showing the data table.
+   * @param params.layerId - The ID of the layer to show data for.
+   * @param params.sorting - Optional sorting configuration for the table.
    *
    * @example
    * ```typescript

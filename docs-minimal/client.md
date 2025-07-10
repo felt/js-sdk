@@ -4212,7 +4212,7 @@ at which the user finishes, by pressing Escape for example.
 
 If the user is editing an existing element, this will be false.
 
-For elements that are created programatically, this will be false.
+For elements that are created programmatically, this will be false.
 
 ## ElementGroupChangeCallbackParams
 
@@ -5205,7 +5205,7 @@ If the value is `null`, the GeoJSON will not be refreshed automatically.
 ## GeoJsonDataVectorSource
 
 A GeoJSON data source is a layer that is populated from GeoJSON data, such as
-from a local file, or programatically-created data.
+from a local file, or programmatically-created data.
 
 ### Properties
 
@@ -6274,7 +6274,7 @@ const element = await felt.createElement({ type: "Place", coordinates: [10, 10] 
 
 > **updateElement**(`element`): `Promise`\<[`Element`](client.md#element-1)>
 
-Update an element on the map.
+Update an element on the map. The element type must be specified.
 
 ##### Parameters
 
@@ -6292,12 +6292,14 @@ Update an element on the map.
 // Update a place element's coordinates
 await felt.updateElement({
   id: "element-1",
+  type: "Place",
   coordinates: [10, 20]
 });
 
 // Update a polygon's style
 await felt.updateElement({
   id: "element-2",
+  type: "Polygon",
   color: "#ABC123",
   fillOpacity: 0.5
 });
@@ -6448,7 +6450,7 @@ The style to set for the layer.
 // first get the current style
 const oldStyle = (await felt.getLayer("layer-1")).style;
 
-felt.setLayerStyle({ id: "layer-1", style: {
+await felt.setLayerStyle({ id: "layer-1", style: {
   ...oldStyle,
   paint: {
     ...oldStyle.paint,
@@ -6516,7 +6518,7 @@ const layerFromFile = await felt.createLayersFromGeoJson({
 
 const layerFromUrl = await felt.createLayersFromGeoJson({
   source: {
-    sourceType: "geoJsonUrl",
+    type: "geoJsonUrl",
     url: "https://example.com/parcels.geojson",
   },
   name: "Parcels",
@@ -7244,8 +7246,8 @@ Performs statistical calculations on your data, like counting features or comput
 averages, sums, etc. You can focus your calculation on specific areas or subsets
 of your data using boundaries and filters.
 
-When no aggregation is specified, it counts features. When an aggregation is provided,
-it performs that calculation (average, sum, etc.) on the specified attribute.
+When you request an aggregation other than count, you must specify an attribute to
+aggregate on.
 
 ##### Example
 
@@ -7253,7 +7255,10 @@ it performs that calculation (average, sum, etc.) on the specified attribute.
 // Count all residential buildings
 const residentialCount = await felt.getAggregates({
   layerId: "buildings",
-  filters: ["type", "eq", "residential"]
+  filters: ["type", "eq", "residential"],
+  aggregation: {
+    methods: ["count"],
+  }
 });
 
 // Calculate average home value in a specific neighborhood
@@ -7412,7 +7417,7 @@ felt.selectFeature({
 
 > **clearSelection**(`params`?): `Promise`\<`void`>
 
-Clears the current selection. This clears the selection of
+Clears the current selection (elements, features or both)
 
 ##### Parameters
 
@@ -7651,10 +7656,10 @@ The arguments for the method.
 ```typescript
 await felt.createActionTrigger({
   actionTrigger: {
-    id: "layerTurnPurple", // not required but useful for further updates
-    label: "Turn layer purple",
+    id: "enablePolygonTool", // optional. Required if you want to update the action trigger later
+    label: "Draw polygon",
     onTrigger: async () => {
-      await felt.setLayerStyle("layer-1", { ..., paint: { color: "purple" } });
+      felt.setTool("polygon");
     },
     disabled: false, // optional, defaults to false
   },
@@ -7690,8 +7695,8 @@ Properties provided will override the existing properties.
 
 ```typescript
 await felt.updateActionTrigger({
-  id: "layerTurnPurple",
-  label: "Turn layer points purple", // only label changes
+  id: "enablePolygonTool",
+  label: "Enable polygon tool", // only label changes
 });
 ```
 
@@ -7716,7 +7721,7 @@ The id of the action trigger to delete.
 ##### Example
 
 ```typescript
-await felt.deleteActionTrigger("layerTurnPurple");
+await felt.deleteActionTrigger("enablePolygonTool");
 ```
 
 #### createPanelId()
@@ -7743,28 +7748,32 @@ const panelId = await felt.createPanelId();
 
 Creates or updates a panel.
 
-Panels are rendered on map's right sidebar and are useful to extend Felt UI for your own use cases
-(e.g. a form, a settings panel, etc.) using Felt UI elements (e.g. Text, Button, etc.).
-This way it is possible to cover new use cases while keeping the user experience consistent with the rest of Felt.
+Panels are rendered on the map's right sidebar and allow you to extend Felt UI
+for your own use cases using Felt UI elements (e.g., Text, Button, etc.).
 
-A panel is identified by its ID and must come from [createPanelId](client.md#createpanelid).
-Custom IDs are not supported in order to prevent conflicts with other panels.
+A panel is identified by its ID, which must be created using [createPanelId](client.md#createpanelid).
+Custom IDs are not supported to prevent conflicts with other panels.
 
-Panels have two sections:
+Panels have two main sections:
 
-* `body` - Body of the panel, scrollable.
-* `footer` - It sticks to the bottom of the panel, useful to add submit buttons.
+* `body` - The main content area of the panel, which is scrollable.
+* `footer` - A section that sticks to the bottom of the panel, useful for
+  action buttons like "Submit" or "Cancel".
 
-Regarding panel placement, by default it is added to the end of the panels stack but you can
-specify a different placement by using the `initialPlacement` parameter.
-This placement cannot be updated later.
+Panel placement is controlled by the `initialPlacement` parameter. By default,
+panels are added to the end of the panel stack, but you can specify a different
+placement. Note that this placement cannot be changed after the panel is created.
 
-When adding a panel, its elements' ids are optional though it is recommended to make
-it easier to update or delete them later.
+Element IDs are required for targeted updates and deletions using the other
+panel management methods. For complete panel refreshes with this method,
+element IDs are optional but recommended for consistency.
 
-Once created, you can add elements to the panel by using the [createPanelElements](client.md#createpanelelements) method,
-perform partial updates of elements by using the [updatePanelElements](client.md#updatepanelelements) method or
-delete elements by using the [deletePanelElements](client.md#deletepanelelements) method.
+For dynamic content management, consider these approaches:
+
+* Use this method for complete panel refreshes (replaces all content)
+* Use [createPanelElements](client.md#createpanelelements) to add new elements to existing panels
+* Use [updatePanelElements](client.md#updatepanelelements) to modify specific existing elements
+* Use [deletePanelElements](client.md#deletepanelelements) to remove specific elements
 
 ##### Parameters
 
@@ -7772,7 +7781,7 @@ delete elements by using the [deletePanelElements](client.md#deletepanelelements
 
 [`CreateOrUpdatePanelParams`](client.md#createorupdatepanelparams)
 
-The arguments for the method.
+The arguments for creating or updating the panel.
 
 ##### Returns
 
@@ -7781,34 +7790,36 @@ The arguments for the method.
 ##### Example
 
 ```typescript
-const id = await felt.createPanelId();
+// 1. Create panel ID first (required)
+const panelId = await felt.createPanelId();
 
+// 2. Define reusable elements
+const SELECT = { id: "layer-select", type: "Select", label: "Layer", options: [...] };
+const ANALYZE_BTN = { id: "analyze-btn", type: "Button", label: "Analyze", onClick: handleAnalyze };
+const STATUS_TEXT = { id: "status-text", type: "Text", content: "" };
+const CLEAR_BTN = { id: "clear-btn", type: "Button", label: "Clear", onClick: handleClear };
+
+// 3. Initial state
 await felt.createOrUpdatePanel({
-   panel: {
-      id,
-      title: "My Panel",
-      body: [
-         {
-            type: "Text",
-            content: "Hello, world!",
-         },
-         {
-            type: "TextInput",
-            label: "Name",
-            placeholder: "Enter your name",
-            value: "",
-            onChange: ({ value }) => setName(value),
-         },
-      ],
-      footer: [
-         {
-            type: "Button",
-            label: "Submit",
-            onClick: () => submitForm(),
-         },
-      ],
-   },
-   initialPlacement: { at: "start" }, // when added, the panel will be added to the start of the stack
+  panel: { id: panelId, title: "Data Analyzer", body: [SELECT, ANALYZE_BTN] }
+});
+
+// 4. Loading state (replaces entire panel)
+await felt.createOrUpdatePanel({
+  panel: {
+    id: panelId,
+    title: "Data Analyzer",
+    body: [SELECT, ANALYZE_BTN, { ...STATUS_TEXT, content: "Loading..." }]
+  }
+});
+
+// 5. Results state (replaces entire panel)
+await felt.createOrUpdatePanel({
+  panel: {
+    id: panelId,
+    title: "Data Analyzer",
+    body: [SELECT, ANALYZE_BTN, { ...STATUS_TEXT, content: "**Results:**\n- Found 150 features" }, CLEAR_BTN]
+  }
 });
 ```
 
@@ -7873,7 +7884,8 @@ await felt.createPanelElements({
 
 > **updatePanelElements**(`args`): `Promise`\<[`UIPanel`](client.md#uipanel)>
 
-Updates an element in a panel.
+Updates an existing element in a panel. This method can only update elements that
+already exist in the panel and have an ID.
 
 ##### Parameters
 
@@ -7890,14 +7902,26 @@ The arguments for the method.
 ##### Example
 
 ```typescript
+// 1. Create panel with initial elements
+const panelId = await felt.createPanelId();
+const STATUS_TEXT = { id: "status-text", type: "Text", content: "Ready" };
+
+await felt.createOrUpdatePanel({
+  panel: {
+    id: panelId,
+    title: "My Panel",
+    body: [STATUS_TEXT]
+  }
+});
+
+// 2. Update the existing element
 await felt.updatePanelElements({
   panelId,
   elements: [
     {
       element: {
-        id: "element-1",
-        type: "Text",
-        content: "Hello, world!",
+        ...STATUS_TEXT,                    // Reuse the same element structure
+        content: "Updated content"         // Only change what needs updating
       },
     },
   ],
@@ -8220,7 +8244,7 @@ Adds a listener for when an element is created.
 
 The handler that is called when an element is created.
 
-This will fire when elements are created programatically, or when the
+This will fire when elements are created programmatically, or when the
 user starts creating an element with a drawing tool.
 
 When the user creates an element with a drawing tool, it can begin in
@@ -8242,7 +8266,7 @@ A function to unsubscribe from the listener
 
 ```typescript
 const unsubscribe = felt.onElementCreate({
-  handler: (element) => console.log(element.id),
+  handler: ({isBeingCreated, element}) => console.log(element.id),
 });
 
 // later on...
@@ -8282,7 +8306,7 @@ A function to unsubscribe from the listener
 ##### Example
 
 ```typescript
-const unsubscribe = felt.onToolCreatedElement({
+const unsubscribe = felt.onElementCreateEnd({
   handler: (params) => console.log(params),
 });
 
@@ -8297,7 +8321,7 @@ unsubscribe();
 Adds a listener for when an element changes.
 
 This will fire when an element is being edited, either on the map by the user
-or programatically.
+or programmatically.
 
 Like the [\`onElementCreate\`](client.md#onelementcreate) listener, this will fire when an element is
 still being created by a drawing tool.
@@ -10527,7 +10551,7 @@ The ID of the element.
 
 #### variant?
 
-> `optional` **variant**: `"outlined"` | `"transparent"` | `"filled"`
+> `optional` **variant**: `"filled"` | `"transparent"` | `"outlined"`
 
 The style variant of the button.
 
@@ -10657,7 +10681,7 @@ The id of the button.
 
 #### variant?
 
-> `optional` **variant**: `"outlined"` | `"transparent"` | `"filled"`
+> `optional` **variant**: `"filled"` | `"transparent"` | `"outlined"`
 
 The style variant of the button.
 
@@ -10788,7 +10812,7 @@ The label to display in the button.
 
 #### variant?
 
-> `optional` **variant**: `"outlined"` | `"transparent"` | `"filled"`
+> `optional` **variant**: `"filled"` | `"transparent"` | `"outlined"`
 
 The style variant of the button.
 
@@ -12211,7 +12235,7 @@ By using `grid` property it is possible to control FlexibleSpace's size.
 
 #### items
 
-> **items**: ([`UIButtonElement`](client.md#uibuttonelement) | [`UITextElement`](client.md#uitextelement) | [`UIDividerElement`](client.md#uidividerelement) | [`UITextInputElement`](client.md#uitextinputelement) | [`UISelectElement`](client.md#uiselectelement) | [`UIFlexibleSpaceElement`](client.md#uiflexiblespaceelement) | [`UIButtonRowElement`](client.md#uibuttonrowelement) | [`UICheckboxGroupElement`](client.md#uicheckboxgroupelement) | [`UIRadioGroupElement`](client.md#uiradiogroupelement) | [`UIToggleGroupElement`](client.md#uitogglegroupelement))\[]
+> **items**: ([`UIButtonElement`](client.md#uibuttonelement) | [`UITextElement`](client.md#uitextelement) | [`UIDividerElement`](client.md#uidividerelement) | [`UITextInputElement`](client.md#uitextinputelement) | [`UISelectElement`](client.md#uiselectelement) | [`UIFlexibleSpaceElement`](client.md#uiflexiblespaceelement) | [`UIButtonRowElement`](client.md#uibuttonrowelement) | [`UICheckboxGroupElement`](client.md#uicheckboxgroupelement) | [`UIRadioGroupElement`](client.md#uiradiogroupelement) | [`UIToggleGroupElement`](client.md#uitogglegroupelement) | [`UIIframeElement`](client.md#uiiframeelement))\[]
 
 The items to add to the grid container.
 
@@ -12326,7 +12350,7 @@ See [UIGridContainerElement](client.md#uigridcontainerelement) for more details.
 
 #### items
 
-> **items**: ([`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate) | [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIButtonRowElementCreate`](client.md#uibuttonrowelementcreate) | [`UICheckboxGroupElementCreate`](client.md#uicheckboxgroupelementcreate) | [`UIRadioGroupElementCreate`](client.md#uiradiogroupelementcreate) | [`UIToggleGroupElementCreate`](client.md#uitogglegroupelementcreate))\[]
+> **items**: ([`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate) | [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIButtonRowElementCreate`](client.md#uibuttonrowelementcreate) | [`UICheckboxGroupElementCreate`](client.md#uicheckboxgroupelementcreate) | [`UIRadioGroupElementCreate`](client.md#uiradiogroupelementcreate) | [`UIToggleGroupElementCreate`](client.md#uitogglegroupelementcreate) | [`UIIframeElementCreate`](client.md#uiiframeelementcreate))\[]
 
 The items to add to the grid container.
 
@@ -12509,7 +12533,7 @@ Only takes effect on horizontal stacks.
 
 #### items?
 
-> `optional` **items**: ([`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate) | [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIButtonRowElementCreate`](client.md#uibuttonrowelementcreate) | [`UICheckboxGroupElementCreate`](client.md#uicheckboxgroupelementcreate) | [`UIRadioGroupElementCreate`](client.md#uiradiogroupelementcreate) | [`UIToggleGroupElementCreate`](client.md#uitogglegroupelementcreate))\[]
+> `optional` **items**: ([`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate) | [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIButtonRowElementCreate`](client.md#uibuttonrowelementcreate) | [`UICheckboxGroupElementCreate`](client.md#uicheckboxgroupelementcreate) | [`UIRadioGroupElementCreate`](client.md#uiradiogroupelementcreate) | [`UIToggleGroupElementCreate`](client.md#uitogglegroupelementcreate) | [`UIIframeElementCreate`](client.md#uiiframeelementcreate))\[]
 
 The items to add to the grid container.
 
@@ -12557,75 +12581,334 @@ The id of the element.
 
 `void`
 
+## UIIframeElement
+
+Represents an iframe element in a panel.
+
+The height of the iframe can be set by using the `height` property
+either as a number (measured in pixels) or a string (e.g. “100px” or “50%“).
+
+By default, the height is calculated following a 16:9 ratio.
+
+<figure>
+  <img src="_media/iframe-basic.png" alt="Iframe showing an example website" />
+
+  <figcaption>
+    Iframe with default height (16:9)
+  </figcaption>
+</figure>
+
+```typescript
+{ type: "Iframe", url: "https://www.example.com" }
+```
+
+<figure>
+  <img src="_media/iframe-custom-height.png" alt="Iframe showing an example website with a custom height" />
+
+  <figcaption>
+    Iframe with custom height
+  </figcaption>
+</figure>
+
+```typescript
+{ type: "Iframe", url: "https://www.example.com", height: 300 }
+```
+
+### Properties
+
+#### type
+
+> **type**: `"Iframe"`
+
+#### url
+
+> **url**: `string`
+
+The URL of the iframe.
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### height?
+
+> `optional` **height**: `string` | `number`
+
+The height of the iframe.
+
+If not provided, the height will be automatically calculated following a 16:9 ratio.
+
+#### onCreate()?
+
+> `optional` **onCreate**: (`args`) => `void`
+
+A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: (`args`) => `void`
+
+A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+## UIIframeElementCreate
+
+The parameters for creating an iframe element.
+
+See [UIIframeElement](client.md#uiiframeelement) for more details.
+
+### Remarks
+
+`id` is optional but recommended if you want to be able to perform updates.
+
+### Properties
+
+#### type
+
+> **type**: `"Iframe"`
+
+#### url
+
+> **url**: `string`
+
+The URL of the iframe.
+
+#### height?
+
+> `optional` **height**: `string` | `number`
+
+The height of the iframe.
+
+If not provided, the height will be automatically calculated following a 16:9 ratio.
+
+#### onCreate()?
+
+> `optional` **onCreate**: (`args`) => `void`
+
+A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: (`args`) => `void`
+
+A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### id?
+
+> `optional` **id**: `string`
+
+The ID of the element.
+
+##### Remarks
+
+If not provided, the element will be assigned a random ID, but it is recommended to provide it
+to perform further updates on the element.
+
+If provided, it must be unique within the UI.
+
+##### Default Value
+
+`undefined`
+
+## UIIframeElementUpdate
+
+The parameters for updating an iframe element.
+
+See [UIIframeElement](client.md#uiiframeelement) for more details.
+
+### Remarks
+
+`id` and `type` are required to identify the element to update.
+
+### Properties
+
+#### type
+
+> **type**: `"Iframe"`
+
+#### id
+
+> **id**: `string`
+
+The ID of the element.
+
+#### height?
+
+> `optional` **height**: `string` | `number`
+
+The height of the iframe.
+
+If not provided, the height will be automatically calculated following a 16:9 ratio.
+
+#### url?
+
+> `optional` **url**: `string`
+
+The URL of the iframe.
+
+#### onCreate()?
+
+> `optional` **onCreate**: (`args`) => `void`
+
+A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: (`args`) => `void`
+
+A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
 ## UIPanel
 
-Represents a panel in the UI.
-It can be added to the map by using the [UiController.createOrUpdatePanel](client.md#createorupdatepanel) method.
+A UI panel that can be added to the map using [UiController.createOrUpdatePanel](client.md#createorupdatepanel).
 
-A panel is a container for other UI elements.
-It can have a title, a body, a footer as well as a close button.
-
-The body and footer are arrays of UI elements and turn into vertical stacks of elements.
-
-The close button is a button rendered in the top right corner of the panel that can be
-used to close the panel and is only visible if `onClickClose` is provided.
-Usually, you want to call [UiController.deletePanel](client.md#deletepanel) when the close button is clicked,
-e.g. `onClickClose: () => felt.deletePanel("my-panel")`.
+Panels are containers for UI elements with title, body, footer, and close button.
+Body and footer elements are arranged in vertical stacks.
 
 ### Body
 
-Body is the main content of the panel. It is scrollable which means
-that it can contain a lot of elements.
+Main content area that scrolls when content exceeds available space.
 
 ### Footer
 
-Footer is sticky to the bottom of the panel, and can be used to add actions to the panel (e.g. save, cancel, etc.).
+Sticky bottom section for action buttons (e.g., Save, Cancel).
 
-### Examples
+### Close Button
 
-### basic
+Optional close icon in header. When `onClickClose` is provided, you must handle
+panel cleanup and removal.
+
+### Example
 
 ```typescript
-{
-  title: "My Panel",
-  body: [
-    { type: "Text", text: "Hello" },
-  ],
-}
+// 1. Create panel ID
+const panelId = await felt.createPanelId();
+
+// 2. Create panel with close button and footer
+await felt.createOrUpdatePanel({
+  panel: {
+    id: panelId,
+    title: "My Panel",
+    body: [
+      { type: "Text", content: "Hello, world!" },
+      { type: "TextInput", label: "Name", placeholder: "Enter your name" }
+    ],
+    footer: [
+      {
+        type: "ButtonRow",
+        align: "end",
+        items: [
+          { type: "Button", label: "Cancel", onClick: () => handleCancel() },
+          { type: "Button", label: "Save", onClick: () => handleSave() }
+        ]
+      }
+    ],
+    onClickClose: (args) => {
+      // Clean up any state or resources
+      cleanupResources();
+      // Close the panel
+      felt.deletePanel(panelId);
+    }
+  }
+});
 ```
-
-### closable
-
-````typescript
-{
-  id: "my-panel",
-  title: "My Panel",
-  onClickClose: () => felt.deletePanel("my-panel"),
-}
-
-@example
-### form
-```typescript
-{
-  title: "My Panel",
-  body: [
-    { type: "Text", text: "Introduce your name and last name" },
-    { type: "TextInput", label: "Name", value: "", placeholder: "John", onChange: (value) => setName(value) },
-    { type: "TextInput", label: "Last name", value: "", placeholder: "Doe", onChange: (value) => setLastName(value) },
-  ],
-  footer: [
-    {
-      type: "Grid",
-      grid: "auto-flow / 1fr auto auto",
-      items: [
-        { type: "FlexibleSpace" }, // this will make the buttons to be aligned to the end of the panel
-        { type: "Button", label: "Reset", onClick: () => alert("Reset") },
-        { type: "Button", label: "Save", onClick: () => alert("Save") },
-      ],
-    },
-  ],
-}
-````
 
 ### Properties
 
@@ -15481,11 +15764,11 @@ In both cases, the default value is `{ at: "end" }`.
 
 ## UIPanelElement
 
-> **UIPanelElement**: [`UIButtonElement`](client.md#uibuttonelement) | [`UITextElement`](client.md#uitextelement) | [`UIDividerElement`](client.md#uidividerelement) | [`UITextInputElement`](client.md#uitextinputelement) | [`UISelectElement`](client.md#uiselectelement) | [`UIFlexibleSpaceElement`](client.md#uiflexiblespaceelement) | [`UIButtonRowElement`](client.md#uibuttonrowelement) | [`UICheckboxGroupElement`](client.md#uicheckboxgroupelement) | [`UIRadioGroupElement`](client.md#uiradiogroupelement) | [`UIToggleGroupElement`](client.md#uitogglegroupelement) | [`UIGridContainerElement`](client.md#uigridcontainerelement)
+> **UIPanelElement**: [`UIButtonElement`](client.md#uibuttonelement) | [`UITextElement`](client.md#uitextelement) | [`UIDividerElement`](client.md#uidividerelement) | [`UITextInputElement`](client.md#uitextinputelement) | [`UISelectElement`](client.md#uiselectelement) | [`UIFlexibleSpaceElement`](client.md#uiflexiblespaceelement) | [`UIButtonRowElement`](client.md#uibuttonrowelement) | [`UICheckboxGroupElement`](client.md#uicheckboxgroupelement) | [`UIRadioGroupElement`](client.md#uiradiogroupelement) | [`UIToggleGroupElement`](client.md#uitogglegroupelement) | [`UIIframeElement`](client.md#uiiframeelement) | [`UIGridContainerElement`](client.md#uigridcontainerelement)
 
 ## UIPanelElementCreate
 
-> **UIPanelElementCreate**: [`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate) | [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIButtonRowElementCreate`](client.md#uibuttonrowelementcreate) | [`UICheckboxGroupElementCreate`](client.md#uicheckboxgroupelementcreate) | [`UIRadioGroupElementCreate`](client.md#uiradiogroupelementcreate) | [`UIToggleGroupElementCreate`](client.md#uitogglegroupelementcreate) | [`UIGridContainerElementCreate`](client.md#uigridcontainerelementcreate)
+> **UIPanelElementCreate**: [`UIButtonElementCreate`](client.md#uibuttonelementcreate) | [`UITextElementCreate`](client.md#uitextelementcreate) | [`UIDividerElementCreate`](client.md#uidividerelementcreate) | [`UITextInputElementCreate`](client.md#uitextinputelementcreate) | [`UISelectElementCreate`](client.md#uiselectelementcreate) | [`UIFlexibleSpaceElementCreate`](client.md#uiflexiblespaceelementcreate) | [`UIButtonRowElementCreate`](client.md#uibuttonrowelementcreate) | [`UICheckboxGroupElementCreate`](client.md#uicheckboxgroupelementcreate) | [`UIRadioGroupElementCreate`](client.md#uiradiogroupelementcreate) | [`UIToggleGroupElementCreate`](client.md#uitogglegroupelementcreate) | [`UIIframeElementCreate`](client.md#uiiframeelementcreate) | [`UIGridContainerElementCreate`](client.md#uigridcontainerelementcreate)
 
 This is a union of all the possible elements that can be created inside panel's body or footer.
 
@@ -15495,7 +15778,7 @@ For the sake of convenience, `id` is optional but recommended if you want to be 
 
 ## UIPanelElementUpdate
 
-> **UIPanelElementUpdate**: [`UIButtonElementUpdate`](client.md#uibuttonelementupdate) | [`UITextElementUpdate`](client.md#uitextelementupdate) | [`UITextInputElementUpdate`](client.md#uitextinputelementupdate) | [`UISelectElementUpdate`](client.md#uiselectelementupdate) | [`UIDividerElementUpdate`](client.md#uidividerelementupdate) | [`UIButtonRowElementUpdate`](client.md#uibuttonrowelementupdate) | [`UICheckboxGroupElementUpdate`](client.md#uicheckboxgroupelementupdate) | [`UIRadioGroupElementUpdate`](client.md#uiradiogroupelementupdate) | [`UIToggleGroupElementUpdate`](client.md#uitogglegroupelementupdate) | [`UIGridContainerElementUpdate`](client.md#uigridcontainerelementupdate) | [`UIFlexibleSpaceElementUpdate`](client.md#uiflexiblespaceelementupdate)
+> **UIPanelElementUpdate**: [`UIButtonElementUpdate`](client.md#uibuttonelementupdate) | [`UITextElementUpdate`](client.md#uitextelementupdate) | [`UITextInputElementUpdate`](client.md#uitextinputelementupdate) | [`UISelectElementUpdate`](client.md#uiselectelementupdate) | [`UIDividerElementUpdate`](client.md#uidividerelementupdate) | [`UIButtonRowElementUpdate`](client.md#uibuttonrowelementupdate) | [`UICheckboxGroupElementUpdate`](client.md#uicheckboxgroupelementupdate) | [`UIRadioGroupElementUpdate`](client.md#uiradiogroupelementupdate) | [`UIToggleGroupElementUpdate`](client.md#uitogglegroupelementupdate) | [`UIGridContainerElementUpdate`](client.md#uigridcontainerelementupdate) | [`UIFlexibleSpaceElementUpdate`](client.md#uiflexiblespaceelementupdate) | [`UIIframeElementUpdate`](client.md#uiiframeelementupdate)
 
 This is a union of all the possible elements that can be updated inside panel's body or footer (excluding Divider and FlexibleSpace elements because they cannot be updated).
 

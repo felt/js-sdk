@@ -1,5 +1,12 @@
 # @feltmaps/js-sdk
 
+## 1.7.0-next.22
+
+### Patch Changes
+
+* 41e1612: Update getAggregates examples to be correct
+* 2008356: Documentation improvements
+
 ## 1.7.0-next.21
 
 ### Minor Changes

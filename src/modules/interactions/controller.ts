@@ -19,9 +19,12 @@ export const interactionsController = (
  */
 export interface InteractionsController {
   /**
-   * Allows you to be notified the user clicks on the map.
+   * Allows you to be notified when the user clicks on the map.
    *
-   * @returns A function to unsubscribe from the listener
+   * Use this to react to user clicks on the map, such as triggering custom
+   * actions or collecting interaction data.
+   *
+   * @returns A function to unsubscribe from the listener.
    *
    * @event
    * @example
@@ -39,9 +42,12 @@ export interface InteractionsController {
   }): VoidFunction;
 
   /**
-   * Allows you to be notified the user moves the mouse over the map.
+   * Allows you to be notified when the user moves the mouse over the map.
    *
-   * @returns A function to unsubscribe from the listener
+   * Use this to track mouse movement and detect features under the cursor,
+   * such as for hover effects or real-time data display.
+   *
+   * @returns A function to unsubscribe from the listener.
    *
    * @event
    * @example

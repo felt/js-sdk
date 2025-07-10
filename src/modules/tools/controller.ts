@@ -35,7 +35,11 @@ export interface ToolsController {
   /**
    * Sets the tool to use for drawing elements on the map.
    *
-   * @param tool - The tool to set.
+   * Use this method to programmatically activate drawing tools for users. When a tool
+   * is set, users can draw elements on the map using that tool. Set to `null` to
+   * deactivate all drawing tools.
+   *
+   * @param tool - The tool to set, or `null` to deactivate all tools.
    *
    * @example
    * ```typescript
@@ -51,7 +55,9 @@ export interface ToolsController {
   /**
    * Gets the current tool, if any is in use.
    *
-   * @returns The current tool, or `null` if no tool is in use.
+   * Use this method to check which drawing tool is currently active, if any.
+   *
+   * @returns A promise that resolves to the current tool, or `null` if no tool is in use.
    *
    * @example
    * ```typescript
@@ -63,7 +69,8 @@ export interface ToolsController {
   /**
    * Listens for changes to the current tool.
    *
-   * @returns A function to unsubscribe from the listener
+   * Use this to react to tool changes, such as updating your UI to reflect
+   * the currently active drawing tool.
    *
    * @example
    * ```typescript
@@ -87,6 +94,11 @@ export interface ToolsController {
   /**
    * Sets the settings for the current tool.
    *
+   * Use this method to configure how drawing tools behave, such as setting colors,
+   * stroke widths, or other tool-specific properties.
+   *
+   * @param settings - The settings to set for the specified tool.
+   *
    * @example
    * ```typescript
    * // Set the settings for the marker tool
@@ -95,20 +107,21 @@ export interface ToolsController {
    *   color: "#FE17",
    * });
    * ```
-   *
-   * @param settings - The settings to set.
    */
   setToolSettings(settings: InputToolSettings): void;
 
   /**
-   * Gets the settings for the chosen tool
+   * Gets the settings for the chosen tool.
+   *
+   * Use this method to retrieve the current configuration of a drawing tool.
+   *
+   * @param tool - The tool to get settings for.
+   * @returns A promise that resolves to the settings for the chosen tool.
    *
    * @example
    * ```typescript
    * const settings = await felt.getToolSettings("marker");
    * ```
-   *
-   * @returns The settings for the chosen tool.
    */
   getToolSettings<T extends ConfigurableToolType>(
     tool: T,
@@ -116,6 +129,11 @@ export interface ToolsController {
 
   /**
    * Listens for changes to the settings on all tools.
+   *
+   * Use this to react to tool setting changes, such as updating your UI to
+   * reflect the current tool configuration.
+   *
+   * @returns A function to unsubscribe from the listener.
    *
    * @example
    * ```typescript
@@ -126,7 +144,6 @@ export interface ToolsController {
    * // later on...
    * unsubscribe();
    * ```
-   * @returns A function to unsubscribe from the listener
    */
   onToolSettingsChange(args: {
     handler: (settings: ToolSettingsChangeEvent) => void;

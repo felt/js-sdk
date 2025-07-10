@@ -23,6 +23,11 @@ export interface SelectionController {
   /**
    * Gets the current selection as a list of entity identifiers.
    *
+   * Use this method to retrieve the current selection state, which can include
+   * features, elements, or both types of entities.
+   *
+   * @returns A promise that resolves to an array of selected entity nodes.
+   *
    * @example
    * ```typescript
    * const selection = await felt.getSelection();
@@ -33,7 +38,10 @@ export interface SelectionController {
   /**
    * Adds a listener for when the selection changes.
    *
-   * @returns A function to unsubscribe from the listener
+   * Use this to react to selection changes, such as updating your UI to reflect
+   * what is currently selected on the map.
+   *
+   * @returns A function to unsubscribe from the listener.
    *
    * @event
    * @example
@@ -69,6 +77,11 @@ export interface SelectionController {
    * Selects a feature on a layer. This will show the feature's popup, modal or
    * sidebar (if configured) and highlight the feature.
    *
+   * Use this method to programmatically select features, which can be useful for
+   * highlighting specific data points or triggering feature-specific UI.
+   *
+   * @returns A promise that resolves when the feature is selected.
+   *
    * @example
    * ```typescript
    * felt.selectFeature({
@@ -82,7 +95,14 @@ export interface SelectionController {
   selectFeature(params: FeatureSelection): Promise<void>;
 
   /**
-   * Clears the current selection (elements, features or both)
+   * Clears the current selection (elements, features or both).
+   *
+   * Use this method to programmatically clear the current selection, which can
+   * be useful for resetting the map state or preparing for new selections.
+   *
+   * @param params - The parameters to clear the selection. If this is not provided,
+   * both features and elements will be cleared.
+   * @returns A promise that resolves when the selection is cleared.
    *
    * @example
    * ```typescript
@@ -101,9 +121,6 @@ export interface SelectionController {
    * ```typescript
    * { features: true, elements: true }
    * ```
-   *
-   * @param params - The parameters to clear the selection. If this is not provided,
-   * both features and elements will be cleared.
    */
   clearSelection(params?: {
     /**

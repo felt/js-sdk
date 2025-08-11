@@ -3,11 +3,10 @@
 > **Filters**: [`FilterTernary`](FilterTernary.md) | [`FilterExpression`](FilterExpression.md) | `null` | `boolean`
 
 Filters can be used to change which features in a layer are rendered. Filters can be
-applied to a layer by the [\`setLayerFilters\`](LayersController.md#setlayerfilters) method on the Felt controller.
+applied to a layer by the [setLayerFilters](LayersController.md#setlayerfilters) method on the Felt controller.
 
-Filters use a tree structure for combining expressions with logical operators, called a
-[FilterTernary](FilterTernary.md). When combining three or more conditions, you must use proper nesting
-rather than a flat list.
+Filters use a tree structure for combining expressions with logical operators, called a [FilterTernary](FilterTernary.md).
+When combining three or more conditions, you must use proper nesting rather than a flat list.
 
 See the examples below for the correct structure to use when building complex filters.
 
@@ -23,6 +22,10 @@ The possible operators are:
 * `ne`: Not equal to
 * `cn`: Contains
 * `nc`: Does not contain
+* `is`: Is
+* `isnt`: Is not
+* `in`: In
+* `ni`: Not in
 
 The allowed boolean operators are:
 

@@ -64,8 +64,7 @@ We do this by:
 
 1. `npm run exit-prerelease` - updates version numbers, removes changset files, updates changeset
    meta, etc.
-2. Check the contents of the repo. We _might_ need to manually update the CHANGELOG.md here to
-   remove prerelease notes. If so, change, commit and push.
+2. Check the contents of the repo. Remove the `## 1.x.y-next-z` sections from both CHANGELOG.md files.
 3. `npm run local-release` - publishes the current state to NPM
 4. Check again for any metadata changes made by the release process (e.g. `pre.json` like in step
    6 in the Prerelease section above), commit and push.
@@ -76,7 +75,7 @@ We do this by:
 7. Make a PR from `postrelease -> main` to incorporate the changeset removals and metadata
    changes.
 8. Merge the PR.
-9. `git ch prerelease && git reset --hard main && git push --force` - put `prerelease` back to
+9. `git ch main && git pull && git ch prerelease && git reset --hard main && git push --force` - put `prerelease` back to
    the state of `main` so we can start a new prerelease process.
 
 Now, what we have is:

@@ -71,7 +71,7 @@ We do this by:
    6 in the Prerelease section above), commit and push.
 5. `git ch release && git reset --hard prerelease && git push --force` - transfer all changes from
    `prerelease` to `release`, which is effectively just publishing the docs.
-6. `git ch main && git ch -b postrelease && git diff main prerelease | git apply && git push` - makes
+6. `git ch main && git ch -b postrelease && git diff main prerelease | git apply && git add -A && git commit -m "Merge prerelease into main" && git push --set-upstream origin postrelease` - makes
    a patch from the prerelease to the main branch, so we can merge that back to main.
 7. Make a PR from `postrelease -> main` to incorporate the changeset removals and metadata
    changes.

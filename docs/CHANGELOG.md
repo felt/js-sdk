@@ -1,5 +1,15 @@
 # @feltmaps/js-sdk
 
+## 1.8.0-next.0
+
+### Minor Changes
+
+* 336538b: Improve controller method documentation
+
+### Patch Changes
+
+* 7b04db4: Update filter docs
+
 ## 1.7.0
 
 ### Minor Changes

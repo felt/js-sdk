@@ -4,5 +4,8 @@
   "initialVersions": {
     "@feltmaps/js-sdk": "1.7.0"
   },
-  "changesets": []
+  "changesets": [
+    "seven-cherries-vanish",
+    "tall-beds-scream"
+  ]
 }

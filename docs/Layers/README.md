@@ -20,7 +20,7 @@ independently of the Layer, so you can turn on and off each category or class in
 
 # Interfaces
 
-* [SetLayerLegendVisibilityParams](SetLayerLegendVisibilityParams.md)
+* [SetLayerLegendDisplayParams](SetLayerLegendDisplayParams.md)
 
 # Features
 

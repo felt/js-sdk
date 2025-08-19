@@ -33,7 +33,7 @@ import {
   type LegendItemChangeCallbackParams,
   LegendItemIdentifierSchema,
   LegendItemsConstraintSchema,
-  SetLayerLegendVisibilitySchema,
+  SetLayerLegendDisplayParamsSchema,
   UpdateLayerSchema,
 } from "./types";
 
@@ -57,7 +57,11 @@ const SetLayerStyleMessage = methodMessage(
 );
 const SetLayerLegendVisibilityMessage = methodMessage(
   "setLayerLegendVisibility",
-  SetLayerLegendVisibilitySchema,
+  SetVisibilityRequestSchema,
+);
+const SetLayerLegendDisplayMessage = methodMessage(
+  "setLayerLegendDisplay",
+  SetLayerLegendDisplayParamsSchema,
 );
 
 const CreateLayersFromGeoJsonMessage = methodMessage(
@@ -206,6 +210,7 @@ export const layersSchema = {
     SetLayerVisibilityMessage,
     SetLayerStyleMessage,
     SetLayerLegendVisibilityMessage,
+    SetLayerLegendDisplayMessage,
 
     CreateLayersFromGeoJsonMessage,
     DeleteLayerMessage,
@@ -256,6 +261,7 @@ export type LayersSchema = {
     setLayerLegendVisibility: Method<
       zInfer<typeof SetLayerLegendVisibilityMessage>
     >;
+    setLayerLegendDisplay: Method<zInfer<typeof SetLayerLegendDisplayMessage>>;
 
     createLayersFromGeoJson: Method<
       zInfer<typeof CreateLayersFromGeoJsonMessage>

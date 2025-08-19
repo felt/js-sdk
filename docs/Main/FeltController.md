@@ -441,11 +441,35 @@ await felt.setLayerStyle({ id: "layer-1", style: {
 
 ## setLayerLegendVisibility()
 
-> **setLayerLegendVisibility**(`params`: [`SetLayerLegendVisibilityParams`](../Layers/SetLayerLegendVisibilityParams.md)): `Promise`\<`void`>
+> **setLayerLegendVisibility**(`params`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`\<`void`>
+
+Hide or show layers with the given ids from the legend.
+
+### Parameters
+
+| Parameter | Type                                                        |
+| --------- | ----------------------------------------------------------- |
+| `params`  | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) |
+
+### Returns
+
+`Promise`\<`void`>
+
+### Example
+
+```typescript
+felt.setLayerLegendVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
+```
+
+***
+
+## setLayerLegendDisplay()
+
+> **setLayerLegendDisplay**(`params`: [`SetLayerLegendDisplayParams`](../Layers/SetLayerLegendDisplayParams.md)): `Promise`\<`void`>
 
 Controls how the layer is displayed in the legend.
 
-By default, a layer legend includes:
+A standard layer legend includes:
 
 * the layer's name and caption.
 * a representation of the layer's style (e.g. color swatchs for a classed visualisation, or proportional symbols for a size-based one, etc.).
@@ -457,17 +481,15 @@ By default, a layer legend includes:
   <figcaption>Default layer legend</figcaption>
 </figure>
 
-Layer legend can be customised using this method in three different ways:
-
-* `show`: default mode, all the layer's legend items are shown.
-* `showNameOnly`: compact mode where the layer's style representation is hidden, therefore only the layer's name, caption, and components are shown.
-* `hide`: layer is hidden from the legend.
+By default, layers use a standard layer legend.
+But it can be customised for a more compact display by using the `showNameOnly` mode,
+which gets rid of the layer's style representation and therefore only shows the layer's name, caption, and components.
 
 ### Parameters
 
-| Parameter | Type                                                                            |
-| --------- | ------------------------------------------------------------------------------- |
-| `params`  | [`SetLayerLegendVisibilityParams`](../Layers/SetLayerLegendVisibilityParams.md) |
+| Parameter | Type                                                                      |
+| --------- | ------------------------------------------------------------------------- |
+| `params`  | [`SetLayerLegendDisplayParams`](../Layers/SetLayerLegendDisplayParams.md) |
 
 ### Returns
 
@@ -476,11 +498,7 @@ Layer legend can be customised using this method in three different ways:
 ### Example
 
 ```typescript
-felt.setLayerLegendVisibility({
-  show: ["layer-1", "layer-2"],
-  showNameOnly: ["layer-3"],
-  hide: ["layer-4"],
-});
+felt.setLayerLegendDisplay({ standard: ["layer-1", "layer-2"], showNameOnly: ["layer-3"] });
 ```
 
 ***

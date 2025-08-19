@@ -441,15 +441,33 @@ await felt.setLayerStyle({ id: "layer-1", style: {
 
 ## setLayerLegendVisibility()
 
-> **setLayerLegendVisibility**(`params`: [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md)): `Promise`\<`void`>
+> **setLayerLegendVisibility**(`params`: [`SetLayerLegendVisibilityParams`](../Layers/SetLayerLegendVisibilityParams.md)): `Promise`\<`void`>
 
-Hide or show layers with the given ids from the legend.
+Controls how the layer is displayed in the legend.
+
+By default, a layer legend includes:
+
+* the layer's name and caption.
+* a representation of the layer's style (e.g. color swatchs for a classed visualisation, or proportional symbols for a size-based one, etc.).
+* the components associated with the layer.
+
+<figure>
+  <img src="../_media/legend-schema.png" alt="Default layer legend" />
+
+  <figcaption>Default layer legend</figcaption>
+</figure>
+
+Layer legend can be customised using this method in three different ways:
+
+* `show`: default mode, all the layer's legend items are shown.
+* `showNameOnly`: compact mode where the layer's style representation is hidden, therefore only the layer's name, caption, and components are shown.
+* `hide`: layer is hidden from the legend.
 
 ### Parameters
 
-| Parameter | Type                                                        |
-| --------- | ----------------------------------------------------------- |
-| `params`  | [`SetVisibilityRequest`](../Shared/SetVisibilityRequest.md) |
+| Parameter | Type                                                                            |
+| --------- | ------------------------------------------------------------------------------- |
+| `params`  | [`SetLayerLegendVisibilityParams`](../Layers/SetLayerLegendVisibilityParams.md) |
 
 ### Returns
 
@@ -458,7 +476,11 @@ Hide or show layers with the given ids from the legend.
 ### Example
 
 ```typescript
-felt.setLayerLegendVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
+felt.setLayerLegendVisibility({
+  show: ["layer-1", "layer-2"],
+  showNameOnly: ["layer-3"],
+  hide: ["layer-4"],
+});
 ```
 
 ***

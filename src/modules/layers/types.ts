@@ -3,12 +3,27 @@ import type { zInfer } from "~/lib/utils";
 import {
   FeltBoundarySchema,
   LatLngSchema,
+  SetVisibilityRequestSchema,
   type FeltBoundary,
   type LatLng,
+  type SetVisibilityRequest,
 } from "~/modules/shared/types";
 import type { LayersController } from "./controller";
 
 export type { LayerFeature, RasterValue } from "./features/types";
+
+export const SetLayerLegendVisibilitySchema = SetVisibilityRequestSchema.extend(
+  {
+    showNameOnly: z.array(z.string()).optional(),
+  },
+);
+
+/**
+ * The parameters for the {@link LayersController.setLayerLegendVisibility} method.
+ */
+export interface SetLayerLegendVisibilityParams extends SetVisibilityRequest {
+  showNameOnly?: string[];
+}
 
 /**
  * This describes the processing status of a layer.

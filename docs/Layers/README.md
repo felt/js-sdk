@@ -18,6 +18,10 @@ independently of the Layer, so you can turn on and off each category or class in
 
 * [LayersController](LayersController.md)
 
+# Interfaces
+
+* [SetLayerLegendVisibilityParams](SetLayerLegendVisibilityParams.md)
+
 # Features
 
 * [LayerFeature](LayerFeature.md)

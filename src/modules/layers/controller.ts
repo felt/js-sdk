@@ -37,6 +37,7 @@ import type {
   LegendItemChangeCallbackParams,
   LegendItemIdentifier,
   LegendItemsConstraint,
+  SetLayerLegendVisibilityParams,
   UpdateLayerParams,
 } from "./types";
 
@@ -231,14 +232,35 @@ export interface LayersController {
   }): Promise<void>;
 
   /**
-   * Hide or show layers with the given ids from the legend.
+   * Controls how the layer is displayed in the legend.
+   *
+   * By default, a layer legend includes:
+   *   - the layer's name and caption.
+   *   - a representation of the layer's style (e.g. color swatchs for a classed visualisation, or proportional symbols for a size-based one, etc.).
+   *   - the components associated with the layer.
+   *
+   * <figure>
+   * <img src="./img/legend-schema.png" alt="Default layer legend" />
+   * <figcaption>Default layer legend</figcaption>
+   * </figure>
+   *
+   * Layer legend can be customised using this method in three different ways:
+   * - `show`: default mode, all the layer's legend items are shown.
+   * - `showNameOnly`: compact mode where the layer's style representation is hidden, therefore only the layer's name, caption, and components are shown.
+   * - `hide`: layer is hidden from the legend.
    *
    * @example
    * ```typescript
-   * felt.setLayerLegendVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] });
+   * felt.setLayerLegendVisibility({
+   *   show: ["layer-1", "layer-2"],
+   *   showNameOnly: ["layer-3"],
+   *   hide: ["layer-4"],
+   * });
    * ```
    */
-  setLayerLegendVisibility(params: SetVisibilityRequest): Promise<void>;
+  setLayerLegendVisibility(
+    params: SetLayerLegendVisibilityParams,
+  ): Promise<void>;
 
   /**
    * Adds a listener for when a layer changes.

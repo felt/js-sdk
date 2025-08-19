@@ -38,6 +38,7 @@ export type {
   RasterBand,
   RasterLayer,
   RasterLayerSource,
+  SetLayerLegendVisibilityParams,
   UpdateLayerParams,
   VectorLayer,
 } from "./types";

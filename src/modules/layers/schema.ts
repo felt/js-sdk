@@ -33,6 +33,7 @@ import {
   type LegendItemChangeCallbackParams,
   LegendItemIdentifierSchema,
   LegendItemsConstraintSchema,
+  SetLayerLegendVisibilitySchema,
   UpdateLayerSchema,
 } from "./types";
 
@@ -56,7 +57,7 @@ const SetLayerStyleMessage = methodMessage(
 );
 const SetLayerLegendVisibilityMessage = methodMessage(
   "setLayerLegendVisibility",
-  SetVisibilityRequestSchema,
+  SetLayerLegendVisibilitySchema,
 );
 
 const CreateLayersFromGeoJsonMessage = methodMessage(

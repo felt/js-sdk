@@ -247,12 +247,12 @@ export interface LayersController {
    *
    * A standard layer legend includes:
    *   - the layer's name and caption.
-   *   - a representation of the layer's style (e.g. color swatchs for a classed visualisation, or proportional symbols for a size-based one, etc.).
+   *   - a representation of the layer's style (e.g. color swatches for a classed visualisation, or proportional symbols for a size-based one, etc.).
    *   - the components associated with the layer.
    *
    * <figure>
-   * <img src="./img/legend-schema.png" alt="Default layer legend" />
-   * <figcaption>Default layer legend</figcaption>
+   * <img src="./img/legend-schema.png" alt="Standard layer legend" />
+   * <figcaption>Standard layer legend</figcaption>
    * </figure>
    *
    * By default, layers use a standard layer legend.

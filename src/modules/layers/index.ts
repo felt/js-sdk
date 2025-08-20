@@ -30,6 +30,7 @@ export type {
   LayerCommon,
   LayerGroup,
   LayerGroupChangeCallbackParams,
+  LayerLegendDisplay,
   LayerProcessingStatus,
   LegendItem,
   LegendItemChangeCallbackParams,
@@ -38,7 +39,6 @@ export type {
   RasterBand,
   RasterLayer,
   RasterLayerSource,
-  SetLayerLegendDisplayParams,
   UpdateLayerParams,
   VectorLayer,
 } from "./types";

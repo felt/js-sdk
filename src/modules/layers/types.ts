@@ -10,17 +10,6 @@ import type { LayersController } from "./controller";
 
 export type { LayerFeature, RasterValue } from "./features/types";
 
-export const SetLayerLegendDisplayParamsSchema = z.object({
-  standard: z.array(z.string()).optional(),
-  showNameOnly: z.array(z.string()).optional(),
-});
-
-/**
- * The parameters for the {@link LayersController.setLayerLegendDisplay} method.
- */
-export interface SetLayerLegendDisplayParams
-  extends zInfer<typeof SetLayerLegendDisplayParamsSchema> {}
-
 /**
  * This describes the processing status of a layer.
  *
@@ -84,6 +73,13 @@ export interface LayerCommon {
    * Whether the layer is shown in the legend or not.
    */
   shownInLegend: boolean;
+
+  /**
+   * The display mode for the layer's legend.
+   *
+   * See {@link LayerLegendDisplay} for more details.
+   */
+  legendDisplay: LayerLegendDisplay;
 
   /**
    * The FSL style for the layer.
@@ -319,6 +315,36 @@ const GeoJsonFileVectorSourceSchema = z.object({
 export interface GeoJsonFileVectorSource
   extends zInfer<typeof GeoJsonFileVectorSourceSchema> {}
 
+const LayerLegendDisplaySchema = z.enum(["standard", "nameOnly"]);
+
+/**
+ * Describes how the layer is displayed in the legend.
+ *
+ * There are two display modes:
+ *
+ * 1. Standard (default):
+ *    - Shows layer name and caption
+ *    - Shows visual representation of the layer's style (e.g. color swatches, proportional symbols)
+ *    - Shows associated layer components
+ *
+ * <figure>
+ * <img src="./img/legend-standard.png" alt="Standard layer legend" />
+ * <figcaption>Standard layer legend</figcaption>
+ * </figure>
+ *
+ * 2. Name Only (compact display):
+ *    - Shows only layer name and caption
+ *    - Hides visual representation of the layer's style
+ *
+ * <figure>
+ * <img src="./img/legend-name-only.png" alt="Name only layer legend" />
+ * <figcaption>Name only layer legend</figcaption>
+ * </figure>
+ *
+ * @group Layers
+ */
+export type LayerLegendDisplay = z.infer<typeof LayerLegendDisplaySchema>;
+
 /**
  * The parameters for the {@link LayersController.updateLayer} method.
  */
@@ -334,6 +360,13 @@ export const UpdateLayerSchema = z.object({
    * Changes whether the layer is shown in the legend.
    */
   shownInLegend: z.boolean().optional(),
+
+  /**
+   * Changes the layer's legend display mode.
+   *
+   * See {@link LayerLegendDisplay} for more details.
+   */
+  legendDisplay: LayerLegendDisplaySchema.optional(),
 
   /**
    * Changes the name of the layer.

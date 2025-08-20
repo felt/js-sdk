@@ -2,4 +2,4 @@
 "@feltmaps/js-sdk": minor
 ---
 
-Add setLayerLegendDisplay method to customize legend display
+Add support for legendDisplay on the layer

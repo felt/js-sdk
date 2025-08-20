@@ -463,46 +463,6 @@ felt.setLayerLegendVisibility({ show: ["layer-1", "layer-2"], hide: ["layer-3"] 
 
 ***
 
-## setLayerLegendDisplay()
-
-> **setLayerLegendDisplay**(`params`: [`SetLayerLegendDisplayParams`](../Layers/SetLayerLegendDisplayParams.md)): `Promise`\<`void`>
-
-Controls how the layer is displayed in the legend.
-
-A standard layer legend includes:
-
-* the layer's name and caption.
-* a representation of the layer's style (e.g. color swatches for a classed visualisation, or proportional symbols for a size-based one, etc.).
-* the components associated with the layer.
-
-<figure>
-  <img src="../_media/legend-schema.png" alt="Standard layer legend" />
-
-  <figcaption>Standard layer legend</figcaption>
-</figure>
-
-By default, layers use a standard layer legend.
-But it can be customised for a more compact display by using the `showNameOnly` mode,
-which gets rid of the layer's style representation and therefore only shows the layer's name, caption, and components.
-
-### Parameters
-
-| Parameter | Type                                                                      |
-| --------- | ------------------------------------------------------------------------- |
-| `params`  | [`SetLayerLegendDisplayParams`](../Layers/SetLayerLegendDisplayParams.md) |
-
-### Returns
-
-`Promise`\<`void`>
-
-### Example
-
-```typescript
-felt.setLayerLegendDisplay({ standard: ["layer-1", "layer-2"], showNameOnly: ["layer-3"] });
-```
-
-***
-
 ## createLayersFromGeoJson()
 
 > **createLayersFromGeoJson**(`params`: [`CreateLayersFromGeoJsonParams`](../Layers/CreateLayersFromGeoJsonParams.md)): `Promise`\<`null` | \{ `layerGroup`: [`LayerGroup`](../Layers/LayerGroup.md); `layers`: [`Layer`](../Layers/Layer.md)\[]; }>

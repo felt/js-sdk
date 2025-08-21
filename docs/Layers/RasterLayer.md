@@ -66,11 +66,11 @@ Whether the layer is shown in the legend or not.
 
 ## legendDisplay
 
-> **legendDisplay**: `"standard"` | `"nameOnly"`
+> **legendDisplay**: `"default"` | `"nameOnly"`
 
 The display mode for the layer's legend.
 
-See [LayerLegendDisplay](LayerLegendDisplay.md) for more details.
+See [LegendDisplay](LegendDisplay.md) for more details.
 
 ***
 

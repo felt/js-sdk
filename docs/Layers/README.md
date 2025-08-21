@@ -72,7 +72,6 @@ independently of the Layer, so you can turn on and off each category or class in
 * [CreateLayersFromGeoJsonParams](CreateLayersFromGeoJsonParams.md)
 * [LayerProcessingStatus](LayerProcessingStatus.md)
 * [Layer](Layer.md)
-* [LayerLegendDisplay](LayerLegendDisplay.md)
 
 # Legend Items
 
@@ -80,6 +79,7 @@ independently of the Layer, so you can turn on and off each category or class in
 * [LegendItemIdentifier](LegendItemIdentifier.md)
 * [LegendItemsConstraint](LegendItemsConstraint.md)
 * [LegendItemChangeCallbackParams](LegendItemChangeCallbackParams.md)
+* [LegendDisplay](LegendDisplay.md)
 
 # Stats
 

@@ -4,5 +4,7 @@
   "initialVersions": {
     "@feltmaps/js-sdk": "1.8.0"
   },
-  "changesets": []
+  "changesets": [
+    "young-hounds-taste"
+  ]
 }

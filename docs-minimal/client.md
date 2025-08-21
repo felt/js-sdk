@@ -4889,6 +4889,14 @@ Whether the layer is visible or not.
 
 Whether the layer is shown in the legend or not.
 
+#### legendDisplay
+
+> **legendDisplay**: `"default"` | `"nameOnly"`
+
+The display mode for the layer's legend.
+
+See [LegendDisplay](client.md#legenddisplay-5) for more details.
+
 #### style
 
 > **style**: `object`
@@ -4970,6 +4978,14 @@ Whether the layer is visible or not.
 > **shownInLegend**: `boolean`
 
 Whether the layer is shown in the legend or not.
+
+#### legendDisplay
+
+> **legendDisplay**: `"default"` | `"nameOnly"`
+
+The display mode for the layer's legend.
+
+See [LegendDisplay](client.md#legenddisplay-5) for more details.
 
 #### style
 
@@ -5127,6 +5143,14 @@ Whether the layer is visible or not.
 
 Whether the layer is shown in the legend or not.
 
+#### legendDisplay
+
+> **legendDisplay**: `"default"` | `"nameOnly"`
+
+The display mode for the layer's legend.
+
+See [LegendDisplay](client.md#legenddisplay-5) for more details.
+
 #### style
 
 > **style**: `object`
@@ -5263,6 +5287,14 @@ The id of the layer to update.
 
 Changes whether the layer is shown in the legend.
 
+#### legendDisplay?
+
+> `optional` **legendDisplay**: `"default"` | `"nameOnly"`
+
+Changes the layer's legend display mode.
+
+See [LegendDisplay](client.md#legenddisplay-5) for more details.
+
 #### name?
 
 > `optional` **name**: `string`
@@ -5355,6 +5387,14 @@ Whether the layer is visible or not.
 > **shownInLegend**: `boolean`
 
 Whether the layer is shown in the legend or not.
+
+#### legendDisplay
+
+> **legendDisplay**: `"default"` | `"nameOnly"`
+
+The display mode for the layer's legend.
+
+See [LegendDisplay](client.md#legenddisplay-5) for more details.
 
 #### style
 
@@ -15774,6 +15814,34 @@ uploaded to and processed by Felt.
 > **tileTemplateUrl**: `string`
 
 The template URL used for fetching tiles.
+
+## LegendDisplay
+
+> **LegendDisplay**: `"default"` | `"nameOnly"`
+
+Describes how the layer is displayed in the legend.
+
+There are two display modes:
+
+1. Default:
+   * Shows layer name and caption
+   * Shows representation of the layer's viz (e.g. color swatches, proportional symbols)
+
+<figure>
+  <img src="_media/legend-default.png" alt="Default layer legend" />
+
+  <figcaption>Default layer legend</figcaption>
+</figure>
+
+2. Name-only (compact display):
+   * Shows only layer name and caption
+   * Hides representation of the layer's viz
+
+<figure>
+  <img src="_media/legend-name-only.png" alt="Name-only layer legend" />
+
+  <figcaption>Name-only layer legend</figcaption>
+</figure>
 
 ## LayerSchemaAttribute
 

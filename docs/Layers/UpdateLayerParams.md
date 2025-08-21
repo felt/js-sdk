@@ -20,6 +20,16 @@ Changes whether the layer is shown in the legend.
 
 ***
 
+## legendDisplay?
+
+> `optional` **legendDisplay**: `"default"` | `"nameOnly"`
+
+Changes the layer's legend display mode.
+
+See [LegendDisplay](LegendDisplay.md) for more details.
+
+***
+
 ## name?
 
 > `optional` **name**: `string`

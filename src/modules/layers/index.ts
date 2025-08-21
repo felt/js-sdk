@@ -31,6 +31,7 @@ export type {
   LayerGroup,
   LayerGroupChangeCallbackParams,
   LayerProcessingStatus,
+  LegendDisplay,
   LegendItem,
   LegendItemChangeCallbackParams,
   LegendItemIdentifier,

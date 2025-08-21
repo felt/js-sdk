@@ -75,6 +75,13 @@ export interface LayerCommon {
   shownInLegend: boolean;
 
   /**
+   * The display mode for the layer's legend.
+   *
+   * See {@link LegendDisplay} for more details.
+   */
+  legendDisplay: LegendDisplay;
+
+  /**
    * The FSL style for the layer.
    *
    * See the [FSL documentation](https://developers.felt.com/felt-style-language) for details
@@ -308,6 +315,35 @@ const GeoJsonFileVectorSourceSchema = z.object({
 export interface GeoJsonFileVectorSource
   extends zInfer<typeof GeoJsonFileVectorSourceSchema> {}
 
+const LegendDisplaySchema = z.enum(["default", "nameOnly"]);
+
+/**
+ * Describes how the layer is displayed in the legend.
+ *
+ * There are two display modes:
+ *
+ * 1. Default:
+ *    - Shows layer name and caption
+ *    - Shows representation of the layer's viz (e.g. color swatches, proportional symbols)
+ *
+ * <figure>
+ * <img src="./img/legend-default.png" alt="Default layer legend" />
+ * <figcaption>Default layer legend</figcaption>
+ * </figure>
+ *
+ * 2. Name-only (compact display):
+ *    - Shows only layer name and caption
+ *    - Hides representation of the layer's viz
+ *
+ * <figure>
+ * <img src="./img/legend-name-only.png" alt="Name-only layer legend" />
+ * <figcaption>Name-only layer legend</figcaption>
+ * </figure>
+ *
+ * @group Legend Items
+ */
+export type LegendDisplay = z.infer<typeof LegendDisplaySchema>;
+
 /**
  * The parameters for the {@link LayersController.updateLayer} method.
  */
@@ -323,6 +359,13 @@ export const UpdateLayerSchema = z.object({
    * Changes whether the layer is shown in the legend.
    */
   shownInLegend: z.boolean().optional(),
+
+  /**
+   * Changes the layer's legend display mode.
+   *
+   * See {@link LegendDisplay} for more details.
+   */
+  legendDisplay: LegendDisplaySchema.optional(),
 
   /**
    * Changes the name of the layer.

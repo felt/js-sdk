@@ -6082,6 +6082,9 @@ own to make it easier to find related methods and events.
 
 Get a single element from the map by its id.
 
+Use this method when you know the specific ID of an element and want to retrieve
+its current state. This is more efficient than getting all elements and filtering.
+
 ##### Parameters
 
 ##### id
@@ -6094,7 +6097,7 @@ The id of the element you want to get.
 
 `Promise`\<`null` | [`Element`](client.md#element-1)>
 
-The requested element.
+A promise that resolves to the requested element, or `null` if not found.
 
 ##### Example
 
@@ -6123,6 +6126,9 @@ property of the element, with some differences:
 
 * Text, Note and Image elements do not return geometry, so will return `null`.
 
+Use this method when you need the geometric representation of an element for
+spatial analysis or visualization purposes.
+
 ##### Parameters
 
 ##### id
@@ -6134,6 +6140,8 @@ The id of the element you want to get the geometry of.
 ##### Returns
 
 `Promise`\<`null` | [`GeoJsonGeometry`](client.md#geojsongeometry)>
+
+A promise that resolves to the element's geometry in GeoJSON format, or `null` if the element has no geometry.
 
 ##### Example
 
@@ -6149,19 +6157,22 @@ console.log(geometry?.type, geometry?.coordinates);
 Gets elements from the map, according to the constraints supplied. If no
 constraints are supplied, all elements will be returned.
 
+Use this method to retrieve multiple elements, optionally filtered by constraints.
+This is useful for bulk operations or when you need to analyze all elements on the map.
+
 ##### Parameters
 
 ##### constraint?
 
 [`GetElementsConstraint`](client.md#getelementsconstraint)
 
-The constraints to apply to the elements returned from the map.
+Optional constraints to apply to the elements returned from the map.
 
 ##### Returns
 
 `Promise`\<(`null` | [`Element`](client.md#element-1))\[]>
 
-All elements on the map.
+A promise that resolves to an array of elements, ordered by the order specified in Felt.
 
 ##### Remarks
 
@@ -6181,17 +6192,22 @@ const elements = await felt.getElements();
 
 Get an element group from the map by its id.
 
+Element groups allow you to organize related elements together and control
+their visibility as a unit.
+
 ##### Parameters
 
 ##### id
 
 `string`
 
+The id of the element group you want to get.
+
 ##### Returns
 
 `Promise`\<`null` | [`ElementGroup`](client.md#elementgroup)>
 
-The requested element group.
+A promise that resolves to the requested element group, or `null` if not found.
 
 ##### Example
 
@@ -6206,19 +6222,22 @@ const elementGroup = await felt.getElementGroup("element-group-1");
 Gets element groups from the map, according to the filters supplied. If no
 constraints are supplied, all element groups will be returned in rendering order.
 
+Use this method to retrieve multiple element groups, optionally filtered by constraints.
+This is useful for bulk operations on element groups.
+
 ##### Parameters
 
 ##### constraint?
 
 [`GetElementGroupsConstraint`](client.md#getelementgroupsconstraint)
 
-The constraints to apply to the element groups returned from the map.
+Optional constraints to apply to the element groups returned from the map.
 
 ##### Returns
 
 `Promise`\<(`null` | [`ElementGroup`](client.md#elementgroup))\[]>
 
-The requested element groups.
+A promise that resolves to an array of element groups in rendering order.
 
 ##### Example
 
@@ -6232,15 +6251,22 @@ const elementGroups = await felt.getElementGroups({ ids: ["element-group-1", "el
 
 Hide or show element groups with the given ids.
 
+Use this method to control the visibility of multiple element groups at once.
+This is more efficient than hiding/showing individual elements.
+
 ##### Parameters
 
 ##### visibility
 
 [`SetVisibilityRequest`](client.md#setvisibilityrequest)
 
+The visibility configuration for element groups.
+
 ##### Returns
 
 `Promise`\<`void`>
+
+A promise that resolves when the visibility changes are applied.
 
 ##### Example
 
@@ -6254,15 +6280,22 @@ felt.setElementGroupVisibility({ show: ["element-group-1", "element-group-2"], h
 
 Create a new element on the map.
 
+Use this method to programmatically create elements on the map. Elements created
+via the SDK are only available to the current session and are not persisted.
+
 ##### Parameters
 
 ##### element
 
 [`ElementCreate`](client.md#elementcreate)
 
+The element configuration to create.
+
 ##### Returns
 
 `Promise`\<[`Element`](client.md#element-1)>
+
+A promise that resolves to the created element.
 
 ##### Example
 
@@ -6276,15 +6309,22 @@ const element = await felt.createElement({ type: "Place", coordinates: [10, 10] 
 
 Update an element on the map. The element type must be specified.
 
+Use this method to modify existing elements. You can update properties like
+coordinates, styling, and metadata.
+
 ##### Parameters
 
 ##### element
 
 [`ElementUpdate`](client.md#elementupdate)
 
+The element update configuration.
+
 ##### Returns
 
 `Promise`\<[`Element`](client.md#element-1)>
+
+A promise that resolves to the updated element.
 
 ##### Example
 
@@ -6311,15 +6351,21 @@ await felt.updateElement({
 
 Delete an element from the map.
 
+Use this method to remove elements from the map. This operation cannot be undone.
+
 ##### Parameters
 
 ##### id
 
 `string`
 
+The id of the element to delete.
+
 ##### Returns
 
 `Promise`\<`void`>
+
+A promise that resolves when the element is deleted.
 
 ##### Example
 
@@ -7354,9 +7400,14 @@ const attributeIds = schema.attributes.map((attr) => attr.id);
 
 Gets the details of the map.
 
+Use this method to retrieve metadata about the current map, such as
+its title, description, and other map-level information.
+
 ##### Returns
 
 `Promise`\<[`MapDetails`](client.md#mapdetails)>
+
+A promise that resolves to the map details.
 
 ##### Example
 
@@ -7375,9 +7426,14 @@ console.log({
 
 Gets the current selection as a list of entity identifiers.
 
+Use this method to retrieve the current selection state, which can include
+features, elements, or both types of entities.
+
 ##### Returns
 
 `Promise`\<[`EntityNode`](client.md#entitynode)\[]>
+
+A promise that resolves to an array of selected entity nodes.
 
 ##### Example
 
@@ -7392,6 +7448,9 @@ const selection = await felt.getSelection();
 Selects a feature on a layer. This will show the feature's popup, modal or
 sidebar (if configured) and highlight the feature.
 
+Use this method to programmatically select features, which can be useful for
+highlighting specific data points or triggering feature-specific UI.
+
 ##### Parameters
 
 ##### params
@@ -7401,6 +7460,8 @@ sidebar (if configured) and highlight the feature.
 ##### Returns
 
 `Promise`\<`void`>
+
+A promise that resolves when the feature is selected.
 
 ##### Example
 
@@ -7417,7 +7478,10 @@ felt.selectFeature({
 
 > **clearSelection**(`params`?): `Promise`\<`void`>
 
-Clears the current selection (elements, features or both)
+Clears the current selection (elements, features or both).
+
+Use this method to programmatically clear the current selection, which can
+be useful for resetting the map state or preparing for new selections.
 
 ##### Parameters
 
@@ -7441,6 +7505,8 @@ Whether to clear the elements from the selection.
 ##### Returns
 
 `Promise`\<`void`>
+
+A promise that resolves when the selection is cleared.
 
 ##### Example
 
@@ -7468,11 +7534,15 @@ felt.clearSelection({ elements: true });
 
 Sets the tool to use for drawing elements on the map.
 
+Use this method to programmatically activate drawing tools for users. When a tool
+is set, users can draw elements on the map using that tool. Set to `null` to
+deactivate all drawing tools.
+
 ##### Parameters
 
 ##### tool
 
-The tool to set.
+The tool to set, or `null` to deactivate all tools.
 
 `null` | [`ToolType`](client.md#tooltype)
 
@@ -7496,11 +7566,13 @@ await felt.setTool(null);
 
 Gets the current tool, if any is in use.
 
+Use this method to check which drawing tool is currently active, if any.
+
 ##### Returns
 
 `Promise`\<`null` | [`ToolType`](client.md#tooltype)>
 
-The current tool, or `null` if no tool is in use.
+A promise that resolves to the current tool, or `null` if no tool is in use.
 
 ##### Example
 
@@ -7513,6 +7585,9 @@ const tool = await felt.getTool(); // "marker", "polygon", etc.
 > **onToolChange**(`args`): `VoidFunction`
 
 Listens for changes to the current tool.
+
+Use this to react to tool changes, such as updating your UI to reflect
+the currently active drawing tool.
 
 ##### Parameters
 
@@ -7527,8 +7602,6 @@ This callback is called with the current tool whenever the tool changes.
 ##### Returns
 
 `VoidFunction`
-
-A function to unsubscribe from the listener
 
 ##### Example
 
@@ -7547,13 +7620,16 @@ unsubscribe();
 
 Sets the settings for the current tool.
 
+Use this method to configure how drawing tools behave, such as setting colors,
+stroke widths, or other tool-specific properties.
+
 ##### Parameters
 
 ##### settings
 
 [`InputToolSettings`](client.md#inputtoolsettings)
 
-The settings to set.
+The settings to set for the specified tool.
 
 ##### Returns
 
@@ -7573,7 +7649,9 @@ await felt.setToolSettings({
 
 > **getToolSettings**\<`T`>(`tool`): `Promise`\<[`ToolSettingsMap`](client.md#toolsettingsmap)\[`T`]>
 
-Gets the settings for the chosen tool
+Gets the settings for the chosen tool.
+
+Use this method to retrieve the current configuration of a drawing tool.
 
 ##### Type Parameters
 
@@ -7585,11 +7663,13 @@ Gets the settings for the chosen tool
 
 `T`
 
+The tool to get settings for.
+
 ##### Returns
 
 `Promise`\<[`ToolSettingsMap`](client.md#toolsettingsmap)\[`T`]>
 
-The settings for the chosen tool.
+A promise that resolves to the settings for the chosen tool.
 
 ##### Example
 
@@ -7603,6 +7683,9 @@ const settings = await felt.getToolSettings("marker");
 
 Listens for changes to the settings on all tools.
 
+Use this to react to tool setting changes, such as updating your UI to
+reflect the current tool configuration.
+
 ##### Parameters
 
 ##### args
@@ -7615,7 +7698,7 @@ Listens for changes to the settings on all tools.
 
 `VoidFunction`
 
-A function to unsubscribe from the listener
+A function to unsubscribe from the listener.
 
 ##### Example
 
@@ -7731,6 +7814,7 @@ await felt.deleteActionTrigger("enablePolygonTool");
 Creates a panel ID.
 
 In order to create a panel using [createOrUpdatePanel](client.md#createorupdatepanel), you need to create a panel ID first.
+Panel IDs are automatically generated to prevent conflicts with other panels.
 
 ##### Returns
 
@@ -7853,6 +7937,9 @@ await felt.deletePanel("panel-1");
 
 Creates elements in a panel.
 
+Use this method to add new elements to an existing panel without replacing
+the entire panel content. This is useful for dynamic UI updates.
+
 ##### Parameters
 
 ##### args
@@ -7886,6 +7973,9 @@ await felt.createPanelElements({
 
 Updates an existing element in a panel. This method can only update elements that
 already exist in the panel and have an ID.
+
+Use this method to modify specific elements without replacing the entire panel.
+This is more efficient than using [createOrUpdatePanel](client.md#createorupdatepanel) for small changes.
 
 ##### Parameters
 
@@ -7934,6 +8024,9 @@ await felt.updatePanelElements({
 
 Deletes elements from a panel.
 
+Use this method to remove specific elements from a panel without replacing
+the entire panel content.
+
 ##### Parameters
 
 ##### args
@@ -7960,6 +8053,9 @@ await felt.deletePanelElements({
 > **updateUiControls**(`controls`): `void`
 
 Updates the UI controls on the embedded map.
+
+Use this method to show or hide various UI controls like the legend,
+full screen button, and other map interface elements.
 
 ##### Parameters
 
@@ -8029,17 +8125,26 @@ await felt.setOnMapInteractionsUi({
 
 Shows a data table view for the specified layer, optionally sorted by a given attribute.
 
+The data table displays feature data in a tabular format, making it easy to
+browse and analyze layer data. You can control the initial sorting of the table.
+
 ##### Parameters
 
 ##### params?
+
+Optional parameters for showing the data table.
 
 ##### layerId
 
 `string`
 
+The ID of the layer to show data for.
+
 ##### sorting
 
 [`SortConfig`](client.md#sortconfig)
+
+Optional sorting configuration for the table.
 
 ##### Returns
 
@@ -8088,9 +8193,14 @@ await felt.hideLayerDataTable();
 
 Gets the current state of the viewport.
 
+Use this method to retrieve the current center coordinates and zoom level
+of the map viewport.
+
 ##### Returns
 
 `Promise`\<[`ViewportState`](client.md#viewportstate)>
+
+A promise that resolves to the current viewport state.
 
 ##### Example
 
@@ -8108,6 +8218,9 @@ console.log({
 > **setViewport**(`viewport`): `void`
 
 Moves the map to the specified location.
+
+Use this method to programmatically change the map's viewport to a specific
+location and zoom level. The map will animate to the new position.
 
 ##### Parameters
 
@@ -8134,9 +8247,14 @@ felt.setViewport({
 
 Gets the current state of the viewport constraints.
 
+Use this method to retrieve the current viewport constraints, which limit
+where users can pan and zoom on the map.
+
 ##### Returns
 
 `Promise`\<`null` | [`ViewportConstraints`](client.md#viewportconstraints)>
+
+A promise that resolves to the current viewport constraints, or `null` if no constraints are set.
 
 ##### Example
 
@@ -8159,6 +8277,10 @@ if (constraints) {
 > **setViewportConstraints**(`constraints`): `void`
 
 Constrains the map viewport so it stays inside certain bounds and/or certain zoom levels.
+
+Use this method to limit where users can navigate on the map. This is useful
+for keeping users focused on a specific area or preventing them from zooming
+too far in or out.
 
 ##### Parameters
 
@@ -8206,6 +8328,10 @@ felt.setViewportConstraints(null);
 
 Fits the map to the specified bounds.
 
+Use this method to automatically adjust the viewport to show a specific
+geographic area. The map will calculate the appropriate center and zoom
+level to fit the bounds within the current map size.
+
 ##### Parameters
 
 ##### bounds
@@ -8234,6 +8360,18 @@ felt.fitViewportToBounds({ bounds: [west, south, east, north] });
 
 Adds a listener for when an element is created.
 
+This will fire when elements are created programmatically, or when the
+user starts creating an element with a drawing tool.
+
+When the user creates an element with a drawing tool, it can begin in
+an invalid state, such as if you've just placed a single point in a polygon.
+
+You can use the `isBeingCreated` property to determine if the element is
+still being created by a drawing tool.
+
+If you want to know when the element is finished being created, you can
+use the [\`onElementCreateEnd\`](client.md#onelementcreateend) listener.
+
 ##### Parameters
 
 ##### args
@@ -8260,7 +8398,7 @@ use the [\`onElementCreateEnd\`](client.md#onelementcreateend) listener.
 
 `VoidFunction`
 
-A function to unsubscribe from the listener
+A function to unsubscribe from the listener.
 
 ##### Example
 
@@ -8301,7 +8439,7 @@ The handler to call whenever this event fires.
 
 `VoidFunction`
 
-A function to unsubscribe from the listener
+A function to unsubscribe from the listener.
 
 ##### Example
 
@@ -8353,7 +8491,7 @@ The handler that is called when the element changes.
 
 `VoidFunction`
 
-A function to unsubscribe from the listener
+A function to unsubscribe from the listener.
 
 ##### Example
 
@@ -8372,6 +8510,9 @@ unsubscribe();
 > **onElementDelete**(`args`): `VoidFunction`
 
 Adds a listener for when an element is deleted.
+
+Use this to react to element deletions, such as cleaning up related data
+or updating your application state.
 
 ##### Parameters
 
@@ -8397,7 +8538,7 @@ The handler that is called when the element is deleted.
 
 `VoidFunction`
 
-A function to unsubscribe from the listener
+A function to unsubscribe from the listener.
 
 ##### Example
 
@@ -8416,6 +8557,9 @@ unsubscribe();
 > **onElementGroupChange**(`args`): `VoidFunction`
 
 Adds a listener for when an element group changes.
+
+Use this to react to changes in element groups, such as when elements are
+added to or removed from groups.
 
 ##### Parameters
 
@@ -8437,7 +8581,7 @@ Adds a listener for when an element group changes.
 
 `VoidFunction`
 
-A function to unsubscribe from the listener
+A function to unsubscribe from the listener.
 
 ##### Example
 
@@ -8455,7 +8599,10 @@ unsubscribe();
 
 > **onPointerClick**(`params`): `VoidFunction`
 
-Allows you to be notified the user clicks on the map.
+Allows you to be notified when the user clicks on the map.
+
+Use this to react to user clicks on the map, such as triggering custom
+actions or collecting interaction data.
 
 ##### Parameters
 
@@ -8469,7 +8616,7 @@ Allows you to be notified the user clicks on the map.
 
 `VoidFunction`
 
-A function to unsubscribe from the listener
+A function to unsubscribe from the listener.
 
 ##### Example
 
@@ -8486,7 +8633,10 @@ unsubscribe();
 
 > **onPointerMove**(`params`): `VoidFunction`
 
-Allows you to be notified the user moves the mouse over the map.
+Allows you to be notified when the user moves the mouse over the map.
+
+Use this to track mouse movement and detect features under the cursor,
+such as for hover effects or real-time data display.
 
 ##### Parameters
 
@@ -8504,7 +8654,7 @@ The handler function
 
 `VoidFunction`
 
-A function to unsubscribe from the listener
+A function to unsubscribe from the listener.
 
 ##### Example
 
@@ -8756,6 +8906,9 @@ unsubscribe();
 
 Adds a listener for when the selection changes.
 
+Use this to react to selection changes, such as updating your UI to reflect
+what is currently selected on the map.
+
 ##### Parameters
 
 ##### params
@@ -8768,7 +8921,7 @@ Adds a listener for when the selection changes.
 
 `VoidFunction`
 
-A function to unsubscribe from the listener
+A function to unsubscribe from the listener.
 
 ##### Example
 
@@ -8787,6 +8940,9 @@ unsubscribe();
 
 Adds a listener for when the viewport changes.
 
+Use this to react to viewport changes, such as updating your UI or
+triggering other actions when users navigate the map.
+
 ##### Parameters
 
 ##### args
@@ -8802,7 +8958,7 @@ the viewport changes.
 
 `VoidFunction`
 
-A function to unsubscribe from the listener
+A function to unsubscribe from the listener.
 
 ##### Example
 
@@ -8823,6 +8979,9 @@ Adds a listener for when the viewport move ends, which is when the user
 stops dragging or zooming the map, animations have finished, or inertial
 dragging ends.
 
+Use this to react to the end of viewport changes, such as triggering
+data loading or analysis when users finish navigating.
+
 ##### Parameters
 
 ##### args
@@ -8835,7 +8994,7 @@ dragging ends.
 
 `VoidFunction`
 
-A function to unsubscribe from the listener
+A function to unsubscribe from the listener.
 
 ##### Example
 
@@ -8859,6 +9018,10 @@ Adds a listener for when the map is idle, which is defined as:
 * All tiles for the current viewport have been loaded
 * Any fade transitions (e.g. for labels) have completed
 
+Use this to perform actions when the map is completely stable and ready
+for user interaction, such as enabling certain features or triggering
+data analysis.
+
 ##### Parameters
 
 ##### args
@@ -8871,7 +9034,7 @@ Adds a listener for when the map is idle, which is defined as:
 
 `VoidFunction`
 
-A function to unsubscribe from the listener
+A function to unsubscribe from the listener.
 
 ##### Example
 
@@ -9205,11 +9368,15 @@ The Tools controller allows you to let users draw elements on the map.
 
 Sets the tool to use for drawing elements on the map.
 
+Use this method to programmatically activate drawing tools for users. When a tool
+is set, users can draw elements on the map using that tool. Set to `null` to
+deactivate all drawing tools.
+
 ##### Parameters
 
 ##### tool
 
-The tool to set.
+The tool to set, or `null` to deactivate all tools.
 
 `null` | [`ToolType`](client.md#tooltype)
 
@@ -9233,11 +9400,13 @@ await felt.setTool(null);
 
 Gets the current tool, if any is in use.
 
+Use this method to check which drawing tool is currently active, if any.
+
 ##### Returns
 
 `Promise`\<`null` | [`ToolType`](client.md#tooltype)>
 
-The current tool, or `null` if no tool is in use.
+A promise that resolves to the current tool, or `null` if no tool is in use.
 
 ##### Example
 
@@ -9250,6 +9419,9 @@ const tool = await felt.getTool(); // "marker", "polygon", etc.
 > **onToolChange**(`args`): `VoidFunction`
 
 Listens for changes to the current tool.
+
+Use this to react to tool changes, such as updating your UI to reflect
+the currently active drawing tool.
 
 ##### Parameters
 
@@ -9264,8 +9436,6 @@ This callback is called with the current tool whenever the tool changes.
 ##### Returns
 
 `VoidFunction`
-
-A function to unsubscribe from the listener
 
 ##### Example
 
@@ -9284,13 +9454,16 @@ unsubscribe();
 
 Sets the settings for the current tool.
 
+Use this method to configure how drawing tools behave, such as setting colors,
+stroke widths, or other tool-specific properties.
+
 ##### Parameters
 
 ##### settings
 
 [`InputToolSettings`](client.md#inputtoolsettings)
 
-The settings to set.
+The settings to set for the specified tool.
 
 ##### Returns
 
@@ -9310,7 +9483,9 @@ await felt.setToolSettings({
 
 > **getToolSettings**\<`T`>(`tool`): `Promise`\<[`ToolSettingsMap`](client.md#toolsettingsmap)\[`T`]>
 
-Gets the settings for the chosen tool
+Gets the settings for the chosen tool.
+
+Use this method to retrieve the current configuration of a drawing tool.
 
 ##### Type Parameters
 
@@ -9322,11 +9497,13 @@ Gets the settings for the chosen tool
 
 `T`
 
+The tool to get settings for.
+
 ##### Returns
 
 `Promise`\<[`ToolSettingsMap`](client.md#toolsettingsmap)\[`T`]>
 
-The settings for the chosen tool.
+A promise that resolves to the settings for the chosen tool.
 
 ##### Example
 
@@ -9340,6 +9517,9 @@ const settings = await felt.getToolSettings("marker");
 
 Listens for changes to the settings on all tools.
 
+Use this to react to tool setting changes, such as updating your UI to
+reflect the current tool configuration.
+
 ##### Parameters
 
 ##### args
@@ -9352,7 +9532,7 @@ Listens for changes to the settings on all tools.
 
 `VoidFunction`
 
-A function to unsubscribe from the listener
+A function to unsubscribe from the listener.
 
 ##### Example
 
@@ -15409,11 +15589,10 @@ const filter = [
 > **Filters**: [`FilterTernary`](client.md#filterternary) | [`FilterExpression`](client.md#filterexpression) | `null` | `boolean`
 
 Filters can be used to change which features in a layer are rendered. Filters can be
-applied to a layer by the LayersController.setLayerFilters | \`setLayerFilters\` method on the Felt controller.
+applied to a layer by the LayersController.setLayerFilters | setLayerFilters method on the Felt controller.
 
-Filters use a tree structure for combining expressions with logical operators, called a
-[FilterTernary](client.md#filterternary). When combining three or more conditions, you must use proper nesting
-rather than a flat list.
+Filters use a tree structure for combining expressions with logical operators, called a [FilterTernary](client.md#filterternary).
+When combining three or more conditions, you must use proper nesting rather than a flat list.
 
 See the examples below for the correct structure to use when building complex filters.
 
@@ -15429,6 +15608,10 @@ The possible operators are:
 * `ne`: Not equal to
 * `cn`: Contains
 * `nc`: Does not contain
+* `is`: Is
+* `isnt`: Is not
+* `in`: In
+* `ni`: Not in
 
 The allowed boolean operators are:
 

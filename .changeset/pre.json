@@ -1,0 +1,10 @@
+{
+  "mode": "exit",
+  "tag": "next",
+  "initialVersions": {
+    "@feltmaps/js-sdk": "1.8.0"
+  },
+  "changesets": [
+    "young-hounds-taste"
+  ]
+}

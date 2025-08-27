@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.9.0
+
+### Minor Changes
+
+* 7e4034f: Add support for legendDisplay on the layer
+
 ## 1.8.0
 
 ### Minor Changes

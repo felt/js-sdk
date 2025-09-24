@@ -567,6 +567,36 @@ await felt.deleteLayer("layer-1");
 
 ***
 
+## duplicateLayer()
+
+> **duplicateLayer**(`id`: `string`): `Promise`\<[`Layer`](../Layers/Layer.md)>
+
+Duplicate a layer from the map by its id.
+
+### Parameters
+
+| Parameter | Type     |
+| --------- | -------- |
+| `id`      | `string` |
+
+### Returns
+
+`Promise`\<[`Layer`](../Layers/Layer.md)>
+
+The duplicated layer.
+
+### Remarks
+
+This will create an ephemeral copy of the layer.
+
+### Example
+
+```typescript
+const duplicatedLayer = await felt.duplicateLayer("layer-1");
+```
+
+***
+
 ## getLayerGroup()
 
 > **getLayerGroup**(`id`: `string`): `Promise`\<`null` | [`LayerGroup`](../Layers/LayerGroup.md)>

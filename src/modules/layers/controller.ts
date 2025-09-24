@@ -346,7 +346,7 @@ export interface LayersController {
    */
   deleteLayer(id: string): Promise<void>;
 
-    /**
+  /**
    * Duplicate a layer from the map by its id.
    *
    * @remarks This will create an ephemeral copy of the layer.
@@ -357,7 +357,7 @@ export interface LayersController {
    * ```
    * @returns The duplicated layer.
    */
-    duplicateLayer(id: string): Promise<Layer>;
+  duplicateLayer(id: string): Promise<Layer>;
 
   // GROUPS
 

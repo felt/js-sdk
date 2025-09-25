@@ -2,22 +2,18 @@ import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import type { LayerFeature } from "~/modules/layers/features/types";
 import type { UiController } from "../controller";
-import {
-  uiElementBaseCreateSchema,
-  uiElementBaseSchema,
-  type UIElementLifecycle,
-} from "./base";
+import { uiElementBaseCreateSchema, uiElementBaseSchema } from "./base";
 
 const uiFeatureActionBaseSchema = z.object({
-  type: z.literal("FeatureContextualAction"),
+  type: z.literal("FeatureAction"),
 
   /**
-   * The label of the contextual action.
+   * The label of the feature action.
    */
   label: z.string(),
 
   /**
-   * The function to call when the contextual action is triggered.
+   * The function to call when the feature action is triggered.
    */
   onTrigger: z
     .function()
@@ -50,32 +46,25 @@ export const uiFeatureActionSchema = {
 };
 
 /**
- * Represents a feature contextual action for creation.
+ * Represents a feature action for creation.
  * It can be added to the map by using the {@link UiController.createFeatureAction} method.
- * @public
  */
-export interface UIFeatureActionCreate
-  extends UIElementLifecycle,
-    Omit<
-      zInfer<typeof uiFeatureActionSchema.create>,
-      "onCreate" | "onDestroy" | "id"
-    > {
-  /**
-   * The function to call when the contextual action is triggered.
-   *
-   * @param args - The arguments passed to the function.
-   * @param args.feature - The feature that was clicked.
-   */
-  onTrigger: (args: { feature: LayerFeature }) => void;
-}
+export type UIFeatureActionCreate = zInfer<
+  typeof uiFeatureActionSchema.clonable
+>;
 
 /**
- * Represents a feature contextual action after creation (with generated id).
+ * Represents a feature action after creation (with generated id).
  * @public
  */
-export interface UIFeatureAction extends UIFeatureActionCreate {
-  /**
-   * The unique identifier of the contextual action.
-   */
+export type UIFeatureAction = UIFeatureActionCreate & {
   id: string;
-}
+};
+
+/**
+ * Represents a feature action after creation (with generated id).
+ * @public
+ */
+export type UIFeatureActionUpdate = Partial<UIFeatureActionCreate> & {
+  id: string;
+};

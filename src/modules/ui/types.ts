@@ -74,9 +74,7 @@ export interface CreateFeatureActionParams
   placement?: PlacementForUIElement;
 }
 
-const UpdateFeatureActionParamsSchema = uiFeatureActionSchema.create
-  .partial()
-  .required({ id: true });
+const UpdateFeatureActionParamsSchema = uiFeatureActionSchema.update;
 
 export const UpdateFeatureActionParamsClonableSchema =
   uiFeatureActionSchema.clonable.partial().required({ id: true });

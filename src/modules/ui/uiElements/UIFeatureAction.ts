@@ -79,8 +79,11 @@ export interface UIFeatureActionCreate
  * Represents a feature action after creation (with generated id).
  * @public
  */
-export type UIFeatureAction = UIFeatureActionCreate & {
+export type UIFeatureAction = {
   id: string;
+  layerIds?: string[];
+  geometryTypes?: Array<"Polygon" | "Point" | "Line" | "Raster">;
+  onTrigger: (args: { feature: LayerFeature }) => void;
 };
 
 /**

@@ -227,6 +227,8 @@ export { CountGridConfig }
 
 export { CreateActionTriggerParams }
 
+export { CreateFeatureContextualActionParams }
+
 export { CreateLayersFromGeoJsonParams }
 
 export { CreateOrUpdatePanelParams }
@@ -634,6 +636,10 @@ export { UIDividerElementCreate }
 
 export { UIDividerElementUpdate }
 
+export { uiFeatureAction }
+
+export { uiFeatureActionCreate }
+
 export { UIFlexibleSpaceElement }
 
 export { UIFlexibleSpaceElementCreate }
@@ -693,6 +699,8 @@ export { UIToggleGroupElementCreate }
 export { UIToggleGroupElementUpdate }
 
 export { UpdateActionTriggerParams }
+
+export { UpdateFeatureContextualActionParams }
 
 export { UpdateLayerParams }
 

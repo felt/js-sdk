@@ -5,14 +5,14 @@ import type { zInfer } from "~/lib/utils";
 import { SortConfigSchema } from "../shared/types";
 import {
   CreateActionTriggerParamsClonableSchema,
-  CreateFeatureContextualActionParamsClonableSchema,
+  CreateFeatureActionParamsClonableSchema,
   CreateOrUpdatePanelParamsClonableSchema,
   CreatePanelElementsClonableSchema,
   DeletePanelElementsParamsSchema,
   UiControlsOptionsSchema,
   UiOnMapInteractionsOptionsSchema,
   UpdateActionTriggerParamsClonableSchema,
-  UpdateFeatureContextualActionParamsClonableSchema,
+  UpdateFeatureActionParamsClonableSchema,
   UpdatePanelElementsParamsClonableSchema,
 } from "./types";
 import type { uiActionTriggerSchema } from "./uiElements/UIActionTrigger";
@@ -34,18 +34,18 @@ const DeleteActionTriggerMessage = methodMessage(
   z.string(),
 );
 
-const CreateFeatureContextualActionMessage = methodMessage(
-  "createFeatureContextualAction",
-  CreateFeatureContextualActionParamsClonableSchema,
+const CreateFeatureActionMessage = methodMessage(
+  "createFeatureAction",
+  CreateFeatureActionParamsClonableSchema,
 );
 
-const UpdateFeatureContextualActionMessage = methodMessage(
-  "updateFeatureContextualAction",
-  UpdateFeatureContextualActionParamsClonableSchema,
+const UpdateFeatureActionMessage = methodMessage(
+  "updateFeatureAction",
+  UpdateFeatureActionParamsClonableSchema,
 );
 
-const DeleteFeatureContextualActionMessage = methodMessage(
-  "deleteFeatureContextualAction",
+const DeleteFeatureActionMessage = methodMessage(
+  "deleteFeatureAction",
   z.string(),
 );
 
@@ -104,9 +104,9 @@ export const uiSchema = {
     UpdateActionTriggerMessage,
     DeleteActionTriggerMessage,
 
-    CreateFeatureContextualActionMessage,
-    UpdateFeatureContextualActionMessage,
-    DeleteFeatureContextualActionMessage,
+    CreateFeatureActionMessage,
+    UpdateFeatureActionMessage,
+    DeleteFeatureActionMessage,
 
     CreatePanelIdMessage,
     CreateOrUpdatePanelMessage,
@@ -137,17 +137,15 @@ export type UiSchema = {
     >;
     deleteActionTrigger: Method<zInfer<typeof DeleteActionTriggerMessage>>;
 
-    createFeatureContextualAction: Method<
-      zInfer<typeof CreateFeatureContextualActionMessage>,
+    createFeatureAction: Method<
+      zInfer<typeof CreateFeatureActionMessage>,
       zInfer<typeof uiFeatureActionSchema.clonable>
     >;
-    updateFeatureContextualAction: Method<
-      zInfer<typeof UpdateFeatureContextualActionMessage>,
+    updateFeatureAction: Method<
+      zInfer<typeof UpdateFeatureActionMessage>,
       zInfer<typeof uiFeatureActionSchema.clonable>
     >;
-    deleteFeatureContextualAction: Method<
-      zInfer<typeof DeleteFeatureContextualActionMessage>
-    >;
+    deleteFeatureAction: Method<zInfer<typeof DeleteFeatureActionMessage>>;
 
     createPanelId: Method<zInfer<typeof CreatePanelIdMessage>>;
     createOrUpdatePanel: Method<

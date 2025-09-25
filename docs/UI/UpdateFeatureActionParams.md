@@ -16,6 +16,22 @@ The label of the contextual action.
 
 ***
 
+## layerIds?
+
+> `optional` **layerIds**: `string`\[]
+
+The layers to add the action to. Optional. Defaults to all layers.
+
+***
+
+## geometryTypes?
+
+> `optional` **geometryTypes**: (`"Polygon"` | `"Point"` | `"Line"` | `"Raster"`)\[]
+
+The geometry type of the features to add the action to. Optional. Defaults to all geometry types.
+
+***
+
 ## type?
 
 > `optional` **type**: `undefined`
@@ -24,17 +40,16 @@ The label of the contextual action.
 
 ## onTrigger()?
 
-> `optional` **onTrigger**: (`args`: \{ `featureId`: `string`; `layerId`: `string`; }) => `void`
+> `optional` **onTrigger**: (`args`: \{ `feature`: [`LayerFeature`](../Layers/LayerFeature.md); }) => `void`
 
 The function to call when the contextual action is triggered.
 
 ### Parameters
 
-| Parameter        | Type                                             | Description                           |
-| ---------------- | ------------------------------------------------ | ------------------------------------- |
-| `args`           | \{ `featureId`: `string`; `layerId`: `string`; } | The arguments passed to the function. |
-| `args.featureId` | `string`                                         | The id of the feature.                |
-| `args.layerId`   | `string`                                         | The id of the layer.                  |
+| Parameter      | Type                                                         | Description                           |
+| -------------- | ------------------------------------------------------------ | ------------------------------------- |
+| `args`         | \{ `feature`: [`LayerFeature`](../Layers/LayerFeature.md); } | The arguments passed to the function. |
+| `args.feature` | [`LayerFeature`](../Layers/LayerFeature.md)                  | The feature that was clicked.         |
 
 ### Returns
 

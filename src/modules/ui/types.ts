@@ -55,12 +55,12 @@ export interface UpdateActionTriggerParams
   id: zInfer<typeof UpdateActionTriggerParamsSchema>["id"];
 }
 
-export const CreateFeatureContextualActionParamsSchema = z.object({
+export const CreateFeatureActionParamsSchema = z.object({
   action: uiFeatureActionSchema.create,
   placement: placementForUiElementSchema.optional(),
 });
 
-export const CreateFeatureContextualActionParamsClonableSchema = z.object({
+export const CreateFeatureActionParamsClonableSchema = z.object({
   action: uiFeatureActionSchema.clonable,
   placement: placementForUiElementSchema.optional(),
 });
@@ -68,24 +68,25 @@ export const CreateFeatureContextualActionParamsClonableSchema = z.object({
 /**
  * @public
  */
-export interface CreateFeatureContextualActionParams
-  extends zInfer<typeof CreateFeatureContextualActionParamsSchema> {
+export interface CreateFeatureActionParams
+  extends zInfer<typeof CreateFeatureActionParamsSchema> {
   action: UIFeatureActionCreate;
   placement?: PlacementForUIElement;
 }
 
-const UpdateFeatureContextualActionParamsSchema =
-  uiFeatureActionSchema.create.partial().required({ id: true });
+const UpdateFeatureActionParamsSchema = uiFeatureActionSchema.create
+  .partial()
+  .required({ id: true });
 
-export const UpdateFeatureContextualActionParamsClonableSchema =
+export const UpdateFeatureActionParamsClonableSchema =
   uiFeatureActionSchema.clonable.partial().required({ id: true });
 
 /**
  * @public
  */
-export interface UpdateFeatureContextualActionParams
+export interface UpdateFeatureActionParams
   extends Omit<Partial<UIFeatureAction>, "id"> {
-  id: zInfer<typeof UpdateFeatureContextualActionParamsSchema>["id"];
+  id: zInfer<typeof UpdateFeatureActionParamsSchema>["id"];
 }
 
 const CreateOrUpdatePanelParamsSchema = z.object({

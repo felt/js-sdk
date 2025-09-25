@@ -6,14 +6,14 @@
  */
 export type {
   CreateActionTriggerParams,
-  CreateFeatureContextualActionParams,
+  CreateFeatureActionParams,
   CreateOrUpdatePanelParams,
   CreatePanelElementsParams,
   DeletePanelElementsParams,
   UiOnMapInteractionsOptions as OnMapInteractionsOptions,
   UiControlsOptions,
   UpdateActionTriggerParams,
-  UpdateFeatureContextualActionParams,
+  UpdateFeatureActionParams,
   UpdatePanelElementsParams,
 } from "./types";
 

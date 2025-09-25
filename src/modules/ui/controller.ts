@@ -2,14 +2,14 @@ import { method, methodWithListeners } from "~/lib/interface";
 import type { SortConfig } from "~/modules/shared/types";
 import type {
   CreateActionTriggerParams,
-  CreateFeatureContextualActionParams,
+  CreateFeatureActionParams,
   CreateOrUpdatePanelParams,
   CreatePanelElementsParams,
   DeletePanelElementsParams,
   UiControlsOptions,
   UiOnMapInteractionsOptions,
   UpdateActionTriggerParams,
-  UpdateFeatureContextualActionParams,
+  UpdateFeatureActionParams,
   UpdatePanelElementsParams,
 } from "./types";
 import type { UIActionTriggerCreate } from "./uiElements/UIActionTrigger";
@@ -61,20 +61,17 @@ export const uiController = (
   >(feltWindow, "updateActionTrigger"),
   deleteActionTrigger: method(feltWindow, "deleteActionTrigger"),
 
-  createFeatureContextualAction: methodWithListeners<
-    "createFeatureContextualAction",
-    CreateFeatureContextualActionParams,
+  createFeatureAction: methodWithListeners<
+    "createFeatureAction",
+    CreateFeatureActionParams,
     UIFeatureAction
-  >(feltWindow, "createFeatureContextualAction"),
-  updateFeatureContextualAction: methodWithListeners<
-    "updateFeatureContextualAction",
-    UpdateFeatureContextualActionParams,
+  >(feltWindow, "createFeatureAction"),
+  updateFeatureAction: methodWithListeners<
+    "updateFeatureAction",
+    UpdateFeatureActionParams,
     UIFeatureAction
-  >(feltWindow, "updateFeatureContextualAction"),
-  deleteFeatureContextualAction: method(
-    feltWindow,
-    "deleteFeatureContextualAction",
-  ),
+  >(feltWindow, "updateFeatureAction"),
+  deleteFeatureAction: method(feltWindow, "deleteFeatureAction"),
 });
 
 /**
@@ -165,19 +162,20 @@ export interface UiController {
    *
    * @example
    * ```typescript
-   * await felt.createFeatureContextualAction({
+   * const myAction = await felt.createFeatureAction({
    *   action: {
    *     label: "Edit feature",
    *     onTrigger: async ({ featureId, layerId }) => {
    *       console.log(`Editing feature ${featureId} in layer ${layerId}`);
    *     },
+   *     layerIds: ["layer-1", "layer-2"],
    *   },
    *   placement: { at: "start" }, // optional, defaults to { at: "end" }
    * });
    * ```
    */
-  createFeatureContextualAction(
-    args: CreateFeatureContextualActionParams,
+  createFeatureAction(
+    args: CreateFeatureActionParams,
   ): Promise<UIFeatureAction>;
 
   /**
@@ -192,14 +190,14 @@ export interface UiController {
    *
    * @example
    * ```typescript
-   * await felt.updateFeatureContextualAction({
+   * await felt.updateFeatureAction({
    *   id: "my-action",
    *   label: "Updated action label", // only label changes
    * });
    * ```
    */
-  updateFeatureContextualAction(
-    args: UpdateFeatureContextualActionParams,
+  updateFeatureAction(
+    args: UpdateFeatureActionParams,
   ): Promise<UIFeatureAction>;
 
   /**
@@ -209,10 +207,10 @@ export interface UiController {
    *
    * @example
    * ```typescript
-   * await felt.deleteFeatureContextualAction("my-action");
+   * await felt.deleteFeatureAction("my-action");
    * ```
    */
-  deleteFeatureContextualAction(id: string): void;
+  deleteFeatureAction(id: string): void;
 
   /**
    * Creates a panel ID.

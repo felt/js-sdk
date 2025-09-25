@@ -107,17 +107,17 @@ await felt.deleteActionTrigger("enablePolygonTool");
 
 ***
 
-## createFeatureContextualAction()
+## createFeatureAction()
 
-> **createFeatureContextualAction**(`args`: [`CreateFeatureContextualActionParams`](CreateFeatureContextualActionParams.md)): `Promise`\<[`uiFeatureAction`](uiFeatureAction.md)>
+> **createFeatureAction**(`args`: [`CreateFeatureActionParams`](CreateFeatureActionParams.md)): `Promise`\<[`uiFeatureAction`](uiFeatureAction.md)>
 
 Creates a feature contextual action.
 
 ### Parameters
 
-| Parameter | Type                                                                            | Description                   |
-| --------- | ------------------------------------------------------------------------------- | ----------------------------- |
-| `args`    | [`CreateFeatureContextualActionParams`](CreateFeatureContextualActionParams.md) | The arguments for the method. |
+| Parameter | Type                                                        | Description                   |
+| --------- | ----------------------------------------------------------- | ----------------------------- |
+| `args`    | [`CreateFeatureActionParams`](CreateFeatureActionParams.md) | The arguments for the method. |
 
 ### Returns
 
@@ -126,12 +126,13 @@ Creates a feature contextual action.
 ### Example
 
 ```typescript
-await felt.createFeatureContextualAction({
+const myAction = await felt.createFeatureAction({
   action: {
     label: "Edit feature",
     onTrigger: async ({ featureId, layerId }) => {
       console.log(`Editing feature ${featureId} in layer ${layerId}`);
     },
+    layerIds: ["layer-1", "layer-2"],
   },
   placement: { at: "start" }, // optional, defaults to { at: "end" }
 });
@@ -139,9 +140,9 @@ await felt.createFeatureContextualAction({
 
 ***
 
-## updateFeatureContextualAction()
+## updateFeatureAction()
 
-> **updateFeatureContextualAction**(`args`: [`UpdateFeatureContextualActionParams`](UpdateFeatureContextualActionParams.md)): `Promise`\<[`uiFeatureAction`](uiFeatureAction.md)>
+> **updateFeatureAction**(`args`: [`UpdateFeatureActionParams`](UpdateFeatureActionParams.md)): `Promise`\<[`uiFeatureAction`](uiFeatureAction.md)>
 
 Updates a feature contextual action.
 
@@ -149,9 +150,9 @@ Feature contextual action to update is identified by the `id` property.
 
 ### Parameters
 
-| Parameter | Type                                                                            | Description                              |
-| --------- | ------------------------------------------------------------------------------- | ---------------------------------------- |
-| `args`    | [`UpdateFeatureContextualActionParams`](UpdateFeatureContextualActionParams.md) | The feature contextual action to update. |
+| Parameter | Type                                                        | Description                              |
+| --------- | ----------------------------------------------------------- | ---------------------------------------- |
+| `args`    | [`UpdateFeatureActionParams`](UpdateFeatureActionParams.md) | The feature contextual action to update. |
 
 ### Returns
 
@@ -164,7 +165,7 @@ Properties provided will override the existing properties.
 ### Example
 
 ```typescript
-await felt.updateFeatureContextualAction({
+await felt.updateFeatureAction({
   id: "my-action",
   label: "Updated action label", // only label changes
 });
@@ -172,9 +173,9 @@ await felt.updateFeatureContextualAction({
 
 ***
 
-## deleteFeatureContextualAction()
+## deleteFeatureAction()
 
-> **deleteFeatureContextualAction**(`id`: `string`): `void`
+> **deleteFeatureAction**(`id`: `string`): `void`
 
 Deletes a feature contextual action.
 
@@ -191,7 +192,7 @@ Deletes a feature contextual action.
 ### Example
 
 ```typescript
-await felt.deleteFeatureContextualAction("my-action");
+await felt.deleteFeatureAction("my-action");
 ```
 
 ***

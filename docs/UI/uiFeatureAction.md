@@ -1,7 +1,6 @@
 ***
 
-Represents a feature contextual action for creation.
-It can be added to the map by using the [UiController.createFeatureContextualAction](UiController.md#createfeaturecontextualaction) method.
+Represents a feature contextual action after creation (with generated id).
 
 # Properties
 
@@ -15,21 +14,44 @@ The label of the contextual action.
 
 ## onTrigger()
 
-> **onTrigger**: (`args`: \{ `featureId`: `string`; `layerId`: `string`; }) => `void`
+> **onTrigger**: (`args`: \{ `feature`: [`LayerFeature`](../Layers/LayerFeature.md); }) => `void`
 
 The function to call when the contextual action is triggered.
 
 ### Parameters
 
-| Parameter        | Type                                             | Description                           |
-| ---------------- | ------------------------------------------------ | ------------------------------------- |
-| `args`           | \{ `featureId`: `string`; `layerId`: `string`; } | The arguments passed to the function. |
-| `args.featureId` | `string`                                         | The id of the feature.                |
-| `args.layerId`   | `string`                                         | The id of the layer.                  |
+| Parameter      | Type                                                         | Description                           |
+| -------------- | ------------------------------------------------------------ | ------------------------------------- |
+| `args`         | \{ `feature`: [`LayerFeature`](../Layers/LayerFeature.md); } | The arguments passed to the function. |
+| `args.feature` | [`LayerFeature`](../Layers/LayerFeature.md)                  | The feature that was clicked.         |
 
 ### Returns
 
 `void`
+
+***
+
+## id
+
+> **id**: `string`
+
+The unique identifier of the contextual action.
+
+***
+
+## layerIds?
+
+> `optional` **layerIds**: `string`\[]
+
+The layers to add the action to. Optional. Defaults to all layers.
+
+***
+
+## geometryTypes?
+
+> `optional` **geometryTypes**: (`"Polygon"` | `"Point"` | `"Line"` | `"Raster"`)\[]
+
+The geometry type of the features to add the action to. Optional. Defaults to all geometry types.
 
 ***
 

@@ -1,5 +1,6 @@
 import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
+import type { LayerFeature } from "~/modules/layers/features/types";
 import type { UiController } from "../controller";
 import {
   uiElementBaseCreateSchema,
@@ -20,37 +21,37 @@ const uiFeatureActionBaseSchema = z.object({
    */
   onTrigger: z
     .function()
-    .args(z.object({ featureId: z.string(), layerId: z.string() }))
+    .args(z.object({ feature: z.custom<LayerFeature>() }))
     .returns(z.void()),
+
+  /**
+   * The layers to add the action to. Optional. Defaults to all layers.
+   */
+  layerIds: z.array(z.string()).optional(),
+
+  /**
+   * The geometry type of the features to add the action to. Optional. Defaults to all geometry types.
+   */
+  geometryTypes: z
+    .array(z.enum(["Polygon", "Line", "Point", "Raster"]))
+    .optional(),
 });
 
 export const uiFeatureActionSchema = {
   read: uiElementBaseSchema
     .extend(uiFeatureActionBaseSchema.shape)
-    .extend({
-      onTrigger: z
-        .function()
-        .args(z.object({ featureId: z.string(), layerId: z.string() }))
-        .returns(z.void()),
-    }),
+    .extend({ id: z.string() }),
   create: uiElementBaseCreateSchema.params
     .extend(uiFeatureActionBaseSchema.shape)
-    .extend({ type: z.undefined() }) // using partial() causes JSDoc to not appear
-    .extend({
-      onTrigger: z
-        .function()
-        .args(z.object({ featureId: z.string(), layerId: z.string() }))
-        .returns(z.void()),
-    }),
+    .extend({ type: z.undefined() }),
   clonable: uiElementBaseCreateSchema.clonable
     .extend(uiFeatureActionBaseSchema.shape)
-    .extend({ type: z.undefined() })
-    .extend({ onTrigger: z.string() }),
+    .extend({ type: z.undefined() }),
 };
 
 /**
  * Represents a feature contextual action for creation.
- * It can be added to the map by using the {@link UiController.createFeatureContextualAction} method.
+ * It can be added to the map by using the {@link UiController.createFeatureAction} method.
  * @public
  */
 export interface UIFeatureActionCreate
@@ -63,18 +64,16 @@ export interface UIFeatureActionCreate
    * The function to call when the contextual action is triggered.
    *
    * @param args - The arguments passed to the function.
-   * @param args.featureId - The id of the feature.
-   * @param args.layerId - The id of the layer.
+   * @param args.feature - The feature that was clicked.
    */
-  onTrigger: (args: { featureId: string; layerId: string }) => void;
+  onTrigger: (args: { feature: LayerFeature }) => void;
 }
 
 /**
  * Represents a feature contextual action after creation (with generated id).
  * @public
  */
-export interface UIFeatureAction
-  extends UIFeatureActionCreate {
+export interface UIFeatureAction extends UIFeatureActionCreate {
   /**
    * The unique identifier of the contextual action.
    */

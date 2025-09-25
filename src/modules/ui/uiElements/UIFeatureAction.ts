@@ -2,7 +2,12 @@ import { z } from "zod";
 import type { zInfer } from "~/lib/utils";
 import type { LayerFeature } from "~/modules/layers/features/types";
 import type { UiController } from "../controller";
-import { uiElementBaseCreateSchema, uiElementBaseSchema } from "./base";
+import {
+  makeUpdateSchema,
+  uiElementBaseCreateSchema,
+  uiElementBaseSchema,
+  type UIElementLifecycle,
+} from "./base";
 
 const uiFeatureActionBaseSchema = z.object({
   type: z.literal("FeatureAction"),
@@ -43,15 +48,32 @@ export const uiFeatureActionSchema = {
   clonable: uiElementBaseCreateSchema.clonable
     .extend(uiFeatureActionBaseSchema.shape)
     .extend({ type: z.undefined() }),
+  // Add the missing update schema
+  update: makeUpdateSchema(
+    uiElementBaseCreateSchema.params
+      .extend(uiFeatureActionBaseSchema.shape)
+      .extend({ type: z.undefined() }),
+  ),
 };
 
 /**
  * Represents a feature action for creation.
  * It can be added to the map by using the {@link UiController.createFeatureAction} method.
  */
-export type UIFeatureActionCreate = zInfer<
-  typeof uiFeatureActionSchema.clonable
->;
+export interface UIFeatureActionCreate
+  extends UIElementLifecycle,
+    Omit<
+      zInfer<typeof uiFeatureActionSchema.create>,
+      "onCreate" | "onDestroy"
+    > {
+  /**
+   * The function to call when the feature action is triggered.
+   *
+   * @param args - The arguments passed to the function.
+   * @param args.feature - The feature that triggered the action.
+   */
+  onTrigger: (args: { feature: LayerFeature }) => void;
+}
 
 /**
  * Represents a feature action after creation (with generated id).

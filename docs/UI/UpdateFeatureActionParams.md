@@ -12,7 +12,7 @@
 
 > `optional` **label**: `string`
 
-The label of the contextual action.
+The label of the feature action.
 
 ***
 
@@ -42,14 +42,14 @@ The geometry type of the features to add the action to. Optional. Defaults to al
 
 > `optional` **onTrigger**: (`args`: \{ `feature`: [`LayerFeature`](../Layers/LayerFeature.md); }) => `void`
 
-The function to call when the contextual action is triggered.
+The function to call when the feature action is triggered.
 
 ### Parameters
 
-| Parameter      | Type                                                         | Description                           |
-| -------------- | ------------------------------------------------------------ | ------------------------------------- |
-| `args`         | \{ `feature`: [`LayerFeature`](../Layers/LayerFeature.md); } | The arguments passed to the function. |
-| `args.feature` | [`LayerFeature`](../Layers/LayerFeature.md)                  | The feature that was clicked.         |
+| Parameter      | Type                                                         | Description                            |
+| -------------- | ------------------------------------------------------------ | -------------------------------------- |
+| `args`         | \{ `feature`: [`LayerFeature`](../Layers/LayerFeature.md); } | The arguments passed to the function.  |
+| `args.feature` | [`LayerFeature`](../Layers/LayerFeature.md)                  | The feature that triggered the action. |
 
 ### Returns
 

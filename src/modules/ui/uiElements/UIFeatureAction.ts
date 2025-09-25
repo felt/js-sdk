@@ -84,10 +84,3 @@ export type UIFeatureAction = {
   geometryTypes?: Array<"Polygon" | "Point" | "Line" | "Raster">;
   onTrigger: (args: { feature: LayerFeature }) => void;
 };
-
-/**
- * Represents a feature action after creation (with generated id).
- */
-export type UIFeatureActionUpdate = Partial<UIFeatureActionCreate> & {
-  id: string;
-};

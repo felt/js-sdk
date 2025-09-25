@@ -55,7 +55,7 @@ export interface UpdateActionTriggerParams
   id: zInfer<typeof UpdateActionTriggerParamsSchema>["id"];
 }
 
-export const CreateFeatureActionParamsSchema = z.object({
+const CreateFeatureActionParamsSchema = z.object({
   action: uiFeatureActionSchema.create,
   placement: placementForUiElementSchema.optional(),
 });

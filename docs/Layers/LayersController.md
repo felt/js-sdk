@@ -288,7 +288,7 @@ The duplicated layer.
 
 ### Remarks
 
-This will create an ephemeral copy of the layer.
+This will create an ephemeral copy of the layer, just for the duration of the session. The duplicated layer will not be persisted to the map.
 
 ### Example
 

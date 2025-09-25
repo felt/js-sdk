@@ -349,7 +349,7 @@ export interface LayersController {
   /**
    * Duplicate a layer from the map by its id.
    *
-   * @remarks This will create an ephemeral copy of the layer.
+   * @remarks This will create an ephemeral copy of the layer, just for the duration of the session. The duplicated layer will not be persisted to the map.
    *
    * @example
    * ```typescript

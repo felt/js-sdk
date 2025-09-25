@@ -77,7 +77,6 @@ export interface UIFeatureActionCreate
 
 /**
  * Represents a feature action after creation (with generated id).
- * @public
  */
 export type UIFeatureAction = {
   id: string;
@@ -88,7 +87,6 @@ export type UIFeatureAction = {
 
 /**
  * Represents a feature action after creation (with generated id).
- * @public
  */
 export type UIFeatureActionUpdate = Partial<UIFeatureActionCreate> & {
   id: string;

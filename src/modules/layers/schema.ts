@@ -68,6 +68,8 @@ const UpdateLayerMessage = methodMessage("updateLayer", UpdateLayerSchema);
 
 const DeleteLayerMessage = methodMessage("deleteLayer", z.string());
 
+const DuplicateLayerMessage = methodMessage("duplicateLayer", z.string());
+
 // LAYER GROUPS
 const GetGroupMessage = methodMessage("getLayerGroup", z.string());
 const GetGroupsMessage = methodMessage(
@@ -209,7 +211,7 @@ export const layersSchema = {
     CreateLayersFromGeoJsonMessage,
     DeleteLayerMessage,
     UpdateLayerMessage,
-
+    DuplicateLayerMessage,
     GetGroupMessage,
     GetGroupsMessage,
     SetLayerGroupVisibilityMessage,
@@ -261,7 +263,7 @@ export type LayersSchema = {
     >;
     updateLayer: Method<zInfer<typeof UpdateLayerMessage>>;
     deleteLayer: Method<zInfer<typeof DeleteLayerMessage>>;
-
+    duplicateLayer: Method<zInfer<typeof DuplicateLayerMessage>>;
     getLayerGroup: Method<zInfer<typeof GetGroupMessage>>;
     getLayerGroups: Method<zInfer<typeof GetGroupsMessage>>;
     setLayerGroupVisibility: Method<

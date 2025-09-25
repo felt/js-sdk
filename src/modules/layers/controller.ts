@@ -62,6 +62,7 @@ export const layersController = (
   ),
   updateLayer: method(feltWindow, "updateLayer", convertFileSourceToDataSource),
   deleteLayer: method(feltWindow, "deleteLayer"),
+  duplicateLayer: method(feltWindow, "duplicateLayer"),
 
   // groups
   getLayerGroup: method(feltWindow, "getLayerGroup"),
@@ -344,6 +345,19 @@ export interface LayersController {
    * ```
    */
   deleteLayer(id: string): Promise<void>;
+
+  /**
+   * Duplicate a layer from the map by its id.
+   *
+   * @remarks This will create an ephemeral copy of the layer, just for the duration of the session. The duplicated layer will not be persisted to the map.
+   *
+   * @example
+   * ```typescript
+   * const duplicatedLayer = await felt.duplicateLayer("layer-1");
+   * ```
+   * @returns The duplicated layer.
+   */
+  duplicateLayer(id: string): Promise<Layer>;
 
   // GROUPS
 

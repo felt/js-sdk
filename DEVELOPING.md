@@ -70,12 +70,13 @@ Once you have added your module:
 
 1. Run `npm run build` to ensure everything compiles and the docs are generated. It's possible for the docs to
    fail to build if some types are not exported, but you will be warned in the console about this.
-1. Run `npm run update-api` to run api-extractor which updates the "api spec" file, which allows
+2. Run `npm run update-api` to run api-extractor which updates the "api spec" file, which allows
    reviewers to understand the changes made to the API.
-1. Stage or commit your changes. This is important, because the next step will fail if you have
+3. Stage or commit your changes. This is important, because the next step will fail if you have
    docs changes that are unstaged as it is used to check that the docs are up to date.
-1. Run `npm run check` which will check that the package is correctly built, the docs have been
+4. Run `npm run check` which will check that the package is correctly built, the docs have been
    updated, the API spec has been updated and the tests are passing.
+5. If you make any further changes, run steps 1 to 4 again.
 
 If this all works, your module is ready and should be working.
 

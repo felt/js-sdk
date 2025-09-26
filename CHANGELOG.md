@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.10.0-next.0
+
+### Minor Changes
+
+- 3d9527b: Add duplicateLayer method
+
 ## 1.9.0
 
 ### Minor Changes

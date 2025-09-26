@@ -6665,6 +6665,34 @@ This only works for layers created via the SDK `createLayersFromGeoJson` method,
 await felt.deleteLayer("layer-1");
 ```
 
+#### duplicateLayer()
+
+> **duplicateLayer**(`id`): `Promise`\<[`Layer`](client.md#layer-1)>
+
+Duplicate a layer from the map by its id.
+
+##### Parameters
+
+##### id
+
+`string`
+
+##### Returns
+
+`Promise`\<[`Layer`](client.md#layer-1)>
+
+The duplicated layer.
+
+##### Remarks
+
+This will create an ephemeral copy of the layer, just for the duration of the session. The duplicated layer will not be persisted to the map.
+
+##### Example
+
+```typescript
+const duplicatedLayer = await felt.duplicateLayer("layer-1");
+```
+
 #### getLayerGroup()
 
 > **getLayerGroup**(`id`): `Promise`\<`null` | [`LayerGroup`](client.md#layergroup)>

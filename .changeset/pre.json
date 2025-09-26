@@ -5,6 +5,7 @@
     "@feltmaps/js-sdk": "1.9.0"
   },
   "changesets": [
+    "empty-camels-pay",
     "sharp-files-dance"
   ]
 }

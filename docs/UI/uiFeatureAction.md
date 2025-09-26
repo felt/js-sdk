@@ -1,6 +1,6 @@
 ***
 
-> **uiFeatureAction**: \{ `id`: `string`; `onTrigger`: (`args`: \{ `feature`: [`LayerFeature`](../Layers/LayerFeature.md); }) => `void`; `layerIds`: `string`\[]; `geometryTypes`: (`"Polygon"` | `"Point"` | `"Line"` | `"Raster"`)\[]; }
+> **uiFeatureAction**: \{ `id`: `string`; `label`: `string`; `onTrigger`: (`args`: \{ `feature`: [`LayerFeature`](../Layers/LayerFeature.md); }) => `void`; `layerIds`: `string`\[]; `geometryTypes`: (`"Polygon"` | `"Point"` | `"Line"` | `"Raster"`)\[]; }
 
 Represents a feature action after creation (with generated id).
 
@@ -9,6 +9,10 @@ Represents a feature action after creation (with generated id).
 ## id
 
 > **id**: `string`
+
+## label
+
+> **label**: `string`
 
 ## onTrigger()
 

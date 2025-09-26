@@ -47,7 +47,8 @@ export const uiFeatureActionSchema = {
     .extend({ type: z.undefined() }),
   clonable: uiElementBaseCreateSchema.clonable
     .extend(uiFeatureActionBaseSchema.shape)
-    .extend({ type: z.undefined() }),
+    .extend({ type: z.undefined() })
+    .extend({ onTrigger: z.string() }),
   // Add the missing update schema
   update: makeUpdateSchema(
     uiElementBaseCreateSchema.params
@@ -80,6 +81,7 @@ export interface UIFeatureActionCreate
  */
 export type UIFeatureAction = {
   id: string;
+  label: string;
   layerIds?: string[];
   geometryTypes?: Array<"Polygon" | "Point" | "Line" | "Raster">;
   onTrigger: (args: { feature: LayerFeature }) => void;

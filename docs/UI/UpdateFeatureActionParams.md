@@ -8,6 +8,12 @@
 
 ***
 
+## label?
+
+> `optional` **label**: `string`
+
+***
+
 ## layerIds?
 
 > `optional` **layerIds**: `string`\[]

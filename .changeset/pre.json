@@ -4,5 +4,7 @@
   "initialVersions": {
     "@feltmaps/js-sdk": "1.9.0"
   },
-  "changesets": []
+  "changesets": [
+    "sharp-files-dance"
+  ]
 }

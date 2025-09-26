@@ -2,15 +2,18 @@ import { method, methodWithListeners } from "~/lib/interface";
 import type { SortConfig } from "~/modules/shared/types";
 import type {
   CreateActionTriggerParams,
+  CreateFeatureActionParams,
   CreateOrUpdatePanelParams,
   CreatePanelElementsParams,
   DeletePanelElementsParams,
   UiControlsOptions,
   UiOnMapInteractionsOptions,
   UpdateActionTriggerParams,
+  UpdateFeatureActionParams,
   UpdatePanelElementsParams,
 } from "./types";
 import type { UIActionTriggerCreate } from "./uiElements/UIActionTrigger";
+import type { UIFeatureAction } from "./uiElements/UIFeatureAction";
 import type { UIPanel } from "./uiElements/UIPanel";
 
 /**
@@ -57,6 +60,18 @@ export const uiController = (
     UIActionTriggerCreate
   >(feltWindow, "updateActionTrigger"),
   deleteActionTrigger: method(feltWindow, "deleteActionTrigger"),
+
+  createFeatureAction: methodWithListeners<
+    "createFeatureAction",
+    CreateFeatureActionParams,
+    UIFeatureAction
+  >(feltWindow, "createFeatureAction"),
+  updateFeatureAction: methodWithListeners<
+    "updateFeatureAction",
+    UpdateFeatureActionParams,
+    UIFeatureAction
+  >(feltWindow, "updateFeatureAction"),
+  deleteFeatureAction: method(feltWindow, "deleteFeatureAction"),
 });
 
 /**
@@ -137,6 +152,65 @@ export interface UiController {
    * ```
    */
   deleteActionTrigger(id: string): void;
+
+  /**
+   * Creates a feature contextual action.
+   *
+   * @param args - The arguments for the method.
+   * @param args.action - The action to create.
+   * @param args.placement - The placement of the action. Optional. Defaults to `{ at: "end" }`.
+   *
+   * @example
+   * ```typescript
+   * const myAction = await felt.createFeatureAction({
+   *   action: {
+   *     label: "Edit feature",
+   *     onTrigger: async ({ featureId, layerId }) => {
+   *       console.log(`Editing feature ${featureId} in layer ${layerId}`);
+   *     },
+   *     layerIds: ["layer-1", "layer-2"],
+   *   },
+   *   placement: { at: "start" }, // optional, defaults to { at: "end" }
+   * });
+   * ```
+   */
+  createFeatureAction(
+    args: CreateFeatureActionParams,
+  ): Promise<UIFeatureAction>;
+
+  /**
+   * Updates a feature contextual action.
+   *
+   * Feature contextual action to update is identified by the `id` property.
+   *
+   * @remarks
+   * Properties provided will override the existing properties.
+   *
+   * @param args - The feature contextual action to update.
+   *
+   * @example
+   * ```typescript
+   * await felt.updateFeatureAction({
+   *   id: "my-action",
+   *   label: "Updated action label", // only label changes
+   * });
+   * ```
+   */
+  updateFeatureAction(
+    args: UpdateFeatureActionParams,
+  ): Promise<UIFeatureAction>;
+
+  /**
+   * Deletes a feature contextual action.
+   *
+   * @param id - The id of the feature contextual action to delete.
+   *
+   * @example
+   * ```typescript
+   * await felt.deleteFeatureAction("my-action");
+   * ```
+   */
+  deleteFeatureAction(id: string): void;
 
   /**
    * Creates a panel ID.

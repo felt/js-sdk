@@ -7,6 +7,11 @@ import {
   uiActionTriggerSchema,
   type UIActionTriggerCreate,
 } from "./uiElements/UIActionTrigger";
+import {
+  uiFeatureActionSchema,
+  type UIFeatureAction,
+  type UIFeatureActionCreate,
+} from "./uiElements/UIFeatureAction";
 import { type UIFlexibleSpaceElementCreate } from "./uiElements/UIFlexibleSpaceElement";
 import {
   uiPanelCreateSchema,
@@ -48,6 +53,38 @@ export const UpdateActionTriggerParamsClonableSchema =
 export interface UpdateActionTriggerParams
   extends Omit<Partial<UIActionTriggerCreate>, "id"> {
   id: zInfer<typeof UpdateActionTriggerParamsSchema>["id"];
+}
+
+const CreateFeatureActionParamsSchema = z.object({
+  action: uiFeatureActionSchema.create,
+  placement: placementForUiElementSchema.optional(),
+});
+
+export const CreateFeatureActionParamsClonableSchema = z.object({
+  action: uiFeatureActionSchema.clonable,
+  placement: placementForUiElementSchema.optional(),
+});
+
+/**
+ * @public
+ */
+export interface CreateFeatureActionParams
+  extends zInfer<typeof CreateFeatureActionParamsSchema> {
+  action: UIFeatureActionCreate;
+  placement?: PlacementForUIElement;
+}
+
+const UpdateFeatureActionParamsSchema = uiFeatureActionSchema.update;
+
+export const UpdateFeatureActionParamsClonableSchema =
+  uiFeatureActionSchema.clonable.partial().required({ id: true });
+
+/**
+ * @public
+ */
+export interface UpdateFeatureActionParams
+  extends Omit<Partial<UIFeatureAction>, "id"> {
+  id: zInfer<typeof UpdateFeatureActionParamsSchema>["id"];
 }
 
 const CreateOrUpdatePanelParamsSchema = z.object({

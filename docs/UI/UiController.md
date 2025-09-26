@@ -107,6 +107,96 @@ await felt.deleteActionTrigger("enablePolygonTool");
 
 ***
 
+## createFeatureAction()
+
+> **createFeatureAction**(`args`: [`CreateFeatureActionParams`](CreateFeatureActionParams.md)): `Promise`\<[`uiFeatureAction`](uiFeatureAction.md)>
+
+Creates a feature contextual action.
+
+### Parameters
+
+| Parameter | Type                                                        | Description                   |
+| --------- | ----------------------------------------------------------- | ----------------------------- |
+| `args`    | [`CreateFeatureActionParams`](CreateFeatureActionParams.md) | The arguments for the method. |
+
+### Returns
+
+`Promise`\<[`uiFeatureAction`](uiFeatureAction.md)>
+
+### Example
+
+```typescript
+const myAction = await felt.createFeatureAction({
+  action: {
+    label: "Edit feature",
+    onTrigger: async ({ featureId, layerId }) => {
+      console.log(`Editing feature ${featureId} in layer ${layerId}`);
+    },
+    layerIds: ["layer-1", "layer-2"],
+  },
+  placement: { at: "start" }, // optional, defaults to { at: "end" }
+});
+```
+
+***
+
+## updateFeatureAction()
+
+> **updateFeatureAction**(`args`: [`UpdateFeatureActionParams`](UpdateFeatureActionParams.md)): `Promise`\<[`uiFeatureAction`](uiFeatureAction.md)>
+
+Updates a feature contextual action.
+
+Feature contextual action to update is identified by the `id` property.
+
+### Parameters
+
+| Parameter | Type                                                        | Description                              |
+| --------- | ----------------------------------------------------------- | ---------------------------------------- |
+| `args`    | [`UpdateFeatureActionParams`](UpdateFeatureActionParams.md) | The feature contextual action to update. |
+
+### Returns
+
+`Promise`\<[`uiFeatureAction`](uiFeatureAction.md)>
+
+### Remarks
+
+Properties provided will override the existing properties.
+
+### Example
+
+```typescript
+await felt.updateFeatureAction({
+  id: "my-action",
+  label: "Updated action label", // only label changes
+});
+```
+
+***
+
+## deleteFeatureAction()
+
+> **deleteFeatureAction**(`id`: `string`): `void`
+
+Deletes a feature contextual action.
+
+### Parameters
+
+| Parameter | Type     | Description                                        |
+| --------- | -------- | -------------------------------------------------- |
+| `id`      | `string` | The id of the feature contextual action to delete. |
+
+### Returns
+
+`void`
+
+### Example
+
+```typescript
+await felt.deleteFeatureAction("my-action");
+```
+
+***
+
 ## createPanelId()
 
 > **createPanelId**(): `Promise`\<`string`>

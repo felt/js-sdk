@@ -6,12 +6,14 @@
  */
 export type {
   CreateActionTriggerParams,
+  CreateFeatureActionParams,
   CreateOrUpdatePanelParams,
   CreatePanelElementsParams,
   DeletePanelElementsParams,
   UiOnMapInteractionsOptions as OnMapInteractionsOptions,
   UiControlsOptions,
   UpdateActionTriggerParams,
+  UpdateFeatureActionParams,
   UpdatePanelElementsParams,
 } from "./types";
 
@@ -100,5 +102,10 @@ export type {
 export type { UIControlElementOption } from "./uiElements/base";
 
 export type { UIActionTriggerCreate } from "./uiElements/UIActionTrigger";
+
+export type {
+  UIFeatureAction as uiFeatureAction,
+  UIFeatureActionCreate as uiFeatureActionCreate,
+} from "./uiElements/UIFeatureAction";
 
 export type { UiController } from "./controller";

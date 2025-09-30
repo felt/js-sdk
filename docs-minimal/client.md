@@ -7875,6 +7875,96 @@ The id of the action trigger to delete.
 await felt.deleteActionTrigger("enablePolygonTool");
 ```
 
+#### createFeatureAction()
+
+> **createFeatureAction**(`args`): `Promise`\<[`uiFeatureAction`](client.md#uifeatureaction)>
+
+Creates a feature contextual action.
+
+##### Parameters
+
+##### args
+
+[`CreateFeatureActionParams`](client.md#createfeatureactionparams)
+
+The arguments for the method.
+
+##### Returns
+
+`Promise`\<[`uiFeatureAction`](client.md#uifeatureaction)>
+
+##### Example
+
+```typescript
+const myAction = await felt.createFeatureAction({
+  action: {
+    label: "Edit feature",
+    onTrigger: async ({ featureId, layerId }) => {
+      console.log(`Editing feature ${featureId} in layer ${layerId}`);
+    },
+    layerIds: ["layer-1", "layer-2"],
+  },
+  placement: { at: "start" }, // optional, defaults to { at: "end" }
+});
+```
+
+#### updateFeatureAction()
+
+> **updateFeatureAction**(`args`): `Promise`\<[`uiFeatureAction`](client.md#uifeatureaction)>
+
+Updates a feature contextual action.
+
+Feature contextual action to update is identified by the `id` property.
+
+##### Parameters
+
+##### args
+
+[`UpdateFeatureActionParams`](client.md#updatefeatureactionparams)
+
+The feature contextual action to update.
+
+##### Returns
+
+`Promise`\<[`uiFeatureAction`](client.md#uifeatureaction)>
+
+##### Remarks
+
+Properties provided will override the existing properties.
+
+##### Example
+
+```typescript
+await felt.updateFeatureAction({
+  id: "my-action",
+  label: "Updated action label", // only label changes
+});
+```
+
+#### deleteFeatureAction()
+
+> **deleteFeatureAction**(`id`): `void`
+
+Deletes a feature contextual action.
+
+##### Parameters
+
+##### id
+
+`string`
+
+The id of the feature contextual action to delete.
+
+##### Returns
+
+`void`
+
+##### Example
+
+```typescript
+await felt.deleteFeatureAction("my-action");
+```
+
 #### createPanelId()
 
 > **createPanelId**(): `Promise`\<`string`>
@@ -10401,6 +10491,54 @@ The id of the element.
 
 `void`
 
+## CreateFeatureActionParams
+
+### Properties
+
+#### action
+
+> **action**: [`uiFeatureActionCreate`](client.md#uifeatureactioncreate)
+
+#### placement?
+
+> `optional` **placement**: \{ `after`: `string`; } | \{ `before`: `string`; } | \{ `at`: `"start"` | `"end"`; }
+
+## UpdateFeatureActionParams
+
+### Properties
+
+#### id
+
+> **id**: `string`
+
+#### label?
+
+> `optional` **label**: `string`
+
+#### layerIds?
+
+> `optional` **layerIds**: `string`\[]
+
+#### geometryTypes?
+
+> `optional` **geometryTypes**: (`"Polygon"` | `"Point"` | `"Line"` | `"Raster"`)\[]
+
+#### onTrigger()?
+
+> `optional` **onTrigger**: (`args`) => `void`
+
+##### Parameters
+
+##### args
+
+##### feature
+
+[`LayerFeature`](client.md#layerfeature)
+
+##### Returns
+
+`void`
+
 ## CreateOrUpdatePanelParams
 
 The parameters for creating or updating a panel by using [UiController.createOrUpdatePanel](client.md#createorupdatepanel).
@@ -12100,6 +12238,105 @@ See [UIDividerElement](client.md#uidividerelement) for more details.
 > **id**: `string`
 
 The ID of the element.
+
+#### onCreate()?
+
+> `optional` **onCreate**: (`args`) => `void`
+
+A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: (`args`) => `void`
+
+A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+## uiFeatureActionCreate
+
+Represents a feature action for creation.
+It can be added to the map by using the [UiController.createFeatureAction](client.md#createfeatureaction) method.
+
+### Properties
+
+#### label
+
+> **label**: `string`
+
+The label of the feature action.
+
+#### onTrigger()
+
+> **onTrigger**: (`args`) => `void`
+
+The function to call when the feature action is triggered.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### feature
+
+[`LayerFeature`](client.md#layerfeature)
+
+The feature that triggered the action.
+
+##### Returns
+
+`void`
+
+#### id?
+
+> `optional` **id**: `string`
+
+#### layerIds?
+
+> `optional` **layerIds**: `string`\[]
+
+The layers to add the action to. Optional. Defaults to all layers.
+
+#### geometryTypes?
+
+> `optional` **geometryTypes**: (`"Polygon"` | `"Point"` | `"Line"` | `"Raster"`)\[]
+
+The geometry type of the features to add the action to. Optional. Defaults to all geometry types.
+
+#### type?
+
+> `optional` **type**: `undefined`
 
 #### onCreate()?
 
@@ -16031,6 +16268,46 @@ The result of listening for changes to the settings of each tool.
 ## PlaceSymbol
 
 > **PlaceSymbol**: `"dot"` | `"square"` | `"diamond"` | `"triangle"` | `"x"` | `"plus"` | `"circle-line"` | `"circle-slash"` | `"star"` | `"heart"` | `"hexagon"` | `"octagon"` | `"pedestrian"` | `"bicycle"` | `"wheelchair"` | `"airport"` | `"car"` | `"bus"` | `"train"` | `"truck"` | `"ferry"` | `"sailboat"` | `"electric-service"` | `"gas-service"` | `"blood-clinic"` | `"badge"` | `"traffic-light"` | `"traffic-cone"` | `"road-sign-caution"` | `"person"` | `"restroom"` | `"house"` | `"work"` | `"letter"` | `"hotel"` | `"factory"` | `"hospital"` | `"religious-facility"` | `"school"` | `"government"` | `"university"` | `"bank"` | `"landmark"` | `"museum"` | `"clothing"` | `"shopping"` | `"store"` | `"bar"` | `"pub"` | `"cafe"` | `"food"` | `"park"` | `"amusement-park"` | `"camping-tent"` | `"cabin"` | `"picnic"` | `"water-refill"` | `"trailhead"` | `"guidepost"` | `"viewpoint"` | `"camera"` | `"us-football"` | `"football"` | `"tennis"` | `"binoculars"` | `"swimming"` | `"zap"` | `"battery-full"` | `"battery-half"` | `"battery-low"` | `"boom"` | `"radar"` | `"wind-turbine"` | `"solar-panel"` | `"antenna"` | `"telephone-pole"` | `"oil-well"` | `"oil-barrel"` | `"railroad-track"` | `"bridge"` | `"lighthouse"` | `"lock-closed"` | `"lock-open"` | `"wifi"` | `"trash"` | `"recycle"` | `"tree"` | `"flower"` | `"leaf"` | `"fire"` | `"mountain"` | `"snowy-mountain"` | `"volcano"` | `"island"` | `"wave"` | `"hot-springs"` | `"water"` | `"lake"` | `"ocean"` | `"animal"` | `"bird"` | `"duck"` | `"dog"` | `"fish"` | `"beach"` | `"wetland"` | `"sun"` | `"moon"` | `"cloud"` | `"partial-sun"` | `"rain"` | `"lightning"` | `"snowflake"` | `"wind"` | `"snow"` | `"fog"` | `"sleet"` | `"hurricane"` | `"warning"` | `"parking"` | `"info"` | `"circle-exclamation"` | `"circle-triangle"` | `"circle-x"` | `"circle-plus"` | `` `:${string}:` `` & `object`
+
+## uiFeatureAction
+
+> **uiFeatureAction**: `object`
+
+Represents a feature action after creation (with generated id).
+
+### Type declaration
+
+#### id
+
+> **id**: `string`
+
+#### label
+
+> **label**: `string`
+
+#### onTrigger()
+
+> **onTrigger**: (`args`) => `void`
+
+##### Parameters
+
+##### args
+
+##### feature
+
+[`LayerFeature`](client.md#layerfeature)
+
+##### Returns
+
+`void`
+
+#### layerIds?
+
+> `optional` **layerIds**: `string`\[]
+
+#### geometryTypes?
+
+> `optional` **geometryTypes**: (`"Polygon"` | `"Point"` | `"Line"` | `"Raster"`)\[]
 
 ## PlacementForUIElement
 

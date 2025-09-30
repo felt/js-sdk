@@ -62,7 +62,7 @@ the "Oil barrel" symbol is `oil-barrel`.
 
 ## afterCreation
 
-> **afterCreation**: `"enter name"` | `"add another"` | `"select"`
+> **afterCreation**: `"select"` | `"enter name"` | `"add another"`
 
 What to do after creating the Place element.
 

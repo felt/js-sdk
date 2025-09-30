@@ -780,6 +780,18 @@ export interface LayersController {
      * properties of the previous response.
      */
     pagination?: string | null;
+
+    /**
+     * The number of features to return per page. Defaults to 20.
+     * Note: Requesting for large page can get slow.
+     *
+     */
+    pageSize?: number;
+
+    /**
+     * The attributes to select from the features.
+     */
+    select?: string[];
   }): Promise<{
     /**
      * The list of features returned from the query.

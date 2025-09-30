@@ -165,6 +165,8 @@ const GetFeaturesMessage = methodMessage(
     boundary: GeometryFilterSchema.optional(),
     search: z.string().optional(),
     pagination: z.string().optional().nullish(),
+    pageSize: z.number().optional(),
+    select: z.array(z.string()).optional(),
   }),
 );
 

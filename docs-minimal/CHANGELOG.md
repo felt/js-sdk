@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.10.0-next.1
+
+### Minor Changes
+
+* 34b9ed3: Add feature actions
+
 ## 1.10.0-next.0
 
 ### Minor Changes

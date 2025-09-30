@@ -783,13 +783,13 @@ export interface LayersController {
 
     /**
      * The number of features to return per page. Defaults to 20.
-     * Note: Requesting for large page can get slow.
+     * Note: The larger the page size, the longer this is likely to take to respond.
      *
      */
     pageSize?: number;
 
     /**
-     * The attributes to select from the features.
+     * The attributes to select from the features. If not provided, all attributes will be returned. If you set this to an empty array, no attributes will be returned.
      */
     select?: string[];
   }): Promise<{

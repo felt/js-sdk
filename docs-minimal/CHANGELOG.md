@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.10.0-next.2
+
+### Minor Changes
+
+* f7a1b4b: Add pageSize and select to getFeatures
+
 ## 1.10.0-next.1
 
 ### Minor Changes

@@ -14,6 +14,6 @@ The attribute to use for the aggregation. This must be a numeric attribute.
 
 ## method
 
-> **method**: `"avg"` | `"max"` | `"min"` | `"sum"` | `"median"`
+> **method**: `"min"` | `"max"` | `"avg"` | `"sum"` | `"median"`
 
 The method to use for the aggregation.

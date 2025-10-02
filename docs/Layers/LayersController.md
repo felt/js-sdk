@@ -912,7 +912,7 @@ Calculates a single aggregate value for a layer based on the provided configurat
 
 | Type Parameter                                                                    |
 | --------------------------------------------------------------------------------- |
-| `T` *extends* `"avg"` \| `"max"` \| `"min"` \| `"sum"` \| `"median"` \| `"count"` |
+| `T` *extends* `"min"` \| `"max"` \| `"avg"` \| `"sum"` \| `"median"` \| `"count"` |
 
 ### Parameters
 

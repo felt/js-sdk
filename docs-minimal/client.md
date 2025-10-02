@@ -7123,6 +7123,19 @@ Search is case-insensitive and looks for matches across all feature properties.
 Pagination token. It comes from either the `previousPage` or `nextPage`
 properties of the previous response.
 
+##### pageSize
+
+`number`
+
+The number of features to return per page. Defaults to 20.
+Note: The larger the page size, the longer this is likely to take to respond.
+
+##### select
+
+`string`\[]
+
+The attributes to select from the features. If not provided, all attributes will be returned. If you set this to an empty array, no attributes will be returned.
+
 ##### Returns
 
 `Promise`\<\{ `features`: [`LayerFeature`](client.md#layerfeature)\[]; `count`: `number`; `previousPage`: `null` | `string`; `nextPage`: `null` | `string`; }>
@@ -9759,7 +9772,7 @@ the "Oil barrel" symbol is `oil-barrel`.
 
 #### afterCreation
 
-> **afterCreation**: `"enter name"` | `"add another"` | `"select"`
+> **afterCreation**: `"select"` | `"enter name"` | `"add another"`
 
 What to do after creating the Place element.
 

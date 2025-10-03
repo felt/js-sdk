@@ -5,7 +5,6 @@
  *
  * @module Basemaps
  */
-export type { BasemapsController } from "./controller";
 export type {
   Basemap,
   ColorBasemap,
@@ -14,3 +13,5 @@ export type {
   CustomTileBasemapInput,
   FeltBasemap,
 } from "./types";
+
+// export type { BasemapsController } from "./controller";

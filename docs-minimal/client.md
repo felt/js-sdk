@@ -1,5 +1,131 @@
 # Other
 
+## FeltBasemap
+
+### Properties
+
+#### id
+
+> **id**: `string`
+
+A unique identifier for the basemap.
+
+##### Remarks
+
+Do not rely on the stability of this ID for Felt basemaps, as they are
+subject to change.
+
+#### name
+
+> **name**: `string`
+
+The name of the basemap.
+
+#### uiColorScheme
+
+> **uiColorScheme**: `"light"` | `"dark"`
+
+The color scheme of the UI that goes with the basemap. It is best to set this to
+"light" if your basemap is broadly light, and "dark" if your basemap is broadly dark.
+
+#### type
+
+> **type**: `"felt"`
+
+#### theme
+
+> **theme**: `"color_light"` | `"monochrome_dark"` | `"monochrome_light"` | `"satellite"`
+
+#### attribution?
+
+> `optional` **attribution**: `string`
+
+The attribution of the basemap, which is shown in the map's UI.
+
+## ColorBasemap
+
+### Properties
+
+#### id
+
+> **id**: `string`
+
+A unique identifier for the basemap.
+
+##### Remarks
+
+Do not rely on the stability of this ID for Felt basemaps, as they are
+subject to change.
+
+#### name
+
+> **name**: `string`
+
+The name of the basemap.
+
+#### uiColorScheme
+
+> **uiColorScheme**: `"light"` | `"dark"`
+
+The color scheme of the UI that goes with the basemap. It is best to set this to
+"light" if your basemap is broadly light, and "dark" if your basemap is broadly dark.
+
+#### type
+
+> **type**: `"color"`
+
+#### color
+
+> **color**: `string`
+
+#### attribution?
+
+> `optional` **attribution**: `string`
+
+The attribution of the basemap, which is shown in the map's UI.
+
+## CustomTileBasemap
+
+### Properties
+
+#### id
+
+> **id**: `string`
+
+A unique identifier for the basemap.
+
+##### Remarks
+
+Do not rely on the stability of this ID for Felt basemaps, as they are
+subject to change.
+
+#### name
+
+> **name**: `string`
+
+The name of the basemap.
+
+#### uiColorScheme
+
+> **uiColorScheme**: `"light"` | `"dark"`
+
+The color scheme of the UI that goes with the basemap. It is best to set this to
+"light" if your basemap is broadly light, and "dark" if your basemap is broadly dark.
+
+#### type
+
+> **type**: `"xyz_tile"`
+
+#### tileUrl
+
+> **tileUrl**: `string`
+
+#### attribution?
+
+> `optional` **attribution**: `string`
+
+The attribution of the basemap, which is shown in the map's UI.
+
 ## PlaceElementCreate
 
 ### Properties
@@ -1042,7 +1168,7 @@ The alignment of the text, either `left`, `center` or `right`.
 
 #### style?
 
-> `optional` **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`
+> `optional` **style**: `"light"` | `"italic"` | `"regular"` | `"caps"`
 
 The style of the text, either `italic`, `light`, `regular` or `caps`.
 
@@ -1192,7 +1318,7 @@ The alignment of the text, either `left`, `center` or `right`.
 
 #### style?
 
-> `optional` **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`
+> `optional` **style**: `"light"` | `"italic"` | `"regular"` | `"caps"`
 
 The style of the text, either `italic`, `light`, `regular` or `caps`.
 
@@ -2343,7 +2469,7 @@ The alignment of the text, either `left`, `center` or `right`.
 
 #### style
 
-> **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`
+> **style**: `"light"` | `"italic"` | `"regular"` | `"caps"`
 
 The style of the text, either `italic`, `light`, `regular` or `caps`.
 
@@ -2509,7 +2635,7 @@ The alignment of the text, either `left`, `center` or `right`.
 
 #### style
 
-> **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`
+> **style**: `"light"` | `"italic"` | `"regular"` | `"caps"`
 
 The style of the text, either `italic`, `light`, `regular` or `caps`.
 
@@ -3845,7 +3971,7 @@ The alignment of the text, either `left`, `center` or `right`.
 
 #### style?
 
-> `optional` **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`
+> `optional` **style**: `"light"` | `"italic"` | `"regular"` | `"caps"`
 
 The style of the text, either `italic`, `light`, `regular` or `caps`.
 
@@ -4000,7 +4126,7 @@ The alignment of the text, either `left`, `center` or `right`.
 
 #### style?
 
-> `optional` **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`
+> `optional` **style**: `"light"` | `"italic"` | `"regular"` | `"caps"`
 
 The style of the text, either `italic`, `light`, `regular` or `caps`.
 
@@ -4457,7 +4583,7 @@ The attribute to use for the aggregation. This must be a numeric attribute.
 
 #### method
 
-> **method**: `"avg"` | `"max"` | `"min"` | `"sum"` | `"median"`
+> **method**: `"min"` | `"max"` | `"avg"` | `"sum"` | `"median"`
 
 The method to use for the aggregation.
 
@@ -4657,7 +4783,7 @@ ranges in the results.
 
 ##### aggregation.method
 
-> **method**: `"avg"` | `"max"` | `"min"` | `"sum"` | `"median"` = `AggregateMethodSchema`
+> **method**: `"min"` | `"max"` | `"avg"` | `"sum"` | `"median"` = `AggregateMethodSchema`
 
 The operation to use on the values from the features in the layer
 
@@ -4802,7 +4928,7 @@ The type of grid to use for the precomputed calculation.
 
 #### method
 
-> **method**: `"avg"` | `"max"` | `"min"` | `"sum"`
+> **method**: `"min"` | `"max"` | `"avg"` | `"sum"`
 
 The method to use for the precomputed calculation.
 
@@ -6112,9 +6238,151 @@ own to make it easier to find related methods and events.
 
 ### Extends
 
-* `ViewportController`.`UiController`.`LayersController`.`ElementsController`.`SelectionController`.`InteractionsController`.[`ToolsController`](client.md#toolscontroller).`MiscController`
+* `ViewportController`.`UiController`.`LayersController`.`ElementsController`.`SelectionController`.`InteractionsController`.[`ToolsController`](client.md#toolscontroller).`MiscController`.`BasemapsController`
 
 ### Methods
+
+#### getCurrentBasemap()
+
+> **getCurrentBasemap**(): `Promise`\<[`Basemap`](client.md#basemap)>
+
+Gets the currently active basemap.
+
+Use this method to retrieve information about the current basemap, including
+its type (Felt, color, or custom tile), name, color scheme, and attribution.
+
+##### Returns
+
+`Promise`\<[`Basemap`](client.md#basemap)>
+
+A promise that resolves to the current basemap configuration.
+
+##### Example
+
+```typescript
+// Get current basemap
+const basemap = await felt.getCurrentBasemap();
+console.log({
+  name: basemap.name,
+  type: basemap.type,
+  uiColorScheme: basemap.uiColorScheme,
+});
+```
+
+#### getBasemaps()
+
+> **getBasemaps**(): `Promise`\<[`Basemap`](client.md#basemap)\[]>
+
+Gets all basemaps available on the map.
+
+Use this method to retrieve a list of all available basemaps that can be
+applied to the map.
+
+##### Returns
+
+`Promise`\<[`Basemap`](client.md#basemap)\[]>
+
+A promise that resolves to all basemaps available on the map.
+
+##### Example
+
+```typescript
+// Get all available basemaps
+const basemaps = await felt.getBasemaps();
+const lightBasemaps = basemaps.filter(b => b.uiColorScheme === "light");
+```
+
+#### chooseBasemap()
+
+> **chooseBasemap**(`id`): `void`
+
+Chooses the basemap to use for the map.
+
+Use this method to change the current basemap. The basemap ID can be obtained
+from getBasemaps().
+
+##### Parameters
+
+##### id
+
+`string`
+
+##### Returns
+
+`void`
+
+A promise that resolves when the basemap has been set.
+
+##### Example
+
+```typescript
+// Switch to a specific basemap
+const basemaps = await felt.getBasemaps();
+const darkBasemap = basemaps.find(b => b.uiColorScheme === "dark");
+if (darkBasemap) {
+  await felt.chooseBasemap(darkBasemap.id);
+}
+```
+
+#### addCustomBasemap()
+
+> **addCustomBasemap**(`args`): `Promise`\<[`Basemap`](client.md#basemap)>
+
+Adds a custom basemap to the map. This can be either a solid color or a basemap
+from a custom tile URL.
+
+##### Parameters
+
+##### args
+
+##### basemap
+
+[`ColorBasemapInput`](client.md#colorbasemapinput) | [`CustomTileBasemapInput`](client.md#customtilebasemapinput)
+
+The basemap to add.
+
+##### select
+
+`boolean`
+
+Whether to select the basemap after adding it.
+
+##### Returns
+
+`Promise`\<[`Basemap`](client.md#basemap)>
+
+A promise for the added basemap.
+
+##### Example
+
+```typescript
+// Add a custom basemap and select it
+await felt.addCustomBasemap({
+  basemap: {
+    type: "xyz_tile",
+    tileUrl: "https://example.com/tile.png"
+  },
+  select: true,
+});
+```
+
+#### removeBasemap()
+
+> **removeBasemap**(`id`): `Promise`\<`void`>
+
+Removes a basemap from the list of available basemaps.
+
+##### Parameters
+
+##### id
+
+`string`
+
+##### Returns
+
+`Promise`\<`void`>
+
+A promise that resolves when the basemap has been removed.
 
 #### getElement()
 
@@ -7355,7 +7623,7 @@ Calculates a single aggregate value for a layer based on the provided configurat
 
 ##### Type Parameters
 
-• **T** *extends* `"avg"` | `"max"` | `"min"` | `"sum"` | `"median"` | `"count"`
+• **T** *extends* `"min"` | `"max"` | `"avg"` | `"sum"` | `"median"` | `"count"`
 
 ##### Parameters
 
@@ -8524,6 +8792,44 @@ felt.fitViewportToBounds({ bounds: [west, south, east, north] });
 ```
 
 ### Events
+
+#### onBasemapChange()
+
+> **onBasemapChange**(`args`): `VoidFunction`
+
+Adds a listener for when the basemap changes.
+
+Use this to react to basemap changes, such as updating your UI or
+adjusting other map elements to match the new basemap's color scheme.
+
+##### Parameters
+
+##### args
+
+##### handler
+
+(`basemap`) => `void`
+
+##### Returns
+
+`VoidFunction`
+
+A function to unsubscribe from the listener.
+
+##### Example
+
+```typescript
+// Listen for basemap changes
+const unsubscribe = felt.onBasemapChange({
+  handler: basemap => {
+    console.log(`Switched to ${basemap.name}`);
+    updateUIColors(basemap.uiColorScheme);
+  },
+});
+
+// later on...
+unsubscribe();
+```
 
 #### onElementCreate()
 
@@ -10324,7 +10630,7 @@ The alignment of the text, either `left`, `center` or `right`.
 
 #### style
 
-> **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`
+> **style**: `"light"` | `"italic"` | `"regular"` | `"caps"`
 
 The style of the text, either `italic`, `light`, `regular` or `caps`.
 
@@ -10382,7 +10688,7 @@ The alignment of the text, either `left`, `center` or `right`.
 
 #### style
 
-> **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`
+> **style**: `"light"` | `"italic"` | `"regular"` | `"caps"`
 
 The style of the text, either `italic`, `light`, `regular` or `caps`.
 
@@ -15852,6 +16158,18 @@ The bounds to fit the viewport to.
 
 [FeltBoundary](client.md#feltboundary)
 
+## ColorBasemapInput
+
+> **ColorBasemapInput**: `Omit`\<[`ColorBasemap`](client.md#colorbasemap), `"id"`>
+
+## CustomTileBasemapInput
+
+> **CustomTileBasemapInput**: `Omit`\<[`CustomTileBasemap`](client.md#customtilebasemap), `"id"`>
+
+## Basemap
+
+> **Basemap**: [`FeltBasemap`](client.md#feltbasemap) | [`ColorBasemap`](client.md#colorbasemap) | [`CustomTileBasemap`](client.md#customtilebasemap)
+
 ## ElementCreate
 
 > **ElementCreate**: [`PlaceElementCreate`](client.md#placeelementcreate) | [`PathElementCreate`](client.md#pathelementcreate) | [`PolygonElementCreate`](client.md#polygonelementcreate) | [`CircleElementCreate`](client.md#circleelementcreate) | [`MarkerElementCreate`](client.md#markerelementcreate) | [`HighlighterElementCreate`](client.md#highlighterelementcreate) | [`ImageElementCreate`](client.md#imageelementcreate) | [`TextElementCreate`](client.md#textelementcreate) | [`NoteElementCreate`](client.md#noteelementcreate)
@@ -16032,13 +16350,13 @@ This can be either:
 
 ## AggregationMethod
 
-> **AggregationMethod**: `"avg"` | `"max"` | `"min"` | `"sum"` | `"median"`
+> **AggregationMethod**: `"min"` | `"max"` | `"avg"` | `"sum"` | `"median"`
 
 The method to use for the aggregation.
 
 ## PrecomputedAggregationMethod
 
-> **PrecomputedAggregationMethod**: `"avg"` | `"max"` | `"min"` | `"sum"` | `"count"`
+> **PrecomputedAggregationMethod**: `"min"` | `"max"` | `"avg"` | `"sum"` | `"count"`
 
 The method to use for the precomputed aggregation.
 

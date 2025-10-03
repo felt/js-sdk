@@ -1,4 +1,8 @@
 import {
+  basemapsController,
+  type BasemapsController,
+} from "../basemaps/controller";
+import {
   elementsController,
   type ElementsController,
 } from "../elements/controller";
@@ -37,6 +41,7 @@ export function makeController(
     ...interactionsController(feltWindow),
     ...toolsController(feltWindow),
     ...miscController(feltWindow),
+    ...basemapsController(feltWindow),
   };
 }
 
@@ -65,7 +70,8 @@ export interface FeltController
     InteractionsController,
     ToolsController,
     InteractionsController,
-    MiscController {
+    MiscController,
+    BasemapsController {
   /**
    * The iframe element containing the Felt map, if it is an embedded map.
    *

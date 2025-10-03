@@ -161,7 +161,7 @@ The alignment of the text, either `left`, `center` or `right`.
 
 ## style?
 
-> `optional` **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`
+> `optional` **style**: `"light"` | `"italic"` | `"regular"` | `"caps"`
 
 The style of the text, either `italic`, `light`, `regular` or `caps`.
 

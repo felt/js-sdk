@@ -38,6 +38,6 @@ The type of grid to use for the precomputed calculation.
 
 ## method
 
-> **method**: `"avg"` | `"max"` | `"min"` | `"sum"`
+> **method**: `"min"` | `"max"` | `"avg"` | `"sum"`
 
 The method to use for the precomputed calculation.

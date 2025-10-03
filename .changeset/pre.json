@@ -5,6 +5,7 @@
     "@feltmaps/js-sdk": "1.9.0"
   },
   "changesets": [
+    "cuddly-pumpkins-fetch",
     "empty-camels-pay",
     "fifty-humans-film",
     "sharp-files-dance"

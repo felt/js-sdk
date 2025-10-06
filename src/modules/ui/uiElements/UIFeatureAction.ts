@@ -49,7 +49,6 @@ export const uiFeatureActionSchema = {
     .extend(uiFeatureActionBaseSchema.shape)
     .extend({ type: z.undefined() })
     .extend({ onTrigger: z.string() }),
-  // Add the missing update schema
   update: makeUpdateSchema(
     uiElementBaseCreateSchema.params
       .extend(uiFeatureActionBaseSchema.shape)
@@ -65,7 +64,7 @@ export interface UIFeatureActionCreate
   extends UIElementLifecycle,
     Omit<
       zInfer<typeof uiFeatureActionSchema.create>,
-      "onCreate" | "onDestroy"
+      "onCreate" | "onDestroy" | "id"
     > {
   /**
    * The function to call when the feature action is triggered.
@@ -79,10 +78,6 @@ export interface UIFeatureActionCreate
 /**
  * Represents a feature action after creation (with generated id).
  */
-export type UIFeatureAction = {
+export interface UIFeatureAction extends UIFeatureActionCreate {
   id: string;
-  label: string;
-  layerIds?: string[];
-  geometryTypes?: Array<"Polygon" | "Point" | "Line" | "Raster">;
-  onTrigger: (args: { feature: LayerFeature }) => void;
-};
+}

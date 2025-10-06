@@ -32,12 +32,6 @@ The function to call when the feature action is triggered.
 
 ***
 
-## id?
-
-> `optional` **id**: `string`
-
-***
-
 ## layerIds?
 
 > `optional` **layerIds**: `string`\[]

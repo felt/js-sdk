@@ -1,35 +1,5 @@
 # @feltmaps/js-sdk
 
-## 1.10.0-next.4
-
-### Patch Changes
-
-* 6e233c6: Fix feature action types and documentation
-
-## 1.10.0-next.3
-
-### Minor Changes
-
-* 03be185: Add basemaps API
-
-## 1.10.0-next.2
-
-### Minor Changes
-
-* f7a1b4b: Add pageSize and select to getFeatures
-
-## 1.10.0-next.1
-
-### Minor Changes
-
-* 34b9ed3: Add feature actions
-
-## 1.10.0-next.0
-
-### Minor Changes
-
-* 3d9527b: Add duplicateLayer method
-
 ## 1.9.0
 
 ### Minor Changes

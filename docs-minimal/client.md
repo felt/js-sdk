@@ -1,5 +1,326 @@
 # Other
 
+## BasemapsController
+
+The basemaps controller allows you to manage the map's basemap layer.
+
+You can get the current basemap, list available basemaps, change the basemap,
+and be notified when the basemap changes.
+
+### Extended by
+
+* [`FeltController`](client.md#feltcontroller)
+
+### Methods
+
+#### getCurrentBasemap()
+
+> **getCurrentBasemap**(): `Promise`\<[`Basemap`](client.md#basemap)>
+
+Gets the currently active basemap.
+
+Use this method to retrieve information about the current basemap, including
+its type (Felt, color, or custom tile), name, color scheme, and attribution.
+
+##### Returns
+
+`Promise`\<[`Basemap`](client.md#basemap)>
+
+A promise that resolves to the current basemap configuration.
+
+##### Example
+
+```typescript
+// Get current basemap
+const basemap = await felt.getCurrentBasemap();
+console.log({
+  name: basemap.name,
+  type: basemap.type,
+  uiColorScheme: basemap.uiColorScheme,
+});
+```
+
+#### getBasemaps()
+
+> **getBasemaps**(): `Promise`\<[`Basemap`](client.md#basemap)\[]>
+
+Gets all basemaps available on the map.
+
+Use this method to retrieve a list of all available basemaps that can be
+applied to the map.
+
+##### Returns
+
+`Promise`\<[`Basemap`](client.md#basemap)\[]>
+
+A promise that resolves to all basemaps available on the map.
+
+##### Example
+
+```typescript
+// Get all available basemaps
+const basemaps = await felt.getBasemaps();
+const lightBasemaps = basemaps.filter(b => b.uiColorScheme === "light");
+```
+
+#### chooseBasemap()
+
+> **chooseBasemap**(`id`): `void`
+
+Chooses the basemap to use for the map.
+
+Use this method to change the current basemap. The basemap ID can be obtained
+from getBasemaps().
+
+##### Parameters
+
+##### id
+
+`string`
+
+##### Returns
+
+`void`
+
+A promise that resolves when the basemap has been set.
+
+##### Example
+
+```typescript
+// Switch to a specific basemap
+const basemaps = await felt.getBasemaps();
+const darkBasemap = basemaps.find(b => b.uiColorScheme === "dark");
+if (darkBasemap) {
+  await felt.chooseBasemap(darkBasemap.id);
+}
+```
+
+#### addCustomBasemap()
+
+> **addCustomBasemap**(`args`): `Promise`\<[`Basemap`](client.md#basemap)>
+
+Adds a custom basemap to the map. This can be either a solid color or a basemap
+from a custom tile URL.
+
+##### Parameters
+
+##### args
+
+##### basemap
+
+[`ColorBasemapInput`](client.md#colorbasemapinput) | [`CustomTileBasemapInput`](client.md#customtilebasemapinput)
+
+The basemap to add.
+
+##### select
+
+`boolean`
+
+Whether to select the basemap after adding it.
+
+##### Returns
+
+`Promise`\<[`Basemap`](client.md#basemap)>
+
+A promise for the added basemap.
+
+##### Example
+
+```typescript
+// Add a custom basemap and select it
+await felt.addCustomBasemap({
+  basemap: {
+    type: "xyz_tile",
+    tileUrl: "https://example.com/tile.png"
+  },
+  select: true,
+});
+```
+
+#### removeBasemap()
+
+> **removeBasemap**(`id`): `Promise`\<`void`>
+
+Removes a basemap from the list of available basemaps.
+
+##### Parameters
+
+##### id
+
+`string`
+
+##### Returns
+
+`Promise`\<`void`>
+
+A promise that resolves when the basemap has been removed.
+
+### Events
+
+#### onBasemapChange()
+
+> **onBasemapChange**(`args`): `VoidFunction`
+
+Adds a listener for when the basemap changes.
+
+Use this to react to basemap changes, such as updating your UI or
+adjusting other map elements to match the new basemap's color scheme.
+
+##### Parameters
+
+##### args
+
+##### handler
+
+(`basemap`) => `void`
+
+##### Returns
+
+`VoidFunction`
+
+A function to unsubscribe from the listener.
+
+##### Example
+
+```typescript
+// Listen for basemap changes
+const unsubscribe = felt.onBasemapChange({
+  handler: basemap => {
+    console.log(`Switched to ${basemap.name}`);
+    updateUIColors(basemap.uiColorScheme);
+  },
+});
+
+// later on...
+unsubscribe();
+```
+
+## FeltBasemap
+
+### Properties
+
+#### id
+
+> **id**: `string`
+
+A unique identifier for the basemap.
+
+##### Remarks
+
+Do not rely on the stability of this ID for Felt basemaps, as they are
+subject to change.
+
+#### name
+
+> **name**: `string`
+
+The name of the basemap.
+
+#### uiColorScheme
+
+> **uiColorScheme**: `"light"` | `"dark"`
+
+The color scheme of the UI that goes with the basemap. It is best to set this to
+"light" if your basemap is broadly light, and "dark" if your basemap is broadly dark.
+
+#### type
+
+> **type**: `"felt"`
+
+#### theme
+
+> **theme**: `"color_light"` | `"monochrome_dark"` | `"monochrome_light"` | `"satellite"`
+
+#### attribution?
+
+> `optional` **attribution**: `string`
+
+The attribution of the basemap, which is shown in the map's UI.
+
+## ColorBasemap
+
+### Properties
+
+#### id
+
+> **id**: `string`
+
+A unique identifier for the basemap.
+
+##### Remarks
+
+Do not rely on the stability of this ID for Felt basemaps, as they are
+subject to change.
+
+#### name
+
+> **name**: `string`
+
+The name of the basemap.
+
+#### uiColorScheme
+
+> **uiColorScheme**: `"light"` | `"dark"`
+
+The color scheme of the UI that goes with the basemap. It is best to set this to
+"light" if your basemap is broadly light, and "dark" if your basemap is broadly dark.
+
+#### type
+
+> **type**: `"color"`
+
+#### color
+
+> **color**: `string`
+
+#### attribution?
+
+> `optional` **attribution**: `string`
+
+The attribution of the basemap, which is shown in the map's UI.
+
+## CustomTileBasemap
+
+### Properties
+
+#### id
+
+> **id**: `string`
+
+A unique identifier for the basemap.
+
+##### Remarks
+
+Do not rely on the stability of this ID for Felt basemaps, as they are
+subject to change.
+
+#### name
+
+> **name**: `string`
+
+The name of the basemap.
+
+#### uiColorScheme
+
+> **uiColorScheme**: `"light"` | `"dark"`
+
+The color scheme of the UI that goes with the basemap. It is best to set this to
+"light" if your basemap is broadly light, and "dark" if your basemap is broadly dark.
+
+#### type
+
+> **type**: `"xyz_tile"`
+
+#### tileUrl
+
+> **tileUrl**: `string`
+
+#### attribution?
+
+> `optional` **attribution**: `string`
+
+The attribution of the basemap, which is shown in the map's UI.
+
 ## PlaceElementCreate
 
 ### Properties
@@ -1042,7 +1363,7 @@ The alignment of the text, either `left`, `center` or `right`.
 
 #### style?
 
-> `optional` **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`
+> `optional` **style**: `"light"` | `"italic"` | `"regular"` | `"caps"`
 
 The style of the text, either `italic`, `light`, `regular` or `caps`.
 
@@ -1192,7 +1513,7 @@ The alignment of the text, either `left`, `center` or `right`.
 
 #### style?
 
-> `optional` **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`
+> `optional` **style**: `"light"` | `"italic"` | `"regular"` | `"caps"`
 
 The style of the text, either `italic`, `light`, `regular` or `caps`.
 
@@ -2343,7 +2664,7 @@ The alignment of the text, either `left`, `center` or `right`.
 
 #### style
 
-> **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`
+> **style**: `"light"` | `"italic"` | `"regular"` | `"caps"`
 
 The style of the text, either `italic`, `light`, `regular` or `caps`.
 
@@ -2509,7 +2830,7 @@ The alignment of the text, either `left`, `center` or `right`.
 
 #### style
 
-> **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`
+> **style**: `"light"` | `"italic"` | `"regular"` | `"caps"`
 
 The style of the text, either `italic`, `light`, `regular` or `caps`.
 
@@ -3845,7 +4166,7 @@ The alignment of the text, either `left`, `center` or `right`.
 
 #### style?
 
-> `optional` **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`
+> `optional` **style**: `"light"` | `"italic"` | `"regular"` | `"caps"`
 
 The style of the text, either `italic`, `light`, `regular` or `caps`.
 
@@ -4000,7 +4321,7 @@ The alignment of the text, either `left`, `center` or `right`.
 
 #### style?
 
-> `optional` **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`
+> `optional` **style**: `"light"` | `"italic"` | `"regular"` | `"caps"`
 
 The style of the text, either `italic`, `light`, `regular` or `caps`.
 
@@ -4457,7 +4778,7 @@ The attribute to use for the aggregation. This must be a numeric attribute.
 
 #### method
 
-> **method**: `"avg"` | `"max"` | `"min"` | `"sum"` | `"median"`
+> **method**: `"min"` | `"max"` | `"avg"` | `"sum"` | `"median"`
 
 The method to use for the aggregation.
 
@@ -4657,7 +4978,7 @@ ranges in the results.
 
 ##### aggregation.method
 
-> **method**: `"avg"` | `"max"` | `"min"` | `"sum"` | `"median"` = `AggregateMethodSchema`
+> **method**: `"min"` | `"max"` | `"avg"` | `"sum"` | `"median"` = `AggregateMethodSchema`
 
 The operation to use on the values from the features in the layer
 
@@ -4802,7 +5123,7 @@ The type of grid to use for the precomputed calculation.
 
 #### method
 
-> **method**: `"avg"` | `"max"` | `"min"` | `"sum"`
+> **method**: `"min"` | `"max"` | `"avg"` | `"sum"`
 
 The method to use for the precomputed calculation.
 
@@ -6112,9 +6433,151 @@ own to make it easier to find related methods and events.
 
 ### Extends
 
-* `ViewportController`.`UiController`.`LayersController`.`ElementsController`.`SelectionController`.`InteractionsController`.[`ToolsController`](client.md#toolscontroller).`MiscController`
+* `ViewportController`.`UiController`.`LayersController`.`ElementsController`.`SelectionController`.`InteractionsController`.[`ToolsController`](client.md#toolscontroller).`MiscController`.[`BasemapsController`](client.md#basemapscontroller)
 
 ### Methods
+
+#### getCurrentBasemap()
+
+> **getCurrentBasemap**(): `Promise`\<[`Basemap`](client.md#basemap)>
+
+Gets the currently active basemap.
+
+Use this method to retrieve information about the current basemap, including
+its type (Felt, color, or custom tile), name, color scheme, and attribution.
+
+##### Returns
+
+`Promise`\<[`Basemap`](client.md#basemap)>
+
+A promise that resolves to the current basemap configuration.
+
+##### Example
+
+```typescript
+// Get current basemap
+const basemap = await felt.getCurrentBasemap();
+console.log({
+  name: basemap.name,
+  type: basemap.type,
+  uiColorScheme: basemap.uiColorScheme,
+});
+```
+
+#### getBasemaps()
+
+> **getBasemaps**(): `Promise`\<[`Basemap`](client.md#basemap)\[]>
+
+Gets all basemaps available on the map.
+
+Use this method to retrieve a list of all available basemaps that can be
+applied to the map.
+
+##### Returns
+
+`Promise`\<[`Basemap`](client.md#basemap)\[]>
+
+A promise that resolves to all basemaps available on the map.
+
+##### Example
+
+```typescript
+// Get all available basemaps
+const basemaps = await felt.getBasemaps();
+const lightBasemaps = basemaps.filter(b => b.uiColorScheme === "light");
+```
+
+#### chooseBasemap()
+
+> **chooseBasemap**(`id`): `void`
+
+Chooses the basemap to use for the map.
+
+Use this method to change the current basemap. The basemap ID can be obtained
+from getBasemaps().
+
+##### Parameters
+
+##### id
+
+`string`
+
+##### Returns
+
+`void`
+
+A promise that resolves when the basemap has been set.
+
+##### Example
+
+```typescript
+// Switch to a specific basemap
+const basemaps = await felt.getBasemaps();
+const darkBasemap = basemaps.find(b => b.uiColorScheme === "dark");
+if (darkBasemap) {
+  await felt.chooseBasemap(darkBasemap.id);
+}
+```
+
+#### addCustomBasemap()
+
+> **addCustomBasemap**(`args`): `Promise`\<[`Basemap`](client.md#basemap)>
+
+Adds a custom basemap to the map. This can be either a solid color or a basemap
+from a custom tile URL.
+
+##### Parameters
+
+##### args
+
+##### basemap
+
+[`ColorBasemapInput`](client.md#colorbasemapinput) | [`CustomTileBasemapInput`](client.md#customtilebasemapinput)
+
+The basemap to add.
+
+##### select
+
+`boolean`
+
+Whether to select the basemap after adding it.
+
+##### Returns
+
+`Promise`\<[`Basemap`](client.md#basemap)>
+
+A promise for the added basemap.
+
+##### Example
+
+```typescript
+// Add a custom basemap and select it
+await felt.addCustomBasemap({
+  basemap: {
+    type: "xyz_tile",
+    tileUrl: "https://example.com/tile.png"
+  },
+  select: true,
+});
+```
+
+#### removeBasemap()
+
+> **removeBasemap**(`id`): `Promise`\<`void`>
+
+Removes a basemap from the list of available basemaps.
+
+##### Parameters
+
+##### id
+
+`string`
+
+##### Returns
+
+`Promise`\<`void`>
+
+A promise that resolves when the basemap has been removed.
 
 #### getElement()
 
@@ -7355,7 +7818,7 @@ Calculates a single aggregate value for a layer based on the provided configurat
 
 ##### Type Parameters
 
-• **T** *extends* `"avg"` | `"max"` | `"min"` | `"sum"` | `"median"` | `"count"`
+• **T** *extends* `"min"` | `"max"` | `"avg"` | `"sum"` | `"median"` | `"count"`
 
 ##### Parameters
 
@@ -7890,7 +8353,7 @@ await felt.deleteActionTrigger("enablePolygonTool");
 
 #### createFeatureAction()
 
-> **createFeatureAction**(`args`): `Promise`\<[`uiFeatureAction`](client.md#uifeatureaction)>
+> **createFeatureAction**(`args`): `Promise`\<[`UIFeatureAction`](client.md#uifeatureaction)>
 
 Creates a feature contextual action.
 
@@ -7904,26 +8367,27 @@ The arguments for the method.
 
 ##### Returns
 
-`Promise`\<[`uiFeatureAction`](client.md#uifeatureaction)>
+`Promise`\<[`UIFeatureAction`](client.md#uifeatureaction)>
 
 ##### Example
 
 ```typescript
 const myAction = await felt.createFeatureAction({
   action: {
-    label: "Edit feature",
-    onTrigger: async ({ featureId, layerId }) => {
-      console.log(`Editing feature ${featureId} in layer ${layerId}`);
+    label: "Add to selection",
+    onTrigger: async ({ feature }) => {
+      console.log(`Adding feature ${feature.id} from layer ${feature.layerId} to selection`);
     },
-    layerIds: ["layer-1", "layer-2"],
+    layerIds: ["layer-1", "layer-2"], // Display the feature action only on these layers
   },
   placement: { at: "start" }, // optional, defaults to { at: "end" }
 });
+
 ```
 
 #### updateFeatureAction()
 
-> **updateFeatureAction**(`args`): `Promise`\<[`uiFeatureAction`](client.md#uifeatureaction)>
+> **updateFeatureAction**(`args`): `Promise`\<[`UIFeatureAction`](client.md#uifeatureaction)>
 
 Updates a feature contextual action.
 
@@ -7939,7 +8403,7 @@ The feature contextual action to update.
 
 ##### Returns
 
-`Promise`\<[`uiFeatureAction`](client.md#uifeatureaction)>
+`Promise`\<[`UIFeatureAction`](client.md#uifeatureaction)>
 
 ##### Remarks
 
@@ -7948,8 +8412,9 @@ Properties provided will override the existing properties.
 ##### Example
 
 ```typescript
+const myAction = await felt.createFeatureAction({ ... });
 await felt.updateFeatureAction({
-  id: "my-action",
+  id: myAction.id,
   label: "Updated action label", // only label changes
 });
 ```
@@ -7975,7 +8440,8 @@ The id of the feature contextual action to delete.
 ##### Example
 
 ```typescript
-await felt.deleteFeatureAction("my-action");
+const myAction = await felt.createFeatureAction({ ... });
+await felt.deleteFeatureAction(myAction.id);
 ```
 
 #### createPanelId()
@@ -8524,6 +8990,44 @@ felt.fitViewportToBounds({ bounds: [west, south, east, north] });
 ```
 
 ### Events
+
+#### onBasemapChange()
+
+> **onBasemapChange**(`args`): `VoidFunction`
+
+Adds a listener for when the basemap changes.
+
+Use this to react to basemap changes, such as updating your UI or
+adjusting other map elements to match the new basemap's color scheme.
+
+##### Parameters
+
+##### args
+
+##### handler
+
+(`basemap`) => `void`
+
+##### Returns
+
+`VoidFunction`
+
+A function to unsubscribe from the listener.
+
+##### Example
+
+```typescript
+// Listen for basemap changes
+const unsubscribe = felt.onBasemapChange({
+  handler: basemap => {
+    console.log(`Switched to ${basemap.name}`);
+    updateUIColors(basemap.uiColorScheme);
+  },
+});
+
+// later on...
+unsubscribe();
+```
 
 #### onElementCreate()
 
@@ -10324,7 +10828,7 @@ The alignment of the text, either `left`, `center` or `right`.
 
 #### style
 
-> **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`
+> **style**: `"light"` | `"italic"` | `"regular"` | `"caps"`
 
 The style of the text, either `italic`, `light`, `regular` or `caps`.
 
@@ -10382,7 +10886,7 @@ The alignment of the text, either `left`, `center` or `right`.
 
 #### style
 
-> **style**: `"italic"` | `"light"` | `"regular"` | `"caps"`
+> **style**: `"light"` | `"italic"` | `"regular"` | `"caps"`
 
 The style of the text, either `italic`, `light`, `regular` or `caps`.
 
@@ -10510,7 +11014,7 @@ The id of the element.
 
 #### action
 
-> **action**: [`uiFeatureActionCreate`](client.md#uifeatureactioncreate)
+> **action**: [`UIFeatureActionCreate`](client.md#uifeatureactioncreate)
 
 #### placement?
 
@@ -10528,25 +11032,85 @@ The id of the element.
 
 > `optional` **label**: `string`
 
+The label of the feature action.
+
 #### layerIds?
 
 > `optional` **layerIds**: `string`\[]
+
+The layers to add the action to. Optional. Defaults to all layers.
 
 #### geometryTypes?
 
 > `optional` **geometryTypes**: (`"Polygon"` | `"Point"` | `"Line"` | `"Raster"`)\[]
 
+The geometry type of the features to add the action to. Optional. Defaults to all geometry types.
+
+#### type?
+
+> `optional` **type**: `undefined`
+
 #### onTrigger()?
 
 > `optional` **onTrigger**: (`args`) => `void`
+
+The function to call when the feature action is triggered.
 
 ##### Parameters
 
 ##### args
 
+The arguments passed to the function.
+
 ##### feature
 
 [`LayerFeature`](client.md#layerfeature)
+
+The feature that triggered the action.
+
+##### Returns
+
+`void`
+
+#### onCreate()?
+
+> `optional` **onCreate**: (`args`) => `void`
+
+A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: (`args`) => `void`
+
+A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
 
 ##### Returns
 
@@ -12296,7 +12860,7 @@ The id of the element.
 
 `void`
 
-## uiFeatureActionCreate
+## UIFeatureActionCreate
 
 Represents a feature action for creation.
 It can be added to the map by using the [UiController.createFeatureAction](client.md#createfeatureaction) method.
@@ -12331,9 +12895,103 @@ The feature that triggered the action.
 
 `void`
 
-#### id?
+#### layerIds?
 
-> `optional` **id**: `string`
+> `optional` **layerIds**: `string`\[]
+
+The layers to add the action to. Optional. Defaults to all layers.
+
+#### geometryTypes?
+
+> `optional` **geometryTypes**: (`"Polygon"` | `"Point"` | `"Line"` | `"Raster"`)\[]
+
+The geometry type of the features to add the action to. Optional. Defaults to all geometry types.
+
+#### type?
+
+> `optional` **type**: `undefined`
+
+#### onCreate()?
+
+> `optional` **onCreate**: (`args`) => `void`
+
+A function to call when the element is created.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+#### onDestroy()?
+
+> `optional` **onDestroy**: (`args`) => `void`
+
+A function to call when the element is destroyed.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### id
+
+`string`
+
+The id of the element.
+
+##### Returns
+
+`void`
+
+## UIFeatureAction
+
+Represents a feature action after creation (with generated id).
+
+### Properties
+
+#### label
+
+> **label**: `string`
+
+The label of the feature action.
+
+#### onTrigger()
+
+> **onTrigger**: (`args`) => `void`
+
+The function to call when the feature action is triggered.
+
+##### Parameters
+
+##### args
+
+The arguments passed to the function.
+
+##### feature
+
+[`LayerFeature`](client.md#layerfeature)
+
+The feature that triggered the action.
+
+##### Returns
+
+`void`
+
+#### id
+
+> **id**: `string`
 
 #### layerIds?
 
@@ -15852,6 +16510,18 @@ The bounds to fit the viewport to.
 
 [FeltBoundary](client.md#feltboundary)
 
+## ColorBasemapInput
+
+> **ColorBasemapInput**: `Omit`\<[`ColorBasemap`](client.md#colorbasemap), `"id"`>
+
+## CustomTileBasemapInput
+
+> **CustomTileBasemapInput**: `Omit`\<[`CustomTileBasemap`](client.md#customtilebasemap), `"id"`>
+
+## Basemap
+
+> **Basemap**: [`FeltBasemap`](client.md#feltbasemap) | [`ColorBasemap`](client.md#colorbasemap) | [`CustomTileBasemap`](client.md#customtilebasemap)
+
 ## ElementCreate
 
 > **ElementCreate**: [`PlaceElementCreate`](client.md#placeelementcreate) | [`PathElementCreate`](client.md#pathelementcreate) | [`PolygonElementCreate`](client.md#polygonelementcreate) | [`CircleElementCreate`](client.md#circleelementcreate) | [`MarkerElementCreate`](client.md#markerelementcreate) | [`HighlighterElementCreate`](client.md#highlighterelementcreate) | [`ImageElementCreate`](client.md#imageelementcreate) | [`TextElementCreate`](client.md#textelementcreate) | [`NoteElementCreate`](client.md#noteelementcreate)
@@ -16032,13 +16702,13 @@ This can be either:
 
 ## AggregationMethod
 
-> **AggregationMethod**: `"avg"` | `"max"` | `"min"` | `"sum"` | `"median"`
+> **AggregationMethod**: `"min"` | `"max"` | `"avg"` | `"sum"` | `"median"`
 
 The method to use for the aggregation.
 
 ## PrecomputedAggregationMethod
 
-> **PrecomputedAggregationMethod**: `"avg"` | `"max"` | `"min"` | `"sum"` | `"count"`
+> **PrecomputedAggregationMethod**: `"min"` | `"max"` | `"avg"` | `"sum"` | `"count"`
 
 The method to use for the precomputed aggregation.
 
@@ -16281,46 +16951,6 @@ The result of listening for changes to the settings of each tool.
 ## PlaceSymbol
 
 > **PlaceSymbol**: `"dot"` | `"square"` | `"diamond"` | `"triangle"` | `"x"` | `"plus"` | `"circle-line"` | `"circle-slash"` | `"star"` | `"heart"` | `"hexagon"` | `"octagon"` | `"pedestrian"` | `"bicycle"` | `"wheelchair"` | `"airport"` | `"car"` | `"bus"` | `"train"` | `"truck"` | `"ferry"` | `"sailboat"` | `"electric-service"` | `"gas-service"` | `"blood-clinic"` | `"badge"` | `"traffic-light"` | `"traffic-cone"` | `"road-sign-caution"` | `"person"` | `"restroom"` | `"house"` | `"work"` | `"letter"` | `"hotel"` | `"factory"` | `"hospital"` | `"religious-facility"` | `"school"` | `"government"` | `"university"` | `"bank"` | `"landmark"` | `"museum"` | `"clothing"` | `"shopping"` | `"store"` | `"bar"` | `"pub"` | `"cafe"` | `"food"` | `"park"` | `"amusement-park"` | `"camping-tent"` | `"cabin"` | `"picnic"` | `"water-refill"` | `"trailhead"` | `"guidepost"` | `"viewpoint"` | `"camera"` | `"us-football"` | `"football"` | `"tennis"` | `"binoculars"` | `"swimming"` | `"zap"` | `"battery-full"` | `"battery-half"` | `"battery-low"` | `"boom"` | `"radar"` | `"wind-turbine"` | `"solar-panel"` | `"antenna"` | `"telephone-pole"` | `"oil-well"` | `"oil-barrel"` | `"railroad-track"` | `"bridge"` | `"lighthouse"` | `"lock-closed"` | `"lock-open"` | `"wifi"` | `"trash"` | `"recycle"` | `"tree"` | `"flower"` | `"leaf"` | `"fire"` | `"mountain"` | `"snowy-mountain"` | `"volcano"` | `"island"` | `"wave"` | `"hot-springs"` | `"water"` | `"lake"` | `"ocean"` | `"animal"` | `"bird"` | `"duck"` | `"dog"` | `"fish"` | `"beach"` | `"wetland"` | `"sun"` | `"moon"` | `"cloud"` | `"partial-sun"` | `"rain"` | `"lightning"` | `"snowflake"` | `"wind"` | `"snow"` | `"fog"` | `"sleet"` | `"hurricane"` | `"warning"` | `"parking"` | `"info"` | `"circle-exclamation"` | `"circle-triangle"` | `"circle-x"` | `"circle-plus"` | `` `:${string}:` `` & `object`
-
-## uiFeatureAction
-
-> **uiFeatureAction**: `object`
-
-Represents a feature action after creation (with generated id).
-
-### Type declaration
-
-#### id
-
-> **id**: `string`
-
-#### label
-
-> **label**: `string`
-
-#### onTrigger()
-
-> **onTrigger**: (`args`) => `void`
-
-##### Parameters
-
-##### args
-
-##### feature
-
-[`LayerFeature`](client.md#layerfeature)
-
-##### Returns
-
-`void`
-
-#### layerIds?
-
-> `optional` **layerIds**: `string`\[]
-
-#### geometryTypes?
-
-> `optional` **geometryTypes**: (`"Polygon"` | `"Point"` | `"Line"` | `"Raster"`)\[]
 
 ## PlacementForUIElement
 

@@ -1,5 +1,17 @@
 # @feltmaps/js-sdk
 
+## 1.10.0-next.4
+
+### Patch Changes
+
+* 6e233c6: Fix feature action types and documentation
+
+## 1.10.0-next.3
+
+### Minor Changes
+
+* 03be185: Add basemaps API
+
 ## 1.10.0-next.2
 
 ### Minor Changes

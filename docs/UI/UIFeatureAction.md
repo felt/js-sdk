@@ -1,7 +1,6 @@
 ***
 
-Represents a feature action for creation.
-It can be added to the map by using the [UiController.createFeatureAction](UiController.md#createfeatureaction) method.
+Represents a feature action after creation (with generated id).
 
 # Properties
 
@@ -32,9 +31,9 @@ The function to call when the feature action is triggered.
 
 ***
 
-## id?
+## id
 
-> `optional` **id**: `string`
+> **id**: `string`
 
 ***
 

@@ -1,18 +1,34 @@
 ***
 
+Represents a feature action for creation.
+It can be added to the map by using the [UiController.createFeatureAction](UiController.md#createfeatureaction) method.
+
 # Properties
 
-## id
+## label
 
-> **id**: `string`
+> **label**: `string`
+
+The label of the feature action.
 
 ***
 
-## label?
+## onTrigger()
 
-> `optional` **label**: `string`
+> **onTrigger**: (`args`: \{ `feature`: [`LayerFeature`](../Layers/LayerFeature.md); }) => `void`
 
-The label of the feature action.
+The function to call when the feature action is triggered.
+
+### Parameters
+
+| Parameter      | Type                                                         | Description                            |
+| -------------- | ------------------------------------------------------------ | -------------------------------------- |
+| `args`         | \{ `feature`: [`LayerFeature`](../Layers/LayerFeature.md); } | The arguments passed to the function.  |
+| `args.feature` | [`LayerFeature`](../Layers/LayerFeature.md)                  | The feature that triggered the action. |
+
+### Returns
+
+`void`
 
 ***
 
@@ -35,25 +51,6 @@ The geometry type of the features to add the action to. Optional. Defaults to al
 ## type?
 
 > `optional` **type**: `undefined`
-
-***
-
-## onTrigger()?
-
-> `optional` **onTrigger**: (`args`: \{ `feature`: [`LayerFeature`](../Layers/LayerFeature.md); }) => `void`
-
-The function to call when the feature action is triggered.
-
-### Parameters
-
-| Parameter      | Type                                                         | Description                            |
-| -------------- | ------------------------------------------------------------ | -------------------------------------- |
-| `args`         | \{ `feature`: [`LayerFeature`](../Layers/LayerFeature.md); } | The arguments passed to the function.  |
-| `args.feature` | [`LayerFeature`](../Layers/LayerFeature.md)                  | The feature that triggered the action. |
-
-### Returns
-
-`void`
 
 ***
 

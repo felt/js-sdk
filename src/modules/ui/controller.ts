@@ -164,14 +164,15 @@ export interface UiController {
    * ```typescript
    * const myAction = await felt.createFeatureAction({
    *   action: {
-   *     label: "Edit feature",
-   *     onTrigger: async ({ featureId, layerId }) => {
-   *       console.log(`Editing feature ${featureId} in layer ${layerId}`);
+   *     label: "Add to selection",
+   *     onTrigger: async ({ feature }) => {
+   *       console.log(`Adding feature ${feature.id} from layer ${feature.layerId} to selection`);
    *     },
-   *     layerIds: ["layer-1", "layer-2"],
+   *     layerIds: ["layer-1", "layer-2"], // Display the feature action only on these layers
    *   },
    *   placement: { at: "start" }, // optional, defaults to { at: "end" }
    * });
+   *
    * ```
    */
   createFeatureAction(
@@ -190,8 +191,9 @@ export interface UiController {
    *
    * @example
    * ```typescript
+   * const myAction = await felt.createFeatureAction({ ... });
    * await felt.updateFeatureAction({
-   *   id: "my-action",
+   *   id: myAction.id,
    *   label: "Updated action label", // only label changes
    * });
    * ```
@@ -207,7 +209,8 @@ export interface UiController {
    *
    * @example
    * ```typescript
-   * await felt.deleteFeatureAction("my-action");
+   * const myAction = await felt.createFeatureAction({ ... });
+   * await felt.deleteFeatureAction(myAction.id);
    * ```
    */
   deleteFeatureAction(id: string): void;

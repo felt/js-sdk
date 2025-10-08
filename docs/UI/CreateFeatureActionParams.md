@@ -4,7 +4,7 @@
 
 ## action
 
-> **action**: [`uiFeatureActionCreate`](uiFeatureActionCreate.md)
+> **action**: [`UIFeatureActionCreate`](UIFeatureActionCreate.md)
 
 ***
 

@@ -74,8 +74,6 @@ export interface CreateFeatureActionParams
   placement?: PlacementForUIElement;
 }
 
-const UpdateFeatureActionParamsSchema = uiFeatureActionSchema.update;
-
 export const UpdateFeatureActionParamsClonableSchema =
   uiFeatureActionSchema.clonable.partial().required({ id: true });
 
@@ -84,7 +82,7 @@ export const UpdateFeatureActionParamsClonableSchema =
  */
 export interface UpdateFeatureActionParams
   extends Omit<Partial<UIFeatureAction>, "id"> {
-  id: zInfer<typeof UpdateFeatureActionParamsSchema>["id"];
+  id: zInfer<typeof uiFeatureActionSchema.update>["id"];
 }
 
 const CreateOrUpdatePanelParamsSchema = z.object({

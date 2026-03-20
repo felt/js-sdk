@@ -66,6 +66,8 @@ export interface LayerCommon {
 
   /**
    * Whether the layer is visible or not.
+   *
+   * If a layer belongs to a layer group the group's visibility takes precedence.
    */
   visible: boolean;
 

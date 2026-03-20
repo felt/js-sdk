@@ -54,6 +54,8 @@ to users via the layer info button in the legend.
 
 Whether the layer is visible or not.
 
+If a layer belongs to a layer group the group's visibility takes precedence.
+
 ***
 
 ## shownInLegend

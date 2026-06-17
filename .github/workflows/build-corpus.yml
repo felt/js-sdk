@@ -1,0 +1,27 @@
+name: Build Corpus
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  build-corpus:
+    name: Build corpus.md
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        timeout-minutes: 2
+
+      - uses: felt/generate-docs-context@v1
+        with:
+          base-url: https://developers.felt.com/js-sdk-api-reference
+          s3-key: public/js-sdk-api-reference/corpus.md
+          bucket: prod-help-center-support-744918080653-us-west-1
+          role-arn: arn:aws:iam::744918080653:role/GithubActionsRole
+          docs-path: docs

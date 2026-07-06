@@ -1,4 +1,5 @@
 export * from "./modules/basemaps";
+export * from "./modules/collaboration";
 export * from "./modules/elements";
 export * from "./modules/interactions";
 export * from "./modules/layers";

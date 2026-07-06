@@ -3,6 +3,10 @@ import {
   type BasemapsController,
 } from "../basemaps/controller";
 import {
+  collaborationController,
+  type CollaborationController,
+} from "../collaboration/controller";
+import {
   elementsController,
   type ElementsController,
 } from "../elements/controller";
@@ -42,6 +46,7 @@ export function makeController(
     ...toolsController(feltWindow),
     ...miscController(feltWindow),
     ...basemapsController(feltWindow),
+    ...collaborationController(feltWindow),
   };
 }
 
@@ -71,7 +76,8 @@ export interface FeltController
     ToolsController,
     InteractionsController,
     MiscController,
-    BasemapsController {
+    BasemapsController,
+    CollaborationController {
   /**
    * The iframe element containing the Felt map, if it is an embedded map.
    *

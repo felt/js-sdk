@@ -1,4 +1,8 @@
 import { basemapsSchema, type BasemapsSchema } from "../basemaps/schema";
+import {
+  collaborationSchema,
+  type CollaborationSchema,
+} from "../collaboration/schema";
 import { elementsSchema, type ElementsSchema } from "../elements/schema";
 import {
   interactionsSchema,
@@ -21,6 +25,7 @@ export const allModules = [
   toolsSchema,
   miscSchema,
   basemapsSchema,
+  collaborationSchema,
 ];
 
 export type AllModules =
@@ -33,4 +38,5 @@ export type AllModules =
   | ToolsSchema
   | InteractionsSchema
   | MiscSchema
-  | BasemapsSchema;
+  | BasemapsSchema
+  | CollaborationSchema;

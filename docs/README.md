@@ -28,6 +28,7 @@ const layers = await map.getLayers();
 ## Modules
 
 * [Basemaps](Basemaps/README.md)
+* [Collaboration](Collaboration/README.md)
 * [Elements](Elements/README.md)
 * [Interactions](Interactions/README.md)
 * [Layers](Layers/README.md)

@@ -7,18 +7,14 @@ import {
 } from "~/lib/builders";
 import type { ModuleSchema } from "~/lib/ModuleSchema";
 import type { zInfer } from "~/lib/utils";
-import type {
-  BroadcastEvent,
-  BroadcastStateEvent,
-  JsonValue,
-} from "./types";
+import type { BroadcastEvent, BroadcastStateEvent, JsonValue } from "./types";
 
 /**
  * The maximum size, in bytes, of a serialized broadcast message. Messages
  * larger than this are rejected at the SDK boundary (and again on the server)
  * to protect the shared realtime channel.
  */
-export const MAX_BROADCAST_MESSAGE_BYTES = 32 * 1024;
+const MAX_BROADCAST_MESSAGE_BYTES = 32 * 1024;
 
 /**
  * A recursive schema describing any JSON-serializable value. Broadcast payloads
@@ -43,19 +39,26 @@ const BroadcastParams = z
   .object({
     message: JsonValueSchema,
   })
-  .refine(({ message }) => serializedByteLength(message) <= MAX_BROADCAST_MESSAGE_BYTES, {
-    message: `Broadcast message exceeds the ${MAX_BROADCAST_MESSAGE_BYTES} byte limit`,
-    path: ["message"],
-  });
+  .refine(
+    ({ message }) =>
+      serializedByteLength(message) <= MAX_BROADCAST_MESSAGE_BYTES,
+    {
+      message: `Broadcast message exceeds the ${MAX_BROADCAST_MESSAGE_BYTES} byte limit`,
+      path: ["message"],
+    },
+  );
 
 const SetBroadcastStateParams = z
   .object({
     state: JsonValueSchema,
   })
-  .refine(({ state }) => serializedByteLength(state) <= MAX_BROADCAST_MESSAGE_BYTES, {
-    message: `Broadcast state exceeds the ${MAX_BROADCAST_MESSAGE_BYTES} byte limit`,
-    path: ["state"],
-  });
+  .refine(
+    ({ state }) => serializedByteLength(state) <= MAX_BROADCAST_MESSAGE_BYTES,
+    {
+      message: `Broadcast state exceeds the ${MAX_BROADCAST_MESSAGE_BYTES} byte limit`,
+      path: ["state"],
+    },
+  );
 
 const BroadcastMessage = methodMessage("broadcast", BroadcastParams);
 const SetBroadcastStateMessage = methodMessage(

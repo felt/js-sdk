@@ -173,29 +173,48 @@ export const Felt = {
       const failureTimeout = setTimeout(() => {
         reject(new Error("Failed to load Felt map"));
         clearInterval(interval);
+        closeChannels();
       }, 5_000);
 
-      const messageChannel = new MessageChannel();
-      const interval = setInterval(() => {
+      // Transferring a MessagePort permanently neuters it, so every handshake
+      // attempt needs its own MessageChannel. Re-transferring the same port on
+      // each retry throws a DataCloneError in Safari (Chrome and Firefox
+      // silently drop the transfer), meaning that if the map wasn't ready to
+      // receive the very first message, no retry could ever deliver a
+      // working port.
+      const channels: MessageChannel[] = [];
+
+      function closeChannels() {
+        for (const channel of channels) {
+          channel.port1.onmessage = null;
+          channel.port1.close();
+          channel.port2.close();
+        }
+        channels.length = 0;
+      }
+
+      function attemptHandshake() {
+        const messageChannel = new MessageChannel();
+        channels.push(messageChannel);
+
+        messageChannel.port1.onmessage = (event) => {
+          if (event.data === true) {
+            clearInterval(interval);
+            clearTimeout(failureTimeout);
+            closeChannels();
+            resolve(controller);
+          }
+        };
+
         feltWindow.postMessage({ type: "felt.ready" }, "*", [
           messageChannel.port2,
         ]);
-      }, 100);
+      }
+
+      const interval = setInterval(attemptHandshake, 100);
 
       // try immediately to see if the map is already ready
-      feltWindow.postMessage({ type: "felt.ready" }, "*", [
-        messageChannel.port2,
-      ]);
-
-      messageChannel.port1.onmessage = (event) => {
-        if (event.data === true) {
-          clearInterval(interval);
-          clearTimeout(failureTimeout);
-          messageChannel.port1.close();
-          messageChannel.port2.close();
-          resolve(controller);
-        }
-      };
+      attemptHandshake();
     });
   },
 };

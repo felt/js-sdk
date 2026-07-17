@@ -1,5 +1,12 @@
 # @feltmaps/js-sdk
 
+## 1.10.1
+
+### Patch Changes
+
+- c3b650b: Update layer visible docs
+- 6c0d014: Fix `Felt.connect` intermittently failing in Safari with `DataCloneError` by creating a fresh `MessageChannel` for each handshake attempt instead of re-transferring the same port
+
 ## 1.10.0
 
 ### Minor Changes

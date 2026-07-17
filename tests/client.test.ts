@@ -108,6 +108,33 @@ describe("Embedding an iframe with theFelt SDK", () => {
     });
   });
 
+  describe("connect", () => {
+    test("sends a fresh MessagePort on each handshake attempt and connects even if early attempts are missed", async () => {
+      const receivedPorts: Array<MessagePort | undefined> = [];
+
+      // Simulate an iframe that isn't ready to receive the first handshake
+      // messages: ignore the first two attempts and only reply on the third.
+      window.addEventListener("message", (event) => {
+        if (event.data.type === "felt.ready") {
+          const port = event.ports[0];
+          receivedPorts.push(port);
+          if (receivedPorts.length >= 3) {
+            port?.postMessage(true);
+          }
+        }
+      });
+
+      const controller = await Felt.connect(window);
+      expect(controller).toBeTruthy();
+
+      // Transferring a MessagePort neuters it, so re-transferring the same
+      // port on retries throws a DataCloneError in Safari. Each attempt must
+      // therefore transfer a freshly-minted port.
+      expect(receivedPorts.length).toBeGreaterThanOrEqual(3);
+      expect(new Set(receivedPorts).size).toBe(receivedPorts.length);
+    });
+  });
+
   describe("controller types", () => {
     // These tests don't do anything in runtime, but they make sure that the types
     // are correct. Errors should be caught by the TypeScript compiler, ensuring

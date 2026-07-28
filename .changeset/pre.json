@@ -4,5 +4,7 @@
   "initialVersions": {
     "@feltmaps/js-sdk": "1.10.1"
   },
-  "changesets": []
+  "changesets": [
+    "tile-service-nullable-encoded-url"
+  ]
 }

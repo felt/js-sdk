@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.10.2-next.0
+
+### Patch Changes
+
+- b57ceb5: Make `RasterLayerSource.encodedTileTemplateUrl` nullable (`string | null`). TileService layers (WMS, WMTS, ArcGIS) serve pre-rendered image tiles and have no encoded tile URL.
+
 ## 1.10.1
 
 ### Patch Changes

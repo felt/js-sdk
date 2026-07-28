@@ -14,9 +14,11 @@ A URL template for fetching image tiles for the raster.
 
 ## encodedTileTemplateUrl
 
-> **encodedTileTemplateUrl**: `string`
+> **encodedTileTemplateUrl**: `null` | `string`
 
-A URL template for fetching encoded tiles for the raster.
+A URL template for fetching encoded tiles for the raster, or `null` for
+TileService layers (WMS, WMTS, ArcGIS) that serve pre-rendered image tiles
+without per-pixel encoding.
 
 The encoded raster value can be calculated from the red, green, and blue values of the pixel
 using the following formula:

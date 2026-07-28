@@ -145,7 +145,9 @@ export interface RasterLayerSource {
   imageTileTemplateUrl: string;
 
   /**
-   * A URL template for fetching encoded tiles for the raster.
+   * A URL template for fetching encoded tiles for the raster, or `null` for
+   * TileService layers (WMS, WMTS, ArcGIS) that serve pre-rendered image tiles
+   * without per-pixel encoding.
    *
    * The encoded raster value can be calculated from the red, green, and blue values of the pixel
    * using the following formula:
@@ -158,7 +160,7 @@ export interface RasterLayerSource {
    * base + (RED * 256 * 256 + GREEN * 256 + BLUE) * interval
    * ```
    */
-  encodedTileTemplateUrl: string;
+  encodedTileTemplateUrl: string | null;
 
   /**
    * List of encoded raster bands

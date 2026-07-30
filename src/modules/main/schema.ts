@@ -6,6 +6,10 @@ import {
 } from "../interactions/schema";
 import { layersSchema, type LayersSchema } from "../layers/schema";
 import { miscSchema, type MiscSchema } from "../misc/schema";
+import {
+  rasterLayersSchema,
+  type RasterLayersSchema,
+} from "../rasterLayers/schema";
 import { selectionSchema, type SelectionSchema } from "../selection/schema";
 import { toolsSchema, type ToolsSchema } from "../tools/schema";
 import { uiSchema, type UiSchema } from "../ui/schema";
@@ -15,6 +19,7 @@ export const allModules = [
   uiSchema,
   viewportSchema,
   layersSchema,
+  rasterLayersSchema,
   elementsSchema,
   selectionSchema,
   interactionsSchema,
@@ -27,6 +32,7 @@ export type AllModules =
   | UiSchema
   | ViewportSchema
   | LayersSchema
+  | RasterLayersSchema
   | ElementsSchema
   | SelectionSchema
   | InteractionsSchema

@@ -86,6 +86,8 @@ describe("Embedding an iframe with theFelt SDK", () => {
         uiControls: {
           showLegend: false,
           zoomControls: false,
+          rotation: false,
+          contextMenu: false,
         },
         initialViewport: {
           center: { latitude: 40, longitude: -74 },
@@ -103,6 +105,8 @@ describe("Embedding an iframe with theFelt SDK", () => {
       expect(url.origin).toBe("https://example.com");
       expect(url.searchParams.get("legend")).toBe("0");
       expect(url.searchParams.get("zoomControls")).toBe("0");
+      expect(url.searchParams.get("rotation")).toBe("0");
+      expect(url.searchParams.get("contextMenu")).toBe("0");
       expect(url.searchParams.get("loc")).toBe("40,-74,10z");
       expect(url.searchParams.get("token")).toBe("test-token");
     });

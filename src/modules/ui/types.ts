@@ -293,6 +293,30 @@ export const UiControlsOptionsSchema = z.object({
    * @defaultValue true
    */
   scaleBar: z.boolean().optional(),
+
+  /**
+   * Whether or not the map can be rotated.
+   *
+   * @remarks
+   * This affects all rotation interactions — dragging with the right mouse
+   * button or Ctrl held, two-finger touch rotation, and keyboard shortcuts —
+   * as well as the compass control, which is hidden when rotation is
+   * disabled.
+   *
+   * @defaultValue true
+   */
+  rotation: z.boolean().optional(),
+
+  /**
+   * Whether or not the right-click context menu is available on the map.
+   *
+   * @remarks
+   * When disabled, right-clicking the map opens neither Felt's context menu
+   * nor the browser's own.
+   *
+   * @defaultValue true
+   */
+  contextMenu: z.boolean().optional(),
 });
 
 /**

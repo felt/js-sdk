@@ -109,3 +109,43 @@ Whether or not the scale bar is shown in an embedded map.
 ```ts
 true
 ```
+
+***
+
+## rotation?
+
+> `optional` **rotation**: `boolean`
+
+Whether or not the map can be rotated.
+
+### Remarks
+
+This affects all rotation interactions — dragging with the right mouse
+button or Ctrl held, two-finger touch rotation, and keyboard shortcuts —
+as well as the compass control, which is hidden when rotation is
+disabled.
+
+### Default Value
+
+```ts
+true
+```
+
+***
+
+## contextMenu?
+
+> `optional` **contextMenu**: `boolean`
+
+Whether or not the right-click context menu is available on the map.
+
+### Remarks
+
+When disabled, right-clicking the map opens neither Felt's context menu
+nor the browser's own.
+
+### Default Value
+
+```ts
+true
+```

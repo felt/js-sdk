@@ -661,6 +661,40 @@ export const GetRenderedFeaturesConstraintSchema = z.object({
 });
 
 /**
+ * A capability that a layer supports.
+ *
+ * Layers hosted by Felt and layers created in the browser with
+ * {@link LayersController.createLayersFromGeoJson} support different subsets of the SDK,
+ * so use {@link LayersController.getLayerCapabilities} to find out which methods a
+ * particular layer can serve.
+ *
+ * The various values are:
+ * - `serverPersistence`: the layer exists server-side, so it can be duplicated with
+ *   {@link LayersController.duplicateLayer} and persists as part of the map.
+ * - `serverQuery`: the layer has a server-side query endpoint, which backs the `search`,
+ *   `sorting`, `filters`, `boundary` and `pagination` parameters of
+ *   {@link LayersController.getFeatures}, as well as
+ *   {@link LayersController.setLayerBoundary} and the data table.
+ * - `serverStats`: statistics for the layer are computed server-side, which backs
+ *   {@link LayersController.getPrecomputedAggregates} and the jenks breaks used by
+ *   classed numeric styles.
+ * - `localData`: the layer's full GeoJSON collection is held in the browser, which backs
+ *   {@link LayersController.getFeature}, {@link LayersController.getFeatures},
+ *   {@link LayersController.getGeoJsonFeature} and locally-computed statistics
+ *   ({@link LayersController.getCategoryData},
+ *   {@link LayersController.getHistogramData} and
+ *   {@link LayersController.getAggregates}) on layers created with
+ *   {@link LayersController.createLayersFromGeoJson}.
+ *
+ * @group Layers
+ */
+export type LayerCapability =
+  | "serverPersistence"
+  | "serverQuery"
+  | "serverStats"
+  | "localData";
+
+/**
  * The schema that describes the structure of the features in a layer.
  *
  * @remarks This can be useful to build generic UIs that need to know the structure of the data in

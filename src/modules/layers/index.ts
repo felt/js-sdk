@@ -46,6 +46,7 @@ export type {
 export type { LayerFeature, RasterValue } from "./features/types";
 
 export type {
+  LayerCapability,
   LayerSchema,
   LayerSchemaAttribute,
   LayerSchemaBooleanAttribute,

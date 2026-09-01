@@ -1036,6 +1036,46 @@ const schema = await felt.getLayerSchema("layer-1");
 const attributeIds = schema.attributes.map((attr) => attr.id);
 ```
 
+***
+
+## getLayerCapabilities()
+
+> **getLayerCapabilities**(`layerId`: `string`): `Promise`\<[`LayerCapability`](LayerCapability.md)\[]>
+
+Get the capabilities of a layer, which tell you which other SDK methods the layer
+can serve.
+
+### Parameters
+
+| Parameter | Type     |
+| --------- | -------- |
+| `layerId` | `string` |
+
+### Returns
+
+`Promise`\<[`LayerCapability`](LayerCapability.md)\[]>
+
+### Remarks
+
+Layers hosted by Felt report the `server*` capabilities, because their data, queries
+and statistics are served by Felt. Layers created with
+[LayersController.createLayersFromGeoJson](LayersController.md#createlayersfromgeojson) report `localData` instead, because
+their data only exists in the browser.
+
+Calling a method on a layer that lacks the capability it needs rejects with an error
+naming the missing capability, so you can use this to branch up front instead of
+handling that rejection.
+
+### Example
+
+```typescript
+const capabilities = await felt.getLayerCapabilities("layer-1");
+
+if (capabilities.includes("serverQuery")) {
+  const response = await felt.getFeatures({ layerId: "layer-1", search: "abc123" });
+}
+```
+
 # Events
 
 ## onLayerChange()

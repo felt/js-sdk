@@ -202,6 +202,12 @@ const GetLayerPrecomputedCalculationMessage = methodMessage(
 // SCHEMA
 const GetLayerSchemaMessage = methodMessage("getLayerSchema", z.string());
 
+// CAPABILITIES
+const GetLayerCapabilitiesMessage = methodMessage(
+  "getLayerCapabilities",
+  z.string(),
+);
+
 export const layersSchema = {
   methods: [
     GetLayerMessage,
@@ -240,6 +246,8 @@ export const layersSchema = {
     GetLayerPrecomputedCalculationMessage,
 
     GetLayerSchemaMessage,
+
+    GetLayerCapabilitiesMessage,
   ],
   listeners: [
     OnLayerChangeMessage,
@@ -299,6 +307,8 @@ export type LayersSchema = {
     >;
 
     getLayerSchema: Method<zInfer<typeof GetLayerSchemaMessage>>;
+
+    getLayerCapabilities: Method<zInfer<typeof GetLayerCapabilitiesMessage>>;
   };
   listeners: {
     onLayerChange: Listener<

@@ -63,30 +63,6 @@ export type RasterAggregationMethod = z.infer<
   typeof RasterAggregationMethodSchema
 >;
 
-const RasterScopeSchema = z.object({
-  boundary: RasterGeometryFilterSchema.optional(),
-  filters: FiltersSchema.optional(),
-});
-
-/**
- * Restricts which pixels a raster statistic covers.
- *
- * @group Stats
- */
-export interface RasterScope extends zInfer<typeof RasterScopeSchema> {
-  /**
-   * The spatial boundary for the pixels to include.
-   */
-  boundary?: RasterGeometryFilter;
-
-  /**
-   * Filters on band values for the pixels to include, such as
-   * `["band:1", "gt", 100]`. A filter may reference a different band from the one
-   * being summarized.
-   */
-  filters?: Filters;
-}
-
 const RasterBandScopeSchema = z.object({
   layerId: z.string(),
   band: z.string(),
@@ -190,7 +166,6 @@ export interface GetRasterAggregatesResult<T extends RasterAggregationMethod> {
 
 export const GetRasterHistogramParamsSchema = RasterBandScopeSchema.extend({
   steps: z.union([EqualIntervalShortcutSchema, z.array(z.number())]),
-  values: RasterScopeSchema.optional(),
 });
 
 /**
@@ -224,15 +199,6 @@ export interface GetRasterHistogramParams
    * intervals or as the bin edges themselves.
    */
   steps: { type: "equal-intervals"; count: number } | number[];
-
-  /**
-   * Restricts the pixels counted in each bin while leaving the bin edges alone.
-   *
-   * The top-level boundary and filters decide both where the bins fall and what
-   * gets counted in them. This configuration only changes what gets counted, so
-   * two histograms can be compared against identical bins.
-   */
-  values?: RasterScope;
 }
 
 const RasterHistogramBinSchema = z.object({
@@ -275,7 +241,6 @@ export interface GetRasterHistogramResult {
 
 export const GetRasterCategoriesParamsSchema = RasterBandScopeSchema.extend({
   limit: z.number().optional(),
-  values: RasterScopeSchema.optional(),
 });
 
 /**
@@ -309,16 +274,6 @@ export interface GetRasterCategoriesParams
    * kept.
    */
   limit?: number;
-
-  /**
-   * Restricts the pixels counted in each category while leaving the set of
-   * categories alone.
-   *
-   * The top-level boundary and filters decide both which categories appear and
-   * what gets counted in them. This configuration only changes what gets counted,
-   * so two results can be compared against an identical set of categories.
-   */
-  values?: RasterScope;
 }
 
 const RasterCategorySchema = z.object({

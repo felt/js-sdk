@@ -44,15 +44,3 @@ raster.
 > `optional` **filters**: [`Filters`](Filters.md)
 
 Filters on band values for the pixels to include.
-
-***
-
-## values?
-
-> `optional` **values**: [`RasterScope`](RasterScope.md)
-
-Restricts the pixels counted in each bin while leaving the bin edges alone.
-
-The top-level boundary and filters decide both where the bins fall and what
-gets counted in them. This configuration only changes what gets counted, so
-two histograms can be compared against identical bins.

@@ -44,16 +44,3 @@ Filters on band values for the pixels to include.
 
 The maximum number of categories to return. The most frequent categories are
 kept.
-
-***
-
-## values?
-
-> `optional` **values**: [`RasterScope`](RasterScope.md)
-
-Restricts the pixels counted in each category while leaving the set of
-categories alone.
-
-The top-level boundary and filters decide both which categories appear and
-what gets counted in them. This configuration only changes what gets counted,
-so two results can be compared against an identical set of categories.

@@ -99,7 +99,6 @@ export type {
   RasterHistogramBin,
   RasterPercentile,
   RasterProfileSample,
-  RasterScope,
 } from "./stats/raster";
 
 export type { LayersController } from "./controller";

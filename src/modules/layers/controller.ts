@@ -1051,10 +1051,6 @@ export interface LayersController {
    * summarize part of it. Filters restrict the summary to pixels whose band values
    * match a condition.
    *
-   * Reads are budgeted, so a summary of a large area is calculated from a
-   * downsampled copy of the raster. The `read` property of the response says
-   * whether that happened, and so whether the counts and areas are estimates.
-   *
    * @example
    * ```typescript
    * // The elevation range of a whole raster
@@ -1128,10 +1124,6 @@ export interface LayersController {
    * Each category reports how many pixels hold the value and how much ground they
    * cover. A band whose values are not whole numbers cannot be counted this way,
    * and throws.
-   *
-   * Reads are budgeted, so a count covering a large area can miss a value that
-   * holds very few pixels. The `read` property of the response says whether the
-   * read was downsampled.
    *
    * @example
    * ```typescript

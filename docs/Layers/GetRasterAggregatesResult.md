@@ -21,14 +21,6 @@ opposed to zero, so as not to confuse an empty selection with a real zero.
 
 ***
 
-## read
-
-> **read**: [`RasterReadDetails`](RasterReadDetails.md)
-
-How the pixels behind these statistics were read.
-
-***
-
 ## percentiles?
 
 > `optional` **percentiles**: [`RasterPercentile`](RasterPercentile.md)\[]

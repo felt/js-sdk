@@ -84,7 +84,6 @@ independently of the Layer, so you can turn on and off each category or class in
 # Stats
 
 * [RasterScope](RasterScope.md)
-* [RasterReadDetails](RasterReadDetails.md)
 * [GetRasterAggregatesParams](GetRasterAggregatesParams.md)
 * [RasterPercentile](RasterPercentile.md)
 * [GetRasterAggregatesResult](GetRasterAggregatesResult.md)

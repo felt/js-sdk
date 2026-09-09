@@ -18,11 +18,3 @@ The categories, most frequent first.
 
 How many distinct values the band holds within the scope, which is larger
 than the number of categories returned when `limit` drops some.
-
-***
-
-## read
-
-> **read**: [`RasterReadDetails`](RasterReadDetails.md)
-
-How the pixels behind these categories were read.

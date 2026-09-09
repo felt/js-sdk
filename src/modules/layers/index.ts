@@ -99,7 +99,6 @@ export type {
   RasterHistogramBin,
   RasterPercentile,
   RasterProfileSample,
-  RasterReadDetails,
   RasterScope,
 } from "./stats/raster";
 

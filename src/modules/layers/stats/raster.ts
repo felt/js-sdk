@@ -87,37 +87,6 @@ export interface RasterScope extends zInfer<typeof RasterScopeSchema> {
   filters?: Filters;
 }
 
-const RasterReadDetailsSchema = z.object({
-  pixelRatio: z.number(),
-  estimated: z.boolean(),
-});
-
-/**
- * Describes how the pixels behind a raster statistic were read.
- *
- * Reads are budgeted, so a statistic covering a large area is calculated from a
- * downsampled copy of the raster rather than from every pixel. Counts and areas
- * are then scaled back up, which makes them estimates. Minimum and maximum are
- * refined against full-resolution pixels either way, so both are always values
- * the raster really holds.
- *
- * @group Stats
- */
-export interface RasterReadDetails
-  extends zInfer<typeof RasterReadDetailsSchema> {
-  /**
-   * How many full-resolution pixels each pixel that was read stood for. A ratio
-   * of 1 means no pixels were skipped.
-   */
-  pixelRatio: number;
-
-  /**
-   * Whether the statistics were calculated from a downsampled read, which is true
-   * whenever `pixelRatio` is greater than 1.
-   */
-  estimated: boolean;
-}
-
 const RasterBandScopeSchema = z.object({
   layerId: z.string(),
   band: z.string(),
@@ -217,11 +186,6 @@ export interface GetRasterAggregatesResult<T extends RasterAggregationMethod> {
    * when percentile ranks were requested.
    */
   percentiles?: Array<RasterPercentile>;
-
-  /**
-   * How the pixels behind these statistics were read.
-   */
-  read: RasterReadDetails;
 }
 
 export const GetRasterHistogramParamsSchema = RasterBandScopeSchema.extend({
@@ -307,11 +271,6 @@ export interface GetRasterHistogramResult {
    * The bins, in ascending order of value.
    */
   bins: Array<RasterHistogramBin>;
-
-  /**
-   * How the pixels behind this histogram were read.
-   */
-  read: RasterReadDetails;
 }
 
 export const GetRasterCategoriesParamsSchema = RasterBandScopeSchema.extend({
@@ -404,11 +363,6 @@ export interface GetRasterCategoriesResult {
    * than the number of categories returned when `limit` drops some.
    */
   total: number;
-
-  /**
-   * How the pixels behind these categories were read.
-   */
-  read: RasterReadDetails;
 }
 
 export const GetRasterProfileParamsSchema = z.object({
@@ -478,9 +432,4 @@ export interface GetRasterProfileResult {
    * the line was too short to walk.
    */
   spacingM?: number;
-
-  /**
-   * How the pixels behind these samples were read.
-   */
-  read: RasterReadDetails;
 }

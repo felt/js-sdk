@@ -12,14 +12,6 @@ The samples, ordered from the line's start.
 
 ***
 
-## read
-
-> **read**: [`RasterReadDetails`](RasterReadDetails.md)
-
-How the pixels behind these samples were read.
-
-***
-
 ## spacingM?
 
 > `optional` **spacingM**: `number`

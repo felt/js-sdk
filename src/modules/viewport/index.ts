@@ -12,4 +12,4 @@ export type {
   ViewportState,
 } from "./types";
 
-export type { ViewportController } from "./controller";
+// export type { ViewportController } from "./controller";

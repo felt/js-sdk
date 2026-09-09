@@ -5,7 +5,7 @@
  *
  * @module Basemaps
  */
-export type { BasemapsController } from "./controller";
+// export type { BasemapsController } from "./controller";
 export type {
   Basemap,
   ColorBasemap,

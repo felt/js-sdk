@@ -108,4 +108,4 @@ export type {
   UIFeatureActionCreate,
 } from "./uiElements/UIFeatureAction";
 
-export type { UiController } from "./controller";
+// export type { UiController } from "./controller";

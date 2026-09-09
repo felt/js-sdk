@@ -101,4 +101,4 @@ export type {
   RasterProfileSample,
 } from "./stats/raster";
 
-export type { LayersController } from "./controller";
+// export type { LayersController } from "./controller";

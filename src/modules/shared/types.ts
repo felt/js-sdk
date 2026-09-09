@@ -132,7 +132,7 @@ export type LineStringGeometry = {
   coordinates: LngLatTuple[];
 };
 
-const LineStringGeometrySchema = z.object({
+export const LineStringGeometrySchema = z.object({
   type: z.literal("LineString"),
   coordinates: z.array(LngLatTupleSchema).min(2),
 });

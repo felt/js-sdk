@@ -18,6 +18,12 @@ import {
   type LayerFilters,
 } from "./filters/types";
 import {
+  GetRasterAggregatesParamsSchema,
+  GetRasterCategoriesParamsSchema,
+  GetRasterHistogramParamsSchema,
+  GetRasterProfileParamsSchema,
+} from "./stats/raster";
+import {
   GetLayerCalculationParamsSchema,
   GetLayerCategoriesParamsSchema,
   GetLayerHistogramParamsSchema,
@@ -199,6 +205,27 @@ const GetLayerPrecomputedCalculationMessage = methodMessage(
   GetLayerPrecomputedCalculationParamsSchema,
 );
 
+// RASTER STATS
+const GetRasterAggregatesMessage = methodMessage(
+  "getRasterAggregates",
+  GetRasterAggregatesParamsSchema,
+);
+
+const GetRasterHistogramMessage = methodMessage(
+  "getRasterHistogramData",
+  GetRasterHistogramParamsSchema,
+);
+
+const GetRasterCategoriesMessage = methodMessage(
+  "getRasterCategoryData",
+  GetRasterCategoriesParamsSchema,
+);
+
+const GetRasterProfileMessage = methodMessage(
+  "getRasterProfile",
+  GetRasterProfileParamsSchema,
+);
+
 // SCHEMA
 const GetLayerSchemaMessage = methodMessage("getLayerSchema", z.string());
 
@@ -238,6 +265,11 @@ export const layersSchema = {
     GetLayerHistogramMessage,
     GetLayerCalculationMessage,
     GetLayerPrecomputedCalculationMessage,
+
+    GetRasterAggregatesMessage,
+    GetRasterHistogramMessage,
+    GetRasterCategoriesMessage,
+    GetRasterProfileMessage,
 
     GetLayerSchemaMessage,
   ],
@@ -297,6 +329,11 @@ export type LayersSchema = {
     getPrecomputedAggregates: Method<
       zInfer<typeof GetLayerPrecomputedCalculationMessage>
     >;
+
+    getRasterAggregates: Method<zInfer<typeof GetRasterAggregatesMessage>>;
+    getRasterHistogramData: Method<zInfer<typeof GetRasterHistogramMessage>>;
+    getRasterCategoryData: Method<zInfer<typeof GetRasterCategoriesMessage>>;
+    getRasterProfile: Method<zInfer<typeof GetRasterProfileMessage>>;
 
     getLayerSchema: Method<zInfer<typeof GetLayerSchemaMessage>>;
   };

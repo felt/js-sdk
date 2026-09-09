@@ -209,7 +209,7 @@ const GetLayerCategoriesGroupSchema = z.object({
 export interface GetLayerCategoriesGroup
   extends zInfer<typeof GetLayerCategoriesGroupSchema> {}
 
-const EqualIntervalShortcutSchema = z.object({
+export const EqualIntervalShortcutSchema = z.object({
   type: z.literal("equal-intervals"),
   count: z.number(),
 });

@@ -4,218 +4,234 @@
 
 ```ts
 
-import { aC as AggregatedGridConfig } from './controller-DJwhatyD.js';
-import { aD as AggregationConfig } from './controller-DJwhatyD.js';
-import { aE as AggregationMethod } from './controller-DJwhatyD.js';
-import { a as Basemap } from './controller-DJwhatyD.js';
-import { B as BasemapsController } from './controller-DJwhatyD.js';
-import { f as CircleElementCreate } from './controller-DJwhatyD.js';
-import { g as CircleElementRead } from './controller-DJwhatyD.js';
-import { h as CircleElementUpdate } from './controller-DJwhatyD.js';
-import { bg as CircleToolSettings } from './controller-DJwhatyD.js';
-import { C as ColorBasemap } from './controller-DJwhatyD.js';
-import { b as ColorBasemapInput } from './controller-DJwhatyD.js';
-import { bh as ConfigurableToolType } from './controller-DJwhatyD.js';
-import { aF as CountGridConfig } from './controller-DJwhatyD.js';
-import { bx as CreateActionTriggerParams } from './controller-DJwhatyD.js';
-import { by as CreateFeatureActionParams } from './controller-DJwhatyD.js';
-import { Y as CreateLayersFromGeoJsonParams } from './controller-DJwhatyD.js';
-import { bz as CreateOrUpdatePanelParams } from './controller-DJwhatyD.js';
-import { bA as CreatePanelElementsParams } from './controller-DJwhatyD.js';
-import { c as CustomTileBasemap } from './controller-DJwhatyD.js';
-import { d as CustomTileBasemapInput } from './controller-DJwhatyD.js';
-import { Z as DataOnlyLayer } from './controller-DJwhatyD.js';
-import { bB as DeletePanelElementsParams } from './controller-DJwhatyD.js';
-import { E as Element_2 } from './controller-DJwhatyD.js';
-import { i as ElementChangeCallbackParams } from './controller-DJwhatyD.js';
-import { j as ElementCreate } from './controller-DJwhatyD.js';
-import { k as ElementGroup } from './controller-DJwhatyD.js';
-import { l as ElementGroupChangeCallbackParams } from './controller-DJwhatyD.js';
-import { aU as ElementGroupNode } from './controller-DJwhatyD.js';
-import { aV as ElementNode } from './controller-DJwhatyD.js';
-import { S as ElementsController } from './controller-DJwhatyD.js';
-import { m as ElementUpdate } from './controller-DJwhatyD.js';
-import { aW as EntityNode } from './controller-DJwhatyD.js';
-import { aX as FeatureNode } from './controller-DJwhatyD.js';
-import { aY as FeatureSelection } from './controller-DJwhatyD.js';
-import { e as FeltBasemap } from './controller-DJwhatyD.js';
-import { b0 as FeltBoundary } from './controller-DJwhatyD.js';
-import { F as FeltController } from './controller-DJwhatyD.js';
-import { _ as FeltTiledVectorSource } from './controller-DJwhatyD.js';
-import { b1 as FeltZoom } from './controller-DJwhatyD.js';
-import { av as FilterExpression } from './controller-DJwhatyD.js';
-import { aw as FilterLogicGate } from './controller-DJwhatyD.js';
-import { ay as Filters } from './controller-DJwhatyD.js';
-import { ax as FilterTernary } from './controller-DJwhatyD.js';
-import { $ as GeoJsonDataVectorSource } from './controller-DJwhatyD.js';
-import { b2 as GeoJsonFeature } from './controller-DJwhatyD.js';
-import { a0 as GeoJsonFileVectorSource } from './controller-DJwhatyD.js';
-import { b3 as GeoJsonGeometry } from './controller-DJwhatyD.js';
-import { b4 as GeoJsonProperties } from './controller-DJwhatyD.js';
-import { a1 as GeoJsonUrlVectorSource } from './controller-DJwhatyD.js';
-import { az as GeometryFilter } from './controller-DJwhatyD.js';
-import { G as GetElementGroupsConstraint } from './controller-DJwhatyD.js';
-import { n as GetElementsConstraint } from './controller-DJwhatyD.js';
-import { aG as GetLayerCalculationParams } from './controller-DJwhatyD.js';
-import { aH as GetLayerCategoriesGroup } from './controller-DJwhatyD.js';
-import { aI as GetLayerCategoriesParams } from './controller-DJwhatyD.js';
-import { a2 as GetLayerGroupsConstraint } from './controller-DJwhatyD.js';
-import { aJ as GetLayerHistogramBin } from './controller-DJwhatyD.js';
-import { aK as GetLayerHistogramParams } from './controller-DJwhatyD.js';
-import { aL as GetLayerPrecomputedCalculationParams } from './controller-DJwhatyD.js';
-import { a3 as GetLayersConstraint } from './controller-DJwhatyD.js';
-import { a4 as GetRenderedFeaturesConstraint } from './controller-DJwhatyD.js';
-import { aM as GridConfig } from './controller-DJwhatyD.js';
-import { aN as GridType } from './controller-DJwhatyD.js';
-import { H as HighlighterElementCreate } from './controller-DJwhatyD.js';
-import { o as HighlighterElementRead } from './controller-DJwhatyD.js';
-import { p as HighlighterElementUpdate } from './controller-DJwhatyD.js';
-import { bi as HighlighterToolSettings } from './controller-DJwhatyD.js';
-import { I as ImageElementCreate } from './controller-DJwhatyD.js';
-import { q as ImageElementRead } from './controller-DJwhatyD.js';
-import { r as ImageElementUpdate } from './controller-DJwhatyD.js';
-import { bj as InputToolSettings } from './controller-DJwhatyD.js';
-import { X as InteractionsController } from './controller-DJwhatyD.js';
-import { b5 as LatLng } from './controller-DJwhatyD.js';
-import { a5 as Layer } from './controller-DJwhatyD.js';
-import { aA as LayerBoundaries } from './controller-DJwhatyD.js';
-import { a6 as LayerChangeCallbackParams } from './controller-DJwhatyD.js';
-import { a7 as LayerCommon } from './controller-DJwhatyD.js';
-import { al as LayerFeature } from './controller-DJwhatyD.js';
-import { aB as LayerFilters } from './controller-DJwhatyD.js';
-import { a8 as LayerGroup } from './controller-DJwhatyD.js';
-import { a9 as LayerGroupChangeCallbackParams } from './controller-DJwhatyD.js';
-import { aZ as LayerGroupNode } from './controller-DJwhatyD.js';
-import { a_ as LayerNode } from './controller-DJwhatyD.js';
-import { aa as LayerProcessingStatus } from './controller-DJwhatyD.js';
-import { an as LayerSchema } from './controller-DJwhatyD.js';
-import { ao as LayerSchemaAttribute } from './controller-DJwhatyD.js';
-import { ap as LayerSchemaBooleanAttribute } from './controller-DJwhatyD.js';
-import { aq as LayerSchemaCommonAttribute } from './controller-DJwhatyD.js';
-import { ar as LayerSchemaDateAttribute } from './controller-DJwhatyD.js';
-import { as as LayerSchemaDateTimeAttribute } from './controller-DJwhatyD.js';
-import { at as LayerSchemaNumericAttribute } from './controller-DJwhatyD.js';
-import { au as LayerSchemaTextAttribute } from './controller-DJwhatyD.js';
-import { aR as LayersController } from './controller-DJwhatyD.js';
-import { ab as LegendDisplay } from './controller-DJwhatyD.js';
-import { ac as LegendItem } from './controller-DJwhatyD.js';
-import { ad as LegendItemChangeCallbackParams } from './controller-DJwhatyD.js';
-import { ae as LegendItemIdentifier } from './controller-DJwhatyD.js';
-import { af as LegendItemsConstraint } from './controller-DJwhatyD.js';
-import { b6 as LineStringGeometry } from './controller-DJwhatyD.js';
-import { bk as LineToolSettings } from './controller-DJwhatyD.js';
-import { L as LinkElementRead } from './controller-DJwhatyD.js';
-import { b7 as LngLatTuple } from './controller-DJwhatyD.js';
-import { aS as MapDetails } from './controller-DJwhatyD.js';
-import { W as MapInteractionEvent } from './controller-DJwhatyD.js';
-import { M as MarkerElementCreate } from './controller-DJwhatyD.js';
-import { s as MarkerElementRead } from './controller-DJwhatyD.js';
-import { t as MarkerElementUpdate } from './controller-DJwhatyD.js';
-import { bl as MarkerToolSettings } from './controller-DJwhatyD.js';
-import { aT as MiscController } from './controller-DJwhatyD.js';
-import { aO as MultiAggregationConfig } from './controller-DJwhatyD.js';
-import { b8 as MultiLineStringGeometry } from './controller-DJwhatyD.js';
-import { b9 as MultiPointGeometry } from './controller-DJwhatyD.js';
-import { ba as MultiPolygonGeometry } from './controller-DJwhatyD.js';
-import { N as NoteElementCreate } from './controller-DJwhatyD.js';
-import { u as NoteElementRead } from './controller-DJwhatyD.js';
-import { v as NoteElementUpdate } from './controller-DJwhatyD.js';
-import { bm as NoteToolSettings } from './controller-DJwhatyD.js';
-import { bC as OnMapInteractionsOptions } from './controller-DJwhatyD.js';
-import { P as PathElementCreate } from './controller-DJwhatyD.js';
-import { w as PathElementRead } from './controller-DJwhatyD.js';
-import { x as PathElementUpdate } from './controller-DJwhatyD.js';
-import { bn as PinToolSettings } from './controller-DJwhatyD.js';
-import { y as PlaceElementCreate } from './controller-DJwhatyD.js';
-import { A as PlaceElementRead } from './controller-DJwhatyD.js';
-import { D as PlaceElementUpdate } from './controller-DJwhatyD.js';
-import { bo as PlaceFrame } from './controller-DJwhatyD.js';
-import { bG as PlacementForUIElement } from './controller-DJwhatyD.js';
-import { bp as PlaceSymbol } from './controller-DJwhatyD.js';
-import { bb as PointGeometry } from './controller-DJwhatyD.js';
-import { J as PolygonElementCreate } from './controller-DJwhatyD.js';
-import { K as PolygonElementRead } from './controller-DJwhatyD.js';
-import { O as PolygonElementUpdate } from './controller-DJwhatyD.js';
-import { bc as PolygonGeometry } from './controller-DJwhatyD.js';
-import { bq as PolygonToolSettings } from './controller-DJwhatyD.js';
-import { aP as PrecomputedAggregationMethod } from './controller-DJwhatyD.js';
-import { ag as RasterBand } from './controller-DJwhatyD.js';
-import { ah as RasterLayer } from './controller-DJwhatyD.js';
-import { ai as RasterLayerSource } from './controller-DJwhatyD.js';
-import { am as RasterValue } from './controller-DJwhatyD.js';
-import { br as RouteToolSettings } from './controller-DJwhatyD.js';
-import { a$ as SelectionController } from './controller-DJwhatyD.js';
-import { cp as SetViewportCenterZoomParams } from './controller-DJwhatyD.js';
-import { bd as SetVisibilityRequest } from './controller-DJwhatyD.js';
-import { be as SortConfig } from './controller-DJwhatyD.js';
-import { bf as SortDirection } from './controller-DJwhatyD.js';
-import { T as TextElementCreate } from './controller-DJwhatyD.js';
-import { Q as TextElementRead } from './controller-DJwhatyD.js';
-import { R as TextElementUpdate } from './controller-DJwhatyD.js';
-import { bs as TextToolSettings } from './controller-DJwhatyD.js';
-import { bw as ToolsController } from './controller-DJwhatyD.js';
-import { bt as ToolSettingsChangeEvent } from './controller-DJwhatyD.js';
-import { bu as ToolSettingsMap } from './controller-DJwhatyD.js';
-import { bv as ToolType } from './controller-DJwhatyD.js';
-import { cl as UIActionTriggerCreate } from './controller-DJwhatyD.js';
-import { bJ as UIButtonElement } from './controller-DJwhatyD.js';
-import { bK as UIButtonElementCreate } from './controller-DJwhatyD.js';
-import { bL as UIButtonElementUpdate } from './controller-DJwhatyD.js';
-import { c5 as UIButtonRowElement } from './controller-DJwhatyD.js';
-import { c6 as UIButtonRowElementCreate } from './controller-DJwhatyD.js';
-import { c7 as UIButtonRowElementUpdate } from './controller-DJwhatyD.js';
-import { c8 as UICheckboxGroupElement } from './controller-DJwhatyD.js';
-import { c9 as UICheckboxGroupElementCreate } from './controller-DJwhatyD.js';
-import { ca as UICheckboxGroupElementUpdate } from './controller-DJwhatyD.js';
-import { ck as UIControlElementOption } from './controller-DJwhatyD.js';
-import { co as UiController } from './controller-DJwhatyD.js';
-import { U as UiControlsOptions } from './controller-DJwhatyD.js';
-import { bS as UIDividerElement } from './controller-DJwhatyD.js';
-import { bT as UIDividerElementCreate } from './controller-DJwhatyD.js';
-import { bU as UIDividerElementUpdate } from './controller-DJwhatyD.js';
-import { cm as UIFeatureAction } from './controller-DJwhatyD.js';
-import { cn as UIFeatureActionCreate } from './controller-DJwhatyD.js';
-import { bP as UIFlexibleSpaceElement } from './controller-DJwhatyD.js';
-import { bQ as UIFlexibleSpaceElementCreate } from './controller-DJwhatyD.js';
-import { bR as UIFlexibleSpaceElementUpdate } from './controller-DJwhatyD.js';
-import { c2 as UIGridContainerElement } from './controller-DJwhatyD.js';
-import { c3 as UIGridContainerElementCreate } from './controller-DJwhatyD.js';
-import { c4 as UIGridContainerElementUpdate } from './controller-DJwhatyD.js';
-import { ch as UIIframeElement } from './controller-DJwhatyD.js';
-import { ci as UIIframeElementCreate } from './controller-DJwhatyD.js';
-import { cj as UIIframeElementUpdate } from './controller-DJwhatyD.js';
-import { bH as UIPanel } from './controller-DJwhatyD.js';
-import { bI as UIPanelCreateOrUpdate } from './controller-DJwhatyD.js';
-import { b$ as UIPanelElement } from './controller-DJwhatyD.js';
-import { c0 as UIPanelElementCreate } from './controller-DJwhatyD.js';
-import { c1 as UIPanelElementUpdate } from './controller-DJwhatyD.js';
-import { cb as UIRadioGroupElement } from './controller-DJwhatyD.js';
-import { cc as UIRadioGroupElementCreate } from './controller-DJwhatyD.js';
-import { cd as UIRadioGroupElementUpdate } from './controller-DJwhatyD.js';
-import { bY as UISelectElement } from './controller-DJwhatyD.js';
-import { bZ as UISelectElementCreate } from './controller-DJwhatyD.js';
-import { b_ as UISelectElementUpdate } from './controller-DJwhatyD.js';
-import { bM as UITextElement } from './controller-DJwhatyD.js';
-import { bN as UITextElementCreate } from './controller-DJwhatyD.js';
-import { bO as UITextElementUpdate } from './controller-DJwhatyD.js';
-import { bV as UITextInputElement } from './controller-DJwhatyD.js';
-import { bW as UITextInputElementCreate } from './controller-DJwhatyD.js';
-import { bX as UITextInputElementUpdate } from './controller-DJwhatyD.js';
-import { ce as UIToggleGroupElement } from './controller-DJwhatyD.js';
-import { cf as UIToggleGroupElementCreate } from './controller-DJwhatyD.js';
-import { cg as UIToggleGroupElementUpdate } from './controller-DJwhatyD.js';
-import { bD as UpdateActionTriggerParams } from './controller-DJwhatyD.js';
-import { bE as UpdateFeatureActionParams } from './controller-DJwhatyD.js';
-import { aj as UpdateLayerParams } from './controller-DJwhatyD.js';
-import { bF as UpdatePanelElementsParams } from './controller-DJwhatyD.js';
-import { aQ as ValueConfiguration } from './controller-DJwhatyD.js';
-import { ak as VectorLayer } from './controller-DJwhatyD.js';
-import { V as ViewportCenterZoom } from './controller-DJwhatyD.js';
-import { cq as ViewportConstraints } from './controller-DJwhatyD.js';
-import { ct as ViewportController } from './controller-DJwhatyD.js';
-import { cr as ViewportFitBoundsParams } from './controller-DJwhatyD.js';
-import { cs as ViewportState } from './controller-DJwhatyD.js';
-import { z } from './controller-DJwhatyD.js';
+import { aC as AggregatedGridConfig } from './controller-Bnj6x0vc.js';
+import { aD as AggregationConfig } from './controller-Bnj6x0vc.js';
+import { aE as AggregationMethod } from './controller-Bnj6x0vc.js';
+import { a as Basemap } from './controller-Bnj6x0vc.js';
+import { B as BasemapsController } from './controller-Bnj6x0vc.js';
+import { f as CircleElementCreate } from './controller-Bnj6x0vc.js';
+import { g as CircleElementRead } from './controller-Bnj6x0vc.js';
+import { h as CircleElementUpdate } from './controller-Bnj6x0vc.js';
+import { bw as CircleToolSettings } from './controller-Bnj6x0vc.js';
+import { C as ColorBasemap } from './controller-Bnj6x0vc.js';
+import { b as ColorBasemapInput } from './controller-Bnj6x0vc.js';
+import { bx as ConfigurableToolType } from './controller-Bnj6x0vc.js';
+import { aF as CountGridConfig } from './controller-Bnj6x0vc.js';
+import { bN as CreateActionTriggerParams } from './controller-Bnj6x0vc.js';
+import { bO as CreateFeatureActionParams } from './controller-Bnj6x0vc.js';
+import { Y as CreateLayersFromGeoJsonParams } from './controller-Bnj6x0vc.js';
+import { bP as CreateOrUpdatePanelParams } from './controller-Bnj6x0vc.js';
+import { bQ as CreatePanelElementsParams } from './controller-Bnj6x0vc.js';
+import { c as CustomTileBasemap } from './controller-Bnj6x0vc.js';
+import { d as CustomTileBasemapInput } from './controller-Bnj6x0vc.js';
+import { Z as DataOnlyLayer } from './controller-Bnj6x0vc.js';
+import { bR as DeletePanelElementsParams } from './controller-Bnj6x0vc.js';
+import { E as Element_2 } from './controller-Bnj6x0vc.js';
+import { i as ElementChangeCallbackParams } from './controller-Bnj6x0vc.js';
+import { j as ElementCreate } from './controller-Bnj6x0vc.js';
+import { k as ElementGroup } from './controller-Bnj6x0vc.js';
+import { l as ElementGroupChangeCallbackParams } from './controller-Bnj6x0vc.js';
+import { b8 as ElementGroupNode } from './controller-Bnj6x0vc.js';
+import { b9 as ElementNode } from './controller-Bnj6x0vc.js';
+import { S as ElementsController } from './controller-Bnj6x0vc.js';
+import { m as ElementUpdate } from './controller-Bnj6x0vc.js';
+import { ba as EntityNode } from './controller-Bnj6x0vc.js';
+import { bb as FeatureNode } from './controller-Bnj6x0vc.js';
+import { bc as FeatureSelection } from './controller-Bnj6x0vc.js';
+import { e as FeltBasemap } from './controller-Bnj6x0vc.js';
+import { bg as FeltBoundary } from './controller-Bnj6x0vc.js';
+import { F as FeltController } from './controller-Bnj6x0vc.js';
+import { _ as FeltTiledVectorSource } from './controller-Bnj6x0vc.js';
+import { bh as FeltZoom } from './controller-Bnj6x0vc.js';
+import { av as FilterExpression } from './controller-Bnj6x0vc.js';
+import { aw as FilterLogicGate } from './controller-Bnj6x0vc.js';
+import { ay as Filters } from './controller-Bnj6x0vc.js';
+import { ax as FilterTernary } from './controller-Bnj6x0vc.js';
+import { $ as GeoJsonDataVectorSource } from './controller-Bnj6x0vc.js';
+import { bi as GeoJsonFeature } from './controller-Bnj6x0vc.js';
+import { a0 as GeoJsonFileVectorSource } from './controller-Bnj6x0vc.js';
+import { bj as GeoJsonGeometry } from './controller-Bnj6x0vc.js';
+import { bk as GeoJsonProperties } from './controller-Bnj6x0vc.js';
+import { a1 as GeoJsonUrlVectorSource } from './controller-Bnj6x0vc.js';
+import { az as GeometryFilter } from './controller-Bnj6x0vc.js';
+import { G as GetElementGroupsConstraint } from './controller-Bnj6x0vc.js';
+import { n as GetElementsConstraint } from './controller-Bnj6x0vc.js';
+import { aG as GetLayerCalculationParams } from './controller-Bnj6x0vc.js';
+import { aH as GetLayerCategoriesGroup } from './controller-Bnj6x0vc.js';
+import { aI as GetLayerCategoriesParams } from './controller-Bnj6x0vc.js';
+import { a2 as GetLayerGroupsConstraint } from './controller-Bnj6x0vc.js';
+import { aJ as GetLayerHistogramBin } from './controller-Bnj6x0vc.js';
+import { aK as GetLayerHistogramParams } from './controller-Bnj6x0vc.js';
+import { aL as GetLayerPrecomputedCalculationParams } from './controller-Bnj6x0vc.js';
+import { a3 as GetLayersConstraint } from './controller-Bnj6x0vc.js';
+import { aR as GetRasterAggregatesParams } from './controller-Bnj6x0vc.js';
+import { aS as GetRasterAggregatesResult } from './controller-Bnj6x0vc.js';
+import { aT as GetRasterCategoriesParams } from './controller-Bnj6x0vc.js';
+import { aU as GetRasterCategoriesResult } from './controller-Bnj6x0vc.js';
+import { aV as GetRasterHistogramParams } from './controller-Bnj6x0vc.js';
+import { aW as GetRasterHistogramResult } from './controller-Bnj6x0vc.js';
+import { aX as GetRasterProfileParams } from './controller-Bnj6x0vc.js';
+import { aY as GetRasterProfileResult } from './controller-Bnj6x0vc.js';
+import { a4 as GetRenderedFeaturesConstraint } from './controller-Bnj6x0vc.js';
+import { aM as GridConfig } from './controller-Bnj6x0vc.js';
+import { aN as GridType } from './controller-Bnj6x0vc.js';
+import { H as HighlighterElementCreate } from './controller-Bnj6x0vc.js';
+import { o as HighlighterElementRead } from './controller-Bnj6x0vc.js';
+import { p as HighlighterElementUpdate } from './controller-Bnj6x0vc.js';
+import { by as HighlighterToolSettings } from './controller-Bnj6x0vc.js';
+import { I as ImageElementCreate } from './controller-Bnj6x0vc.js';
+import { q as ImageElementRead } from './controller-Bnj6x0vc.js';
+import { r as ImageElementUpdate } from './controller-Bnj6x0vc.js';
+import { bz as InputToolSettings } from './controller-Bnj6x0vc.js';
+import { X as InteractionsController } from './controller-Bnj6x0vc.js';
+import { bl as LatLng } from './controller-Bnj6x0vc.js';
+import { a5 as Layer } from './controller-Bnj6x0vc.js';
+import { aA as LayerBoundaries } from './controller-Bnj6x0vc.js';
+import { a6 as LayerChangeCallbackParams } from './controller-Bnj6x0vc.js';
+import { a7 as LayerCommon } from './controller-Bnj6x0vc.js';
+import { al as LayerFeature } from './controller-Bnj6x0vc.js';
+import { aB as LayerFilters } from './controller-Bnj6x0vc.js';
+import { a8 as LayerGroup } from './controller-Bnj6x0vc.js';
+import { a9 as LayerGroupChangeCallbackParams } from './controller-Bnj6x0vc.js';
+import { bd as LayerGroupNode } from './controller-Bnj6x0vc.js';
+import { be as LayerNode } from './controller-Bnj6x0vc.js';
+import { aa as LayerProcessingStatus } from './controller-Bnj6x0vc.js';
+import { an as LayerSchema } from './controller-Bnj6x0vc.js';
+import { ao as LayerSchemaAttribute } from './controller-Bnj6x0vc.js';
+import { ap as LayerSchemaBooleanAttribute } from './controller-Bnj6x0vc.js';
+import { aq as LayerSchemaCommonAttribute } from './controller-Bnj6x0vc.js';
+import { ar as LayerSchemaDateAttribute } from './controller-Bnj6x0vc.js';
+import { as as LayerSchemaDateTimeAttribute } from './controller-Bnj6x0vc.js';
+import { at as LayerSchemaNumericAttribute } from './controller-Bnj6x0vc.js';
+import { au as LayerSchemaTextAttribute } from './controller-Bnj6x0vc.js';
+import { b5 as LayersController } from './controller-Bnj6x0vc.js';
+import { ab as LegendDisplay } from './controller-Bnj6x0vc.js';
+import { ac as LegendItem } from './controller-Bnj6x0vc.js';
+import { ad as LegendItemChangeCallbackParams } from './controller-Bnj6x0vc.js';
+import { ae as LegendItemIdentifier } from './controller-Bnj6x0vc.js';
+import { af as LegendItemsConstraint } from './controller-Bnj6x0vc.js';
+import { bm as LineStringGeometry } from './controller-Bnj6x0vc.js';
+import { bA as LineToolSettings } from './controller-Bnj6x0vc.js';
+import { L as LinkElementRead } from './controller-Bnj6x0vc.js';
+import { bn as LngLatTuple } from './controller-Bnj6x0vc.js';
+import { b6 as MapDetails } from './controller-Bnj6x0vc.js';
+import { W as MapInteractionEvent } from './controller-Bnj6x0vc.js';
+import { M as MarkerElementCreate } from './controller-Bnj6x0vc.js';
+import { s as MarkerElementRead } from './controller-Bnj6x0vc.js';
+import { t as MarkerElementUpdate } from './controller-Bnj6x0vc.js';
+import { bB as MarkerToolSettings } from './controller-Bnj6x0vc.js';
+import { b7 as MiscController } from './controller-Bnj6x0vc.js';
+import { aO as MultiAggregationConfig } from './controller-Bnj6x0vc.js';
+import { bo as MultiLineStringGeometry } from './controller-Bnj6x0vc.js';
+import { bp as MultiPointGeometry } from './controller-Bnj6x0vc.js';
+import { bq as MultiPolygonGeometry } from './controller-Bnj6x0vc.js';
+import { N as NoteElementCreate } from './controller-Bnj6x0vc.js';
+import { u as NoteElementRead } from './controller-Bnj6x0vc.js';
+import { v as NoteElementUpdate } from './controller-Bnj6x0vc.js';
+import { bC as NoteToolSettings } from './controller-Bnj6x0vc.js';
+import { bS as OnMapInteractionsOptions } from './controller-Bnj6x0vc.js';
+import { P as PathElementCreate } from './controller-Bnj6x0vc.js';
+import { w as PathElementRead } from './controller-Bnj6x0vc.js';
+import { x as PathElementUpdate } from './controller-Bnj6x0vc.js';
+import { bD as PinToolSettings } from './controller-Bnj6x0vc.js';
+import { y as PlaceElementCreate } from './controller-Bnj6x0vc.js';
+import { A as PlaceElementRead } from './controller-Bnj6x0vc.js';
+import { D as PlaceElementUpdate } from './controller-Bnj6x0vc.js';
+import { bE as PlaceFrame } from './controller-Bnj6x0vc.js';
+import { bW as PlacementForUIElement } from './controller-Bnj6x0vc.js';
+import { bF as PlaceSymbol } from './controller-Bnj6x0vc.js';
+import { br as PointGeometry } from './controller-Bnj6x0vc.js';
+import { J as PolygonElementCreate } from './controller-Bnj6x0vc.js';
+import { K as PolygonElementRead } from './controller-Bnj6x0vc.js';
+import { O as PolygonElementUpdate } from './controller-Bnj6x0vc.js';
+import { bs as PolygonGeometry } from './controller-Bnj6x0vc.js';
+import { bG as PolygonToolSettings } from './controller-Bnj6x0vc.js';
+import { aP as PrecomputedAggregationMethod } from './controller-Bnj6x0vc.js';
+import { aZ as RasterAggregationMethod } from './controller-Bnj6x0vc.js';
+import { ag as RasterBand } from './controller-Bnj6x0vc.js';
+import { a_ as RasterCategory } from './controller-Bnj6x0vc.js';
+import { a$ as RasterGeometryFilter } from './controller-Bnj6x0vc.js';
+import { b0 as RasterHistogramBin } from './controller-Bnj6x0vc.js';
+import { ah as RasterLayer } from './controller-Bnj6x0vc.js';
+import { ai as RasterLayerSource } from './controller-Bnj6x0vc.js';
+import { b1 as RasterPercentile } from './controller-Bnj6x0vc.js';
+import { b2 as RasterProfileSample } from './controller-Bnj6x0vc.js';
+import { b3 as RasterReadDetails } from './controller-Bnj6x0vc.js';
+import { b4 as RasterScope } from './controller-Bnj6x0vc.js';
+import { am as RasterValue } from './controller-Bnj6x0vc.js';
+import { bH as RouteToolSettings } from './controller-Bnj6x0vc.js';
+import { bf as SelectionController } from './controller-Bnj6x0vc.js';
+import { cF as SetViewportCenterZoomParams } from './controller-Bnj6x0vc.js';
+import { bt as SetVisibilityRequest } from './controller-Bnj6x0vc.js';
+import { bu as SortConfig } from './controller-Bnj6x0vc.js';
+import { bv as SortDirection } from './controller-Bnj6x0vc.js';
+import { T as TextElementCreate } from './controller-Bnj6x0vc.js';
+import { Q as TextElementRead } from './controller-Bnj6x0vc.js';
+import { R as TextElementUpdate } from './controller-Bnj6x0vc.js';
+import { bI as TextToolSettings } from './controller-Bnj6x0vc.js';
+import { bM as ToolsController } from './controller-Bnj6x0vc.js';
+import { bJ as ToolSettingsChangeEvent } from './controller-Bnj6x0vc.js';
+import { bK as ToolSettingsMap } from './controller-Bnj6x0vc.js';
+import { bL as ToolType } from './controller-Bnj6x0vc.js';
+import { cB as UIActionTriggerCreate } from './controller-Bnj6x0vc.js';
+import { bZ as UIButtonElement } from './controller-Bnj6x0vc.js';
+import { b_ as UIButtonElementCreate } from './controller-Bnj6x0vc.js';
+import { b$ as UIButtonElementUpdate } from './controller-Bnj6x0vc.js';
+import { cl as UIButtonRowElement } from './controller-Bnj6x0vc.js';
+import { cm as UIButtonRowElementCreate } from './controller-Bnj6x0vc.js';
+import { cn as UIButtonRowElementUpdate } from './controller-Bnj6x0vc.js';
+import { co as UICheckboxGroupElement } from './controller-Bnj6x0vc.js';
+import { cp as UICheckboxGroupElementCreate } from './controller-Bnj6x0vc.js';
+import { cq as UICheckboxGroupElementUpdate } from './controller-Bnj6x0vc.js';
+import { cA as UIControlElementOption } from './controller-Bnj6x0vc.js';
+import { cE as UiController } from './controller-Bnj6x0vc.js';
+import { U as UiControlsOptions } from './controller-Bnj6x0vc.js';
+import { c6 as UIDividerElement } from './controller-Bnj6x0vc.js';
+import { c7 as UIDividerElementCreate } from './controller-Bnj6x0vc.js';
+import { c8 as UIDividerElementUpdate } from './controller-Bnj6x0vc.js';
+import { cC as UIFeatureAction } from './controller-Bnj6x0vc.js';
+import { cD as UIFeatureActionCreate } from './controller-Bnj6x0vc.js';
+import { c3 as UIFlexibleSpaceElement } from './controller-Bnj6x0vc.js';
+import { c4 as UIFlexibleSpaceElementCreate } from './controller-Bnj6x0vc.js';
+import { c5 as UIFlexibleSpaceElementUpdate } from './controller-Bnj6x0vc.js';
+import { ci as UIGridContainerElement } from './controller-Bnj6x0vc.js';
+import { cj as UIGridContainerElementCreate } from './controller-Bnj6x0vc.js';
+import { ck as UIGridContainerElementUpdate } from './controller-Bnj6x0vc.js';
+import { cx as UIIframeElement } from './controller-Bnj6x0vc.js';
+import { cy as UIIframeElementCreate } from './controller-Bnj6x0vc.js';
+import { cz as UIIframeElementUpdate } from './controller-Bnj6x0vc.js';
+import { bX as UIPanel } from './controller-Bnj6x0vc.js';
+import { bY as UIPanelCreateOrUpdate } from './controller-Bnj6x0vc.js';
+import { cf as UIPanelElement } from './controller-Bnj6x0vc.js';
+import { cg as UIPanelElementCreate } from './controller-Bnj6x0vc.js';
+import { ch as UIPanelElementUpdate } from './controller-Bnj6x0vc.js';
+import { cr as UIRadioGroupElement } from './controller-Bnj6x0vc.js';
+import { cs as UIRadioGroupElementCreate } from './controller-Bnj6x0vc.js';
+import { ct as UIRadioGroupElementUpdate } from './controller-Bnj6x0vc.js';
+import { cc as UISelectElement } from './controller-Bnj6x0vc.js';
+import { cd as UISelectElementCreate } from './controller-Bnj6x0vc.js';
+import { ce as UISelectElementUpdate } from './controller-Bnj6x0vc.js';
+import { c0 as UITextElement } from './controller-Bnj6x0vc.js';
+import { c1 as UITextElementCreate } from './controller-Bnj6x0vc.js';
+import { c2 as UITextElementUpdate } from './controller-Bnj6x0vc.js';
+import { c9 as UITextInputElement } from './controller-Bnj6x0vc.js';
+import { ca as UITextInputElementCreate } from './controller-Bnj6x0vc.js';
+import { cb as UITextInputElementUpdate } from './controller-Bnj6x0vc.js';
+import { cu as UIToggleGroupElement } from './controller-Bnj6x0vc.js';
+import { cv as UIToggleGroupElementCreate } from './controller-Bnj6x0vc.js';
+import { cw as UIToggleGroupElementUpdate } from './controller-Bnj6x0vc.js';
+import { bT as UpdateActionTriggerParams } from './controller-Bnj6x0vc.js';
+import { bU as UpdateFeatureActionParams } from './controller-Bnj6x0vc.js';
+import { aj as UpdateLayerParams } from './controller-Bnj6x0vc.js';
+import { bV as UpdatePanelElementsParams } from './controller-Bnj6x0vc.js';
+import { aQ as ValueConfiguration } from './controller-Bnj6x0vc.js';
+import { ak as VectorLayer } from './controller-Bnj6x0vc.js';
+import { V as ViewportCenterZoom } from './controller-Bnj6x0vc.js';
+import { cG as ViewportConstraints } from './controller-Bnj6x0vc.js';
+import { cJ as ViewportController } from './controller-Bnj6x0vc.js';
+import { cH as ViewportFitBoundsParams } from './controller-Bnj6x0vc.js';
+import { cI as ViewportState } from './controller-Bnj6x0vc.js';
+import { z } from './controller-Bnj6x0vc.js';
 import { z as z_2 } from 'zod';
 
 export { AggregatedGridConfig }
@@ -453,6 +469,22 @@ export { GetLayerPrecomputedCalculationParams }
 
 export { GetLayersConstraint }
 
+export { GetRasterAggregatesParams }
+
+export { GetRasterAggregatesResult }
+
+export { GetRasterCategoriesParams }
+
+export { GetRasterCategoriesResult }
+
+export { GetRasterHistogramParams }
+
+export { GetRasterHistogramResult }
+
+export { GetRasterProfileParams }
+
+export { GetRasterProfileResult }
+
 export { GetRenderedFeaturesConstraint }
 
 export { GridConfig }
@@ -603,11 +635,27 @@ export { PolygonToolSettings }
 
 export { PrecomputedAggregationMethod }
 
+export { RasterAggregationMethod }
+
 export { RasterBand }
+
+export { RasterCategory }
+
+export { RasterGeometryFilter }
+
+export { RasterHistogramBin }
 
 export { RasterLayer }
 
 export { RasterLayerSource }
+
+export { RasterPercentile }
+
+export { RasterProfileSample }
+
+export { RasterReadDetails }
+
+export { RasterScope }
 
 export { RasterValue }
 

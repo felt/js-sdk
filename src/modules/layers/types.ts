@@ -169,12 +169,30 @@ export interface RasterLayerSource {
 }
 
 /**
- * The RasterBand interface describes the metadata for a raster band, necessary for
- * calculating the encoded raster value from the red, green, and blue values of the pixel.
+ * The RasterBand interface describes one band of a raster: how to identify it when
+ * asking for statistics, what to call it, and the values needed to calculate the
+ * encoded raster value from the red, green, and blue values of a pixel.
  *
  * @group Layer sources
  */
 export interface RasterBand {
+  /**
+   * The identifier for this band, such as `"band:1"`.
+   *
+   * Pass this to the raster statistics methods, such as
+   * {@link LayersController.getRasterAggregates}, and use it to refer to the band
+   * inside a filter.
+   */
+  id: string;
+
+  /**
+   * The name of the band, such as "Red" or "Elevation".
+   *
+   * Felt takes this from the raster itself when the file names its bands, and
+   * falls back to "Band 1", "Band 2" and so on.
+   */
+  displayName: string;
+
   /**
    * Encoding base value as a floating point number
    */

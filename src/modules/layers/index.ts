@@ -84,4 +84,23 @@ export type {
   ValueConfiguration,
 } from "./stats/types";
 
+export type {
+  GetRasterAggregatesParams,
+  GetRasterAggregatesResult,
+  GetRasterCategoriesParams,
+  GetRasterCategoriesResult,
+  GetRasterHistogramParams,
+  GetRasterHistogramResult,
+  GetRasterProfileParams,
+  GetRasterProfileResult,
+  RasterAggregationMethod,
+  RasterCategory,
+  RasterGeometryFilter,
+  RasterHistogramBin,
+  RasterPercentile,
+  RasterProfileSample,
+  RasterReadDetails,
+  RasterScope,
+} from "./stats/raster";
+
 export type { LayersController } from "./controller";

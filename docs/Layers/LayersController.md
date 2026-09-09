@@ -1005,6 +1005,191 @@ const aggregates = await felt.getPrecomputedAggregates({
 
 ***
 
+## getRasterAggregates()
+
+> **getRasterAggregates**\<`T`>(`params`: [`GetRasterAggregatesParams`](GetRasterAggregatesParams.md)\<`T`>): `Promise`\<[`GetRasterAggregatesResult`](GetRasterAggregatesResult.md)\<`T`>>
+
+Calculates statistics for a raster band.
+
+### Type Parameters
+
+| Type Parameter                                                                                                 |
+| -------------------------------------------------------------------------------------------------------------- |
+| `T` *extends* `"min"` \| `"max"` \| `"avg"` \| `"sum"` \| `"median"` \| `"stddev"` \| `"majority"` \| `"area"` |
+
+### Parameters
+
+| Parameter | Type                                                              |
+| --------- | ----------------------------------------------------------------- |
+| `params`  | [`GetRasterAggregatesParams`](GetRasterAggregatesParams.md)\<`T`> |
+
+### Returns
+
+`Promise`\<[`GetRasterAggregatesResult`](GetRasterAggregatesResult.md)\<`T`>>
+
+### Remarks
+
+Summarizes the pixel values of one band of a raster layer. Omit the boundary
+to summarize the whole raster, or pass a bounding box, a polygon, or a line to
+summarize part of it. Filters restrict the summary to pixels whose band values
+match a condition.
+
+Reads are budgeted, so a summary of a large area is calculated from a
+downsampled copy of the raster. The `read` property of the response says
+whether that happened, and so whether the counts and areas are estimates.
+
+### Example
+
+```typescript
+// The elevation range of a whole raster
+const elevation = await felt.getRasterAggregates({
+  layerId: "elevation",
+  band: "band:1",
+  aggregation: { methods: ["min", "max", "avg"] },
+});
+
+// How much ground inside a parcel sits above 2,000 metres
+const highGround = await felt.getRasterAggregates({
+  layerId: "elevation",
+  band: "band:1",
+  aggregation: { methods: ["area"] },
+  boundary: parcel,
+  filters: ["band:1", "gt", 2000],
+});
+
+// The steepest tenth of a slope raster
+const steep = await felt.getRasterAggregates({
+  layerId: "slope",
+  band: "band:1",
+  aggregation: { methods: ["avg"], percentiles: [90] },
+});
+```
+
+***
+
+## getRasterHistogramData()
+
+> **getRasterHistogramData**(`params`: [`GetRasterHistogramParams`](GetRasterHistogramParams.md)): `Promise`\<[`GetRasterHistogramResult`](GetRasterHistogramResult.md)>
+
+Calculates a histogram of a raster band's values.
+
+### Parameters
+
+| Parameter | Type                                                      |
+| --------- | --------------------------------------------------------- |
+| `params`  | [`GetRasterHistogramParams`](GetRasterHistogramParams.md) |
+
+### Returns
+
+`Promise`\<[`GetRasterHistogramResult`](GetRasterHistogramResult.md)>
+
+### Remarks
+
+Divides a band's values into bins and counts the pixels falling into each one.
+You can pass a number of equal intervals, or the bin edges themselves when you
+already know how you want the values divided.
+
+As with the vector histogram, filters apply in two ways. The top-level
+boundary and filters decide both where the bins fall and what gets counted in
+them. Filters in `values` only change what gets counted, so two histograms can
+be compared against identical bins.
+
+### Example
+
+```typescript
+// Elevation distribution in ten equal intervals
+const elevation = await felt.getRasterHistogramData({
+  layerId: "elevation",
+  band: "band:1",
+  steps: { type: "equal-intervals", count: 10 },
+});
+
+// The same bins, counting only pixels inside a watershed
+const inWatershed = await felt.getRasterHistogramData({
+  layerId: "elevation",
+  band: "band:1",
+  steps: [0, 500, 1000, 1500, 2000, 3000],
+  values: { boundary: watershed },
+});
+```
+
+***
+
+## getRasterCategoryData()
+
+> **getRasterCategoryData**(`params`: [`GetRasterCategoriesParams`](GetRasterCategoriesParams.md)): `Promise`\<[`GetRasterCategoriesResult`](GetRasterCategoriesResult.md)>
+
+Counts the pixels holding each distinct value of a raster band.
+
+### Parameters
+
+| Parameter | Type                                                        |
+| --------- | ----------------------------------------------------------- |
+| `params`  | [`GetRasterCategoriesParams`](GetRasterCategoriesParams.md) |
+
+### Returns
+
+`Promise`\<[`GetRasterCategoriesResult`](GetRasterCategoriesResult.md)>
+
+### Remarks
+
+This suits a band whose values are class codes, such as a land cover raster.
+Each category reports how many pixels hold the value and how much ground they
+cover. A band whose values are not whole numbers cannot be counted this way,
+and throws.
+
+Reads are budgeted, so a count covering a large area can miss a value that
+holds very few pixels. The `read` property of the response says whether the
+read was downsampled.
+
+### Example
+
+```typescript
+// How much of a county each land cover class covers
+const landCover = await felt.getRasterCategoryData({
+  layerId: "land-cover",
+  band: "band:1",
+  boundary: county,
+  limit: 10,
+});
+```
+
+***
+
+## getRasterProfile()
+
+> **getRasterProfile**(`params`: [`GetRasterProfileParams`](GetRasterProfileParams.md)): `Promise`\<[`GetRasterProfileResult`](GetRasterProfileResult.md)>
+
+Samples a raster band's values along a line.
+
+### Parameters
+
+| Parameter | Type                                                  |
+| --------- | ----------------------------------------------------- |
+| `params`  | [`GetRasterProfileParams`](GetRasterProfileParams.md) |
+
+### Returns
+
+`Promise`\<[`GetRasterProfileResult`](GetRasterProfileResult.md)>
+
+### Remarks
+
+Returns the values themselves rather than a summary of them, each paired with
+how far along the line it was taken. This is what an elevation profile along a
+route is drawn from.
+
+### Example
+
+```typescript
+const profile = await felt.getRasterProfile({
+  layerId: "elevation",
+  band: "band:1",
+  boundary: route,
+});
+```
+
+***
+
 ## getLayerSchema()
 
 > **getLayerSchema**(`layerId`: `string`): `Promise`\<[`LayerSchema`](LayerSchema.md)>

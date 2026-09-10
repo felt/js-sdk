@@ -1532,10 +1532,6 @@ Divides a band's values into bins and counts the pixels falling into each one.
 You can pass a number of equal intervals, or the bin edges themselves when you
 already know how you want the values divided.
 
-Passing the edges is what lets two histograms be compared: read the edges back
-from one result, then ask for them again under a different boundary or filters
-so only the bar heights change.
-
 ### Example
 
 ```typescript

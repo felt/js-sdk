@@ -6,6 +6,7 @@
   },
   "changesets": [
     "quick-donkeys-rotate",
+    "raster-stats-followups",
     "raster-stats-methods"
   ]
 }

@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.11.0-next.1
+
+### Patch Changes
+
+* 6ae7b35: Rename the `band` parameter to `bandId` across the raster statistics methods. `getRasterAggregates`, `getRasterHistogramData` and `getRasterCategoryData` no longer accept a line as their `boundary`, and the `RasterGeometryFilter` type is no longer exported.
+
 ## 1.11.0-next.0
 
 ### Minor Changes

@@ -4,5 +4,8 @@
   "initialVersions": {
     "@feltmaps/js-sdk": "1.10.2"
   },
-  "changesets": []
+  "changesets": [
+    "quick-donkeys-rotate",
+    "raster-stats-methods"
+  ]
 }

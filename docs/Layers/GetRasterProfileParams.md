@@ -11,13 +11,12 @@ The parameters for sampling a raster band along a line, passed to the
 
 ***
 
-## band
+## bandId
 
-> **band**: `string`
+> **bandId**: `string`
 
-The ID of the band to sample, such as `"band:1"`.
-
-Read the available band IDs from the `bands` on a raster layer's source.
+The ID of the band to sample, read from the `bands` on a raster layer's
+source.
 
 ***
 

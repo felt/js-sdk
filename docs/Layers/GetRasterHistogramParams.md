@@ -11,13 +11,11 @@ the [LayersController.getRasterHistogramData](LayersController.md#getrasterhisto
 
 ***
 
-## band
+## bandId
 
-> **band**: `string`
+> **bandId**: `string`
 
-The ID of the band to bin, such as `"band:1"`.
-
-Read the available band IDs from the `bands` on a raster layer's source.
+The ID of the band to bin, read from the `bands` on a raster layer's source.
 
 ***
 
@@ -32,7 +30,7 @@ intervals or as the bin edges themselves.
 
 ## boundary?
 
-> `optional` **boundary**: [`RasterGeometryFilter`](RasterGeometryFilter.md)
+> `optional` **boundary**: [`GeometryFilter`](GeometryFilter.md)
 
 The spatial boundary for the pixels to include. Omit this to cover the whole
 raster.

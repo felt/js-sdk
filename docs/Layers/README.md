@@ -106,7 +106,6 @@ independently of the Layer, so you can turn on and off each category or class in
 * [CountGridConfig](CountGridConfig.md)
 * [AggregatedGridConfig](AggregatedGridConfig.md)
 * [GetLayerPrecomputedCalculationParams](GetLayerPrecomputedCalculationParams.md)
-* [RasterGeometryFilter](RasterGeometryFilter.md)
 * [RasterAggregationMethod](RasterAggregationMethod.md)
 * [AggregationMethod](AggregationMethod.md)
 * [PrecomputedAggregationMethod](PrecomputedAggregationMethod.md)

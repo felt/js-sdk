@@ -11,19 +11,18 @@ The parameters for counting the distinct values of a raster band, passed to the
 
 ***
 
-## band
+## bandId
 
-> **band**: `string`
+> **bandId**: `string`
 
-The ID of the band to count values for, such as `"band:1"`.
-
-Read the available band IDs from the `bands` on a raster layer's source.
+The ID of the band to count values for, read from the `bands` on a raster
+layer's source.
 
 ***
 
 ## boundary?
 
-> `optional` **boundary**: [`RasterGeometryFilter`](RasterGeometryFilter.md)
+> `optional` **boundary**: [`GeometryFilter`](GeometryFilter.md)
 
 The spatial boundary for the pixels to include. Omit this to cover the whole
 raster.

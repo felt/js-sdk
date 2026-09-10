@@ -13,6 +13,10 @@ import {
 import { layersController, type LayersController } from "../layers/controller";
 import { miscController, type MiscController } from "../misc/controller";
 import {
+  rasterLayersController,
+  type RasterLayersController,
+} from "../rasterLayers/controller";
+import {
   selectionController,
   type SelectionController,
 } from "../selection/controller";
@@ -36,6 +40,7 @@ export function makeController(
     ...viewportController(feltWindow),
     ...uiController(feltWindow),
     ...layersController(feltWindow),
+    ...rasterLayersController(feltWindow),
     ...elementsController(feltWindow),
     ...selectionController(feltWindow),
     ...interactionsController(feltWindow),
@@ -65,6 +70,7 @@ export interface FeltController
   extends ViewportController,
     UiController,
     LayersController,
+    RasterLayersController,
     ElementsController,
     SelectionController,
     InteractionsController,

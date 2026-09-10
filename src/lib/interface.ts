@@ -173,6 +173,41 @@ export function method<TKey extends keyof MethodSpec>(
   };
 }
 
+/**
+ * Like {@link method}, but transfers the {@link Transferable | Transferables}
+ * returned by `getTransferables` (e.g. an `ArrayBuffer` of raster pixels) to
+ * the map instead of structured-cloning them. This is zero-copy, but detaches
+ * the transferred objects in the calling context.
+ */
+export function methodWithTransfer<TKey extends keyof MethodSpec>(
+  feltWindow: Pick<Window, "postMessage">,
+  type: TKey,
+  getTransferables: (params: OneMethod<TKey>) => Transferable[],
+): FeltMethod<TKey> {
+  return async (params) => {
+    const messageChannel = new MessageChannel();
+
+    const transferables = params ? getTransferables(params) : [];
+
+    feltWindow.postMessage({ type, params }, "*", [
+      messageChannel.port2,
+      ...transferables,
+    ]);
+
+    return new Promise((resolve, reject) => {
+      messageChannel.port1.onmessage = (event) => {
+        if (isErrorMessage(event)) {
+          reject(new Error(event.data.__error__));
+        } else {
+          resolve(event.data);
+        }
+        messageChannel.port1.close();
+        messageChannel.port2.close();
+      };
+    });
+  };
+}
+
 const eventIdToFunction: Record<string, Function> = {};
 
 export function methodWithListeners<

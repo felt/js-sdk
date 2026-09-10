@@ -15,27 +15,6 @@ import {
 } from "../filters/types";
 import { EqualIntervalShortcutSchema } from "./types";
 
-const RasterGeometryFilterSchema = z.union([
-  GeometryFilterSchema,
-  LineStringGeometrySchema,
-  MultiLineStringGeometrySchema,
-]);
-
-/**
- * The spatial boundary for a raster statistic.
- *
- * Raster statistics accept everything a vector statistic accepts, and also accept
- * a line. A polygon or bounding box selects the pixels whose centres fall inside
- * it. A line is sampled along its length instead, so its statistics are weighted
- * by distance rather than by area.
- *
- * @group Stats
- */
-export type RasterGeometryFilter =
-  | GeometryFilter
-  | LineStringGeometry
-  | MultiLineStringGeometry;
-
 const RasterAggregationMethodSchema = z.enum([
   "avg",
   "min",
@@ -50,12 +29,13 @@ const RasterAggregationMethodSchema = z.enum([
 /**
  * A statistic that can be calculated for a raster band.
  *
- * `area` is the ground area of the selected pixels, in square metres. `majority`
- * is the most common value, and applies only to a band holding whole numbers.
+ * `area` is the ground area of the selected pixels, in square metres.
  *
- * Neither `sum` nor `area` is available for a line boundary, because both need a
- * ground area for each pixel and a line only samples points. A request for a
- * statistic that the band or the boundary cannot answer throws.
+ * Two statistics depend on the band rather than the request. `majority`, the most
+ * common value, needs a band holding whole numbers. `sum` needs measurements
+ * taken when the raster was processed, which rasters processed before those
+ * measurements existed do not carry. Asking a band for a statistic it cannot
+ * answer throws.
  *
  * @group Stats
  */
@@ -65,8 +45,8 @@ export type RasterAggregationMethod = z.infer<
 
 const RasterBandScopeSchema = z.object({
   layerId: z.string(),
-  band: z.string(),
-  boundary: RasterGeometryFilterSchema.optional(),
+  bandId: z.string(),
+  boundary: GeometryFilterSchema.optional(),
   filters: FiltersSchema.optional(),
 });
 
@@ -88,17 +68,16 @@ export const GetRasterAggregatesParamsSchema = RasterBandScopeSchema.extend({
 export interface GetRasterAggregatesParams<T extends RasterAggregationMethod>
   extends zInfer<typeof GetRasterAggregatesParamsSchema> {
   /**
-   * The ID of the band to calculate statistics for, such as `"band:1"`.
-   *
-   * Read the available band IDs from the `bands` on a raster layer's source.
+   * The ID of the band to calculate statistics for, read from the `bands` on a
+   * raster layer's source.
    */
-  band: string;
+  bandId: string;
 
   /**
    * The spatial boundary for the pixels to include. Omit this to cover the whole
    * raster.
    */
-  boundary?: RasterGeometryFilter;
+  boundary?: GeometryFilter;
 
   /**
    * Filters on band values for the pixels to include, such as
@@ -177,17 +156,15 @@ export const GetRasterHistogramParamsSchema = RasterBandScopeSchema.extend({
 export interface GetRasterHistogramParams
   extends zInfer<typeof GetRasterHistogramParamsSchema> {
   /**
-   * The ID of the band to bin, such as `"band:1"`.
-   *
-   * Read the available band IDs from the `bands` on a raster layer's source.
+   * The ID of the band to bin, read from the `bands` on a raster layer's source.
    */
-  band: string;
+  bandId: string;
 
   /**
    * The spatial boundary for the pixels to include. Omit this to cover the whole
    * raster.
    */
-  boundary?: RasterGeometryFilter;
+  boundary?: GeometryFilter;
 
   /**
    * Filters on band values for the pixels to include.
@@ -252,17 +229,16 @@ export const GetRasterCategoriesParamsSchema = RasterBandScopeSchema.extend({
 export interface GetRasterCategoriesParams
   extends zInfer<typeof GetRasterCategoriesParamsSchema> {
   /**
-   * The ID of the band to count values for, such as `"band:1"`.
-   *
-   * Read the available band IDs from the `bands` on a raster layer's source.
+   * The ID of the band to count values for, read from the `bands` on a raster
+   * layer's source.
    */
-  band: string;
+  bandId: string;
 
   /**
    * The spatial boundary for the pixels to include. Omit this to cover the whole
    * raster.
    */
-  boundary?: RasterGeometryFilter;
+  boundary?: GeometryFilter;
 
   /**
    * Filters on band values for the pixels to include.
@@ -322,7 +298,7 @@ export interface GetRasterCategoriesResult {
 
 export const GetRasterProfileParamsSchema = z.object({
   layerId: z.string(),
-  band: z.string(),
+  bandId: z.string(),
   boundary: z.union([LineStringGeometrySchema, MultiLineStringGeometrySchema]),
 });
 
@@ -335,11 +311,10 @@ export const GetRasterProfileParamsSchema = z.object({
 export interface GetRasterProfileParams
   extends zInfer<typeof GetRasterProfileParamsSchema> {
   /**
-   * The ID of the band to sample, such as `"band:1"`.
-   *
-   * Read the available band IDs from the `bands` on a raster layer's source.
+   * The ID of the band to sample, read from the `bands` on a raster layer's
+   * source.
    */
-  band: string;
+  bandId: string;
 
   /**
    * The line to sample the band along. The band is sampled at roughly one sample
@@ -381,10 +356,4 @@ export interface GetRasterProfileResult {
    * The samples, ordered from the line's start.
    */
   samples: Array<RasterProfileSample>;
-
-  /**
-   * The mean distance between consecutive samples, in ground metres. Absent when
-   * the line was too short to walk.
-   */
-  spacingM?: number;
 }

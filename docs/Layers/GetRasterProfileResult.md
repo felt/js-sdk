@@ -9,12 +9,3 @@ The response from the [LayersController.getRasterProfile](LayersController.md#ge
 > **samples**: [`RasterProfileSample`](RasterProfileSample.md)\[]
 
 The samples, ordered from the line's start.
-
-***
-
-## spacingM?
-
-> `optional` **spacingM**: `number`
-
-The mean distance between consecutive samples, in ground metres. Absent when
-the line was too short to walk.

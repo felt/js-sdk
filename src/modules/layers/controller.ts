@@ -1047,33 +1047,37 @@ export interface LayersController {
    *
    * @remarks
    * Summarizes the pixel values of one band of a raster layer. Omit the boundary
-   * to summarize the whole raster, or pass a bounding box, a polygon, or a line to
-   * summarize part of it. Filters restrict the summary to pixels whose band values
-   * match a condition.
+   * to summarize the whole raster, or pass a bounding box or polygon to summarize
+   * part of it. Filters restrict the summary to pixels whose band values match a
+   * condition.
    *
    * @example
    * ```typescript
-   * // The elevation range of a whole raster
+   * // Band IDs come from the layer, so read them rather than writing them out
+   * const layer = await felt.getLayer("elevation");
+   * const bandId = layer.source.bands[0].id;
+   *
+   * // The elevation range of the whole raster, since no boundary is given
    * const elevation = await felt.getRasterAggregates({
-   *   layerId: "elevation",
-   *   band: "band:1",
+   *   layerId: layer.id,
+   *   bandId,
    *   aggregation: { methods: ["min", "max", "avg"] },
    * });
    *
    * // How much ground inside a parcel sits above 2,000 metres
    * const highGround = await felt.getRasterAggregates({
-   *   layerId: "elevation",
-   *   band: "band:1",
+   *   layerId: layer.id,
+   *   bandId,
    *   aggregation: { methods: ["area"] },
    *   boundary: parcel,
-   *   filters: ["band:1", "gt", 2000],
+   *   filters: [bandId, "gt", 2000],
    * });
    *
-   * // The steepest tenth of a slope raster
+   * // The elevation that the steepest tenth of the raster sits above
    * const steep = await felt.getRasterAggregates({
-   *   layerId: "slope",
-   *   band: "band:1",
-   *   aggregation: { methods: ["avg"], percentiles: [90] },
+   *   layerId: layer.id,
+   *   bandId,
+   *   aggregation: { methods: [], percentiles: [90] },
    * });
    * ```
    */
@@ -1089,26 +1093,25 @@ export interface LayersController {
    * You can pass a number of equal intervals, or the bin edges themselves when you
    * already know how you want the values divided.
    *
-   * As with the vector histogram, filters apply in two ways. The top-level
-   * boundary and filters decide both where the bins fall and what gets counted in
-   * them. Filters in `values` only change what gets counted, so two histograms can
-   * be compared against identical bins.
+   * Passing the edges is what lets two histograms be compared: read the edges back
+   * from one result, then ask for them again under a different boundary or filters
+   * so only the bar heights change.
    *
    * @example
    * ```typescript
-   * // Elevation distribution in ten equal intervals
+   * // The whole raster's elevation distribution in ten equal intervals
    * const elevation = await felt.getRasterHistogramData({
-   *   layerId: "elevation",
-   *   band: "band:1",
+   *   layerId: layer.id,
+   *   bandId,
    *   steps: { type: "equal-intervals", count: 10 },
    * });
    *
-   * // The same bins, counting only pixels inside a watershed
+   * // The same bins, counting only the pixels inside a watershed
    * const inWatershed = await felt.getRasterHistogramData({
-   *   layerId: "elevation",
-   *   band: "band:1",
+   *   layerId: layer.id,
+   *   bandId,
    *   steps: [0, 500, 1000, 1500, 2000, 3000],
-   *   values: { boundary: watershed },
+   *   boundary: watershed,
    * });
    * ```
    */
@@ -1129,8 +1132,8 @@ export interface LayersController {
    * ```typescript
    * // How much of a county each land cover class covers
    * const landCover = await felt.getRasterCategoryData({
-   *   layerId: "land-cover",
-   *   band: "band:1",
+   *   layerId: layer.id,
+   *   bandId,
    *   boundary: county,
    *   limit: 10,
    * });
@@ -1151,8 +1154,8 @@ export interface LayersController {
    * @example
    * ```typescript
    * const profile = await felt.getRasterProfile({
-   *   layerId: "elevation",
-   *   band: "band:1",
+   *   layerId: layer.id,
+   *   bandId,
    *   boundary: route,
    * });
    * ```

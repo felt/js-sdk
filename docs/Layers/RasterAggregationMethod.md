@@ -4,9 +4,10 @@
 
 A statistic that can be calculated for a raster band.
 
-`area` is the ground area of the selected pixels, in square metres. `majority`
-is the most common value, and applies only to a band holding whole numbers.
+`area` is the ground area of the selected pixels, in square metres.
 
-Neither `sum` nor `area` is available for a line boundary, because both need a
-ground area for each pixel and a line only samples points. A request for a
-statistic that the band or the boundary cannot answer throws.
+Two statistics depend on the band rather than the request. `majority`, the most
+common value, needs a band holding whole numbers. `sum` needs measurements
+taken when the raster was processed, which rasters processed before those
+measurements existed do not carry. Asking a band for a statistic it cannot
+answer throws.

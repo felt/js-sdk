@@ -95,7 +95,6 @@ export type {
   GetRasterProfileResult,
   RasterAggregationMethod,
   RasterCategory,
-  RasterGeometryFilter,
   RasterHistogramBin,
   RasterPercentile,
   RasterProfileSample,

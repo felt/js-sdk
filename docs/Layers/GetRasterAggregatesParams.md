@@ -17,13 +17,12 @@ The parameters for calculating statistics for a raster band, passed to the
 
 ***
 
-## band
+## bandId
 
-> **band**: `string`
+> **bandId**: `string`
 
-The ID of the band to calculate statistics for, such as `"band:1"`.
-
-Read the available band IDs from the `bands` on a raster layer's source.
+The ID of the band to calculate statistics for, read from the `bands` on a
+raster layer's source.
 
 ***
 
@@ -42,7 +41,7 @@ Which statistics to calculate for the band.
 
 ## boundary?
 
-> `optional` **boundary**: [`RasterGeometryFilter`](RasterGeometryFilter.md)
+> `optional` **boundary**: [`GeometryFilter`](GeometryFilter.md)
 
 The spatial boundary for the pixels to include. Omit this to cover the whole
 raster.

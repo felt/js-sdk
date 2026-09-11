@@ -1,5 +1,16 @@
 # @feltmaps/js-sdk
 
+## 1.11.0
+
+### Minor Changes
+
+* 08e2b1c: Add `rotation` and `contextMenu` UI control options, for disabling map rotation and the right-click menu via `Felt.embed` and `updateUiControls`
+* dfe94af: Add raster statistics methods: `getRasterAggregates`, `getRasterHistogramData`, `getRasterCategoryData` and `getRasterProfile`, each summarizing one band of a raster layer over the whole raster, a bounding box, a polygon, or a line. Raster bands now also carry an `id` to pass to those methods and a `displayName`.
+
+### Patch Changes
+
+* 6ae7b35: Rename the `band` parameter to `bandId` across the raster statistics methods. `getRasterAggregates`, `getRasterHistogramData` and `getRasterCategoryData` no longer accept a line as their `boundary`, and the `RasterGeometryFilter` type is no longer exported.
+
 ## 1.11.0-next.1
 
 ### Patch Changes

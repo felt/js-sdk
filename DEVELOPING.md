@@ -70,6 +70,10 @@ Once you have added your module:
 
 1. Run `npm run build` to ensure everything compiles and the docs are generated. It's possible for the docs to
    fail to build if some types are not exported, but you will be warned in the console about this.
+   This also regenerates `llms-full.txt`, a single-file API reference for LLM consumption that ships in
+   the npm package and is used by the Felt app as agent context. It is derived from the TypeScript
+   definitions and TSDoc; the first sentence of each summary, `@defaultValue` and (for methods)
+   `@remarks` are rendered there, so keep summaries short and put defaults in `@defaultValue`.
 2. Run `npm run update-api` to run api-extractor which updates the "api spec" file, which allows
    reviewers to understand the changes made to the API.
 3. Stage or commit your changes. This is important, because the next step will fail if you have
@@ -86,6 +90,7 @@ There are various checks in the `check` script to ensure that:
 - the bundle is correctly built with the correct types
 - everything is used (i.e. you didn't forget to add your module to the main module list)
 - the docs build and all necessary types are included
+- the committed `docs/` and `llms-full.txt` output matches what the build generates
 - `zod` isn't accidentally included in the client bundle
 - the `handler` correctly receives every message that the client can send
 

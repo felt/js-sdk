@@ -11,4 +11,5 @@ Public JS SDK for embedding and controlling Felt maps. Two entry points: `client
 ## Key constraints
 
 - Every change needs a changeset (`npm run changeset`).
+- Never edit `version` in `package.json` by hand; the release flow (`changeset version`) owns it and syncs `package-lock.json`. If `npm run check:lockfile` fails, run `npm install --package-lock-only`.
 - See `DEVELOPING.md` for module structure and `RELEASING.md` for the branching/release model.

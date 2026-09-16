@@ -70,6 +70,7 @@ type GeoJsonFeature = {
 type PointGeometry = { type: "Point"; coordinates: LngLatTuple };
 
 // A GeoJSON multi-point geometry.
+// You shouldn't expect this to come from Felt - it is here for completeness of the GeoJSON spec.
 type MultiPointGeometry = { type: "MultiPoint"; coordinates: LngLatTuple[] };
 
 type PolygonGeometry = { type: "Polygon"; coordinates: LngLatTuple[][] };
@@ -112,9 +113,24 @@ type LegendDisplay = "default" | "nameOnly";
 // A LayerFeature is a single geographical item in a layer.
 type LayerFeature = {
   id: string | number; // The identifier of the feature, unique within the layer.
+  // If the id is deterministic, it means that the id can be used to reference the feature in the layer
+  // and therefore in all the SDK feature-related methods.
+  // When the id is not deterministic, the feature cannot be referenced on SDK methods like
+  // FeltController.getFeature or SelectionController.selectFeature.
+  // For layers created and processed on Felt servers, the feature IDs are deterministic because Felt
+  // ensures every feature is correctly identified in vector tiles. This cannot be guaranteed for layers
+  // created using a GeoJSON source on the SDK (see LayersController.createLayersFromGeoJson) where the
+  // ID will only be deterministic if GeoJSON features have an `id` property.
   isDeterministicId: boolean;
   layerId: string;
+  // Because LayerFeatures can be read from tiled features, it's possible that this `geometryType` won't
+  // match the `geometry.type` of the GeoJsonFeature returned by FeltController.getGeoJsonFeature.
+  // For example, this may return `LineString` but the full feature is a `MultiLineString`, or, similarly
+  // `Polygon` here may be a `MultiPolygon` in the full feature.
+  // As a result, you should treat this property as being indicative only.
   geometryType: "Polygon" | "MultiPolygon" | "LineString" | "MultiLineString" | "Point" | "MultiPoint" | string & {};
+  // Because LayerFeatures can be read from tiled features and considering that feature geometry can go
+  // through multiple tiles, it's possible that this is not the complete bounding box of the feature.
   bbox: FeltBoundary | undefined;
   properties: GeoJsonProperties;
 };
@@ -204,6 +220,7 @@ type LayerGroup = {
   id: string;
   name: string;
   caption: string | null;
+  // You can use these ids to get the full layer objects via the `getLayers` method.
   layerIds: string[];
   visible: boolean;
   shownInLegend: boolean;
@@ -251,6 +268,8 @@ type GetRenderedFeaturesConstraint = {
 };
 
 // The schema that describes the structure of the features in a layer.
+// This can be useful to build generic UIs that need to know the structure of the data in a layer, such
+// as a dropdown to choose an attribute.
 type LayerSchema = {
   featureCount: number;
   // Array of attribute schemas describing the properties available on features in this layer.
@@ -330,6 +349,8 @@ type FeltTiledVectorSource = { type: "felt"; tileTemplateUrl: string };
 type Layer = RasterLayer | VectorLayer | DataOnlyLayer;
 
 // A single attribute from the layer schema.
+// Each feature in a layer has a set of attributes, and these types describe the structure of a single
+// attribute, including things like id, display name, type, and sample values.
 type LayerSchemaAttribute = LayerSchemaNumericAttribute | LayerSchemaTextAttribute | LayerSchemaBooleanAttribute | LayerSchemaDateAttribute | LayerSchemaDateTimeAttribute;
 ```
 
@@ -362,6 +383,22 @@ type LayerBoundaries = {
 };
 
 // Filters can be used to change which features in a layer are rendered.
+// The possible operators are:
+// - `lt`: Less than
+// - `gt`: Greater than
+// - `le`: Less than or equal to
+// - `ge`: Greater than or equal to
+// - `eq`: Equal to
+// - `ne`: Not equal to
+// - `cn`: Contains
+// - `nc`: Does not contain
+// - `is`: Is
+// - `isnt`: Is not
+// - `in`: In
+// - `ni`: Not in
+// The allowed boolean operators are:
+// - `and`: Logical AND
+// - `or`: Logical OR
 type Filters = FilterTernary | FilterExpression | boolean | null;
 
 // The common type for filtering data by a spatial boundary.
@@ -579,7 +616,8 @@ type GridConfig = CountGridConfig | AggregatedGridConfig;
 felt.getLayer(id: string): Promise<Layer | null>;
 
 // Gets layers from the map, according to the constraints supplied.
-// The layers in the map, ordered by the order specified in Felt.
+// The layers in the map, ordered by the order specified in Felt. This is not necessarily the order
+// that they are drawn in, as Felt draws points above lines and lines above polygons, for instance.
 felt.getLayers(constraint?: GetLayersConstraint): Promise<(Layer | null)[]>;
 
 // Hide or show layers with the given ids.
@@ -592,7 +630,8 @@ felt.setLayerStyle(params: { id: string; style: object }): Promise<void>;
 felt.setLayerLegendVisibility(params: SetVisibilityRequest): Promise<void>;
 
 // Adds layers to the map from file or URL sources.
-// This allows you to add temporary layers to the map that don't depend on any processing by Felt.
+// This allows you to add temporary layers to the map that don't depend on any processing by Felt. This
+// is useful for viewing data from external sources or remote files.
 felt.createLayersFromGeoJson(params: CreateLayersFromGeoJsonParams): Promise<{
   // The layer group that was created containing the created layers.
   layerGroup: LayerGroup;
@@ -603,11 +642,13 @@ felt.createLayersFromGeoJson(params: CreateLayersFromGeoJsonParams): Promise<{
 felt.updateLayer(params: UpdateLayerParams): Promise<Layer>;
 
 // Delete a layer from the map by its id.
-// This only works for layers created via the SDK `createLayersFromGeoJson` method, not layers added via the Felt UI.
+// This only works for layers created via the SDK `createLayersFromGeoJson` method, not layers added
+// via the Felt UI.
 felt.deleteLayer(id: string): Promise<void>;
 
 // Duplicate a layer from the map by its id.
-// This will create an ephemeral copy of the layer, just for the duration of the session.
+// This will create an ephemeral copy of the layer, just for the duration of the session. The
+// duplicated layer will not be persisted to the map.
 felt.duplicateLayer(id: string): Promise<Layer>;
 
 // Get a layer group from the map by its id.
@@ -632,7 +673,8 @@ felt.getLegendItems(constraint?: LegendItemsConstraint): Promise<(LegendItem | n
 felt.setLegendItemVisibility(visibility: { show?: LegendItemIdentifier[]; hide?: LegendItemIdentifier[] }): Promise<void>;
 
 // Get the filters for a layer.
-// The return type gives you the filters split up into the various sources that make up the overall filters for a layer.
+// The return type gives you the filters split up into the various sources that make up the overall
+// filters for a layer.
 felt.getLayerFilters(layerId: string): Promise<LayerFilters | null>;
 
 // Sets the **ephemeral** filters for a layer.
@@ -644,7 +686,9 @@ felt.setLayerFilters(params: {
 }): Promise<void>;
 
 // Get the spatial boundaries that are filtering a layer.
-// The return type gives you the boundaries split up into the various sources that make up the overall boundary for a layer.
+// The return type gives you the boundaries split up into the various sources that make up the overall
+// boundary for a layer.
+// The combined boundary is the intersection of the other sources of boundaries.
 felt.getLayerBoundaries(layerId: string): Promise<LayerBoundaries | null>;
 
 // Set the `ephemeral` boundary for one or more layers.
@@ -657,7 +701,10 @@ felt.getRenderedFeatures(params?: GetRenderedFeaturesConstraint): Promise<LayerF
 felt.getFeature(params: { id: string | number; layerId: string }): Promise<LayerFeature | null>;
 
 // Get a list of layer features.
-// This list is paginated in sets of 20 features for each page.
+// This list is paginated in sets of 20 features for each page. In order to paginate between pages, the
+// response includes `previousPage` and `nextPage` that are tokens that should be sent in the
+// `pagination` params for requesting sibling pages.
+// Text search is case-insensitive and looks for matches across all feature properties.
 felt.getFeatures(params: {
   layerId: string;
   filters?: Filters;
@@ -678,19 +725,44 @@ felt.getFeatures(params: {
 felt.getGeoJsonFeature(params: { id: string | number; layerId: string }): Promise<GeoJsonFeature | null>;
 
 // Gets values from a layer grouped by a given attribute.
-// Groups features in your layer by unique values in the specified attribute and calculates a value for each group.
+// Groups features in your layer by unique values in the specified attribute and calculates a value for
+// each group. By default, this value is the count of features in each group.
+// You can apply filters in two ways:
+// 1. At the top level (using `boundary` and `filters`), which affects both what categories are
+// included and how values are calculated
+// 2. In the `values` configuration, which only affects the values but keeps all categories
+// This two-level filtering is particularly useful when you want to compare subsets of data while
+// maintaining consistent categories. For example, you might want to show the distribution of all
+// building types in a city, but only count buildings built after 2000 in each category.
 felt.getCategoryData(params: GetLayerCategoriesParams): Promise<GetLayerCategoriesGroup[]>;
 
 // Gets a histogram of values from a layer for a given attribute.
-// Creates bins (ranges) for numeric data and counts how many features fall into each bin, or returns aggregated values for each bin.
+// Creates bins (ranges) for numeric data and counts how many features fall into each bin, or returns
+// aggregated values for each bin.
+// You can control how the bins are created using the `steps` parameter, choosing from several methods
+// like equal intervals, quantiles, or natural breaks (Jenks), or passing in the step values directly
+// if you know how you want to bin the data.
+// Like getCategoryData, you can apply filters in two ways:
+// 1. At the top level (using `boundary` and `filters`), which affects both how the bins are calculated
+// and what features are counted in each bin
+// 2. In the `values` configuration, which only affects what gets counted but keeps the bin ranges the
+// same
+// This is particularly useful when you want to compare distributions while keeping consistent bin
+// ranges. For example, you might want to compare the distribution of building heights in different
+// years while using the same height ranges.
 felt.getHistogramData(params: GetLayerHistogramParams): Promise<GetLayerHistogramBin[]>;
 
 // Calculates a single aggregate value for a layer based on the provided configuration.
-// Performs statistical calculations on your data, like counting features or computing averages, sums, etc.
+// Performs statistical calculations on your data, like counting features or computing averages, sums,
+// etc. You can focus your calculation on specific areas or subsets of your data using boundaries and
+// filters.
+// When you request an aggregation other than count, you must specify an attribute to aggregate on.
 felt.getAggregates<T extends AggregationMethod | "count">(params: GetLayerCalculationParams<T>): Promise<Record<T, number | null>>;
 
 // Calculates aggregates for spatial cells of a layer.
-// Performs statistical calculations on spatial cells of a layer, returning min, max, avg, sum, and count.
+// Performs statistical calculations on spatial cells of a layer, returning min, max, avg, sum, and
+// count. You can focus your calculation on specific areas or subsets of your data using boundaries and
+// filters. When using the count method, an attribute is not required.
 felt.getPrecomputedAggregates(params: GetLayerPrecomputedCalculationParams): Promise<{
   avg: number | null;
   max: number | null;
@@ -700,23 +772,33 @@ felt.getPrecomputedAggregates(params: GetLayerPrecomputedCalculationParams): Pro
 }>;
 
 // Calculates statistics for a raster band.
-// Summarizes the pixel values of one band of a raster layer.
+// Summarizes the pixel values of one band of a raster layer. Omit the boundary to summarize the whole
+// raster, or pass a bounding box or polygon to summarize part of it. Filters restrict the summary to
+// pixels whose band values match a condition.
 felt.getRasterAggregates<T extends RasterAggregationMethod>(params: GetRasterAggregatesParams<T>): Promise<GetRasterAggregatesResult<T>>;
 
 // Calculates a histogram of a raster band's values.
-// Divides a band's values into bins and counts the pixels falling into each one.
+// Divides a band's values into bins and counts the pixels falling into each one. You can pass a number
+// of equal intervals, or the bin edges themselves when you already know how you want the values
+// divided.
 felt.getRasterHistogramData(params: GetRasterHistogramParams): Promise<GetRasterHistogramResult>;
 
 // Counts the pixels holding each distinct value of a raster band.
-// This suits a band whose values are class codes, such as a land cover raster.
+// This suits a band whose values are class codes, such as a land cover raster. Each category reports
+// how many pixels hold the value and how much ground they cover. A band whose values are not whole
+// numbers cannot be counted this way, and throws.
 felt.getRasterCategoryData(params: GetRasterCategoriesParams): Promise<GetRasterCategoriesResult>;
 
 // Samples a raster band's values along a line.
-// Returns the values themselves rather than a summary of them, each paired with how far along the line it was taken.
+// Returns the values themselves rather than a summary of them, each paired with how far along the line
+// it was taken. This is what an elevation profile along a route is drawn from.
 felt.getRasterProfile(params: GetRasterProfileParams): Promise<GetRasterProfileResult>;
 
 // Get the schema for a layer.
-// The schema describes the structure of the data in a layer, including the attributes that are available on the features in the layer.
+// The schema describes the structure of the data in a layer, including the attributes that are
+// available on the features in the layer.
+// This can be useful to build generic UIs that need to know the structure of the data in a layer, such
+// as a dropdown to choose an attribute.
 felt.getLayerSchema(layerId: string): Promise<LayerSchema>;
 ```
 
@@ -744,9 +826,13 @@ felt.onLegendItemChange(args: {
 }): VoidFunction;
 
 // Adds a listener for when a layer's filters change.
+// This event fires whenever any type of filter changes on the layer, including ephemeral filters set
+// via the SDK, style-based filters, or filters set through the Felt UI via Components.
 felt.onLayerFiltersChange(params: { options: { layerId: string }; handler: (change: LayerFilters) => void }): VoidFunction;
 
 // Adds a listener for when a layer's spatial boundaries change.
+// This event fires whenever any type of spatial boundary changes on the layer, including ephemeral
+// boundaries set via the SDK or boundaries set through the Felt UI via Spatial filter components.
 felt.onLayerBoundariesChange(params: {
   options: {
     layerId: string; // The id of the layer to listen for boundary changes on.
@@ -906,6 +992,7 @@ type TextElementCreate = ElementCreateCommon & {
 type TextElementRead = {
   id: string;
   // The text shown in the element, which is identical to the `text` property.
+  // This is added for consistency with other elements that have a `name` property.
   name: string;
   interaction?: "default" | "locked"; // default: "default"
 } & Required<Omit<TextElementCreate, "interaction">>;
@@ -929,6 +1016,7 @@ type NoteElementCreate = ElementCreateCommon & {
 type NoteElementRead = {
   id: string;
   // The text shown in the element, which is identical to the `text` property.
+  // This is added for consistency with other elements that have a `name` property.
   name: string;
   interaction?: "default" | "locked"; // default: "default"
 } & Required<Omit<NoteElementCreate, "interaction">>;
@@ -968,6 +1056,7 @@ type ElementGroup = {
   id: string;
   name: string;
   caption: string | null;
+  // You can use these ids to get the full element objects via the `getElements` method.
   elementIds: string[];
   visible: boolean;
   shownInLegend: boolean;
@@ -1007,7 +1096,8 @@ felt.getElement(id: string): Promise<Element | null>;
 felt.getElementGeometry(id: string): Promise<GeoJsonGeometry | null>;
 
 // Gets elements from the map, according to the constraints supplied.
-// The elements in the map, ordered by the order specified in Felt.
+// The elements in the map, ordered by the order specified in Felt. This is not necessarily the order
+// that they are drawn in, as Felt draws points above lines and lines above polygons, for instance.
 felt.getElements(constraint?: GetElementsConstraint): Promise<(Element | null)[]>;
 
 // Get an element group from the map by its id.
@@ -1085,6 +1175,7 @@ type FeatureSelection = {
 };
 
 // A reference to any kind of entity in the map.
+// EntityNodes are used when you have some collection of entities and you need to
 type EntityNode = ElementNode | ElementGroupNode | LayerNode | LayerGroupNode | FeatureNode;
 ```
 
@@ -1139,6 +1230,7 @@ felt.onPointerMove(params: { handler: (event: MapInteractionEvent) => void }): V
 ```typescript
 // Shared by every Basemap variant. Documentation shorthand, not an exported type.
 type BasemapCommon = {
+  // Do not rely on the stability of this ID for Felt basemaps, as they are subject to change.
   id: string;
   name: string;
   uiColorScheme: "light" | "dark";
@@ -1388,16 +1480,31 @@ type DeletePanelElementsParams = { panelId: string; elements: string[] };
 type UiControlsOptions = {
   showLegend?: boolean; // Whether or not the legend is shown. (default: true)
   // When co-operative gestures are enabled, the pan and zoom gestures are adjusted to work better when the map is...
+  // On mobile devices, enabling co-operative gestures will allow the user to pan past the embedded map
+  // with a single finger drag. To pan the map, they must use two fingers.
+  // On desktop devices, enabling co-operative gestures allows the user to scroll past the embedded map
+  // using their scroll wheel or trackpad. To zoom the map, they must hold the Ctrl (Windows) or Command
+  // key (Mac) while scrolling.
   cooperativeGestures?: boolean; // default: true
   // Whether or not the full screen button is shown in an embedded map.
+  // When clicked, this will open the map in a new tab or window.
   fullScreenButton?: boolean; // default: true
   // Whether or not the geolocation button is shown in an embedded map.
+  // The geolocation feature will plot your position on the map. If you click the button again, it will
+  // start tracking your position.
   geolocation?: boolean; // default: false
   // Whether or not the zoom controls are shown in an embedded map.
+  // This does not affect whether or not the map can be zoomed, just the display of the zoom controls in
+  // the bottom right corner of the map.
   zoomControls?: boolean; // default: true
   scaleBar?: boolean; // Whether or not the scale bar is shown in an embedded map. (default: true)
-  rotation?: boolean; // Whether or not the map can be rotated. (default: true)
+  // Whether or not the map can be rotated.
+  // This affects all rotation interactions — dragging with the right mouse button or Ctrl held,
+  // two-finger touch rotation, and keyboard shortcuts — as well as the compass control, which is hidden
+  // when rotation is disabled.
+  rotation?: boolean; // default: true
   // Whether or not the right-click context menu is available on the map.
+  // When disabled, right-clicking the map opens neither Felt's context menu nor the browser's own.
   contextMenu?: boolean; // default: true
 };
 
@@ -1430,10 +1537,14 @@ type UIActionTriggerCreate = {
 type UIPanelElementCreateCommon = {
   onCreate?: (args: { id: string }) => void; // A function to call when the element is created.
   onDestroy?: (args: { id: string }) => void;
+  // If not provided, the element will be assigned a random ID, but it is recommended to provide it to
+  // perform further updates on the element.
+  // If provided, it must be unique within the UI.
   id?: string;
 };
 
 // The parameters for creating a button element.
+// `id` is optional but recommended if you want to be able to perform updates.
 type UIButtonElementCreate = UIPanelElementCreateCommon & {
   type: "Button";
   label: string;
@@ -1447,6 +1558,7 @@ type UIButtonElementCreate = UIPanelElementCreateCommon & {
 type UIButtonElement = { id: string } & Omit<UIButtonElementCreate, "id">;
 
 // The parameters for updating a button element.
+// `id` and `type` are required to identify the element to update.
 type UIButtonElementUpdate = { type: "Button"; id: string } & Partial<Omit<UIButtonElementCreate, "type" | "id">>;
 
 // The parameters for creating a button row element.
@@ -1482,12 +1594,14 @@ type UICheckboxGroupElement = { id: string } & Omit<UICheckboxGroupElementCreate
 type UICheckboxGroupElementUpdate = { type: "CheckboxGroup"; id: string } & Partial<Omit<UICheckboxGroupElementCreate, "type" | "id">>;
 
 // The parameters for creating a divider element.
+// `id` is optional but recommended if you want to be able to delete the element.
 type UIDividerElementCreate = UIPanelElementCreateCommon & { type: "Divider" };
 
 // Represents a divider element in a panel.
 type UIDividerElement = { id: string } & Omit<UIDividerElementCreate, "id">;
 
 // The parameters for updating a divider element.
+// `id` and `type` are required to identify the element to update.
 type UIDividerElementUpdate = { id: string } & Omit<UIDividerElementCreate, "id">;
 
 // Represents a feature action for creation.
@@ -1505,12 +1619,14 @@ type UIFeatureActionCreate = {
 type UIFeatureAction = UIFeatureActionCreate & { id: string };
 
 // The parameters for creating a flexible space element.
+// `id` is optional but recommended if you want to be able to perform updates.
 type UIFlexibleSpaceElementCreate = UIPanelElementCreateCommon & { type: "FlexibleSpace" };
 
 // Represents a flexible space element in a container.
 type UIFlexibleSpaceElement = { id: string } & Omit<UIFlexibleSpaceElementCreate, "id">;
 
 // The parameters for updating a flexible space element.
+// `id` and `type` are required to identify the element to update.
 type UIFlexibleSpaceElementUpdate = { id: string } & Omit<UIFlexibleSpaceElementCreate, "id">;
 
 // The parameters for creating a grid container element.
@@ -1529,24 +1645,28 @@ type UIGridContainerElement = {
 } & Omit<UIGridContainerElementCreate, "items" | "id">;
 
 // The parameters for updating a grid container element.
+// `id` and `type` are required to identify the element to update.
 type UIGridContainerElementUpdate = {
   id: string;
   items?: (UIButtonElementCreate | UITextElementCreate | UIDividerElementCreate | UITextInputElementCreate | UISelectElementCreate | UIFlexibleSpaceElementCreate | UIButtonRowElementCreate | UICheckboxGroupElementCreate | UIRadioGroupElementCreate | UIToggleGroupElementCreate | UIIframeElementCreate)[];
 } & Omit<UIGridContainerElementCreate, "id" | "items">;
 
 // The parameters for creating an iframe element.
+// `id` is optional but recommended if you want to be able to perform updates.
 type UIIframeElementCreate = UIPanelElementCreateCommon & { type: "Iframe"; url: string; height?: string | number };
 
 // Represents an iframe element in a panel.
 type UIIframeElement = { id: string } & Omit<UIIframeElementCreate, "id">;
 
 // The parameters for updating an iframe element.
+// `id` and `type` are required to identify the element to update.
 type UIIframeElementUpdate = { id: string; url?: string } & Omit<UIIframeElementCreate, "id" | "url">;
 
 // A UI panel that can be added to the map using UiController.createOrUpdatePanel.
 type UIPanel = {
   type: "Panel";
   // The ID of the panel obtained from UiController.createPanelId.
+  // Custom IDs are not supported.
   id: string;
   title?: string; // The title to display in the panel header.
   body?: UIPanelElement[];
@@ -1559,6 +1679,7 @@ type UIPanel = {
 // The parameters for creating a panel by using UiController.createOrUpdatePanel.
 type UIPanelCreateOrUpdate = {
   // The ID of the panel obtained from UiController.createPanelId.
+  // Custom IDs are not supported.
   id: string;
   title?: string; // The title to display in the panel header.
   onClickClose?: (args: { id: string }) => void; // A function to call when panel's close button is clicked.
@@ -1587,6 +1708,7 @@ type UIRadioGroupElement = { id: string } & Omit<UIRadioGroupElementCreate, "id"
 type UIRadioGroupElementUpdate = { type: "RadioGroup"; id: string } & Partial<Omit<UIRadioGroupElementCreate, "type" | "id">>;
 
 // The parameters for creating a select element.
+// `id` is optional but recommended if you want to be able to perform updates.
 type UISelectElementCreate = UIPanelElementCreateCommon & {
   type: "Select";
   options: UIControlElementOption[];
@@ -1600,18 +1722,25 @@ type UISelectElementCreate = UIPanelElementCreateCommon & {
 };
 
 // Represents a select element in a panel.
+// `options` property is required. `label` property is displayed above the select and used for screen
+// readers. `value` property is optional, for empty value use `undefined`. `placeholder` property is
+// displayed in the select when no value is selected. `search` property is used to enable searching
+// through the options. `onChange` property is used to handle the value change event.
 type UISelectElement = { id: string } & Omit<UISelectElementCreate, "id">;
 
 // The parameters for updating a select element.
+// `id` and `type` are required to identify the element to update.
 type UISelectElementUpdate = { type: "Select"; id: string } & Partial<Omit<UISelectElementCreate, "type" | "id">>;
 
 // The parameters for creating a text element.
+// `id` is optional but recommended if you want to be able to perform updates.
 type UITextElementCreate = UIPanelElementCreateCommon & { type: "Text"; content: string };
 
 // Represents a text element in a panel.
 type UITextElement = { id: string } & Omit<UITextElementCreate, "id">;
 
 // The parameters for updating a text element.
+// `id` and `type` are required to identify the element to update.
 type UITextElementUpdate = {
   type: "Text";
   id: string;
@@ -1621,6 +1750,7 @@ type UITextElementUpdate = {
 };
 
 // The parameters for creating a text input element.
+// `id` is optional but recommended if you want to be able to perform updates.
 type UITextInputElementCreate = UIPanelElementCreateCommon & {
   type: "TextInput";
   value: string;
@@ -1633,9 +1763,12 @@ type UITextInputElementCreate = UIPanelElementCreateCommon & {
 };
 
 // Represents a text input element in a panel.
+// `value` property is required, for empty value use `""`. `label` property is displayed above the
+// input and used for screen readers.
 type UITextInputElement = { id: string } & Omit<UITextInputElementCreate, "id">;
 
 // The parameters for updating a text input element.
+// `id` and `type` are required to identify the element to update.
 type UITextInputElementUpdate = { id: string; value?: string } & Omit<UITextInputElementCreate, "id" | "value">;
 
 // The parameters for creating a toggle group element.
@@ -1665,9 +1798,12 @@ type PlacementForUIElement = { after: string } | { before: string } | { at: "sta
 type UIPanelElement = UIButtonElement | UITextElement | UIDividerElement | UITextInputElement | UISelectElement | UIFlexibleSpaceElement | UIButtonRowElement | UICheckboxGroupElement | UIRadioGroupElement | UIToggleGroupElement | UIIframeElement | UIGridContainerElement;
 
 // This is a union of all the possible elements that can be created inside panel's body or footer.
+// For the sake of convenience, `id` is optional but recommended if you want to be able to perform
+// updates.
 type UIPanelElementCreate = UIButtonElementCreate | UITextElementCreate | UIDividerElementCreate | UITextInputElementCreate | UISelectElementCreate | UIFlexibleSpaceElementCreate | UIButtonRowElementCreate | UICheckboxGroupElementCreate | UIRadioGroupElementCreate | UIToggleGroupElementCreate | UIIframeElementCreate | UIGridContainerElementCreate;
 
 // This is a union of all the possible elements that can be updated inside panel's body or footer.
+// `id` and `type` are required to identify the element to update.
 type UIPanelElementUpdate = UIButtonElementUpdate | UITextElementUpdate | UITextInputElementUpdate | UISelectElementUpdate | UIDividerElementUpdate | UIButtonRowElementUpdate | UICheckboxGroupElementUpdate | UIRadioGroupElementUpdate | UIToggleGroupElementUpdate | UIGridContainerElementUpdate | UIFlexibleSpaceElementUpdate | UIIframeElementUpdate;
 ```
 

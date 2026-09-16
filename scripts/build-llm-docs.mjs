@@ -70,11 +70,20 @@ const MODULE_ORDER = [
 // ---------------------------------------------------------------- comments
 
 const COMMENT_MAX = 110;
-const REMARKS_MAX = 160;
+const REMARKS_WRAP = 100;
 const DEFAULT_MAX = 40;
 
 function textOf(parts) {
-  return (parts ?? []).map((p) => p.text ?? "").join("");
+  return (parts ?? [])
+    .map((p) => (p.kind === "inline-tag" ? linkText(p) : (p.text ?? "")))
+    .join("");
+}
+
+/** `{@link A.b | c}` reads as `c`; `{@link A.b}` as `A.b`. */
+function linkText(p) {
+  const raw = (p.text ?? "").trim();
+  const bar = raw.indexOf("|");
+  return bar >= 0 ? raw.slice(bar + 1).trim() : raw;
 }
 
 /** First sentence, where a paragraph break also ends a sentence. */
@@ -141,10 +150,36 @@ function defaultOf(comment) {
   return v;
 }
 
-/** First sentence of `@remarks`, or nothing if it will not fit on a line. */
-function remarksOf(comment) {
-  const r = firstSentenceOf(tagText(comment, "@remarks"));
-  return r.length <= REMARKS_MAX ? r : "";
+function wrapWords(s, max) {
+  const lines = [];
+  let cur = "";
+  for (const w of s.split(" ")) {
+    if (cur && cur.length + 1 + w.length > max) {
+      lines.push(cur);
+      cur = w;
+    } else cur = cur ? `${cur} ${w}` : w;
+  }
+  if (cur) lines.push(cur);
+  return lines;
+}
+
+/**
+ * `@remarks` in full, as comment lines. Summaries are cut to one sentence, so
+ * this is where detail that is not evident from the types lives: operator
+ * meanings, pagination rules, caveats. Paragraphs are reflowed; list items
+ * keep their own lines.
+ */
+function remarksLines(comment, pad = "") {
+  const text = tagText(comment, "@remarks");
+  if (!text) return [];
+  const lines = [];
+  for (const para of text.split(/\n\s*\n/)) {
+    for (const item of para.split(/\n(?=\s*(?:[-*]|\d+\.)\s)/)) {
+      const flat = item.replace(/\s+/g, " ").trim();
+      if (flat) lines.push(...wrapWords(flat, REMARKS_WRAP));
+    }
+  }
+  return lines.map((l) => `${pad}// ${l}`);
 }
 // ------------------------------------------------------ alias canonicalisation
 
@@ -492,7 +527,10 @@ function renderMemberBlock(members, indent) {
   // form has nowhere to put one.
   const parts = members.map((m) => memberSignature(m, indent));
   const annotated = members.some(
-    (m, i) => memberDoc(m, parts[i]) || memberDefault(m),
+    (m, i) =>
+      memberDoc(m, parts[i]) ||
+      memberDefault(m) ||
+      remarksLines(m.comment).length,
   );
   const inline = `{ ${parts.join("; ")} }`;
   if (
@@ -509,15 +547,17 @@ function renderMemberBlock(members, indent) {
     const sigText = memberSignature(m, indent + 1);
     const doc = memberDoc(m, sigText);
     const def = memberDefault(m);
+    const remarks = remarksLines(m.comment, pad);
     const decl = `${pad}${sigText};`;
     const multiline = decl.includes("\n");
-    if (!doc && !def) return decl;
-    if (!doc) return `${decl} // ${def}`;
+    if (!doc && !def && !remarks.length) return decl;
+    if (!doc && !remarks.length) return `${decl} // ${def}`;
     // Short docs ride along on the same line; longer ones get their own.
-    if (doc.length <= 60 && !multiline) {
+    if (doc.length <= 60 && !multiline && !remarks.length) {
       return `${decl} // ${doc}${def ? ` (${def})` : ""}`;
     }
-    return `${pad}// ${doc}\n${decl}${def ? ` // ${def}` : ""}`;
+    const above = [...(doc ? [`${pad}// ${doc}`] : []), ...remarks];
+    return `${above.join("\n")}\n${decl}${def ? ` // ${def}` : ""}`;
   });
   return `{\n${lines.join("\n")}\n${closePad}}`;
 }
@@ -904,8 +944,7 @@ function memberCommentLines(m) {
   const lines = [];
   const doc = summaryOf(comment);
   if (doc) lines.push(`// ${doc}`);
-  const remarks = remarksOf(comment);
-  if (remarks && remarks !== doc) lines.push(`// ${remarks}`);
+  lines.push(...remarksLines(comment));
   return lines;
 }
 
@@ -1013,6 +1052,7 @@ function emitTypeBlock(items) {
     }
     const doc = summaryOf(item.comment);
     if (doc) out.push(`// ${doc}`);
+    out.push(...remarksLines(item.comment));
     out.push(renderDeclaration(item));
     out.push("");
     emittedTypes.push(item.name);

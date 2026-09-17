@@ -22,6 +22,7 @@
   "license": "MIT",
   "files": [
     "dist",
+    "llms-full.txt",
     "handler.js",
     "handler.d.ts",
     "types-*.ts"
@@ -62,11 +63,12 @@
   "scripts": {
     "build:compile": "tsup && ./scripts/dtsroll.sh",
     "build:docs": "typedoc",
-    "build": "npm run build:compile && npm run build:docs",
+    "build:docs-llm": "node scripts/build-llm-docs.mjs",
+    "build": "npm run build:compile && npm run build:docs && npm run build:docs-llm",
     "changeset": "changeset",
     "check:api": "npm run build:compile && attw --pack . --profile node16 && api-extractor run",
     "check:client-bundle": "npm run build:compile && node ./scripts/check-client-bundle-contents.js",
-    "check:docs": "npm run build:docs && bash ./scripts/check-api-docs.sh",
+    "check:docs": "npm run build:docs && npm run build:docs-llm && bash ./scripts/check-api-docs.sh",
     "check:format": "prettier --check .",
     "check:lockfile": "node ./scripts/check-lockfile.mjs",
     "check:test": "vitest run",

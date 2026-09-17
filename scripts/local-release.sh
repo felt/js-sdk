@@ -34,17 +34,22 @@ fi
 echo "Running CI checks..."
 npm run ci
 
-# Version the changesets
+# Version the changesets (this commits the package.json bump itself)
 echo "Versioning changesets..."
 npx changeset version
+
+# Changesets does not touch package-lock.json, so bring its version into line
+echo "Syncing package-lock.json..."
+npm install --package-lock-only --ignore-scripts --no-audit --no-fund
 
 # Build docs again to include changelog
 echo "Building docs..."
 npm run build:docs
 
-# Check for changes in docs and pre.json
-ALLOWED_CHANGES=$(git diff --name-only | grep -E "^docs/|^\.changeset/pre\.json$" || true)
-DISALLOWED_CHANGES=$(git diff --name-only | grep -vE "^docs/|^\.changeset/pre\.json$" || true)
+# Check for changes in docs, pre.json and the lockfile
+ALLOWED_PATTERN="^docs/|^\.changeset/pre\.json$|^package-lock\.json$"
+ALLOWED_CHANGES=$(git diff --name-only | grep -E "$ALLOWED_PATTERN" || true)
+DISALLOWED_CHANGES=$(git diff --name-only | grep -vE "$ALLOWED_PATTERN" || true)
 
 if [ -n "$DISALLOWED_CHANGES" ]; then
     echo "Error: Unexpected changes detected in files:"
@@ -53,8 +58,8 @@ if [ -n "$DISALLOWED_CHANGES" ]; then
 fi
 
 if [ -n "$ALLOWED_CHANGES" ]; then
-    echo "Committing documentation and pre.json updates..."
-    git add docs/ .changeset/pre.json
+    echo "Committing documentation, lockfile and pre.json updates..."
+    git add docs/ .changeset/pre.json package-lock.json
     git commit -m "Update prerelease docs/meta"
 fi
 

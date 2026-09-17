@@ -38,21 +38,32 @@ const OUT = "llms-full.txt";
 /** The receiver that FeltController members are called on in user code. */
 const RECEIVER = "felt";
 
-/** Display titles for modules. Unlisted modules fall back to their directory name. */
+/**
+ * Display titles for modules whose directory name does not describe their
+ * contents. Everything else is title-cased from the directory name.
+ */
 const MODULE_TITLES = {
   main: "Entry Point",
   shared: "Core Types",
-  basemaps: "Basemaps",
-  layers: "Layers",
-  elements: "Elements",
-  selection: "Selection",
-  interactions: "Interactions",
-  tools: "Tools",
-  ui: "UI",
-  viewport: "Viewport",
   misc: "Map Details",
+  ui: "UI",
 };
 
+function moduleTitle(mod) {
+  return (
+    MODULE_TITLES[mod] ??
+    mod.replace(
+      /(^|[-_])(\w)/g,
+      (_, sep, c) => (sep ? " " : "") + c.toUpperCase(),
+    )
+  );
+}
+
+/**
+ * Reading order for the reference: entry point and core types first, then the
+ * largest surface. Every module must be listed; the generator fails otherwise,
+ * so placing a new module is a deliberate choice rather than an accident.
+ */
 const MODULE_ORDER = [
   "main",
   "shared",
@@ -1002,11 +1013,19 @@ for (const member of feltController.children ?? []) {
 
 const moduleNames = [
   ...new Set([...typesByModule.keys(), ...membersByModule.keys()]),
-].sort((a, b) => {
-  const ia = MODULE_ORDER.indexOf(a);
-  const ib = MODULE_ORDER.indexOf(b);
-  return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib) || a.localeCompare(b);
-});
+];
+
+const unplaced = moduleNames.filter((m) => !MODULE_ORDER.includes(m));
+if (unplaced.length) {
+  for (const m of unplaced) {
+    console.error(
+      `New module "${m}": add it to MODULE_ORDER in scripts/build-llm-docs.mjs ` +
+        `to choose where it appears in ${OUT}.`,
+    );
+  }
+  process.exit(1);
+}
+moduleNames.sort((a, b) => MODULE_ORDER.indexOf(a) - MODULE_ORDER.indexOf(b));
 
 const isEvent = (m) => /^on[A-Z]/.test(m.name);
 const isCallable = (m) => !!m.signatures?.length;
@@ -1038,7 +1057,7 @@ for (const mod of moduleNames) {
   const parts = [];
   if (methods.length) parts.push(methods.join(", "));
   if (events.length) parts.push(`events: ${events.join(", ")}`);
-  out.push(`- ${MODULE_TITLES[mod] ?? mod}: ${parts.join("; ")}`);
+  out.push(`- ${moduleTitle(mod)}: ${parts.join("; ")}`);
 }
 out.push("");
 
@@ -1063,7 +1082,7 @@ function emitTypeBlock(items) {
 }
 
 for (const mod of moduleNames) {
-  const title = MODULE_TITLES[mod] ?? mod;
+  const title = moduleTitle(mod);
   out.push(`## ${title}`);
   out.push("");
 

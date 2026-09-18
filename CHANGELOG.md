@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.11.1
+
+### Patch Changes
+
+- 52a14ac: Ship `llms-full.txt`, a single-file API reference for LLM consumption, in the package. It is generated from the TypeScript definitions on every build.
+
 ## 1.11.0
 
 ### Minor Changes

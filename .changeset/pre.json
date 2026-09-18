@@ -4,5 +4,7 @@
   "initialVersions": {
     "@feltmaps/js-sdk": "1.11.0"
   },
-  "changesets": []
+  "changesets": [
+    "llm-api-reference"
+  ]
 }

@@ -5,6 +5,7 @@ import {
   MultiLineStringGeometrySchema,
   MultiPolygonGeometrySchema,
   PolygonGeometrySchema,
+  RoutingModeSchema,
   type LngLatTuple,
 } from "../shared/types";
 
@@ -171,7 +172,7 @@ const PathElementSchema = BaseFeltElementSchema.extend(Geographic.shape)
      *
      * @default null
      */
-    routingMode: z.enum(["driving", "cycling", "walking", "flying"]).nullable(),
+    routingMode: RoutingModeSchema.nullable(),
 
     /**
      * Whether or not to show Start and End caps on the path. This is

@@ -13,6 +13,10 @@ import {
 import { layersController, type LayersController } from "../layers/controller";
 import { miscController, type MiscController } from "../misc/controller";
 import {
+  routingController,
+  type RoutingController,
+} from "../routing/controller";
+import {
   selectionController,
   type SelectionController,
 } from "../selection/controller";
@@ -42,6 +46,7 @@ export function makeController(
     ...toolsController(feltWindow),
     ...miscController(feltWindow),
     ...basemapsController(feltWindow),
+    ...routingController(feltWindow),
   };
 }
 
@@ -71,7 +76,8 @@ export interface FeltController
     ToolsController,
     InteractionsController,
     MiscController,
-    BasemapsController {
+    BasemapsController,
+    RoutingController {
   /**
    * The iframe element containing the Felt map, if it is an embedded map.
    *

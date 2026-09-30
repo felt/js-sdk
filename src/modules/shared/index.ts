@@ -17,6 +17,7 @@ export type {
   MultiPolygonGeometry,
   PointGeometry,
   PolygonGeometry,
+  RoutingMode,
   SetVisibilityRequest,
   SortConfig,
   SortDirection,

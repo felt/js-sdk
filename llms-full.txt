@@ -10,6 +10,7 @@ Methods on `felt`, by section:
 - Interactions: events: onPointerClick, onPointerMove
 - Basemaps: getCurrentBasemap, getBasemaps, chooseBasemap, addCustomBasemap, removeBasemap; events: onBasemapChange
 - Tools: setTool, getTool, setToolSettings, getToolSettings; events: onToolChange, onToolSettingsChange
+- Routing: getRoute, getIsochrone
 - UI: createActionTrigger, updateActionTrigger, deleteActionTrigger, createFeatureAction, updateFeatureAction, deleteFeatureAction, createPanelId, createOrUpdatePanel, deletePanel, createPanelElements, updatePanelElements, deletePanelElements, updateUiControls, setOnMapInteractionsUi, showLayerDataTable, hideLayerDataTable
 - Viewport: getViewport, setViewport, getViewportConstraints, setViewportConstraints, fitViewportToBounds; events: onViewportMove, onViewportMoveEnd, onMapIdle
 - Map Details: getMapDetails
@@ -43,6 +44,13 @@ felt.iframe: HTMLIFrameElement | null;
 ```typescript
 // A tuple representing a longitude and latitude coordinate.
 type LngLatTuple = [longitude: number, latitude: number];
+
+// The mode of transport a route is planned for.
+// - `"driving"`, `"cycling"` and `"walking"` follow the road and path network.
+// - `"flying"` is a straight line between points, and is only available on route elements and the
+// route tool; Felt's routing service cannot route by air, so getRoute and getIsochrone do not accept
+// it.
+type RoutingMode = "driving" | "cycling" | "walking" | "flying";
 
 // The zoom level of the map.
 type FeltZoom = number;
@@ -884,7 +892,7 @@ type PathElementCreate = ElementCreateCommon & {
   // Whether a distance marker is shown at the midpoint of the path.
   distanceMarker?: boolean; // default: false
   // Whether this represents a route, and if so, what mode of transport is used.
-  routingMode?: "driving" | "cycling" | "walking" | "flying" | null; // default: null
+  routingMode?: RoutingMode | null; // default: null
   endCaps?: boolean; // Whether or not to show Start and End caps on the path. (default: false)
 };
 
@@ -1317,7 +1325,7 @@ type RouteToolSettings = {
   // Whether a distance marker is shown at the midpoint of the path.
   distanceMarker: boolean; // default: false
   // Whether this represents a route, and if so, what mode of transport is used.
-  routingMode: "driving" | "cycling" | "walking" | "flying" | null; // default: null
+  routingMode: RoutingMode | null; // default: null
   endCaps: boolean; // Whether or not to show Start and End caps on the path. (default: false)
   showInspector: boolean; // default: false
 };
@@ -1426,6 +1434,70 @@ felt.onToolChange(args: {
 
 // Listens for changes to the settings on all tools.
 felt.onToolSettingsChange(args: { handler: (settings: ToolSettingsChangeEvent) => void }): VoidFunction;
+```
+
+## Routing
+
+```typescript
+// The parameters for planning a route, passed to the RoutingController.getRoute method.
+type GetRouteParams = {
+  // The places the route passes through, in order, from start to end.
+  // Between 2 and 50 waypoints.
+  waypoints: LatLng[];
+  // The mode of transport the route is planned for, which decides which roads and paths it can use.
+  // `"flying"` is not accepted; the routing service only follows the road and path network.
+  routingMode: "driving" | "cycling" | "walking";
+};
+
+// The response from the RoutingController.getRoute method.
+type GetRouteResult = {
+  // The route's line, following the road and path network through every waypoint.
+  // GeoJSON, so it can be passed straight to methods that take a line, such as getRasterProfile.
+  geometry: LineStringGeometry;
+  // The length of the route along the roads and paths it follows, in metres.
+  distance: number;
+  duration: number; // The travel time along the route, in seconds.
+};
+
+// The parameters for finding the area reachable from a point.
+type GetIsochroneParams = {
+  origin: LatLng; // The place to measure travel time from.
+  // The mode of transport to measure travel time for.
+  // `"flying"` is not accepted; the routing service only follows the road and path network.
+  routingMode: "driving" | "cycling" | "walking";
+  // The travel time, in minutes, that bounds the reachable area.
+  // Greater than 0 and at most 120.
+  minutes: number;
+};
+
+// The response from the RoutingController.getIsochrone method.
+type GetIsochroneResult = {
+  // The area reachable from the origin within the travel time.
+  // Always a MultiPolygon, so a reachable area that is split into disconnected parts keeps every part.
+  geometry: MultiPolygonGeometry;
+};
+```
+
+### Methods
+
+```typescript
+// Plans a route through a list of waypoints and returns its line, length and travel time.
+// - The route follows the road and path network for the given `routingMode`; it does not route by air.
+// - Nothing is drawn on the map. To show the route, create a Path element from `geometry.coordinates`
+// with createElement.
+// - The promise rejects with the routing service's message when no route can be found between the
+// waypoints, or when routing is unavailable.
+felt.getRoute(params: GetRouteParams): Promise<GetRouteResult>;
+
+// Finds the area reachable from a point within a travel time.
+// - The reachable area is measured along the road and path network for the given `routingMode`; it
+// does not route by air.
+// - Nothing is drawn on the map. To show the area, create a Polygon element from
+// `geometry.coordinates` with createElement.
+// - Isochrones are only available on workspace plans that include them; the promise rejects with the
+// routing service's message when the map's workspace is not entitled, when no reachable area can be
+// found, or when routing is unavailable.
+felt.getIsochrone(params: GetIsochroneParams): Promise<GetIsochroneResult>;
 ```
 
 ## UI

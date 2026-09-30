@@ -33,6 +33,7 @@ const layers = await map.getLayers();
 * [Layers](Layers/README.md)
 * [Main](Main/README.md)
 * [Misc](Misc/README.md)
+* [Routing](Routing/README.md)
 * [Selection](Selection/README.md)
 * [Shared](Shared/README.md)
 * [Tools](Tools/README.md)

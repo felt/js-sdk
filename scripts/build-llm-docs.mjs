@@ -73,6 +73,7 @@ const MODULE_ORDER = [
   "interactions",
   "basemaps",
   "tools",
+  "routing",
   "ui",
   "viewport",
   "misc",

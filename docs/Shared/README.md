@@ -16,6 +16,7 @@ These are generic types that are used across multiple modules.
 * [LngLatTuple](LngLatTuple.md)
 * [GeoJsonProperties](GeoJsonProperties.md)
 * [GeoJsonGeometry](GeoJsonGeometry.md)
+* [RoutingMode](RoutingMode.md)
 * [FeltZoom](FeltZoom.md)
 * [FeltBoundary](FeltBoundary.md)
 * [SortDirection](SortDirection.md)

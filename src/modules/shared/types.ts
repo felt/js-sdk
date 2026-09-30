@@ -167,6 +167,32 @@ export type GeoJsonGeometry =
  * @ignore
  * @internal
  */
+export const RoutingModeSchema = z.enum([
+  "driving",
+  "cycling",
+  "walking",
+  "flying",
+]);
+
+/**
+ * The mode of transport a route is planned for.
+ *
+ * @remarks
+ * - `"driving"`, `"cycling"` and `"walking"` follow the road and path network.
+ * - `"flying"` is a straight line between points, and is only available on
+ *   route elements and the route tool; Felt's routing service cannot route by
+ *   air, so {@link Routing.RoutingController.getRoute | getRoute} and
+ *   {@link Routing.RoutingController.getIsochrone | getIsochrone} do not accept it.
+ *
+ * @group Types
+ * @public
+ */
+export type RoutingMode = z.infer<typeof RoutingModeSchema>;
+
+/**
+ * @ignore
+ * @internal
+ */
 export const FeltZoomSchema = z.number().min(1).max(23);
 
 /**

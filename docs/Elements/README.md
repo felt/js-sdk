@@ -19,6 +19,7 @@ of the map.
 * [PlaceElementCreate](PlaceElementCreate.md)
 * [PathElementCreate](PathElementCreate.md)
 * [PolygonElementCreate](PolygonElementCreate.md)
+* [IsochronePolygonElementCreate](IsochronePolygonElementCreate.md)
 * [CircleElementCreate](CircleElementCreate.md)
 * [MarkerElementCreate](MarkerElementCreate.md)
 * [HighlighterElementCreate](HighlighterElementCreate.md)
@@ -58,6 +59,7 @@ of the map.
 
 # Elements
 
+* [IsochroneParams](IsochroneParams.md)
 * [GetElementsConstraint](GetElementsConstraint.md)
 * [ElementChangeCallbackParams](ElementChangeCallbackParams.md)
 * [Element](Element.md)

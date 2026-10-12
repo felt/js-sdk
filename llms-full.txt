@@ -844,6 +844,15 @@ felt.onLayerBoundariesChange(params: {
 ## Elements
 
 ```typescript
+// The travel time that an isochrone Polygon covers.
+// Felt computes an isochrone's shape as the area reachable from `origin` within `minutes` by `mode`,
+// following roads and paths.
+type IsochroneParams = {
+  mode: "driving" | "cycling" | "walking"; // The mode of transport used to travel from the origin.
+  minutes: number; // The travel time in whole minutes, from 1 to 120.
+  origin: LngLatTuple; // The point that travel time is measured from.
+};
+
 // Shared by every ElementCreate variant. Documentation shorthand, not an exported type.
 type ElementCreateCommon = {
   groupId?: string | null;
@@ -910,10 +919,39 @@ type PolygonElementCreate = ElementCreateCommon & {
 
 type PolygonElementRead = {
   id: string;
+  // The travel time the polygon's shape was computed from, or `null` for a polygon drawn from coordinates.
+  isochrone: IsochroneParams | null;
   interaction?: "default" | "locked"; // default: "default"
 } & Required<Omit<PolygonElementCreate, "interaction" | "coordinates">>;
 
-type PolygonElementUpdate = { id: string; coordinates?: LngLatTuple[][] } & Omit<PolygonElementCreate, "coordinates">;
+type PolygonElementUpdate = {
+  id: string;
+  coordinates?: LngLatTuple[][];
+  // A new travel time to recompute the polygon's shape from.
+  // Felt replaces the polygon's shape with the area reachable from `origin` within `minutes` by `mode`.
+  // Cannot be combined with `coordinates`. `updateElement` rejects when travel time is not available on
+  // the map, or when no area is reachable from the origin, and the polygon keeps its previous travel
+  // time and shape.
+  isochrone?: IsochroneParams;
+} & Omit<PolygonElementCreate, "coordinates">;
+
+// A Polygon element whose shape Felt computes from a travel time.
+type IsochronePolygonElementCreate = ElementCreateCommon & {
+  type: "Polygon";
+  // The travel time to compute the polygon's shape from.
+  // Felt computes the area reachable from `origin` within `minutes` by `mode` and uses it as the
+  // polygon's shape. `createElement` rejects when travel time is not available on the map, or when no
+  // area is reachable from the origin.
+  isochrone: IsochroneParams;
+  color?: string; // The color of the element in some CSS-like format. (default: "#C93535")
+  name?: string | null;
+  imageUrl?: string | null; // The URL of an image that has been added to the element.
+  strokeOpacity?: number; // default: 1
+  strokeWidth?: number; // default: 2
+  strokeStyle?: "solid" | "dashed" | "dotted"; // default: "solid"
+  fillOpacity?: number; // default: 0.25
+  areaMarker?: boolean; // default: false
+};
 
 type CircleElementCreate = ElementCreateCommon & {
   type: "Circle";
@@ -1079,7 +1117,7 @@ type ElementChangeCallbackParams = {
 // The parameters for the `onElementGroupChange` listener.
 type ElementGroupChangeCallbackParams = { elementGroup: ElementGroup | null };
 
-type ElementCreate = PlaceElementCreate | PathElementCreate | PolygonElementCreate | CircleElementCreate | MarkerElementCreate | HighlighterElementCreate | ImageElementCreate | TextElementCreate | NoteElementCreate;
+type ElementCreate = PlaceElementCreate | PathElementCreate | PolygonElementCreate | IsochronePolygonElementCreate | CircleElementCreate | MarkerElementCreate | HighlighterElementCreate | ImageElementCreate | TextElementCreate | NoteElementCreate;
 
 type ElementUpdate = PlaceElementUpdate | PathElementUpdate | PolygonElementUpdate | CircleElementUpdate | MarkerElementUpdate | HighlighterElementUpdate | TextElementUpdate | NoteElementUpdate | ImageElementUpdate;
 
@@ -1285,7 +1323,7 @@ felt.onBasemapChange(args: { handler: (basemap: Basemap) => void }): VoidFunctio
 ## Tools
 
 ```typescript
-type ToolType = "circle" | "highlighter" | "line" | "link" | "marker" | "note" | "pin" | "polygon" | "route" | "text";
+type ToolType = "circle" | "highlighter" | "isochrone" | "line" | "link" | "marker" | "note" | "pin" | "polygon" | "route" | "text";
 
 type PlaceFrame = "frame-circle" | "frame-square" | null;
 
@@ -1330,6 +1368,18 @@ type PolygonToolSettings = {
   strokeStyle: "solid" | "dashed" | "dotted"; // default: "solid"
   fillOpacity: number; // default: 0.25
   areaMarker: boolean; // default: false
+  showInspector: boolean; // default: false
+};
+
+type IsochroneToolSettings = {
+  color: string; // The color of the element in some CSS-like format. (default: "#C93535")
+  // A value between 0 and 1 that describes the opacity of the element's stroke.
+  strokeOpacity: number; // default: 1
+  strokeWidth: number; // default: 2
+  strokeStyle: "solid" | "dashed" | "dotted"; // default: "solid"
+  mode: "driving" | "cycling" | "walking"; // The mode of transport used to travel from the origin.
+  minutes: number; // The travel time in whole minutes, from 1 to 120.
+  fillOpacity: number; // default: 0.25
   showInspector: boolean; // default: false
 };
 
@@ -1383,6 +1433,7 @@ type ToolSettingsMap = {
   line: LineToolSettings;
   route: RouteToolSettings;
   polygon: PolygonToolSettings;
+  isochrone: IsochroneToolSettings;
   circle: CircleToolSettings;
   marker: MarkerToolSettings;
   highlighter: HighlighterToolSettings;
@@ -1391,10 +1442,10 @@ type ToolSettingsMap = {
 };
 
 // The parameters for changing the settings of each tool.
-type InputToolSettings = { tool: "pin" } & Partial<PinToolSettings> | { tool: "line" } & Partial<LineToolSettings> | { tool: "route" } & Partial<RouteToolSettings> | { tool: "polygon" } & Partial<PolygonToolSettings> | { tool: "circle" } & Partial<CircleToolSettings> | { tool: "marker" } & Partial<MarkerToolSettings> | { tool: "highlighter" } & Partial<HighlighterToolSettings> | { tool: "text" } & Partial<TextToolSettings> | { tool: "note" } & Partial<NoteToolSettings>;
+type InputToolSettings = { tool: "pin" } & Partial<PinToolSettings> | { tool: "line" } & Partial<LineToolSettings> | { tool: "route" } & Partial<RouteToolSettings> | { tool: "polygon" } & Partial<PolygonToolSettings> | { tool: "isochrone" } & Partial<IsochroneToolSettings> | { tool: "circle" } & Partial<CircleToolSettings> | { tool: "marker" } & Partial<MarkerToolSettings> | { tool: "highlighter" } & Partial<HighlighterToolSettings> | { tool: "text" } & Partial<TextToolSettings> | { tool: "note" } & Partial<NoteToolSettings>;
 
 // The result of listening for changes to the settings of each tool.
-type ToolSettingsChangeEvent = { tool: "pin" } & PinToolSettings | { tool: "line" } & LineToolSettings | { tool: "route" } & RouteToolSettings | { tool: "polygon" } & PolygonToolSettings | { tool: "circle" } & CircleToolSettings | { tool: "marker" } & MarkerToolSettings | { tool: "highlighter" } & HighlighterToolSettings | { tool: "text" } & TextToolSettings | { tool: "note" } & NoteToolSettings;
+type ToolSettingsChangeEvent = { tool: "pin" } & PinToolSettings | { tool: "line" } & LineToolSettings | { tool: "route" } & RouteToolSettings | { tool: "polygon" } & PolygonToolSettings | { tool: "isochrone" } & IsochroneToolSettings | { tool: "circle" } & CircleToolSettings | { tool: "marker" } & MarkerToolSettings | { tool: "highlighter" } & HighlighterToolSettings | { tool: "text" } & TextToolSettings | { tool: "note" } & NoteToolSettings;
 
 type PlaceSymbol = "dot" | "square" | "diamond" | "triangle" | "x" | "plus" | "circle-line" | "circle-slash" | "star" | "heart" | "hexagon" | "octagon" | "pedestrian" | "bicycle" | "wheelchair" | "airport" | "car" | "bus" | "train" | "truck" | "ferry" | "sailboat" | "electric-service" | "gas-service" | "blood-clinic" | "badge" | "traffic-light" | "traffic-cone" | "road-sign-caution" | "person" | "restroom" | "house" | "work" | "letter" | "hotel" | "factory" | "hospital" | "religious-facility" | "school" | "government" | "university" | "bank" | "landmark" | "museum" | "clothing" | "shopping" | "store" | "bar" | "pub" | "cafe" | "food" | "park" | "amusement-park" | "camping-tent" | "cabin" | "picnic" | "water-refill" | "trailhead" | "guidepost" | "viewpoint" | "camera" | "us-football" | "football" | "tennis" | "binoculars" | "swimming" | "zap" | "battery-full" | "battery-half" | "battery-low" | "boom" | "radar" | "wind-turbine" | "solar-panel" | "antenna" | "telephone-pole" | "oil-well" | "oil-barrel" | "railroad-track" | "bridge" | "lighthouse" | "lock-closed" | "lock-open" | "wifi" | "trash" | "recycle" | "tree" | "flower" | "leaf" | "fire" | "mountain" | "snowy-mountain" | "volcano" | "island" | "wave" | "hot-springs" | "water" | "lake" | "ocean" | "animal" | "bird" | "duck" | "dog" | "fish" | "beach" | "wetland" | "sun" | "moon" | "cloud" | "partial-sun" | "rain" | "lightning" | "snowflake" | "wind" | "snow" | "fog" | "sleet" | "hurricane" | "warning" | "parking" | "info" | "circle-exclamation" | "circle-triangle" | "circle-x" | "circle-plus" | `:${string}:` & {};
 ```

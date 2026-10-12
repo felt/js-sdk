@@ -189,3 +189,19 @@ false
 ## coordinates?
 
 > `optional` **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)\[]\[]
+
+***
+
+## isochrone?
+
+> `optional` **isochrone**: [`IsochroneParams`](IsochroneParams.md)
+
+A new travel time to recompute the polygon's shape from.
+
+### Remarks
+
+Felt replaces the polygon's shape with the area reachable from `origin` within
+`minutes` by `mode`. Cannot be combined with `coordinates`. `updateElement`
+rejects when travel time is not available on the map, or when no area is
+reachable from the origin, and the polygon keeps its previous travel time and
+shape.

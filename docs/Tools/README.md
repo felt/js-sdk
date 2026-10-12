@@ -35,6 +35,7 @@ felt.setTool(null);
 * [LineToolSettings](LineToolSettings.md)
 * [RouteToolSettings](RouteToolSettings.md)
 * [PolygonToolSettings](PolygonToolSettings.md)
+* [IsochroneToolSettings](IsochroneToolSettings.md)
 * [CircleToolSettings](CircleToolSettings.md)
 * [MarkerToolSettings](MarkerToolSettings.md)
 * [HighlighterToolSettings](HighlighterToolSettings.md)

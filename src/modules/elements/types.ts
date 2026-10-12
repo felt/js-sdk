@@ -182,6 +182,36 @@ const PathElementSchema = BaseFeltElementSchema.extend(Geographic.shape)
     endCaps: z.boolean(),
   });
 
+export const IsochroneSchema = z.object({
+  origin: LngLatTupleSchema,
+
+  /**
+   * The mode of transport used to travel from the origin.
+   */
+  mode: z.enum(["driving", "cycling", "walking"]),
+
+  /**
+   * The travel time in whole minutes, from 1 to 120.
+   */
+  minutes: z.number().int().min(1).max(120),
+});
+
+/**
+ * The travel time that an isochrone Polygon covers.
+ *
+ * @remarks
+ * Felt computes an isochrone's shape as the area reachable from `origin` within
+ * `minutes` by `mode`, following roads and paths.
+ *
+ * @group Elements
+ */
+export interface IsochroneParams extends zInfer<typeof IsochroneSchema> {
+  /**
+   * The point that travel time is measured from.
+   */
+  origin: LngLatTuple;
+}
+
 const PolygonElementSchema = BaseFeltElementSchema.extend(Geographic.shape)
   .extend(Strokable.shape)
   .extend({
@@ -419,6 +449,14 @@ export const PolygonCreateSchema = PolygonElementSchema.partial()
   .extend(PolygonElementSchema.pick(requiredCreateProps).shape)
   .omit(omitCreateProps);
 
+const IsochronePolygonCreateSchema = PolygonElementSchema.partial()
+  .omit({ ...omitCreateProps, coordinates: true })
+  .extend({ type: z.literal("Polygon"), isochrone: IsochroneSchema });
+
+const PolygonOrIsochroneCreateSchema = PolygonCreateSchema.partial({
+  coordinates: true,
+}).extend({ isochrone: IsochroneSchema.optional() });
+
 export const CircleCreateSchema = CircleElementSchema.partial()
   .extend(
     CircleElementSchema.pick({ type: true, center: true, radius: true }).shape,
@@ -447,26 +485,39 @@ const ImageCreateSchema = ImageElementSchema.partial()
   )
   .omit(omitCreateProps);
 
-export const ElementCreateSchema = z.discriminatedUnion("type", [
-  PlaceCreateSchema,
-  PathCreateSchema,
-  PolygonCreateSchema,
-  CircleCreateSchema,
+export const ElementCreateSchema = z
+  .discriminatedUnion("type", [
+    PlaceCreateSchema,
+    PathCreateSchema,
+    PolygonOrIsochroneCreateSchema,
+    CircleCreateSchema,
 
-  MarkerCreateSchema,
-  HighlighterCreateSchema,
+    MarkerCreateSchema,
+    HighlighterCreateSchema,
 
-  ImageCreateSchema,
+    ImageCreateSchema,
 
-  TextCreateSchema,
-  NoteCreateSchema,
-]);
+    TextCreateSchema,
+    NoteCreateSchema,
+  ])
+  .superRefine((element, ctx) => {
+    if (element.type !== "Polygon") return;
+    if (
+      (element.coordinates === undefined) ===
+      (element.isochrone === undefined)
+    ) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "A Polygon needs either coordinates or an isochrone, not both",
+      });
+    }
+  });
 
 const PlaceReadSchema = PlaceElementSchema;
 const PathReadSchema = PathElementSchema.omit({ coordinates: true });
 const PolygonReadSchema = PolygonElementSchema.omit({
   coordinates: true,
-});
+}).extend({ isochrone: IsochroneSchema.nullable() });
 const CircleReadSchema = CircleElementSchema;
 const MarkerReadSchema = MarkerElementSchema.omit({ coordinates: true });
 const HighlighterReadSchema = HighlighterElementSchema.omit({
@@ -487,9 +538,9 @@ const PathUpdateSchema = PathElementSchema.partial().extend(
   PathElementSchema.pick(requiredUpdateProps).shape,
 );
 
-const PolygonUpdateSchema = PolygonElementSchema.partial().extend(
-  PolygonElementSchema.pick(requiredUpdateProps).shape,
-);
+const PolygonUpdateSchema = PolygonElementSchema.partial()
+  .extend(PolygonElementSchema.pick(requiredUpdateProps).shape)
+  .extend({ isochrone: IsochroneSchema.optional() });
 
 const CircleUpdateSchema = CircleElementSchema.partial().extend(
   CircleElementSchema.pick(requiredUpdateProps).shape,
@@ -515,17 +566,28 @@ const ImageUpdateSchema = ImageElementSchema.partial().extend(
   ImageElementSchema.pick(requiredUpdateProps).shape,
 );
 
-export const ElementUpdateSchema = z.discriminatedUnion("type", [
-  PlaceUpdateSchema,
-  PathUpdateSchema,
-  PolygonUpdateSchema,
-  CircleUpdateSchema,
-  MarkerUpdateSchema,
-  HighlighterUpdateSchema,
-  TextUpdateSchema,
-  NoteUpdateSchema,
-  ImageUpdateSchema,
-]);
+export const ElementUpdateSchema = z
+  .discriminatedUnion("type", [
+    PlaceUpdateSchema,
+    PathUpdateSchema,
+    PolygonUpdateSchema,
+    CircleUpdateSchema,
+    MarkerUpdateSchema,
+    HighlighterUpdateSchema,
+    TextUpdateSchema,
+    NoteUpdateSchema,
+    ImageUpdateSchema,
+  ])
+  .superRefine((element, ctx) => {
+    if (element.type !== "Polygon") return;
+    if (element.coordinates !== undefined && element.isochrone !== undefined) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message:
+          "A Polygon update can set coordinates or an isochrone, not both",
+      });
+    }
+  });
 
 export interface PlaceElementCreate extends zInfer<typeof PlaceCreateSchema> {
   coordinates: LngLatTuple;
@@ -537,6 +599,21 @@ export interface PathElementCreate extends zInfer<typeof PathCreateSchema> {
 export interface PolygonElementCreate
   extends zInfer<typeof PolygonCreateSchema> {
   coordinates: LngLatTuple[][];
+}
+/**
+ * A Polygon element whose shape Felt computes from a travel time.
+ */
+export interface IsochronePolygonElementCreate
+  extends zInfer<typeof IsochronePolygonCreateSchema> {
+  /**
+   * The travel time to compute the polygon's shape from.
+   *
+   * @remarks
+   * Felt computes the area reachable from `origin` within `minutes` by `mode` and
+   * uses it as the polygon's shape. `createElement` rejects when travel time is not
+   * available on the map, or when no area is reachable from the origin.
+   */
+  isochrone: IsochroneParams;
 }
 export interface CircleElementCreate extends zInfer<typeof CircleCreateSchema> {
   center: LngLatTuple;
@@ -572,7 +649,13 @@ export interface PlaceElementRead extends zInfer<typeof PlaceReadSchema> {
   coordinates: LngLatTuple;
 }
 export interface PathElementRead extends zInfer<typeof PathReadSchema> {}
-export interface PolygonElementRead extends zInfer<typeof PolygonReadSchema> {}
+export interface PolygonElementRead extends zInfer<typeof PolygonReadSchema> {
+  /**
+   * The travel time the polygon's shape was computed from, or `null` for a
+   * polygon drawn from coordinates.
+   */
+  isochrone: IsochroneParams | null;
+}
 export interface CircleElementRead extends zInfer<typeof CircleReadSchema> {
   center: LngLatTuple;
 }
@@ -603,6 +686,18 @@ export interface PathElementUpdate extends zInfer<typeof PathUpdateSchema> {
 export interface PolygonElementUpdate
   extends zInfer<typeof PolygonUpdateSchema> {
   coordinates?: LngLatTuple[][];
+
+  /**
+   * A new travel time to recompute the polygon's shape from.
+   *
+   * @remarks
+   * Felt replaces the polygon's shape with the area reachable from `origin` within
+   * `minutes` by `mode`. Cannot be combined with `coordinates`. `updateElement`
+   * rejects when travel time is not available on the map, or when no area is
+   * reachable from the origin, and the polygon keeps its previous travel time and
+   * shape.
+   */
+  isochrone?: IsochroneParams;
 }
 export interface CircleElementUpdate extends zInfer<typeof CircleUpdateSchema> {
   center?: LngLatTuple;
@@ -632,6 +727,7 @@ export type ElementCreate =
   | PlaceElementCreate
   | PathElementCreate
   | PolygonElementCreate
+  | IsochronePolygonElementCreate
   | CircleElementCreate
   | MarkerElementCreate
   | HighlighterElementCreate

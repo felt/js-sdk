@@ -3,6 +3,7 @@ import type { zInfer } from "~/lib/utils";
 import {
   CircleCreateSchema,
   HighlighterCreateSchema,
+  IsochroneSchema,
   MarkerCreateSchema,
   NoteCreateSchema,
   PathCreateSchema,
@@ -14,6 +15,7 @@ import {
 const configurableTools = [
   "circle",
   "highlighter",
+  "isochrone",
   "line",
   "marker",
   "note",
@@ -31,6 +33,7 @@ export const ConfigurableToolSchema = z.enum(configurableTools);
 export type ToolType =
   | "circle"
   | "highlighter"
+  | "isochrone"
   | "line"
   | "link"
   | "marker"
@@ -115,6 +118,14 @@ export interface PolygonToolSettings
   extends zInfer<typeof PolygonToolSettingsSchema>,
     ShowToolInspectorSettings {}
 
+const IsochroneToolSettingsSchema = z.object({
+  ...PolygonToolSettingsSchema.omit({ areaMarker: true }).shape,
+  ...IsochroneSchema.pick({ mode: true, minutes: true }).shape,
+});
+export interface IsochroneToolSettings
+  extends zInfer<typeof IsochroneToolSettingsSchema>,
+    ShowToolInspectorSettings {}
+
 const CircleToolSettingsSchema = CircleCreateSchema.pick({
   color: true,
   fillOpacity: true,
@@ -183,6 +194,10 @@ export const InputToolSettingsSchema = z.discriminatedUnion("tool", [
     tool: z.literal("polygon"),
     ...showToolInspector,
   }),
+  IsochroneToolSettingsSchema.partial().extend({
+    tool: z.literal("isochrone"),
+    ...showToolInspector,
+  }),
   CircleToolSettingsSchema.partial().extend({
     tool: z.literal("circle"),
     ...showToolInspector,
@@ -224,6 +239,9 @@ export type InputToolSettings =
       tool: "polygon";
     } & Partial<PolygonToolSettings>)
   | ({
+      tool: "isochrone";
+    } & Partial<IsochroneToolSettings>)
+  | ({
       tool: "circle";
     } & Partial<CircleToolSettings>)
   | ({
@@ -256,6 +274,9 @@ export type ToolSettingsChangeEvent =
       tool: "polygon";
     } & PolygonToolSettings)
   | ({
+      tool: "isochrone";
+    } & IsochroneToolSettings)
+  | ({
       tool: "circle";
     } & CircleToolSettings)
   | ({
@@ -276,6 +297,7 @@ export type ToolSettingsMap = {
   line: LineToolSettings;
   route: RouteToolSettings;
   polygon: PolygonToolSettings;
+  isochrone: IsochroneToolSettings;
   circle: CircleToolSettings;
   marker: MarkerToolSettings;
   highlighter: HighlighterToolSettings;

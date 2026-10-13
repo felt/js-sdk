@@ -105,20 +105,20 @@ Finally, add a changeset for your changes:
 Once you have added your new SDK functionality, you need to make sure Felt handles these new messages
 correctly.
 
-You will need to first link the package to the Felt app:
+You will need to first link this checkout to the Felt app:
 
-1. From this repo, run `yarn link`
-2. From the Felt app, run `yarn link @feltmaps/js-sdk`
-3. Restart the Felt app to ensure the changes are picked up - this should happen automatically
-   without restarting but I'm not sure it's 100% reliable.
+1. From this repo, run `npm run build:compile` to build `dist/`.
+2. In the Felt app, change the `@feltmaps/js-sdk-next` entry to `"link:/absolute/path/to/this/checkout"`.
+3. From `services/frontend`, run `pnpm install`.
+
+Revert `package.json` and `pnpm-lock.yaml` in the Felt repo before committing.
 
 Now you can develop against the new version of the SDK.
 
 You will need to add handlers for any new messages, as well as an end-to-end test for any new
 methods or listeners added to the client.
 
-TypeScript should force you to do this, so run `npx tsc --noEmit --watch` in the Felt app repo
-to be guided around the codebase.
+TypeScript should force you to do this, so run `pnpm check:tsc` from `services/frontend` in the Felt repo to be guided around the codebase.
 
 ### Adding your changes to the SDK and merging your Felt changes
 

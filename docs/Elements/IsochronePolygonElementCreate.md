@@ -191,3 +191,9 @@ Whether to show an area marker on the polygon.
 ```ts
 false
 ```
+
+***
+
+## coordinates?
+
+> `optional` **coordinates**: `undefined`

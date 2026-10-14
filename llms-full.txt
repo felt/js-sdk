@@ -926,6 +926,8 @@ type PolygonElementRead = {
 
 type PolygonElementUpdate = {
   id: string;
+  // Setting `coordinates` on an isochrone polygon replaces its computed shape and clears its
+  // `isochrone`, which then reads back as `null`.
   coordinates?: LngLatTuple[][];
   // A new travel time to recompute the polygon's shape from.
   // Felt replaces the polygon's shape with the area reachable from `origin` within `minutes` by `mode`.
@@ -951,6 +953,7 @@ type IsochronePolygonElementCreate = ElementCreateCommon & {
   strokeStyle?: "solid" | "dashed" | "dotted"; // default: "solid"
   fillOpacity?: number; // default: 0.25
   areaMarker?: boolean; // default: false
+  coordinates?: undefined;
 };
 
 type CircleElementCreate = ElementCreateCommon & {

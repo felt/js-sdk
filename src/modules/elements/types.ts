@@ -502,10 +502,13 @@ export const ElementCreateSchema = z
   ])
   .superRefine((element, ctx) => {
     if (element.type !== "Polygon") return;
-    if (
-      (element.coordinates === undefined) ===
-      (element.isochrone === undefined)
-    ) {
+    if (element.coordinates === undefined && element.isochrone === undefined) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "A Polygon needs either coordinates or an isochrone",
+      });
+    }
+    if (element.coordinates !== undefined && element.isochrone !== undefined) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         message: "A Polygon needs either coordinates or an isochrone, not both",
@@ -614,6 +617,7 @@ export interface IsochronePolygonElementCreate
    * available on the map, or when no area is reachable from the origin.
    */
   isochrone: IsochroneParams;
+  coordinates?: never;
 }
 export interface CircleElementCreate extends zInfer<typeof CircleCreateSchema> {
   center: LngLatTuple;
@@ -685,6 +689,11 @@ export interface PathElementUpdate extends zInfer<typeof PathUpdateSchema> {
 }
 export interface PolygonElementUpdate
   extends zInfer<typeof PolygonUpdateSchema> {
+  /**
+   * @remarks
+   * Setting `coordinates` on an isochrone polygon replaces its computed shape and
+   * clears its `isochrone`, which then reads back as `null`.
+   */
   coordinates?: LngLatTuple[][];
 
   /**

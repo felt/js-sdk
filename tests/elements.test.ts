@@ -130,6 +130,7 @@ describe("Element tests", () => {
             [0, 0],
           ],
         ],
+        // @ts-expect-error
         isochrone,
       }),
     ).rejects.toThrowError(

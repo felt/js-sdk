@@ -929,12 +929,7 @@ type PolygonElementUpdate = {
   // Setting `coordinates` on an isochrone polygon replaces its computed shape and clears its
   // `isochrone`, which then reads back as `null`.
   coordinates?: LngLatTuple[][];
-  // A new travel time to recompute the polygon's shape from.
-  // Felt replaces the polygon's shape with the area reachable from `origin` within `minutes` by `mode`.
-  // Cannot be combined with `coordinates`. `updateElement` rejects when travel time is not available on
-  // the map, or when no area is reachable from the origin, and the polygon keeps its previous travel
-  // time and shape.
-  isochrone?: IsochroneParams;
+  isochrone?: undefined;
 } & Omit<PolygonElementCreate, "coordinates">;
 
 // A Polygon element whose shape Felt computes from a travel time.
@@ -955,6 +950,17 @@ type IsochronePolygonElementCreate = ElementCreateCommon & {
   areaMarker?: boolean; // default: false
   coordinates?: undefined;
 };
+
+// An update to a Polygon element that recomputes its shape from a travel time.
+type IsochronePolygonElementUpdate = {
+  id: string;
+  // A new travel time to recompute the polygon's shape from.
+  // Felt replaces the polygon's shape with the area reachable from `origin` within `minutes` by `mode`.
+  // Cannot be combined with `coordinates`. `updateElement` rejects when travel time is not available on
+  // the map, or when no area is reachable from the origin, and the polygon keeps its previous travel
+  // time and shape.
+  isochrone?: IsochroneParams;
+} & Omit<IsochronePolygonElementCreate, "isochrone">;
 
 type CircleElementCreate = ElementCreateCommon & {
   type: "Circle";
@@ -1122,7 +1128,7 @@ type ElementGroupChangeCallbackParams = { elementGroup: ElementGroup | null };
 
 type ElementCreate = PlaceElementCreate | PathElementCreate | PolygonElementCreate | IsochronePolygonElementCreate | CircleElementCreate | MarkerElementCreate | HighlighterElementCreate | ImageElementCreate | TextElementCreate | NoteElementCreate;
 
-type ElementUpdate = PlaceElementUpdate | PathElementUpdate | PolygonElementUpdate | CircleElementUpdate | MarkerElementUpdate | HighlighterElementUpdate | TextElementUpdate | NoteElementUpdate | ImageElementUpdate;
+type ElementUpdate = PlaceElementUpdate | PathElementUpdate | PolygonElementUpdate | IsochronePolygonElementUpdate | CircleElementUpdate | MarkerElementUpdate | HighlighterElementUpdate | TextElementUpdate | NoteElementUpdate | ImageElementUpdate;
 
 type Element = PlaceElementRead | PathElementRead | PolygonElementRead | CircleElementRead | MarkerElementRead | HighlighterElementRead | TextElementRead | NoteElementRead | ImageElementRead | LinkElementRead;
 ```

@@ -695,6 +695,14 @@ export interface PolygonElementUpdate
    * clears its `isochrone`, which then reads back as `null`.
    */
   coordinates?: LngLatTuple[][];
+  isochrone?: never;
+}
+/**
+ * An update to a Polygon element that recomputes its shape from a travel time.
+ */
+export interface IsochronePolygonElementUpdate
+  extends zInfer<typeof PolygonUpdateSchema> {
+  coordinates?: never;
 
   /**
    * A new travel time to recompute the polygon's shape from.
@@ -748,6 +756,7 @@ export type ElementUpdate =
   | PlaceElementUpdate
   | PathElementUpdate
   | PolygonElementUpdate
+  | IsochronePolygonElementUpdate
   | CircleElementUpdate
   | MarkerElementUpdate
   | HighlighterElementUpdate

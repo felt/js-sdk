@@ -113,7 +113,7 @@ describe("Element tests", () => {
       // @ts-expect-error: a Polygon needs coordinates or an isochrone
       client.createElement({ type: "Polygon" }),
     ).rejects.toThrowError(
-      "A Polygon needs either coordinates or an isochrone",
+      /"A Polygon needs either coordinates or an isochrone"/,
     );
   });
 
@@ -134,7 +134,29 @@ describe("Element tests", () => {
         isochrone,
       }),
     ).rejects.toThrowError(
-      "A Polygon needs either coordinates or an isochrone",
+      /"A Polygon needs either coordinates or an isochrone, not both"/,
+    );
+  });
+
+  test("Polygon updates can't set both coordinates and an isochrone", async () => {
+    const client = await Felt.connect(window);
+    await expect(
+      client.updateElement({
+        id: "polygon-1",
+        type: "Polygon",
+        // @ts-expect-error
+        coordinates: [
+          [
+            [0, 0],
+            [0, 1],
+            [1, 1],
+            [0, 0],
+          ],
+        ],
+        isochrone,
+      }),
+    ).rejects.toThrowError(
+      /"A Polygon update can set coordinates or an isochrone, not both"/,
     );
   });
 

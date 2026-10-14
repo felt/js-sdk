@@ -31,6 +31,7 @@ export type {
   ImageElementUpdate,
   IsochroneParams,
   IsochronePolygonElementCreate,
+  IsochronePolygonElementUpdate,
   LinkElementRead,
   MarkerElementCreate,
   MarkerElementRead,

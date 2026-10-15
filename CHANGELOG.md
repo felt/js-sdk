@@ -1,5 +1,11 @@
 # @feltmaps/js-sdk
 
+## 1.12.0-next.0
+
+### Minor Changes
+
+- 5ce0b1e: Add isochrone polygons and the isochrone tool. `createElement` accepts a Polygon with an `isochrone` of `origin`, `mode` and `minutes` in place of `coordinates`, and Felt computes the shape as the area reachable within that travel time. Polygon elements now read back their `isochrone`, or `null` for a polygon drawn from coordinates, and `updateElement` recomputes the shape from a new `isochrone`. The `"isochrone"` tool can be selected with `setTool`, and its style, mode and minutes set with `setToolSettings`.
+
 ## 1.11.1
 
 ### Patch Changes

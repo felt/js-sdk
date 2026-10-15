@@ -4,5 +4,7 @@
   "initialVersions": {
     "@feltmaps/js-sdk": "1.11.1"
   },
-  "changesets": []
+  "changesets": [
+    "isochrone-polygons"
+  ]
 }

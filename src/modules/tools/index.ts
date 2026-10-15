@@ -30,6 +30,7 @@ export type {
   ConfigurableToolType,
   HighlighterToolSettings,
   InputToolSettings,
+  IsochroneToolSettings,
   LineToolSettings,
   MarkerToolSettings,
   NoteToolSettings,

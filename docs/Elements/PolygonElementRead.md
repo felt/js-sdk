@@ -161,6 +161,15 @@ false
 
 ***
 
+## isochrone
+
+> **isochrone**: `null` | [`IsochroneParams`](IsochroneParams.md)
+
+The travel time the polygon's shape was computed from, or `null` for a
+polygon drawn from coordinates.
+
+***
+
 ## interaction?
 
 > `optional` **interaction**: `"default"` | `"locked"`

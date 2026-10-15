@@ -386,6 +386,12 @@ export interface ElementsController {
    * @example
    * ```typescript
    * const element = await felt.createElement({ type: "Place", coordinates: [10, 10] });
+   *
+   * // Create a polygon covering everywhere within a 15 minute drive
+   * const isochrone = await felt.createElement({
+   *   type: "Polygon",
+   *   isochrone: { origin: [-122.27, 37.8], mode: "driving", minutes: 15 },
+   * });
    * ```
    */
   createElement(element: ElementCreate): Promise<Element>;

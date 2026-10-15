@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
-import { Felt } from "~/client";
+import { Felt, type IsochroneParams } from "~/client";
 
 import { createMessageHandler } from "~/handler";
 import { createWindow } from "./window";
@@ -89,5 +89,84 @@ describe("Element tests", () => {
     ).rejects.toThrowError(
       "The last point of each ring must be identical to the first",
     );
+  });
+
+  const isochrone: IsochroneParams = {
+    origin: [-122.27, 37.8],
+    mode: "driving",
+    minutes: 15,
+  };
+
+  test("Isochrone polygons are created without coordinates", async () => {
+    const createElement = vi.fn().mockResolvedValue(null);
+    (methods as any).createElement = createElement;
+    const client = await Felt.connect(window);
+
+    await client.createElement({ type: "Polygon", isochrone });
+
+    expect(createElement).toHaveBeenCalledWith({ type: "Polygon", isochrone });
+  });
+
+  test("Polygons need coordinates or an isochrone", async () => {
+    const client = await Felt.connect(window);
+    await expect(
+      // @ts-expect-error: a Polygon needs coordinates or an isochrone
+      client.createElement({ type: "Polygon" }),
+    ).rejects.toThrowError(
+      /"A Polygon needs either coordinates or an isochrone"/,
+    );
+  });
+
+  test("Polygons can't have both coordinates and an isochrone", async () => {
+    const client = await Felt.connect(window);
+    await expect(
+      client.createElement({
+        type: "Polygon",
+        coordinates: [
+          [
+            [0, 0],
+            [0, 1],
+            [1, 1],
+            [0, 0],
+          ],
+        ],
+        // @ts-expect-error
+        isochrone,
+      }),
+    ).rejects.toThrowError(
+      /"A Polygon needs either coordinates or an isochrone, not both"/,
+    );
+  });
+
+  test("Polygon updates can't set both coordinates and an isochrone", async () => {
+    const client = await Felt.connect(window);
+    await expect(
+      client.updateElement({
+        id: "polygon-1",
+        type: "Polygon",
+        // @ts-expect-error
+        coordinates: [
+          [
+            [0, 0],
+            [0, 1],
+            [1, 1],
+            [0, 0],
+          ],
+        ],
+        isochrone,
+      }),
+    ).rejects.toThrowError(
+      /"A Polygon update can set coordinates or an isochrone, not both"/,
+    );
+  });
+
+  test("Isochrone minutes must be at most 120", async () => {
+    const client = await Felt.connect(window);
+    await expect(
+      client.createElement({
+        type: "Polygon",
+        isochrone: { ...isochrone, minutes: 121 },
+      }),
+    ).rejects.toThrowError("less than or equal to 120");
   });
 });

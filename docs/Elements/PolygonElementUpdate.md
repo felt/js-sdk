@@ -189,3 +189,14 @@ false
 ## coordinates?
 
 > `optional` **coordinates**: [`LngLatTuple`](../Shared/LngLatTuple.md)\[]\[]
+
+### Remarks
+
+Setting `coordinates` on an isochrone polygon replaces its computed shape and
+clears its `isochrone`, which then reads back as `null`.
+
+***
+
+## isochrone?
+
+> `optional` **isochrone**: `undefined`

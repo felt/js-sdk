@@ -19,6 +19,7 @@ of the map.
 * [PlaceElementCreate](PlaceElementCreate.md)
 * [PathElementCreate](PathElementCreate.md)
 * [PolygonElementCreate](PolygonElementCreate.md)
+* [IsochronePolygonElementCreate](IsochronePolygonElementCreate.md)
 * [CircleElementCreate](CircleElementCreate.md)
 * [MarkerElementCreate](MarkerElementCreate.md)
 * [HighlighterElementCreate](HighlighterElementCreate.md)
@@ -38,6 +39,7 @@ of the map.
 * [PlaceElementUpdate](PlaceElementUpdate.md)
 * [PathElementUpdate](PathElementUpdate.md)
 * [PolygonElementUpdate](PolygonElementUpdate.md)
+* [IsochronePolygonElementUpdate](IsochronePolygonElementUpdate.md)
 * [CircleElementUpdate](CircleElementUpdate.md)
 * [MarkerElementUpdate](MarkerElementUpdate.md)
 * [HighlighterElementUpdate](HighlighterElementUpdate.md)
@@ -58,6 +60,7 @@ of the map.
 
 # Elements
 
+* [IsochroneParams](IsochroneParams.md)
 * [GetElementsConstraint](GetElementsConstraint.md)
 * [ElementChangeCallbackParams](ElementChangeCallbackParams.md)
 * [Element](Element.md)

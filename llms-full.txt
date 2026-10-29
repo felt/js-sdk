@@ -12,7 +12,7 @@ Methods on `felt`, by section:
 - Tools: setTool, getTool, setToolSettings, getToolSettings; events: onToolChange, onToolSettingsChange
 - UI: createActionTrigger, updateActionTrigger, deleteActionTrigger, createFeatureAction, updateFeatureAction, deleteFeatureAction, createPanelId, createOrUpdatePanel, deletePanel, createPanelElements, updatePanelElements, deletePanelElements, updateUiControls, setOnMapInteractionsUi, showLayerDataTable, hideLayerDataTable
 - Viewport: getViewport, setViewport, getViewportConstraints, setViewportConstraints, fitViewportToBounds; events: onViewportMove, onViewportMoveEnd, onMapIdle
-- Map Details: getMapDetails
+- Map Details: getMapDetails, exportImage
 
 ## Entry Point
 
@@ -1990,6 +1990,56 @@ felt.onMapIdle(args: { handler: () => void }): VoidFunction;
 ## Map Details
 
 ```typescript
+// The parameters for the `exportImage` method.
+type ExportImageParams = {
+  // The output image is `width × pixelRatio` pixels wide. Defaults to the width of the embedded map.
+  width?: number;
+  // The output image is `height × pixelRatio` pixels tall. Defaults to the height of the embedded map.
+  height?: number;
+  pixelRatio?: 1 | 2 | 3 | 4; // How many output pixels to draw per CSS pixel. (default: 2)
+  // `"svg"` is only available on workspaces with a Business plan or higher; on other plans the call
+  // rejects.
+  format?: "png" | "jpg" | "pdf" | "svg"; // default: "png"
+  // Ignored for formats other than `"jpg"`.
+  jpgQuality?: number; // default: 0.9
+  // Defaults to the map's current viewport.
+  viewport?: ViewportCenterZoom;
+  legend?: ExportImageLegendOptions; // Which parts of the legend card to include in the export.
+  showScaleBar?: boolean; // default: true
+  // Whether to also save the file in the viewer's browser.
+  // The download is started from inside the embedded map, so a browser may block it (for example, a
+  // sandboxed iframe needs `allow-downloads`). The file is returned in the result either way, so a host
+  // page that needs the download to be reliable should save the returned `blob` itself.
+  download?: boolean; // default: false
+};
+
+// Which parts of the legend card to include in an image export.
+type ExportImageLegendOptions = {
+  visible?: boolean; // Whether to include the legend card at all. (default: true)
+  showTitle?: boolean; // Whether to show the map title at the top of the legend card. (default: true)
+  showDescription?: boolean; // Whether to show the map description under the title. (default: true)
+  showComponents?: boolean; // Whether to show the map's components in the legend card. (default: true)
+};
+
+// The result of an image export.
+type ExportImageResult = {
+  blob: Blob;
+  // A suggested file name for the export, including its extension.
+  filename: string;
+  warnings: ExportImageWarnings; // Ways the export is complete but imperfect.
+};
+
+// Ways an image export is complete but imperfect.
+type ExportImageWarnings = {
+  // Whether some map tiles had not finished loading when the image was drawn.
+  // Calling `exportImage` again once the map is idle usually fixes this.
+  tilesMissing: boolean;
+  // The number of elements that could not be drawn into the export.
+  skippedElementCount: number;
+  // Whether the export was drawn at a lower resolution than requested because it exceeded the maximum export size.
+  resolutionClamped: boolean;
+};
+
 // The details of a map.
 type MapDetails = { id: string; title: string; description: string | null };
 ```
@@ -1999,4 +2049,15 @@ type MapDetails = { id: string; title: string; description: string | null };
 ```typescript
 // Gets the details of the map.
 felt.getMapDetails(): Promise<MapDetails>;
+
+// Exports an image of the map exactly as the viewer currently sees it.
+// The export includes changes made through the SDK in this session, such as layer visibility, filters
+// and layers created with `createLayersFromGeoJson`, none of which the REST API's image export can
+// see.
+// - The map owner must turn on "Allow image export from embeds" for anonymous viewers to use this;
+// otherwise the call rejects.
+// - Only one export runs at a time; a second call while one is running rejects.
+// - The call rejects if the page is hidden, because browsers throttle rendering in background tabs.
+// - Selection and hover highlights are never drawn.
+felt.exportImage(params?: ExportImageParams): Promise<ExportImageResult>;
 ```

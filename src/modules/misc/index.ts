@@ -3,6 +3,12 @@
  *
  * @module Misc
  */
-export type { MapDetails } from "./types";
+export type {
+  ExportImageLegendOptions,
+  ExportImageParams,
+  ExportImageResult,
+  ExportImageWarnings,
+  MapDetails,
+} from "./types";
 
 export type { MiscController } from "./controller";

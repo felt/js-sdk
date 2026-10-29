@@ -1691,6 +1691,50 @@ console.log({
 
 ***
 
+## exportImage()
+
+> **exportImage**(`params`?: [`ExportImageParams`](../Misc/ExportImageParams.md)): `Promise`\<[`ExportImageResult`](../Misc/ExportImageResult.md)>
+
+Exports an image of the map exactly as the viewer currently sees it.
+
+### Parameters
+
+| Parameter | Type                                                | Description                                  |
+| --------- | --------------------------------------------------- | -------------------------------------------- |
+| `params`? | [`ExportImageParams`](../Misc/ExportImageParams.md) | The size, format and contents of the export. |
+
+### Returns
+
+`Promise`\<[`ExportImageResult`](../Misc/ExportImageResult.md)>
+
+A promise that resolves to the exported file.
+
+### Remarks
+
+The export includes changes made through the SDK in this session, such as
+layer visibility, filters and layers created with `createLayersFromGeoJson`,
+none of which the REST API's image export can see.
+
+* The map owner must turn on "Allow image export from embeds" for anonymous
+  viewers to use this; otherwise the call rejects.
+* Only one export runs at a time; a second call while one is running rejects.
+* The call rejects if the page is hidden, because browsers throttle
+  rendering in background tabs.
+* Selection and hover highlights are never drawn.
+
+### Example
+
+```typescript
+const { blob, filename } = await felt.exportImage({
+  format: "png",
+  width: 1200,
+  height: 800,
+});
+const url = URL.createObjectURL(blob);
+```
+
+***
+
 ## getSelection()
 
 > **getSelection**(): `Promise`\<[`EntityNode`](../Selection/EntityNode.md)\[]>
